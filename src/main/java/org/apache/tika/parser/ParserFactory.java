@@ -103,18 +103,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|hedges
-operator|.
-name|mimeinfo
-operator|.
-name|MimeInfoException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -156,8 +144,6 @@ name|LiusConfig
 name|tc
 parameter_list|)
 throws|throws
-name|MimeInfoException
-throws|,
 name|IOException
 throws|,
 name|LiusException
@@ -339,8 +325,6 @@ name|LiusConfig
 name|tc
 parameter_list|)
 throws|throws
-name|MimeInfoException
-throws|,
 name|IOException
 throws|,
 name|LiusException
@@ -371,8 +355,6 @@ name|String
 name|tcPath
 parameter_list|)
 throws|throws
-name|MimeInfoException
-throws|,
 name|IOException
 throws|,
 name|LiusException
@@ -413,8 +395,6 @@ name|String
 name|tcPath
 parameter_list|)
 throws|throws
-name|MimeInfoException
-throws|,
 name|IOException
 throws|,
 name|LiusException
