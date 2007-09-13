@@ -25,8 +25,18 @@ name|File
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
 begin_comment
-comment|/**  * Detect mime type from file  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Detect the MIME type of a document from file name given as  * a String, a File, or a URL.  */
 end_comment
 
 begin_class
@@ -34,27 +44,24 @@ specifier|public
 class|class
 name|MimeTypesUtils
 block|{
+comment|/**      * Returns the MIME type as specified by the ending of the name.      *      * @param name the resource name, e.g. "filename.pdf"      * @return the MIME type, e.g. "application/pdf"      */
 specifier|public
 specifier|static
 name|String
 name|getMimeType
 parameter_list|(
-name|File
-name|file
+name|String
+name|name
 parameter_list|)
 block|{
 comment|// FIXME: See TIKA-8
-name|String
 name|name
-init|=
-name|file
-operator|.
-name|getName
-argument_list|()
+operator|=
+name|name
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|name
@@ -210,6 +217,46 @@ return|return
 literal|"application/octet-stream"
 return|;
 block|}
+block|}
+comment|/**      * Returns the MIME type as specified by the ending of the file's name.      *      * @param file the file to test, e.g. new File("filename.pdf")      * @return the MIME type, e.g. "application/pdf"      */
+specifier|public
+specifier|static
+name|String
+name|getMimeType
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+block|{
+return|return
+name|getMimeType
+argument_list|(
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the MIME type as specified by the ending of the URL's file name.      *      * @param url the url to test, e.g. new URL("http://mydomain.com/filename.pdf")      * @return the MIME type, e.g. "application/pdf"      */
+specifier|public
+specifier|static
+name|String
+name|getMimeType
+parameter_list|(
+name|URL
+name|url
+parameter_list|)
+block|{
+return|return
+name|getMimeType
+argument_list|(
+name|url
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 end_class
