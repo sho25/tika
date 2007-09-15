@@ -113,6 +113,16 @@ name|Logger
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|jdom
+operator|.
+name|JDOMException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Factory class. Build parser from xml config file.  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
 end_comment
@@ -148,6 +158,28 @@ name|IOException
 throws|,
 name|LiusException
 block|{
+if|if
+condition|(
+operator|!
+name|file
+operator|.
+name|canRead
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Cannot read input file "
+operator|+
+name|file
+operator|.
+name|getAbsoluteFile
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|String
 name|mimeType
 init|=
@@ -168,6 +200,32 @@ argument_list|(
 name|mimeType
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|pc
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|LiusException
+argument_list|(
+literal|"No ParserConfig available for mime-type '"
+operator|+
+name|mimeType
+operator|+
+literal|"'"
+operator|+
+literal|" for file "
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+throw|;
+block|}
 name|String
 name|className
 init|=
@@ -200,7 +258,7 @@ try|try
 block|{
 name|logger
 operator|.
-name|info
+name|debug
 argument_list|(
 literal|"Loading parser class = "
 operator|+
@@ -209,6 +267,13 @@ operator|+
 literal|" MimeType = "
 operator|+
 name|mimeType
+operator|+
+literal|" for file "
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|parserClass
@@ -358,6 +423,8 @@ throws|throws
 name|IOException
 throws|,
 name|LiusException
+throws|,
+name|JDOMException
 block|{
 name|LiusConfig
 name|tc
@@ -398,6 +465,8 @@ throws|throws
 name|IOException
 throws|,
 name|LiusException
+throws|,
+name|JDOMException
 block|{
 name|LiusConfig
 name|tc
