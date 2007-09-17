@@ -529,6 +529,26 @@ expr_stmt|;
 block|}
 block|}
 block|}
+else|else
+block|{
+comment|// there are no values, but there is a Content object
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Content '"
+operator|+
+name|ct
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"' has no values."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
