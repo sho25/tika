@@ -22,7 +22,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|Office
+name|MSOffice
 block|{
 specifier|public
 specifier|static

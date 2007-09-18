@@ -74,7 +74,7 @@ name|DublinCore
 implements|,
 name|HttpHeaders
 implements|,
-name|Office
+name|MSOffice
 block|{
 comment|/**    * A map of all metadata attributes.    */
 specifier|private
