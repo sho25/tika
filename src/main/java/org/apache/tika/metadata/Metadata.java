@@ -75,6 +75,8 @@ implements|,
 name|HttpHeaders
 implements|,
 name|MSOffice
+implements|,
+name|TikaMimeKeys
 block|{
 comment|/**    * A map of all metadata attributes.    */
 specifier|private
