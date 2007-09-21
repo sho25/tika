@@ -228,8 +228,7 @@ name|Content
 argument_list|>
 name|ctt
 init|=
-name|getParserConfig
-argument_list|()
+name|super
 operator|.
 name|getContents
 argument_list|()
@@ -407,11 +406,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|getParserConfig
-argument_list|()
-operator|.
-name|getContents
-argument_list|()
+name|ctt
 return|;
 block|}
 comment|/*      * public List<Content> getContents() {      * extrator.setContents(getParserConfig().getContents()); try {      * extrator.extract(getInputStream()); } catch (Exception e) { // TODO      * Auto-generated catch block e.printStackTrace(); } return      * getParserConfig().getContents(); }      */
@@ -424,8 +419,7 @@ name|extrator
 operator|.
 name|setContents
 argument_list|(
-name|getParserConfig
-argument_list|()
+name|super
 operator|.
 name|getContents
 argument_list|()

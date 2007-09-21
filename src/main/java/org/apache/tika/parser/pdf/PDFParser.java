@@ -439,8 +439,7 @@ name|Content
 argument_list|>
 name|ctt
 init|=
-name|getParserConfig
-argument_list|()
+name|super
 operator|.
 name|getContents
 argument_list|()
@@ -1033,11 +1032,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|getParserConfig
-argument_list|()
-operator|.
-name|getContents
-argument_list|()
+name|ctt
 return|;
 block|}
 specifier|public
