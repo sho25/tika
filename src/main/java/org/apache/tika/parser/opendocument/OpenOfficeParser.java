@@ -558,15 +558,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|Utils
-operator|.
-name|saveInXmlFile
-argument_list|(
-name|xmlDoc
-argument_list|,
-literal|"C:\\oo.xml"
-argument_list|)
-expr_stmt|;
 return|return
 name|xmlDoc
 return|;
