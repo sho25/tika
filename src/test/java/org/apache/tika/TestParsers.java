@@ -171,7 +171,7 @@ specifier|final
 name|String
 name|tikaConfigFilename
 init|=
-literal|"target/classes/config.xml"
+literal|"target/classes/tika-config.xml"
 decl_stmt|;
 specifier|final
 name|String
