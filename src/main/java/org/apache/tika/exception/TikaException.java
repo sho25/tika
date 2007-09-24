@@ -22,12 +22,12 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|LiusException
+name|TikaException
 extends|extends
 name|Exception
 block|{
 specifier|public
-name|LiusException
+name|TikaException
 parameter_list|(
 name|String
 name|msg

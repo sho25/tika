@@ -57,7 +57,7 @@ name|tika
 operator|.
 name|config
 operator|.
-name|LiusConfig
+name|TikaConfig
 import|;
 end_import
 
@@ -71,7 +71,7 @@ name|tika
 operator|.
 name|log
 operator|.
-name|LiusLogger
+name|TikaLogger
 import|;
 end_import
 
@@ -149,7 +149,7 @@ extends|extends
 name|TestCase
 block|{
 specifier|private
-name|LiusConfig
+name|TikaConfig
 name|tc
 decl_stmt|;
 specifier|private
@@ -190,12 +190,12 @@ expr_stmt|;
 name|tc
 operator|=
 operator|new
-name|LiusConfig
+name|TikaConfig
 argument_list|(
 name|liusConfigFilename
 argument_list|)
 expr_stmt|;
-name|LiusLogger
+name|TikaLogger
 operator|.
 name|setLoggerConfigFile
 argument_list|(

@@ -116,7 +116,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|LiusConfig
+name|TikaConfig
 block|{
 specifier|private
 specifier|final
@@ -138,7 +138,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|public
-name|LiusConfig
+name|TikaConfig
 parameter_list|(
 name|String
 name|file

@@ -83,7 +83,7 @@ name|tika
 operator|.
 name|config
 operator|.
-name|LiusConfig
+name|TikaConfig
 import|;
 end_import
 
@@ -97,7 +97,7 @@ name|tika
 operator|.
 name|exception
 operator|.
-name|LiusException
+name|TikaException
 import|;
 end_import
 
@@ -202,7 +202,7 @@ argument_list|(
 name|conf
 argument_list|)
 decl_stmt|;
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param inputStream      *            stream containing document data to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param inputStream      *            stream containing document data to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Parser
@@ -211,14 +211,14 @@ parameter_list|(
 name|InputStream
 name|inputStream
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -231,7 +231,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Document input stream not provided."
 argument_list|)
@@ -253,7 +253,7 @@ block|}
 comment|// Note that we cannot provide a method that takes an InputStream
 comment|// but not a MIME type, since we will not have a resource
 comment|// name from which to derive it.
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Parser
@@ -262,14 +262,14 @@ parameter_list|(
 name|URL
 name|documentUrl
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -282,7 +282,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Document URL not provided."
 argument_list|)
@@ -304,7 +304,7 @@ name|config
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. The MIME type      * is determined automatically. NB: Close the input stream when it is no      * longer needed!      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. The MIME type      * is determined automatically. NB: Close the input stream when it is no      * longer needed!      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Parser
@@ -313,11 +313,11 @@ parameter_list|(
 name|URL
 name|documentUrl
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -348,7 +348,7 @@ name|mimetype
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Parser
@@ -357,14 +357,14 @@ parameter_list|(
 name|File
 name|documentFile
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -377,7 +377,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Document file not provided."
 argument_list|)
@@ -394,7 +394,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Document file does not exist or is not readable."
 argument_list|)
@@ -424,7 +424,7 @@ name|config
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|Parser
@@ -433,11 +433,11 @@ parameter_list|(
 name|File
 name|documentFile
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -468,7 +468,7 @@ name|mimetype
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param inputStream      *            the stream from which to read document data      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param inputStream      *            the stream from which to read document data      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|String
@@ -477,14 +477,14 @@ parameter_list|(
 name|InputStream
 name|inputStream
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -507,7 +507,7 @@ name|parser
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|String
@@ -516,11 +516,11 @@ parameter_list|(
 name|URL
 name|documentUrl
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -541,7 +541,7 @@ name|parser
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|String
@@ -550,14 +550,14 @@ parameter_list|(
 name|URL
 name|documentUrl
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -580,7 +580,7 @@ name|parser
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|String
@@ -589,14 +589,14 @@ parameter_list|(
 name|File
 name|documentFile
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|,
 name|String
 name|mimeType
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{
@@ -619,7 +619,7 @@ name|parser
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws LiusException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|String
@@ -628,11 +628,11 @@ parameter_list|(
 name|File
 name|documentFile
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|config
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 throws|,
 name|IOException
 block|{

@@ -61,7 +61,7 @@ name|tika
 operator|.
 name|config
 operator|.
-name|LiusConfig
+name|TikaConfig
 import|;
 end_import
 
@@ -89,7 +89,7 @@ name|tika
 operator|.
 name|exception
 operator|.
-name|LiusException
+name|TikaException
 import|;
 end_import
 
@@ -122,11 +122,11 @@ parameter_list|,
 name|String
 name|mimeType
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|tc
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 block|{
 comment|// Verify that all passed parameters are (probably) valid.
 if|if
@@ -141,7 +141,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Mime type not specified."
 argument_list|)
@@ -156,7 +156,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Input stream is null."
 argument_list|)
@@ -171,7 +171,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Configuration object is null."
 argument_list|)
@@ -196,7 +196,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Could not find parser config for mime type "
 operator|+
@@ -231,7 +231,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 literal|"Parser class name missing from ParserConfig."
 argument_list|)
@@ -318,7 +318,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 name|e
 operator|.
@@ -345,7 +345,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 name|e
 operator|.
@@ -372,7 +372,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 name|e
 operator|.
@@ -393,11 +393,11 @@ parameter_list|(
 name|String
 name|mimeType
 parameter_list|,
-name|LiusConfig
+name|TikaConfig
 name|tc
 parameter_list|)
 throws|throws
-name|LiusException
+name|TikaException
 block|{
 name|ParserConfig
 name|pc
@@ -434,7 +434,7 @@ argument_list|)
 expr_stmt|;
 throw|throw
 operator|new
-name|LiusException
+name|TikaException
 argument_list|(
 name|message
 argument_list|)
