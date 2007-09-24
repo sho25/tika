@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Lius exception   *   */
+comment|/**  * Tika exception   */
 end_comment
 
 begin_class

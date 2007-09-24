@@ -169,7 +169,7 @@ comment|/* FIXME the old mechanism does not work anymore when running the tests 
 comment|// FIXME for now, fix filenames according to Maven testing layout
 specifier|final
 name|String
-name|liusConfigFilename
+name|tikaConfigFilename
 init|=
 literal|"target/classes/config.xml"
 decl_stmt|;
@@ -192,7 +192,7 @@ operator|=
 operator|new
 name|TikaConfig
 argument_list|(
-name|liusConfigFilename
+name|tikaConfigFilename
 argument_list|)
 expr_stmt|;
 name|TikaLogger

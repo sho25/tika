@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Lius Logger    *   */
+comment|/**  * Tika Logger    */
 end_comment
 
 begin_class

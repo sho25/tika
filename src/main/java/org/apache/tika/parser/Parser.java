@@ -159,7 +159,7 @@ name|String
 name|getStrContent
 parameter_list|()
 function_decl|;
-comment|/**      * Get a content object, this object is configured from the LiusConfig Xml.      * It could be a document metadata, XPath selection, regex selection or      * fulltext      */
+comment|/**      * Get a content object, this object is configured from the TikaConfig Xml.      * It could be a document metadata, XPath selection, regex selection or      * fulltext      */
 specifier|public
 specifier|abstract
 name|Content
@@ -169,7 +169,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Get a List of contents objects, this objects are configured from the      * LiusConfig Xml file. It could be a document metadata, XPath selection,      * regex selection or fulltext      */
+comment|/**      * Get a List of contents objects, this objects are configured from the      * TikaConfig Xml file. It could be a document metadata, XPath selection,      * regex selection or fulltext      */
 specifier|public
 name|List
 argument_list|<
