@@ -189,9 +189,8 @@ argument_list|)
 expr_stmt|;
 name|tc
 operator|=
+operator|new
 name|LiusConfig
-operator|.
-name|getInstance
 argument_list|(
 name|liusConfigFilename
 argument_list|)
