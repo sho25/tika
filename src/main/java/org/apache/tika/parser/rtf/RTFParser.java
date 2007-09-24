@@ -176,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * RTF parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * RTF parser  *   *   */
 end_comment
 
 begin_class

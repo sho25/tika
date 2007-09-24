@@ -114,7 +114,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Excel Text and Properties extractor.  *  * @author Rohit Kulkarni& Ashish Vaidya  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Excel Text and Properties extractor.  *  *  */
 end_comment
 
 begin_class

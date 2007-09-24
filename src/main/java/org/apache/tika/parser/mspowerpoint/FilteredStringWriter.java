@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Writes to optimize ASCII output. Not needed chars are filtered (ignored).  *   * @author Stephan Strittmatter - http://www.sybit.de  * @version 1.0  */
+comment|/**  * Writes to optimize ASCII output. Not needed chars are filtered (ignored).  *   *   */
 end_comment
 
 begin_class

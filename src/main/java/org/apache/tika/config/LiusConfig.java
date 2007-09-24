@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parse xml config file. Use cache mecanisme to store multiple configs     * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Parse xml config file. Use cache mecanisme to store multiple configs  *    */
 end_comment
 
 begin_class

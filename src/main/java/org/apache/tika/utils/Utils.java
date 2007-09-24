@@ -282,7 +282,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class util  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Class util  *   *   */
 end_comment
 
 begin_class

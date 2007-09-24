@@ -76,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is used to extract text from Word 6 documents only. It should  * only be called from the org.textmining.text.extraction.WordExtractor because  * it will automatically determine the version.  *  * @author Ryan Ackley  */
+comment|/**  * This class is used to extract text from Word 6 documents only. It should  * only be called from the org.textmining.text.extraction.WordExtractor because  * it will automatically determine the version.  *  *  */
 end_comment
 
 begin_class

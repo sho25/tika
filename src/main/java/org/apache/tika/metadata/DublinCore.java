@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of Dublin Core metadata names.  *   * @see<a href="http://dublincore.org">dublincore.org</a>  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * A collection of Dublin Core metadata names.  *   * @see<a href="http://dublincore.org">dublincore.org</a>  *   *   */
 end_comment
 
 begin_interface

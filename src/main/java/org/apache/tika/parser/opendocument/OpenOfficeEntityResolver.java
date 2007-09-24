@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OpenOffice entity resolver  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * OpenOffice entity resolver  *   *   */
 end_comment
 
 begin_class

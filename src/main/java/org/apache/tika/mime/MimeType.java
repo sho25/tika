@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines a Mime Content Type.  *   * @author J&eacute;r&ocirc;me Charron  * @author Hari Kodungallur  */
+comment|/**  * Defines a Mime Content Type.  *   *   */
 end_comment
 
 begin_class

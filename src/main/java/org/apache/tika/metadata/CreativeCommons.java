@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of Creative Commons properties names.  *   * @see<a href="http://www.creativecommons.org/">creativecommons.org</a>  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * A collection of Creative Commons properties names.  *   * @see<a href="http://www.creativecommons.org/">creativecommons.org</a>  *   *   */
 end_comment
 
 begin_interface

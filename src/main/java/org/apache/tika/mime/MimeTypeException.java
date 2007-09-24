@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A class to encapsulate MimeType related exceptions.  *   * @author Hari Kodungallur  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * A class to encapsulate MimeType related exceptions.  *   *   */
 end_comment
 
 begin_class

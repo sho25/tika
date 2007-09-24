@@ -274,7 +274,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * XML parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * XML parser  *   *   */
 end_comment
 
 begin_class

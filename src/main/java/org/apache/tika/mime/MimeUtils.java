@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  *   * Wrapper external interface around a {@link MimeTypes} repository.  */
 end_comment
 
 begin_class

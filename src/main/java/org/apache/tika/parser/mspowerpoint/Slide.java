@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Package protected class for a MS Powerpoint slide.  *   * @author Stephan Strittmatter - http://www.sybit.de  *   * @version 1.0  */
+comment|/**  * Package protected class for a MS Powerpoint slide.  *   *   */
 end_comment
 
 begin_class

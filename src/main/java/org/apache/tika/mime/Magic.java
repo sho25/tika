@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines a magic for a MimeType. A magic is made of one or several  * MagicClause.  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Defines a magic for a MimeType. A magic is made of one or several  * MagicClause.  *   *   */
 end_comment
 
 begin_class

@@ -254,7 +254,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class extracts the text from a Word 6.0/95/97/2000/XP word doc  *  * @author Ryan Ackley  * @author Andy Hedges  * @author J&eacute;r&ocirc;me Charron  *  */
+comment|/**  * This class extracts the text from a Word 6.0/95/97/2000/XP word doc  *  *  *  */
 end_comment
 
 begin_class

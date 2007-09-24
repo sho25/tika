@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JUnit based tests of class  * {@link org.apache.tika.metadata.SpellCheckedMetadata}.  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * JUnit based tests of class  * {@link org.apache.tika.metadata.SpellCheckedMetadata}.  *   *   */
 end_comment
 
 begin_class

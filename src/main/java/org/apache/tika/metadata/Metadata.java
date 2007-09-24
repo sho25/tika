@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A multi-valued metadata container.  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  *   */
+comment|/**  * A multi-valued metadata container.  *   *   *   */
 end_comment
 
 begin_class

@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Excel parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Excel parser  *   *   */
 end_comment
 
 begin_class

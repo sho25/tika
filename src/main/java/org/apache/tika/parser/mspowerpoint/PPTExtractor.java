@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Converts the Powerpoint document content to plain text.  *   * @author Stephan Strittmatter - http://www.sybit.de  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Converts the Powerpoint document content to plain text.  *   *   */
 end_comment
 
 begin_class

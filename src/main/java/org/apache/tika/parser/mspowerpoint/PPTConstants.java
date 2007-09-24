@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Package protected class for the required internal MS PowerPoint constants.  *   * @author Stephan Strittmatter - http://www.sybit.de  *   * @version 1.0  */
+comment|/**  * Package protected class for the required internal MS PowerPoint constants.  *   *   */
 end_comment
 
 begin_class

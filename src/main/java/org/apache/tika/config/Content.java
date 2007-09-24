@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Content object, used to configure and store data pupulated from XPATH, Regex, Document fulltext, document metadata etc.    * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Content object, used to configure and store data pupulated from XPATH, Regex,  * Document fulltext, document metadata etc.  *   */
 end_comment
 
 begin_class

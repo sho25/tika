@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of<i>"Office"</i> documents properties names.  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * A collection of<i>"Office"</i> documents properties names.  *   *   */
 end_comment
 
 begin_interface

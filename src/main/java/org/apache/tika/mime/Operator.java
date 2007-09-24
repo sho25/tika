@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines a Boolean Binary Operator.  *   * @author Jerome Charron  */
+comment|/**  * Defines a Boolean Binary Operator.  *   *   */
 end_comment
 
 begin_interface

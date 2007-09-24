@@ -142,7 +142,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Word parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Word parser  *   *   */
 end_comment
 
 begin_class

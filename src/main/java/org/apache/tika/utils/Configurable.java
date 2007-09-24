@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * @author mattmann  * @version $Revision$  *   *<p>  * An interface allowing a Tika object to be<code>Configured</code> by a  * {@link Configuration} object. Based on Apache Hadoop's configuration  * interface.  *</p>.  */
+comment|/**  * An interface allowing a Tika object to be<code>Configured</code> by a  * {@link Configuration} object. Based on Apache Hadoop's configuration  * interface.  *   */
 end_comment
 
 begin_interface

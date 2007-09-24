@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract class Parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Abstract class Parser  *   *   */
 end_comment
 
 begin_class

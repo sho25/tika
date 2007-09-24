@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines a MagicClause.  *   * @author J&eacute;r&ocir;me Charron  */
+comment|/**  * Defines a MagicClause.  *   */
 end_comment
 
 begin_class

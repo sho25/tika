@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Defines a clause to be evaluated.  *   * @author Jerome Charron  */
+comment|/**  * Defines a clause to be evaluated.  *   *   */
 end_comment
 
 begin_interface

@@ -166,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines a Microsoft document content extractor.  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Defines a Microsoft document content extractor.  *   *   */
 end_comment
 
 begin_class

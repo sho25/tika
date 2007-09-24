@@ -60,7 +60,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines a MimeType pattern.  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Defines a MimeType pattern.  *   *   */
 end_comment
 
 begin_class

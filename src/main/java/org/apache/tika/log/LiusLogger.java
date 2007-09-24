@@ -52,7 +52,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Lius Logger    * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Lius Logger    *   */
 end_comment
 
 begin_class

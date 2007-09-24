@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Power point parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Power point parser  *   *   */
 end_comment
 
 begin_class

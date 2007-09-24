@@ -284,7 +284,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OpenOffice parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * OpenOffice parser  *   *   */
 end_comment
 
 begin_class

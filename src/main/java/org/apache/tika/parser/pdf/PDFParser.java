@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PDF parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * PDF parser  *   *   */
 end_comment
 
 begin_class

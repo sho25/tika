@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Junit test class     * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Junit test class for Tika {@link Parser}s.   */
 end_comment
 
 begin_class

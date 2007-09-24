@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  *   * A set of Hex encoding and decoding utility methods.  *   */
 end_comment
 
 begin_class

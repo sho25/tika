@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Store all the informations regarding specific parser     * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Store all the informations regarding specific parser     *     */
 end_comment
 
 begin_class

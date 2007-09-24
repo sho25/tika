@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Package protected class for the MS Powerpoint TextBox content  *   * @author Stephan Strittmatter - http://www.sybit.de  *   * @version 1.0  */
+comment|/**  * Package protected class for the MS Powerpoint TextBox content  *   *   */
 end_comment
 
 begin_class

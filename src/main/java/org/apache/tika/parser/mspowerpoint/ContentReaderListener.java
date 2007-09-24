@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to read the content of PowerPoint file and transfere it to the  * passed<code>StringBuffer</code>.  *   * @author Stephan Strittmatter - http://www.sybit.de  *   * @version 1.0  *   */
+comment|/**  * Listener to read the content of PowerPoint file and transfere it to the  * passed<code>StringBuffer</code>.  *   *   *   */
 end_comment
 
 begin_class

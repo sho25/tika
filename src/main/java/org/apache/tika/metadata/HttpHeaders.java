@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of HTTP header names.  *   * @see<a href="http://rfc-ref.org/RFC-TEXTS/2616/">Hypertext Transfer Protocol --  *      HTTP/1.1 (RFC 2616)</a>  *   * @author Chris Mattmann  * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * A collection of HTTP header names.  *   * @see<a href="http://rfc-ref.org/RFC-TEXTS/2616/">Hypertext Transfer Protocol --  *      HTTP/1.1 (RFC 2616)</a>  *   *   */
 end_comment
 
 begin_interface

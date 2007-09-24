@@ -176,7 +176,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inspired from Nutch code class OutlinkExtractor. Apply regex to extract  * content  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Inspired from Nutch code class OutlinkExtractor. Apply regex to extract  * content  *   *   */
 end_comment
 
 begin_class

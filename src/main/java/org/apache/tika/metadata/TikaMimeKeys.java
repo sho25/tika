@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * @author mattmann  * @version $Revision$  *   *<p>  * A collection of Tika metadata keys used in Mime Type resolution  *</p>.  */
+comment|/**  * A collection of Tika metadata keys used in Mime Type resolution  *   */
 end_comment
 
 begin_interface

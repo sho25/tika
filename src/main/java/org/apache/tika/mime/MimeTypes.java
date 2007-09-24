@@ -154,7 +154,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *   *   */
 end_comment
 
 begin_class

@@ -168,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Text parser  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Text parser  *   *   */
 end_comment
 
 begin_class

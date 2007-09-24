@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines a magic match.  *   * @author J&eacute;r&ocirc;me Charron  */
+comment|/**  * Defines a magic match.  *   *   */
 end_comment
 
 begin_class

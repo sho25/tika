@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This class stores info about the data structure describing a chunk of text  * in a Word document. Specifically, whether or not a Range of text uses  * unicode or Cp1252 encoding.  *  * @author Ryan Ackley  */
+comment|/**  * This class stores info about the data structure describing a chunk of text  * in a Word document. Specifically, whether or not a Range of text uses  * unicode or Cp1252 encoding.  *  *  */
 end_comment
 
 begin_class

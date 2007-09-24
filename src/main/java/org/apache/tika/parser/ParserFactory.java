@@ -94,7 +94,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Factory class. Build parser from xml config file.  *   * @author Rida Benjelloun (ridabenjelloun@apache.org)  */
+comment|/**  * Factory class. Build parser from xml config file.  *   *   */
 end_comment
 
 begin_class

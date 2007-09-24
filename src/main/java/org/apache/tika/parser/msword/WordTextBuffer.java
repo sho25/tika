@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This class acts as a StringBuffer for text from a word document. It allows  * processing of character before they  * @author Ryan Ackley  * @version 1.0  */
+comment|/**  * This class acts as a StringBuffer for text from a word document. It allows  * processing of character before they  *   */
 end_comment
 
 begin_class

@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author mattmann  * @version $Revision$  *   *<p>  * Test Suite for the {@link MimeTypes} repository.  *</p>.  */
+comment|/**  *   * Test Suite for the {@link MimeTypes} repository.  *   */
 end_comment
 
 begin_class

@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Lius exception   * @author Rida Benjelloun (ridabenjelloun@apache.org)    */
+comment|/**  * Lius exception   *   */
 end_comment
 
 begin_class
