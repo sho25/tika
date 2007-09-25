@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract class Parser  *   *   */
+comment|/**  * Abstract class Parser  */
 end_comment
 
 begin_class
@@ -77,6 +77,10 @@ argument_list|<
 name|Content
 argument_list|>
 name|contents
+decl_stmt|;
+specifier|protected
+name|String
+name|contentStr
 decl_stmt|;
 specifier|public
 name|void
@@ -154,14 +158,19 @@ expr_stmt|;
 block|}
 comment|/**      * Get the string content of the document      */
 specifier|public
-specifier|abstract
 name|String
 name|getStrContent
 parameter_list|()
-function_decl|;
+block|{
+name|getContents
+argument_list|()
+expr_stmt|;
+return|return
+name|contentStr
+return|;
+block|}
 comment|/**      * Get a content object, this object is configured from the TikaConfig Xml.      * It could be a document metadata, XPath selection, regex selection or      * fulltext      */
 specifier|public
-specifier|final
 name|Content
 name|getContent
 parameter_list|(
