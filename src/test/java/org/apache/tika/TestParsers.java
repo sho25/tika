@@ -771,14 +771,6 @@ name|expected
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|parser
-operator|.
-name|getInputStream
-argument_list|()
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|File

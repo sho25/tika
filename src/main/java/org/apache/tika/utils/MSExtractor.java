@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -177,10 +167,8 @@ init|=
 literal|null
 decl_stmt|;
 specifier|private
-name|Map
+name|Iterable
 argument_list|<
-name|String
-argument_list|,
 name|Content
 argument_list|>
 name|contents
@@ -194,10 +182,8 @@ specifier|public
 name|void
 name|setContents
 parameter_list|(
-name|Map
+name|Iterable
 argument_list|<
-name|String
-argument_list|,
 name|Content
 argument_list|>
 name|contents
@@ -355,9 +341,6 @@ name|Content
 name|content
 range|:
 name|contents
-operator|.
-name|values
-argument_list|()
 control|)
 block|{
 if|if
