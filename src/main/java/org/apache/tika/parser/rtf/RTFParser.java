@@ -49,6 +49,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -176,8 +186,10 @@ name|getRootLogger
 argument_list|()
 decl_stmt|;
 specifier|public
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|Content
 argument_list|>
 name|getContents
@@ -268,8 +280,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|Content
 argument_list|>
 name|ctt
@@ -283,6 +297,9 @@ name|Iterator
 name|i
 init|=
 name|ctt
+operator|.
+name|values
+argument_list|()
 operator|.
 name|iterator
 argument_list|()

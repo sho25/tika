@@ -49,6 +49,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -288,8 +298,10 @@ name|SimpleNamespaceContext
 argument_list|()
 decl_stmt|;
 specifier|public
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|Content
 argument_list|>
 name|getContents
@@ -357,8 +369,10 @@ argument_list|(
 name|xmlDoc
 argument_list|)
 decl_stmt|;
-name|List
+name|Map
 argument_list|<
+name|String
+argument_list|,
 name|Content
 argument_list|>
 name|ctt
@@ -372,6 +386,9 @@ name|Iterator
 name|it
 init|=
 name|ctt
+operator|.
+name|values
+argument_list|()
 operator|.
 name|iterator
 argument_list|()
