@@ -278,6 +278,36 @@ name|name
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the text associated with the Content named 'name',      * or null if such a Content does not exist.      *      * @param name name of Content the caller wants the value of      * @return the found Content's value, or null if not found      */
+specifier|public
+name|String
+name|getContentValue
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|Content
+name|content
+init|=
+name|getContent
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+return|return
+name|content
+operator|!=
+literal|null
+condition|?
+name|content
+operator|.
+name|getValue
+argument_list|()
+else|:
+literal|null
+return|;
+block|}
 comment|/**      * Get a List of contents objects, this objects are configured from the      * TikaConfig Xml file. It could be a document metadata, XPath selection,      * regex selection or fulltext      */
 specifier|public
 name|Map
