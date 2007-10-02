@@ -225,11 +225,13 @@ name|IOException
 block|{
 comment|/* 		 * FIXME the old mechanism does not work anymore when running the tests 		 * with Maven - need a resource-based one, but this means more changes 		 * to classes which rely on filenames. 		 *  		 * String sep = File.separator; StringTokenizer st = new 		 * StringTokenizer(System.getProperty( "java.class.path"), 		 * File.pathSeparator); 		 *  		 * classDir = new File(st.nextToken()); 		 *  		 * config = classDir.getParent() + sep + "config" + sep + "config.xml"; 		 *  		 * String log4j = classDir.getParent() + sep + "Config" + sep + "log4j" + 		 * sep + "log4j.properties"; 		 */
 comment|// FIXME for now, fix filenames according to Maven testing layout
+comment|// The file below should be the default configuration for the test of
+comment|// getDefaultConfig() to be legitimate.
 specifier|final
 name|String
 name|tikaConfigFilename
 init|=
-literal|"target/classes/tika-config.xml"
+literal|"target/classes/org/apache/tika/tika-config.xml"
 decl_stmt|;
 specifier|final
 name|String
@@ -302,11 +304,33 @@ argument_list|,
 literal|"application/pdf"
 argument_list|)
 decl_stmt|;
+name|String
+name|s3
+init|=
+name|ParseUtils
+operator|.
+name|getStringContent
+argument_list|(
+name|file
+argument_list|,
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|assertEquals
 argument_list|(
 name|s1
 argument_list|,
 name|s2
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|s1
+argument_list|,
+name|s3
 argument_list|)
 expr_stmt|;
 block|}
@@ -730,7 +754,15 @@ specifier|final
 name|String
 name|expected
 init|=
-literal|"Numbers and their Squares Number Square 1.0 1.0 2.0 4.0 3.0 9.0 4.0 16.0 5.0 25.0 6.0 36.0 7.0 49.0 8.0 64.0 9.0 81.0 10.0 100.0 11.0 121.0 12.0 144.0 13.0 169.0 14.0 196.0 15.0 225.0 Written and saved in Microsoft Excel X for Mac Service Release 1."
+literal|"Numbers and their Squares Number Square 1.0 "
+operator|+
+literal|"1.0 2.0 4.0 3.0 9.0 4.0 16.0 5.0 25.0 6.0 36.0 7.0 49.0 8.0 "
+operator|+
+literal|"64.0 9.0 81.0 10.0 100.0 11.0 121.0 12.0 144.0 13.0 169.0 "
+operator|+
+literal|"14.0 196.0 15.0 225.0 Written and saved in Microsoft Excel "
+operator|+
+literal|"X for Mac Service Release 1."
 decl_stmt|;
 name|File
 name|file
