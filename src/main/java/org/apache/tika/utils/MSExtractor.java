@@ -35,24 +35,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|Content
-import|;
-end_import
-
-begin_comment
-comment|// Jakarta POI imports
-end_comment
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|log4j
 operator|.
 name|Logger
@@ -132,6 +114,20 @@ operator|.
 name|eventfilesystem
 operator|.
 name|POIFSReaderListener
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|Content
 import|;
 end_import
 
@@ -216,6 +212,19 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|RereadableInputStream
+name|ris
+init|=
+operator|new
+name|RereadableInputStream
+argument_list|(
+name|input
+argument_list|,
+name|MEMORY_THRESHOLD
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 comment|// First, extract properties
 name|this
 operator|.
@@ -240,17 +249,6 @@ operator|.
 name|DEFAULT_STREAM_NAME
 argument_list|)
 expr_stmt|;
-name|RereadableInputStream
-name|ris
-init|=
-operator|new
-name|RereadableInputStream
-argument_list|(
-name|input
-argument_list|,
-name|MEMORY_THRESHOLD
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|input
@@ -279,7 +277,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
-block|{ 		}
+block|{ 			}
 name|ris
 operator|.
 name|rewind
@@ -295,6 +293,15 @@ argument_list|(
 name|ris
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|ris
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/** 	 * Extracts the text content from a Microsoft document input stream. 	 */
 specifier|public
