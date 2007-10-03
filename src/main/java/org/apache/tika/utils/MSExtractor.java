@@ -173,6 +173,15 @@ name|Content
 argument_list|>
 name|contents
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|MEMORY_THRESHOLD
+init|=
+literal|1024
+operator|*
+literal|1024
+decl_stmt|;
 comment|/** Constructs a new Microsoft document extractor. */
 specifier|public
 name|MSExtractor
@@ -199,7 +208,7 @@ block|}
 comment|/** 	 * Extracts properties and text from an MS Document input stream 	 */
 specifier|public
 name|void
-name|extractProperties
+name|extract
 parameter_list|(
 name|InputStream
 name|input
@@ -231,7 +240,17 @@ operator|.
 name|DEFAULT_STREAM_NAME
 argument_list|)
 expr_stmt|;
-comment|// input.reset();
+name|RereadableInputStream
+name|ris
+init|=
+operator|new
+name|RereadableInputStream
+argument_list|(
+name|input
+argument_list|,
+name|MEMORY_THRESHOLD
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|input
@@ -246,12 +265,36 @@ name|reader
 operator|.
 name|read
 argument_list|(
-name|input
+name|ris
 argument_list|)
 expr_stmt|;
 block|}
-comment|// input.reset();
-comment|// this.text = extractText(input);
+while|while
+condition|(
+name|ris
+operator|.
+name|read
+argument_list|()
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{ 		}
+name|ris
+operator|.
+name|rewind
+argument_list|()
+expr_stmt|;
+comment|// Extract document full text
+name|this
+operator|.
+name|text
+operator|=
+name|extractText
+argument_list|(
+name|ris
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** 	 * Extracts the text content from a Microsoft document input stream. 	 */
 specifier|public
@@ -266,7 +309,7 @@ throws|throws
 name|Exception
 function_decl|;
 comment|/** 	 * Get the content text of the Microsoft document. 	 *  	 * @return the content text of the document 	 */
-specifier|protected
+specifier|public
 name|String
 name|getText
 parameter_list|()

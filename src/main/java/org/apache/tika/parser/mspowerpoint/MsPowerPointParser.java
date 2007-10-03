@@ -93,20 +93,6 @@ name|MSExtractor
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|Utils
-import|;
-end_import
-
 begin_comment
 comment|/**  * Power point parser  */
 end_comment
@@ -152,39 +138,18 @@ argument_list|(
 name|contents
 argument_list|)
 expr_stmt|;
-name|InputStream
-index|[]
-name|isa
-init|=
-name|Utils
-operator|.
-name|copyInputStream
-argument_list|(
-name|stream
-argument_list|,
-literal|2
-argument_list|)
-decl_stmt|;
 name|extractor
 operator|.
-name|extractProperties
+name|extract
 argument_list|(
-name|isa
-index|[
-literal|0
-index|]
+name|stream
 argument_list|)
 expr_stmt|;
 return|return
 name|extractor
 operator|.
-name|extractText
-argument_list|(
-name|isa
-index|[
-literal|1
-index|]
-argument_list|)
+name|getText
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -214,7 +179,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/* 	 * public List<Content> getContents() { 	 * extrator.setContents(getParserConfig().getContents()); try { 	 * extrator.extract(getInputStream()); } catch (Exception e) { // TODO 	 * Auto-generated catch block e.printStackTrace(); } return 	 * getParserConfig().getContents(); } 	 */
 block|}
 end_class
 
