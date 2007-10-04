@@ -55,6 +55,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -79,9 +89,25 @@ name|URL
 import|;
 end_import
 
-begin_comment
-comment|// TIKA imports
-end_comment
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
 
 begin_import
 import|import
@@ -178,7 +204,7 @@ name|ParseUtils
 implements|implements
 name|TikaMimeKeys
 block|{
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param config      * @param mimeType      *            the document's MIME type      * @return a parser appropriate to this MIME type      * @throws TikaException      */
+comment|/** 	 * Returns a parser that can handle the specified MIME type, and is set to 	 * receive input from a stream opened from the specified URL. NB: Close the 	 * input stream when it is no longer needed! 	 *  	 * @param config 	 * @param mimeType 	 *            the document's MIME type 	 * @return a parser appropriate to this MIME type 	 * @throws TikaException 	 */
 specifier|public
 specifier|static
 name|Parser
@@ -224,7 +250,7 @@ return|return
 name|parser
 return|;
 block|}
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. The MIME type      * is determined automatically. NB: Close the input stream when it is no      * longer needed!      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      */
+comment|/** 	 * Returns a parser that can handle the specified MIME type, and is set to 	 * receive input from a stream opened from the specified URL. The MIME type 	 * is determined automatically. NB: Close the input stream when it is no 	 * longer needed! 	 *  	 * @param documentUrl 	 *            URL pointing to the document to parse 	 * @param config 	 * @return a parser appropriate to this MIME type and ready to read input 	 *         from the specified document 	 * @throws TikaException 	 */
 specifier|public
 specifier|static
 name|Parser
@@ -264,7 +290,7 @@ name|mimetype
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a parser that can handle the specified MIME type, and is set to      * receive input from a stream opened from the specified URL. NB: Close the      * input stream when it is no longer needed!      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return a parser appropriate to this MIME type and ready to read input      *         from the specified document      * @throws TikaException      */
+comment|/** 	 * Returns a parser that can handle the specified MIME type, and is set to 	 * receive input from a stream opened from the specified URL. NB: Close the 	 * input stream when it is no longer needed! 	 *  	 * @param documentFile 	 *            File object pointing to the document to parse 	 * @param config 	 * @return a parser appropriate to this MIME type and ready to read input 	 *         from the specified document 	 * @throws TikaException 	 */
 specifier|public
 specifier|static
 name|Parser
@@ -304,7 +330,231 @@ name|mimetype
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param inputStream      *            the stream from which to read document data      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/** 	 * Returns a list of parsers from zip InputStream 	 *  	 * @param zip 	 *            InputStream 	 * @param config 	 * @return a list of parsers from zip file 	 * @throws TikaException 	 */
+specifier|private
+specifier|static
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|getParsersFromZip
+parameter_list|(
+name|InputStream
+name|zipIs
+parameter_list|,
+name|TikaConfig
+name|config
+parameter_list|)
+throws|throws
+name|TikaException
+block|{
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|parsers
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|Parser
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|List
+argument_list|<
+name|File
+argument_list|>
+name|zipFiles
+init|=
+name|Utils
+operator|.
+name|unzip
+argument_list|(
+name|zipIs
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|zipFiles
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|File
+name|zipEntry
+init|=
+name|zipFiles
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+name|parsers
+operator|.
+name|add
+argument_list|(
+name|getParser
+argument_list|(
+name|zipEntry
+argument_list|,
+name|config
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|parsers
+return|;
+block|}
+comment|/** 	 * Returns a list of parsers from zip File 	 *  	 * @param zip 	 *            File 	 * @param config 	 * @return a list of parsers from zip file 	 * @throws TikaException 	 * @throws FileNotFoundException 	 */
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|getParsersFromZip
+parameter_list|(
+name|File
+name|zip
+parameter_list|,
+name|TikaConfig
+name|config
+parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|FileNotFoundException
+block|{
+name|String
+name|zipMimeType
+init|=
+name|config
+operator|.
+name|getMimeRepository
+argument_list|()
+operator|.
+name|getMimeType
+argument_list|(
+name|zip
+argument_list|)
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|zipMimeType
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"application/zip"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"The file you are using is note a zip file"
+argument_list|)
+throw|;
+block|}
+return|return
+name|getParsersFromZip
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|zip
+argument_list|)
+argument_list|,
+name|config
+argument_list|)
+return|;
+block|}
+comment|/** 	 * Returns a list of parsers from URL 	 *  	 * @param URL 	 * @param config 	 * @return a list of parsers from zip file 	 * @throws TikaException 	 * @throws IOException 	 */
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|getParsersFromZip
+parameter_list|(
+name|URL
+name|zip
+parameter_list|,
+name|TikaConfig
+name|config
+parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
+block|{
+name|String
+name|zipMimeType
+init|=
+name|config
+operator|.
+name|getMimeRepository
+argument_list|()
+operator|.
+name|getMimeType
+argument_list|(
+name|zip
+argument_list|)
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|zipMimeType
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"application/zip"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"The file you are using is note a zip file"
+argument_list|)
+throw|;
+block|}
+return|return
+name|getParsersFromZip
+argument_list|(
+name|zip
+operator|.
+name|openStream
+argument_list|()
+argument_list|,
+name|config
+argument_list|)
+return|;
+block|}
+comment|/** 	 * Gets the string content of a document read from an input stream. 	 *  	 * @param inputStream 	 *            the stream from which to read document data 	 * @param config 	 * @param mimeType 	 *            MIME type of the data 	 * @return the string content parsed from the document 	 * @throws TikaException 	 * @throws IOException 	 */
 specifier|public
 specifier|static
 name|String
@@ -365,7 +615,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/** 	 * Gets the string content of a document read from an input stream. 	 *  	 * @param documentUrl 	 *            URL pointing to the document to parse 	 * @param config 	 * @return the string content parsed from the document 	 * @throws TikaException 	 * @throws IOException 	 */
 specifier|public
 specifier|static
 name|String
@@ -409,7 +659,7 @@ name|mime
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/** 	 * Gets the string content of a document read from an input stream. 	 *  	 * @param documentUrl 	 *            URL pointing to the document to parse 	 * @param config 	 * @param mimeType 	 *            MIME type of the data 	 * @return the string content parsed from the document 	 * @throws TikaException 	 * @throws IOException 	 */
 specifier|public
 specifier|static
 name|String
@@ -459,7 +709,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/** 	 * Gets the string content of a document read from an input stream. 	 *  	 * @param documentFile 	 *            File object pointing to the document to parse 	 * @param config 	 * @param mimeType 	 *            MIME type of the data 	 * @return the string content parsed from the document 	 * @throws TikaException 	 * @throws IOException 	 */
 specifier|public
 specifier|static
 name|String
@@ -514,7 +764,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/** 	 * Gets the string content of a document read from an input stream. 	 *  	 * @param documentFile 	 *            File object pointing to the document to parse 	 * @param config 	 * @return the string content parsed from the document 	 * @throws TikaException 	 * @throws IOException 	 */
 specifier|public
 specifier|static
 name|String
