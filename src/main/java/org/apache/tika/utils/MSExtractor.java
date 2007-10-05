@@ -182,7 +182,7 @@ comment|/** Constructs a new Microsoft document extractor. */
 specifier|public
 name|MSExtractor
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|setContents
@@ -201,7 +201,7 @@ operator|=
 name|contents
 expr_stmt|;
 block|}
-comment|/** 	 * Extracts properties and text from an MS Document input stream 	 */
+comment|/**      * Extracts properties and text from an MS Document input stream      */
 specifier|public
 name|void
 name|extract
@@ -277,7 +277,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
-block|{ 			}
+block|{             }
 name|ris
 operator|.
 name|rewind
@@ -303,7 +303,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Extracts the text content from a Microsoft document input stream. 	 */
+comment|/**      * Extracts the text content from a Microsoft document input stream.      */
 specifier|public
 specifier|abstract
 name|String
@@ -315,7 +315,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/** 	 * Get the content text of the Microsoft document. 	 *  	 * @return the content text of the document 	 */
+comment|/**      * Get the content text of the Microsoft document.      *       * @return the content text of the document      */
 specifier|public
 name|String
 name|getText
@@ -988,7 +988,7 @@ parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 block|}
