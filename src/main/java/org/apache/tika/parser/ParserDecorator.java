@@ -63,6 +63,20 @@ name|TikaException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|Metadata
+import|;
+end_import
+
 begin_comment
 comment|/**  * Decorator base class for the {@link Parser} interface. This class  * simply delegates all parsing calls to an underlying decorated parser  * instance. Subclasses can provide extra decoration by overriding the  * parse method.  */
 end_comment
@@ -108,6 +122,9 @@ argument_list|<
 name|Content
 argument_list|>
 name|contents
+parameter_list|,
+name|Metadata
+name|metadata
 parameter_list|)
 throws|throws
 name|IOException
@@ -122,6 +139,8 @@ argument_list|(
 name|stream
 argument_list|,
 name|contents
+argument_list|,
+name|metadata
 argument_list|)
 return|;
 block|}
