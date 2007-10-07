@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Listener to read the content of PowerPoint file and transfere it to the  * passed<code>StringBuffer</code>.  *   *   *   */
+comment|/**  * Listener to read the content of PowerPoint file and transfers it to the  * passed<code>StringBuilder</code>.  */
 end_comment
 
 begin_class
@@ -181,26 +181,24 @@ name|getRootLogger
 argument_list|()
 decl_stmt|;
 comment|/** Buffer holding the content of the file */
-specifier|protected
+specifier|private
 specifier|final
-specifier|transient
-name|StringBuffer
-name|buf
+name|StringBuilder
+name|builder
 decl_stmt|;
-comment|/**      * Constructs Listener to get content of PowerPoint file.      *       * @param content      *            StringBuffer refereing the content of the PowerPoint file.      */
+comment|/**      * Constructs Listener to get content of PowerPoint file.      */
 specifier|public
 name|ContentReaderListener
 parameter_list|(
-specifier|final
-name|StringBuffer
-name|content
+name|StringBuilder
+name|builder
 parameter_list|)
 block|{
 name|this
 operator|.
-name|buf
+name|builder
 operator|=
-name|content
+name|builder
 expr_stmt|;
 block|}
 comment|/**      * Reads the internal PowerPoint document stream.      *       * @see org.apache.poi.poifs.eventfilesystem.POIFSReaderListener#processPOIFSReaderEvent(org.apache.poi.poifs.eventfilesystem.POIFSReaderEvent)      */
@@ -646,9 +644,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
-name|buf
+name|builder
 operator|.
 name|append
 argument_list|(
@@ -683,9 +679,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
-name|this
-operator|.
-name|buf
+name|builder
 operator|.
 name|append
 argument_list|(
