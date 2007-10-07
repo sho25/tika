@@ -608,7 +608,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|Metadata
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -743,7 +745,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|Metadata
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -908,7 +912,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|Metadata
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1097,7 +1103,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"title"
+name|Metadata
+operator|.
+name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
