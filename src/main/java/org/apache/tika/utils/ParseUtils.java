@@ -603,11 +603,6 @@ name|parse
 argument_list|(
 name|inputStream
 argument_list|,
-name|pc
-operator|.
-name|getContents
-argument_list|()
-argument_list|,
 operator|new
 name|Metadata
 argument_list|()

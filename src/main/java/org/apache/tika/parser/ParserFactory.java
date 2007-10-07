@@ -69,22 +69,6 @@ name|TikaException
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|xml
-operator|.
-name|XMLParser
-import|;
-end_import
-
 begin_comment
 comment|/**  * Factory class. Build parser from xml config file.  *   *   */
 end_comment
@@ -167,30 +151,6 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-comment|// FIXME: Replace with proper JavaBean dependency/config injection
-if|if
-condition|(
-name|parser
-operator|instanceof
-name|XMLParser
-condition|)
-block|{
-operator|(
-operator|(
-name|XMLParser
-operator|)
-name|parser
-operator|)
-operator|.
-name|setNamespace
-argument_list|(
-name|config
-operator|.
-name|getNameSpace
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 operator|new
 name|ParserPostProcessor
