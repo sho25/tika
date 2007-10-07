@@ -105,6 +105,10 @@ name|OutputStream
 import|;
 end_import
 
+begin_comment
+comment|/**  * Wraps an input stream, reading it only once, but making it available  * for rereading an arbitrary number of times.  The stream's bytes are  * stored in memory up to a user specified maximum, and then stored in a  * temporary file which is deleted when this class' close() method is called.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -112,41 +116,73 @@ name|RereadableInputStream
 extends|extends
 name|InputStream
 block|{
+comment|/**      * The inputStream currently being used by this object to read contents;      * may be the original stream passed in, or a stream that reads      * the saved copy.      */
 specifier|private
 name|InputStream
 name|inputStream
 decl_stmt|;
+comment|/**      * Maximum number of bytes that can be stored in memory before      * storage will be moved to a temporary file.      */
 specifier|private
 name|int
 name|maxBytesInMemory
 decl_stmt|;
+comment|/**      * True when the original stream is being read; set to false when      * reading is set to use the stored data instead.      */
 specifier|private
 name|boolean
 name|firstPass
 init|=
 literal|true
 decl_stmt|;
+comment|/**      * Whether or not the stream's contents are being stored in a file      * as opposed to memory.      */
 specifier|private
 name|boolean
 name|bufferIsInFile
 decl_stmt|;
+comment|/**      * The buffer used to store the stream's content; this storage is moved      * to a file when the stored data's size exceeds maxBytesInMemory.      */
 specifier|private
 name|byte
 index|[]
 name|byteBuffer
 decl_stmt|;
+comment|/**      * The total number of bytes read from the original stream at the time.      */
 specifier|private
 name|int
 name|size
 decl_stmt|;
+comment|/**      * File used to store the stream's contents; is null until the stored      * content's size exceeds maxBytesInMemory.      */
 specifier|private
 name|File
 name|storeFile
 decl_stmt|;
+comment|/**      * OutputStream used to save the content of the input stream in a      * temporary file.      */
 specifier|private
 name|OutputStream
 name|storeOutputStream
 decl_stmt|;
+comment|/**      * Specifies whether or not to read to the end of stream on first      * rewind.  This defaults to true.  If this is set to false,      * then the first time when rewind() is called, only those bytes      * already read from the original stream will be available from then on.      */
+specifier|private
+name|boolean
+name|readToEndOfStreamOnFirstRewind
+init|=
+literal|true
+decl_stmt|;
+comment|// TODO: At some point it would be better to replace the current approach
+comment|// (specifying the above) with more automated behavior.  The stream could
+comment|// keep the original stream open until EOF was reached.  For example, if:
+comment|//
+comment|// the original stream is 10 bytes, and
+comment|// only 2 bytes are read on the first pass
+comment|// rewind() is called
+comment|// 5 bytes are read
+comment|//
+comment|// In this case, this instance gets the first 2 from its store,
+comment|// and the next 3 from the original stream, saving those additional 3
+comment|// bytes in the store.  In this way, only the maximum number of bytes
+comment|// ever needed must be saved in the store; unused bytes are never read.
+comment|// The original stream is closed when EOF is reached, or when close()
+comment|// is called, whichever comes first.  Using this approach eliminates
+comment|// the need to specify the flag (though makes implementation more complex).
+comment|/**      * Creates a rereadable input stream.      *      * @param inputStream stream containing the source of data      * @param maxBytesInMemory maximum number of bytes to use to store      *     the stream's contents in memory before switching to disk; note that      *     the instance will preallocate a byte array whose size is      *     maxBytesInMemory.  This byte array will be made available for      *     garbage collection (i.e. its reference set to null) when the      *     content size exceeds the array's size, when close() is called, or      *     when there are no more references to the instance.      */
 specifier|public
 name|RereadableInputStream
 parameter_list|(
@@ -155,6 +191,30 @@ name|inputStream
 parameter_list|,
 name|int
 name|maxBytesInMemory
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|inputStream
+argument_list|,
+name|maxBytesInMemory
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a rereadable input stream.      *      * @param inputStream stream containing the source of data      * @param maxBytesInMemory maximum number of bytes to use to store      *     the stream's contents in memory before switching to disk; note that      *     the instance will preallocate a byte array whose size is      *     maxBytesInMemory.  This byte array will be made available for      *     garbage collection (i.e. its reference set to null) when the      *     content size exceeds the array's size, when close() is called, or      *     when there are no more references to the instance.      * @param readToEndOfStreamOnFirstRewind Specifies whether or not to      *     read to the end of stream on first rewind.  If this is set to false,      *     then when rewind() is first called, only those bytes already read      *     from the original stream will be available from then on.      */
+specifier|public
+name|RereadableInputStream
+parameter_list|(
+name|InputStream
+name|inputStream
+parameter_list|,
+name|int
+name|maxBytesInMemory
+parameter_list|,
+name|boolean
+name|readToEndOfStreamOnFirstRewind
 parameter_list|)
 block|{
 name|this
@@ -177,7 +237,14 @@ index|[
 name|maxBytesInMemory
 index|]
 expr_stmt|;
+name|this
+operator|.
+name|readToEndOfStreamOnFirstRewind
+operator|=
+name|readToEndOfStreamOnFirstRewind
+expr_stmt|;
 block|}
+comment|/**      * Reads a byte from the stream, saving it in the store if it is being      * read from the original stream.  Implements the abstract      * InputStream.read().      *      * @return the read byte, or -1 on end of stream.      * @throws IOException      */
 specifier|public
 name|int
 name|read
@@ -208,6 +275,157 @@ return|return
 name|inputByte
 return|;
 block|}
+comment|/**      * "Rewinds" the stream to the beginning for rereading.      * @throws IOException      */
+specifier|public
+name|void
+name|rewind
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|firstPass
+operator|&&
+name|readToEndOfStreamOnFirstRewind
+condition|)
+block|{
+comment|// Force read to end of stream to fill store with any
+comment|// remaining bytes from original stream.
+while|while
+condition|(
+name|read
+argument_list|()
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+comment|// empty loop
+block|}
+block|}
+name|closeStream
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|storeOutputStream
+operator|!=
+literal|null
+condition|)
+block|{
+name|storeOutputStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|storeOutputStream
+operator|=
+literal|null
+expr_stmt|;
+block|}
+name|firstPass
+operator|=
+literal|false
+expr_stmt|;
+name|boolean
+name|newStreamIsInMemory
+init|=
+operator|(
+name|size
+operator|<
+name|maxBytesInMemory
+operator|)
+decl_stmt|;
+name|inputStream
+operator|=
+name|newStreamIsInMemory
+condition|?
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|byteBuffer
+argument_list|)
+else|:
+operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|storeFile
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Closes the input stream currently used for reading (may either be      * the original stream or a memory or file stream after the first pass).      *      * @throws IOException      */
+comment|// Does anyone need/want for this to be public?
+specifier|private
+name|void
+name|closeStream
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|inputStream
+operator|!=
+literal|null
+condition|)
+block|{
+name|inputStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|inputStream
+operator|=
+literal|null
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Closes the input stream and removes the temporary file if one was      * created.      *       * @throws IOException      */
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|closeStream
+argument_list|()
+expr_stmt|;
+name|super
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|storeFile
+operator|!=
+literal|null
+condition|)
+block|{
+name|storeFile
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Returns the number of bytes read from the original stream.      *      * @return number of bytes read      */
+specifier|public
+name|int
+name|getSize
+parameter_list|()
+block|{
+return|return
+name|size
+return|;
+block|}
+comment|/**      * Saves the byte read from the original stream to the store.      *      * @param inputByte byte read from original stream      * @throws IOException      */
 specifier|private
 name|void
 name|saveByte
@@ -285,6 +503,11 @@ argument_list|(
 name|inputByte
 argument_list|)
 expr_stmt|;
+name|byteBuffer
+operator|=
+literal|null
+expr_stmt|;
+comment|// release for garbage collection
 block|}
 else|else
 block|{
@@ -313,121 +536,6 @@ block|}
 operator|++
 name|size
 expr_stmt|;
-block|}
-specifier|public
-name|void
-name|rewind
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|closeStream
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|storeOutputStream
-operator|!=
-literal|null
-condition|)
-block|{
-name|storeOutputStream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|storeOutputStream
-operator|=
-literal|null
-expr_stmt|;
-block|}
-name|firstPass
-operator|=
-literal|false
-expr_stmt|;
-name|boolean
-name|newStreamIsInMemory
-init|=
-operator|(
-name|size
-operator|<
-name|maxBytesInMemory
-operator|)
-decl_stmt|;
-name|inputStream
-operator|=
-name|newStreamIsInMemory
-condition|?
-operator|new
-name|ByteArrayInputStream
-argument_list|(
-name|byteBuffer
-argument_list|)
-else|:
-operator|new
-name|BufferedInputStream
-argument_list|(
-operator|new
-name|FileInputStream
-argument_list|(
-name|storeFile
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|void
-name|closeStream
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-if|if
-condition|(
-name|inputStream
-operator|!=
-literal|null
-condition|)
-block|{
-name|inputStream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|inputStream
-operator|=
-literal|null
-expr_stmt|;
-block|}
-block|}
-specifier|public
-name|void
-name|close
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-name|closeStream
-argument_list|()
-expr_stmt|;
-name|super
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|storeFile
-operator|!=
-literal|null
-condition|)
-block|{
-name|storeFile
-operator|.
-name|delete
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 end_class
