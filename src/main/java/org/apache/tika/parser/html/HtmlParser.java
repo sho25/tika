@@ -159,7 +159,7 @@ begin_class
 specifier|public
 class|class
 name|HtmlParser
-extends|extends
+implements|implements
 name|Parser
 block|{
 specifier|static
@@ -171,7 +171,7 @@ operator|.
 name|getRootLogger
 argument_list|()
 decl_stmt|;
-specifier|protected
+specifier|public
 name|String
 name|parse
 parameter_list|(

@@ -143,10 +143,10 @@ begin_class
 specifier|public
 class|class
 name|PDFParser
-extends|extends
+implements|implements
 name|Parser
 block|{
-specifier|protected
+specifier|public
 name|String
 name|parse
 parameter_list|(
