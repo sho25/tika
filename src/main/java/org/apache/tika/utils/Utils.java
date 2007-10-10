@@ -426,7 +426,7 @@ name|File
 operator|.
 name|createTempFile
 argument_list|(
-literal|"tmp"
+literal|"TIKA_unzip_"
 argument_list|,
 literal|"_"
 operator|+
@@ -436,6 +436,13 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// TODO we might want to delete the file earlier than on exit,
+comment|// in case Tika is used inside a long-running app
+name|file
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 name|saveInputStreamInFile
 argument_list|(
 name|isEntry

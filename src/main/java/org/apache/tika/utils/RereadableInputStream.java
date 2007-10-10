@@ -464,7 +464,7 @@ name|File
 operator|.
 name|createTempFile
 argument_list|(
-literal|"streamstore_"
+literal|"TIKA_streamstore_"
 argument_list|,
 literal|".tmp"
 argument_list|)

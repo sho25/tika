@@ -386,7 +386,7 @@ name|File
 operator|.
 name|createTempFile
 argument_list|(
-literal|"ris_test"
+literal|"TIKA_ris_test"
 argument_list|,
 literal|".tmp"
 argument_list|)
