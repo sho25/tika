@@ -11,6 +11,8 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|parser
+operator|.
 name|ms
 package|;
 end_package
