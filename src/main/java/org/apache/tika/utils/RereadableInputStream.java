@@ -116,6 +116,11 @@ name|RereadableInputStream
 extends|extends
 name|InputStream
 block|{
+comment|/**      * Input stream originally passed to the constructor.      */
+specifier|private
+name|InputStream
+name|originalInputStream
+decl_stmt|;
 comment|/**      * The inputStream currently being used by this object to read contents;      * may be the original stream passed in, or a stream that reads      * the saved copy.      */
 specifier|private
 name|InputStream
@@ -166,6 +171,13 @@ name|readToEndOfStreamOnFirstRewind
 init|=
 literal|true
 decl_stmt|;
+comment|/**      * Specifies whether or not to close the original input stream      * when close() is called.  Defaults to true.      */
+specifier|private
+name|boolean
+name|closeOriginalStreamOnClose
+init|=
+literal|true
+decl_stmt|;
 comment|// TODO: At some point it would be better to replace the current approach
 comment|// (specifying the above) with more automated behavior.  The stream could
 comment|// keep the original stream open until EOF was reached.  For example, if:
@@ -182,27 +194,6 @@ comment|// ever needed must be saved in the store; unused bytes are never read.
 comment|// The original stream is closed when EOF is reached, or when close()
 comment|// is called, whichever comes first.  Using this approach eliminates
 comment|// the need to specify the flag (though makes implementation more complex).
-comment|/**      * Creates a rereadable input stream.      *      * @param inputStream stream containing the source of data      * @param maxBytesInMemory maximum number of bytes to use to store      *     the stream's contents in memory before switching to disk; note that      *     the instance will preallocate a byte array whose size is      *     maxBytesInMemory.  This byte array will be made available for      *     garbage collection (i.e. its reference set to null) when the      *     content size exceeds the array's size, when close() is called, or      *     when there are no more references to the instance.      */
-specifier|public
-name|RereadableInputStream
-parameter_list|(
-name|InputStream
-name|inputStream
-parameter_list|,
-name|int
-name|maxBytesInMemory
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|inputStream
-argument_list|,
-name|maxBytesInMemory
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Creates a rereadable input stream.      *      * @param inputStream stream containing the source of data      * @param maxBytesInMemory maximum number of bytes to use to store      *     the stream's contents in memory before switching to disk; note that      *     the instance will preallocate a byte array whose size is      *     maxBytesInMemory.  This byte array will be made available for      *     garbage collection (i.e. its reference set to null) when the      *     content size exceeds the array's size, when close() is called, or      *     when there are no more references to the instance.      * @param readToEndOfStreamOnFirstRewind Specifies whether or not to      *     read to the end of stream on first rewind.  If this is set to false,      *     then when rewind() is first called, only those bytes already read      *     from the original stream will be available from then on.      */
 specifier|public
 name|RereadableInputStream
@@ -215,11 +206,20 @@ name|maxBytesInMemory
 parameter_list|,
 name|boolean
 name|readToEndOfStreamOnFirstRewind
+parameter_list|,
+name|boolean
+name|closeOriginalStreamOnClose
 parameter_list|)
 block|{
 name|this
 operator|.
 name|inputStream
+operator|=
+name|inputStream
+expr_stmt|;
+name|this
+operator|.
+name|originalInputStream
 operator|=
 name|inputStream
 expr_stmt|;
@@ -242,6 +242,12 @@ operator|.
 name|readToEndOfStreamOnFirstRewind
 operator|=
 name|readToEndOfStreamOnFirstRewind
+expr_stmt|;
+name|this
+operator|.
+name|closeOriginalStreamOnClose
+operator|=
+name|closeOriginalStreamOnClose
 expr_stmt|;
 block|}
 comment|/**      * Reads a byte from the stream, saving it in the store if it is being      * read from the original stream.  Implements the abstract      * InputStream.read().      *      * @return the read byte, or -1 on end of stream.      * @throws IOException      */
@@ -372,6 +378,14 @@ condition|(
 name|inputStream
 operator|!=
 literal|null
+operator|&&
+operator|(
+name|inputStream
+operator|!=
+name|originalInputStream
+operator|||
+name|closeOriginalStreamOnClose
+operator|)
 condition|)
 block|{
 name|inputStream

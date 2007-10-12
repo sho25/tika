@@ -171,6 +171,10 @@ argument_list|(
 name|input
 argument_list|,
 name|MEMORY_THRESHOLD
+argument_list|,
+literal|true
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 try|try
