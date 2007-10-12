@@ -83,6 +83,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URL
@@ -204,6 +214,32 @@ operator|.
 name|parser
 operator|.
 name|ParserFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|WriteOutContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXException
 import|;
 end_import
 
@@ -556,14 +592,14 @@ name|config
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param inputStream      *            the stream from which to read document data      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param stream the stream from which to read document data      * @param config      * @param mimeType MIME type of the data      * @return the string content parsed from the document      */
 specifier|public
 specifier|static
 name|String
 name|getStringContent
 parameter_list|(
 name|InputStream
-name|inputStream
+name|stream
 parameter_list|,
 name|TikaConfig
 name|config
@@ -575,6 +611,8 @@ throws|throws
 name|TikaException
 throws|,
 name|IOException
+block|{
+try|try
 block|{
 name|ParserConfig
 name|pc
@@ -596,20 +634,55 @@ argument_list|(
 name|pc
 argument_list|)
 decl_stmt|;
-return|return
+name|StringWriter
+name|writer
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
 name|parser
 operator|.
 name|parse
 argument_list|(
-name|inputStream
+name|stream
+argument_list|,
+operator|new
+name|WriteOutContentHandler
+argument_list|(
+name|writer
+argument_list|)
 argument_list|,
 operator|new
 name|Metadata
 argument_list|()
 argument_list|)
+expr_stmt|;
+return|return
+name|writer
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Unexpected SAX error"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @return the string content parsed from the document      */
 specifier|public
 specifier|static
 name|String
@@ -653,7 +726,7 @@ name|mime
 argument_list|)
 return|;
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentUrl      *            URL pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      */
 specifier|public
 specifier|static
 name|String
@@ -703,7 +776,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @param mimeType      *            MIME type of the data      * @return the string content parsed from the document      */
 specifier|public
 specifier|static
 name|String
@@ -758,7 +831,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return the string content parsed from the document      * @throws TikaException      * @throws IOException      */
+comment|/**      * Gets the string content of a document read from an input stream.      *       * @param documentFile      *            File object pointing to the document to parse      * @param config      * @return the string content parsed from the document      */
 specifier|public
 specifier|static
 name|String

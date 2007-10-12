@@ -181,6 +181,20 @@ name|JDOMException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
+import|;
+end_import
+
 begin_comment
 comment|/**  * Junit test class for Tika {@link Parser}s.  */
 end_comment
@@ -546,6 +560,10 @@ name|parse
 argument_list|(
 name|stream
 argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
@@ -664,6 +682,10 @@ operator|.
 name|parse
 argument_list|(
 name|stream
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
 argument_list|,
 name|metadata
 argument_list|)
@@ -813,6 +835,10 @@ operator|.
 name|parse
 argument_list|(
 name|stream
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
 argument_list|,
 name|metadata
 argument_list|)
@@ -986,6 +1012,10 @@ operator|.
 name|parse
 argument_list|(
 name|stream
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
 argument_list|,
 name|metadata
 argument_list|)
