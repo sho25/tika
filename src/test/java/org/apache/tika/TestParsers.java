@@ -224,15 +224,6 @@ throws|,
 name|IOException
 block|{
 comment|/*          * FIXME the old mechanism does not work anymore when running the tests          * with Maven - need a resource-based one, but this means more changes          * to classes which rely on filenames.          *           * String sep = File.separator; StringTokenizer st = new          * StringTokenizer(System.getProperty( "java.class.path"),          * File.pathSeparator);          *           * classDir = new File(st.nextToken());          *           * config = classDir.getParent() + sep + "config" + sep + "config.xml";          *           * String log4j = classDir.getParent() + sep + "Config" + sep + "log4j" +          * sep + "log4j.properties";          */
-comment|// FIXME for now, fix filenames according to Maven testing layout
-comment|// The file below should be the default configuration for the test of
-comment|// getDefaultConfig() to be legitimate.
-specifier|final
-name|String
-name|tikaConfigFilename
-init|=
-literal|"target/classes/org/apache/tika/tika-config.xml"
-decl_stmt|;
 name|testFilesBaseDir
 operator|=
 operator|new
@@ -243,11 +234,10 @@ argument_list|)
 expr_stmt|;
 name|tc
 operator|=
-operator|new
 name|TikaConfig
-argument_list|(
-name|tikaConfigFilename
-argument_list|)
+operator|.
+name|getDefaultConfig
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
