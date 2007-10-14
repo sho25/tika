@@ -149,27 +149,6 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/** The key used to cache the mime repository in conf */
-specifier|private
-specifier|final
-specifier|static
-name|String
-name|KEY
-init|=
-name|MimeUtils
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
-comment|/** A flag that tells if magic resolution must be performed */
-specifier|private
-name|boolean
-name|magic
-init|=
-literal|true
-decl_stmt|;
 comment|/** The MimeTypes repository instance */
 specifier|private
 name|MimeTypes
@@ -183,17 +162,8 @@ name|MimeUtils
 parameter_list|(
 name|String
 name|resPath
-parameter_list|,
-name|boolean
-name|magic
 parameter_list|)
 block|{
-name|this
-operator|.
-name|magic
-operator|=
-name|magic
-expr_stmt|;
 if|if
 condition|(
 name|repository

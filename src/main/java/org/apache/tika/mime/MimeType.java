@@ -140,6 +140,9 @@ decl_stmt|;
 comment|/** The magics associated to this Mime-Type */
 specifier|private
 name|ArrayList
+argument_list|<
+name|Magic
+argument_list|>
 name|magics
 init|=
 literal|null
@@ -147,6 +150,9 @@ decl_stmt|;
 comment|/** The aliases Mime-Types for this one */
 specifier|private
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|aliases
 init|=
 literal|null
@@ -154,6 +160,9 @@ decl_stmt|;
 comment|/** The root-XML associated to this Mime-Type */
 specifier|private
 name|ArrayList
+argument_list|<
+name|RootXML
+argument_list|>
 name|rootXML
 init|=
 literal|null
@@ -161,6 +170,9 @@ decl_stmt|;
 comment|/** The sub-class-of associated to this Mime-Type */
 specifier|private
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|superTypes
 init|=
 literal|null
@@ -446,6 +458,9 @@ name|magics
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Magic
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -454,6 +469,9 @@ name|aliases
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -462,6 +480,9 @@ name|rootXML
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|RootXML
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -470,6 +491,9 @@ name|superTypes
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -622,9 +646,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|aliases
 operator|.
 name|get
@@ -778,9 +799,6 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-operator|(
-name|Magic
-operator|)
 name|magics
 operator|.
 name|get
@@ -997,9 +1015,6 @@ control|)
 block|{
 name|xml
 operator|=
-operator|(
-name|RootXML
-operator|)
 name|rootXML
 operator|.
 name|get
@@ -1047,10 +1062,6 @@ name|getRootXMLs
 parameter_list|()
 block|{
 return|return
-operator|(
-name|RootXML
-index|[]
-operator|)
 name|rootXML
 operator|.
 name|toArray
@@ -1104,10 +1115,6 @@ name|getSuperTypes
 parameter_list|()
 block|{
 return|return
-operator|(
-name|String
-index|[]
-operator|)
 name|superTypes
 operator|.
 name|toArray
@@ -1149,10 +1156,6 @@ name|getAliases
 parameter_list|()
 block|{
 return|return
-operator|(
-name|String
-index|[]
-operator|)
 name|aliases
 operator|.
 name|toArray
@@ -1174,10 +1177,6 @@ name|getMagics
 parameter_list|()
 block|{
 return|return
-operator|(
-name|Magic
-index|[]
-operator|)
 name|magics
 operator|.
 name|toArray
@@ -1303,9 +1302,6 @@ block|{
 name|Magic
 name|magic
 init|=
-operator|(
-name|Magic
-operator|)
 name|magics
 operator|.
 name|get

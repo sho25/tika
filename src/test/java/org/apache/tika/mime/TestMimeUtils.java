@@ -104,14 +104,6 @@ literal|"org/apache/tika/mime/tika-mimetypes.xml"
 decl_stmt|;
 specifier|private
 specifier|static
-specifier|final
-name|boolean
-name|magic
-init|=
-literal|false
-decl_stmt|;
-specifier|private
-specifier|static
 name|URL
 name|u
 decl_stmt|;
@@ -170,8 +162,6 @@ operator|new
 name|MimeUtils
 argument_list|(
 name|tikaMimeFile
-argument_list|,
-name|magic
 argument_list|)
 expr_stmt|;
 name|assertNotNull
