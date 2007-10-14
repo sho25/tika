@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|mspowerpoint
+name|microsoft
 package|;
 end_package
 

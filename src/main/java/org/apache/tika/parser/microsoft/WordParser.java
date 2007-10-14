@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|msword
+name|microsoft
 package|;
 end_package
 
@@ -221,22 +221,6 @@ name|LittleEndian
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ms
-operator|.
-name|MSParser
-import|;
-end_import
-
 begin_comment
 comment|/**  * Word parser  */
 end_comment
@@ -244,7 +228,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MsWordParser
+name|WordParser
 extends|extends
 name|MSParser
 block|{

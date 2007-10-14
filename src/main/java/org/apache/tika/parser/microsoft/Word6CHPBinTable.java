@@ -13,9 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|msword
-operator|.
-name|chp
+name|microsoft
 package|;
 end_package
 

@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ms
+name|microsoft
 package|;
 end_package
 

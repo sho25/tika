@@ -13,19 +13,19 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|msword
+name|microsoft
 package|;
 end_package
 
 begin_class
 specifier|public
 class|class
-name|PasswordProtectedException
+name|FastSavedException
 extends|extends
 name|Exception
 block|{
 specifier|public
-name|PasswordProtectedException
+name|FastSavedException
 parameter_list|(
 name|String
 name|msg

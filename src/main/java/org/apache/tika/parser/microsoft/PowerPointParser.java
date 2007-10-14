@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|mspowerpoint
+name|microsoft
 package|;
 end_package
 
@@ -43,22 +43,6 @@ name|POIFSReader
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ms
-operator|.
-name|MSParser
-import|;
-end_import
-
 begin_comment
 comment|/**  * Power point parser  */
 end_comment
@@ -66,7 +50,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MsPowerPointParser
+name|PowerPointParser
 extends|extends
 name|MSParser
 block|{

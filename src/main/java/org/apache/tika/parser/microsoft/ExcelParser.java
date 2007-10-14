@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|msexcel
+name|microsoft
 package|;
 end_package
 
@@ -91,22 +91,6 @@ name|HSSFWorkbook
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ms
-operator|.
-name|MSParser
-import|;
-end_import
-
 begin_comment
 comment|/**  * Excel parser  */
 end_comment
@@ -114,7 +98,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|MsExcelParser
+name|ExcelParser
 extends|extends
 name|MSParser
 block|{

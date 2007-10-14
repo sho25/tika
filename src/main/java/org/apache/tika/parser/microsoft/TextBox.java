@@ -13,118 +13,117 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|mspowerpoint
+name|microsoft
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
 begin_comment
-comment|/**  * Package protected class for a MS Powerpoint slide.  *   *   */
+comment|/**  * Package protected class for the MS Powerpoint TextBox content  *   *   */
 end_comment
 
 begin_class
 class|class
-name|Slide
+name|TextBox
 block|{
-comment|/** Holds the Slide Number */
+comment|/**    * Current id of a text box    */
 specifier|protected
 specifier|transient
 specifier|final
 name|long
-name|slideNumber
+name|currentID
 decl_stmt|;
-comment|/** Holds the contents of the Slide */
+comment|/**    * Content of text box    */
 specifier|protected
-specifier|transient
-specifier|final
-name|List
-comment|/*<String> */
-name|contents
+name|String
+name|content
 decl_stmt|;
-comment|/**    * Initialise the Object for holding the contents of Power Point Slide    *     * @param number    */
+comment|/**    * Instantiates the text box object    *     * @param textBoxId    *          id of text box    */
 specifier|public
-name|Slide
+name|TextBox
 parameter_list|(
+specifier|final
 name|long
-name|number
+name|textBoxId
 parameter_list|)
 block|{
 name|this
 operator|.
-name|slideNumber
+name|currentID
 operator|=
-name|number
+name|textBoxId
 expr_stmt|;
 name|this
 operator|.
-name|contents
+name|content
 operator|=
-operator|new
-name|Vector
-comment|/*<String> */
-argument_list|()
+literal|""
 expr_stmt|;
 block|}
-comment|/**    * Add the Content of Slide to this Object    *     * @param content    */
+comment|/**    * Instantiates the text box object    *     * @param textBoxId    *          id of text box    * @param content    *          content of text box    */
 specifier|public
-name|void
-name|addContent
+name|TextBox
 parameter_list|(
+specifier|final
+name|long
+name|textBoxId
+parameter_list|,
+specifier|final
 name|String
 name|content
 parameter_list|)
 block|{
 name|this
 operator|.
-name|contents
+name|currentID
+operator|=
+name|textBoxId
+expr_stmt|;
+name|this
 operator|.
-name|add
-argument_list|(
 name|content
-argument_list|)
+operator|=
+name|content
 expr_stmt|;
 block|}
-comment|/**    * returns the contents of slide as a vector object    *     * @return Vector    */
+comment|/**    * Sets the content of the text box    *     * @param content    *          content of text Box    */
 specifier|public
-name|List
+name|void
+name|setContent
+parameter_list|(
+specifier|final
+name|String
+name|content
+parameter_list|)
+block|{
+name|this
+operator|.
+name|content
+operator|=
+name|content
+expr_stmt|;
+block|}
+comment|/**    * Returns the content of the text box    *     * @return content of text box    */
+specifier|public
+name|String
 name|getContent
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|contents
+name|content
 return|;
 block|}
-comment|/**    * returns the slide value    *     * @return long    */
+comment|/**    * Returns the current text box id    *     * @return long    */
 specifier|public
 name|long
-name|getSlideNumber
+name|getCurrentId
 parameter_list|()
 block|{
 return|return
 name|this
 operator|.
-name|slideNumber
+name|currentID
 return|;
 block|}
 block|}
