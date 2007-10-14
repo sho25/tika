@@ -23,7 +23,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -91,6 +91,22 @@ name|HSSFWorkbook
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|poifs
+operator|.
+name|filesystem
+operator|.
+name|POIFSFileSystem
+import|;
+end_import
+
 begin_comment
 comment|/**  * Excel parser  */
 end_comment
@@ -104,13 +120,22 @@ name|OfficeParser
 block|{
 specifier|protected
 name|String
+name|getContentType
+parameter_list|()
+block|{
+return|return
+literal|"application/vnd.ms-excel"
+return|;
+block|}
+specifier|protected
+name|String
 name|extractText
 parameter_list|(
-name|InputStream
-name|input
+name|POIFSFileSystem
+name|filesystem
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|StringBuilder
 name|builder
@@ -124,7 +149,7 @@ argument_list|(
 operator|new
 name|HSSFWorkbook
 argument_list|(
-name|input
+name|filesystem
 argument_list|)
 argument_list|,
 name|builder

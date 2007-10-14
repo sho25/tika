@@ -23,7 +23,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -221,6 +221,20 @@ name|LittleEndian
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Word parser  */
 end_comment
@@ -232,26 +246,28 @@ name|WordParser
 extends|extends
 name|OfficeParser
 block|{
+specifier|protected
+name|String
+name|getContentType
+parameter_list|()
+block|{
+return|return
+literal|"application/msword"
+return|;
+block|}
 comment|/**      * Gets the text from a Word document.      *      * @param in The InputStream representing the Word file.      */
 specifier|public
 name|String
 name|extractText
 parameter_list|(
-name|InputStream
-name|in
-parameter_list|)
-throws|throws
-name|Exception
-block|{
 name|POIFSFileSystem
 name|fsys
-init|=
-operator|new
-name|POIFSFileSystem
-argument_list|(
-name|in
-argument_list|)
-decl_stmt|;
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|TikaException
+block|{
 comment|// load our POIFS document streams.
 name|DocumentEntry
 name|headerProps
@@ -329,9 +345,9 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|FastSavedException
+name|TikaException
 argument_list|(
-literal|"Fast-saved files are unsupported at this time"
+literal|"Fast-saved files are unsupported"
 argument_list|)
 throw|;
 block|}
@@ -348,7 +364,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|PasswordProtectedException
+name|TikaException
 argument_list|(
 literal|"This document is password protected"
 argument_list|)

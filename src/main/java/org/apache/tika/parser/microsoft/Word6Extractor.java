@@ -51,6 +51,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
@@ -79,7 +89,7 @@ index|[]
 name|mainStream
 parameter_list|)
 throws|throws
-name|Exception
+name|IOException
 block|{
 name|int
 name|fcMin

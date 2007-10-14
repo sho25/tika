@@ -96,15 +96,6 @@ name|PPT_ATOM_DRAWINGGROUP
 init|=
 literal|61448L
 decl_stmt|;
-comment|/** Name for PowerPoint Documents within the file */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|POWERPOINT_DOCUMENT
-init|=
-literal|"PowerPoint Document"
-decl_stmt|;
 comment|/**    * Protected constructor to prevent instantiation.    */
 specifier|protected
 name|PPTConstants
