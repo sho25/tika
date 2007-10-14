@@ -100,7 +100,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|RereadableInputStreamTest
+name|TestRereadableInputStream
 extends|extends
 name|TestCase
 block|{
