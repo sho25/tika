@@ -100,7 +100,7 @@ specifier|public
 class|class
 name|ExcelParser
 extends|extends
-name|MSParser
+name|OfficeParser
 block|{
 specifier|protected
 name|String

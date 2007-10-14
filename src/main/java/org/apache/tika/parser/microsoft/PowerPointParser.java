@@ -52,7 +52,7 @@ specifier|public
 class|class
 name|PowerPointParser
 extends|extends
-name|MSParser
+name|OfficeParser
 block|{
 specifier|protected
 name|String

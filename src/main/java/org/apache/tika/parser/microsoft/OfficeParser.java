@@ -173,7 +173,7 @@ begin_class
 specifier|public
 specifier|abstract
 class|class
-name|MSParser
+name|OfficeParser
 implements|implements
 name|Parser
 block|{

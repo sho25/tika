@@ -230,7 +230,7 @@ specifier|public
 class|class
 name|WordParser
 extends|extends
-name|MSParser
+name|OfficeParser
 block|{
 comment|/**      * Gets the text from a Word document.      *      * @param in The InputStream representing the Word file.      */
 specifier|public
