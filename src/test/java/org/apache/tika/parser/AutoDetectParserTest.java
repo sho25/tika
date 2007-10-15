@@ -238,7 +238,15 @@ argument_list|,
 literal|"Test Indexation Html"
 argument_list|)
 expr_stmt|;
-comment|/* FIXME: OpenDocument autodetection doesn't work         assertAutoDetect(                 "/test-documents/testOpenOffice2.odt",                 "application/vnd.oasis.opendocument.text",                 "This is a sample Open Office document");          */
+name|assertAutoDetect
+argument_list|(
+literal|"/test-documents/testOpenOffice2.odt"
+argument_list|,
+literal|"application/vnd.oasis.opendocument.text"
+argument_list|,
+literal|"This is a sample Open Office document"
+argument_list|)
+expr_stmt|;
 name|assertAutoDetect
 argument_list|(
 literal|"/test-documents/testPDF.pdf"
@@ -290,7 +298,7 @@ literal|"/test-documents/testXML.xml"
 argument_list|,
 literal|"application/xml"
 argument_list|,
-literal|"ArchimÃ¨de et Lius"
+literal|"Lius"
 argument_list|)
 expr_stmt|;
 block|}
