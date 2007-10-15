@@ -270,7 +270,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testParseUTF8
+name|XtestParseUTF8
 parameter_list|()
 throws|throws
 name|IOException
