@@ -65,20 +65,6 @@ name|tika
 operator|.
 name|config
 operator|.
-name|ParserConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
 name|TikaConfig
 import|;
 end_import
@@ -346,13 +332,13 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Get the parser configuration for the detected MIME type
-name|ParserConfig
-name|pc
+comment|// Get the parser configured for the detected MIME type
+name|Parser
+name|parser
 init|=
 name|config
 operator|.
-name|getParserConfig
+name|getParser
 argument_list|(
 name|type
 operator|.
@@ -362,16 +348,16 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|pc
+name|parser
 operator|==
 literal|null
 condition|)
 block|{
-name|pc
+name|parser
 operator|=
 name|config
 operator|.
-name|getParserConfig
+name|getParser
 argument_list|(
 name|MimeTypes
 operator|.
@@ -381,7 +367,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|pc
+name|parser
 operator|==
 literal|null
 condition|)
@@ -390,21 +376,16 @@ throw|throw
 operator|new
 name|TikaException
 argument_list|(
-literal|"No parsers available for this document"
+literal|"No parsers available: "
+operator|+
+name|type
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 throw|;
 block|}
-comment|// Instantiate the configured parser and use it to parse the document
-name|Parser
-name|parser
-init|=
-name|ParserFactory
-operator|.
-name|getParser
-argument_list|(
-name|pc
-argument_list|)
-decl_stmt|;
+comment|// Parse the document
 name|parser
 operator|.
 name|parse
