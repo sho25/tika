@@ -78,6 +78,14 @@ name|MSOffice
 implements|,
 name|TikaMimeKeys
 block|{
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|RESOURCE_NAME_KEY
+init|=
+literal|"resourceName"
+decl_stmt|;
 comment|/**    * A map of all metadata attributes.    */
 specifier|private
 name|Map

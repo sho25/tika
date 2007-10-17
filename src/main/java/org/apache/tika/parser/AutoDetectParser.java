@@ -483,7 +483,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"filename"
+name|Metadata
+operator|.
+name|RESOURCE_NAME_KEY
 argument_list|)
 decl_stmt|;
 if|if

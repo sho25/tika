@@ -119,7 +119,9 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-literal|"filename"
+name|Metadata
+operator|.
+name|RESOURCE_NAME_KEY
 argument_list|,
 name|resource
 argument_list|)
