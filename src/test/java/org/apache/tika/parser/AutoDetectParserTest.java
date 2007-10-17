@@ -106,6 +106,21 @@ argument_list|(
 name|resource
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+name|fail
+argument_list|(
+literal|"Could not open stream from specified resource: "
+operator|+
+name|resource
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 name|Metadata
