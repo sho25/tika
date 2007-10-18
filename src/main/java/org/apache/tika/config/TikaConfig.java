@@ -536,7 +536,7 @@ return|return
 operator|new
 name|TikaConfig
 argument_list|(
-name|Utils
+name|TikaConfig
 operator|.
 name|class
 operator|.
