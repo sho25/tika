@@ -475,9 +475,9 @@ block|{
 comment|// Malformed type name, ignore
 block|}
 block|}
-comment|// Get (or verify) type based on filename hint (if available)
+comment|// Get (or verify) type based on resourceName hint (if available)
 name|String
-name|filename
+name|resourceName
 init|=
 name|metadata
 operator|.
@@ -490,7 +490,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|filename
+name|resourceName
 operator|!=
 literal|null
 condition|)
@@ -502,7 +502,7 @@ name|types
 operator|.
 name|getMimeType
 argument_list|(
-name|filename
+name|resourceName
 argument_list|)
 decl_stmt|;
 if|if
@@ -521,7 +521,7 @@ name|type
 operator|.
 name|matches
 argument_list|(
-name|filename
+name|resourceName
 argument_list|)
 operator|)
 condition|)

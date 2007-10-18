@@ -482,18 +482,18 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the MimeType corresponding to a filename.      *       * It applies the recommandations detailed in FreeDesktop Shared MIME-info      * Database for guessing MimeType from a filename: It first try a      * case-sensitive match, then try again with the filename converted to      * lower-case if that fails. If several patterns match then the longest      * pattern is used. In particular, files with multiple extensions (such as      * Data.tar.gz) match the longest sequence of extensions (eg '*.tar.gz' in      * preference to '*.gz'). Literal patterns (eg, 'Makefile') are matched      * before all others. Patterns beginning with `*.' and containing no other      * special characters (`*?[') are matched before other wildcarded patterns      * (since this covers the majority of the patterns).      */
+comment|/**      * Find the MimeType corresponding to a resource name.      *       * It applies the recommendations detailed in FreeDesktop Shared MIME-info      * Database for guessing MimeType from a resource name: It first tries a      * case-sensitive match, then try again with the resource name converted to      * lower-case if that fails. If several patterns match then the longest      * pattern is used. In particular, files with multiple extensions (such as      * Data.tar.gz) match the longest sequence of extensions (eg '*.tar.gz' in      * preference to '*.gz'). Literal patterns (eg, 'Makefile') are matched      * before all others. Patterns beginning with `*.' and containing no other      * special characters (`*?[') are matched before other wildcarded patterns      * (since this covers the majority of the patterns).      */
 name|MimeType
 name|matches
 parameter_list|(
 name|String
-name|filename
+name|resourceName
 parameter_list|)
 block|{
 comment|// Preliminary check...
 if|if
 condition|(
-name|filename
+name|resourceName
 operator|==
 literal|null
 condition|)
@@ -502,7 +502,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|// First, try exact match of the provided filename
+comment|// First, try exact match of the provided resource name
 name|MimeType
 name|type
 init|=
@@ -510,7 +510,7 @@ name|exactIdx
 operator|.
 name|get
 argument_list|(
-name|filename
+name|resourceName
 argument_list|)
 decl_stmt|;
 if|if
@@ -524,13 +524,13 @@ return|return
 name|type
 return|;
 block|}
-comment|// Then try exact match with only the filename
+comment|// Then try exact match with only the resource name
 name|String
 name|str
 init|=
 name|last
 argument_list|(
-name|filename
+name|resourceName
 argument_list|,
 literal|'/'
 argument_list|)
@@ -567,7 +567,7 @@ name|str
 operator|=
 name|last
 argument_list|(
-name|filename
+name|resourceName
 argument_list|,
 literal|'\\'
 argument_list|)
@@ -604,7 +604,7 @@ comment|// Then try "extension" (*.xxx) matching
 name|int
 name|idx
 init|=
-name|filename
+name|resourceName
 operator|.
 name|indexOf
 argument_list|(
@@ -627,7 +627,7 @@ name|extIdx
 operator|.
 name|get
 argument_list|(
-name|filename
+name|resourceName
 operator|.
 name|substring
 argument_list|(
@@ -650,7 +650,7 @@ return|;
 block|}
 name|idx
 operator|=
-name|filename
+name|resourceName
 operator|.
 name|indexOf
 argument_list|(
@@ -682,7 +682,7 @@ block|{
 if|if
 condition|(
 operator|(
-name|filename
+name|resourceName
 operator|.
 name|matches
 argument_list|(
