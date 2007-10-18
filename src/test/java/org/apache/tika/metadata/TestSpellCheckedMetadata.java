@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|// JDK imports
+comment|//JDK imports
 end_comment
 
 begin_import
@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|// Junit imports
+comment|//Junit imports
 end_comment
 
 begin_import
@@ -1337,7 +1337,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * IO Test method, usable only when you plan to do changes in metadata to    * measure relative performance impact.    */
+comment|/**      * IO Test method, usable only when you plan to do changes in metadata to      * measure relative performance impact.      */
 specifier|public
 specifier|final
 name|void
@@ -1400,7 +1400,7 @@ literal|"ms."
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Assembles a Spellchecked metadata Object.    */
+comment|/**      * Assembles a Spellchecked metadata Object.      */
 specifier|public
 specifier|static
 specifier|final

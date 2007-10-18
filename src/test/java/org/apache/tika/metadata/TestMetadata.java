@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|// JDK imports
+comment|//JDK imports
 end_comment
 
 begin_import
@@ -30,7 +30,7 @@ import|;
 end_import
 
 begin_comment
-comment|// Junit imports
+comment|//Junit imports
 end_comment
 
 begin_import
