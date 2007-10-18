@@ -511,10 +511,9 @@ comment|//        assertAutoDetect(resource, badResource, type, type,          c
 comment|//        assertAutoDetect(resource, badResource, type, null,          content);
 comment|//        assertAutoDetect(resource, badResource, type, wrongMimeType, content);
 block|}
-comment|/**      * This is where the data to the test comes from.  Each triplet will be      * passed to a method that will try different combinations of valid and      * invalid values.      *      * @throws Exception      */
 specifier|public
 name|void
-name|testAutoDetect
+name|testExcel
 parameter_list|()
 throws|throws
 name|Exception
@@ -528,6 +527,14 @@ argument_list|,
 literal|"Sample Excel Worksheet"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testHTML
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testHTML.html"
@@ -537,6 +544,14 @@ argument_list|,
 literal|"Test Indexation Html"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testOpenOffice
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testOpenOffice2.odt"
@@ -546,6 +561,14 @@ argument_list|,
 literal|"This is a sample Open Office document"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testPDF
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testPDF.pdf"
@@ -555,6 +578,14 @@ argument_list|,
 literal|"Content Analysis Toolkit"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testPowerpoint
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testPPT.ppt"
@@ -564,6 +595,14 @@ argument_list|,
 literal|"Sample Powerpoint Slide"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testRTF
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testRTF.rtf"
@@ -573,6 +612,14 @@ argument_list|,
 literal|"indexation Word"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testText
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testTXT.txt"
@@ -582,6 +629,14 @@ argument_list|,
 literal|"indexation de Txt"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testWord
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testWORD.doc"
@@ -591,6 +646,14 @@ argument_list|,
 literal|"Sample Word Document"
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testXML
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertAutoDetect
 argument_list|(
 literal|"testXML.xml"
