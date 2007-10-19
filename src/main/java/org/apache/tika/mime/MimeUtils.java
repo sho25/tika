@@ -489,17 +489,9 @@ name|String
 name|tikaMimeFile
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Loading ["
-operator|+
-name|tikaMimeFile
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
+comment|// The line below is disabled  until we can implement a
+comment|// way of restricting this output by default. (see TIKA-82)
+comment|//  LOG.info("Loading [" + tikaMimeFile + "]");
 name|Document
 name|document
 init|=
