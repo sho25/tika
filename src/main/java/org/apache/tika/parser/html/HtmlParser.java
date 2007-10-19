@@ -85,7 +85,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ContentHandlerDecorator
+name|Parser
 import|;
 end_import
 
@@ -97,9 +97,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|sax
 operator|.
-name|Parser
+name|ContentHandlerDecorator
 import|;
 end_import
 

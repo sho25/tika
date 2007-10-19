@@ -163,7 +163,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|XHTMLContentHandler
+name|xml
+operator|.
+name|XMLParser
 import|;
 end_import
 
@@ -175,11 +177,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|sax
 operator|.
-name|xml
-operator|.
-name|XMLParser
+name|XHTMLContentHandler
 import|;
 end_import
 

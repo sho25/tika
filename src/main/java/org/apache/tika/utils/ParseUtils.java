@@ -197,7 +197,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|sax
 operator|.
 name|WriteOutContentHandler
 import|;
