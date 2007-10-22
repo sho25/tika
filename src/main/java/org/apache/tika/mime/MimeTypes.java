@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *   *   */
+comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *<p>  * The MIME type detection methods that take an {@link InputStream} as  * an argument will never reads more than {@link #getMinLength()} bytes  * from the stream. Also the given stream is never  * {@link InputStream#close() closed}, {@link InputStream#mark(int) marked},  * or {@link InputStream#reset() reset} by the methods. Thus a client can  * use the {@link InputStream#markSupported() mark feature} of the stream  * (if available) to restore the stream back to the state it was before type  * detection if it wants to process the stream based on the detected type.  */
 end_comment
 
 begin_class
@@ -556,7 +556,7 @@ name|DEFAULT
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns<code>null</code> if no matching type      * is found.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type, or<code>null</code>      */
+comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type, or<code>null</code> if no match is found      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -634,10 +634,32 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *<p>      * If the given stream supports the mark feature (and doesn't throw an      * exception during this method call), then it is safe to use      *<code>stream.mark({@link #getMinLength()})</code> before and      *<code>stream.reset()</code> after this method call to restore the      * stream to the state it was in before this method call.      *      * @see #getMimeType(byte[])      * @param stream document stream      * @return matching MIME type      * @throws IOException if the stream can be read      */
+comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *      * @see #getMimeType(byte[])      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can be read      */
 specifier|public
 name|MimeType
 name|getMimeType
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|getMimeType
+argument_list|(
+name|readMagicHeader
+argument_list|(
+name|stream
+argument_list|)
+argument_list|)
+return|;
+block|}
+comment|/**      * Reads the first {@link #getMinLength()} bytes from the given stream.      * If the stream is shorter, then the entire content of the stream is      * returned.      *<p>      * The given stream is never {@link InputStream#close() closed},      * {@link InputStream#mark(int) marked}, or      * {@link InputStream#reset() reset} by this method.      *      * @param stream stream to be read      * @return first {@link #getMinLength()} (or fewer) bytes of the stream      * @throws IOException if the stream can not be read      */
+specifier|private
+name|byte
+index|[]
+name|readMagicHeader
 parameter_list|(
 name|InputStream
 name|stream
@@ -698,10 +720,7 @@ name|length
 condition|)
 block|{
 return|return
-name|getMimeType
-argument_list|(
 name|bytes
-argument_list|)
 return|;
 block|}
 name|lastRead
@@ -748,10 +767,7 @@ name|totalRead
 argument_list|)
 expr_stmt|;
 return|return
-name|getMimeType
-argument_list|(
 name|shorter
-argument_list|)
 return|;
 block|}
 comment|/**      * Find the Mime Content Type of a document from its name and its content.      * The policy used to guess the Mime Content Type is:      *<ol>      *<li>Try to find the type based on the provided data.</li>      *<li>If a type is found, then return it, otherwise try to find the type      * based on the file name</li>      *</ol>      *       * @param name      *            of the document to analyze.      * @param data      *            are the first bytes of the document's content.      * @return the Mime Content Type of the specified document, or      *<code>null</code> if none is found.      * @see #getMinLength()      */
@@ -795,6 +811,32 @@ expr_stmt|;
 block|}
 return|return
 name|mimeType
+return|;
+block|}
+comment|/**      * Returns the MIME type that best matches the given document name and      * the first few bytes of the given document stream.      *      * @see #getMimeType(String, byte[])      * @param name document name      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can not be read      */
+specifier|public
+name|MimeType
+name|getMimeType
+parameter_list|(
+name|String
+name|name
+parameter_list|,
+name|InputStream
+name|stream
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|getMimeType
+argument_list|(
+name|name
+argument_list|,
+name|readMagicHeader
+argument_list|(
+name|stream
+argument_list|)
+argument_list|)
 return|;
 block|}
 comment|/**      * Find a Mime Content Type from its name.      *       * @param name      *            is the content type name      * @return the MimeType for the specified name, or<code>null</code> if no      *         MimeType is registered for this name.      */
