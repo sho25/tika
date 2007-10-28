@@ -79,10 +79,6 @@ name|Map
 import|;
 end_import
 
-begin_comment
-comment|//TIKA imports
-end_comment
-
 begin_import
 import|import
 name|org
@@ -107,7 +103,7 @@ name|tika
 operator|.
 name|mime
 operator|.
-name|MimeUtils
+name|MimeTypesFactory
 import|;
 end_import
 
@@ -124,24 +120,6 @@ operator|.
 name|Parser
 import|;
 end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|Utils
-import|;
-end_import
-
-begin_comment
-comment|//JDOM imports
-end_comment
 
 begin_import
 import|import
@@ -235,8 +213,8 @@ argument_list|()
 decl_stmt|;
 specifier|private
 specifier|static
-name|MimeUtils
-name|mimeTypeRepo
+name|MimeTypes
+name|mimeTypes
 decl_stmt|;
 specifier|public
 name|TikaConfig
@@ -339,6 +317,8 @@ name|document
 parameter_list|)
 throws|throws
 name|JDOMException
+throws|,
+name|IOException
 block|{
 name|this
 argument_list|(
@@ -357,6 +337,8 @@ name|element
 parameter_list|)
 throws|throws
 name|JDOMException
+throws|,
+name|IOException
 block|{
 name|Element
 name|mtr
@@ -378,10 +360,11 @@ argument_list|(
 literal|"resource"
 argument_list|)
 decl_stmt|;
-name|mimeTypeRepo
+name|mimeTypes
 operator|=
-operator|new
-name|MimeUtils
+name|MimeTypesFactory
+operator|.
+name|create
 argument_list|(
 name|mimeTypeRepoResource
 argument_list|)
@@ -515,10 +498,7 @@ name|getMimeRepository
 parameter_list|()
 block|{
 return|return
-name|mimeTypeRepo
-operator|.
-name|getRepository
-argument_list|()
+name|mimeTypes
 return|;
 block|}
 comment|/**      * Provides a default configuration (TikaConfig).  Currently creates a      * new instance each time it's called; we may be able to have it      * return a shared instance once it is completely immutable.      *      * @return      * @throws IOException      * @throws JDOMException      */
