@@ -1224,17 +1224,6 @@ argument_list|(
 name|magic
 argument_list|)
 expr_stmt|;
-name|Collections
-operator|.
-name|sort
-argument_list|(
-name|magics
-argument_list|,
-name|MimeTypes
-operator|.
-name|MAGICS_COMPARATOR
-argument_list|)
-expr_stmt|;
 block|}
 name|int
 name|getMinLength
