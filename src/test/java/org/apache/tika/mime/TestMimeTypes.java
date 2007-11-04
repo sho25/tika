@@ -242,6 +242,8 @@ specifier|public
 name|void
 name|testLoadMimeTypes
 parameter_list|()
+throws|throws
+name|MimeTypeException
 block|{
 name|assertNotNull
 argument_list|(

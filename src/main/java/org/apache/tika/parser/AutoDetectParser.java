@@ -447,15 +447,6 @@ condition|)
 block|{
 try|try
 block|{
-name|typename
-operator|=
-name|MimeType
-operator|.
-name|clean
-argument_list|(
-name|typename
-argument_list|)
-expr_stmt|;
 name|type
 operator|=
 name|types
@@ -612,6 +603,8 @@ operator|==
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|type
 operator|=
 name|types
@@ -623,6 +616,15 @@ operator|.
 name|DEFAULT
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MimeTypeException
+name|e
+parameter_list|)
+block|{
+comment|// Should never happen
+block|}
 block|}
 return|return
 name|type
