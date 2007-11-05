@@ -201,10 +201,10 @@ block|{
 name|int
 name|diff
 init|=
-name|priority
-operator|-
 name|o
 operator|.
+name|priority
+operator|-
 name|priority
 decl_stmt|;
 if|if
@@ -216,11 +216,11 @@ condition|)
 block|{
 name|diff
 operator|=
+name|o
+operator|.
 name|size
 argument_list|()
 operator|-
-name|o
-operator|.
 name|size
 argument_list|()
 expr_stmt|;
