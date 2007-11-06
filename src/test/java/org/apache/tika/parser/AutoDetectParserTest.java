@@ -224,7 +224,7 @@ name|TestParams
 name|tp
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|InputStream
 name|input
@@ -358,24 +358,6 @@ name|tp
 operator|.
 name|expectedContentFragment
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|t
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Test error asserting auto detect for parameters: "
-operator|+
-name|t
-operator|+
-literal|"\nParameters: "
-operator|+
-name|tp
 argument_list|)
 expr_stmt|;
 block|}

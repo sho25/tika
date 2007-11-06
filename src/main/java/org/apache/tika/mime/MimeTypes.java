@@ -257,7 +257,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name.      *       * @param name      *            of the document to analyze.      * @return the Mime Content Type of the specified document name, or      *<code>null</code> if none is found.      */
+comment|/**      * Find the Mime Content Type of a document from its name.      *       * @param name      *            of the document to analyze.      * @return the Mime Content Type of the specified document name      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -274,9 +274,6 @@ operator|.
 name|matches
 argument_list|(
 name|name
-operator|.
-name|toLowerCase
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -285,13 +282,40 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|type
 return|;
-comment|// if it's null here, then return the default type
+block|}
+name|type
+operator|=
+name|patterns
+operator|.
+name|matches
+argument_list|(
+name|name
+operator|.
+name|toLowerCase
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|type
+return|;
+block|}
+else|else
+block|{
 return|return
 name|root
 return|;
+block|}
 block|}
 comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type, or<code>null</code> if no match is found      */
 specifier|public
@@ -827,7 +851,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Adds a file name pattern for the given media type. This method should      * only be called from {@link MimeType#addPattern(String)}.      *      * @param type media type      * @param pattern file name pattern      */
+comment|/**      * Adds a file name pattern for the given media type.      *      * @param type media type      * @param pattern file name pattern      * @throws MimeTypeException if the pattern conflicts with existing ones      */
+specifier|public
 name|void
 name|addPattern
 parameter_list|(
@@ -837,6 +862,8 @@ parameter_list|,
 name|String
 name|pattern
 parameter_list|)
+throws|throws
+name|MimeTypeException
 block|{
 name|patterns
 operator|.
@@ -858,51 +885,6 @@ return|return
 literal|1024
 return|;
 comment|// return minLength;
-block|}
-comment|/**      * Add the specified mime-types in the repository.      *       * @param types      *            are the mime-types to add.      */
-name|void
-name|add
-parameter_list|(
-name|MimeType
-index|[]
-name|types
-parameter_list|)
-block|{
-if|if
-condition|(
-name|types
-operator|==
-literal|null
-condition|)
-block|{
-return|return;
-block|}
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|types
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|add
-argument_list|(
-name|types
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Add the specified mime-type in the repository.      *       * @param type      *            is the mime-type to add.      */
 name|void

@@ -601,10 +601,12 @@ literal|"glob"
 argument_list|)
 condition|)
 block|{
-name|type
+name|types
 operator|.
 name|addPattern
 argument_list|(
+name|type
+argument_list|,
 name|nodeElement
 operator|.
 name|getAttribute
