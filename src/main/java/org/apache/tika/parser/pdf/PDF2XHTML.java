@@ -285,9 +285,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to start a document"
-argument_list|,
+literal|"Unable to start a document: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -320,9 +323,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to end a document"
-argument_list|,
+literal|"Unable to end a document: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -357,9 +363,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to start a page"
-argument_list|,
+literal|"Unable to start a page: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -394,9 +403,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to end a page"
-argument_list|,
+literal|"Unable to end a page: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -428,9 +440,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to start a paragraph"
-argument_list|,
+literal|"Unable to start a paragraph: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -462,9 +477,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to end a paragraph"
-argument_list|,
+literal|"Unable to end a paragraph: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -502,9 +520,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to write a newline"
-argument_list|,
+literal|"Unable to write a newline: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -539,9 +560,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to write a newline"
-argument_list|,
+literal|"Unable to write a newline: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -579,9 +603,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Unable to write a space"
-argument_list|,
+literal|"Unable to write a space: reason: "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
