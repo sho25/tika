@@ -75,13 +75,28 @@ begin_class
 class|class
 name|Word6Extractor
 block|{
+specifier|private
+specifier|final
+name|Appendable
+name|appendable
+decl_stmt|;
 specifier|public
 name|Word6Extractor
-parameter_list|()
-block|{   }
+parameter_list|(
+name|Appendable
+name|appendable
+parameter_list|)
+block|{
+name|this
+operator|.
+name|appendable
+operator|=
+name|appendable
+expr_stmt|;
+block|}
 comment|/**    * Extracts the text    *    * @param mainStream The POIFS document stream entitled "WordDocument".    *    * @return The text from the document    * @throws Exception If there are any unexpected exceptions.    */
 specifier|public
-name|String
+name|void
 name|extractText
 parameter_list|(
 name|byte
@@ -169,7 +184,9 @@ name|finalTextBuf
 init|=
 operator|new
 name|WordTextBuffer
-argument_list|()
+argument_list|(
+name|appendable
+argument_list|)
 decl_stmt|;
 name|Iterator
 name|runsIt
@@ -272,12 +289,6 @@ break|break;
 block|}
 block|}
 block|}
-return|return
-name|finalTextBuf
-operator|.
-name|toString
-argument_list|()
-return|;
 block|}
 comment|/**    * Used to determine if a run of text has been deleted.    * @param grpprl The list of sprms for this run of text.    * @return    */
 specifier|private

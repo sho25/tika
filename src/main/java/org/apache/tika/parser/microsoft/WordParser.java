@@ -257,11 +257,14 @@ return|;
 block|}
 comment|/**      * Gets the text from a Word document.      *      * @param in The InputStream representing the Word file.      */
 specifier|public
-name|String
+name|void
 name|extractText
 parameter_list|(
 name|POIFSFileSystem
 name|fsys
+parameter_list|,
+name|Appendable
+name|appendable
 parameter_list|)
 throws|throws
 name|IOException
@@ -406,16 +409,17 @@ name|oldExtractor
 init|=
 operator|new
 name|Word6Extractor
-argument_list|()
+argument_list|(
+name|appendable
+argument_list|)
 decl_stmt|;
-return|return
 name|oldExtractor
 operator|.
 name|extractText
 argument_list|(
 name|header
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 comment|//get the location of the piece table
 name|int
@@ -673,7 +677,9 @@ name|finalTextBuf
 init|=
 operator|new
 name|WordTextBuffer
-argument_list|()
+argument_list|(
+name|appendable
+argument_list|)
 decl_stmt|;
 comment|// iterate through all text runs extract the text only if they haven't been
 comment|// deleted
@@ -870,12 +876,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-return|return
-name|finalTextBuf
-operator|.
-name|toString
-argument_list|()
-return|;
+return|return;
 block|}
 block|}
 name|String
@@ -960,12 +961,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-return|return
-name|finalTextBuf
-operator|.
-name|toString
-argument_list|()
-return|;
 block|}
 comment|/**      * Used to determine if a run of text has been deleted.      *      * @param grpprl The list of sprms for a particular run of text.      * @return true if this run of text has been deleted.      */
 specifier|private

@@ -139,14 +139,14 @@ decl_stmt|;
 comment|/** Buffer holding the content of the file */
 specifier|private
 specifier|final
-name|StringBuilder
+name|Appendable
 name|builder
 decl_stmt|;
 comment|/**      * Constructs Listener to get content of PowerPoint file.      */
 specifier|public
 name|PowerPointExtractor
 parameter_list|(
-name|StringBuilder
+name|Appendable
 name|builder
 parameter_list|)
 block|{
