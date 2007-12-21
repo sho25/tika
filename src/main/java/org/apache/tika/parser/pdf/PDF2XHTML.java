@@ -37,6 +37,20 @@ name|tika
 operator|.
 name|exception
 operator|.
+name|CauseIOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
 name|TikaException
 import|;
 end_import
@@ -283,14 +297,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to start a document: reason: "
-operator|+
+literal|"Unable to start a document"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -321,14 +332,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to end a document: reason: "
-operator|+
+literal|"Unable to end a document"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -361,14 +369,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to start a page: reason: "
-operator|+
+literal|"Unable to start a page"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -401,14 +406,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to end a page: reason: "
-operator|+
+literal|"Unable to end a page"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -438,14 +440,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to start a paragraph: reason: "
-operator|+
+literal|"Unable to start a paragraph"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -475,14 +474,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to end a paragraph: reason: "
-operator|+
+literal|"Unable to end a paragraph"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -518,14 +514,16 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to write a newline: reason: "
+literal|"Unable to write a character: "
 operator|+
-name|e
+name|text
 operator|.
-name|getMessage
+name|getCharacter
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -558,14 +556,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to write a newline: reason: "
-operator|+
+literal|"Unable to write a newline"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
@@ -601,14 +596,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|CauseIOException
 argument_list|(
-literal|"Unable to write a space: reason: "
-operator|+
+literal|"Unable to write a space"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}
