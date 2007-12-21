@@ -218,15 +218,25 @@ parameter_list|)
 throws|throws
 name|MimeTypeException
 block|{
-assert|assert
+if|if
+condition|(
 name|pattern
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 name|type
-operator|!=
+operator|==
 literal|null
-assert|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Pattern and/or mime type is missing"
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|pattern
@@ -608,11 +618,21 @@ name|String
 name|name
 parameter_list|)
 block|{
-assert|assert
+if|if
+condition|(
 name|name
-operator|!=
+operator|==
 literal|null
-assert|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Name is missing"
+argument_list|)
+throw|;
+block|}
 comment|// First, try exact match of the provided resource name
 if|if
 condition|(

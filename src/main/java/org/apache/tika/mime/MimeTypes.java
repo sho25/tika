@@ -327,11 +327,21 @@ index|[]
 name|data
 parameter_list|)
 block|{
-assert|assert
+if|if
+condition|(
 name|data
-operator|!=
+operator|==
 literal|null
-assert|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Data is missing"
+argument_list|)
+throw|;
+block|}
 comment|// First, check for XML descriptions (level by level)
 for|for
 control|(
@@ -420,11 +430,21 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-assert|assert
+if|if
+condition|(
 name|stream
-operator|!=
+operator|==
 literal|null
-assert|;
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"InputStream is missing"
+argument_list|)
+throw|;
+block|}
 name|byte
 index|[]
 name|bytes

@@ -32,6 +32,144 @@ name|MimeTypeTest
 extends|extends
 name|TestCase
 block|{
+specifier|private
+name|MimeTypes
+name|types
+decl_stmt|;
+specifier|private
+name|MimeType
+name|text
+decl_stmt|;
+specifier|protected
+name|void
+name|setUp
+parameter_list|()
+throws|throws
+name|MimeTypeException
+block|{
+name|types
+operator|=
+operator|new
+name|MimeTypes
+argument_list|()
+expr_stmt|;
+name|text
+operator|=
+name|types
+operator|.
+name|forName
+argument_list|(
+literal|"text/plain"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Test MimeType constructor */
+specifier|public
+name|void
+name|testConstrctor
+parameter_list|()
+block|{
+comment|// Missing registry
+try|try
+block|{
+operator|new
+name|MimeType
+argument_list|(
+literal|null
+argument_list|,
+literal|"text/plain"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+comment|// Missing name
+try|try
+block|{
+operator|new
+name|MimeType
+argument_list|(
+name|types
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+comment|// Invalid name (no slash)
+try|try
+block|{
+operator|new
+name|MimeType
+argument_list|(
+name|types
+argument_list|,
+literal|"application"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+comment|// Invalid name (not lower case)
+try|try
+block|{
+operator|new
+name|MimeType
+argument_list|(
+name|types
+argument_list|,
+literal|"TEXT/PLAIN"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+block|}
 specifier|public
 name|void
 name|testIsValidName
@@ -167,6 +305,91 @@ literal|"text/plain; charset=UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|MimeType
+operator|.
+name|isValid
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+block|}
+comment|/** Test MimeType setDescription() */
+specifier|public
+name|void
+name|testSetDescription
+parameter_list|()
+block|{
+try|try
+block|{
+name|text
+operator|.
+name|setDescription
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+block|}
+comment|/** Test MimeType setSuperType() */
+specifier|public
+name|void
+name|testSetSuperType
+parameter_list|()
+throws|throws
+name|MimeTypeException
+block|{
+try|try
+block|{
+name|text
+operator|.
+name|setSuperType
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
 block|}
 block|}
 end_class
