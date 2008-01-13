@@ -117,6 +117,18 @@ name|org
 operator|.
 name|apache
 operator|.
+name|log4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|exception
@@ -165,7 +177,7 @@ name|parser
 operator|.
 name|xml
 operator|.
-name|XMLParser
+name|XMLParserUtils
 import|;
 end_import
 
@@ -201,11 +213,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|jaxen
 operator|.
-name|log4j
-operator|.
-name|Logger
+name|SimpleNamespaceContext
 import|;
 end_import
 
@@ -293,6 +303,8 @@ begin_class
 specifier|public
 class|class
 name|OpenOfficeParser
+extends|extends
+name|XMLParserUtils
 implements|implements
 name|Parser
 block|{
@@ -557,22 +569,46 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
-name|XMLParser
-name|xp
+comment|// Set NameSpaceContext for OpenDocument
+name|SimpleNamespaceContext
+name|context
 init|=
 operator|new
-name|XMLParser
+name|SimpleNamespaceContext
 argument_list|()
 decl_stmt|;
-name|xp
+name|context
 operator|.
-name|getAllDocumentNs
+name|addNamespace
 argument_list|(
-name|xmlDoc
+literal|"dc"
+argument_list|,
+literal|"http://purl.org/dc/elements/1.1/"
 argument_list|)
 expr_stmt|;
-name|xp
+name|context
 operator|.
+name|addNamespace
+argument_list|(
+literal|"meta"
+argument_list|,
+literal|"urn:oasis:names:tc:opendocument:xmlns:meta:1.0"
+argument_list|)
+expr_stmt|;
+name|context
+operator|.
+name|addNamespace
+argument_list|(
+literal|"office"
+argument_list|,
+literal|"urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+argument_list|)
+expr_stmt|;
+name|setXmlParserNameSpaceContext
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -586,8 +622,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -601,8 +635,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -616,8 +648,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -631,8 +661,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -646,8 +674,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -661,8 +687,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -676,8 +700,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -689,8 +711,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -702,8 +722,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -715,8 +733,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -728,8 +744,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -741,8 +755,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -754,8 +766,6 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|extractContent
 argument_list|(
 name|xmlDoc
@@ -790,13 +800,11 @@ argument_list|(
 literal|"p"
 argument_list|)
 expr_stmt|;
-name|xp
-operator|.
 name|concatOccurrence
 argument_list|(
 name|xmlDoc
 argument_list|,
-literal|"//*"
+literal|"//office:body//*"
 argument_list|,
 literal|" "
 argument_list|,
