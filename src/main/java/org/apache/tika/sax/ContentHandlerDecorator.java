@@ -63,6 +63,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
+import|;
+end_import
+
 begin_comment
 comment|/**  * Decorator base class for the {@link ContentHandler} interface. This class  * simply delegates all SAX events calls to an underlying decorated handler  * instance. Subclasses can provide extra decoration by overriding one or more  * of the SAX event methods.  */
 end_comment
@@ -71,8 +85,8 @@ begin_class
 specifier|public
 class|class
 name|ContentHandlerDecorator
-implements|implements
-name|ContentHandler
+extends|extends
+name|DefaultHandler
 block|{
 comment|/**      * Decorated SAX event handler.      */
 specifier|private
