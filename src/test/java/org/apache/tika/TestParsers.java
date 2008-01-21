@@ -39,16 +39,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -147,16 +137,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jdom
-operator|.
-name|JDOMException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|xml
 operator|.
 name|sax
@@ -191,9 +171,7 @@ name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|JDOMException
-throws|,
-name|IOException
+name|Exception
 block|{
 comment|/*          * FIXME the old mechanism does not work anymore when running the tests          * with Maven - need a resource-based one, but this means more changes          * to classes which rely on filenames.          *           * String sep = File.separator; StringTokenizer st = new          * StringTokenizer(System.getProperty( "java.class.path"),          * File.pathSeparator);          *           * classDir = new File(st.nextToken());          *           * config = classDir.getParent() + sep + "config" + sep + "config.xml";          *           * String log4j = classDir.getParent() + sep + "Config" + sep + "log4j" +          * sep + "log4j.properties";          */
 name|testFilesBaseDir
