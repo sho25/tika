@@ -216,13 +216,6 @@ argument_list|(
 name|model
 argument_list|)
 decl_stmt|;
-name|table
-operator|.
-name|setFillsViewportHeight
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|tabs
 operator|.
 name|addTab
