@@ -172,7 +172,11 @@ name|add
 argument_list|(
 literal|"Text content"
 argument_list|,
+operator|new
+name|JScrollPane
+argument_list|(
 name|editor
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|DefaultTableModel
