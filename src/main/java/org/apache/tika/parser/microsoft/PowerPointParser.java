@@ -308,9 +308,9 @@ argument_list|)
 expr_stmt|;
 name|xhtml
 operator|.
-name|startElement
+name|endElement
 argument_list|(
-literal|"e"
+literal|"p"
 argument_list|)
 expr_stmt|;
 name|xhtml
