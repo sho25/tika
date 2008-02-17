@@ -645,15 +645,7 @@ specifier|final
 name|String
 name|expected
 init|=
-literal|"Numbers and their Squares Number Square 1.0 "
-operator|+
-literal|"1.0 2.0 4.0 3.0 9.0 4.0 16.0 5.0 25.0 6.0 36.0 7.0 49.0 8.0 "
-operator|+
-literal|"64.0 9.0 81.0 10.0 100.0 11.0 121.0 12.0 144.0 13.0 169.0 "
-operator|+
-literal|"14.0 196.0 15.0 225.0 Written and saved in Microsoft Excel "
-operator|+
-literal|"X for Mac Service Release 1."
+literal|"Numbers and their Squares"
 decl_stmt|;
 name|File
 name|file
