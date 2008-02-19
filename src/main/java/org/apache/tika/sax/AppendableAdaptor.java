@@ -31,11 +31,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|CauseIOException
+name|IOExceptionWithCause
 import|;
 end_import
 
@@ -240,7 +240,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Error processing character content: "
 operator|+

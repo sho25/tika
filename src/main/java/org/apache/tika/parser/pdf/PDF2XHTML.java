@@ -33,11 +33,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|CauseIOException
+name|IOExceptionWithCause
 import|;
 end_import
 
@@ -297,7 +297,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to start a document"
 argument_list|,
@@ -332,7 +332,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to end a document"
 argument_list|,
@@ -369,7 +369,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to start a page"
 argument_list|,
@@ -406,7 +406,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to end a page"
 argument_list|,
@@ -440,7 +440,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to start a paragraph"
 argument_list|,
@@ -474,7 +474,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to end a paragraph"
 argument_list|,
@@ -514,7 +514,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to write a character: "
 operator|+
@@ -556,7 +556,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to write a newline"
 argument_list|,
@@ -596,7 +596,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|CauseIOException
+name|IOExceptionWithCause
 argument_list|(
 literal|"Unable to write a space"
 argument_list|,
