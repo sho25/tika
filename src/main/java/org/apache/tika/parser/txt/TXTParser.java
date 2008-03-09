@@ -85,7 +85,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|Parser
+name|AbstractParser
 import|;
 end_import
 
@@ -149,8 +149,8 @@ begin_class
 specifier|public
 class|class
 name|TXTParser
-implements|implements
-name|Parser
+extends|extends
+name|AbstractParser
 block|{
 specifier|public
 name|void

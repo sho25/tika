@@ -167,8 +167,8 @@ begin_class
 specifier|public
 class|class
 name|AutoDetectParser
-implements|implements
-name|Parser
+extends|extends
+name|AbstractParser
 block|{
 specifier|private
 name|TikaConfig
