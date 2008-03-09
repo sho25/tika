@@ -413,35 +413,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|metadata
-operator|.
-name|Metadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|sax
 operator|.
 name|XHTMLContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|ContentHandler
 import|;
 end_import
 
@@ -464,15 +438,12 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|ExcelParser
-extends|extends
-name|OfficeParser
-implements|implements
-name|Serializable
+name|ExcelExtractor
 block|{
 comment|/** Logging instance */
 specifier|private
 specifier|static
+specifier|final
 name|Log
 name|log
 init|=
@@ -480,7 +451,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|ExcelParser
+name|ExcelExtractor
 operator|.
 name|class
 argument_list|)
@@ -518,16 +489,6 @@ operator|=
 name|listenForAllRecords
 expr_stmt|;
 block|}
-comment|/**      * Return the content type handled by this parser.      *      * @return The content type handled      */
-specifier|protected
-name|String
-name|getContentType
-parameter_list|()
-block|{
-return|return
-literal|"application/vnd.ms-excel"
-return|;
-block|}
 comment|/**      * Extracts text from an Excel Workbook writing the extracted content      * to the specified {@link Appendable}.      *      * @param filesystem POI file system      * @throws IOException if an error occurs processing the workbook      * or writing the extracted content      */
 specifier|protected
 name|void
@@ -536,11 +497,8 @@ parameter_list|(
 name|POIFSFileSystem
 name|filesystem
 parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
+name|XHTMLContentHandler
+name|xhtml
 parameter_list|)
 throws|throws
 name|IOException
@@ -556,17 +514,6 @@ operator|+
 name|listenForAllRecords
 argument_list|)
 expr_stmt|;
-name|XHTMLContentHandler
-name|xhtml
-init|=
-operator|new
-name|XHTMLContentHandler
-argument_list|(
-name|handler
-argument_list|,
-name|metadata
-argument_list|)
-decl_stmt|;
 comment|// Set up listener and register the records we want to process
 name|TikaHSSFListener
 name|listener
@@ -761,11 +708,6 @@ operator|new
 name|HSSFEventFactory
 argument_list|()
 decl_stmt|;
-name|xhtml
-operator|.
-name|startDocument
-argument_list|()
-expr_stmt|;
 name|eventFactory
 operator|.
 name|processEvents
@@ -780,11 +722,6 @@ operator|.
 name|throwStoredException
 argument_list|()
 expr_stmt|;
-name|xhtml
-operator|.
-name|endDocument
-argument_list|()
-expr_stmt|;
 block|}
 comment|// ======================================================================
 comment|/**      * HSSF Listener implementation which processes the HSSF records.      */
@@ -797,21 +734,6 @@ name|HSSFListener
 implements|,
 name|Serializable
 block|{
-comment|/** Logging instance */
-specifier|private
-specifier|static
-name|Log
-name|log
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|ExcelParser
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|XHTMLContentHandler

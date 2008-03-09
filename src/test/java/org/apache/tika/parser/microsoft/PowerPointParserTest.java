@@ -139,7 +139,7 @@ name|writer
 argument_list|)
 decl_stmt|;
 operator|new
-name|PowerPointParser
+name|OfficeParser
 argument_list|()
 operator|.
 name|parse
