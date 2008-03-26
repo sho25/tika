@@ -831,7 +831,7 @@ name|SortedMap
 argument_list|<
 name|Point
 argument_list|,
-name|TikaExcelCell
+name|Cell
 argument_list|>
 name|currentSheet
 init|=
@@ -840,7 +840,7 @@ name|TreeMap
 argument_list|<
 name|Point
 argument_list|,
-name|TikaExcelCell
+name|Cell
 argument_list|>
 argument_list|(
 operator|new
@@ -1139,9 +1139,11 @@ comment|//    HyperlinkRecord hyperlinkRecord = (HyperlinkRecord)record;
 comment|//    if (insideWorksheet) {
 comment|//        int row = hyperlinkRecord.getFirstRow();
 comment|//        short column =  hyperlinkRecord.getFirstColumn();
-comment|//        TikaExcelCell cell = currentSheet.findCell(row, column);
+comment|//        Point point = new Point(column, row);
+comment|//        Cell cell = currentSheet.get(point);
 comment|//        if (cell != null) {
-comment|//            cell.setHyperlink(hyperlinkRecord.getAddress());
+comment|//            cell = new LinkedCell(cell, hyperlinkRecord.getAddress());
+comment|//            currentSheet.put(point, cell);
 comment|//        }
 comment|//    }
 comment|//    break;
@@ -1389,7 +1391,7 @@ argument_list|()
 argument_list|)
 argument_list|,
 operator|new
-name|TikaExcelCell
+name|TextCell
 argument_list|(
 name|text
 argument_list|)
@@ -1496,7 +1498,7 @@ name|Entry
 argument_list|<
 name|Point
 argument_list|,
-name|TikaExcelCell
+name|Cell
 argument_list|>
 name|entry
 range|:
@@ -1598,69 +1600,16 @@ name|currentColumn
 operator|++
 expr_stmt|;
 block|}
-name|TikaExcelCell
-name|cell
-init|=
 name|entry
 operator|.
 name|getValue
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|cell
 operator|.
-name|getHyperlink
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-name|handler
-operator|.
-name|startElement
+name|render
 argument_list|(
-literal|"a"
-argument_list|,
-literal|"href"
-argument_list|,
-name|cell
-operator|.
-name|getHyperlink
-argument_list|()
+name|handler
 argument_list|)
 expr_stmt|;
-name|handler
-operator|.
-name|characters
-argument_list|(
-name|cell
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|handler
-operator|.
-name|endElement
-argument_list|(
-literal|"a"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|handler
-operator|.
-name|characters
-argument_list|(
-name|cell
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|handler
 operator|.
@@ -1704,69 +1653,6 @@ name|characters
 argument_list|(
 literal|"\n"
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|// ======================================================================
-comment|/**      * Tika's excel cell representation.       */
-specifier|private
-specifier|static
-class|class
-name|TikaExcelCell
-block|{
-specifier|private
-name|String
-name|text
-decl_stmt|;
-specifier|private
-name|String
-name|hyperlink
-decl_stmt|;
-comment|/**          * Construct a new cell.          *          * @param column The cell's column number          * @param text The cell's text          */
-name|TikaExcelCell
-parameter_list|(
-name|String
-name|text
-parameter_list|)
-block|{
-name|this
-operator|.
-name|text
-operator|=
-name|text
-expr_stmt|;
-block|}
-comment|/**          * Return the cell's text.          *          * @return the cell's text          */
-name|String
-name|getText
-parameter_list|()
-block|{
-return|return
-name|text
-return|;
-block|}
-comment|/**          * Return hyperlink address, if any          *          * @return the hyperlink address          */
-name|String
-name|getHyperlink
-parameter_list|()
-block|{
-return|return
-name|hyperlink
-return|;
-block|}
-comment|/**          * Set the hyperlink address          *          * @param hyperlink the hyperlink address to set          */
-name|void
-name|setHyperlink
-parameter_list|(
-name|String
-name|hyperlink
-parameter_list|)
-block|{
-name|this
-operator|.
-name|hyperlink
-operator|=
-name|hyperlink
 expr_stmt|;
 block|}
 block|}
