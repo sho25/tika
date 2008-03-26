@@ -822,6 +822,7 @@ specifier|private
 name|SSTRecord
 name|sstRecord
 decl_stmt|;
+comment|/**          * List of worksheet names.          */
 specifier|private
 name|List
 argument_list|<
@@ -836,16 +837,12 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**          * Index of the current worksheet within the workbook.          * Used to find the worksheet name in the {@link #sheetNames} list.          */
 specifier|private
 name|short
 name|currentSheetIndex
 decl_stmt|;
-specifier|private
-name|boolean
-name|insideWorksheet
-init|=
-literal|false
-decl_stmt|;
+comment|/**          * Content of the current worksheet, or<code>null</code> if no          * worksheet is currently active.          */
 specifier|private
 name|SortedMap
 argument_list|<
@@ -855,67 +852,7 @@ name|Cell
 argument_list|>
 name|currentSheet
 init|=
-operator|new
-name|TreeMap
-argument_list|<
-name|Point
-argument_list|,
-name|Cell
-argument_list|>
-argument_list|(
-operator|new
-name|Comparator
-argument_list|<
-name|Point
-argument_list|>
-argument_list|()
-block|{
-specifier|public
-name|int
-name|compare
-parameter_list|(
-name|Point
-name|a
-parameter_list|,
-name|Point
-name|b
-parameter_list|)
-block|{
-name|int
-name|diff
-init|=
-name|a
-operator|.
-name|y
-operator|-
-name|b
-operator|.
-name|y
-decl_stmt|;
-if|if
-condition|(
-name|diff
-operator|==
-literal|0
-condition|)
-block|{
-name|diff
-operator|=
-name|a
-operator|.
-name|x
-operator|-
-name|b
-operator|.
-name|x
-expr_stmt|;
-block|}
-return|return
-name|diff
-return|;
-block|}
-block|}
-argument_list|)
+literal|null
 decl_stmt|;
 comment|/**          * Contstruct a new listener instance outputting parsed data to          * the specified XHTML content handler.          *          * @param handler Destination to write the parsed output to          */
 specifier|private
@@ -1074,13 +1011,19 @@ name|currentSheetIndex
 operator|++
 expr_stmt|;
 name|currentSheet
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|insideWorksheet
 operator|=
-literal|true
+operator|new
+name|TreeMap
+argument_list|<
+name|Point
+argument_list|,
+name|Cell
+argument_list|>
+argument_list|(
+operator|new
+name|PointComparator
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 break|break;
@@ -1092,7 +1035,9 @@ case|:
 comment|// end of workbook, worksheet etc. records
 if|if
 condition|(
-name|insideWorksheet
+name|currentSheet
+operator|!=
+literal|null
 operator|&&
 operator|!
 name|currentSheet
@@ -1105,9 +1050,9 @@ name|processSheet
 argument_list|()
 expr_stmt|;
 block|}
-name|insideWorksheet
+name|currentSheet
 operator|=
-literal|false
+literal|null
 expr_stmt|;
 break|break;
 case|case
@@ -1301,12 +1246,14 @@ expr_stmt|;
 break|break;
 comment|// FIXME - requires POI release
 comment|// case HyperlinkRecord.sid: // holds a URL associated with a cell
-comment|//     HyperlinkRecord link = (HyperlinkRecord) record;
-comment|//     Point point =
-comment|//         new Point(link.getFirstColumn(), link.getFirstRow());
-comment|//     Cell cell = currentSheet.get(point);
-comment|//     if (cell != null) {
-comment|//         addCell(record, new LinkedCell(cell, link.getAddress()));
+comment|//     if (currentSheet != null) {
+comment|//         HyperlinkRecord link = (HyperlinkRecord) record;
+comment|//         Point point =
+comment|//             new Point(link.getFirstColumn(), link.getFirstRow());
+comment|//         Cell cell = currentSheet.get(point);
+comment|//         if (cell != null) {
+comment|//             addCell(record, new LinkedCell(cell, link.getAddress()));
+comment|//         }
 comment|//     }
 comment|//     break;
 block|}
@@ -1325,8 +1272,9 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
-name|insideWorksheet
+name|currentSheet
+operator|==
+literal|null
 condition|)
 block|{
 comment|// Ignore cells outside sheets
@@ -1690,6 +1638,62 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+comment|/**      * Utility comparator for points.      */
+specifier|private
+specifier|static
+class|class
+name|PointComparator
+implements|implements
+name|Comparator
+argument_list|<
+name|Point
+argument_list|>
+block|{
+specifier|public
+name|int
+name|compare
+parameter_list|(
+name|Point
+name|a
+parameter_list|,
+name|Point
+name|b
+parameter_list|)
+block|{
+name|int
+name|diff
+init|=
+name|a
+operator|.
+name|y
+operator|-
+name|b
+operator|.
+name|y
+decl_stmt|;
+if|if
+condition|(
+name|diff
+operator|==
+literal|0
+condition|)
+block|{
+name|diff
+operator|=
+name|a
+operator|.
+name|x
+operator|-
+name|b
+operator|.
+name|x
+expr_stmt|;
+block|}
+return|return
+name|diff
+return|;
 block|}
 block|}
 block|}
