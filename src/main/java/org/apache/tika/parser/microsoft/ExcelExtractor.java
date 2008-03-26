@@ -327,6 +327,22 @@ name|FormulaRecord
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|hssf
+operator|.
+name|record
+operator|.
+name|UnicodeString
+import|;
+end_import
+
 begin_comment
 comment|//import org.apache.poi.hssf.record.HyperlinkRecord;  // FIXME - requires POI release
 end_comment
@@ -1011,41 +1027,51 @@ name|getSid
 argument_list|()
 condition|)
 block|{
-comment|/* BOFRecord: indicates start of workbook, worksheet etc. records */
 case|case
 name|BOFRecord
 operator|.
 name|sid
 case|:
-switch|switch
-condition|(
-operator|(
+comment|// start of workbook, worksheet etc. records
+name|BOFRecord
+name|bof
+init|=
 operator|(
 name|BOFRecord
 operator|)
 name|record
-operator|)
+decl_stmt|;
+if|if
+condition|(
+name|bof
 operator|.
 name|getType
 argument_list|()
-condition|)
-block|{
-case|case
+operator|==
 name|BOFRecord
 operator|.
 name|TYPE_WORKBOOK
-case|:
+condition|)
+block|{
 name|currentSheetIndex
 operator|=
 operator|-
 literal|1
 expr_stmt|;
-break|break;
-case|case
+block|}
+elseif|else
+if|if
+condition|(
+name|bof
+operator|.
+name|getType
+argument_list|()
+operator|==
 name|BOFRecord
 operator|.
 name|TYPE_WORKSHEET
-case|:
+condition|)
+block|{
 name|currentSheetIndex
 operator|++
 expr_stmt|;
@@ -1058,16 +1084,14 @@ name|insideWorksheet
 operator|=
 literal|true
 expr_stmt|;
-break|break;
 block|}
 break|break;
-comment|/* EOFRecord: indicates end of workbook, worksheet etc. records */
 case|case
 name|EOFRecord
 operator|.
 name|sid
 case|:
-comment|// ignore empty sheets
+comment|// end of workbook, worksheet etc. records
 if|if
 condition|(
 name|insideWorksheet
@@ -1088,12 +1112,37 @@ operator|=
 literal|false
 expr_stmt|;
 break|break;
-comment|/* SSTRecord: holds all the strings for LabelSSTRecords */
+case|case
+name|BoundSheetRecord
+operator|.
+name|sid
+case|:
+comment|// Worksheet index record
+name|BoundSheetRecord
+name|boundSheetRecord
+init|=
+operator|(
+name|BoundSheetRecord
+operator|)
+name|record
+decl_stmt|;
+name|sheetNames
+operator|.
+name|add
+argument_list|(
+name|boundSheetRecord
+operator|.
+name|getSheetname
+argument_list|()
+argument_list|)
+expr_stmt|;
+break|break;
 case|case
 name|SSTRecord
 operator|.
 name|sid
 case|:
+comment|// holds all the strings for LabelSSTRecords
 name|sstRecord
 operator|=
 operator|(
@@ -1102,57 +1151,12 @@ operator|)
 name|record
 expr_stmt|;
 break|break;
-comment|/* BoundSheetRecord: Worksheet index record */
-case|case
-name|BoundSheetRecord
-operator|.
-name|sid
-case|:
-name|BoundSheetRecord
-name|boundSheetRecord
-init|=
-operator|(
-name|BoundSheetRecord
-operator|)
-name|record
-decl_stmt|;
-name|String
-name|sheetName
-init|=
-name|boundSheetRecord
-operator|.
-name|getSheetname
-argument_list|()
-decl_stmt|;
-name|sheetNames
-operator|.
-name|add
-argument_list|(
-name|sheetName
-argument_list|)
-expr_stmt|;
-break|break;
-comment|// FIXME - requires POI release
-comment|///* HyperlinkRecord: holds a URL associated with a cell */
-comment|//case HyperlinkRecord.sid:
-comment|//    HyperlinkRecord hyperlinkRecord = (HyperlinkRecord)record;
-comment|//    if (insideWorksheet) {
-comment|//        int row = hyperlinkRecord.getFirstRow();
-comment|//        short column =  hyperlinkRecord.getFirstColumn();
-comment|//        Point point = new Point(column, row);
-comment|//        Cell cell = currentSheet.get(point);
-comment|//        if (cell != null) {
-comment|//            cell = new LinkedCell(cell, hyperlinkRecord.getAddress());
-comment|//            currentSheet.put(point, cell);
-comment|//        }
-comment|//    }
-comment|//    break;
-comment|/* FormulaRecord: Cell value from a formula */
 case|case
 name|FormulaRecord
 operator|.
 name|sid
 case|:
+comment|// Cell value from a formula
 name|FormulaRecord
 name|formula
 init|=
@@ -1176,12 +1180,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-comment|/* LabelRecord: strings stored directly in the cell */
 case|case
 name|LabelRecord
 operator|.
 name|sid
 case|:
+comment|// strings stored directly in the cell
 name|LabelRecord
 name|label
 init|=
@@ -1190,72 +1194,61 @@ name|LabelRecord
 operator|)
 name|record
 decl_stmt|;
-name|addCell
+name|addTextCell
 argument_list|(
 name|record
 argument_list|,
-name|getTextCell
-argument_list|(
 name|label
 operator|.
 name|getValue
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
 break|break;
-comment|/* LabelSSTRecord: Ref. a string in the shared string table */
 case|case
 name|LabelSSTRecord
 operator|.
 name|sid
 case|:
+comment|// Ref. a string in the shared string table
 name|LabelSSTRecord
-name|labelSSTRecord
+name|sst
 init|=
 operator|(
 name|LabelSSTRecord
 operator|)
 name|record
 decl_stmt|;
-name|int
-name|sstIndex
-init|=
-name|labelSSTRecord
-operator|.
-name|getSSTIndex
-argument_list|()
-decl_stmt|;
-name|String
-name|sstLabel
+name|UnicodeString
+name|unicode
 init|=
 name|sstRecord
 operator|.
 name|getString
 argument_list|(
-name|sstIndex
-argument_list|)
+name|sst
 operator|.
-name|getString
+name|getSSTIndex
 argument_list|()
+argument_list|)
 decl_stmt|;
-name|addCell
+name|addTextCell
 argument_list|(
 name|record
 argument_list|,
-name|getTextCell
-argument_list|(
-name|sstLabel
-argument_list|)
+name|unicode
+operator|.
+name|getString
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
-comment|/* NumberRecord: Contains a numeric cell value */
 case|case
 name|NumberRecord
 operator|.
 name|sid
 case|:
+comment|// Contains a numeric cell value
 name|NumberRecord
 name|number
 init|=
@@ -1279,12 +1272,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-comment|/* RKRecord: Excel internal number record */
 case|case
 name|RKRecord
 operator|.
 name|sid
 case|:
+comment|// Excel internal number record
 name|RKRecord
 name|rk
 init|=
@@ -1308,6 +1301,16 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
+comment|// FIXME - requires POI release
+comment|// case HyperlinkRecord.sid: // holds a URL associated with a cell
+comment|//     HyperlinkRecord link = (HyperlinkRecord) record;
+comment|//     Point point =
+comment|//         new Point(link.getFirstColumn(), link.getFirstRow());
+comment|//     Cell cell = currentSheet.get(point);
+comment|//     if (cell != null) {
+comment|//         addCell(record, new LinkedCell(cell, link.getAddress()));
+comment|//     }
+comment|//     break;
 block|}
 block|}
 comment|/**          * Adds the given cell (unless<code>null</code>) to the current          * worksheet (if any) at the position (if any) of the given record.          *          * @param record record that holds the cell value          * @param cell cell value (or<code>null</code>)          */
@@ -1384,11 +1387,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Returns a text cell with the given text comment. The given text          * is trimmed, and ignored if<code>null</code> or empty.          *          * @param text text content, may be<code>null</code>          * @return text cell, or<code>null</code>          */
+comment|/**          * Adds a text cell with the given text comment. The given text          * is trimmed, and ignored if<code>null</code> or empty.          *          * @param record record that holds the text value          * @param text text content, may be<code>null</code>          */
 specifier|private
-name|Cell
-name|getTextCell
+name|void
+name|addTextCell
 parameter_list|(
+name|Record
+name|record
+parameter_list|,
 name|String
 name|text
 parameter_list|)
@@ -1417,18 +1423,19 @@ operator|>
 literal|0
 condition|)
 block|{
-return|return
+name|addCell
+argument_list|(
+name|record
+argument_list|,
 operator|new
 name|TextCell
 argument_list|(
 name|text
 argument_list|)
-return|;
+argument_list|)
+expr_stmt|;
 block|}
 block|}
-return|return
-literal|null
-return|;
 block|}
 comment|/**          * Process an excel sheet.          *          * @throws SAXException if an error occurs          */
 specifier|private
