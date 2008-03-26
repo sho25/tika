@@ -805,14 +805,18 @@ name|HSSFListener
 implements|,
 name|Serializable
 block|{
+comment|/**          * XHTML content handler to which the document content is rendered.          */
 specifier|private
 specifier|final
 name|XHTMLContentHandler
 name|handler
 decl_stmt|;
+comment|/**          * Potential exception thrown by the content handler. When set to          * non-<code>null</code>, causes all subsequent HSSF records to be          * ignored and the stored exception to be thrown when          * {@link #throwStoredException()} is invoked.          */
 specifier|private
 name|SAXException
 name|exception
+init|=
+literal|null
 decl_stmt|;
 specifier|private
 name|SSTRecord
@@ -927,12 +931,6 @@ name|handler
 operator|=
 name|handler
 expr_stmt|;
-name|this
-operator|.
-name|exception
-operator|=
-literal|null
-expr_stmt|;
 block|}
 comment|/**          * Process a HSSF record.          *          * @param record HSSF Record          */
 specifier|public
@@ -942,6 +940,13 @@ parameter_list|(
 name|Record
 name|record
 parameter_list|)
+block|{
+if|if
+condition|(
+name|exception
+operator|==
+literal|null
+condition|)
 block|{
 try|try
 block|{
@@ -975,13 +980,6 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{
-if|if
-condition|(
-name|exception
-operator|==
-literal|null
-condition|)
 block|{
 name|exception
 operator|=
