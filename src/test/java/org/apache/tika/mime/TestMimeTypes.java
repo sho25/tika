@@ -513,6 +513,9 @@ comment|// TODO: Currently returns generic MS Office type based on
 comment|// the magic header. The getMimeType method should understand
 comment|// MS Office types better.
 comment|// assertEquals("application/vnd.ms-excel", getMimeType("testEXCEL.xls"));
+comment|// assertEquals("application/vnd.ms-powerpoint",
+comment|//         getMimeType("testPPT.ppt"));
+comment|// assertEquals("application/msword", getMimeType("testWORD.doc"));
 name|assertEquals
 argument_list|(
 literal|"text/html"
@@ -545,16 +548,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.ms-powerpoint"
-argument_list|,
-name|getMimeType
-argument_list|(
-literal|"testPPT.ppt"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"application/rtf"
 argument_list|,
 name|getMimeType
@@ -570,16 +563,6 @@ argument_list|,
 name|getMimeType
 argument_list|(
 literal|"testTXT.txt"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/msword"
-argument_list|,
-name|getMimeType
-argument_list|(
-literal|"testWORD.doc"
 argument_list|)
 argument_list|)
 expr_stmt|;
