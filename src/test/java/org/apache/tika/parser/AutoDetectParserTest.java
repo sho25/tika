@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -101,7 +91,7 @@ name|tika
 operator|.
 name|sax
 operator|.
-name|WriteOutContentHandler
+name|BodyContentHandler
 import|;
 end_import
 
@@ -292,21 +282,12 @@ operator|.
 name|statedType
 argument_list|)
 expr_stmt|;
-name|StringWriter
-name|writer
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
 name|ContentHandler
 name|handler
 init|=
 operator|new
-name|WriteOutContentHandler
-argument_list|(
-name|writer
-argument_list|)
+name|BodyContentHandler
+argument_list|()
 decl_stmt|;
 operator|new
 name|AutoDetectParser
@@ -347,7 +328,7 @@ literal|"Expected content not found: "
 operator|+
 name|tp
 argument_list|,
-name|writer
+name|handler
 operator|.
 name|toString
 argument_list|()

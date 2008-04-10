@@ -29,11 +29,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|junit
 operator|.
-name|io
+name|framework
 operator|.
-name|StringWriter
+name|TestCase
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|tika
 operator|.
 name|sax
 operator|.
-name|WriteOutContentHandler
+name|BodyContentHandler
 import|;
 end_import
 
@@ -74,16 +74,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -122,21 +112,12 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-name|StringWriter
-name|writer
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
 name|ContentHandler
 name|handler
 init|=
 operator|new
-name|WriteOutContentHandler
-argument_list|(
-name|writer
-argument_list|)
+name|BodyContentHandler
+argument_list|()
 decl_stmt|;
 operator|new
 name|OfficeParser
@@ -196,7 +177,7 @@ expr_stmt|;
 name|String
 name|content
 init|=
-name|writer
+name|handler
 operator|.
 name|toString
 argument_list|()

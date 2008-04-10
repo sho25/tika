@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -83,7 +73,7 @@ name|tika
 operator|.
 name|sax
 operator|.
-name|TeeContentHandler
+name|BodyContentHandler
 import|;
 end_import
 
@@ -97,7 +87,7 @@ name|tika
 operator|.
 name|sax
 operator|.
-name|WriteOutContentHandler
+name|TeeContentHandler
 import|;
 end_import
 
@@ -185,34 +175,26 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-name|StringWriter
-name|writer
+name|ContentHandler
+name|body
 init|=
 operator|new
-name|StringWriter
+name|BodyContentHandler
 argument_list|()
 decl_stmt|;
-name|handler
-operator|=
-operator|new
-name|TeeContentHandler
-argument_list|(
-name|handler
-argument_list|,
-operator|new
-name|WriteOutContentHandler
-argument_list|(
-name|writer
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|super
 operator|.
 name|parse
 argument_list|(
 name|stream
 argument_list|,
+operator|new
+name|TeeContentHandler
+argument_list|(
 name|handler
+argument_list|,
+name|body
+argument_list|)
 argument_list|,
 name|metadata
 argument_list|)
@@ -220,7 +202,7 @@ expr_stmt|;
 name|String
 name|content
 init|=
-name|writer
+name|body
 operator|.
 name|toString
 argument_list|()
