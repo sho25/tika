@@ -339,6 +339,22 @@ name|hssf
 operator|.
 name|record
 operator|.
+name|HyperlinkRecord
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|hssf
+operator|.
+name|record
+operator|.
 name|UnicodeString
 import|;
 end_import
@@ -759,7 +775,17 @@ operator|.
 name|sid
 argument_list|)
 expr_stmt|;
-comment|//hssfRequest.addListener(listener, HyperlinkRecord.sid); // FIXME - requires POI release
+name|hssfRequest
+operator|.
+name|addListener
+argument_list|(
+name|listener
+argument_list|,
+name|HyperlinkRecord
+operator|.
+name|sid
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Create event factory and process Workbook (fire events)
 name|DocumentInputStream
@@ -1244,18 +1270,80 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
-comment|// FIXME - requires POI release
-comment|// case HyperlinkRecord.sid: // holds a URL associated with a cell
-comment|//     if (currentSheet != null) {
-comment|//         HyperlinkRecord link = (HyperlinkRecord) record;
-comment|//         Point point =
-comment|//             new Point(link.getFirstColumn(), link.getFirstRow());
-comment|//         Cell cell = currentSheet.get(point);
-comment|//         if (cell != null) {
-comment|//             addCell(record, new LinkedCell(cell, link.getAddress()));
-comment|//         }
-comment|//     }
-comment|//     break;
+case|case
+name|HyperlinkRecord
+operator|.
+name|sid
+case|:
+comment|// holds a URL associated with a cell
+if|if
+condition|(
+name|currentSheet
+operator|!=
+literal|null
+condition|)
+block|{
+name|HyperlinkRecord
+name|link
+init|=
+operator|(
+name|HyperlinkRecord
+operator|)
+name|record
+decl_stmt|;
+name|Point
+name|point
+init|=
+operator|new
+name|Point
+argument_list|(
+name|link
+operator|.
+name|getFirstColumn
+argument_list|()
+argument_list|,
+name|link
+operator|.
+name|getFirstRow
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Cell
+name|cell
+init|=
+name|currentSheet
+operator|.
+name|get
+argument_list|(
+name|point
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|cell
+operator|!=
+literal|null
+condition|)
+block|{
+name|addCell
+argument_list|(
+name|record
+argument_list|,
+operator|new
+name|LinkedCell
+argument_list|(
+name|cell
+argument_list|,
+name|link
+operator|.
+name|getAddress
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+break|break;
 block|}
 block|}
 comment|/**          * Adds the given cell (unless<code>null</code>) to the current          * worksheet (if any) at the position (if any) of the given record.          *          * @param record record that holds the cell value          * @param cell cell value (or<code>null</code>)          */
