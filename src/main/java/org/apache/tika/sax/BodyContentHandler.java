@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that only passes the XHTML&lt;body/&gt;  * tag and everything inside it to the underlying handler.  */
+comment|/**  * Content handler decorator that only passes everything inside  * the XHTML&lt;body/&gt; tag to the underlying handler. Note that  * the&lt;body/&gt; tag itself is<em>not</em> passed on.  */
 end_comment
 
 begin_class
@@ -134,7 +134,7 @@ name|PARSER
 operator|.
 name|parse
 argument_list|(
-literal|"/xhtml:html/xhtml:body//node()"
+literal|"/xhtml:html/xhtml:body/*//node()"
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a content handler that passes all XHTML body events to the      * given underlying content handler.      *      * @param handler content handler      */
