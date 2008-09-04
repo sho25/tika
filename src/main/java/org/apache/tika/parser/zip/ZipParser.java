@@ -368,6 +368,13 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|xhtml
+operator|.
+name|characters
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|Metadata
@@ -420,6 +427,13 @@ parameter_list|)
 block|{
 comment|// Could not parse the entry, just skip the content
 block|}
+name|xhtml
+operator|.
+name|characters
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 name|xhtml
 operator|.
 name|endElement
