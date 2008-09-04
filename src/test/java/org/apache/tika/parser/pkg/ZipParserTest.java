@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|zip
+name|pkg
 package|;
 end_package
 
