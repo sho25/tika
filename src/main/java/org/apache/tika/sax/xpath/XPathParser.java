@@ -165,7 +165,7 @@ return|return
 operator|new
 name|CompositeMatcher
 argument_list|(
-name|NodeMatcher
+name|TextMatcher
 operator|.
 name|INSTANCE
 argument_list|,
