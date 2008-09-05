@@ -1341,7 +1341,7 @@ comment|/**      * IO Test method, usable only when you plan to do changes in me
 specifier|public
 specifier|final
 name|void
-name|testHandlingSpeed
+name|disabledTestHandlingSpeed
 parameter_list|()
 block|{
 name|SpellCheckedMetadata
