@@ -323,6 +323,13 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
+name|xhtml
+operator|.
+name|startElement
+argument_list|(
+literal|"pre"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|packageName
@@ -600,6 +607,13 @@ operator|.
 name|characters
 argument_list|(
 literal|"}\n"
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|endElement
+argument_list|(
+literal|"pre"
 argument_list|)
 expr_stmt|;
 name|xhtml
