@@ -165,7 +165,7 @@ name|PDF2XHTML
 extends|extends
 name|PDFTextStripper
 block|{
-comment|/**      * Converts the given PDF document (and related metadata) to a stream      * of XHTML SAX events sent to the given content handler.      *       * @param document PDF document      * @param handler SAX content handler      * @param metadata PDF metadata      * @throws SAXException if the content handler fails to process SAX events      * @throws TikaException if the PDF document can not be processed      */
+comment|/**      * Converts the given PDF document (and related metadata) to a stream      * of XHTML SAX events sent to the given content handler.      *      * @param document PDF document      * @param handler SAX content handler      * @param metadata PDF metadata      * @throws SAXException if the content handler fails to process SAX events      * @throws TikaException if the PDF document can not be processed      */
 specifier|public
 specifier|static
 name|void
@@ -528,55 +528,12 @@ argument_list|)
 throw|;
 block|}
 block|}
-specifier|protected
-name|void
-name|processLineSeparator
-parameter_list|(
-name|TextPosition
-name|p
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-try|try
-block|{
-name|handler
-operator|.
-name|characters
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOExceptionWithCause
-argument_list|(
-literal|"Unable to write a newline"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-specifier|protected
-name|void
-name|processWordSeparator
-parameter_list|(
-name|TextPosition
-name|a
-parameter_list|,
-name|TextPosition
-name|b
-parameter_list|)
-throws|throws
-name|IOException
+comment|// Two methods added to work around lack of support for processWordSeparator
+comment|// and processLineSeparator in PDFBox-0.7.3. This is fixed in CVS Head (PDFBox-0.7.4)
+specifier|public
+name|String
+name|getWordSeparator
+parameter_list|()
 block|{
 try|try
 block|{
@@ -593,18 +550,59 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
+block|{          }
+return|return
+name|super
+operator|.
+name|getWordSeparator
+argument_list|()
+return|;
+comment|//To change body of overridden methods use File | Settings | File Templates.
+block|}
+specifier|public
+name|String
+name|getLineSeparator
+parameter_list|()
 block|{
-throw|throw
-operator|new
-name|IOExceptionWithCause
+try|try
+block|{
+name|handler
+operator|.
+name|characters
 argument_list|(
-literal|"Unable to write a space"
-argument_list|,
-name|e
+literal|"\n"
 argument_list|)
-throw|;
+expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{          }
+return|return
+name|super
+operator|.
+name|getLineSeparator
+argument_list|()
+return|;
 block|}
+comment|//    protected void processLineSeparator(TextPosition p) throws IOException {
+comment|//        try {
+comment|//            handler.characters("\n");
+comment|//        } catch (SAXException e) {
+comment|//            throw new IOExceptionWithCause("Unable to write a newline", e);
+comment|//        }
+comment|//    }
+comment|//
+comment|//    protected void processWordSeparator(TextPosition a, TextPosition b)
+comment|//            throws IOException {
+comment|//        try {
+comment|//            handler.characters(" ");
+comment|//        } catch (SAXException e) {
+comment|//            throw new IOExceptionWithCause("Unable to write a space", e);
+comment|//        }
+comment|//    }
 block|}
 end_class
 
