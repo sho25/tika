@@ -145,17 +145,6 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-name|metadata
-operator|.
-name|set
-argument_list|(
-name|Metadata
-operator|.
-name|RESOURCE_NAME_KEY
-argument_list|,
-literal|"testMP3.mp3"
-argument_list|)
-expr_stmt|;
 name|InputStream
 name|stream
 init|=
