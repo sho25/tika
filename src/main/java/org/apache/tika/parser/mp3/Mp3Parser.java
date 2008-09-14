@@ -390,6 +390,144 @@ block|,
 comment|/* 79 */
 literal|"Hard Rock"
 block|,
+comment|/* 80 */
+literal|"Folk"
+block|,
+comment|/* 81 */
+literal|"Folk-Rock"
+block|,
+comment|/* 82 */
+literal|"National Folk"
+block|,
+comment|/* 83 */
+literal|"Swing"
+block|,
+comment|/* 84 */
+literal|"Fast Fusion"
+block|,
+comment|/* 85 */
+literal|"Bebob"
+block|,
+comment|/* 86 */
+literal|"Latin"
+block|,
+comment|/* 87 */
+literal|"Revival"
+block|,
+comment|/* 88 */
+literal|"Celtic"
+block|,
+comment|/* 89 */
+literal|"Bluegrass"
+block|,
+comment|/* 90 */
+literal|"Avantgarde"
+block|,
+comment|/* 91 */
+literal|"Gothic Rock"
+block|,
+comment|/* 92 */
+literal|"Progressive Rock"
+block|,
+comment|/* 93 */
+literal|"Psychedelic Rock"
+block|,
+comment|/* 94 */
+literal|"Symphonic Rock"
+block|,
+comment|/* 95 */
+literal|"Slow Rock"
+block|,
+comment|/* 96 */
+literal|"Big Band"
+block|,
+comment|/* 97 */
+literal|"Chorus"
+block|,
+comment|/* 98 */
+literal|"Easy Listening"
+block|,
+comment|/* 99 */
+literal|"Acoustic"
+block|,
+comment|/* 100 */
+literal|"Humour"
+block|,
+comment|/* 101 */
+literal|"Speech"
+block|,
+comment|/* 102 */
+literal|"Chanson"
+block|,
+comment|/* 103 */
+literal|"Opera"
+block|,
+comment|/* 104 */
+literal|"Chamber Music"
+block|,
+comment|/* 105 */
+literal|"Sonata"
+block|,
+comment|/* 106 */
+literal|"Symphony"
+block|,
+comment|/* 107 */
+literal|"Booty Bass"
+block|,
+comment|/* 108 */
+literal|"Primus"
+block|,
+comment|/* 109 */
+literal|"Porn Groove"
+block|,
+comment|/* 110 */
+literal|"Satire"
+block|,
+comment|/* 111 */
+literal|"Slow Jam"
+block|,
+comment|/* 112 */
+literal|"Club"
+block|,
+comment|/* 113 */
+literal|"Tango"
+block|,
+comment|/* 114 */
+literal|"Samba"
+block|,
+comment|/* 115 */
+literal|"Folklore"
+block|,
+comment|/* 116 */
+literal|"Ballad"
+block|,
+comment|/* 117 */
+literal|"Power Ballad"
+block|,
+comment|/* 118 */
+literal|"Rhythmic Soul"
+block|,
+comment|/* 119 */
+literal|"Freestyle"
+block|,
+comment|/* 120 */
+literal|"Duet"
+block|,
+comment|/* 121 */
+literal|"Punk Rock"
+block|,
+comment|/* 122 */
+literal|"Drum Solo"
+block|,
+comment|/* 123 */
+literal|"A capella"
+block|,
+comment|/* 124 */
+literal|"Euro-House"
+block|,
+comment|/* 125 */
+literal|"Dance Hall"
+block|,
 comment|/* sentinel */
 literal|""
 block|}
