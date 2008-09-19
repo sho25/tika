@@ -85,7 +85,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|Parser
 import|;
 end_import
 
@@ -135,8 +135,8 @@ begin_class
 specifier|public
 class|class
 name|Mp3Parser
-extends|extends
-name|AbstractParser
+implements|implements
+name|Parser
 block|{
 comment|/**      * List of predefined genres.      *      * @see http://www.id3.org/id3v2-00      */
 specifier|private

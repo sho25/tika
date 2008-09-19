@@ -83,27 +83,6 @@ parameter_list|(
 name|InputStream
 name|stream
 parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|TikaException
-block|{
-throw|throw
-operator|new
-name|TikaException
-argument_list|(
-literal|"Parse error"
-argument_list|)
-throw|;
-block|}
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
 name|ContentHandler
 name|handler
 parameter_list|,

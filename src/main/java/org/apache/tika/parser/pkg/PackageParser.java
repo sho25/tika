@@ -91,20 +91,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|AutoDetectParser
 import|;
 end_import
@@ -172,8 +158,8 @@ specifier|public
 specifier|abstract
 class|class
 name|PackageParser
-extends|extends
-name|AbstractParser
+implements|implements
+name|Parser
 block|{
 comment|/**      * The parser instance used to parse package entries.      */
 specifier|private

@@ -96,21 +96,6 @@ specifier|public
 interface|interface
 name|Parser
 block|{
-comment|/**      * Parses document metadata from the given document stream.      *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *      * @param stream the document stream (input)      * @param metadata document metadata (input and output)      * @throws IOException if the document stream could not be read      * @throws TikaException if the document could not be parsed      */
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|TikaException
-function_decl|;
 comment|/**      * Parses a document stream into a sequence of XHTML SAX events.      * Fills in related document metadata in the given metadata object.      *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *      * @param stream the document stream (input)      * @param handler handler for the XHTML SAX events (output)      * @param metadata document metadata (input and output)      * @throws IOException if the document stream could not be read      * @throws SAXException if the SAX events could not be processed      * @throws TikaException if the document could not be parsed      */
 name|void
 name|parse

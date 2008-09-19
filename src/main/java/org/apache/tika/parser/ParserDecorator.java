@@ -95,8 +95,8 @@ begin_class
 specifier|public
 class|class
 name|ParserDecorator
-extends|extends
-name|AbstractParser
+implements|implements
+name|Parser
 block|{
 comment|/**      * The decorated parser instance.      */
 specifier|private

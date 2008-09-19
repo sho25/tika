@@ -179,18 +179,6 @@ name|command
 init|=
 literal|"cat"
 decl_stmt|;
-comment|/**      * Does nothing as metadata extraction is not supported by this parser.      */
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-block|{     }
 comment|/**      * Executes the configured external command and passes the given document      * stream as a simple XHTML document to the given SAX content handler.      * No metadata is extracted.      */
 specifier|public
 name|void

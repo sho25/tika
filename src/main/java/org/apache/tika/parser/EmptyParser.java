@@ -95,17 +95,6 @@ parameter_list|(
 name|InputStream
 name|stream
 parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-block|{     }
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
 name|ContentHandler
 name|handler
 parameter_list|,

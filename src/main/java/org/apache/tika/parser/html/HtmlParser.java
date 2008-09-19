@@ -131,7 +131,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|Parser
 import|;
 end_import
 
@@ -323,8 +323,8 @@ begin_class
 specifier|public
 class|class
 name|HtmlParser
-extends|extends
-name|AbstractParser
+implements|implements
+name|Parser
 block|{
 comment|/**      * Set of safe mappings from incoming HTML elements to outgoing      * XHTML elements. Ensures that the output is valid XHTML 1.0 Strict.      */
 specifier|private
