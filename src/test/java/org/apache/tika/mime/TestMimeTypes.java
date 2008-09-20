@@ -23,26 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -61,6 +41,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -68,10 +68,6 @@ operator|.
 name|TestCase
 import|;
 end_import
-
-begin_comment
-comment|// Tika imports
-end_comment
 
 begin_import
 import|import
@@ -512,9 +508,10 @@ expr_stmt|;
 comment|// TODO: Currently returns generic MS Office type based on
 comment|// the magic header. The getMimeType method should understand
 comment|// MS Office types better.
-comment|// assertEquals("application/vnd.ms-excel", getMimeType("testEXCEL.xls"));
+comment|// assertEquals("application/vnd.ms-excel",
+comment|// getMimeType("testEXCEL.xls"));
 comment|// assertEquals("application/vnd.ms-powerpoint",
-comment|//         getMimeType("testPPT.ppt"));
+comment|// getMimeType("testPPT.ppt"));
 comment|// assertEquals("application/msword", getMimeType("testWORD.doc"));
 name|assertEquals
 argument_list|(
@@ -573,6 +570,46 @@ argument_list|,
 name|getMimeType
 argument_list|(
 literal|"testXML.xml"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"audio/basic"
+argument_list|,
+name|getMimeType
+argument_list|(
+literal|"testAU.au"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"audio/x-aiff"
+argument_list|,
+name|getMimeType
+argument_list|(
+literal|"testAIFF.aif"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"audio/x-wav"
+argument_list|,
+name|getMimeType
+argument_list|(
+literal|"testWAV.wav"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"audio/midi"
+argument_list|,
+name|getMimeType
+argument_list|(
+literal|"testMID.mid"
 argument_list|)
 argument_list|)
 expr_stmt|;
