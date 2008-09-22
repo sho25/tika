@@ -645,7 +645,11 @@ name|parser
 operator|.
 name|setContentHandler
 argument_list|(
+operator|new
+name|XHTMLDowngradeHandler
+argument_list|(
 name|handler
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|parser
