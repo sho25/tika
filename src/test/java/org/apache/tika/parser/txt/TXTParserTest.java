@@ -422,7 +422,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"\n"
 argument_list|,
 name|handler
 operator|.
