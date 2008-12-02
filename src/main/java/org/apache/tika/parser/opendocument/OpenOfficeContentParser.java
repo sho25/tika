@@ -342,7 +342,7 @@ block|{
 literal|'\t'
 block|}
 decl_stmt|;
-comment|/** 	 * Mappings between OpenDocument tag names and XHTML tag names (including attributes). 	 * All other tag names/attributes are ignored and left out from event stream.  	 */
+comment|/**      * Mappings between OpenDocument tag names and XHTML tag names (including attributes).      * All other tag names/attributes are ignored and left out from event stream.       */
 specifier|private
 specifier|static
 specifier|final
@@ -634,7 +634,7 @@ literal|"rowspan"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* TODO: The following is not correct, the cell should be repeated not spanned! 		 * Code generates a HTML cell, spanning all repeated columns, to make the cell look correct. 		 * Problems may occur when both spanning and repeating is given, which is not allowed by spec. 		 * Cell spanning instead of repeating  is not a problem, because OpenOffice uses it 		 * only for empty cells. 		 */
+comment|/* TODO: The following is not correct, the cell should be repeated not spanned!          * Code generates a HTML cell, spanning all repeated columns, to make the cell look correct.          * Problems may occur when both spanning and repeating is given, which is not allowed by spec.          * Cell spanning instead of repeating  is not a problem, because OpenOffice uses it          * only for empty cells.          */
 name|tableCellAttsMapping
 operator|.
 name|put
