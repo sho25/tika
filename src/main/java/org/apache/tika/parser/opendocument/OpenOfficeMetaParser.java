@@ -463,6 +463,14 @@ argument_list|,
 literal|"character-count"
 argument_list|)
 expr_stmt|;
+name|dh
+operator|=
+operator|new
+name|NSNormalizerContentHandler
+argument_list|(
+name|dh
+argument_list|)
+expr_stmt|;
 return|return
 name|dh
 return|;
