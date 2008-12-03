@@ -342,7 +342,7 @@ block|{
 literal|'\t'
 block|}
 decl_stmt|;
-comment|/**      * Mappings between OpenDocument tag names and XHTML tag names (including attributes).      * All other tag names/attributes are ignored and left out from event stream.       */
+comment|/**      * Mappings between OpenDocument tag names and XHTML tag names      * (including attributes). All other tag names/attributes are ignored      * and left out from event stream.       */
 specifier|private
 specifier|static
 specifier|final
@@ -710,7 +710,6 @@ argument_list|,
 name|metadata
 argument_list|)
 decl_stmt|;
-specifier|final
 name|DefaultHandler
 name|dh
 init|=
@@ -736,7 +735,9 @@ name|int
 name|nodeDepth
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+specifier|private
+name|int
 name|completelyFiltered
 init|=
 literal|0
@@ -794,6 +795,7 @@ operator|-
 literal|1
 argument_list|)
 condition|)
+block|{
 name|super
 operator|.
 name|characters
@@ -806,9 +808,10 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|// helper for checking tags which need complete filtering (with sub-tags)
+block|}
+comment|// helper for checking tags which need complete filtering
+comment|// (with sub-tags)
 specifier|private
-specifier|final
 name|boolean
 name|needsCompleteFiltering
 parameter_list|(
@@ -819,17 +822,17 @@ name|String
 name|localName
 parameter_list|)
 block|{
-return|return
-operator|(
-operator|(
+if|if
+condition|(
 name|TEXT_NS
 operator|.
 name|equals
 argument_list|(
 name|namespaceURI
 argument_list|)
-operator|&&
-operator|(
+condition|)
+block|{
+return|return
 name|localName
 operator|.
 name|endsWith
@@ -843,30 +846,37 @@ name|endsWith
 argument_list|(
 literal|"-style"
 argument_list|)
-operator|)
-operator|)
-operator|||
-operator|(
+return|;
+block|}
+elseif|else
+if|if
+condition|(
 name|TABLE_NS
 operator|.
 name|equals
 argument_list|(
 name|namespaceURI
 argument_list|)
-operator|&&
+condition|)
+block|{
+return|return
 literal|"covered-table-cell"
 operator|.
 name|equals
 argument_list|(
 name|localName
 argument_list|)
-operator|)
-operator|)
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|// map the heading level to<hX> HTML tags
 specifier|private
-specifier|final
 name|String
 name|getXHTMLHeaderTagName
 parameter_list|(
@@ -874,7 +884,6 @@ name|Attributes
 name|atts
 parameter_list|)
 block|{
-specifier|final
 name|String
 name|depthStr
 init|=
@@ -893,9 +902,11 @@ name|depthStr
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|"h1"
 return|;
+block|}
 name|int
 name|depth
 init|=
@@ -909,28 +920,34 @@ decl_stmt|;
 if|if
 condition|(
 name|depth
-operator|>
+operator|>=
 literal|6
 condition|)
-name|depth
-operator|=
-literal|6
-expr_stmt|;
+block|{
+return|return
+literal|"h6"
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|depth
-operator|<
+operator|<=
 literal|1
 condition|)
-name|depth
-operator|=
-literal|1
-expr_stmt|;
+block|{
+return|return
+literal|"h1"
+return|;
+block|}
+else|else
+block|{
 return|return
 literal|"h"
 operator|+
 name|depth
 return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -953,9 +970,11 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
-comment|// keep track of current node type. If it is a text node, a bit at the current depth ist set in textNodeStack.
-comment|// characters() checks the top bit to determine, if the actual node is a text node to print out
-comment|// nodeDepth contains the depth of the current node and also marks top of stack.
+comment|// keep track of current node type. If it is a text node,
+comment|// a bit at the current depth ist set in textNodeStack.
+comment|// characters() checks the top bit to determine, if the
+comment|// actual node is a text node to print out nodeDepth contains
+comment|// the depth of the current node and also marks top of stack.
 assert|assert
 name|nodeDepth
 operator|>=
@@ -991,9 +1010,11 @@ argument_list|,
 name|localName
 argument_list|)
 condition|)
+block|{
 name|completelyFiltered
 operator|++
 expr_stmt|;
+block|}
 comment|// call next handler if no filtering
 if|if
 condition|(
@@ -1002,7 +1023,8 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// special handling of text:h, that are directly passed to xhtml handler
+comment|// special handling of text:h, that are directly passed
+comment|// to xhtml handler
 if|if
 condition|(
 name|TEXT_NS
@@ -1080,7 +1102,8 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// special handling of text:h, that are directly passed to xhtml handler
+comment|// special handling of text:h, that are directly passed
+comment|// to xhtml handler
 if|if
 condition|(
 name|TEXT_NS
@@ -1132,8 +1155,10 @@ name|equals
 argument_list|(
 name|namespaceURI
 argument_list|)
-operator|&&
-operator|(
+condition|)
+block|{
+if|if
+condition|(
 literal|"tab-stop"
 operator|.
 name|equals
@@ -1147,8 +1172,8 @@ name|equals
 argument_list|(
 name|localName
 argument_list|)
-operator|)
 condition|)
+block|{
 name|this
 operator|.
 name|characters
@@ -1163,6 +1188,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 comment|// revert filter for *all* content of some tags
 if|if
 condition|(
@@ -1173,9 +1200,11 @@ argument_list|,
 name|localName
 argument_list|)
 condition|)
+block|{
 name|completelyFiltered
 operator|--
 expr_stmt|;
+block|}
 assert|assert
 name|completelyFiltered
 operator|>=
@@ -1203,8 +1232,6 @@ parameter_list|,
 name|String
 name|uri
 parameter_list|)
-throws|throws
-name|SAXException
 block|{
 comment|// remove prefix mappings as they should not occur in XHTML
 block|}
@@ -1217,8 +1244,6 @@ parameter_list|(
 name|String
 name|prefix
 parameter_list|)
-throws|throws
-name|SAXException
 block|{
 comment|// remove prefix mappings as they should not occur in XHTML
 block|}

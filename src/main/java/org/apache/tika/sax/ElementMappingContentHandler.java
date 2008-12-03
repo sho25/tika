@@ -98,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that maps element<code>QName</code>s using a<code>Map</code>.  * Not mappable elements are not forwarded.  * Attributes may also be mapped (for each element different using a<code>Map</code> for attributes),  * not mappable attributes are not forwarded.  * The default is to not map any attributes and therefore do not forward any of them.  */
+comment|/**  * Content handler decorator that maps element<code>QName</code>s using  * a<code>Map</code>. Not mappable elements are not forwarded.  * Attributes may also be mapped (for each element different using  * a<code>Map</code> for attributes), not mappable attributes are not  * forwarded. The default is to not map any attributes and therefore do  * not forward any of them.  */
 end_comment
 
 begin_class
@@ -166,7 +166,6 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
-specifier|final
 name|TargetElement
 name|mapping
 init|=
@@ -190,7 +189,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|QName
 name|tag
 init|=
@@ -246,7 +244,6 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
-specifier|final
 name|TargetElement
 name|mapping
 init|=
@@ -270,7 +267,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-specifier|final
 name|QName
 name|tag
 init|=
@@ -307,61 +303,55 @@ specifier|final
 name|String
 name|getQNameAsString
 parameter_list|(
-specifier|final
 name|QName
 name|qname
 parameter_list|)
 block|{
-specifier|final
-name|StringBuilder
-name|qn
+name|String
+name|prefix
 init|=
-operator|new
-name|StringBuilder
-argument_list|(
 name|qname
 operator|.
 name|getPrefix
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|qn
+name|prefix
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
 condition|)
-name|qn
-operator|.
-name|append
-argument_list|(
-literal|':'
-argument_list|)
-expr_stmt|;
+block|{
 return|return
-name|qn
-operator|.
-name|append
-argument_list|(
+name|prefix
+operator|+
+literal|":"
+operator|+
 name|qname
 operator|.
 name|getLocalPart
 argument_list|()
-argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|qname
 operator|.
-name|toString
+name|getLocalPart
 argument_list|()
 return|;
+block|}
 block|}
 specifier|public
 specifier|static
 class|class
 name|TargetElement
 block|{
-comment|/** Creates an TargetElement, attributes of this element will be mapped as specified */
+comment|/**          * Creates an TargetElement, attributes of this element will          * be mapped as specified          */
 specifier|public
 name|TargetElement
 parameter_list|(
@@ -390,7 +380,7 @@ operator|=
 name|attributesMapping
 expr_stmt|;
 block|}
-comment|/** A shortcut that automatically creates the QName object */
+comment|/**          * A shortcut that automatically creates the QName object          */
 specifier|public
 name|TargetElement
 parameter_list|(
@@ -423,7 +413,7 @@ name|attributesMapping
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Creates an TargetElement with no attributes, all attributes will be deleted from SAX stream */
+comment|/**          * Creates an TargetElement with no attributes, all attributes          * will be deleted from SAX stream          */
 specifier|public
 name|TargetElement
 parameter_list|(
@@ -508,7 +498,6 @@ name|Attributes
 name|atts
 parameter_list|)
 block|{
-specifier|final
 name|AttributesImpl
 name|natts
 init|=
@@ -566,6 +555,7 @@ name|name
 operator|!=
 literal|null
 condition|)
+block|{
 name|natts
 operator|.
 name|addAttribute
@@ -600,6 +590,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|natts

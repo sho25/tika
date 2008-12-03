@@ -21,21 +21,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|namespace
-operator|.
-name|QName
+name|IOException
 import|;
 end_import
 
@@ -46,16 +34,6 @@ operator|.
 name|io
 operator|.
 name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
 import|;
 end_import
 
@@ -81,7 +59,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|SAXException
+name|Attributes
 import|;
 end_import
 
@@ -105,7 +83,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|Attributes
+name|InputSource
 import|;
 end_import
 
@@ -117,7 +95,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|InputSource
+name|SAXException
 import|;
 end_import
 
@@ -146,6 +124,30 @@ name|NSNormalizerContentHandler
 extends|extends
 name|ContentHandlerDecorator
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OLD_NS
+init|=
+literal|"http://openoffice.org/2000/"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|NEW_NS
+init|=
+literal|"urn:oasis:names:tc:opendocument:xmlns:"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|DTD_PUBLIC_ID
+init|=
+literal|"-//OpenOffice.org//DTD OfficeDocument 1.0//EN"
+decl_stmt|;
 specifier|public
 name|NSNormalizerContentHandler
 parameter_list|(
@@ -171,37 +173,39 @@ block|{
 if|if
 condition|(
 name|ns
-operator|==
+operator|!=
 literal|null
-condition|)
-return|return
-literal|null
-return|;
-if|if
-condition|(
+operator|&&
 name|ns
 operator|.
 name|startsWith
 argument_list|(
-literal|"http://openoffice.org/2000/"
+name|OLD_NS
 argument_list|)
 condition|)
-name|ns
-operator|=
-literal|"urn:oasis:names:tc:opendocument:xmlns:"
+block|{
+return|return
+name|NEW_NS
 operator|+
 name|ns
 operator|.
 name|substring
 argument_list|(
-literal|27
+name|OLD_NS
+operator|.
+name|length
+argument_list|()
 argument_list|)
 operator|+
 literal|":1.0"
-expr_stmt|;
+return|;
+block|}
+else|else
+block|{
 return|return
 name|ns
 return|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -371,7 +375,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** do not load any DTDs (may be requested by parser). Fake the DTD by returning a empty string as InputSource */
+comment|/**      * do not load any DTDs (may be requested by parser). Fake the DTD by      * returning a empty string as InputSource      */
 annotation|@
 name|Override
 specifier|public
@@ -391,13 +395,6 @@ name|SAXException
 block|{
 if|if
 condition|(
-literal|"-//OpenOffice.org//DTD OfficeDocument 1.0//EN"
-operator|.
-name|equals
-argument_list|(
-name|publicId
-argument_list|)
-operator|||
 operator|(
 name|systemId
 operator|!=
@@ -413,6 +410,13 @@ argument_list|(
 literal|".dtd"
 argument_list|)
 operator|)
+operator|||
+name|DTD_PUBLIC_ID
+operator|.
+name|equals
+argument_list|(
+name|publicId
+argument_list|)
 condition|)
 block|{
 return|return
