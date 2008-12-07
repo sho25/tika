@@ -178,7 +178,9 @@ init|=
 name|Chunks
 operator|.
 name|getInstance
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 decl_stmt|;
 specifier|private
 specifier|final
