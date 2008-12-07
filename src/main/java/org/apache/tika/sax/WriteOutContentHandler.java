@@ -205,6 +205,41 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/**      * Flushes the character stream so that no characters are forgotten      * in internal buffers.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-179">TIKA-179</a>      * @throws SAXException if the stream can not be flushed      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|endDocument
+parameter_list|()
+throws|throws
+name|SAXException
+block|{
+try|try
+block|{
+name|writer
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|SAXException
+argument_list|(
+literal|"Error flushing character output"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Returns the contents of the internal string buffer where      * all the received characters have been collected. Only works      * when this object was constructed using the empty default      * constructor or by passing a {@link StringWriter} to the      * other constructor.      */
 annotation|@
 name|Override

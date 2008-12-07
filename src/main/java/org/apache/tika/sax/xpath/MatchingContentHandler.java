@@ -92,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that only passes the elements, attributes,  * and text nodes that match the given XPath expression. Note especially  * that {@link #startDocument()} and {@link #endDocument()} events are not  * passed to the decorated handler.  */
+comment|/**  * Content handler decorator that only passes the elements, attributes,  * and text nodes that match the given XPath expression.  */
 end_comment
 
 begin_class
@@ -484,18 +484,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Ignored.      */
-specifier|public
-name|void
-name|startDocument
-parameter_list|()
-block|{     }
-comment|/**      * Ignored.      */
-specifier|public
-name|void
-name|endDocument
-parameter_list|()
-block|{     }
 block|}
 end_class
 

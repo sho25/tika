@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that only passes the  * {@link #characters(char[], int, int)} and  * (@link {@link #ignorableWhitespace(char[], int, int)} events to  * the decorated content handler.  */
+comment|/**  * Content handler decorator that only passes the  * {@link #characters(char[], int, int)} and  * (@link {@link #ignorableWhitespace(char[], int, int)}  * (plus {@link #startDocument()} and {@link #endDocument()} events to  * the decorated content handler.  */
 end_comment
 
 begin_class
@@ -143,6 +143,36 @@ name|start
 argument_list|,
 name|length
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|startDocument
+parameter_list|()
+throws|throws
+name|SAXException
+block|{
+name|delegate
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|endDocument
+parameter_list|()
+throws|throws
+name|SAXException
+block|{
+name|delegate
+operator|.
+name|endDocument
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

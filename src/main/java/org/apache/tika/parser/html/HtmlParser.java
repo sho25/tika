@@ -650,11 +650,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Parse the HTML document
-name|xhtml
-operator|.
-name|startDocument
-argument_list|()
-expr_stmt|;
 name|SAXParser
 name|parser
 init|=
@@ -690,11 +685,6 @@ name|metadata
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|endDocument
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
