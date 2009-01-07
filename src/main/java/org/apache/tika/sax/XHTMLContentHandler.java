@@ -88,7 +88,7 @@ specifier|public
 class|class
 name|XHTMLContentHandler
 extends|extends
-name|ContentHandlerDecorator
+name|SafeContentHandler
 block|{
 comment|/**      * The XHTML namespace URI      */
 specifier|public
