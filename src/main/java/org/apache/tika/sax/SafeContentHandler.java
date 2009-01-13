@@ -39,6 +39,10 @@ name|SAXException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Content handler decorator that makes sure that the character events  * ({@link #characters(char[], int, int)} or  * {@link #ignorableWhitespace(char[], int, int)}) passed to the decorated  * content handler contain only valid XML characters. All invalid characters  * are replaced with spaces.  *<p>  * The XML standard defines the following Unicode character ranges as  * valid XML characters:  *<pre>  * #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]  *</pre>  *<p>  * Note that currently this class only detects those invalid characters whose  * UTF-16 representation fits a single char. Also, this class does not ensure  * that the UTF-16 encoding of incoming characters is correct.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -46,6 +50,7 @@ name|SafeContentHandler
 extends|extends
 name|ContentHandlerDecorator
 block|{
+comment|/**      * Replacement for invalid characters.      */
 specifier|private
 specifier|static
 specifier|final
@@ -181,6 +186,7 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Filters and outputs the contents of the given input buffer. Any      * invalid characters in the input buffer area handled by sending a      * replacement (a space character) to the given output. Any sequences      * of valid characters are passed as-is to the given output.       *       * @param ch input buffer      * @param start start offset within the buffer      * @param length number of characters to read from the buffer      * @param output output channel      * @throws SAXException if the filtered characters could not be written out      */
 specifier|private
 name|void
 name|filter
@@ -295,12 +301,15 @@ name|char
 name|ch
 parameter_list|)
 block|{
-comment|// TODO: Detect also FFFE, FFFF, and the surrogate blocks
-return|return
+comment|// TODO: Correct handling of multi-word characters
+if|if
+condition|(
 name|ch
 operator|<
 literal|0x20
-operator|&&
+condition|)
+block|{
+return|return
 name|ch
 operator|!=
 literal|0x09
@@ -313,6 +322,15 @@ name|ch
 operator|!=
 literal|0x0D
 return|;
+block|}
+else|else
+block|{
+return|return
+name|ch
+operator|>=
+literal|0xFFFE
+return|;
+block|}
 block|}
 comment|/**      * Outputs the replacement for an invalid character. Subclasses can      * override this method to use a custom replacement.      *      * @param output where the replacement is written to      * @throws SAXException if the replacement could not be written      */
 specifier|protected
