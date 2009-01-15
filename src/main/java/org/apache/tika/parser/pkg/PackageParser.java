@@ -285,13 +285,6 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-name|xhtml
-operator|.
-name|characters
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
 block|}
 try|try
 block|{
@@ -317,13 +310,6 @@ argument_list|)
 argument_list|)
 argument_list|,
 name|metadata
-argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|characters
-argument_list|(
-literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
