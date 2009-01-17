@@ -298,6 +298,9 @@ name|assertEquals
 argument_list|(
 literal|'t'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -308,6 +311,9 @@ name|assertEquals
 argument_list|(
 literal|'e'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -318,6 +324,9 @@ name|assertEquals
 argument_list|(
 literal|'s'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -328,6 +337,9 @@ name|assertEquals
 argument_list|(
 literal|'t'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -338,6 +350,9 @@ name|assertEquals
 argument_list|(
 literal|' '
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -348,6 +363,9 @@ name|assertEquals
 argument_list|(
 literal|'c'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -358,6 +376,9 @@ name|assertEquals
 argument_list|(
 literal|'o'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -368,6 +389,9 @@ name|assertEquals
 argument_list|(
 literal|'n'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -378,6 +402,9 @@ name|assertEquals
 argument_list|(
 literal|'t'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -388,6 +415,9 @@ name|assertEquals
 argument_list|(
 literal|'e'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -398,6 +428,9 @@ name|assertEquals
 argument_list|(
 literal|'n'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -408,6 +441,9 @@ name|assertEquals
 argument_list|(
 literal|'t'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read
@@ -418,6 +454,9 @@ name|assertEquals
 argument_list|(
 literal|'\n'
 argument_list|,
+operator|(
+name|char
+operator|)
 name|reader
 operator|.
 name|read

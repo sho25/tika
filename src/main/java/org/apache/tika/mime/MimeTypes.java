@@ -119,19 +119,101 @@ specifier|final
 class|class
 name|MimeTypes
 block|{
-comment|/** The default<code>application/octet-stream</code> MimeType */
+comment|/**      * Name of the {@link #root root} type, application/octet-stream.      */
 specifier|public
 specifier|final
 specifier|static
 name|String
-name|DEFAULT
+name|OCTET_STREAM
 init|=
 literal|"application/octet-stream"
 decl_stmt|;
+comment|/**      * Name of the {@link #text text} type, text/plain.      */
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|PLAIN_TEXT
+init|=
+literal|"text/plain"
+decl_stmt|;
+comment|/**      * Lookup table for all the ASCII/ISO-Latin/UTF-8/etc. control bytes      * in the range below 0x20 (the space character). If an entry in this      * table is<code>true</code> then that byte is very unlikely to occur      * in a plain text document.      *<p>      * The contents of this lookup table are based on the following definition      * from section 4 of the "Content-Type Processing Model" Internet-draft      * (<a href="http://webblaze.cs.berkeley.edu/2009/mime-sniff/mime-sniff.txt"      *>draft-abarth-mime-sniff-01</a>).      *<pre>      * +-------------------------+      * | Binary data byte ranges |      * +-------------------------+      * | 0x00 -- 0x08            |      * | 0x0B                    |      * | 0x0E -- 0x1A            |      * | 0x1C -- 0x1F            |      * +-------------------------+      *</pre>      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-154">TIKA-154</a>      */
+specifier|private
+specifier|static
+specifier|final
+name|boolean
+index|[]
+name|IS_CONTROL_BYTE
+init|=
+operator|new
+name|boolean
+index|[
+literal|0x20
+index|]
+decl_stmt|;
+static|static
+block|{
+name|Arrays
+operator|.
+name|fill
+argument_list|(
+name|IS_CONTROL_BYTE
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|IS_CONTROL_BYTE
+index|[
+literal|0x09
+index|]
+operator|=
+literal|false
+expr_stmt|;
+comment|// tabulator
+name|IS_CONTROL_BYTE
+index|[
+literal|0x0A
+index|]
+operator|=
+literal|false
+expr_stmt|;
+comment|// new line
+name|IS_CONTROL_BYTE
+index|[
+literal|0x0C
+index|]
+operator|=
+literal|false
+expr_stmt|;
+comment|// new page
+name|IS_CONTROL_BYTE
+index|[
+literal|0x0D
+index|]
+operator|=
+literal|false
+expr_stmt|;
+comment|// carriage return
+name|IS_CONTROL_BYTE
+index|[
+literal|0x1B
+index|]
+operator|=
+literal|false
+expr_stmt|;
+comment|// escape
+block|}
+comment|/**      * Root type, application/octet-stream.      */
 specifier|private
 specifier|final
 name|MimeType
 name|root
+decl_stmt|;
+comment|/**      * Text type, text/plain.      */
+specifier|private
+specifier|final
+name|MimeType
+name|text
 decl_stmt|;
 comment|/** All the registered MimeTypes indexed on their name */
 specifier|private
@@ -203,9 +285,45 @@ name|MimeType
 argument_list|(
 name|this
 argument_list|,
-name|DEFAULT
+name|OCTET_STREAM
 argument_list|)
 expr_stmt|;
+name|text
+operator|=
+operator|new
+name|MimeType
+argument_list|(
+name|this
+argument_list|,
+name|PLAIN_TEXT
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|text
+operator|.
+name|setSuperType
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|MimeTypeException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Error in MimeType logic"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 name|types
 operator|.
 name|put
@@ -216,6 +334,18 @@ name|getName
 argument_list|()
 argument_list|,
 name|root
+argument_list|)
+expr_stmt|;
+name|types
+operator|.
+name|put
+argument_list|(
+name|text
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|text
 argument_list|)
 expr_stmt|;
 block|}
@@ -257,7 +387,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name.      *       * @param name      *            of the document to analyze.      * @return the Mime Content Type of the specified document name      */
+comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *       * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -317,7 +447,7 @@ name|root
 return|;
 block|}
 block|}
-comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type, or<code>null</code> if no match is found      */
+comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns application/octet-stream if no better      * match is found.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -393,8 +523,56 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|// Finally, assume plain text if no control bytes are found
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|data
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|int
+name|b
+init|=
+name|data
+index|[
+name|i
+index|]
+operator|&
+literal|0xFF
+decl_stmt|;
+comment|// prevent sign extension
+if|if
+condition|(
+name|b
+operator|<
+name|IS_CONTROL_BYTE
+operator|.
+name|length
+operator|&&
+name|IS_CONTROL_BYTE
+index|[
+name|b
+index|]
+condition|)
+block|{
 return|return
-literal|null
+name|root
+return|;
+block|}
+block|}
+return|return
+name|text
 return|;
 block|}
 comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *      * @see #getMimeType(byte[])      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can be read      */
@@ -617,7 +795,7 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * Determines the MIME type of the resource pointed to by the specified URL.      * Examines the file's header, and if it cannot determine the MIME type      * from the header, guesses the MIME type from the URL extension      * (e.g. "pdf).      *      * @param url      * @return      * @throws IOException      */
+comment|/**      * Determines the MIME type of the resource pointed to by the specified URL.      * Examines the file's header, and if it cannot determine the MIME type      * from the header, guesses the MIME type from the URL extension      * (e.g. "pdf).      *      * @param url URL of the document      * @return type of the document      * @throws IOException if the document can not be accessed      */
 specifier|public
 name|String
 name|getType
@@ -789,6 +967,26 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|name
+operator|.
+name|startsWith
+argument_list|(
+literal|"text/"
+argument_list|)
+condition|)
+block|{
+name|type
+operator|.
+name|setSuperType
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|type
 operator|.
 name|setSuperType
@@ -796,6 +994,7 @@ argument_list|(
 name|root
 argument_list|)
 expr_stmt|;
+block|}
 name|types
 operator|.
 name|put
