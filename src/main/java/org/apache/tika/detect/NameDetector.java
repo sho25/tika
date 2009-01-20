@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content type detection based on the resource name. An instance of this  * class contains a set of regular expression patterns that are matched  * against the resource name potentially given as a part of the input metadata.  *<p>  * If a pattern matches the given name, then the media type associated with  * that pattern is returned as the likely content type of the input document.  * Otherwise the returned type is<code>application/octet-stream</code>.  *<p>  * See the {@link #detect(InputStream, Metadata)} method for more details  * of the matching algorithm.  */
+comment|/**  * Content type detection based on the resource name. An instance of this  * class contains a set of regular expression patterns that are matched  * against the resource name potentially given as a part of the input metadata.  *<p>  * If a pattern matches the given name, then the media type associated with  * that pattern is returned as the likely content type of the input document.  * Otherwise the returned type is<code>application/octet-stream</code>.  *<p>  * See the {@link #detect(InputStream, Metadata)} method for more details  * of the matching algorithm.  *  * @since Apache Tika 0.3  */
 end_comment
 
 begin_class
