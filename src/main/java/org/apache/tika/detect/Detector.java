@@ -59,7 +59,7 @@ name|tika
 operator|.
 name|mime
 operator|.
-name|MimeType
+name|MediaType
 import|;
 end_import
 
@@ -73,7 +73,7 @@ interface|interface
 name|Detector
 block|{
 comment|/**      * Detects the content type of the given input document. Returns      *<code>application/octet-stream</code> if the type of the document      * can not be detected.      *<p>      * If the document input stream is not available, then the first      * argument may be<code>null</code>. Otherwise the detector may      * read bytes from the start of the stream to help in type detection.      * The stream must not be closed or otherwise manipulated other by      * simply reading bytes from it, as the caller may use the mark feature      * to be able to reset the stream to the beginning for proper parsing      * when the content type is detected. For the same reason the detector      * must only read up to a limited number of bytes from the stream to      * avoid potentially unbounded memory use for the buffer of a marked      * a stream.      *<p>      * The given input metadata is only read, not modified, by the detector.      *      * @param input document input stream, or<code>null</code>      * @param metadata input metadata for the document      * @return detected media type, or<code>application/octet-stream</code>      * @throws IOException if the document input stream could not be read      */
-name|MimeType
+name|MediaType
 name|detect
 parameter_list|(
 name|InputStream
