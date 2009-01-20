@@ -96,7 +96,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Jukka Zitting  *  */
+comment|/**  * Content type detection based on the resource name. An instance of this  * class contains a set of regular expression patterns that are matched  * against the resource name potentially given as a part of the input metadata.  *<p>  * If a pattern matches the given name, then the media type associated with  * that pattern is returned as the likely content type of the input document.  * Otherwise the returned type is<code>application/octet-stream</code>.  *<p>  * See the {@link #detect(InputStream, Metadata)} method for more details  * of the matching algorithm.  */
 end_comment
 
 begin_class
@@ -106,6 +106,7 @@ name|NameDetector
 implements|implements
 name|Detector
 block|{
+comment|/**      * The regular expression patterns used for type detection.      */
 specifier|private
 specifier|final
 name|Map
@@ -116,6 +117,7 @@ name|MediaType
 argument_list|>
 name|patterns
 decl_stmt|;
+comment|/**      * Creates a new content type detector based on the given name patterns.      * The given pattern map is not copied, so the caller may update the      * mappings even after this detector instance has been created. However,      * the map<em>must not be concurrently modified</em> while this instance      * is used for type detection.      *      * @param patterns map from name patterns to corresponding media types      */
 specifier|public
 name|NameDetector
 parameter_list|(
@@ -135,6 +137,7 @@ operator|=
 name|patterns
 expr_stmt|;
 block|}
+comment|/**      * Detects the content type of an input document based on the document      * name given in the input metadata. The RESOURCE_NAME_KEY attribute of      * the given input metadata is expected to contain the name (normally      * a file name or a URL) of the input document.      *<p>      * If a resource name is given, then it is first processed as follows.      *<ol>      *<li>      *     Potential URL query (?...) and fragment identifier (#...)      *     parts are removed from the end of the resource name.      *</li>      *<li>      *     Potential leading path elements (up to the last slash or backslash)      *     are removed from the beginning of the resource name.      *</li>      *<li>      *     Potential URL encodings (%nn, in UTF-8) are decoded.      *</li>      *<li>      *     Any leading and trailing whitespace is removed.      *</li>      *</ol>      *<p>      * The resulting name string (if any) is then matched in sequence against      * all the configured name patterns. If a match is found, then the (first)      * matching media type is returned.      *      * @param input ignored      * @param metadata input metadata, possibly with a RESOURCE_NAME_KEY value      * @return detected media type, or<code>application/octet-stream</code>      */
 specifier|public
 name|MediaType
 name|detect
@@ -288,24 +291,6 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Skip any leading or trailing whitespace
-name|name
-operator|=
-name|name
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|name
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
 comment|// Decode any potential URL encoding
 name|int
 name|percent
@@ -354,6 +339,24 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|// Skip any leading or trailing whitespace
+name|name
+operator|=
+name|name
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|name
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 comment|// Match the name against the registered patterns
 for|for
 control|(
