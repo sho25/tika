@@ -237,6 +237,16 @@ name|MediaType
 operator|.
 name|TEXT_PLAIN
 argument_list|,
+literal|"text%2Etxt"
+argument_list|)
+expr_stmt|;
+comment|// URL encoded
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
 literal|"text.TXT"
 argument_list|)
 expr_stmt|;
