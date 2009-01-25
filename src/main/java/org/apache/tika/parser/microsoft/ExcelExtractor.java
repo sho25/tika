@@ -1534,12 +1534,12 @@ comment|// Process Rows
 name|int
 name|currentRow
 init|=
-literal|1
+literal|0
 decl_stmt|;
 name|int
 name|currentColumn
 init|=
-literal|1
+literal|0
 decl_stmt|;
 name|handler
 operator|.
@@ -1618,7 +1618,7 @@ operator|++
 expr_stmt|;
 name|currentColumn
 operator|=
-literal|1
+literal|0
 expr_stmt|;
 block|}
 while|while
