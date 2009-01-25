@@ -161,7 +161,7 @@ name|SafeContentHandler
 operator|.
 name|super
 operator|.
-name|characters
+name|ignorableWhitespace
 argument_list|(
 name|ch
 argument_list|,
