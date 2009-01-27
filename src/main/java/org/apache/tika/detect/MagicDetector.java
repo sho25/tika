@@ -410,6 +410,15 @@ operator|.
 name|OCTET_STREAM
 return|;
 block|}
+name|input
+operator|.
+name|mark
+argument_list|(
+name|length
+argument_list|)
+expr_stmt|;
+try|try
+block|{
 name|long
 name|offset
 init|=
@@ -614,7 +623,7 @@ operator|.
 name|length
 condition|)
 block|{
-comment|// No match, move the comparison window forward and try again
+comment|// No match, move the comparison window forward
 name|int
 name|c
 init|=
@@ -673,13 +682,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|// We have reached the end of the offset range, no match.
+comment|// We have reached the end of the offset range, no match
 return|return
 name|MediaType
 operator|.
 name|OCTET_STREAM
 return|;
 block|}
+block|}
+block|}
+finally|finally
+block|{
+name|input
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
