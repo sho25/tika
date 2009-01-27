@@ -252,15 +252,6 @@ literal|"196.0"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|content
-argument_list|)
-expr_stmt|;
 block|}
 finally|finally
 block|{
