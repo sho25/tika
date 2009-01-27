@@ -383,6 +383,7 @@ name|offsetRangeEnd
 expr_stmt|;
 block|}
 block|}
+comment|/**      *       * @param input document input stream, or<code>null</code>      * @param metadata ignored      */
 specifier|public
 name|MediaType
 name|detect
@@ -396,6 +397,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|MediaType
+operator|.
+name|OCTET_STREAM
+return|;
+block|}
 name|long
 name|offset
 init|=

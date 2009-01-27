@@ -159,7 +159,7 @@ literal|false
 expr_stmt|;
 comment|// escape
 block|}
-comment|/**      * Looks at the beginning of the document input stream to determine      * whether the document is text or not.      *      * @param input document input stream      * @param metadata ignored      * @return "text/plain" if the input stream suggest a text document,      *         "application/octet-stream" otherwise      */
+comment|/**      * Looks at the beginning of the document input stream to determine      * whether the document is text or not.      *      * @param input document input stream, or<code>null</code>      * @param metadata ignored      * @return "text/plain" if the input stream suggest a text document,      *         "application/octet-stream" otherwise      */
 specifier|public
 name|MediaType
 name|detect
@@ -173,6 +173,19 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|input
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|MediaType
+operator|.
+name|OCTET_STREAM
+return|;
+block|}
 for|for
 control|(
 name|int
