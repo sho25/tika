@@ -170,7 +170,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"PRQ"
+literal|"PPQ"
 argument_list|,
 name|metadata
 operator|.

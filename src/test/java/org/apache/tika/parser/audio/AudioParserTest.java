@@ -146,7 +146,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"44100"
+literal|"44100.0"
 argument_list|,
 name|metadata
 operator|.
@@ -244,7 +244,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"44100"
+literal|"44100.0"
 argument_list|,
 name|metadata
 operator|.
@@ -342,7 +342,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"44100"
+literal|"44100.0"
 argument_list|,
 name|metadata
 operator|.
