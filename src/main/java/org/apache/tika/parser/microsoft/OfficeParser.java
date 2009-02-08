@@ -401,6 +401,11 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
+name|boolean
+name|outlookExtracted
+init|=
+literal|false
+decl_stmt|;
 name|POIFSFileSystem
 name|filesystem
 init|=
@@ -667,6 +672,9 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|!
+name|outlookExtracted
+operator|&&
 name|name
 operator|.
 name|startsWith
@@ -675,6 +683,11 @@ literal|"__substg1.0_"
 argument_list|)
 condition|)
 block|{
+comment|// TODO: Cleaner mechanism for detecting Outlook
+name|outlookExtracted
+operator|=
+literal|true
+expr_stmt|;
 name|setType
 argument_list|(
 name|metadata
