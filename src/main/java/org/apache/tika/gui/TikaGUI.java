@@ -396,7 +396,7 @@ name|TikaGUI
 extends|extends
 name|JFrame
 block|{
-comment|/**      * Main method. Sets the Swing look and feel to the operating system      * settings, and starts the Tika GUI with an {@link AutoDetectParser)      * instance as the default parser.      *      * @param args ignored      * @throws Exception if an error occurs      */
+comment|/**      * Main method. Sets the Swing look and feel to the operating system      * settings, and starts the Tika GUI with an {@link AutoDetectParser}      * instance as the default parser.      *      * @param args ignored      * @throws Exception if an error occurs      */
 specifier|public
 specifier|static
 name|void

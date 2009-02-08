@@ -136,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reader for the text content from a given binary stream. This class  * starts a background thread and uses a {@link Parser}  * ({@link AutoDetectParser) by default) to parse the text content from  * a given input stream. The {@link BodyContentHandler} class and a pipe  * is used to convert the push-based SAX event stream to the pull-based  * character stream defined by the {@link Reader} interface.  *  * @since Apache Tika 0.2  */
+comment|/**  * Reader for the text content from a given binary stream. This class  * starts a background thread and uses a {@link Parser}  * ({@link AutoDetectParser} by default) to parse the text content from  * a given input stream. The {@link BodyContentHandler} class and a pipe  * is used to convert the push-based SAX event stream to the pull-based  * character stream defined by the {@link Reader} interface.  *  * @since Apache Tika 0.2  */
 end_comment
 
 begin_class
@@ -519,7 +519,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Reads parsed text from the pipe connected to the parsing thread.      * Fails if the parsing thread has thrown an exception.      *      * @param cbuff character buffer      * @param off start offset within the buffer      * @param len maximum number of characters to read      * @throws IOException if the parsing thread has failed or      *                     if for some reason the pipe does not work properly      */
+comment|/**      * Reads parsed text from the pipe connected to the parsing thread.      * Fails if the parsing thread has thrown an exception.      *      * @param cbuf character buffer      * @param off start offset within the buffer      * @param len maximum number of characters to read      * @throws IOException if the parsing thread has failed or      *                     if for some reason the pipe does not work properly      */
 annotation|@
 name|Override
 specifier|public

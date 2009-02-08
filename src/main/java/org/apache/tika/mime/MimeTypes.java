@@ -1233,7 +1233,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Automatically detects the MIME type of a document based on magic      * markers in the stream prefix and any given metadata hints.      *<p>      * The given stream is expected to support marks, so that this method      * can reset the stream to the position it was in before this method      * was called.      *      * @param stream document stream, or<code>null</code>      * @param metadata metadata hints      * @return MIME type of the document      * @throws IOException if the document stream could not be read      */
+comment|/**      * Automatically detects the MIME type of a document based on magic      * markers in the stream prefix and any given metadata hints.      *<p>      * The given stream is expected to support marks, so that this method      * can reset the stream to the position it was in before this method      * was called.      *      * @param input document stream, or<code>null</code>      * @param metadata metadata hints      * @return MIME type of the document      * @throws IOException if the document stream could not be read      */
 specifier|public
 name|MediaType
 name|detect

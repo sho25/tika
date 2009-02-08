@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser decorator that post-processes the results from a decorated parser.  * The post-processing takes care of filling in any "fulltext", "summary", and  * regexp {@link Content} objects with the full text content returned by  * the decorated parser. The post-processing also catches and logs any  * exceptions thrown by the decorated parser.  */
+comment|/**  * Parser decorator that post-processes the results from a decorated parser.  * The post-processing takes care of filling in the "fulltext", "summary",  * and "outlinks" metadata entries based on the full text content returned by  * the decorated parser.  */
 end_comment
 
 begin_class

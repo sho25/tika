@@ -111,7 +111,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Decode an array of hex chars.      *       * @param hexChars      *            an array of hex characters.      * @param starIndex      *            the index of the first character to decode      * @param length      *            the number of characters to decode.      * @return the decode hex chars as bytes.      */
+comment|/**      * Decode an array of hex chars.      *       * @param hexChars      *            an array of hex characters.      * @param startIndex      *            the index of the first character to decode      * @param length      *            the number of characters to decode.      * @return the decode hex chars as bytes.      */
 specifier|public
 specifier|static
 name|byte
@@ -235,7 +235,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Hex encode an array of bytes      *       * @param bites      *            the array of bytes to encode.      * @param starIndex      *            the index of the first character to encode.      * @param length      *            the number of characters to encode.      * @return the array of hex characters.      */
+comment|/**      * Hex encode an array of bytes      *       * @param bites      *            the array of bytes to encode.      * @param startIndex      *            the index of the first character to encode.      * @param length      *            the number of characters to encode.      * @return the array of hex characters.      */
 specifier|public
 specifier|static
 name|char

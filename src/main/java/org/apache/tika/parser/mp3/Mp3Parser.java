@@ -128,7 +128,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The<code>Mp3Parser</code> is used to parse ID3 Version 1 Tag information  * from an MP3 file, if available.  *  * @see http://www.id3.org/ID3v1  */
+comment|/**  * The<code>Mp3Parser</code> is used to parse ID3 Version 1 Tag information  * from an MP3 file, if available.  *  * @see<a href="http://www.id3.org/ID3v1">MP3 ID3 Version 1 specification</a>  */
 end_comment
 
 begin_class

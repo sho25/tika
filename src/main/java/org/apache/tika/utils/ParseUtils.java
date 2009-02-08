@@ -489,7 +489,7 @@ name|config
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a list of parsers from URL      *       * @param URL      * @param config      * @return a list of parsers from zip file      * @throws TikaException      * @throws IOException      */
+comment|/**      * Returns a list of parsers from URL      *       * @param zip      * @param config      * @return a list of parsers from zip file      * @throws TikaException      * @throws IOException      */
 specifier|public
 specifier|static
 name|List
