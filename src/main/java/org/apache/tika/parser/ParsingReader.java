@@ -21,6 +21,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|File
 import|;
 end_import
@@ -97,6 +107,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Writer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -152,16 +172,16 @@ specifier|final
 name|Parser
 name|parser
 decl_stmt|;
-comment|/**      * Read end of the pipe.      */
+comment|/**      * Buffered read end of the pipe.      */
 specifier|private
 specifier|final
-name|PipedReader
+name|Reader
 name|reader
 decl_stmt|;
 comment|/**      * Write end of the pipe.      */
 specifier|private
 specifier|final
-name|PipedWriter
+name|Writer
 name|writer
 decl_stmt|;
 comment|/**      * The binary stream being parsed.      */
@@ -228,13 +248,15 @@ return|return
 name|metadata
 return|;
 block|}
-comment|/**      * Creates a reader for the text content of the given binary stream.      *      * @param stream binary stream      */
+comment|/**      * Creates a reader for the text content of the given binary stream.      *      * @param stream binary stream      * @throws IOException if the document can not be parsed      */
 specifier|public
 name|ParsingReader
 parameter_list|(
 name|InputStream
 name|stream
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 argument_list|(
@@ -250,7 +272,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a reader for the text content of the given binary stream      * with the given name.      *      * @param stream binary stream      * @param name document name      */
+comment|/**      * Creates a reader for the text content of the given binary stream      * with the given name.      *      * @param stream binary stream      * @param name document name      * @throws IOException if the document can not be parsed      */
 specifier|public
 name|ParsingReader
 parameter_list|(
@@ -260,6 +282,8 @@ parameter_list|,
 name|String
 name|name
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 argument_list|(
@@ -276,7 +300,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a reader for the text content of the given file.      *      * @param file file      */
+comment|/**      * Creates a reader for the text content of the given file.      *      * @param file file      * @throws FileNotFoundException if the given file does not exist      * @throws IOException if the document can not be parsed      */
 specifier|public
 name|ParsingReader
 parameter_list|(
@@ -285,6 +309,8 @@ name|file
 parameter_list|)
 throws|throws
 name|FileNotFoundException
+throws|,
+name|IOException
 block|{
 name|this
 argument_list|(
@@ -301,7 +327,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a reader for the text content of the given binary stream      * with the given document metadata. The given parser is used for      * parsing.      *      * @param parser parser instance      * @param stream binary stream      * @param metadata document metadata      */
+comment|/**      * Creates a reader for the text content of the given binary stream      * with the given document metadata. The given parser is used for      * parsing.      *      * @param parser parser instance      * @param stream binary stream      * @param metadata document metadata      * @throws IOException if the document can not be parsed      */
 specifier|public
 name|ParsingReader
 parameter_list|(
@@ -314,6 +340,8 @@ parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|this
 operator|.
@@ -321,13 +349,22 @@ name|parser
 operator|=
 name|parser
 expr_stmt|;
+name|PipedReader
+name|pipedReader
+init|=
+operator|new
+name|PipedReader
+argument_list|()
+decl_stmt|;
 name|this
 operator|.
 name|reader
 operator|=
 operator|new
-name|PipedReader
-argument_list|()
+name|BufferedReader
+argument_list|(
+name|pipedReader
+argument_list|)
 expr_stmt|;
 try|try
 block|{
@@ -338,7 +375,7 @@ operator|=
 operator|new
 name|PipedWriter
 argument_list|(
-name|reader
+name|pipedReader
 argument_list|)
 expr_stmt|;
 block|}
@@ -413,6 +450,24 @@ name|name
 argument_list|)
 operator|.
 name|start
+argument_list|()
+expr_stmt|;
+comment|// TIKA-203: Buffer first character to force metadata extraction
+name|reader
+operator|.
+name|mark
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|reader
+operator|.
+name|read
+argument_list|()
+expr_stmt|;
+name|reader
+operator|.
+name|reset
 argument_list|()
 expr_stmt|;
 block|}
