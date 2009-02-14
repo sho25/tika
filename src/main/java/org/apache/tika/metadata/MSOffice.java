@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of<i>"Office"</i> documents properties names.  *   *   */
+comment|/**  * A collection of Microsoft Office documents property names.  */
 end_comment
 
 begin_interface
@@ -198,7 +198,7 @@ specifier|final
 name|String
 name|VERSION
 init|=
-literal|"version"
+literal|"Version"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -214,7 +214,39 @@ specifier|final
 name|String
 name|CATEGORY
 init|=
-literal|"category"
+literal|"Category"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|COMPANY
+init|=
+literal|"Company"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SECURITY
+init|=
+literal|"Security"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|EDIT_TIME
+init|=
+literal|"Edit-Time"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|CREATION_DATE
+init|=
+literal|"Creation-Date"
 decl_stmt|;
 block|}
 end_interface

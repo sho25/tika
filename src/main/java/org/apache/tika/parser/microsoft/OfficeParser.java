@@ -977,7 +977,9 @@ name|set
 argument_list|(
 name|metadata
 argument_list|,
-literal|"creationdate"
+name|Metadata
+operator|.
+name|CREATION_DATE
 argument_list|,
 name|summary
 operator|.
@@ -1003,7 +1005,9 @@ name|set
 argument_list|(
 name|metadata
 argument_list|,
-literal|"edittime"
+name|Metadata
+operator|.
+name|EDIT_TIME
 argument_list|,
 name|summary
 operator|.
@@ -1043,7 +1047,9 @@ name|set
 argument_list|(
 name|metadata
 argument_list|,
-literal|"security"
+name|Metadata
+operator|.
+name|SECURITY
 argument_list|,
 name|summary
 operator|.
@@ -1095,7 +1101,9 @@ name|set
 argument_list|(
 name|metadata
 argument_list|,
-literal|"company"
+name|Metadata
+operator|.
+name|COMPANY
 argument_list|,
 name|summary
 operator|.
@@ -1107,7 +1115,9 @@ name|set
 argument_list|(
 name|metadata
 argument_list|,
-literal|"manager"
+name|Metadata
+operator|.
+name|MANAGER
 argument_list|,
 name|summary
 operator|.
