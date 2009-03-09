@@ -181,6 +181,8 @@ begin_class
 specifier|final
 class|class
 name|MimeTypesReader
+implements|implements
+name|MimeTypesReaderMetKeys
 block|{
 comment|/** The logger to use */
 specifier|private
@@ -380,7 +382,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"mime-info"
+name|MIME_INFO_TAG
 argument_list|)
 condition|)
 block|{
@@ -449,7 +451,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"mime-type"
+name|MIME_TYPE_TAG
 argument_list|)
 condition|)
 block|{
@@ -468,7 +470,11 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-literal|"Not a<mime-info/> configuration document"
+literal|"Not a<"
+operator|+
+name|MIME_INFO_TAG
+operator|+
+literal|"/> configuration document"
 argument_list|)
 expr_stmt|;
 block|}
@@ -489,7 +495,7 @@ name|element
 operator|.
 name|getAttribute
 argument_list|(
-literal|"type"
+name|MIME_TYPE_TYPE_ATTR
 argument_list|)
 decl_stmt|;
 try|try
@@ -569,7 +575,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"_comment"
+name|COMMENT_TAG
 argument_list|)
 condition|)
 block|{
@@ -597,7 +603,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"glob"
+name|GLOB_TAG
 argument_list|)
 condition|)
 block|{
@@ -612,7 +618,7 @@ name|nodeElement
 operator|.
 name|getAttribute
 argument_list|(
-literal|"isregex"
+name|ISREGEX_ATTR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -626,7 +632,7 @@ name|nodeElement
 operator|.
 name|getAttribute
 argument_list|(
-literal|"pattern"
+name|PATTERN_ATTR
 argument_list|)
 argument_list|,
 name|useRegex
@@ -643,7 +649,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"magic"
+name|MAGIC_TAG
 argument_list|)
 condition|)
 block|{
@@ -665,7 +671,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"alias"
+name|ALIAS_TAG
 argument_list|)
 condition|)
 block|{
@@ -676,7 +682,7 @@ name|nodeElement
 operator|.
 name|getAttribute
 argument_list|(
-literal|"type"
+name|ALIAS_TYPE_ATTR
 argument_list|)
 decl_stmt|;
 try|try
@@ -718,7 +724,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"root-XML"
+name|ROOT_XML_TAG
 argument_list|)
 condition|)
 block|{
@@ -740,7 +746,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"sub-class-of"
+name|SUB_CLASS_OF_TAG
 argument_list|)
 condition|)
 block|{
@@ -751,7 +757,7 @@ name|nodeElement
 operator|.
 name|getAttribute
 argument_list|(
-literal|"type"
+name|SUB_CLASS_TYPE_ATTR
 argument_list|)
 decl_stmt|;
 try|try
@@ -849,7 +855,7 @@ name|element
 operator|.
 name|getAttribute
 argument_list|(
-literal|"priority"
+name|MAGIC_PRIORITY_ATTR
 argument_list|)
 argument_list|)
 argument_list|)
@@ -983,7 +989,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"match"
+name|MATCH_TAG
 argument_list|)
 condition|)
 block|{
@@ -1156,7 +1162,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"offset"
+name|MATCH_OFFSET_ATTR
 argument_list|)
 condition|)
 block|{
@@ -1178,7 +1184,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"type"
+name|MATCH_TYPE_ATTR
 argument_list|)
 condition|)
 block|{
@@ -1200,7 +1206,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"value"
+name|MATCH_VALUE_ATTR
 argument_list|)
 condition|)
 block|{
@@ -1222,7 +1228,7 @@ argument_list|()
 operator|.
 name|equals
 argument_list|(
-literal|"mask"
+name|MATCH_MASK_ATTR
 argument_list|)
 condition|)
 block|{
@@ -1350,14 +1356,14 @@ name|element
 operator|.
 name|getAttribute
 argument_list|(
-literal|"namespaceURI"
+name|NS_URI_ATTR
 argument_list|)
 argument_list|,
 name|element
 operator|.
 name|getAttribute
 argument_list|(
-literal|"localName"
+name|LOCAL_NAME_ATTR
 argument_list|)
 argument_list|)
 expr_stmt|;
