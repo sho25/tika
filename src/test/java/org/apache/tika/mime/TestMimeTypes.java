@@ -1061,19 +1061,6 @@ name|pattern
 init|=
 literal|"rtg_sst_grb_0\\.5\\.\\d{8}"
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Pattern: ["
-operator|+
-name|pattern
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|repo
