@@ -1147,7 +1147,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Adds a file name pattern for the given media type.      *      * @param type media type      * @param pattern file name pattern      * @throws MimeTypeException if the pattern conflicts with existing ones      */
+comment|/**      * Adds a file name pattern for the given media type. Assumes that the      * pattern being added is<b>not</b> a JDK standard regular expression.      *       * @param type      *            media type      * @param pattern      *            file name pattern      * @throws MimeTypeException      *             if the pattern conflicts with existing ones      */
 specifier|public
 name|void
 name|addPattern
@@ -1161,11 +1161,42 @@ parameter_list|)
 throws|throws
 name|MimeTypeException
 block|{
+name|this
+operator|.
+name|addPattern
+argument_list|(
+name|type
+argument_list|,
+name|pattern
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Adds a file name pattern for the given media type. The caller can specify      * whether the pattern being added<b>is</b> or<b>is not</b> a JDK standard      * regular expression via the<code>isRegex</code> parameter. If the value      * is set to true, then a JDK standard regex is assumed, otherwise the      * freedesktop glob type is assumed.      *       * @param type      *            media type      * @param pattern      *            file name pattern      * @param isRegex      *            set to true if JDK std regexs are desired, otherwise set to      *            false.      * @throws MimeTypeException      *             if the pattern conflicts with existing ones.      *       */
+specifier|public
+name|void
+name|addPattern
+parameter_list|(
+name|MimeType
+name|type
+parameter_list|,
+name|String
+name|pattern
+parameter_list|,
+name|boolean
+name|isRegex
+parameter_list|)
+throws|throws
+name|MimeTypeException
+block|{
 name|patterns
 operator|.
 name|add
 argument_list|(
 name|pattern
+argument_list|,
+name|isRegex
 argument_list|,
 name|type
 argument_list|)

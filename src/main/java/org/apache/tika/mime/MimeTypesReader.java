@@ -174,7 +174,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A reader for XML files compliant with the freedesktop MIME-info DTD.  *   *<pre>  *&lt;!DOCTYPE mime-info [  *&lt;!ELEMENT mime-info (mime-type)+&gt;  *&lt;!ATTLIST mime-info xmlns CDATA #FIXED&quot;http://www.freedesktop.org/standards/shared-mime-info&quot;&gt;  *   *&lt;!ELEMENT mime-type (comment|acronym|expanded-acronym|glob|magic|root-XML|alias|sub-class-of)*&gt;  *&lt;!ATTLIST mime-type type CDATA #REQUIRED&gt;  *   *&lt;!-- a comment describing a document with the respective MIME type. Example:&quot;WMV video&quot; --&gt;  *&lt;!ELEMENT comment (#PCDATA)&gt;  *&lt;!ATTLIST comment xml:lang CDATA #IMPLIED&gt;  *   *&lt;!-- a comment describing a the respective unexpanded MIME type acronym. Example:&quot;WMV&quot; --&gt;  *&lt;!ELEMENT acronym (#PCDATA)&gt;  *&lt;!ATTLIST acronym xml:lang CDATA #IMPLIED&gt;  *   *&lt;!-- a comment describing a the respective unexpanded MIME type acronym. Example:&quot;Windows Media Video&quot; --&gt;  *&lt;!ELEMENT expanded-acronym (#PCDATA)&gt;  *&lt;!ATTLIST expanded-acronym xml:lang CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT glob EMPTY&gt;  *&lt;!ATTLIST glob pattern CDATA #REQUIRED&gt;  *   *&lt;!ELEMENT magic (match)+&gt;  *&lt;!ATTLIST magic priority CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT match (match)*&gt;  *&lt;!ATTLIST match offset CDATA #REQUIRED&gt;  *&lt;!ATTLIST match type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED&gt;  *&lt;!ATTLIST match value CDATA #REQUIRED&gt;  *&lt;!ATTLIST match mask CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT root-XML EMPTY&gt;  *&lt;!ATTLIST root-XML  *          namespaceURI CDATA #REQUIRED  *          localName CDATA #REQUIRED&gt;  *   *&lt;!ELEMENT alias EMPTY&gt;  *&lt;!ATTLIST alias  *          type CDATA #REQUIRED&gt;  *   *&lt;!ELEMENT sub-class-of EMPTY&gt;  *&lt;!ATTLIST sub-class-of  *         type CDATA #REQUIRED&gt;  *  ]&gt;  *</pre>  *   *   * @see http://freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec  *   */
+comment|/**  * A reader for XML files compliant with the freedesktop MIME-info DTD.  *   *<pre>  *&lt;!DOCTYPE mime-info [  *&lt;!ELEMENT mime-info (mime-type)+&gt;  *&lt;!ATTLIST mime-info xmlns CDATA #FIXED&quot;http://www.freedesktop.org/standards/shared-mime-info&quot;&gt;  *   *&lt;!ELEMENT mime-type (comment|acronym|expanded-acronym|glob|magic|root-XML|alias|sub-class-of)*&gt;  *&lt;!ATTLIST mime-type type CDATA #REQUIRED&gt;  *   *&lt;!-- a comment describing a document with the respective MIME type. Example:&quot;WMV video&quot; --&gt;  *&lt;!ELEMENT comment (#PCDATA)&gt;  *&lt;!ATTLIST comment xml:lang CDATA #IMPLIED&gt;  *   *&lt;!-- a comment describing a the respective unexpanded MIME type acronym. Example:&quot;WMV&quot; --&gt;  *&lt;!ELEMENT acronym (#PCDATA)&gt;  *&lt;!ATTLIST acronym xml:lang CDATA #IMPLIED&gt;  *   *&lt;!-- a comment describing a the respective unexpanded MIME type acronym. Example:&quot;Windows Media Video&quot; --&gt;  *&lt;!ELEMENT expanded-acronym (#PCDATA)&gt;  *&lt;!ATTLIST expanded-acronym xml:lang CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT glob EMPTY&gt;  *&lt;!ATTLIST glob pattern CDATA #REQUIRED&gt;  *&lt;!ATTLIST glob isregex CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT magic (match)+&gt;  *&lt;!ATTLIST magic priority CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT match (match)*&gt;  *&lt;!ATTLIST match offset CDATA #REQUIRED&gt;  *&lt;!ATTLIST match type (string|big16|big32|little16|little32|host16|host32|byte) #REQUIRED&gt;  *&lt;!ATTLIST match value CDATA #REQUIRED&gt;  *&lt;!ATTLIST match mask CDATA #IMPLIED&gt;  *   *&lt;!ELEMENT root-XML EMPTY&gt;  *&lt;!ATTLIST root-XML  *          namespaceURI CDATA #REQUIRED  *          localName CDATA #REQUIRED&gt;  *   *&lt;!ELEMENT alias EMPTY&gt;  *&lt;!ATTLIST alias  *          type CDATA #REQUIRED&gt;  *   *&lt;!ELEMENT sub-class-of EMPTY&gt;  *&lt;!ATTLIST sub-class-of  *         type CDATA #REQUIRED&gt;  *  ]&gt;  *</pre>  *   *   * @see http://freedesktop.org/wiki/Standards_2fshared_2dmime_2dinfo_2dspec  *   */
 end_comment
 
 begin_class
@@ -601,6 +601,21 @@ literal|"glob"
 argument_list|)
 condition|)
 block|{
+name|boolean
+name|useRegex
+init|=
+name|Boolean
+operator|.
+name|valueOf
+argument_list|(
+name|nodeElement
+operator|.
+name|getAttribute
+argument_list|(
+literal|"isregex"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|types
 operator|.
 name|addPattern
@@ -613,6 +628,8 @@ name|getAttribute
 argument_list|(
 literal|"pattern"
 argument_list|)
+argument_list|,
+name|useRegex
 argument_list|)
 expr_stmt|;
 block|}
