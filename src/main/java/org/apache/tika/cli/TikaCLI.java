@@ -384,11 +384,9 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|args
+name|cli
 operator|.
-name|length
-operator|==
-literal|0
+name|pipeMode
 condition|)
 block|{
 name|cli
@@ -411,6 +409,12 @@ decl_stmt|;
 specifier|private
 name|ContentHandler
 name|handler
+decl_stmt|;
+specifier|private
+name|boolean
+name|pipeMode
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|TikaCLI
@@ -457,6 +461,10 @@ literal|"--help"
 argument_list|)
 condition|)
 block|{
+name|pipeMode
+operator|=
+literal|false
+expr_stmt|;
 name|usage
 argument_list|()
 expr_stmt|;
@@ -510,6 +518,10 @@ literal|"--gui"
 argument_list|)
 condition|)
 block|{
+name|pipeMode
+operator|=
+literal|false
+expr_stmt|;
 name|TikaGUI
 operator|.
 name|main
@@ -620,6 +632,10 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|pipeMode
+operator|=
+literal|false
+expr_stmt|;
 name|metadata
 operator|=
 operator|new
@@ -807,7 +823,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"usage: tika [option] file"
+literal|"usage: tika [option] [file]"
 argument_list|)
 expr_stmt|;
 name|out
@@ -932,14 +948,21 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    Use \"-\" as the file name to parse the standard"
+literal|"    If no file name or URL is specified (or the special"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    input stream."
+literal|"    name \"-\" is used), then the standard input stream"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    is parsed."
 argument_list|)
 expr_stmt|;
 name|out
