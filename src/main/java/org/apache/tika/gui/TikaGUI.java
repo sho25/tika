@@ -590,23 +590,14 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|importFile
+name|importStream
 parameter_list|(
-name|File
-name|file
+name|InputStream
+name|input
 parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|InputStream
-name|input
-init|=
-operator|new
-name|FileInputStream
-argument_list|(
-name|file
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|StringWriter
@@ -666,20 +657,6 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-name|md
-operator|.
-name|set
-argument_list|(
-name|Metadata
-operator|.
-name|RESOURCE_NAME_KEY
-argument_list|,
-name|file
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|input
 operator|=
 operator|new
@@ -687,12 +664,7 @@ name|ProgressMonitorInputStream
 argument_list|(
 name|this
 argument_list|,
-literal|"Parsing file "
-operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
+literal|"Parsing stream"
 argument_list|,
 name|input
 argument_list|)
@@ -901,14 +873,9 @@ name|showMessageDialog
 argument_list|(
 name|this
 argument_list|,
-literal|"Apache Tika was unable to parse the file "
+literal|"Apache Tika was unable to parse the file or url.\n "
 operator|+
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|".\n See the errors tab for"
+literal|" See the errors tab for"
 operator|+
 literal|" the detailed stack trace of this error."
 argument_list|,
