@@ -51,6 +51,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|text
+operator|.
+name|NumberFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -880,7 +890,18 @@ name|currentSheet
 init|=
 literal|null
 decl_stmt|;
-comment|/**          * Contstruct a new listener instance outputting parsed data to          * the specified XHTML content handler.          *          * @param handler Destination to write the parsed output to          */
+comment|/**          * Format for rendering numbers in the worksheet. Currently we just          * use the platform default formatting.          *          * @see<a href="https://issues.apache.org/jira/browse/TIKA-103">TIKA-103</a>          */
+specifier|private
+specifier|final
+name|NumberFormat
+name|format
+init|=
+name|NumberFormat
+operator|.
+name|getInstance
+argument_list|()
+decl_stmt|;
+comment|/**          * Construct a new listener instance outputting parsed data to          * the specified XHTML content handler.          *          * @param handler Destination to write the parsed output to          */
 specifier|private
 name|TikaHSSFListener
 parameter_list|(
@@ -1145,6 +1166,8 @@ name|formula
 operator|.
 name|getValue
 argument_list|()
+argument_list|,
+name|format
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1237,6 +1260,8 @@ name|number
 operator|.
 name|getValue
 argument_list|()
+argument_list|,
+name|format
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1266,6 +1291,8 @@ name|rk
 operator|.
 name|getRKNumber
 argument_list|()
+argument_list|,
+name|format
 argument_list|)
 argument_list|)
 expr_stmt|;
