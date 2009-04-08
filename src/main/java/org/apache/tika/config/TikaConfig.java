@@ -553,21 +553,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Exception
-name|e
+name|Throwable
+name|t
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|TikaException
-argument_list|(
-literal|"Invalid parser configuration: "
-operator|+
-name|name
-argument_list|,
-name|e
-argument_list|)
-throw|;
+comment|// TODO: Log warning about an invalid parser configuration
+comment|// For now we just ignore this parser class
 block|}
 block|}
 block|}
