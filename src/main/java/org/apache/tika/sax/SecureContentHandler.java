@@ -75,7 +75,23 @@ decl_stmt|;
 comment|/**      * Number of output characters that Tika has produced so far.      */
 specifier|private
 name|long
-name|count
+name|characterCount
+init|=
+literal|0
+decl_stmt|;
+comment|/**      * Output threshold.      */
+specifier|private
+name|long
+name|threshold
+init|=
+literal|1000000
+decl_stmt|;
+comment|/**      * Maximum compression ratio.      */
+specifier|private
+name|long
+name|ratio
+init|=
+literal|100
 decl_stmt|;
 comment|/**      * Decorates the given content handler with zip bomb prevention based      * on the count of bytes read from the given counting input stream.      * The resulting decorator can be passed to a Tika parser along with      * the given counting input stream.      *      * @param handler the content handler to be decorated      * @param stream the input stream to be parsed, wrapped into      *        a {@link CountingInputStream} decorator      */
 specifier|public
@@ -99,11 +115,57 @@ name|stream
 operator|=
 name|stream
 expr_stmt|;
+block|}
+comment|/**      * Returns the configured output threshold.      *      * @return output threshold      */
+specifier|public
+name|long
+name|getOutputThreshold
+parameter_list|()
+block|{
+return|return
+name|threshold
+return|;
+block|}
+comment|/**      * Sets the threshold for output characters before the zip bomb prevention      * is activated. This avoids false positives in cases where an otherwise      * normal document for some reason starts with a highly compressible      * sequence of bytes.      *      * @param threshold new output threshold      */
+specifier|public
+name|void
+name|setOutputThreshold
+parameter_list|(
+name|long
+name|threshold
+parameter_list|)
+block|{
 name|this
 operator|.
-name|count
+name|threshold
 operator|=
-literal|0
+name|threshold
+expr_stmt|;
+block|}
+comment|/**      * Returns the maximum compression ratio.      *      * @return maximum compression ratio      */
+specifier|public
+name|long
+name|getMaximumCompressionRatio
+parameter_list|()
+block|{
+return|return
+name|ratio
+return|;
+block|}
+comment|/**      * Sets the ratio between output characters and input bytes. If this      * ratio is exceeded (after the output threshold has been reached) then      * an exception gets thrown.      *      * @param ratio new maximum compression ratio      */
+specifier|public
+name|void
+name|setMaximumCompressionRatio
+parameter_list|(
+name|long
+name|ratio
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ratio
+operator|=
+name|ratio
 expr_stmt|;
 block|}
 comment|/**      * Records the given number of output characters (or more accurately      * UTF-16 code units). Throws an exception if the recorded number of      * characters highly exceeds the number of input bytes read.      *      * @param length number of new output characters produced      * @throws SAXException if a zip bomb is detected      */
@@ -117,24 +179,24 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
-name|count
+name|characterCount
 operator|+=
 name|length
 expr_stmt|;
 if|if
 condition|(
-name|count
+name|characterCount
 operator|>
-literal|1000000
+name|threshold
 operator|&&
-name|count
+name|characterCount
 operator|>
-literal|100
-operator|*
 name|stream
 operator|.
 name|getByteCount
 argument_list|()
+operator|*
+name|ratio
 condition|)
 block|{
 throw|throw
