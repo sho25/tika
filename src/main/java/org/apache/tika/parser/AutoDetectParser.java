@@ -362,6 +362,8 @@ name|count
 argument_list|)
 decl_stmt|;
 comment|// Parse the document
+try|try
+block|{
 name|super
 operator|.
 name|parse
@@ -373,6 +375,25 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+comment|// Convert zip bomb exceptions to TikaExceptions
+name|secure
+operator|.
+name|throwIfCauseOf
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 block|}
 end_class
