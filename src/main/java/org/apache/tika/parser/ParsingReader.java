@@ -117,6 +117,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|Executor
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -156,7 +168,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Reader for the text content from a given binary stream. This class  * starts a background thread and uses a {@link Parser}  * ({@link AutoDetectParser} by default) to parse the text content from  * a given input stream. The {@link BodyContentHandler} class and a pipe  * is used to convert the push-based SAX event stream to the pull-based  * character stream defined by the {@link Reader} interface.  *  * @since Apache Tika 0.2  */
+comment|/**  * Reader for the text content from a given binary stream. This class  * uses a background parsing task with a {@link Parser}  * ({@link AutoDetectParser} by default) to parse the text content from  * a given input stream. The {@link BodyContentHandler} class and a pipe  * is used to convert the push-based SAX event stream to the pull-based  * character stream defined by the {@link Reader} interface.  *  * @since Apache Tika 0.2  */
 end_comment
 
 begin_class
@@ -198,6 +210,7 @@ name|metadata
 decl_stmt|;
 comment|/**      * An exception (if any) thrown by the parsing thread.      */
 specifier|private
+specifier|transient
 name|Throwable
 name|throwable
 decl_stmt|;
@@ -327,7 +340,105 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a reader for the text content of the given binary stream      * with the given document metadata. The given parser is used for      * parsing.      *      * @param parser parser instance      * @param stream binary stream      * @param metadata document metadata      * @throws IOException if the document can not be parsed      */
+comment|/**      * Creates a reader for the text content of the given binary stream      * with the given document metadata. The given parser is used for      * parsing. A new background thread is started for the parsing task.      *      * @param parser parser instance      * @param stream binary stream      * @param metadata document metadata      * @throws IOException if the document can not be parsed      */
+specifier|public
+name|ParsingReader
+parameter_list|(
+name|Parser
+name|parser
+parameter_list|,
+name|InputStream
+name|stream
+parameter_list|,
+specifier|final
+name|Metadata
+name|metadata
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|this
+argument_list|(
+name|parser
+argument_list|,
+name|stream
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|Executor
+argument_list|()
+block|{
+specifier|public
+name|void
+name|execute
+parameter_list|(
+name|Runnable
+name|command
+parameter_list|)
+block|{
+name|String
+name|name
+init|=
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|RESOURCE_NAME_KEY
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|name
+operator|!=
+literal|null
+condition|)
+block|{
+name|name
+operator|=
+literal|"Apache Tika: "
+operator|+
+name|name
+expr_stmt|;
+block|}
+else|else
+block|{
+name|name
+operator|=
+literal|"Apache Tika"
+expr_stmt|;
+block|}
+name|Thread
+name|thread
+init|=
+operator|new
+name|Thread
+argument_list|(
+name|command
+argument_list|,
+name|name
+argument_list|)
+decl_stmt|;
+name|thread
+operator|.
+name|setDaemon
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|thread
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a reader for the text content of the given binary stream      * with the given document metadata. The given parser is used for the      * parsing task that is run with the given executor. The given executor      *<em>must</em> run the parsing task asynchronously in a separate thread,      * since the current thread must return to the caller that can then      * consume the parsed text through the {@link Reader} interface.      *      * @param parser parser instance      * @param stream binary stream      * @param metadata document metadata      * @param executor executor for the parsing task      * @throws IOException if the document can not be parsed      * @since Apache Tika 0.4      */
 specifier|public
 name|ParsingReader
 parameter_list|(
@@ -339,6 +450,9 @@ name|stream
 parameter_list|,
 name|Metadata
 name|metadata
+parameter_list|,
+name|Executor
+name|executor
 parameter_list|)
 throws|throws
 name|IOException
@@ -406,51 +520,14 @@ name|metadata
 operator|=
 name|metadata
 expr_stmt|;
-name|String
-name|name
-init|=
-name|metadata
+name|executor
 operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|RESOURCE_NAME_KEY
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|name
-operator|!=
-literal|null
-condition|)
-block|{
-name|name
-operator|=
-literal|"Apache Tika: "
-operator|+
-name|name
-expr_stmt|;
-block|}
-else|else
-block|{
-name|name
-operator|=
-literal|"Apache Tika"
-expr_stmt|;
-block|}
-operator|new
-name|Thread
+name|execute
 argument_list|(
 operator|new
-name|ParsingThread
+name|ParsingTask
 argument_list|()
-argument_list|,
-name|name
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 comment|// TIKA-203: Buffer first character to force metadata extraction
 name|reader
@@ -471,10 +548,10 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * The background parsing thread.      */
+comment|/**      * The background parsing task.      */
 specifier|private
 class|class
-name|ParsingThread
+name|ParsingTask
 implements|implements
 name|Runnable
 block|{
