@@ -350,6 +350,8 @@ parameter_list|)
 throws|throws
 name|TikaException
 block|{
+try|try
+block|{
 name|List
 argument_list|<
 name|Parser
@@ -420,6 +422,23 @@ block|}
 return|return
 name|parsers
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Failed to read zip file"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Returns a list of parsers from zip File      *       * @param zip      *            File      * @param config      * @return a list of parsers from zip file      * @throws TikaException      * @throws FileNotFoundException      */
 specifier|public
