@@ -737,7 +737,7 @@ operator|=
 name|description
 expr_stmt|;
 block|}
-comment|/**      * Returns the aliases of this media type. The returned set is      * newly allocated and can be freely modified by the client.      *      * @return media type aliases      */
+comment|/**      * Returns the aliases of this media type. The returned set is      * an immutable view of the set.      *      * @return media type aliases, unmodifiable, not null      */
 specifier|public
 name|SortedSet
 argument_list|<
