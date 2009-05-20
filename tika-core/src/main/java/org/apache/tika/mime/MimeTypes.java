@@ -85,7 +85,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|HashMap
 import|;
 end_import
 
@@ -95,7 +95,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
 import|;
 end_import
 
@@ -121,6 +121,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|namespace
+operator|.
+name|QName
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -130,6 +142,20 @@ operator|.
 name|detect
 operator|.
 name|Detector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|detect
+operator|.
+name|XmlRootExtractor
 import|;
 end_import
 
@@ -389,7 +415,7 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Find the Mime Content Type of a file.      *       * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
+comment|/**      * Find the Mime Content Type of a file.      *      * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -408,7 +434,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its URL.      *       * @param url      *            of the document to analyze.      * @return the Mime Content Type of the specified document URL, or      *<code>null</code> if none is found.      */
+comment|/**      * Find the Mime Content Type of a document from its URL.      *      * @param url      *            of the document to analyze.      * @return the Mime Content Type of the specified document URL, or      *<code>null</code> if none is found.      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -427,7 +453,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *       * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
+comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *      * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -513,6 +539,7 @@ argument_list|)
 throw|;
 block|}
 comment|// First, check for XML descriptions (level by level)
+comment|// Problem: Regexp matching doesn't work for all XML encodings
 for|for
 control|(
 name|MimeType
@@ -537,6 +564,11 @@ return|;
 block|}
 block|}
 comment|// Then, check for magic bytes
+name|MimeType
+name|result
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|Magic
@@ -555,13 +587,92 @@ name|data
 argument_list|)
 condition|)
 block|{
-return|return
+name|result
+operator|=
 name|magic
 operator|.
 name|getType
 argument_list|()
-return|;
+expr_stmt|;
+break|break;
 block|}
+block|}
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// When detecting generic XML, parse XML to determine the root element
+if|if
+condition|(
+literal|"application/xml"
+operator|.
+name|equals
+argument_list|(
+name|result
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|QName
+name|rootElement
+init|=
+name|XmlRootExtractor
+operator|.
+name|extractRootElement
+argument_list|(
+name|data
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rootElement
+operator|!=
+literal|null
+condition|)
+block|{
+for|for
+control|(
+name|MimeType
+name|type
+range|:
+name|xmls
+control|)
+block|{
+if|if
+condition|(
+name|type
+operator|.
+name|matchesXML
+argument_list|(
+name|rootElement
+operator|.
+name|getNamespaceURI
+argument_list|()
+argument_list|,
+name|rootElement
+operator|.
+name|getLocalPart
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|result
+operator|=
+name|type
+expr_stmt|;
+break|break;
+block|}
+block|}
+block|}
+block|}
+return|return
+name|result
+return|;
 block|}
 comment|// Finally, assume plain text if no control bytes are found
 for|for
@@ -919,7 +1030,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name and its content.      * The policy used to guess the Mime Content Type is:      *<ol>      *<li>Try to find the type based on the provided data.</li>      *<li>If a type is found, then return it, otherwise try to find the type      * based on the file name</li>      *</ol>      *       * @param name      *            of the document to analyze.      * @param data      *            are the first bytes of the document's content.      * @return the Mime Content Type of the specified document, or      *<code>null</code> if none is found.      * @see #getMinLength()      */
+comment|/**      * Find the Mime Content Type of a document from its name and its content.      * The policy used to guess the Mime Content Type is:      *<ol>      *<li>Try to find the type based on the provided data.</li>      *<li>If a type is found, then return it, otherwise try to find the type      * based on the file name</li>      *</ol>      *      * @param name      *            of the document to analyze.      * @param data      *            are the first bytes of the document's content.      * @return the Mime Content Type of the specified document, or      *<code>null</code> if none is found.      * @see #getMinLength()      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -1147,7 +1258,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Adds a file name pattern for the given media type. Assumes that the      * pattern being added is<b>not</b> a JDK standard regular expression.      *       * @param type      *            media type      * @param pattern      *            file name pattern      * @throws MimeTypeException      *             if the pattern conflicts with existing ones      */
+comment|/**      * Adds a file name pattern for the given media type. Assumes that the      * pattern being added is<b>not</b> a JDK standard regular expression.      *      * @param type      *            media type      * @param pattern      *            file name pattern      * @throws MimeTypeException      *             if the pattern conflicts with existing ones      */
 specifier|public
 name|void
 name|addPattern
@@ -1173,7 +1284,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Adds a file name pattern for the given media type. The caller can specify      * whether the pattern being added<b>is</b> or<b>is not</b> a JDK standard      * regular expression via the<code>isRegex</code> parameter. If the value      * is set to true, then a JDK standard regex is assumed, otherwise the      * freedesktop glob type is assumed.      *       * @param type      *            media type      * @param pattern      *            file name pattern      * @param isRegex      *            set to true if JDK std regexs are desired, otherwise set to      *            false.      * @throws MimeTypeException      *             if the pattern conflicts with existing ones.      *       */
+comment|/**      * Adds a file name pattern for the given media type. The caller can specify      * whether the pattern being added<b>is</b> or<b>is not</b> a JDK standard      * regular expression via the<code>isRegex</code> parameter. If the value      * is set to true, then a JDK standard regex is assumed, otherwise the      * freedesktop glob type is assumed.      *      * @param type      *            media type      * @param pattern      *            file name pattern      * @param isRegex      *            set to true if JDK std regexs are desired, otherwise set to      *            false.      * @throws MimeTypeException      *             if the pattern conflicts with existing ones.      *      */
 specifier|public
 name|void
 name|addPattern
@@ -1202,7 +1313,7 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Return the minimum length of data to provide to analyzing methods based      * on the document's content in order to check all the known MimeTypes.      *       * @return the minimum length of data to provide.      * @see #getMimeType(byte[])      * @see #getMimeType(String, byte[])      */
+comment|/**      * Return the minimum length of data to provide to analyzing methods based      * on the document's content in order to check all the known MimeTypes.      *      * @return the minimum length of data to provide.      * @see #getMimeType(byte[])      * @see #getMimeType(String, byte[])      */
 specifier|public
 name|int
 name|getMinLength
@@ -1213,7 +1324,7 @@ literal|1024
 return|;
 comment|// return minLength;
 block|}
-comment|/**      * Add the specified mime-type in the repository.      *       * @param type      *            is the mime-type to add.      */
+comment|/**      * Add the specified mime-type in the repository.      *      * @param type      *            is the mime-type to add.      */
 name|void
 name|add
 parameter_list|(
