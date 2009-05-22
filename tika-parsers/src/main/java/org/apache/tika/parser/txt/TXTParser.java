@@ -137,34 +137,6 @@ name|SAXException
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|ibm
-operator|.
-name|icu
-operator|.
-name|text
-operator|.
-name|CharsetDetector
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|ibm
-operator|.
-name|icu
-operator|.
-name|text
-operator|.
-name|CharsetMatch
-import|;
-end_import
-
 begin_comment
 comment|/**  * Text parser  */
 end_comment
