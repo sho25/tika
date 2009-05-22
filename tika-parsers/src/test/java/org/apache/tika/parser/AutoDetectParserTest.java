@@ -41,38 +41,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|builder
-operator|.
-name|ReflectionToStringBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|lang
-operator|.
-name|builder
-operator|.
-name|ToStringStyle
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|tika
 operator|.
 name|exception
@@ -118,18 +86,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|SAXException
 import|;
 end_import
 
@@ -504,12 +460,7 @@ argument_list|)
 expr_stmt|;
 comment|//        assertAutoDetect(resource, null, type, null,          content);
 comment|//        assertAutoDetect(resource, null, type, wrongMimeType, content);
-specifier|final
-name|String
-name|badResource
-init|=
-literal|"a.xyz"
-decl_stmt|;
+comment|//        final String badResource = "a.xyz";
 comment|//        assertAutoDetect(resource, badResource, type, type,          content);
 comment|//        assertAutoDetect(resource, badResource, type, null,          content);
 comment|//        assertAutoDetect(resource, badResource, type, wrongMimeType, content);
@@ -815,23 +766,44 @@ operator|=
 name|expectedContentFragment
 expr_stmt|;
 block|}
-comment|/**          * Produces a string like the following:          *          * org.apache.tika.parser.AutoDetectParserTest$TestParams@8fff06[          *   resourceRealName=/test-documents/testEXCEL.xls          *   resourceStatedName=<null>          *   realType=application/vnd.ms-excel          *   statedType=<null>          *   expectedContentFragment=Sample Excel Worksheet          * ]          *          * @return          */
+comment|/**          * Produces a string like the following:          *          *<pre>          * Test parameters:          *   resourceRealName        = /test-documents/testEXCEL.xls          *   resourceStatedName      = null          *   realType                = application/vnd.ms-excel          *   statedType              = null          *   expectedContentFragment = Sample Excel Worksheet          *</pre>          */
 specifier|public
 name|String
 name|toString
 parameter_list|()
 block|{
 return|return
-name|ReflectionToStringBuilder
-operator|.
-name|toString
-argument_list|(
-name|this
-argument_list|,
-name|ToStringStyle
-operator|.
-name|MULTI_LINE_STYLE
-argument_list|)
+literal|"Test parameters:\n"
+operator|+
+literal|"  resourceRealName        = "
+operator|+
+name|resourceRealName
+operator|+
+literal|"\n"
+operator|+
+literal|"  resourceStatedName      = "
+operator|+
+name|resourceStatedName
+operator|+
+literal|"\n"
+operator|+
+literal|"  realType                = "
+operator|+
+name|realType
+operator|+
+literal|"\n"
+operator|+
+literal|"  statedType              = "
+operator|+
+name|statedType
+operator|+
+literal|"\n"
+operator|+
+literal|"  expectedContentFragment = "
+operator|+
+name|realType
+operator|+
+literal|"\n"
 return|;
 block|}
 block|}
