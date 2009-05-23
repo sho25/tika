@@ -77,6 +77,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|TaggedInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -250,7 +264,7 @@ return|return
 name|parser
 return|;
 block|}
-comment|/**      * Delegates the call to the matching component parser.      */
+comment|/**      * Delegates the call to the matching component parser. Potential      * {@link RuntimeException}s and {@link IOException}s unrelated to the      * given input stream are automatically wrapped into      * {@link TikaException}s to better honor the {@link Parser} contract.      */
 specifier|public
 name|void
 name|parse
@@ -271,6 +285,17 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|TaggedInputStream
+name|tagged
+init|=
+operator|new
+name|TaggedInputStream
+argument_list|(
+name|stream
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 name|getParser
 argument_list|(
 name|metadata
@@ -278,13 +303,55 @@ argument_list|)
 operator|.
 name|parse
 argument_list|(
-name|stream
+name|tagged
 argument_list|,
 name|handler
 argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Unexpected parse error"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|tagged
+operator|.
+name|throwIfCauseOf
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+comment|// The IOException was caused by the parser instead of the stream,
+comment|// convert the exception to a TikaException
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Parse error"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 end_class
