@@ -101,6 +101,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|TaggedContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -264,7 +278,7 @@ return|return
 name|parser
 return|;
 block|}
-comment|/**      * Delegates the call to the matching component parser. Potential      * {@link RuntimeException}s and {@link IOException}s unrelated to the      * given input stream are automatically wrapped into      * {@link TikaException}s to better honor the {@link Parser} contract.      */
+comment|/**      * Delegates the call to the matching component parser.      *<p>      * Potential {@link RuntimeException}s, {@link IOException}s and      * {@link SAXException}s unrelated to the given input stream and content      * handler are automatically wrapped into {@link TikaException}s to better      * honor the {@link Parser} contract.      */
 specifier|public
 name|void
 name|parse
@@ -285,8 +299,16 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|Parser
+name|parser
+init|=
+name|getParser
+argument_list|(
+name|metadata
+argument_list|)
+decl_stmt|;
 name|TaggedInputStream
-name|tagged
+name|taggedStream
 init|=
 operator|new
 name|TaggedInputStream
@@ -294,18 +316,24 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+name|TaggedContentHandler
+name|taggedHandler
+init|=
+operator|new
+name|TaggedContentHandler
+argument_list|(
+name|handler
+argument_list|)
+decl_stmt|;
 try|try
 block|{
-name|getParser
-argument_list|(
-name|metadata
-argument_list|)
+name|parser
 operator|.
 name|parse
 argument_list|(
-name|tagged
+name|taggedStream
 argument_list|,
-name|handler
+name|taggedHandler
 argument_list|,
 name|metadata
 argument_list|)
@@ -321,7 +349,9 @@ throw|throw
 operator|new
 name|TikaException
 argument_list|(
-literal|"Unexpected parse error"
+literal|"Unexpected RuntimeException from "
+operator|+
+name|parser
 argument_list|,
 name|e
 argument_list|)
@@ -333,20 +363,45 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|tagged
+name|taggedStream
 operator|.
 name|throwIfCauseOf
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-comment|// The IOException was caused by the parser instead of the stream,
-comment|// convert the exception to a TikaException
 throw|throw
 operator|new
 name|TikaException
 argument_list|(
-literal|"Parse error"
+literal|"TIKA-198: Illegal IOException from "
+operator|+
+name|parser
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+name|taggedHandler
+operator|.
+name|throwIfCauseOf
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"TIKA-237: Illegal SAXException from "
+operator|+
+name|parser
 argument_list|,
 name|e
 argument_list|)

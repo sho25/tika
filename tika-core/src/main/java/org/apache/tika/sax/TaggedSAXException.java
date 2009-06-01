@@ -65,6 +65,12 @@ argument_list|,
 name|original
 argument_list|)
 expr_stmt|;
+name|initCause
+argument_list|(
+name|original
+argument_list|)
+expr_stmt|;
+comment|// SAXException has it's own chaining mechanism!
 name|this
 operator|.
 name|tag
