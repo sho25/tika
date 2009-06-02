@@ -340,6 +340,11 @@ name|MimeType
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|XmlRootExtractor
+name|xmlRootExtractor
+decl_stmt|;
 specifier|public
 name|MimeTypes
 parameter_list|()
@@ -414,6 +419,31 @@ argument_list|,
 name|text
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|xmlRootExtractor
+operator|=
+operator|new
+name|XmlRootExtractor
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unable to create a XmlRootExtractor"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Find the Mime Content Type of a file.      *      * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
 specifier|public
@@ -621,7 +651,7 @@ block|{
 name|QName
 name|rootElement
 init|=
-name|XmlRootExtractor
+name|xmlRootExtractor
 operator|.
 name|extractRootElement
 argument_list|(
