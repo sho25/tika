@@ -192,7 +192,9 @@ argument_list|(
 name|TikaConfig
 operator|.
 name|getDefaultConfig
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
