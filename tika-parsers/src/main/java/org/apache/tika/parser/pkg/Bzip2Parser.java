@@ -107,6 +107,48 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|parser
+operator|.
+name|DelegatingParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|BodyContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|EmbeddedContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|XHTMLContentHandler
@@ -138,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Gzip parser.  */
+comment|/**  * Bzip2 parser.  */
 end_comment
 
 begin_class
@@ -146,9 +188,9 @@ specifier|public
 class|class
 name|Bzip2Parser
 extends|extends
-name|PackageParser
+name|DelegatingParser
 block|{
-comment|/**      * Parses the given stream as a gzip file.      */
+comment|/**      * Parses the given stream as a bzip2 file.      */
 specifier|public
 name|void
 name|parse
@@ -199,7 +241,7 @@ expr_stmt|;
 comment|// At the end we want to close the bzip2 stream to release any associated
 comment|// resources, but the underlying document stream should not be closed
 name|InputStream
-name|gzip
+name|bzip2
 init|=
 operator|new
 name|BZip2CompressorInputStream
@@ -366,11 +408,26 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|parseEntry
+comment|// Use the delegate parser to parse the compressed document
+name|super
+operator|.
+name|parse
 argument_list|(
-name|gzip
+operator|new
+name|CloseShieldInputStream
+argument_list|(
+name|bzip2
+argument_list|)
 argument_list|,
+operator|new
+name|EmbeddedContentHandler
+argument_list|(
+operator|new
+name|BodyContentHandler
+argument_list|(
 name|xhtml
+argument_list|)
+argument_list|)
 argument_list|,
 name|entrydata
 argument_list|)
@@ -378,7 +435,7 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
-name|gzip
+name|bzip2
 operator|.
 name|close
 argument_list|()
