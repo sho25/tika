@@ -39,25 +39,35 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
 operator|.
-name|zip
+name|commons
 operator|.
-name|ZipEntry
+name|compress
+operator|.
+name|archivers
+operator|.
+name|ArchiveEntry
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|apache
+operator|.
+name|commons
+operator|.
+name|compress
+operator|.
+name|archivers
 operator|.
 name|zip
 operator|.
-name|ZipInputStream
+name|ZipArchiveInputStream
 import|;
 end_import
 
@@ -204,11 +214,11 @@ argument_list|()
 expr_stmt|;
 comment|// At the end we want to close the Zip stream to release any associated
 comment|// resources, but the underlying document stream should not be closed
-name|ZipInputStream
+name|ZipArchiveInputStream
 name|zip
 init|=
 operator|new
-name|ZipInputStream
+name|ZipArchiveInputStream
 argument_list|(
 operator|new
 name|CloseShieldInputStream
@@ -219,7 +229,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|ZipEntry
+name|ArchiveEntry
 name|entry
 init|=
 name|zip
