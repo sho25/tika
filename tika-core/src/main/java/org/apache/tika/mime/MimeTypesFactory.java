@@ -79,7 +79,7 @@ name|MimeTypes
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates and returns a MimeTypes instance from the specified document.      */
+comment|/**      * Creates and returns a MimeTypes instance from the specified document.      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -88,6 +88,8 @@ parameter_list|(
 name|Document
 name|document
 parameter_list|)
+throws|throws
+name|MimeTypeException
 block|{
 name|MimeTypes
 name|mimeTypes
@@ -111,7 +113,7 @@ return|return
 name|mimeTypes
 return|;
 block|}
-comment|/**      * Creates and returns a MimeTypes instance from the specified input stream.      * Does not close the input stream.      */
+comment|/**      * Creates and returns a MimeTypes instance from the specified input stream.      * Does not close the input stream.      * @throws IOException if the stream can not be read      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -120,6 +122,10 @@ parameter_list|(
 name|InputStream
 name|inputStream
 parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|MimeTypeException
 block|{
 name|MimeTypes
 name|mimeTypes
@@ -143,7 +149,7 @@ return|return
 name|mimeTypes
 return|;
 block|}
-comment|/**      * Creates and returns a MimeTypes instance from the resource      * at the location specified by the URL.  Opens and closes the      * InputStream from the URL.      */
+comment|/**      * Creates and returns a MimeTypes instance from the resource      * at the location specified by the URL.  Opens and closes the      * InputStream from the URL.      *      * @throws IOException if the URL can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -154,6 +160,8 @@ name|url
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|MimeTypeException
 block|{
 name|InputStream
 name|stream
@@ -181,7 +189,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Creates and returns a MimeTypes instance from the specified file path,      * as interpreted by the class loader in getResource().      */
+comment|/**      * Creates and returns a MimeTypes instance from the specified file path,      * as interpreted by the class loader in getResource().      *      * @throws IOException if the file can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -192,6 +200,8 @@ name|filePath
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|MimeTypeException
 block|{
 return|return
 name|create

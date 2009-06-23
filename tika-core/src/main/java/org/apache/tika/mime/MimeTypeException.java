@@ -15,8 +15,22 @@ name|mime
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
 begin_comment
-comment|/**  * A class to encapsulate MimeType related exceptions.  *   *   */
+comment|/**  * A class to encapsulate MimeType related exceptions.  */
 end_comment
 
 begin_class
@@ -24,42 +38,38 @@ specifier|public
 class|class
 name|MimeTypeException
 extends|extends
-name|Exception
+name|TikaException
 block|{
-comment|/**      * Constructs a MimeTypeException with no specified detail message.      */
-specifier|public
-name|MimeTypeException
-parameter_list|()
-block|{
-name|super
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * Constructs a MimeTypeException with the specified detail message.      *       * @param msg      *            the detail message.      */
+comment|/**      * Constructs a MimeTypeException with the specified detail message.      *       * @param message the detail message.      */
 specifier|public
 name|MimeTypeException
 parameter_list|(
 name|String
-name|msg
+name|message
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|msg
+name|message
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a MimeTypeException with the specified cause.      *       * @param t      *            the cause.      */
+comment|/**      * Constructs a MimeTypeException with the specified detail message      * and root cause.      *       * @param message the detail message.      * @param cause root cause      */
 specifier|public
 name|MimeTypeException
 parameter_list|(
+name|String
+name|message
+parameter_list|,
 name|Throwable
-name|t
+name|cause
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|t
+name|message
+argument_list|,
+name|cause
 argument_list|)
 expr_stmt|;
 block|}

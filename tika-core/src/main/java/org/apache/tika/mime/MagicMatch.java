@@ -897,14 +897,11 @@ throw|throw
 operator|new
 name|MimeTypeException
 argument_list|(
-name|e
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|" for "
+literal|"Invalid string value: "
 operator|+
 name|value
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
