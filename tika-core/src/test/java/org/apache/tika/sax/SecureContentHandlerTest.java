@@ -31,11 +31,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|tika
 operator|.
 name|io
-operator|.
-name|input
 operator|.
 name|CountingInputStream
 import|;
@@ -47,11 +45,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|tika
 operator|.
 name|io
-operator|.
-name|input
 operator|.
 name|NullInputStream
 import|;

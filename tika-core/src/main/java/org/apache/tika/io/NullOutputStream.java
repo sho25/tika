@@ -25,78 +25,86 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
 begin_comment
-comment|/**  * An {@link IOException} wrapper that tags the wrapped exception with  * a given object reference. Both the tag and the wrapped original exception  * can be used to determine further processing when this exception is caught.  */
+comment|/**  * This OutputStream writes all data to the famous<b>/dev/null</b>.  *<p>  * This output stream has no destination (file/socket etc.) and all  * bytes written to it are ignored and lost.  *   * @author Jeremias Maerki  * @since Apache Tika 0.4, copied from Commons IO 1.4  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|TaggedIOException
+name|NullOutputStream
 extends|extends
-name|IOExceptionWithCause
+name|OutputStream
 block|{
-comment|/**      * The object reference used to tag the exception.      */
-specifier|private
+comment|/**      * A singleton.      */
+specifier|public
+specifier|static
 specifier|final
-name|Object
-name|tag
-decl_stmt|;
-comment|/**      * Creates a tagged wrapper for the given exception.      *      * @param original the exception to be tagged      * @param tag tag object      */
-specifier|public
-name|TaggedIOException
-parameter_list|(
-name|IOException
-name|original
-parameter_list|,
-name|Object
-name|tag
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|original
-operator|.
-name|getMessage
+name|NullOutputStream
+name|NULL_OUTPUT_STREAM
+init|=
+operator|new
+name|NullOutputStream
 argument_list|()
-argument_list|,
-name|original
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|tag
-operator|=
-name|tag
-expr_stmt|;
-block|}
-comment|/**      * Returns the object reference used as the tag this exception.      *      * @return tag object      */
-specifier|public
-name|Object
-name|getTag
-parameter_list|()
-block|{
-return|return
-name|tag
-return|;
-block|}
-comment|/**      * Returns the wrapped exception. The only difference to the overridden      * {@link Throwable#getCause()} method is the narrower return type.      *      * @return wrapped exception      */
+decl_stmt|;
+comment|/**      * Does nothing - output to<code>/dev/null</code>.      * @param b The bytes to write      * @param off The start offset      * @param len The number of bytes to write      */
 annotation|@
 name|Override
 specifier|public
-name|IOException
-name|getCause
-parameter_list|()
+name|void
+name|write
+parameter_list|(
+name|byte
+index|[]
+name|b
+parameter_list|,
+name|int
+name|off
+parameter_list|,
+name|int
+name|len
+parameter_list|)
 block|{
-return|return
-operator|(
+comment|//to /dev/null
+block|}
+comment|/**      * Does nothing - output to<code>/dev/null</code>.      * @param b The byte to write      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|int
+name|b
+parameter_list|)
+block|{
+comment|//to /dev/null
+block|}
+comment|/**      * Does nothing - output to<code>/dev/null</code>.      * @param b The bytes to write      * @throws IOException never      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|byte
+index|[]
+name|b
+parameter_list|)
+throws|throws
 name|IOException
-operator|)
-name|super
-operator|.
-name|getCause
-argument_list|()
-return|;
+block|{
+comment|//to /dev/null
 block|}
 block|}
 end_class

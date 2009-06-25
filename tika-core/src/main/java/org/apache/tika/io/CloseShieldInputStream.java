@@ -21,82 +21,49 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|InputStream
 import|;
 end_import
 
 begin_comment
-comment|/**  * An {@link IOException} wrapper that tags the wrapped exception with  * a given object reference. Both the tag and the wrapped original exception  * can be used to determine further processing when this exception is caught.  */
+comment|/**  * Proxy stream that prevents the underlying input stream from being closed.  *<p>  * This class is typically used in cases where an input stream needs to be  * passed to a component that wants to explicitly close the stream even if  * more input would still be available to other components.  *  * @since Apache Tika 0.4, copied from Commons IO 1.4  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|TaggedIOException
+name|CloseShieldInputStream
 extends|extends
-name|IOExceptionWithCause
+name|ProxyInputStream
 block|{
-comment|/**      * The object reference used to tag the exception.      */
-specifier|private
-specifier|final
-name|Object
-name|tag
-decl_stmt|;
-comment|/**      * Creates a tagged wrapper for the given exception.      *      * @param original the exception to be tagged      * @param tag tag object      */
+comment|/**      * Creates a proxy that shields the given input stream from being      * closed.      *      * @param in underlying input stream      */
 specifier|public
-name|TaggedIOException
+name|CloseShieldInputStream
 parameter_list|(
-name|IOException
-name|original
-parameter_list|,
-name|Object
-name|tag
+name|InputStream
+name|in
 parameter_list|)
 block|{
 name|super
 argument_list|(
-name|original
-operator|.
-name|getMessage
-argument_list|()
-argument_list|,
-name|original
+name|in
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|tag
-operator|=
-name|tag
-expr_stmt|;
 block|}
-comment|/**      * Returns the object reference used as the tag this exception.      *      * @return tag object      */
-specifier|public
-name|Object
-name|getTag
-parameter_list|()
-block|{
-return|return
-name|tag
-return|;
-block|}
-comment|/**      * Returns the wrapped exception. The only difference to the overridden      * {@link Throwable#getCause()} method is the narrower return type.      *      * @return wrapped exception      */
+comment|/**      * Replaces the underlying input stream with a {@link ClosedInputStream}      * sentinel. The original input stream will remain open, but this proxy      * will appear closed.      */
 annotation|@
 name|Override
 specifier|public
-name|IOException
-name|getCause
+name|void
+name|close
 parameter_list|()
 block|{
-return|return
-operator|(
-name|IOException
-operator|)
-name|super
-operator|.
-name|getCause
+name|in
+operator|=
+operator|new
+name|ClosedInputStream
 argument_list|()
-return|;
+expr_stmt|;
 block|}
 block|}
 end_class

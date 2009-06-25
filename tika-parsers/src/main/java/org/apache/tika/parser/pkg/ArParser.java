@@ -61,13 +61,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|tika
 operator|.
-name|io
+name|exception
 operator|.
-name|input
-operator|.
-name|CloseShieldInputStream
+name|TikaException
 import|;
 end_import
 
@@ -79,9 +77,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|CloseShieldInputStream
 import|;
 end_import
 

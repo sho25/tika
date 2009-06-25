@@ -21,11 +21,9 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
+name|tika
 operator|.
 name|io
-operator|.
-name|input
 operator|.
 name|ClosedInputStream
 import|;
@@ -97,9 +95,9 @@ return|return
 operator|new
 name|InputSource
 argument_list|(
+operator|new
 name|ClosedInputStream
-operator|.
-name|CLOSED_INPUT_STREAM
+argument_list|()
 argument_list|)
 return|;
 block|}
