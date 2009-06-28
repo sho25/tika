@@ -197,7 +197,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.openxmlformats-package.core-properties+xml"
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 argument_list|,
 name|metadata
 operator|.
@@ -382,7 +382,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.openxmlformats-package.core-properties+xml"
+literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
 argument_list|,
 name|metadata
 operator|.
@@ -527,7 +527,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.openxmlformats-package.core-properties+xml"
+literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 argument_list|,
 name|metadata
 operator|.

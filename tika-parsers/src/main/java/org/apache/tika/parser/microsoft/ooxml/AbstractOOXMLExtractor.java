@@ -133,11 +133,19 @@ specifier|protected
 name|POIXMLTextExtractor
 name|extractor
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|type
+decl_stmt|;
 specifier|public
 name|AbstractOOXMLExtractor
 parameter_list|(
 name|POIXMLTextExtractor
 name|extractor
+parameter_list|,
+name|String
+name|type
 parameter_list|)
 block|{
 name|this
@@ -145,6 +153,12 @@ operator|.
 name|extractor
 operator|=
 name|extractor
+expr_stmt|;
+name|this
+operator|.
+name|type
+operator|=
+name|type
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getDocument()      */
@@ -171,6 +185,8 @@ operator|new
 name|MetadataExtractor
 argument_list|(
 name|extractor
+argument_list|,
+name|type
 argument_list|)
 return|;
 block|}

@@ -326,6 +326,8 @@ block|{
 name|super
 argument_list|(
 name|extractor
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
 argument_list|)
 expr_stmt|;
 block|}

@@ -238,6 +238,8 @@ block|{
 name|super
 argument_list|(
 name|extractor
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 argument_list|)
 expr_stmt|;
 block|}
