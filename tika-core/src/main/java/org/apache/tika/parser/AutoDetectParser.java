@@ -123,9 +123,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|mime
+name|sax
 operator|.
-name|MimeTypes
+name|SecureContentHandler
 import|;
 end_import
 
@@ -137,9 +137,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|sax
+name|detect
 operator|.
-name|SecureContentHandler
+name|Detector
 import|;
 end_import
 
@@ -174,10 +174,12 @@ name|AutoDetectParser
 extends|extends
 name|CompositeParser
 block|{
+comment|/**      * The type detector used by this parser to auto-detect the type      * of a document.      */
 specifier|private
-name|MimeTypes
-name|types
+name|Detector
+name|detector
 decl_stmt|;
+comment|// always set in the constructor
 comment|/**      * Creates an auto-detecting parser instance using the default Tika      * configuration.      */
 specifier|public
 name|AutoDetectParser
@@ -241,7 +243,7 @@ name|getParsers
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|setMimeTypes
+name|setDetector
 argument_list|(
 name|config
 operator|.
@@ -250,28 +252,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns the type detector used by this parser to auto-detect the type      * of a document.      *      * @return type detector      * @since Apache Tika 0.4      */
 specifier|public
-name|MimeTypes
-name|getMimeTypes
+name|Detector
+name|getDetector
 parameter_list|()
 block|{
 return|return
-name|types
+name|detector
 return|;
 block|}
+comment|/**      * Sets the type detector used by this parser to auto-detect the type      * of a document. Note that calling the {@link #setConfig(TikaConfig)}      * method will override the type detector setting with the type settings      * included in the given configuration.      *      * @param detector type detector      * @since Apache Tika 0.4      */
 specifier|public
 name|void
-name|setMimeTypes
+name|setDetector
 parameter_list|(
-name|MimeTypes
-name|types
+name|Detector
+name|detector
 parameter_list|)
 block|{
 name|this
 operator|.
-name|types
+name|detector
 operator|=
-name|types
+name|detector
 expr_stmt|;
 block|}
 specifier|public
@@ -317,7 +321,7 @@ comment|// Automatically detect the MIME type of the document
 name|MediaType
 name|type
 init|=
-name|types
+name|detector
 operator|.
 name|detect
 argument_list|(
