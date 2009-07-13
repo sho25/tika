@@ -73,20 +73,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|XHTMLContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|xmlbeans
 operator|.
 name|XmlException
@@ -136,8 +122,8 @@ name|MetadataExtractor
 name|getMetadataExtractor
 parameter_list|()
 function_decl|;
-comment|/**      * Returns to clients a {@link XHTMLContentHandler} object representing the      * parsed content of a document as XHTML SAX events.      */
-name|XHTMLContentHandler
+comment|/**      * Parses the document into a sequence of XHTML SAX events sent to the      * given content handler.      */
+name|void
 name|getXHTML
 parameter_list|(
 name|ContentHandler

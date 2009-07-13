@@ -192,7 +192,7 @@ return|;
 block|}
 comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getXHTML(org.xml.sax.ContentHandler,      *      org.apache.tika.metadata.Metadata)      */
 specifier|public
-name|XHTMLContentHandler
+name|void
 name|getXHTML
 parameter_list|(
 name|ContentHandler
@@ -234,9 +234,6 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
-return|return
-name|xhtml
-return|;
 block|}
 comment|/**      * Populates the {@link XHTMLContentHandler} object received as parameter.      */
 specifier|protected
