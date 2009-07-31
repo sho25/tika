@@ -15,20 +15,6 @@ name|language
 package|;
 end_package
 
-begin_comment
-comment|// JDK imports
-end_comment
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
 begin_import
 import|import
 name|java
@@ -36,16 +22,6 @@ operator|.
 name|io
 operator|.
 name|BufferedReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStreamReader
 import|;
 end_import
 
@@ -73,31 +49,31 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|List
+name|InputStream
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|tika
-operator|.
-name|language
-operator|.
-name|NGramProfile
-operator|.
-name|NGramEntry
+name|InputStreamReader
 import|;
 end_import
 
-begin_comment
-comment|// JUnit imports
-end_comment
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
 
 begin_import
 import|import
@@ -136,6 +112,22 @@ operator|.
 name|textui
 operator|.
 name|TestRunner
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|language
+operator|.
+name|NGramProfile
+operator|.
+name|NGramEntry
 import|;
 end_import
 
@@ -252,7 +244,7 @@ block|,
 literal|"s"
 block|}
 decl_stmt|;
-comment|/**    * Test analyze method    */
+comment|/**      * Test analyze method      */
 specifier|public
 name|void
 name|testAnalyze
@@ -302,7 +294,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Test addNGrams method with StringBuffer argument    *    */
+comment|/**      * Test addNGrams method with StringBuffer argument      *      */
 specifier|public
 name|void
 name|testAddNGramsStringBuffer
@@ -352,7 +344,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * test getSorted method    */
+comment|/**      * test getSorted method      */
 specifier|public
 name|void
 name|testGetSorted

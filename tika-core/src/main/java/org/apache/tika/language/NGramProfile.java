@@ -15,47 +15,13 @@ name|language
 package|;
 end_package
 
-begin_comment
-comment|// JDK imports
-end_comment
-
 begin_import
 import|import
 name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
+name|BufferedInputStream
 import|;
 end_import
 
@@ -66,6 +32,16 @@ operator|.
 name|io
 operator|.
 name|BufferedReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
 import|;
 end_import
 
@@ -95,6 +71,26 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStreamReader
 import|;
 end_import
@@ -105,37 +101,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
+name|OutputStream
 import|;
 end_import
 
@@ -165,7 +131,37 @@ name|java
 operator|.
 name|util
 operator|.
+name|Date
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -322,7 +318,7 @@ operator|new
 name|QuickStringBuffer
 argument_list|()
 decl_stmt|;
-comment|/**    * Construct a new ngram profile    *     * @param name is the name of the profile    * @param minlen is the min length of ngram sequences    * @param maxlen is the max length of ngram sequences    */
+comment|/**      * Construct a new ngram profile      *       * @param name is the name of the profile      * @param minlen is the min length of ngram sequences      * @param maxlen is the max length of ngram sequences      */
 specifier|public
 name|NGramProfile
 parameter_list|(
@@ -371,7 +367,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**    * @return Returns the name.    */
+comment|/**      * @return Returns the name.      */
 specifier|public
 name|String
 name|getName
@@ -381,7 +377,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**    * Add ngrams from a single word to this profile    *     * @param word is the word to add    */
+comment|/**      * Add ngrams from a single word to this profile      *       * @param word is the word to add      */
 specifier|public
 name|void
 name|add
@@ -425,7 +421,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Add the last NGrams from the specified word.    */
+comment|/**      * Add the last NGrams from the specified word.      */
 specifier|private
 name|void
 name|add
@@ -493,7 +489,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Add ngrams from a single word in this profile    *    * @param word is the word to add    * @param n is the ngram size    */
+comment|/**      * Add ngrams from a single word in this profile      *      * @param word is the word to add      * @param n is the ngram size      */
 specifier|private
 name|void
 name|add
@@ -555,7 +551,7 @@ name|inc
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Analyze a piece of text    *     * @param text the text to be analyzed    */
+comment|/**      * Analyze a piece of text      *       * @param text the text to be analyzed      */
 specifier|public
 name|void
 name|analyze
@@ -712,7 +708,7 @@ name|normalize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * @param word    * @param n sequence length    */
+comment|/**      * @param word      * @param n sequence length      */
 specifier|private
 name|void
 name|add
@@ -760,7 +756,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Normalize the profile (calculates the ngrams frequencies)    */
+comment|/**      * Normalize the profile (calculates the ngrams frequencies)      */
 specifier|protected
 name|void
 name|normalize
@@ -882,7 +878,7 @@ index|]
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Return a sorted list of ngrams (sort done by 1. frequency 2. sequence)    *     * @return sorted vector of ngrams    */
+comment|/**      * Return a sorted list of ngrams (sort done by 1. frequency 2. sequence)      *       * @return sorted vector of ngrams      */
 specifier|public
 name|List
 argument_list|<
@@ -1055,7 +1051,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * Calculate a score how well NGramProfiles match each other    *     * @param another    *          ngram profile to compare against    * @return similarity 0=exact match    */
+comment|/**      * Calculate a score how well NGramProfiles match each other      *       * @param another      *          ngram profile to compare against      * @return similarity 0=exact match      */
 specifier|public
 name|float
 name|getSimilarity
@@ -1240,7 +1236,7 @@ return|return
 name|sum
 return|;
 block|}
-comment|/**    * Loads a ngram profile from an InputStream    * (assumes UTF-8 encoded content)    * @param is the InputStream to read    */
+comment|/**      * Loads a ngram profile from an InputStream      * (assumes UTF-8 encoded content)      * @param is the InputStream to read      */
 specifier|public
 name|void
 name|load
@@ -1415,7 +1411,7 @@ name|normalize
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Create a new Language profile from (preferably quite large) text file    *     * @param name is thename of profile    * @param is is the stream to read    * @param encoding is the encoding of stream    */
+comment|/**      * Create a new Language profile from (preferably quite large) text file      *       * @param name is thename of profile      * @param is is the stream to read      * @param encoding is the encoding of stream      */
 specifier|public
 specifier|static
 name|NGramProfile
@@ -1530,7 +1526,7 @@ return|return
 name|newProfile
 return|;
 block|}
-comment|/**    * Writes NGramProfile content into OutputStream, content is outputted with    * UTF-8 encoding    *     * @param os the Stream to output to    * @throws IOException    */
+comment|/**      * Writes NGramProfile content into OutputStream, content is outputted with      * UTF-8 encoding      *       * @param os the Stream to output to      * @throws IOException      */
 specifier|public
 name|void
 name|save
@@ -1777,7 +1773,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * main method used for testing only    *     * @param args    */
+comment|/**      * main method used for testing only      *       * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -1791,13 +1787,13 @@ block|{
 name|String
 name|usage
 init|=
-literal|"Usage: NGramProfile "
+literal|"Usage: NGramProfile"
 operator|+
-literal|"[-create profilename filename encoding] "
+literal|" [-create profilename filename encoding]"
 operator|+
-literal|"[-similarity file1 file2] "
+literal|" [-similarity file1 file2]"
 operator|+
-literal|"[-score profile-name filename encoding]"
+literal|" [-score profile-name filename encoding]"
 decl_stmt|;
 name|int
 name|command
@@ -2295,9 +2291,9 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{     }
+block|{         }
 block|}
-comment|/**    * Inner class that describes a NGram    */
+comment|/**      * Inner class that describes a NGram      */
 class|class
 name|NGramEntry
 implements|implements
@@ -2333,7 +2329,7 @@ name|frequency
 init|=
 literal|0.0F
 decl_stmt|;
-comment|/**       * Constructs a new NGramEntry      * @param seq is the sequence of characters of the ngram      */
+comment|/**           * Constructs a new NGramEntry          * @param seq is the sequence of characters of the ngram          */
 specifier|public
 name|NGramEntry
 parameter_list|(
@@ -2348,7 +2344,7 @@ operator|=
 name|seq
 expr_stmt|;
 block|}
-comment|/**       * Constructs a new NGramEntry      * @param seq is the sequence of characters of the ngram      * @param count is the number of occurences of this ngram      */
+comment|/**           * Constructs a new NGramEntry          * @param seq is the sequence of characters of the ngram          * @param count is the number of occurences of this ngram          */
 specifier|public
 name|NGramEntry
 parameter_list|(
@@ -2386,7 +2382,7 @@ operator|=
 name|count
 expr_stmt|;
 block|}
-comment|/**      * Returns the number of occurences of this ngram in its profile      * @return the number of occurences of this ngram in its profile      */
+comment|/**          * Returns the number of occurences of this ngram in its profile          * @return the number of occurences of this ngram in its profile          */
 specifier|public
 name|int
 name|getCount
@@ -2396,7 +2392,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/**      * Returns the frequency of this ngram in its profile      * @return the frequency of this ngram in its profile      */
+comment|/**          * Returns the frequency of this ngram in its profile          * @return the frequency of this ngram in its profile          */
 specifier|public
 name|float
 name|getFrequency
@@ -2406,7 +2402,7 @@ return|return
 name|frequency
 return|;
 block|}
-comment|/**      * Returns the sequence of characters of this ngram      * @return the sequence of characters of this ngram      */
+comment|/**          * Returns the sequence of characters of this ngram          * @return the sequence of characters of this ngram          */
 specifier|public
 name|CharSequence
 name|getSeq
@@ -2416,7 +2412,7 @@ return|return
 name|seq
 return|;
 block|}
-comment|/**      * Returns the size of this ngram      * @return the size of this ngram      */
+comment|/**          * Returns the size of this ngram          * @return the size of this ngram          */
 specifier|public
 name|int
 name|size
@@ -2482,7 +2478,7 @@ operator|)
 return|;
 block|}
 block|}
-comment|/**      * Increments the number of occurences of this ngram.      */
+comment|/**          * Increments the number of occurences of this ngram.          */
 specifier|public
 name|void
 name|inc
@@ -2492,7 +2488,7 @@ name|count
 operator|++
 expr_stmt|;
 block|}
-comment|/**      * Associated a profile to this ngram      * @param profile is the profile associated to this ngram      */
+comment|/**          * Associated a profile to this ngram          * @param profile is the profile associated to this ngram          */
 specifier|public
 name|void
 name|setProfile
@@ -2508,7 +2504,7 @@ operator|=
 name|profile
 expr_stmt|;
 block|}
-comment|/**      * Returns the profile associated to this ngram      * @return the profile associated to this ngram      */
+comment|/**          * Returns the profile associated to this ngram          * @return the profile associated to this ngram          */
 specifier|public
 name|NGramProfile
 name|getProfile

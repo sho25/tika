@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -14,40 +14,6 @@ operator|.
 name|language
 package|;
 end_package
-
-begin_comment
-comment|// JDK imports
-end_comment
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
 
 begin_import
 import|import
@@ -75,7 +41,37 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -95,7 +91,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|ArrayList
 import|;
 end_import
 
@@ -105,7 +101,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|Enumeration
 import|;
 end_import
 
@@ -135,7 +131,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
+name|List
 import|;
 end_import
 
@@ -155,7 +151,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Enumeration
+name|Vector
 import|;
 end_import
 
@@ -274,7 +270,7 @@ name|suspect
 init|=
 literal|null
 decl_stmt|;
-comment|/**    * Constructs a new Language Identifier.    */
+comment|/**      * Constructs a new Language Identifier.      */
 specifier|public
 name|LanguageIdentifier
 parameter_list|()
@@ -739,7 +735,7 @@ expr_stmt|;
 comment|// if (LOG.isFatalEnabled()) { LOG.fatal(e.toString()); }
 block|}
 block|}
-comment|/**    * Main method used for command line process.    *<br/>Usage is:    *<pre>    * LanguageIdentifier [-identifyrows filename maxlines]    *                    [-identifyfile charset filename]    *                    [-identifyfileset charset files]    *                    [-identifytext text]    *                    [-identifyurl url]    *</pre>    * @param args arguments.    */
+comment|/**      * Main method used for command line process.      *<br/>Usage is:      *<pre>      * LanguageIdentifier [-identifyrows filename maxlines]      *                    [-identifyfile charset filename]      *                    [-identifyfileset charset files]      *                    [-identifytext text]      *                    [-identifyurl url]      *</pre>      * @param args arguments.      */
 specifier|public
 specifier|static
 name|void
@@ -753,15 +749,15 @@ block|{
 name|String
 name|usage
 init|=
-literal|"Usage: LanguageIdentifier "
+literal|"Usage: LanguageIdentifier"
 operator|+
-literal|"[-identifyrows filename maxlines] "
+literal|" [-identifyrows filename maxlines]"
 operator|+
-literal|"[-identifyfile charset filename] "
+literal|" [-identifyfile charset filename]"
 operator|+
-literal|"[-identifyfileset charset files] "
+literal|" [-identifyfileset charset files]"
 operator|+
-literal|"[-identifytext text] "
+literal|" [-identifytext text] "
 decl_stmt|;
 name|int
 name|command
@@ -1292,7 +1288,6 @@ break|break;
 case|case
 name|IDFILESET
 case|:
-comment|/* used for benchs           for (int j=128; j<=524288; j*=2) {             long start = System.currentTimeMillis();             idfr.analyzeLength = j; */
 name|System
 operator|.
 name|out
@@ -1393,7 +1388,6 @@ name|lang
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* used for benchs             System.out.println(j + "/" + (System.currentTimeMillis()-start));           } */
 name|System
 operator|.
 name|exit
@@ -1432,7 +1426,7 @@ name|lang
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Identify language of a content.    *     * @param content is the content to analyze.    * @return The 2 letter    *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639    *         language code</a> (en, fi, sv, ...) of the language that best    *         matches the specified content.    */
+comment|/**      * Identify language of a content.      *       * @param content is the content to analyze.      * @return The 2 letter      *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639      *         language code</a> (en, fi, sv, ...) of the language that best      *         matches the specified content.      */
 specifier|public
 name|String
 name|identify
@@ -1452,7 +1446,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**    * Identify language of a content.    *     * @param content is the content to analyze.    * @return The 2 letter    *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639    *         language code</a> (en, fi, sv, ...) of the language that best    *         matches the specified content.    */
+comment|/**      * Identify language of a content.      *       * @param content is the content to analyze.      * @return The 2 letter      *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639      *         language code</a> (en, fi, sv, ...) of the language that best      *         matches the specified content.      */
 specifier|public
 name|String
 name|identify
@@ -1710,7 +1704,7 @@ return|return
 name|lang
 return|;
 block|}
-comment|/**    * Identify language from input stream.    * This method uses the platform default encoding to read the input stream.    * For using a specific encoding, use the    * {@link #identify(InputStream, String)} method.    *    * @param is is the input stream to analyze.    * @return The 2 letter    *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639    *         language code</a> (en, fi, sv, ...) of the language that best    *         matches the content of the specified input stream.    * @throws IOException if something wrong occurs on the input stream.    */
+comment|/**      * Identify language from input stream.      * This method uses the platform default encoding to read the input stream.      * For using a specific encoding, use the      * {@link #identify(InputStream, String)} method.      *      * @param is is the input stream to analyze.      * @return The 2 letter      *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639      *         language code</a> (en, fi, sv, ...) of the language that best      *         matches the content of the specified input stream.      * @throws IOException if something wrong occurs on the input stream.      */
 specifier|public
 name|String
 name|identify
@@ -1730,7 +1724,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**    * Identify language from input stream.    *     * @param is is the input stream to analyze.    * @param charset is the charset to use to read the input stream.    * @return The 2 letter    *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639    *         language code</a> (en, fi, sv, ...) of the language that best    *         matches the content of the specified input stream.    * @throws IOException if something wrong occurs on the input stream.    */
+comment|/**      * Identify language from input stream.      *       * @param is is the input stream to analyze.      * @param charset is the charset to use to read the input stream.      * @return The 2 letter      *<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639      *         language code</a> (en, fi, sv, ...) of the language that best      *         matches the content of the specified input stream.      * @throws IOException if something wrong occurs on the input stream.      */
 specifier|public
 name|String
 name|identify

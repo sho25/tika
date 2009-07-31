@@ -57,6 +57,16 @@ end_import
 
 begin_import
 import|import
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -68,16 +78,6 @@ operator|.
 name|NGramProfile
 operator|.
 name|NGramEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -142,7 +142,7 @@ block|,
 literal|"s"
 block|}
 decl_stmt|;
-comment|/**    * Test analyze method    */
+comment|/**      * Test analyze method      */
 specifier|public
 name|void
 name|testAnalyze
@@ -192,7 +192,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * test getSorted method    */
+comment|/**      * test getSorted method      */
 specifier|public
 name|void
 name|testGetSorted
