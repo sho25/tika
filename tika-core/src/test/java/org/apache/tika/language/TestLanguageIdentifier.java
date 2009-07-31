@@ -806,10 +806,9 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|// Disable until the resource files are properly located
 specifier|public
 name|void
-name|disabledTtestIdentify
+name|testIdentify
 parameter_list|()
 block|{
 try|try

@@ -447,7 +447,7 @@ argument_list|()
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"org/apache/nutch/analysis/lang/"
+literal|"org/apache/tika/language/"
 operator|+
 name|lang
 operator|+
@@ -731,6 +731,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 comment|// if (LOG.isFatalEnabled()) { LOG.fatal(e.toString()); }
 block|}
 block|}
