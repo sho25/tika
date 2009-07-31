@@ -155,22 +155,6 @@ name|Vector
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|language
-operator|.
-name|NGramProfile
-operator|.
-name|NGramEntry
-import|;
-end_import
-
 begin_comment
 comment|/**  * Identify the language of a content, based on statistical analysis.  *  * @see<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">ISO 639  *      Language Codes</a>  *   * @author Sami Siren  * @author J&eacute;r&ocirc;me Charron  */
 end_comment
@@ -580,13 +564,6 @@ operator|.
 name|add
 argument_list|(
 name|entry
-argument_list|)
-expr_stmt|;
-name|entry
-operator|.
-name|setProfile
-argument_list|(
-name|profile
 argument_list|)
 expr_stmt|;
 block|}

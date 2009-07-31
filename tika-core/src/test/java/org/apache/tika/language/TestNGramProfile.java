@@ -65,22 +65,6 @@ name|TestCase
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|language
-operator|.
-name|NGramProfile
-operator|.
-name|NGramEntry
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class

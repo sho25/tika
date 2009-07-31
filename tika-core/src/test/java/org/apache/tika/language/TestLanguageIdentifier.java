@@ -115,22 +115,6 @@ name|TestRunner
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|language
-operator|.
-name|NGramProfile
-operator|.
-name|NGramEntry
-import|;
-end_import
-
 begin_comment
 comment|/**  * JUnit based test of class {@link LanguageIdentifier}.  *  * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  */
 end_comment
