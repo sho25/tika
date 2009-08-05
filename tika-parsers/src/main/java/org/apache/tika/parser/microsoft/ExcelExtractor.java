@@ -1040,12 +1040,6 @@ condition|(
 name|currentSheet
 operator|!=
 literal|null
-operator|&&
-operator|!
-name|currentSheet
-operator|.
-name|isEmpty
-argument_list|()
 condition|)
 block|{
 name|processSheet
