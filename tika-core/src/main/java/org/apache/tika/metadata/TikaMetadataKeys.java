@@ -24,9 +24,6 @@ specifier|public
 interface|interface
 name|TikaMetadataKeys
 block|{
-specifier|public
-specifier|static
-specifier|final
 name|String
 name|RESOURCE_NAME_KEY
 init|=

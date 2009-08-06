@@ -15,10 +15,6 @@ name|metadata
 package|;
 end_package
 
-begin_comment
-comment|// JDK imports
-end_comment
-
 begin_import
 import|import
 name|java
@@ -60,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A multi-valued metadata container.  *   *   *   */
+comment|/**  * A multi-valued metadata container.  */
 end_comment
 
 begin_class
@@ -80,7 +76,7 @@ name|TikaMetadataKeys
 implements|,
 name|TikaMimeKeys
 block|{
-comment|/**    * A map of all metadata attributes.    */
+comment|/**      * A map of all metadata attributes.      */
 specifier|private
 name|Map
 argument_list|<
@@ -93,7 +89,7 @@ name|metadata
 init|=
 literal|null
 decl_stmt|;
-comment|/**    * Constructs a new, empty metadata.    */
+comment|/**      * Constructs a new, empty metadata.      */
 specifier|public
 name|Metadata
 parameter_list|()
@@ -111,7 +107,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * Returns true if named value is multivalued.    *     * @param name    *          name of metadata    * @return true is named value is multivalued, false if single value or null    */
+comment|/**      * Returns true if named value is multivalued.      *       * @param name      *          name of metadata      * @return true is named value is multivalued, false if single value or null      */
 specifier|public
 name|boolean
 name|isMultiValued
@@ -143,7 +139,7 @@ operator|>
 literal|1
 return|;
 block|}
-comment|/**    * Returns an array of the names contained in the metadata.    *     * @return Metadata names    */
+comment|/**      * Returns an array of the names contained in the metadata.      *       * @return Metadata names      */
 specifier|public
 name|String
 index|[]
@@ -172,7 +168,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**    * Get the value associated to a metadata name. If many values are assiociated    * to the specified name, then the first one is returned.    *     * @param name    *          of the metadata.    * @return the value associated to the specified metadata name.    */
+comment|/**      * Get the value associated to a metadata name. If many values are assiociated      * to the specified name, then the first one is returned.      *       * @param name      *          of the metadata.      * @return the value associated to the specified metadata name.      */
 specifier|public
 name|String
 name|get
@@ -214,7 +210,7 @@ index|]
 return|;
 block|}
 block|}
-comment|/**    * Get the values associated to a metadata name.    *     * @param name    *          of the metadata.    * @return the values associated to a metadata name.    */
+comment|/**      * Get the values associated to a metadata name.      *       * @param name      *          of the metadata.      * @return the values associated to a metadata name.      */
 specifier|public
 name|String
 index|[]
@@ -273,7 +269,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**    * Add a metadata name/value mapping. Add the specified value to the list of    * values associated to the specified metadata name.    *     * @param name    *          the metadata name.    * @param value    *          the metadata value.    */
+comment|/**      * Add a metadata name/value mapping. Add the specified value to the list of      * values associated to the specified metadata name.      *       * @param name      *          the metadata name.      * @param value      *          the metadata value.      */
 specifier|public
 name|void
 name|add
@@ -368,7 +364,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Copy All key-value pairs from properties.    *     * @param properties    *          properties to copy from    */
+comment|/**      * Copy All key-value pairs from properties.      *       * @param properties      *          properties to copy from      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 specifier|public
 name|void
 name|setAll
@@ -378,8 +379,17 @@ name|properties
 parameter_list|)
 block|{
 name|Enumeration
+argument_list|<
+name|String
+argument_list|>
 name|names
 init|=
+operator|(
+name|Enumeration
+argument_list|<
+name|String
+argument_list|>
+operator|)
 name|properties
 operator|.
 name|propertyNames
@@ -396,9 +406,6 @@ block|{
 name|String
 name|name
 init|=
-operator|(
-name|String
-operator|)
 name|names
 operator|.
 name|nextElement
@@ -425,7 +432,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Set metadata name/value. Associate the specified value to the specified    * metadata name. If some previous values were associated to this name, they    * are removed.    *     * @param name    *          the metadata name.    * @param value    *          the metadata value.    */
+comment|/**      * Set metadata name/value. Associate the specified value to the specified      * metadata name. If some previous values were associated to this name, they      * are removed.      *       * @param name      *          the metadata name.      * @param value      *          the metadata value.      */
 specifier|public
 name|void
 name|set
@@ -452,7 +459,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Remove a metadata and all its associated values.    *     * @param name    *          metadata name to remove    */
+comment|/**      * Remove a metadata and all its associated values.      *       * @param name      *          metadata name to remove      */
 specifier|public
 name|void
 name|remove
@@ -469,7 +476,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the number of metadata names in this metadata.    *     * @return number of metadata names    */
+comment|/**      * Returns the number of metadata names in this metadata.      *       * @return number of metadata names      */
 specifier|public
 name|int
 name|size
