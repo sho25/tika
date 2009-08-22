@@ -138,7 +138,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PDF parser  */
+comment|/**  * PDF parser.  *<p>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs.  */
 end_comment
 
 begin_class
@@ -148,6 +148,15 @@ name|PDFParser
 implements|implements
 name|Parser
 block|{
+comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PASSWORD
+init|=
+literal|"org.apache.tika.parser.pdf.password"
+decl_stmt|;
 specifier|public
 name|void
 name|parse
@@ -186,15 +195,46 @@ name|pdfDocument
 operator|.
 name|isEncrypted
 argument_list|()
+operator|&&
+operator|!
+name|pdfDocument
+operator|.
+name|getCurrentAccessPermission
+argument_list|()
+operator|.
+name|canExtractContent
+argument_list|()
 condition|)
 block|{
 try|try
 block|{
+name|String
+name|password
+init|=
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|PASSWORD
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|password
+operator|==
+literal|null
+condition|)
+block|{
+name|password
+operator|=
+literal|""
+expr_stmt|;
+block|}
 name|pdfDocument
 operator|.
 name|decrypt
 argument_list|(
-literal|""
+name|password
 argument_list|)
 expr_stmt|;
 block|}
