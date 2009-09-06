@@ -205,6 +205,18 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXNotRecognizedException
+import|;
+end_import
+
 begin_comment
 comment|/**  * XML parser  */
 end_comment
@@ -303,6 +315,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|factory
 operator|.
 name|setFeature
@@ -314,6 +328,18 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXNotRecognizedException
+name|e
+parameter_list|)
+block|{
+comment|// TIKA-271: Some XML parsers do not support the secure-processing
+comment|// feature, even though it's required by JAXP in Java 5. Ignoring
+comment|// the exception is fine here, deployments without this feature
+comment|// are inherently vulnerable to XML denial-of-service attacks.
+block|}
 name|SAXParser
 name|parser
 init|=
