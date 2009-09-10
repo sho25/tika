@@ -584,6 +584,43 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+comment|// Prepare the input source using the encoding hint if available
+name|InputSource
+name|source
+init|=
+operator|new
+name|InputSource
+argument_list|(
+name|stream
+argument_list|)
+decl_stmt|;
+name|String
+name|encoding
+init|=
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_ENCODING
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|encoding
+operator|!=
+literal|null
+condition|)
+block|{
+name|source
+operator|.
+name|setEncoding
+argument_list|(
+name|encoding
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Prepare the HTML content handler that generates proper
 comment|// XHTML events to records relevant document metadata
 name|XHTMLContentHandler
@@ -700,11 +737,7 @@ name|parser
 operator|.
 name|parse
 argument_list|(
-operator|new
-name|InputSource
-argument_list|(
-name|stream
-argument_list|)
+name|source
 argument_list|)
 expr_stmt|;
 block|}
