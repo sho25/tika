@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for parser implementations that want to delegate parts of the  * task of parsing an input document to another parser. The default base  * class implementation simply delegates the entire parsing task to a dummy  * {@link EmptyParser} instance, but subclasses can implement more complex  * processing rules and a more complete delegate parser can be specified  * through the {@link #setDelegate(Parser)} method.  *<p>  * The Tika configuration mechanism also contains a way to automatically  * set the delegate parser of all configured delegating parsers  * implementations. This feature is most notably used by the  * {@link AutoDetectParser} class to make it the recursive target of all  * delegated parsing tasks.  *  * @since Apache Tika 0.4  */
+comment|/**  * Base class for parser implementations that want to delegate parts of the  * task of parsing an input document to another parser. The delegate parser  * is looked up from the parsing context.  *<p>  * This class uses the following parsing context:  *<dl>  *<dt>org.apache.tika.parser.Parser</dt>  *<dd>  *     The delegate parser ({@link Parser} instance).  *</dd>  *</dl>  *  * @since Apache Tika 0.4, major changes in Tika 0.5  */
 end_comment
 
 begin_class
@@ -118,65 +118,7 @@ name|DelegatingParser
 implements|implements
 name|Parser
 block|{
-comment|/**      * The parser to which parts of the parsing tasks are delegated.      */
-specifier|private
-specifier|transient
-name|Parser
-name|delegate
-init|=
-operator|new
-name|EmptyParser
-argument_list|()
-decl_stmt|;
-comment|/**      * Returns delegate parser instance.      *      * @return delegate parser      */
-specifier|public
-name|Parser
-name|getDelegate
-parameter_list|()
-block|{
-return|return
-name|delegate
-return|;
-block|}
-comment|/**      * Sets the delegate parser instance.      *      * @param delegate delegate parser      */
-specifier|public
-name|void
-name|setDelegate
-parameter_list|(
-name|Parser
-name|delegate
-parameter_list|)
-block|{
-if|if
-condition|(
-name|delegate
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|NullPointerException
-argument_list|(
-literal|"Delegate parser of "
-operator|+
-name|this
-operator|+
-literal|" can not be null"
-argument_list|)
-throw|;
-block|}
-else|else
-block|{
-name|this
-operator|.
-name|delegate
-operator|=
-name|delegate
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Parses the given document using the specified delegate parser.      * Subclasses should override this method with more complex delegation      * rules based on the structure of the input document. The default      * implementation simply delegates the entire parsing task to the      * specified delegate parser.      */
+comment|/**      * Looks up the delegate parser from the parsing context and      * delegates the parse operation to it. If a delegate parser is not      * found, then an empty XHTML document is returned.      *<p>      * Subclasses should override this method to parse the top level      * structure of the given document stream. Parsed sub-streams can      * be passed to this base class method to be parsed by the configured      * delegate parser.      */
 specifier|public
 name|void
 name|parse
@@ -205,7 +147,34 @@ name|IOException
 throws|,
 name|TikaException
 block|{
-name|delegate
+name|Object
+name|parser
+init|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|Parser
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|parser
+operator|instanceof
+name|Parser
+condition|)
+block|{
+operator|(
+operator|(
+name|Parser
+operator|)
+name|parser
+operator|)
 operator|.
 name|parse
 argument_list|(
@@ -218,6 +187,25 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+operator|new
+name|EmptyParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * @deprecated This method will be removed in Apache Tika 1.0.      */
 specifier|public

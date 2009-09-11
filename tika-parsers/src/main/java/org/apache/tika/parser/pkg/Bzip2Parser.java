@@ -39,6 +39,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -201,6 +211,14 @@ name|handler
 parameter_list|,
 name|Metadata
 name|metadata
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|context
 parameter_list|)
 throws|throws
 name|IOException
@@ -428,6 +446,8 @@ argument_list|)
 argument_list|)
 argument_list|,
 name|entrydata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 block|}
