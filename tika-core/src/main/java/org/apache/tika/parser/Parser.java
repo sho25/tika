@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -88,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tika parser interface  */
+comment|/**  * Tika parser interface.  */
 end_comment
 
 begin_interface
@@ -96,7 +106,35 @@ specifier|public
 interface|interface
 name|Parser
 block|{
-comment|/**      * Parses a document stream into a sequence of XHTML SAX events.      * Fills in related document metadata in the given metadata object.      *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *      * @param stream the document stream (input)      * @param handler handler for the XHTML SAX events (output)      * @param metadata document metadata (input and output)      * @throws IOException if the document stream could not be read      * @throws SAXException if the SAX events could not be processed      * @throws TikaException if the document could not be parsed      */
+comment|/**      * Parses a document stream into a sequence of XHTML SAX events.      * Fills in related document metadata in the given metadata object.      *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * Information about the parsing context can be passed in the context      * parameter. See the parser implementations for the kinds of context      * information they expect.      *      * @since Apache Tika 0.5      * @param stream the document stream (input)      * @param handler handler for the XHTML SAX events (output)      * @param metadata document metadata (input and output)      * @param context parse context      * @throws IOException if the document stream could not be read      * @throws SAXException if the SAX events could not be processed      * @throws TikaException if the document could not be parsed      */
+name|void
+name|parse
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|,
+name|ContentHandler
+name|handler
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|,
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
+name|context
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|SAXException
+throws|,
+name|TikaException
+function_decl|;
+comment|/**      * The parse() method from Tika 0.4 and earlier. Please use the      * {@link #parse(InputStream, ContentHandler, Metadata, Map)} method      * instead in new code. Calls to this backwards compatibility method      * are forwarded to the new parse() method with an empty parse context.      *      * @deprecated This method will be removed in Apache Tika 1.0.      */
 name|void
 name|parse
 parameter_list|(
