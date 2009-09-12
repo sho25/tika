@@ -149,6 +149,7 @@ class|class
 name|Tika
 block|{
 specifier|private
+specifier|static
 specifier|final
 name|Parser
 name|parser
@@ -157,8 +158,14 @@ operator|new
 name|AutoDetectParser
 argument_list|()
 decl_stmt|;
+comment|/**      * Private constructor to prevent this class from being instantiated.      */
+specifier|private
+name|Tika
+parameter_list|()
+block|{     }
 comment|/**      * Parses the given document and returns the extracted text content.      *      * @param stream the document to be parsed      * @result extracted text content      * @throws IOException if the document can not be read or parsed      */
 specifier|public
+specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -184,6 +191,7 @@ return|;
 block|}
 comment|/**      * Parses the given file and returns the extracted text content.      *      * @param file the file to be parsed      * @result extracted text content      * @throws FileNotFoundException if the given file does not exist      * @throws IOException if the file can not be read or parsed      */
 specifier|public
+specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -234,6 +242,7 @@ return|;
 block|}
 comment|/**      * Parses the resource at the given URL and returns the extracted      * text content.      *      * @param url the URL of the resource to be parsed      * @result extracted text content      * @throws IOException if the resource can not be read or parsed      */
 specifier|public
+specifier|static
 name|Reader
 name|parse
 parameter_list|(
