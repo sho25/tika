@@ -279,6 +279,8 @@ name|metadata
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|startDocument
@@ -314,6 +316,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|endDocument
@@ -349,6 +353,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|startPage
@@ -366,6 +372,17 @@ operator|.
 name|startElement
 argument_list|(
 literal|"div"
+argument_list|,
+literal|"class"
+argument_list|,
+literal|"page"
+argument_list|)
+expr_stmt|;
+name|handler
+operator|.
+name|startElement
+argument_list|(
+literal|"p"
 argument_list|)
 expr_stmt|;
 block|}
@@ -386,6 +403,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|endPage
@@ -398,6 +417,13 @@ name|IOException
 block|{
 try|try
 block|{
+name|handler
+operator|.
+name|endElement
+argument_list|(
+literal|"p"
+argument_list|)
+expr_stmt|;
 name|handler
 operator|.
 name|endElement
@@ -423,10 +449,15 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
-name|startParagraph
-parameter_list|()
+name|writeString
+parameter_list|(
+name|String
+name|text
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -434,9 +465,9 @@ try|try
 block|{
 name|handler
 operator|.
-name|startElement
+name|characters
 argument_list|(
-literal|"p"
+name|text
 argument_list|)
 expr_stmt|;
 block|}
@@ -450,47 +481,17 @@ throw|throw
 operator|new
 name|IOExceptionWithCause
 argument_list|(
-literal|"Unable to start a paragraph"
+literal|"Unable to write a string: "
+operator|+
+name|text
 argument_list|,
 name|e
 argument_list|)
 throw|;
 block|}
 block|}
-specifier|protected
-name|void
-name|endParagraph
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-try|try
-block|{
-name|handler
-operator|.
-name|endElement
-argument_list|(
-literal|"p"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IOExceptionWithCause
-argument_list|(
-literal|"Unable to end a paragraph"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
+annotation|@
+name|Override
 specifier|protected
 name|void
 name|writeCharacters
@@ -538,6 +539,8 @@ block|}
 block|}
 comment|// Two methods added to work around lack of support for processWordSeparator
 comment|// and processLineSeparator in PDFBox-0.7.3. This is fixed in CVS Head (PDFBox-0.7.4)
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getWordSeparator
@@ -567,6 +570,8 @@ argument_list|()
 return|;
 comment|//To change body of overridden methods use File | Settings | File Templates.
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getLineSeparator
