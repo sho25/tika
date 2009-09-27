@@ -329,6 +329,10 @@ block|{
 if|if
 condition|(
 name|stream
+operator|==
+literal|null
+operator|||
+name|stream
 operator|.
 name|markSupported
 argument_list|()

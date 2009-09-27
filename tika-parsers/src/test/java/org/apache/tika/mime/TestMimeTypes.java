@@ -559,7 +559,7 @@ argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/vnd.ms-powerpoint.presentation.macroenabled.12"
+literal|"application/vnd.ms-powerpoint.template.macroenabled.12"
 argument_list|,
 literal|"x.potm"
 argument_list|)
@@ -1008,6 +1008,7 @@ argument_list|,
 literal|"x.SVG"
 argument_list|)
 expr_stmt|;
+comment|// Should *.svgz be svg or gzip
 name|assertType
 argument_list|(
 literal|"application/x-gzip"
@@ -1024,14 +1025,14 @@ argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/x-gzip"
+literal|"image/svg+xml"
 argument_list|,
 literal|"x.svgz"
 argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/x-gzip"
+literal|"image/svg+xml"
 argument_list|,
 literal|"x.SVGZ"
 argument_list|)
