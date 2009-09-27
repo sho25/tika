@@ -82,7 +82,9 @@ decl_stmt|;
 name|String
 name|content
 init|=
+operator|new
 name|Tika
+argument_list|()
 operator|.
 name|parseToString
 argument_list|(

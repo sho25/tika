@@ -111,6 +111,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|TikaConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -220,24 +234,47 @@ specifier|public
 class|class
 name|Tika
 block|{
+comment|/**      * The parser instance used by this facade.      */
 specifier|private
-specifier|static
 specifier|final
 name|Parser
 name|parser
-init|=
+decl_stmt|;
+comment|/**      * Creates a Tika facade using the given configuration.      * @param config      */
+specifier|public
+name|Tika
+parameter_list|(
+name|TikaConfig
+name|config
+parameter_list|)
+block|{
+name|this
+operator|.
+name|parser
+operator|=
 operator|new
 name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|/**      * Private constructor to prevent this class from being instantiated.      */
-specifier|private
+argument_list|(
+name|config
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a Tika facade using the default configuration.      */
+specifier|public
 name|Tika
 parameter_list|()
-block|{     }
+block|{
+name|this
+argument_list|(
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Parses the given document and returns the extracted text content.      * Input metadata like a file name or a content type hint can be passed      * in the given metadata instance. Metadata information extracted from      * the document is returned in that same metadata instance.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
 specifier|public
-specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -297,7 +334,6 @@ return|;
 block|}
 comment|/**      * Parses the given document and returns the extracted text content.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
 specifier|public
-specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -320,7 +356,6 @@ return|;
 block|}
 comment|/**      * Parses the given file and returns the extracted text content.      *      * @param file the file to be parsed      * @return extracted text content      * @throws FileNotFoundException if the given file does not exist      * @throws IOException if the file can not be read or parsed      */
 specifier|public
-specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -350,7 +385,6 @@ return|;
 block|}
 comment|/**      * Parses the resource at the given URL and returns the extracted      * text content.      *      * @param url the URL of the resource to be parsed      * @return extracted text content      * @throws IOException if the resource can not be read or parsed      */
 specifier|public
-specifier|static
 name|Reader
 name|parse
 parameter_list|(
@@ -377,7 +411,6 @@ return|;
 block|}
 comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
-specifier|static
 name|String
 name|parseToString
 parameter_list|(
@@ -480,7 +513,6 @@ block|}
 block|}
 comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
-specifier|static
 name|String
 name|parseToString
 parameter_list|(
@@ -505,7 +537,6 @@ return|;
 block|}
 comment|/**      * Parses the given file and returns the extracted text content.      *      * @param file the file to be parsed      * @return extracted text content      * @throws FileNotFoundException if the file does not exist      * @throws IOException if the file can not be read      * @throws TikaException if the file can not be parsed      */
 specifier|public
-specifier|static
 name|String
 name|parseToString
 parameter_list|(
@@ -537,7 +568,6 @@ return|;
 block|}
 comment|/**      * Parses the resource at the given URL and returns the extracted      * text content.      *      * @param url the URL of the resource to be parsed      * @return extracted text content      * @throws IOException if the resource can not be read      * @throws TikaException if the resource can not be parsed      */
 specifier|public
-specifier|static
 name|String
 name|parseToString
 parameter_list|(

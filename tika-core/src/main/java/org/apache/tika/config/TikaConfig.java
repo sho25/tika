@@ -779,14 +779,12 @@ return|return
 name|mimeTypes
 return|;
 block|}
-comment|/**      * Provides a default configuration (TikaConfig).  Currently creates a      * new instance each time it's called; we may be able to have it      * return a shared instance once it is completely immutable.      *      * @return default configuration      * @throws TikaException if the default configuration is not available      */
+comment|/**      * Provides a default configuration (TikaConfig).  Currently creates a      * new instance each time it's called; we may be able to have it      * return a shared instance once it is completely immutable.      *      * @return default configuration      */
 specifier|public
 specifier|static
 name|TikaConfig
 name|getDefaultConfig
 parameter_list|()
-throws|throws
-name|TikaException
 block|{
 try|try
 block|{
@@ -818,7 +816,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|TikaException
+name|RuntimeException
 argument_list|(
 literal|"Unable to read default configuration"
 argument_list|,
@@ -834,9 +832,25 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|TikaException
+name|RuntimeException
 argument_list|(
 literal|"Unable to parse default configuration"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|TikaException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unable to access default configuration"
 argument_list|,
 name|e
 argument_list|)
