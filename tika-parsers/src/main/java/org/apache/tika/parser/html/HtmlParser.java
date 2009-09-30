@@ -457,7 +457,7 @@ name|put
 argument_list|(
 literal|"MENU"
 argument_list|,
-literal|"li"
+literal|"ul"
 argument_list|)
 expr_stmt|;
 name|SAFE_ELEMENTS
