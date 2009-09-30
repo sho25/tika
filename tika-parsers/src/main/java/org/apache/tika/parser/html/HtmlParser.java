@@ -455,6 +455,15 @@ name|SAFE_ELEMENTS
 operator|.
 name|put
 argument_list|(
+literal|"MENU"
+argument_list|,
+literal|"li"
+argument_list|)
+expr_stmt|;
+name|SAFE_ELEMENTS
+operator|.
+name|put
+argument_list|(
 literal|"DL"
 argument_list|,
 literal|"dl"
