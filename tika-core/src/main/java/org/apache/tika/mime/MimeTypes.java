@@ -205,7 +205,7 @@ name|MimeTypes
 implements|implements
 name|Detector
 block|{
-comment|/**      * Name of the {@link #root root} type, application/octet-stream.      */
+comment|/**      * Name of the {@link #rootMimeType root} type, application/octet-stream.      */
 specifier|public
 specifier|final
 specifier|static
@@ -214,7 +214,7 @@ name|OCTET_STREAM
 init|=
 literal|"application/octet-stream"
 decl_stmt|;
-comment|/**      * Name of the {@link #text text} type, text/plain.      */
+comment|/**      * Name of the {@link #textMimeType text} type, text/plain.      */
 specifier|public
 specifier|final
 specifier|static
@@ -222,6 +222,15 @@ name|String
 name|PLAIN_TEXT
 init|=
 literal|"text/plain"
+decl_stmt|;
+comment|/**      * Name of the {@link #xml xml} type, application/xml.      */
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|XML
+init|=
+literal|"application/xml"
 decl_stmt|;
 comment|/**      * Lookup table for all the ASCII/ISO-Latin/UTF-8/etc. control bytes      * in the range below 0x20 (the space character). If an entry in this      * table is<code>true</code> then that byte is very unlikely to occur      * in a plain text document.      *<p>      * The contents of this lookup table are based on the following definition      * from section 4 of the "Content-Type Processing Model" Internet-draft      * (<a href="http://webblaze.cs.berkeley.edu/2009/mime-sniff/mime-sniff.txt"      *>draft-abarth-mime-sniff-01</a>).      *<pre>      * +-------------------------+      * | Binary data byte ranges |      * +-------------------------+      * | 0x00 -- 0x08            |      * | 0x0B                    |      * | 0x0E -- 0x1A            |      * | 0x1C -- 0x1F            |      * +-------------------------+      *</pre>      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-154">TIKA-154</a>      */
 specifier|private
@@ -293,13 +302,19 @@ comment|/**      * Root type, application/octet-stream.      */
 specifier|private
 specifier|final
 name|MimeType
-name|root
+name|rootMimeType
 decl_stmt|;
 comment|/**      * Text type, text/plain.      */
 specifier|private
 specifier|final
 name|MimeType
-name|text
+name|textMimeType
+decl_stmt|;
+comment|/*      * xml type, application/xml      */
+specifier|private
+specifier|final
+name|MimeType
+name|xmlMimeType
 decl_stmt|;
 comment|/** All the registered MimeTypes indexed on their name */
 specifier|private
@@ -369,7 +384,7 @@ specifier|public
 name|MimeTypes
 parameter_list|()
 block|{
-name|root
+name|rootMimeType
 operator|=
 operator|new
 name|MimeType
@@ -379,7 +394,7 @@ argument_list|,
 name|OCTET_STREAM
 argument_list|)
 expr_stmt|;
-name|text
+name|textMimeType
 operator|=
 operator|new
 name|MimeType
@@ -389,13 +404,30 @@ argument_list|,
 name|PLAIN_TEXT
 argument_list|)
 expr_stmt|;
+name|xmlMimeType
+operator|=
+operator|new
+name|MimeType
+argument_list|(
+name|this
+argument_list|,
+name|XML
+argument_list|)
+expr_stmt|;
 try|try
 block|{
-name|text
+name|textMimeType
 operator|.
 name|setSuperType
 argument_list|(
-name|root
+name|rootMimeType
+argument_list|)
+expr_stmt|;
+name|xmlMimeType
+operator|.
+name|setSuperType
+argument_list|(
+name|rootMimeType
 argument_list|)
 expr_stmt|;
 block|}
@@ -419,24 +451,36 @@ name|types
 operator|.
 name|put
 argument_list|(
-name|root
+name|rootMimeType
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|root
+name|rootMimeType
 argument_list|)
 expr_stmt|;
 name|types
 operator|.
 name|put
 argument_list|(
-name|text
+name|textMimeType
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|text
+name|textMimeType
+argument_list|)
+expr_stmt|;
+name|types
+operator|.
+name|put
+argument_list|(
+name|xmlMimeType
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|xmlMimeType
 argument_list|)
 expr_stmt|;
 try|try
@@ -559,7 +603,7 @@ block|}
 else|else
 block|{
 return|return
-name|root
+name|rootMimeType
 return|;
 block|}
 block|}
@@ -768,12 +812,12 @@ index|]
 condition|)
 block|{
 return|return
-name|root
+name|rootMimeType
 return|;
 block|}
 block|}
 return|return
-name|text
+name|textMimeType
 return|;
 block|}
 comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *      * @see #getMimeType(byte[])      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can be read      */
@@ -1219,7 +1263,26 @@ name|type
 operator|.
 name|setSuperType
 argument_list|(
-name|text
+name|textMimeType
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|name
+operator|.
+name|endsWith
+argument_list|(
+literal|"+xml"
+argument_list|)
+condition|)
+block|{
+name|type
+operator|.
+name|setSuperType
+argument_list|(
+name|xmlMimeType
 argument_list|)
 expr_stmt|;
 block|}
@@ -1229,7 +1292,7 @@ name|type
 operator|.
 name|setSuperType
 argument_list|(
-name|root
+name|rootMimeType
 argument_list|)
 expr_stmt|;
 block|}
@@ -1442,7 +1505,7 @@ block|{
 name|MimeType
 name|type
 init|=
-name|root
+name|rootMimeType
 decl_stmt|;
 comment|// Get type based on magic prefix
 if|if
