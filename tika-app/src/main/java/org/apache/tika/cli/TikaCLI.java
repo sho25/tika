@@ -1115,9 +1115,7 @@ name|parser
 operator|.
 name|parse
 argument_list|(
-name|System
-operator|.
-name|in
+name|input
 argument_list|,
 name|type
 operator|.
