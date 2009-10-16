@@ -632,6 +632,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|writer
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 return|;
