@@ -458,12 +458,77 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//        assertAutoDetect(resource, null, type, null,          content);
-comment|//        assertAutoDetect(resource, null, type, wrongMimeType, content);
-comment|//        final String badResource = "a.xyz";
-comment|//        assertAutoDetect(resource, badResource, type, type,          content);
-comment|//        assertAutoDetect(resource, badResource, type, null,          content);
-comment|//        assertAutoDetect(resource, badResource, type, wrongMimeType, content);
+name|assertAutoDetect
+argument_list|(
+name|resource
+argument_list|,
+literal|null
+argument_list|,
+name|type
+argument_list|,
+literal|null
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertAutoDetect
+argument_list|(
+name|resource
+argument_list|,
+literal|null
+argument_list|,
+name|type
+argument_list|,
+name|wrongMimeType
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+specifier|final
+name|String
+name|badResource
+init|=
+literal|"a.xyz"
+decl_stmt|;
+name|assertAutoDetect
+argument_list|(
+name|resource
+argument_list|,
+name|badResource
+argument_list|,
+name|type
+argument_list|,
+name|type
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertAutoDetect
+argument_list|(
+name|resource
+argument_list|,
+name|badResource
+argument_list|,
+name|type
+argument_list|,
+literal|null
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertAutoDetect
+argument_list|(
+name|resource
+argument_list|,
+name|badResource
+argument_list|,
+name|type
+argument_list|,
+name|wrongMimeType
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -547,6 +612,23 @@ argument_list|,
 name|POWERPOINT
 argument_list|,
 literal|"Sample Powerpoint Slide"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testRdfXml
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertAutoDetect
+argument_list|(
+literal|"testRDF.rdf"
+argument_list|,
+literal|"application/rdf+xml"
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -801,7 +883,7 @@ literal|"\n"
 operator|+
 literal|"  expectedContentFragment = "
 operator|+
-name|realType
+name|expectedContentFragment
 operator|+
 literal|"\n"
 return|;
