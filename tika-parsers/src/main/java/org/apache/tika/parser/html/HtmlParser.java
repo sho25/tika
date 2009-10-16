@@ -117,20 +117,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|XHTMLContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|xml
 operator|.
 name|sax
@@ -248,18 +234,6 @@ name|encoding
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Prepare the HTML content handler that generates proper
-comment|// XHTML events to records relevant document metadata
-name|handler
-operator|=
-operator|new
-name|HtmlHandler
-argument_list|(
-name|handler
-argument_list|,
-name|metadata
-argument_list|)
-expr_stmt|;
 comment|// Parse the HTML document
 name|org
 operator|.
@@ -291,7 +265,13 @@ argument_list|(
 operator|new
 name|XHTMLDowngradeHandler
 argument_list|(
+operator|new
+name|HtmlHandler
+argument_list|(
 name|handler
+argument_list|,
+name|metadata
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
