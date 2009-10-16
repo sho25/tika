@@ -377,7 +377,7 @@ operator|.
 name|getName
 argument_list|()
 operator|.
-name|equals
+name|endsWith
 argument_list|(
 literal|"content.xml"
 argument_list|)
