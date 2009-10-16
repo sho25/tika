@@ -1006,6 +1006,8 @@ name|atts
 operator|.
 name|getValue
 argument_list|(
+literal|""
+argument_list|,
 literal|"href"
 argument_list|)
 operator|!=
@@ -1020,6 +1022,8 @@ name|atts
 operator|.
 name|getValue
 argument_list|(
+literal|""
+argument_list|,
 literal|"href"
 argument_list|)
 argument_list|)

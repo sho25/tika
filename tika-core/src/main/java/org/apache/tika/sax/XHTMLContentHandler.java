@@ -730,7 +730,7 @@ name|attributes
 operator|.
 name|addAttribute
 argument_list|(
-name|XHTML
+literal|""
 argument_list|,
 name|attribute
 argument_list|,
