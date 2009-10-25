@@ -755,15 +755,7 @@ range|:
 name|entries
 control|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|nge
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(nge);
 name|assertEquals
 argument_list|(
 name|counts
