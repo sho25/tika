@@ -115,6 +115,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|language
+operator|.
+name|ProfilingHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -146,6 +160,20 @@ operator|.
 name|sax
 operator|.
 name|SecureContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|TeeContentHandler
 import|;
 end_import
 
@@ -373,6 +401,16 @@ argument_list|,
 name|count
 argument_list|)
 decl_stmt|;
+comment|// Automatic language detection
+name|ContentHandler
+name|profiler
+init|=
+operator|new
+name|ProfilingHandler
+argument_list|(
+name|metadata
+argument_list|)
+decl_stmt|;
 comment|// Parse the document
 try|try
 block|{
@@ -382,7 +420,13 @@ name|parse
 argument_list|(
 name|count
 argument_list|,
+operator|new
+name|TeeContentHandler
+argument_list|(
 name|secure
+argument_list|,
+name|profiler
+argument_list|)
 argument_list|,
 name|metadata
 argument_list|,
