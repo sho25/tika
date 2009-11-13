@@ -66,7 +66,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Identify the language of a content, based on statistical analysis.  * Text document language identifier.  *<p>  * Language profiles are based on material from  *<a href="http://www.isi.edu/~koehn/europarl/">http://www.isi.edu/~koehn/europarl/</a>.  *  * @see<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">  *      ISO 639 Language Codes</a>  */
+comment|/**  * Identifier of the language that best matches a given content profile.  * The content profile is compared to generic language profiles based on  * material from various sources.  *  * @since Apache Tika 0.5  * @see<a href="http://www.iccs.inf.ed.ac.uk/~pkoehn/publications/europarl/">  *      Europarl: A Parallel Corpus for Statistical Machine Translation</a>  * @see<a href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">  *      ISO 639 Language Codes</a>  */
 end_comment
 
 begin_class
@@ -462,9 +462,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|ProfilingWriter
-operator|.
-name|profile
+operator|new
+name|LanguageProfile
 argument_list|(
 name|content
 argument_list|)
