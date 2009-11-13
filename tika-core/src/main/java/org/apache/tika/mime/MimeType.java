@@ -1249,7 +1249,7 @@ literal|".*<"
 operator|+
 name|localName
 operator|+
-literal|"[^<>]*>.*"
+literal|"[^<>]*.*"
 expr_stmt|;
 block|}
 elseif|else
