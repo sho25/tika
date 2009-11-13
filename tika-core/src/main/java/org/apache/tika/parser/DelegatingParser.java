@@ -37,26 +37,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -108,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for parser implementations that want to delegate parts of the  * task of parsing an input document to another parser. The delegate parser  * is looked up from the parsing context.  *<p>  * This class uses the following parsing context:  *<dl>  *<dt>org.apache.tika.parser.Parser</dt>  *<dd>  *     The delegate parser ({@link Parser} instance).  *</dd>  *</dl>  *  * @since Apache Tika 0.4, major changes in Tika 0.5  */
+comment|/**  * Base class for parser implementations that want to delegate parts of the  * task of parsing an input document to another parser. The delegate parser  * is looked up from the parsing context using the {@link Parser} class as  * the key.  *  * @since Apache Tika 0.4, major changes in Tika 0.5  */
 end_comment
 
 begin_class
@@ -132,12 +112,7 @@ parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|ParseContext
 name|context
 parameter_list|)
 throws|throws
@@ -147,7 +122,7 @@ name|IOException
 throws|,
 name|TikaException
 block|{
-name|Object
+name|Parser
 name|parser
 init|=
 name|context
@@ -157,24 +132,13 @@ argument_list|(
 name|Parser
 operator|.
 name|class
+argument_list|,
+name|EmptyParser
 operator|.
-name|getName
-argument_list|()
+name|INSTANCE
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
 name|parser
-operator|instanceof
-name|Parser
-condition|)
-block|{
-operator|(
-operator|(
-name|Parser
-operator|)
-name|parser
-operator|)
 operator|.
 name|parse
 argument_list|(
@@ -187,25 +151,6 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-operator|new
-name|EmptyParser
-argument_list|()
-operator|.
-name|parse
-argument_list|(
-name|stream
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/**      * @deprecated This method will be removed in Apache Tika 1.0.      */
 specifier|public
@@ -228,19 +173,6 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
-name|context
-init|=
-name|Collections
-operator|.
-name|emptyMap
-argument_list|()
-decl_stmt|;
 name|parse
 argument_list|(
 name|stream
@@ -249,7 +181,9 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-name|context
+operator|new
+name|ParseContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

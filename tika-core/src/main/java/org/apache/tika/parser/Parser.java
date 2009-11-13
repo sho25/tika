@@ -119,12 +119,7 @@ parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|ParseContext
 name|context
 parameter_list|)
 throws|throws

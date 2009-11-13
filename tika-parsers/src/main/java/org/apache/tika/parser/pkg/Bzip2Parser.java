@@ -39,16 +39,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -118,6 +108,20 @@ operator|.
 name|parser
 operator|.
 name|DelegatingParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|ParseContext
 import|;
 end_import
 
@@ -212,12 +216,7 @@ parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|Object
-argument_list|>
+name|ParseContext
 name|context
 parameter_list|)
 throws|throws
