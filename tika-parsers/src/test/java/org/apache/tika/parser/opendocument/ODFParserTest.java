@@ -77,6 +77,22 @@ name|ContentHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|odf
+operator|.
+name|OpenDocumentParser
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -120,7 +136,7 @@ name|BodyContentHandler
 argument_list|()
 decl_stmt|;
 operator|new
-name|OpenOfficeParser
+name|OpenDocumentParser
 argument_list|()
 operator|.
 name|parse
@@ -181,6 +197,26 @@ operator|.
 name|contains
 argument_list|(
 literal|"one embedded"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"Rectangle Title"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"a blue background and dark border"
 argument_list|)
 argument_list|)
 expr_stmt|;
