@@ -632,31 +632,6 @@ literal|"Data is missing"
 argument_list|)
 throw|;
 block|}
-comment|// First, check for XML descriptions (level by level)
-comment|// Problem: Regexp matching doesn't work for all XML encodings
-for|for
-control|(
-name|MimeType
-name|type
-range|:
-name|xmls
-control|)
-block|{
-if|if
-condition|(
-name|type
-operator|.
-name|matchesXML
-argument_list|(
-name|data
-argument_list|)
-condition|)
-block|{
-return|return
-name|type
-return|;
-block|}
-block|}
 comment|// Then, check for magic bytes
 name|MimeType
 name|result
@@ -698,10 +673,21 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// When detecting generic XML, parse XML to determine the root element
+comment|// When detecting generic XML (or possibly XHTML),
+comment|// extract the root element and match it against known types
 if|if
 condition|(
 literal|"application/xml"
+operator|.
+name|equals
+argument_list|(
+name|result
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|||
+literal|"text/html"
 operator|.
 name|equals
 argument_list|(
@@ -1432,10 +1418,13 @@ name|int
 name|getMinLength
 parameter_list|()
 block|{
+comment|// This needs to be reasonably large to be able to correctly detect
+comment|// things like XML root elements after initial comment and DTDs
 return|return
+literal|4
+operator|*
 literal|1024
 return|;
-comment|// return minLength;
 block|}
 comment|/**      * Add the specified mime-type in the repository.      *      * @param type      *            is the mime-type to add.      */
 name|void
