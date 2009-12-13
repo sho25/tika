@@ -728,22 +728,26 @@ block|}
 elseif|else
 if|if
 condition|(
-literal|"BR"
+name|XHTMLContentHandler
 operator|.
-name|equals
+name|ENDLINE
+operator|.
+name|contains
 argument_list|(
 name|name
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// TIKA-343: Map<br> tags to newlines, unless the HtmlMapper
-comment|// above has already determined to map them to something else
+comment|// TIKA-343: Replace closing block tags (and<br/>) with a
+comment|// newline unless the HtmlMapper above has already mapped
+comment|// them to something else
 name|xhtml
 operator|.
-name|characters
-argument_list|(
-literal|"\n"
-argument_list|)
+name|newline
+argument_list|()
 expr_stmt|;
 block|}
 block|}

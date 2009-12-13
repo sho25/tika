@@ -1380,7 +1380,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for HTML content like "foo&gt;br&lt;bar" that should result      * in two whitespace-separated tokens "foo" and "bar" instead of a single      * token "foobar".      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-343">TIKA-343</a>      */
+comment|/**      * Test case for HTML content like      * "&gt;div&lt;foo&gt;br&lt;bar&gt;/div&gt;" that should result      * in three whitespace-separated tokens "foo", "bar" and "baz" instead      * of a single token "foobarbaz".      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-343">TIKA-343</a>      */
 specifier|public
 name|void
 name|testLineBreak
@@ -1391,7 +1391,7 @@ block|{
 name|String
 name|test
 init|=
-literal|"<html><body><p>foo<br>bar</p></body></html>"
+literal|"<html><body><div>foo<br>bar</div>baz</body></html>"
 decl_stmt|;
 name|String
 name|text
@@ -1430,7 +1430,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|2
+literal|3
 argument_list|,
 name|parts
 operator|.
@@ -1454,6 +1454,16 @@ argument_list|,
 name|parts
 index|[
 literal|1
+index|]
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"baz"
+argument_list|,
+name|parts
+index|[
+literal|2
 index|]
 argument_list|)
 expr_stmt|;
