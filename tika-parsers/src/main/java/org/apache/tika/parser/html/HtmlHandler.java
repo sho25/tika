@@ -123,8 +123,8 @@ name|TextContentHandler
 block|{
 specifier|private
 specifier|final
-name|HtmlParser
-name|parser
+name|HtmlMapper
+name|mapper
 decl_stmt|;
 specifier|private
 specifier|final
@@ -166,8 +166,8 @@ decl_stmt|;
 specifier|private
 name|HtmlHandler
 parameter_list|(
-name|HtmlParser
-name|parser
+name|HtmlMapper
+name|mapper
 parameter_list|,
 name|XHTMLContentHandler
 name|xhtml
@@ -183,9 +183,9 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|parser
+name|mapper
 operator|=
-name|parser
+name|mapper
 expr_stmt|;
 name|this
 operator|.
@@ -275,8 +275,8 @@ block|}
 specifier|public
 name|HtmlHandler
 parameter_list|(
-name|HtmlParser
-name|parser
+name|HtmlMapper
+name|mapper
 parameter_list|,
 name|ContentHandler
 name|handler
@@ -287,7 +287,7 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|parser
+name|mapper
 argument_list|,
 operator|new
 name|XHTMLContentHandler
@@ -360,7 +360,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|parser
+name|mapper
 operator|.
 name|isDiscardElement
 argument_list|(
@@ -529,7 +529,7 @@ block|{
 name|String
 name|safe
 init|=
-name|parser
+name|mapper
 operator|.
 name|mapSafeElement
 argument_list|(
@@ -684,7 +684,7 @@ block|{
 name|String
 name|safe
 init|=
-name|parser
+name|mapper
 operator|.
 name|mapSafeElement
 argument_list|(
