@@ -274,7 +274,7 @@ operator|+
 literal|"content\\s*=\\s*['\"][^;]+;\\s*charset\\s*=\\s*([^'\"]+)\""
 argument_list|)
 decl_stmt|;
-comment|// TODO: Move this into core, along with CharsetDetector
+comment|/**      * TIKA-332: Check for meta http-equiv tag with charset info in      * HTML content.      *<p>      * TODO: Move this into core, along with CharsetDetector      */
 specifier|private
 name|String
 name|getEncoding
@@ -288,25 +288,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// TIKA-332: Check for meta http-equiv tag with charset info in HTML content
-if|if
-condition|(
-operator|!
-name|stream
-operator|.
-name|markSupported
-argument_list|()
-condition|)
-block|{
-name|stream
-operator|=
-operator|new
-name|BufferedInputStream
-argument_list|(
-name|stream
-argument_list|)
-expr_stmt|;
-block|}
 name|stream
 operator|.
 name|mark
@@ -649,6 +630,25 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|// The getEncoding() method depends on the mark feature
+if|if
+condition|(
+operator|!
+name|stream
+operator|.
+name|markSupported
+argument_list|()
+condition|)
+block|{
+name|stream
+operator|=
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Protect the stream from being closed by CyberNeko
 comment|// TODO: Is this still needed, given our use of TagSoup?
 name|stream
