@@ -286,7 +286,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Detect the content encoding (the stream is reset to the beginning)
-comment|// TODO: Better use of the possible encoding hint in input metadata
 name|CharsetDetector
 name|detector
 init|=
@@ -294,6 +293,37 @@ operator|new
 name|CharsetDetector
 argument_list|()
 decl_stmt|;
+name|String
+name|incomingCharset
+init|=
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_ENCODING
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|incomingCharset
+operator|!=
+literal|null
+condition|)
+block|{
+name|detector
+operator|.
+name|setDeclaredEncoding
+argument_list|(
+name|incomingCharset
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// TODO: try to extract charset from CONTENT_TYPE in metadata
+block|}
 name|detector
 operator|.
 name|setText

@@ -77,6 +77,9 @@ class|class
 name|CharsetMatch
 implements|implements
 name|Comparable
+argument_list|<
+name|CharsetMatch
+argument_list|>
 block|{
 comment|/**      * Create a java.io.Reader for reading the Unicode character data corresponding      * to the original byte data supplied to the Charset detect operation.      *<p/>      * CAUTION:  if the source of the byte data was an InputStream, a Reader      * can be created for only one matching char set using this method.  If more       * than one charset needs to be tried, the caller will need to reset      * the InputStream and create InputStreamReaders itself, based on the charset name.      *      * @return the Reader for the Unicode character data.      *      * @stable ICU 3.4      */
 specifier|public
@@ -387,18 +390,10 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|CharsetMatch
 name|other
-init|=
-operator|(
-name|CharsetMatch
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 name|int
 name|compareResult
 init|=
