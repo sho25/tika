@@ -585,51 +585,11 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Is the encoding language-specific (KOI8-R, SJIS, etc.)?
-name|String
-name|language
-init|=
-name|match
-operator|.
-name|getLanguage
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|language
-operator|!=
-literal|null
-condition|)
-block|{
-name|metadata
-operator|.
-name|set
-argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_LANGUAGE
-argument_list|,
-name|match
-operator|.
-name|getLanguage
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|metadata
-operator|.
-name|set
-argument_list|(
-name|Metadata
-operator|.
-name|LANGUAGE
-argument_list|,
-name|match
-operator|.
-name|getLanguage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TIKA-339: Don't set language, as it's typically not a very good
+comment|// guess, and it can create ambiguity if another (better) language
+comment|// value is specified by a meta tag in the HTML (or via HTTP response
+comment|// header).
+comment|/*                 String language = match.getLanguage();                 if (language != null) {                     metadata.set(Metadata.CONTENT_LANGUAGE, match.getLanguage());                     metadata.set(Metadata.LANGUAGE, match.getLanguage());                 }                 */
 break|break;
 block|}
 block|}
