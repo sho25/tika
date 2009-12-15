@@ -282,6 +282,22 @@ name|e
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|InternalError
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Internal error parsing an RTF document, see TIKA-282"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * @deprecated This method will be removed in Apache Tika 1.0.      */
 specifier|public
