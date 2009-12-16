@@ -276,6 +276,7 @@ operator|+
 literal|"([^'\\\"]+)['\\\"]\\s*/>"
 argument_list|)
 decl_stmt|;
+comment|// TIKA-350: handle charset as first element in content-type
 specifier|private
 specifier|static
 specifier|final
@@ -286,7 +287,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?i);\\s*charset\\s*=\\s*(.*)"
+literal|"(?i)(?:;|)\\s*charset\\s*=\\s*([^\r;\\s]*)"
 argument_list|)
 decl_stmt|;
 comment|/**      * TIKA-332: Check for meta http-equiv tag with charset info in      * HTML content.      *<p>      * TODO: Move this into core, along with CharsetDetector      */
@@ -483,7 +484,8 @@ block|}
 block|}
 block|}
 block|}
-comment|// No charset in a meta http-equiv tag, so detect from actual content bytes.
+comment|// No charset in a meta http-equiv tag, see if it's in the passed content-encoding
+comment|// hint, or the passed content-type hint.
 name|CharsetDetector
 name|detector
 init|=
