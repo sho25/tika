@@ -265,6 +265,17 @@ name|String
 name|string
 parameter_list|)
 block|{
+if|if
+condition|(
+name|string
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|String
 name|type
 decl_stmt|;
