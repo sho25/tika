@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -153,6 +163,9 @@ name|createExtractor
 parameter_list|(
 name|POIXMLTextExtractor
 name|extractor
+parameter_list|,
+name|Locale
+name|locale
 parameter_list|)
 block|{
 name|POIXMLDocument
@@ -197,6 +210,8 @@ operator|(
 name|XSSFExcelExtractor
 operator|)
 name|extractor
+argument_list|,
+name|locale
 argument_list|)
 return|;
 block|}
