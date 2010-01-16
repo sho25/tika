@@ -208,6 +208,14 @@ argument_list|,
 literal|"test-difficult-rdf2.xml"
 argument_list|)
 expr_stmt|;
+comment|// add evil test from TIKA-327
+name|testFile
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"evilhtml.html"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -419,7 +427,7 @@ name|assertEquals
 argument_list|(
 name|urlOrFileName
 operator|+
-literal|" is not properly detected."
+literal|" is not properly detected: detected."
 argument_list|,
 name|expected
 argument_list|,
