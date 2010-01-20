@@ -1019,6 +1019,24 @@ literal|false
 return|;
 block|}
 block|}
+else|else
+block|{
+comment|// else if it was empty then check to see if the provided namespaceURI
+comment|// is empty. If it is not, then these two aren't equal and return false
+if|if
+condition|(
+operator|!
+name|isEmpty
+argument_list|(
+name|namespaceURI
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 comment|//Compare root element's local name
 if|if
 condition|(
@@ -1039,6 +1057,24 @@ operator|.
 name|localName
 operator|.
 name|equals
+argument_list|(
+name|localName
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+else|else
+block|{
+comment|// else if it was empty then check to see if the provided localName
+comment|// is empty. If it is not, then these two aren't equal and return false
+if|if
+condition|(
+operator|!
+name|isEmpty
 argument_list|(
 name|localName
 argument_list|)
