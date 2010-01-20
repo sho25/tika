@@ -216,6 +216,14 @@ argument_list|,
 literal|"evilhtml.html"
 argument_list|)
 expr_stmt|;
+comment|// add another evil html test from TIKA-357
+name|testFile
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"testlargerbuffer.html"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
