@@ -276,13 +276,14 @@ name|DEFAULT_CHARSET
 init|=
 literal|"windows-1252"
 decl_stmt|;
+comment|// TIKA-357 - use bigger buffer for meta tag sniffing (was 4K)
 specifier|private
 specifier|static
 specifier|final
 name|int
 name|META_TAG_BUFFER_SIZE
 init|=
-literal|4096
+literal|8192
 decl_stmt|;
 specifier|private
 specifier|static
@@ -298,7 +299,7 @@ literal|"(?is)<meta\\s+http-equiv\\s*=\\s*['\\\"]\\s*"
 operator|+
 literal|"Content-Type['\\\"]\\s+content\\s*=\\s*['\\\"]"
 operator|+
-literal|"([^'\\\"]+)['\\\"]\\s*/>"
+literal|"([^'\\\"]+)['\\\"]"
 argument_list|)
 decl_stmt|;
 comment|/**      * TIKA-332: Check for meta http-equiv tag with charset info in      * HTML content.      *<p>      * TODO: Move this into core, along with CharsetDetector      */
