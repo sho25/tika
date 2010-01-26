@@ -390,6 +390,15 @@ name|TikaGUI
 extends|extends
 name|JFrame
 block|{
+comment|/**      * Serial version UID.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|5883906936187059495L
+decl_stmt|;
 comment|/**      * Main method. Sets the Swing look and feel to the operating system      * settings, and starts the Tika GUI with an {@link AutoDetectParser}      * instance as the default parser.      *      * @param args ignored      * @throws Exception if an error occurs      */
 specifier|public
 specifier|static
@@ -615,6 +624,9 @@ name|importStream
 parameter_list|(
 name|InputStream
 name|input
+parameter_list|,
+name|Metadata
+name|md
 parameter_list|)
 throws|throws
 name|IOException
@@ -670,13 +682,6 @@ argument_list|(
 name|xmlBuffer
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|Metadata
-name|md
-init|=
-operator|new
-name|Metadata
-argument_list|()
 decl_stmt|;
 name|input
 operator|=
