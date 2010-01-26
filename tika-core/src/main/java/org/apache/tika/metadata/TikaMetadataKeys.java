@@ -29,6 +29,11 @@ name|RESOURCE_NAME_KEY
 init|=
 literal|"resourceName"
 decl_stmt|;
+name|String
+name|PROTECTED
+init|=
+literal|"protected"
+decl_stmt|;
 block|}
 end_interface
 
