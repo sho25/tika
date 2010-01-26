@@ -980,7 +980,7 @@ name|file
 init|=
 name|getResourceAsFile
 argument_list|(
-literal|"/test-documents/testMP3.mp3"
+literal|"/test-documents/testMP3id3v1.mp3"
 argument_list|)
 decl_stmt|;
 name|String
