@@ -158,8 +158,8 @@ name|XmlRootExtractor
 block|{
 specifier|private
 specifier|final
-name|SAXParser
-name|parser
+name|SAXParserFactory
+name|factory
 decl_stmt|;
 specifier|public
 name|XmlRootExtractor
@@ -169,14 +169,13 @@ name|SAXException
 throws|,
 name|ParserConfigurationException
 block|{
-name|SAXParserFactory
 name|factory
-init|=
+operator|=
 name|SAXParserFactory
 operator|.
 name|newInstance
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|factory
 operator|.
 name|setNamespaceAware
@@ -216,15 +215,6 @@ comment|// feature, even though it's required by JAXP in Java 5. Ignoring
 comment|// the exception is fine here, deployments without this feature
 comment|// are inherently vulnerable to XML denial-of-service attacks.
 block|}
-name|this
-operator|.
-name|parser
-operator|=
-name|factory
-operator|.
-name|newSAXParser
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 name|QName
@@ -244,7 +234,10 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|parser
+name|factory
+operator|.
+name|newSAXParser
+argument_list|()
 operator|.
 name|parse
 argument_list|(
