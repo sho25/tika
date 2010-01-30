@@ -255,6 +255,17 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|,
+literal|"audio/midi"
+argument_list|)
+expr_stmt|;
 name|XHTMLContentHandler
 name|xhtml
 init|=
@@ -318,6 +329,7 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// TODO: Use XMPDM.TRACKS?
 name|Patch
 index|[]
 name|patches

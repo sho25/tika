@@ -210,6 +210,25 @@ index|]
 return|;
 block|}
 block|}
+comment|/**      * Returns the value (if any) of the identified metadata property.      *      * @since Apache Tika 0.7      * @param property property definition      * @return property value, or<code>null</code> if the property is not set      */
+specifier|public
+name|String
+name|get
+parameter_list|(
+name|Property
+name|property
+parameter_list|)
+block|{
+return|return
+name|get
+argument_list|(
+name|property
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
+block|}
 comment|/**      * Get the values associated to a metadata name.      *       * @param name      *          of the metadata.      * @return the values associated to a metadata name.      */
 specifier|public
 name|String
@@ -456,6 +475,29 @@ index|[]
 block|{
 name|value
 block|}
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the value of the identified metadata property.      *      * @since Apache Tika 0.7      * @param property property definition      * @param value    property value      */
+specifier|public
+name|void
+name|set
+parameter_list|(
+name|Property
+name|property
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|set
+argument_list|(
+name|property
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|value
 argument_list|)
 expr_stmt|;
 block|}
