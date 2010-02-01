@@ -162,7 +162,6 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|private
-specifier|final
 name|String
 name|mapOldNS
 parameter_list|(

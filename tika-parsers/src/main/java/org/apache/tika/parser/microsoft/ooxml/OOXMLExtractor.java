@@ -47,18 +47,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|poi
-operator|.
-name|POIXMLTextExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|tika
 operator|.
 name|metadata
@@ -104,7 +92,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface implemented by all Tika OOXML extractors.  *   * @see POIXMLTextExtractor  */
+comment|/**  * Interface implemented by all Tika OOXML extractors.  *   * @see org.apache.poi.POIXMLTextExtractor  */
 end_comment
 
 begin_interface

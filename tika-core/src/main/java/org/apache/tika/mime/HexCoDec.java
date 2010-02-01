@@ -25,8 +25,8 @@ class|class
 name|HexCoDec
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|char
 index|[]
 name|HEX_CHARS
@@ -350,11 +350,13 @@ operator|<=
 literal|'9'
 operator|)
 condition|)
+block|{
 return|return
 name|ch
 operator|-
 literal|'0'
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -370,6 +372,7 @@ operator|<=
 literal|'f'
 operator|)
 condition|)
+block|{
 return|return
 name|ch
 operator|-
@@ -377,6 +380,7 @@ literal|'a'
 operator|+
 literal|10
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -392,6 +396,7 @@ operator|<=
 literal|'F'
 operator|)
 condition|)
+block|{
 return|return
 name|ch
 operator|-
@@ -399,7 +404,9 @@ literal|'A'
 operator|+
 literal|10
 return|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -411,6 +418,7 @@ operator|+
 literal|"'"
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 end_class

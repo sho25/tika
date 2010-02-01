@@ -84,7 +84,7 @@ name|String
 argument_list|,
 name|LanguageProfile
 argument_list|>
-name|profiles
+name|PROFILES
 init|=
 operator|new
 name|HashMap
@@ -233,7 +233,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|profiles
+name|PROFILES
 operator|.
 name|put
 argument_list|(
@@ -401,7 +401,7 @@ name|LanguageProfile
 argument_list|>
 name|entry
 range|:
-name|profiles
+name|PROFILES
 operator|.
 name|entrySet
 argument_list|()

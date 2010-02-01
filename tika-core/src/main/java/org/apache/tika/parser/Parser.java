@@ -37,16 +37,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,7 +119,7 @@ name|SAXException
 throws|,
 name|TikaException
 function_decl|;
-comment|/**      * The parse() method from Tika 0.4 and earlier. Please use the      * {@link #parse(InputStream, ContentHandler, Metadata, Map)} method      * instead in new code. Calls to this backwards compatibility method      * are forwarded to the new parse() method with an empty parse context.      *      * @deprecated This method will be removed in Apache Tika 1.0.      */
+comment|/**      * The parse() method from Tika 0.4 and earlier. Please use the      * {@link #parse(InputStream, ContentHandler, Metadata, ParseContext)}      * method instead in new code. Calls to this backwards compatibility      * method are forwarded to the new parse() method with an empty parse      * context.      *      * @deprecated This method will be removed in Apache Tika 1.0.      */
 name|void
 name|parse
 parameter_list|(

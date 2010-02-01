@@ -67,18 +67,6 @@ name|xml
 operator|.
 name|parsers
 operator|.
-name|SAXParser
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
 name|SAXParserFactory
 import|;
 end_import
@@ -148,7 +136,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class that uses a {@link SAXParser} to determine  * the namespace URI and local name of the root element of an XML file.  *  * @since Apache Tika 0.4  */
+comment|/**  * Utility class that uses a {@link javax.xml.parsers.SAXParser} to determine  * the namespace URI and local name of the root element of an XML file.  *  * @since Apache Tika 0.4  */
 end_comment
 
 begin_class

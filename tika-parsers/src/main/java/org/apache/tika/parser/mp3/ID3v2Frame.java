@@ -1076,33 +1076,20 @@ name|boolean
 name|hasNext
 parameter_list|()
 block|{
-if|if
-condition|(
+comment|// Check for padding at the end
+return|return
 name|offset
 operator|<
 name|data
 operator|.
 name|length
-condition|)
-block|{
-comment|// Check for padding at the end
-if|if
-condition|(
+operator|&&
 name|data
 index|[
 name|offset
 index|]
 operator|!=
 literal|0
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-return|return
-literal|false
 return|;
 block|}
 specifier|public

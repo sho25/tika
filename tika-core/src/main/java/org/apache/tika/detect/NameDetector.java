@@ -332,9 +332,11 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|AssertionError
+name|IllegalStateException
 argument_list|(
 literal|"UTF-8 not supported"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}

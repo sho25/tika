@@ -21,16 +21,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -79,7 +69,7 @@ specifier|private
 name|MetadataHelper
 parameter_list|()
 block|{     }
-comment|/**      * Returns the content at the given URL, and sets any related      * metadata entries.      *      * @param url the URL of the resource to be read      * @param metadata where the resource metadata is stored      * @return resource content      * @throws FileNotFoundException if the URL can not be accessed      */
+comment|/**      * Returns the content at the given URL, and sets any related      * metadata entries.      *      * @param url the URL of the resource to be read      * @param metadata where the resource metadata is stored      * @return resource content      * @throws IOException if the URL can not be accessed      */
 specifier|public
 specifier|static
 name|InputStream

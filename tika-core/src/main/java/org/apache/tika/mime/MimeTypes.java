@@ -207,8 +207,8 @@ name|Detector
 block|{
 comment|/**      * Name of the {@link #rootMimeType root} type, application/octet-stream.      */
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|OCTET_STREAM
 init|=
@@ -216,8 +216,8 @@ literal|"application/octet-stream"
 decl_stmt|;
 comment|/**      * Name of the {@link #textMimeType text} type, text/plain.      */
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|PLAIN_TEXT
 init|=
@@ -225,8 +225,8 @@ literal|"text/plain"
 decl_stmt|;
 comment|/**      * Name of the {@link #xml xml} type, application/xml.      */
 specifier|public
-specifier|final
 specifier|static
+specifier|final
 name|String
 name|XML
 init|=

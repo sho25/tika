@@ -123,34 +123,6 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|HttpHeaders
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
 name|Metadata
 import|;
 end_import
@@ -236,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream. The input metadata key  * {@link HttpHeaders#CONTENT_ENCODING} is used as an encoding hint  * if the automatic encoding detection fails.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain</code></dd>  *<dt>{@link HttpHeaders#CONTENT_ENCODING}</dt>  *<dd>The detected text encoding of the document.</dd>  *<dt>  *     {@link HttpHeaders#CONTENT_LANGUAGE} and {@link DublinCore#LANGUAGE}  *</dt>  *<dd>  *     The default language of the detected encoding. Only set if the  *     detected encoding is associated with some specific language  *     (for example KOI8-R with Russian or SJIS with Japanese).  *</dd>  *</dl>  */
+comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream. The input metadata key  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING} is used  * as an encoding hint if the automatic encoding detection fails.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain</code></dd>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING}</dt>  *<dd>The detected text encoding of the document.</dd>  *<dt>  *     {@link org.apache.tika.metadata.HttpHeaders#CONTENT_LANGUAGE} and  *     {@link org.apache.tika.metadata.DublinCore#LANGUAGE}  *</dt>  *<dd>  *     The default language of the detected encoding. Only set if the  *     detected encoding is associated with some specific language  *     (for example KOI8-R with Russian or SJIS with Japanese).  *</dd>  *</dl>  */
 end_comment
 
 begin_class

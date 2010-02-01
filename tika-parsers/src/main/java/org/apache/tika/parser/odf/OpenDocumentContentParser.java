@@ -1449,10 +1449,8 @@ name|equals
 argument_list|(
 name|namespaceURI
 argument_list|)
-condition|)
-block|{
-if|if
-condition|(
+operator|&&
+operator|(
 literal|"tab-stop"
 operator|.
 name|equals
@@ -1466,6 +1464,7 @@ name|equals
 argument_list|(
 name|localName
 argument_list|)
+operator|)
 condition|)
 block|{
 name|this
@@ -1481,7 +1480,6 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 comment|// revert filter for *all* content of some tags
