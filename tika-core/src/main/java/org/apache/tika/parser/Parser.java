@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +70,20 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|mime
+operator|.
+name|MediaType
 import|;
 end_import
 
@@ -96,6 +120,17 @@ specifier|public
 interface|interface
 name|Parser
 block|{
+comment|/**      * Returns the set of media types supported by this parser when used      * with the given parse context.      *      * @since Apache Tika 0.7      * @param context parse context      * @return immutable set of media types      */
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|getSupportedTypes
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+function_decl|;
 comment|/**      * Parses a document stream into a sequence of XHTML SAX events.      * Fills in related document metadata in the given metadata object.      *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * Information about the parsing context can be passed in the context      * parameter. See the parser implementations for the kinds of context      * information they expect.      *      * @since Apache Tika 0.5      * @param stream the document stream (input)      * @param handler handler for the XHTML SAX events (output)      * @param metadata document metadata (input and output)      * @param context parse context      * @throws IOException if the document stream could not be read      * @throws SAXException if the SAX events could not be processed      * @throws TikaException if the document could not be parsed      */
 name|void
 name|parse

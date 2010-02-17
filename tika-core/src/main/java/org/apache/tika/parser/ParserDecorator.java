@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -60,6 +70,20 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|mime
+operator|.
+name|MediaType
 import|;
 end_import
 
@@ -118,6 +142,27 @@ name|parser
 operator|=
 name|parser
 expr_stmt|;
+block|}
+comment|/**      * Delegates the method call to the decorated parser. Subclasses should      * override this method (and use<code>super.getSupportedTypes()</code>      * to invoke the decorated parser) to implement extra decoration.      */
+specifier|public
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|getSupportedTypes
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+block|{
+return|return
+name|parser
+operator|.
+name|getSupportedTypes
+argument_list|(
+name|context
+argument_list|)
+return|;
 block|}
 comment|/**      * Delegates the method call to the decorated parser. Subclasses should      * override this method (and use<code>super.parse()</code> to invoke      * the decorated parser) to implement extra decoration.      */
 specifier|public
