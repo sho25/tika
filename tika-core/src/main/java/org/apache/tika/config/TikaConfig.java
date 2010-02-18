@@ -300,14 +300,6 @@ specifier|public
 class|class
 name|TikaConfig
 block|{
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|DEFAULT_CONFIG_LOCATION
-init|=
-literal|"/org/apache/tika/tika-config.xml"
-decl_stmt|;
 specifier|private
 specifier|final
 name|Map
