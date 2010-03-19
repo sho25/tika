@@ -281,16 +281,7 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-comment|// We need buffering to enable MIME magic detection before parsing
-if|if
-condition|(
-operator|!
-name|stream
-operator|.
-name|markSupported
-argument_list|()
-condition|)
-block|{
+comment|// We need (reliable!) mark support for type detection before parsing
 name|stream
 operator|=
 operator|new
@@ -299,7 +290,6 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Automatically detect the MIME type of the document
 name|MediaType
 name|type
