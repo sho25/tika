@@ -95,6 +95,18 @@ name|ContentHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Content handler decorator that only passes everything inside  * the XHTML&lt;body/&gt; tag to the underlying handler. Note that  * the&lt;body/&gt; tag itself is<em>not</em> passed on.  */
 end_comment
@@ -193,7 +205,25 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a content handler that writes XHTML body character events to      * an internal string buffer. The contents of the buffer can be retrieved      * using the {@link #toString()} method.      */
+comment|/**      * Creates a content handler that writes XHTML body character events to      * an internal string buffer. The contents of the buffer can be retrieved      * using the {@link #toString()} method.      *<p>      * The internal string buffer is bounded at the given number of characters.      * If this write limit is reached, then a {@link SAXException} is thrown.      *      * @since Apache Tika 0.7      * @param writeLimit maximum number of characters to include in the string,      *                   or -1 to disable the write limit      */
+specifier|public
+name|BodyContentHandler
+parameter_list|(
+name|int
+name|writeLimit
+parameter_list|)
+block|{
+name|this
+argument_list|(
+operator|new
+name|WriteOutContentHandler
+argument_list|(
+name|writeLimit
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a content handler that writes XHTML body character events to      * an internal string buffer. The contents of the buffer can be retrieved      * using the {@link #toString()} method.      *<p>      * The internal string buffer is bounded at 100k characters. If this write      * limit is reached, then a {@link SAXException} is thrown.      */
 specifier|public
 name|BodyContentHandler
 parameter_list|()

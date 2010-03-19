@@ -751,7 +751,10 @@ name|handler
 init|=
 operator|new
 name|BodyContentHandler
-argument_list|()
+argument_list|(
+operator|-
+literal|1
+argument_list|)
 decl_stmt|;
 operator|new
 name|AutoDetectParser

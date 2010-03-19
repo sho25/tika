@@ -217,11 +217,13 @@ begin_import
 import|import
 name|org
 operator|.
-name|xml
+name|apache
+operator|.
+name|tika
 operator|.
 name|sax
 operator|.
-name|ContentHandler
+name|WriteOutContentHandler
 import|;
 end_import
 
@@ -257,6 +259,15 @@ specifier|private
 specifier|final
 name|Parser
 name|parser
+decl_stmt|;
+comment|/**      * Maximum length of the strings returned by the parseToString methods.      * Used to prevent out of memory problems with huge input documents.      * The default setting is 100k characters.      */
+specifier|private
+name|int
+name|maxStringLength
+init|=
+literal|100
+operator|*
+literal|1000
 decl_stmt|;
 comment|/**      * Creates a Tika facade using the given configuration.      *      * @param config Tika configuration      */
 specifier|public
@@ -643,7 +654,7 @@ name|metadata
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
 name|String
 name|parseToString
@@ -659,15 +670,17 @@ name|IOException
 throws|,
 name|TikaException
 block|{
-try|try
-block|{
-name|ContentHandler
+name|WriteOutContentHandler
 name|handler
 init|=
 operator|new
-name|BodyContentHandler
-argument_list|()
+name|WriteOutContentHandler
+argument_list|(
+name|maxStringLength
+argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|ParseContext
 name|context
 init|=
@@ -692,25 +705,34 @@ name|parse
 argument_list|(
 name|stream
 argument_list|,
+operator|new
+name|BodyContentHandler
+argument_list|(
 name|handler
+argument_list|)
 argument_list|,
 name|metadata
 argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
-return|return
-name|handler
-operator|.
-name|toString
-argument_list|()
-return|;
 block|}
 catch|catch
 parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|handler
+operator|.
+name|isWriteLimitReached
+argument_list|(
+name|e
+argument_list|)
+condition|)
 block|{
 comment|// This should never happen with BodyContentHandler...
 throw|throw
@@ -723,6 +745,7 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
 finally|finally
 block|{
 name|stream
@@ -731,8 +754,14 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|handler
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
 name|String
 name|parseToString
@@ -756,7 +785,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses the given file and returns the extracted text content.      *      * @param file the file to be parsed      * @return extracted text content      * @throws IOException if the file can not be read      * @throws TikaException if the file can not be parsed      */
+comment|/**      * Parses the given file and returns the extracted text content.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param file the file to be parsed      * @return extracted text content      * @throws IOException if the file can not be read      * @throws TikaException if the file can not be parsed      */
 specifier|public
 name|String
 name|parseToString
@@ -782,7 +811,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses the resource at the given URL and returns the extracted      * text content.      *      * @param url the URL of the resource to be parsed      * @return extracted text content      * @throws IOException if the resource can not be read      * @throws TikaException if the resource can not be parsed      */
+comment|/**      * Parses the resource at the given URL and returns the extracted      * text content.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param url the URL of the resource to be parsed      * @return extracted text content      * @throws IOException if the resource can not be read      * @throws TikaException if the resource can not be parsed      */
 specifier|public
 name|String
 name|parseToString
@@ -822,6 +851,32 @@ argument_list|,
 name|metadata
 argument_list|)
 return|;
+block|}
+comment|/**      * Returns the maximum length of strings returned by the      * parseToString methods.      *      * @since Apache Tika 0.7      * @return maximum string length, or -1 if the limit has been disabled      */
+specifier|public
+name|int
+name|getMaxStringLength
+parameter_list|()
+block|{
+return|return
+name|maxStringLength
+return|;
+block|}
+comment|/**      * Sets the maximum length of strings returned by the parseToString      * methods.      *      * @since Apache Tika 0.7      * @param maxStringLength maximum string length,      *                        or -1 to disable this limit      */
+specifier|public
+name|void
+name|setMaxStringLength
+parameter_list|(
+name|int
+name|maxStringLength
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxStringLength
+operator|=
+name|maxStringLength
+expr_stmt|;
 block|}
 block|}
 end_class
