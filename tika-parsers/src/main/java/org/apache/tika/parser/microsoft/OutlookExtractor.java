@@ -170,17 +170,9 @@ class|class
 name|OutlookExtractor
 block|{
 specifier|private
-specifier|static
 specifier|final
 name|Chunks
-name|CHUNKS
-init|=
-name|Chunks
-operator|.
-name|getInstance
-argument_list|(
-literal|false
-argument_list|)
+name|chunks
 decl_stmt|;
 specifier|private
 specifier|final
@@ -207,6 +199,15 @@ name|POIFSChunkParser
 argument_list|(
 name|filesystem
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|chunks
+operator|=
+name|parser
+operator|.
+name|identifyChunks
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -246,7 +247,7 @@ name|subject
 init|=
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|subjectChunk
 argument_list|)
@@ -256,7 +257,7 @@ name|from
 init|=
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|displayFromChunk
 argument_list|)
@@ -293,7 +294,7 @@ name|SUBJECT
 argument_list|,
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|conversationTopic
 argument_list|)
@@ -332,7 +333,7 @@ literal|"To"
 argument_list|,
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|displayToChunk
 argument_list|)
@@ -346,7 +347,7 @@ literal|"Cc"
 argument_list|,
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|displayCCChunk
 argument_list|)
@@ -360,7 +361,7 @@ literal|"Bcc"
 argument_list|,
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|displayBCCChunk
 argument_list|)
@@ -381,7 +382,7 @@ literal|"p"
 argument_list|,
 name|getChunk
 argument_list|(
-name|CHUNKS
+name|chunks
 operator|.
 name|textBodyChunk
 argument_list|)
