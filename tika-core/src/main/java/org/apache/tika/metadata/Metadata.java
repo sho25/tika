@@ -72,6 +72,8 @@ name|HttpHeaders
 implements|,
 name|MSOffice
 implements|,
+name|ClimateForcast
+implements|,
 name|TikaMetadataKeys
 implements|,
 name|TikaMimeKeys
