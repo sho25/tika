@@ -117,18 +117,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|tika
 operator|.
 name|exception
@@ -242,21 +230,6 @@ name|MboxParser
 implements|implements
 name|Parser
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Logger
-name|LOGGER
-init|=
-name|Logger
-operator|.
-name|getLogger
-argument_list|(
-name|MboxParser
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -393,7 +366,7 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"us-ascii"
+literal|"US-ASCII"
 argument_list|)
 expr_stmt|;
 block|}
@@ -403,23 +376,15 @@ name|UnsupportedEncodingException
 name|e
 parameter_list|)
 block|{
-name|LOGGER
-operator|.
-name|error
+throw|throw
+operator|new
+name|TikaException
 argument_list|(
-literal|"Unexpected exception setting up MboxParser"
+literal|"US-ASCII is not supported!"
 argument_list|,
 name|e
 argument_list|)
-expr_stmt|;
-name|isr
-operator|=
-operator|new
-name|InputStreamReader
-argument_list|(
-name|stream
-argument_list|)
-expr_stmt|;
+throw|;
 block|}
 name|BufferedReader
 name|reader
@@ -949,16 +914,8 @@ name|matches
 argument_list|()
 condition|)
 block|{
-name|LOGGER
-operator|.
-name|warn
-argument_list|(
-literal|"Malformed email header in mbox file: "
-operator|+
-name|curLine
-argument_list|)
-expr_stmt|;
 return|return;
+comment|// ignore malformed header lines
 block|}
 name|String
 name|headerTag
