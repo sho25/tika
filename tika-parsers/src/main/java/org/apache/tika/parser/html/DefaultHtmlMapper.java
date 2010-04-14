@@ -28,6 +28,17 @@ name|DefaultHtmlMapper
 implements|implements
 name|HtmlMapper
 block|{
+comment|/**      * @since Apache Tika 0.8      */
+specifier|public
+specifier|static
+specifier|final
+name|HtmlMapper
+name|INSTANCE
+init|=
+operator|new
+name|DefaultHtmlMapper
+argument_list|()
+decl_stmt|;
 specifier|public
 name|String
 name|mapSafeElement

@@ -350,17 +350,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * The default HTML mapping.      */
-specifier|private
-specifier|static
-specifier|final
-name|HtmlMapper
-name|mapper
-init|=
-operator|new
-name|DefaultHtmlMapper
-argument_list|()
-decl_stmt|;
 comment|// Use the widest, most common charset as our default.
 specifier|private
 specifier|static
@@ -1030,7 +1019,9 @@ name|name
 parameter_list|)
 block|{
 return|return
-name|mapper
+name|DefaultHtmlMapper
+operator|.
+name|INSTANCE
 operator|.
 name|mapSafeElement
 argument_list|(
@@ -1048,16 +1039,11 @@ name|name
 parameter_list|)
 block|{
 return|return
-literal|"STYLE"
+name|DefaultHtmlMapper
 operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-operator|||
-literal|"SCRIPT"
+name|INSTANCE
 operator|.
-name|equals
+name|isDiscardElement
 argument_list|(
 name|name
 argument_list|)
