@@ -168,6 +168,78 @@ literal|"width"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"8 8 8 "
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Data BitsPerSample"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1.0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension PixelAspectRatio"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension VerticalPhysicalPixelSpacing"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension HorizontalPhysicalPixelSpacing"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"BI_RGB"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression CompressionTypeName"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image/bmp"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Content-Type"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -239,6 +311,186 @@ operator|.
 name|get
 argument_list|(
 literal|"width"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"TRUE"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression Lossless"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Normal"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension ImageOrientation"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"lzw"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression CompressionTypeName"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension HorizontalPixelOffset"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"imageLeftPosition=0, imageTopPosition=0, imageWidth=100, imageHeight=75, interlaceFlag=false"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"ImageDescriptor"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Index"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Data SampleFormat"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"3"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma NumChannels"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression NumProgressiveScans"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"RGB"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma ColorSpaceType"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership."
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"CommentExtensions CommentExtension"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"value=Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership., encoding=ISO-8859-1, compression=none"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Text TextEntry"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"TRUE"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma BlackIsZero"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"disposalMethod=none, userInputFlag=false, transparentColorFlag=false, delayTime=0, transparentColorIndex=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"GraphicControlExtension"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension VerticalPixelOffset"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image/gif"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Content-Type"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -316,6 +568,246 @@ literal|"width"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0.35277778"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension VerticalPixelSize"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"false"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression Lossless"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"class=0, htableId=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence dht dhtable"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"majorVersion=1, minorVersion=1, resUnits=1, Xdensity=72, Ydensity=72, thumbWidth=0, thumbHeight=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"JPEGvariety app0JFIF"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"225"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence unknown"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"componentSelector=1, dcHuffTable=0, acHuffTable=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence sos scanComponentSpec"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"normal"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension ImageOrientation"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1.0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension PixelAspectRatio"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"elementPrecision=0, qtableId=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence dqt dqtable"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"numScanComponents=3, startSpectralSelection=0, endSpectralSelection=63, approxHigh=0, approxLow=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence sos"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"componentId=1, HsamplingFactor=1, VsamplingFactor=1, QtableSelector=0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence sof componentSpec"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"JPEG"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression CompressionTypeName"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0.35277778"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension HorizontalPixelSize"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership."
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence com"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"3"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma NumChannels"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression NumProgressiveScans"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"YCbCr"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma ColorSpaceType"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"keyword=comment, value=Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership."
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Text TextEntry"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image/jpeg"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Content-Type"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"process=0, samplePrecision=8, numLines=75, samplesPerLine=100, numFrameComponents=3"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"markerSequence sof"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -387,6 +879,270 @@ operator|.
 name|get
 argument_list|(
 literal|"width"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0.35273367"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension VerticalPixelSize"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"8 8 8"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Data BitsPerSample"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Perceptual"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"sRGB"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"true"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression Lossless"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"year=2008, month=5, day=6, hour=6, minute=18, second=47"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"tIME"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Normal"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension ImageOrientation"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1.0"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension PixelAspectRatio"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"keyword=Comment, value=Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership."
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"tEXt tEXtEntry"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"deflate"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression CompressionTypeName"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"UnsignedIntegral"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Data SampleFormat"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"0.35273367"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Dimension HorizontalPixelSize"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"none"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Transparency Alpha"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"pixelsPerUnitXAxis=2835, pixelsPerUnitYAxis=2835, unitSpecifier=meter"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"pHYs"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"3"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma NumChannels"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Compression NumProgressiveScans"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"RGB"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma ColorSpaceType"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"keyword=Comment, value=Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership., encoding=ISO-8859-1, compression=none"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Text TextEntry"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"PixelInterleaved"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Data PlanarConfiguration"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"width=100, height=75, bitDepth=8, colorType=RGB, compressionMethod=deflate, filterMethod=adaptive, interlaceMethod=none"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"IHDR"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"true"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Chroma BlackIsZero"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"year=2008, month=5, day=6, hour=6, minute=18, second=47"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Document ImageModificationTime"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image/png"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Content-Type"
 argument_list|)
 argument_list|)
 expr_stmt|;
