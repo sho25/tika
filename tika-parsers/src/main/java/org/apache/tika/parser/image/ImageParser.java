@@ -330,13 +330,6 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"tiff"
-argument_list|)
-argument_list|,
-name|MediaType
-operator|.
-name|image
-argument_list|(
 literal|"vnd.wap.wbmp"
 argument_list|)
 argument_list|,
