@@ -55,6 +55,20 @@ name|URLConnection
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|TikaInputStream
+import|;
+end_import
+
 begin_comment
 comment|/**  * Collection of static helper methods for handling metadata.  *  * @since Apache Tika 0.7  */
 end_comment
@@ -229,10 +243,14 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+operator|new
+name|TikaInputStream
+argument_list|(
 name|connection
 operator|.
 name|getInputStream
 argument_list|()
+argument_list|)
 return|;
 block|}
 block|}

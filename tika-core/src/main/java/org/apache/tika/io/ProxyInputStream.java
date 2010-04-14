@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Proxy stream which acts as expected, that is it passes the method  * calls on to the proxied stream and doesn't change which methods are  * being called.  *<p>  * It is an alternative base class to FilterInputStream  * to increase reusability, because FilterInputStream changes the  * methods being called, such as read(byte[]) to read(byte[], int, int).  *  * @author Stephen Colebourne  * @version $Id$  */
+comment|/**  * A Proxy stream which acts as expected, that is it passes the method  * calls on to the proxied stream and doesn't change which methods are  * being called.  *<p>  * It is an alternative base class to FilterInputStream  * to increase reusability, because FilterInputStream changes the  * methods being called, such as read(byte[]) to read(byte[], int, int).  *<p>  * See the protected methods for ways in which a subclass can easily decorate  * a stream with custom pre-, post- or error processing functionality.  *  * @author Stephen Colebourne  * @version $Id$  */
 end_comment
 
 begin_class
@@ -84,11 +84,34 @@ name|IOException
 block|{
 try|try
 block|{
-return|return
+name|beforeRead
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|int
+name|b
+init|=
 name|in
 operator|.
 name|read
 argument_list|()
+decl_stmt|;
+name|afterRead
+argument_list|(
+name|b
+operator|!=
+operator|-
+literal|1
+condition|?
+literal|1
+else|:
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|b
 return|;
 block|}
 catch|catch
@@ -124,13 +147,30 @@ name|IOException
 block|{
 try|try
 block|{
-return|return
+name|beforeRead
+argument_list|(
+name|bts
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+name|int
+name|n
+init|=
 name|in
 operator|.
 name|read
 argument_list|(
 name|bts
 argument_list|)
+decl_stmt|;
+name|afterRead
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
+return|return
+name|n
 return|;
 block|}
 catch|catch
@@ -172,7 +212,14 @@ name|IOException
 block|{
 try|try
 block|{
-return|return
+name|beforeRead
+argument_list|(
+name|len
+argument_list|)
+expr_stmt|;
+name|int
+name|n
+init|=
 name|in
 operator|.
 name|read
@@ -183,6 +230,14 @@ name|off
 argument_list|,
 name|len
 argument_list|)
+decl_stmt|;
+name|afterRead
+argument_list|(
+name|n
+argument_list|)
+expr_stmt|;
+return|return
+name|n
 return|;
 block|}
 catch|catch
@@ -202,7 +257,7 @@ literal|1
 return|;
 block|}
 block|}
-comment|/**      * Invokes the delegate's<code>skip(long)</code> method.      * @param ln the number of bytes to skip      * @return the number of bytes to skipped or -1 if the end of stream      * @throws IOException if an I/O error occurs      */
+comment|/**      * Invokes the delegate's<code>skip(long)</code> method.      * @param ln the number of bytes to skip      * @return the actual number of bytes skipped      * @throws IOException if an I/O error occurs      */
 annotation|@
 name|Override
 specifier|public
@@ -375,7 +430,29 @@ name|markSupported
 argument_list|()
 return|;
 block|}
-comment|/**      * Handle any IOExceptions thrown.      *<p>      * This method provides a point to implement custom exception      * handling. The default behaviour is to re-throw the exception.      * @param e The IOException thrown      * @throws IOException if an I/O error occurs      */
+comment|/**      * Invoked by the read methods before the call is proxied. The number      * of bytes that the caller wanted to read (1 for the {@link #read()}      * method, buffer length for {@link #read(byte[])}, etc.) is given as      * an argument.      *<p>      * Subclasses can override this method to add common pre-processing      * functionality without having to override all the read methods.      * The default implementation does nothing.      *<p>      * Note this method is<em>not</em> called from {@link #skip(long)} or      * {@link #reset()}. You need to explicitly override those methods if      * you want to add pre-processing steps also to them.      *      * @since Commons IO 2.0      * @param n number of bytes that the caller asked to be read      * @throws IOException if the pre-processing fails      */
+specifier|protected
+name|void
+name|beforeRead
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
+comment|/**      * Invoked by the read methods after the proxied call has returned      * successfully. The number of bytes returned to the caller (or -1 if      * the end of stream was reached) is given as an argument.      *<p>      * Subclasses can override this method to add common post-processing      * functionality without having to override all the read methods.      * The default implementation does nothing.      *<p>      * Note this method is<em>not</em> called from {@link #skip(long)} or      * {@link #reset()}. You need to explicitly override those methods if      * you want to add post-processing steps also to them.      *      * @since Commons IO 2.0      * @param n number of bytes read, or -1 if the end of stream was reached      * @throws IOException if the post-processing fails      */
+specifier|protected
+name|void
+name|afterRead
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+throws|throws
+name|IOException
+block|{     }
+comment|/**      * Handle any IOExceptions thrown.      *<p>      * This method provides a point to implement custom exception      * handling. The default behaviour is to re-throw the exception.      * @param e The IOException thrown      * @throws IOException if an I/O error occurs      * @since Commons IO 2.0      */
 specifier|protected
 name|void
 name|handleIOException
