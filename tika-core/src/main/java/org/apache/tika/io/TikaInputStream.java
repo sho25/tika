@@ -75,6 +75,10 @@ name|OutputStream
 import|;
 end_import
 
+begin_comment
+comment|/**  *  * @since Apache Tika 0.8  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -82,6 +86,7 @@ name|TikaInputStream
 extends|extends
 name|ProxyInputStream
 block|{
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -116,14 +121,17 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * The file that contains the contents of this stream. This is either      * the original file passed to the {@link #TikaInputStream(File)}      * constructor or a temporary file created by a call to the      * {@link #getFile()} method. If neither has been called, then      * the value is<code>null</code>.      */
 specifier|private
 name|File
 name|file
 decl_stmt|;
+comment|/**      * Flag to indicate that {@link #file} is a temporary file that should      * be removed when this stream is {@link #close() closed}.      */
 specifier|private
 name|boolean
 name|temporary
 decl_stmt|;
+comment|/**      * Current read position within this stream.      */
 specifier|private
 name|long
 name|position
