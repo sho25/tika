@@ -895,6 +895,20 @@ return|return
 name|subtype
 return|;
 block|}
+comment|/**      * Checks whether this media type contains parameters.      *      * @since Apache Tika 0.8      * @return<code>true</code> if this type has one or more parameters,      *<code>false</code> otherwise      */
+specifier|public
+name|boolean
+name|hasParameters
+parameter_list|()
+block|{
+return|return
+operator|!
+name|parameters
+operator|.
+name|isEmpty
+argument_list|()
+return|;
+block|}
 specifier|public
 name|Map
 argument_list|<
