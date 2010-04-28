@@ -1044,7 +1044,7 @@ specifier|public
 name|Parser
 name|getParser
 parameter_list|(
-name|String
+name|MediaType
 name|mimeType
 parameter_list|)
 block|{

@@ -77,7 +77,9 @@ name|MimeType
 argument_list|(
 literal|null
 argument_list|,
-literal|"text/plain"
+name|MediaType
+operator|.
+name|TEXT_PLAIN
 argument_list|)
 expr_stmt|;
 name|fail
@@ -103,56 +105,6 @@ argument_list|(
 name|types
 argument_list|,
 literal|null
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
-comment|// Invalid name (no slash)
-try|try
-block|{
-operator|new
-name|MimeType
-argument_list|(
-name|types
-argument_list|,
-literal|"application"
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
-comment|// Invalid name (not lower case)
-try|try
-block|{
-operator|new
-name|MimeType
-argument_list|(
-name|types
-argument_list|,
-literal|"TEXT/PLAIN"
 argument_list|)
 expr_stmt|;
 name|fail

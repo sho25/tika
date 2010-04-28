@@ -1249,7 +1249,12 @@ name|this
 operator|.
 name|repo
 argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
 literal|"foo/bar"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|this
@@ -1333,7 +1338,12 @@ name|this
 operator|.
 name|repo
 argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
 literal|"foo/bar2"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|this

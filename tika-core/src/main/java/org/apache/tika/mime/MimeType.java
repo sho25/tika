@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -215,11 +215,11 @@ specifier|final
 name|MimeTypes
 name|registry
 decl_stmt|;
-comment|/**      * Lower case name of this media type.      */
+comment|/**      * The normalized media type name.      */
 specifier|private
 specifier|final
-name|String
-name|name
+name|MediaType
+name|type
 decl_stmt|;
 comment|/**      * Description of this media type.      */
 specifier|private
@@ -274,14 +274,14 @@ name|minLength
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * Creates a media type with the give name and containing media type      * registry. The name is expected to be valid and normalized to lower      * case. This constructor should only be called by      * {@link MimeTypes#forName(String)} to keep the media type registry      * up to date.      *      * @param registry the media type registry that contains this type      * @param name media type name      */
+comment|/**      * Creates a media type with the give name and containing media type      * registry. The name is expected to be valid and normalized to lower      * case. This constructor should only be called by      * {@link MimeTypes#forName(String)} to keep the media type registry      * up to date.      *      * @param registry the media type registry that contains this type      * @param type normalized media type name      */
 name|MimeType
 parameter_list|(
 name|MimeTypes
 name|registry
 parameter_list|,
-name|String
-name|name
+name|MediaType
+name|type
 parameter_list|)
 block|{
 if|if
@@ -301,31 +301,16 @@ throw|;
 block|}
 if|if
 condition|(
-operator|!
-name|MimeType
-operator|.
-name|isValid
-argument_list|(
-name|name
-argument_list|)
-operator|||
-operator|!
-name|name
-operator|.
-name|equals
-argument_list|(
-name|name
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
+name|type
+operator|==
+literal|null
 condition|)
 block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Media type name is invalid"
+literal|"Media type name is missing"
 argument_list|)
 throw|;
 block|}
@@ -337,10 +322,20 @@ name|registry
 expr_stmt|;
 name|this
 operator|.
-name|name
+name|type
 operator|=
-name|name
+name|type
 expr_stmt|;
+block|}
+comment|/**      * Returns the normalized media type name.      *      * @return media type      */
+specifier|public
+name|MediaType
+name|getType
+parameter_list|()
+block|{
+return|return
+name|type
+return|;
 block|}
 comment|/**      * Returns the name of this media type.      *      * @return media type name (lower case)      */
 specifier|public
@@ -349,7 +344,10 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|name
+name|type
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/**      * Returns the parent of this media type.      *      * @return parent media type, or<code>null</code>      */
@@ -606,7 +604,7 @@ specifier|public
 name|void
 name|addAlias
 parameter_list|(
-name|String
+name|MediaType
 name|alias
 parameter_list|)
 throws|throws
@@ -614,27 +612,12 @@ name|MimeTypeException
 block|{
 if|if
 condition|(
-name|isValid
-argument_list|(
-name|alias
-argument_list|)
-condition|)
-block|{
-name|alias
-operator|=
-name|alias
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
 operator|!
-name|name
-operator|.
-name|equals
-argument_list|(
 name|alias
+operator|.
+name|isSpecializationOf
+argument_list|(
+name|type
 argument_list|)
 condition|)
 block|{
@@ -647,19 +630,6 @@ argument_list|,
 name|alias
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-throw|throw
-operator|new
-name|MimeTypeException
-argument_list|(
-literal|"Invalid media type alias: "
-operator|+
-name|alias
-argument_list|)
-throw|;
 block|}
 block|}
 comment|/**      * Add some rootXML info to this mime-type      *      * @param namespaceURI      * @param localName      */
@@ -1163,12 +1133,12 @@ name|int
 name|compareTo
 parameter_list|(
 name|MimeType
-name|type
+name|mime
 parameter_list|)
 block|{
 if|if
 condition|(
-name|type
+name|mime
 operator|==
 literal|null
 condition|)
@@ -1181,9 +1151,10 @@ literal|"MimeType is missing"
 argument_list|)
 throw|;
 block|}
+elseif|else
 if|if
 condition|(
-name|type
+name|mime
 operator|==
 name|this
 condition|)
@@ -1199,7 +1170,7 @@ name|this
 operator|.
 name|isDescendantOf
 argument_list|(
-name|type
+name|mime
 argument_list|)
 condition|)
 block|{
@@ -1210,7 +1181,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|type
+name|mime
 operator|.
 name|isDescendantOf
 argument_list|(
@@ -1236,14 +1207,14 @@ name|superType
 operator|.
 name|compareTo
 argument_list|(
-name|type
+name|mime
 argument_list|)
 return|;
 block|}
 elseif|else
 if|if
 condition|(
-name|type
+name|mime
 operator|.
 name|superType
 operator|!=
@@ -1253,7 +1224,7 @@ block|{
 return|return
 name|compareTo
 argument_list|(
-name|type
+name|mime
 operator|.
 name|superType
 argument_list|)
@@ -1262,13 +1233,13 @@ block|}
 else|else
 block|{
 return|return
-name|name
+name|type
 operator|.
 name|compareTo
 argument_list|(
-name|type
+name|mime
 operator|.
-name|name
+name|type
 argument_list|)
 return|;
 block|}
@@ -1281,7 +1252,10 @@ name|toString
 parameter_list|()
 block|{
 return|return
-name|name
+name|type
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
