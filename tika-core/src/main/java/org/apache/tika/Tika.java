@@ -123,9 +123,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|metadata
+name|io
 operator|.
-name|Metadata
+name|TikaInputStream
 import|;
 end_import
 
@@ -139,7 +139,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|MetadataHelper
+name|Metadata
 import|;
 end_import
 
@@ -439,9 +439,9 @@ decl_stmt|;
 name|InputStream
 name|stream
 init|=
-name|MetadataHelper
+name|TikaInputStream
 operator|.
-name|getInputStream
+name|get
 argument_list|(
 name|url
 argument_list|,
@@ -636,9 +636,9 @@ decl_stmt|;
 name|InputStream
 name|stream
 init|=
-name|MetadataHelper
+name|TikaInputStream
 operator|.
-name|getInputStream
+name|get
 argument_list|(
 name|url
 argument_list|,
@@ -834,9 +834,9 @@ decl_stmt|;
 name|InputStream
 name|stream
 init|=
-name|MetadataHelper
+name|TikaInputStream
 operator|.
-name|getInputStream
+name|get
 argument_list|(
 name|url
 argument_list|,

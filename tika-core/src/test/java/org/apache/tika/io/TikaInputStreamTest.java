@@ -120,8 +120,9 @@ decl_stmt|;
 name|InputStream
 name|stream
 init|=
-operator|new
 name|TikaInputStream
+operator|.
+name|get
 argument_list|(
 name|file
 argument_list|)
@@ -206,8 +207,9 @@ decl_stmt|;
 name|InputStream
 name|stream
 init|=
-operator|new
 name|TikaInputStream
+operator|.
+name|get
 argument_list|(
 name|input
 argument_list|)
