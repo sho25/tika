@@ -835,9 +835,13 @@ throw|;
 block|}
 block|}
 block|}
+comment|/**      * Creates a Tika configuration from the built-in media type rules      * and all the {@link Parser} implementations available through the      * {@link ServiceRegistry service provider mechanism} in the given      * class loader.      *      * @since Apache Tika 0.8      * @throws MimeTypeException if the built-in media type rules are broken      * @throws IOException  if the built-in media type rules can not be read      */
 specifier|public
 name|TikaConfig
-parameter_list|()
+parameter_list|(
+name|ClassLoader
+name|loader
+parameter_list|)
 throws|throws
 name|MimeTypeException
 throws|,
@@ -863,6 +867,8 @@ argument_list|(
 name|Parser
 operator|.
 name|class
+argument_list|,
+name|loader
 argument_list|)
 decl_stmt|;
 while|while
@@ -912,6 +918,27 @@ operator|.
 name|create
 argument_list|(
 literal|"tika-mimetypes.xml"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Creates a Tika configuration from the built-in media type rules      * and all the {@link Parser} implementations available through the      * {@link ServiceRegistry service provider mechanism} in the context      * class loader of the current thread.      *      * @throws MimeTypeException if the built-in media type rules are broken      * @throws IOException  if the built-in media type rules can not be read      */
+specifier|public
+name|TikaConfig
+parameter_list|()
+throws|throws
+name|MimeTypeException
+throws|,
+name|IOException
+block|{
+name|this
+argument_list|(
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getContextClassLoader
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
