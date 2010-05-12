@@ -17,21 +17,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|junit
 operator|.
-name|io
+name|framework
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
+name|TestCase
 import|;
 end_import
 
@@ -91,11 +81,21 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|java
 operator|.
-name|framework
+name|io
 operator|.
-name|TestCase
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -146,6 +146,14 @@ name|String
 name|POWERPOINT
 init|=
 literal|"application/vnd.ms-powerpoint"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|KEYNOTE
+init|=
+literal|"application/vnd.apple.keynote"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -527,6 +535,23 @@ argument_list|,
 name|wrongMimeType
 argument_list|,
 name|content
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testKeynote
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertAutoDetect
+argument_list|(
+literal|"testKeynote.key"
+argument_list|,
+name|KEYNOTE
+argument_list|,
+literal|"A sample presentation"
 argument_list|)
 expr_stmt|;
 block|}
