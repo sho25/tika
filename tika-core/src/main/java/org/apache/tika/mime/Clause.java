@@ -15,6 +15,16 @@ name|mime
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
 begin_comment
 comment|/**  * Defines a clause to be evaluated.  */
 end_comment
@@ -22,6 +32,8 @@ end_comment
 begin_interface
 interface|interface
 name|Clause
+extends|extends
+name|Serializable
 block|{
 comment|/**      * Evaluates this clause with the specified chunk of data.      */
 name|boolean

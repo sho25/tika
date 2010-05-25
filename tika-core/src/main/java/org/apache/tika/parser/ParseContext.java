@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashMap
@@ -139,7 +149,19 @@ begin_class
 specifier|public
 class|class
 name|ParseContext
+implements|implements
+name|Serializable
 block|{
+comment|/**      * Serial version UID.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|5921436862145826534L
+decl_stmt|;
 specifier|private
 specifier|final
 name|Map

@@ -39,6 +39,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Set
@@ -119,6 +129,8 @@ begin_interface
 specifier|public
 interface|interface
 name|Parser
+extends|extends
+name|Serializable
 block|{
 comment|/**      * Returns the set of media types supported by this parser when used      * with the given parse context.      *      * @since Apache Tika 0.7      * @param context parse context      * @return immutable set of media types      */
 name|Set

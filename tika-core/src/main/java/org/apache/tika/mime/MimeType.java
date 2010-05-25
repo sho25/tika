@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -39,7 +49,18 @@ name|Comparable
 argument_list|<
 name|MimeType
 argument_list|>
+implements|,
+name|Serializable
 block|{
+comment|/**      * Serial version UID.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|4357830439860729201L
+decl_stmt|;
 comment|/**      * Checks that the given string is a valid Internet media type name      * based on rules from RFC 2054 section 5.3. For validation purposes the      * rules can be simplified to the following:      *<pre>      * name := token "/" token      * token := 1*&lt;any (US-ASCII) CHAR except SPACE, CTLs, or tspecials&gt;      * tspecials :=  "(" / ")" / "&lt;" / "&gt;" / "@" / "," / ";" / ":" /      *               "\" /<"> / "/" / "[" / "]" / "?" / "="      *</pre>      *      * @param name name string      * @return<code>true</code> if the string is a valid media type name,      *<code>false</code> otherwise      */
 specifier|public
 specifier|static
@@ -878,7 +899,18 @@ block|}
 comment|/**      * Defines a RootXML description. RootXML is made of a localName and/or a      * namespaceURI.      */
 class|class
 name|RootXML
+implements|implements
+name|Serializable
 block|{
+comment|/**          * Serial version UID.          */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|5140496601491000730L
+decl_stmt|;
 specifier|private
 name|MimeType
 name|type

@@ -63,6 +63,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URI
@@ -163,6 +173,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|ParserConfigurationException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -203,6 +225,18 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXException
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *<p>  * The MIME type detection methods that take an {@link InputStream} as  * an argument will never reads more than {@link #getMinLength()} bytes  * from the stream. Also the given stream is never  * {@link InputStream#close() closed}, {@link InputStream#mark(int) marked},  * or {@link InputStream#reset() reset} by the methods. Thus a client can  * use the {@link InputStream#markSupported() mark feature} of the stream  * (if available) to restore the stream back to the state it was before type  * detection if it wants to process the stream based on the detected type.  */
 end_comment
@@ -214,7 +248,19 @@ class|class
 name|MimeTypes
 implements|implements
 name|Detector
+implements|,
+name|Serializable
 block|{
+comment|/**      * Serial version UID.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|1350863170146349036L
+decl_stmt|;
 comment|/**      * Name of the {@link #rootMimeType root} type, application/octet-stream.      */
 specifier|public
 specifier|static
@@ -386,9 +432,11 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 specifier|private
-specifier|final
+specifier|transient
 name|XmlRootExtractor
 name|xmlRootExtractor
+init|=
+literal|null
 decl_stmt|;
 specifier|public
 name|MimeTypes
@@ -499,31 +547,6 @@ argument_list|,
 name|xmlMimeType
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-name|xmlRootExtractor
-operator|=
-operator|new
-name|XmlRootExtractor
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|IllegalStateException
-argument_list|(
-literal|"Unable to create a XmlRootExtractor"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Find the Mime Content Type of a file.      *      * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
 specifier|public
@@ -693,6 +716,31 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
+name|XmlRootExtractor
+name|extractor
+init|=
+name|xmlRootExtractor
+decl_stmt|;
+if|if
+condition|(
+name|extractor
+operator|==
+literal|null
+condition|)
+block|{
+name|extractor
+operator|=
+operator|new
+name|XmlRootExtractor
+argument_list|()
+expr_stmt|;
+name|xmlRootExtractor
+operator|=
+name|extractor
+expr_stmt|;
+block|}
 comment|// When detecting generic XML (or possibly XHTML),
 comment|// extract the root element and match it against known types
 if|if
@@ -773,6 +821,19 @@ block|}
 return|return
 name|result
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{             }
+catch|catch
+parameter_list|(
+name|ParserConfigurationException
+name|e
+parameter_list|)
+block|{             }
 block|}
 comment|// Finally, assume plain text if no control bytes are found
 for|for

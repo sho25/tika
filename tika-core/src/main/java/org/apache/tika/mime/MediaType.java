@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -113,7 +123,19 @@ name|Comparable
 argument_list|<
 name|MediaType
 argument_list|>
+implements|,
+name|Serializable
 block|{
+comment|/**      * Serial version UID.      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|3831000556189036392L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
