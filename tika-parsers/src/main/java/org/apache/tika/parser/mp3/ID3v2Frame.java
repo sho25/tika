@@ -824,6 +824,10 @@ name|length
 decl_stmt|;
 while|while
 condition|(
+name|actualLength
+operator|>
+literal|0
+operator|&&
 name|data
 index|[
 name|actualLength
@@ -837,6 +841,17 @@ block|{
 name|actualLength
 operator|--
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|actualLength
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+literal|""
+return|;
 block|}
 comment|// Does it have an encoding flag?
 comment|// Detect by the first byte being sub 0x20
