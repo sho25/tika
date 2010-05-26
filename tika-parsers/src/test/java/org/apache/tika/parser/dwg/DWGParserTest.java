@@ -198,9 +198,20 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-comment|//            assertEquals(
-comment|//                    "application/dwg",
-comment|//                    metadata.get(Metadata.CONTENT_TYPE));
+name|assertEquals
+argument_list|(
+literal|"image/vnd.dwg"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"The quick brown fox jumps over the lazy dog"
