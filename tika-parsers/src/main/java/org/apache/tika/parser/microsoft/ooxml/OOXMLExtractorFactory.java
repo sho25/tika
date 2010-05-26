@@ -430,6 +430,50 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"No supported documents found"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"TIKA-418: RuntimeException while getting content"
+operator|+
+literal|" for ppsx, ppsm, pptm, thmx and xps file types"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Error creating OOXML extractor"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+catch|catch
+parameter_list|(
 name|InvalidFormatException
 name|e
 parameter_list|)
