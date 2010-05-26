@@ -758,6 +758,7 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Emits an XHTML element with the given text content. If the given      * text value is null or empty, then the element is not written.      *      * @param name XHTML element name      * @param value element value, possibly<code>null</code>      * @throws SAXException if the content element could not be written      */
 specifier|public
 name|void
 name|element
@@ -770,6 +771,20 @@ name|value
 parameter_list|)
 throws|throws
 name|SAXException
+block|{
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+operator|&&
+name|value
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
 block|{
 name|startElement
 argument_list|(
@@ -786,6 +801,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
