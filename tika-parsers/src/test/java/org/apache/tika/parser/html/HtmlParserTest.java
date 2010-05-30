@@ -996,6 +996,13 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+literal|"a"
+argument_list|)
+operator|&&
 name|atts
 operator|.
 name|getValue

@@ -328,6 +328,22 @@ return|return
 literal|null
 return|;
 block|}
+comment|/** Normalises an attribute name. Assumes that the element name       * is valid and normalised **/
+specifier|public
+name|String
+name|mapSafeAttribute
+parameter_list|(
+name|String
+name|elementName
+parameter_list|,
+name|String
+name|attributeName
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 specifier|public
 name|boolean
 name|isDiscardElement

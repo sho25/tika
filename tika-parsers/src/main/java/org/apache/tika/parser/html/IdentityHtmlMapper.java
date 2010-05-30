@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Alternative HTML mapping rules that pass the input HTML  * as-is without any modifications.  *  * @since Apache Tika 0.8  */
+comment|/**  * Alternative HTML mapping rules that pass the input HTML as-is without any  * modifications.  *   * @since Apache Tika 0.8  */
 end_comment
 
 begin_class
@@ -48,6 +48,24 @@ parameter_list|)
 block|{
 return|return
 literal|false
+return|;
+block|}
+specifier|public
+name|String
+name|mapSafeAttribute
+parameter_list|(
+name|String
+name|elementName
+parameter_list|,
+name|String
+name|attributeName
+parameter_list|)
+block|{
+return|return
+name|attributeName
+operator|.
+name|toLowerCase
+argument_list|()
 return|;
 block|}
 specifier|public
