@@ -90,7 +90,6 @@ name|DefaultHandler
 block|{
 comment|/**      * Decorated SAX event handler.      */
 specifier|private
-specifier|final
 name|ContentHandler
 name|handler
 decl_stmt|;
@@ -102,6 +101,45 @@ name|ContentHandler
 name|handler
 parameter_list|)
 block|{
+assert|assert
+name|handler
+operator|!=
+literal|null
+assert|;
+name|this
+operator|.
+name|handler
+operator|=
+name|handler
+expr_stmt|;
+block|}
+comment|/**      * Creates a decorator that by default forwards incoming SAX events to      * a dummy content handler that simply ignores all the events. Subclasses      * should use the {@link #setContentHandler(ContentHandler)} method to      * switch to a more usable underlying content handler.      */
+specifier|protected
+name|ContentHandlerDecorator
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the underlying content handler. All future SAX events will be      * directed to this handler instead of the one that was previously used.      *      * @param handler content handler      */
+specifier|protected
+name|void
+name|setContentHandler
+parameter_list|(
+name|ContentHandler
+name|handler
+parameter_list|)
+block|{
+assert|assert
+name|handler
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|handler
