@@ -471,6 +471,8 @@ block|{
 comment|// Numbers and Pages have both index.xml as file, so the appropriate content handler can only be
 comment|// selected based on the content in the file. In this case the content handler is selected
 comment|// based on root element.
+try|try
+block|{
 name|IWorkRootElementDetectContentHandler
 name|detectHandler
 init|=
@@ -502,6 +504,19 @@ name|detectHandler
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IWorkSAXException
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|throwAsTikaException
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 name|entry
 operator|=

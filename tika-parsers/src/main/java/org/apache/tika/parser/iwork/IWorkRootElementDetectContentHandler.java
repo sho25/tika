@@ -228,9 +228,9 @@ else|else
 block|{
 throw|throw
 operator|new
-name|RuntimeException
+name|IWorkSAXException
 argument_list|(
-literal|"Could not find handler to parse document"
+literal|"Could not find handler to parse iWork document"
 operator|+
 literal|" based on root element "
 operator|+
