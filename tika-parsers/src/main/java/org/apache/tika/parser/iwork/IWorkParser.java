@@ -238,7 +238,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A parser for the IWork formats.  *  * Currently supported formats:  *<ol>  *<li>Keynote format version 2.x. Currently only tested with Keynote version 5.x  *<li>Pages format version 1.x. Currently only tested with Keynote version 4.0.x  *</ol>  */
+comment|/**  * A parser for the IWork formats.  *  * Currently supported formats:  *<ol>  *<li>Keynote format version 2.x. Currently only tested with Keynote version 5.x  *<li>Pages format version 1.x. Currently only tested with Pages version 4.0.x  *<li>Numbers format version 1.x. Currently only tested with Numbers version 2.0.x  *</ol>  */
 end_comment
 
 begin_class
@@ -457,35 +457,52 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// TODO: Numbers has index.xml as well. Therefore the filename
-comment|// cannot be used for detecting type. The xml file should be
-comment|// sniffed before determining the extractor
-if|if
-condition|(
-name|metadata
-operator|.
-name|get
+comment|// Numbers and Pages have both index.xml as file, so the appropriate content handler can only be
+comment|// selected based on the content in the file. In this case the content handler is selected
+comment|// based on root element.
+name|IWorkRootElementDetectContentHandler
+name|detectHandler
+init|=
+operator|new
+name|IWorkRootElementDetectContentHandler
 argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_TYPE
+name|metadata
 argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|metadata
+decl_stmt|;
+name|detectHandler
 operator|.
-name|set
+name|addHandler
 argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_TYPE
+literal|"sl:document"
+argument_list|,
+operator|new
+name|PagesContentHandler
+argument_list|(
+name|xhtml
+argument_list|,
+name|metadata
+argument_list|)
 argument_list|,
 literal|"application/vnd.apple.pages"
 argument_list|)
 expr_stmt|;
-block|}
+name|detectHandler
+operator|.
+name|addHandler
+argument_list|(
+literal|"ls:document"
+argument_list|,
+operator|new
+name|NumbersContentHandler
+argument_list|(
+name|xhtml
+argument_list|,
+name|metadata
+argument_list|)
+argument_list|,
+literal|"application/vnd.apple.numbers"
+argument_list|)
+expr_stmt|;
 name|context
 operator|.
 name|getSAXParser
@@ -502,13 +519,7 @@ argument_list|,
 operator|new
 name|OfflineContentHandler
 argument_list|(
-operator|new
-name|PagesContentHandler
-argument_list|(
-name|xhtml
-argument_list|,
-name|metadata
-argument_list|)
+name|detectHandler
 argument_list|)
 argument_list|)
 expr_stmt|;
