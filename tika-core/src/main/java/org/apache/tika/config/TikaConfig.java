@@ -835,7 +835,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Creates a Tika configuration from the built-in media type rules      * and all the {@link Parser} implementations available through the      * {@link ServiceRegistry service provider mechanism} in the given      * class loader.      *      * @since Apache Tika 0.8      * @throws MimeTypeException if the built-in media type rules are broken      * @throws IOException  if the built-in media type rules can not be read      */
+comment|/**      * Creates a Tika configuration from the built-in media type rules      * and all the {@link Parser} implementations available through the      * {@link ServiceRegistry service provider mechanism} in the given      * class loader.      *      * @since Apache Tika 0.8      * @param loader the class loader through which parser implementations      *               are loaded, or<code>null</code> for no parsers      * @throws MimeTypeException if the built-in media type rules are broken      * @throws IOException  if the built-in media type rules can not be read      */
 specifier|public
 name|TikaConfig
 parameter_list|(
@@ -846,6 +846,13 @@ throws|throws
 name|MimeTypeException
 throws|,
 name|IOException
+block|{
+if|if
+condition|(
+name|loader
+operator|!=
+literal|null
+condition|)
 block|{
 name|ParseContext
 name|context
@@ -911,6 +918,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 name|mimeTypes
 operator|=
 name|MimeTypesFactory
@@ -932,6 +940,21 @@ name|IOException
 block|{
 name|this
 argument_list|(
+name|getContextClassLoader
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Returns the context class loader of the current thread. If such      * a class loader is not available, then the loader of this class or      * finally the system class loader is returned.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-441">TIKA-441</a>      * @return context class loader, or<code>null</code> if no loader      *         is available      */
+specifier|private
+specifier|static
+name|ClassLoader
+name|getContextClassLoader
+parameter_list|()
+block|{
+name|ClassLoader
+name|loader
+init|=
 name|Thread
 operator|.
 name|currentThread
@@ -939,8 +962,42 @@ argument_list|()
 operator|.
 name|getContextClassLoader
 argument_list|()
-argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|loader
+operator|==
+literal|null
+condition|)
+block|{
+name|loader
+operator|=
+name|TikaConfig
+operator|.
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|loader
+operator|==
+literal|null
+condition|)
+block|{
+name|loader
+operator|=
+name|ClassLoader
+operator|.
+name|getSystemClassLoader
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|loader
+return|;
 block|}
 comment|/**      * @deprecated This method will be removed in Apache Tika 1.0      * @see<a href="https://issues.apache.org/jira/browse/TIKA-275">TIKA-275</a>      */
 specifier|public
