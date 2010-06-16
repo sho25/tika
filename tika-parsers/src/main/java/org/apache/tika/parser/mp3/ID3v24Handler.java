@@ -90,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is used to parse ID3 Version 2.4 Tag information from an MP3 file,  * if available.  *  * @see<a href="http://www.id3.org/id3v2.4.0-structures">MP3 ID3 Version 2.4 specification</a>  * @see<a href="http://www.id3.org/id3v2.4.0-frames">MP3 ID3 Version 2.4 frames/tags</a>  */
+comment|/**  * This is used to parse ID3 Version 2.4 Tag information from an MP3 file,  * if available.  *  * @see<a href="http://www.id3.org/id3v2.4.0-structure">MP3 ID3 Version 2.4 specification</a>  * @see<a href="http://www.id3.org/id3v2.4.0-frames">MP3 ID3 Version 2.4 frames/tags</a>  */
 end_comment
 
 begin_class
@@ -115,6 +115,10 @@ decl_stmt|;
 specifier|private
 name|String
 name|year
+decl_stmt|;
+specifier|private
+name|String
+name|composer
 decl_stmt|;
 specifier|private
 name|String
@@ -272,6 +276,37 @@ argument_list|)
 condition|)
 block|{
 name|year
+operator|=
+name|getTagString
+argument_list|(
+name|tag
+operator|.
+name|data
+argument_list|,
+literal|0
+argument_list|,
+name|tag
+operator|.
+name|data
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|tag
+operator|.
+name|name
+operator|.
+name|equals
+argument_list|(
+literal|"TCOM"
+argument_list|)
+condition|)
+block|{
+name|composer
 operator|=
 name|getTagString
 argument_list|(
@@ -521,6 +556,15 @@ parameter_list|()
 block|{
 return|return
 name|year
+return|;
+block|}
+specifier|public
+name|String
+name|getComposer
+parameter_list|()
+block|{
+return|return
+name|composer
 return|;
 block|}
 specifier|public

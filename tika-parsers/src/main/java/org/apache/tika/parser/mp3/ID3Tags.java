@@ -435,6 +435,10 @@ name|getAlbum
 parameter_list|()
 function_decl|;
 name|String
+name|getComposer
+parameter_list|()
+function_decl|;
+name|String
 name|getComment
 parameter_list|()
 function_decl|;
