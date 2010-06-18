@@ -296,6 +296,9 @@ condition|)
 block|{
 return|return
 name|type
+operator|.
+name|getBaseType
+argument_list|()
 return|;
 block|}
 elseif|else
