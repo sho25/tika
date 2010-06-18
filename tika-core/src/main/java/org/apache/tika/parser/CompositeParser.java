@@ -376,7 +376,7 @@ name|type
 operator|=
 name|registry
 operator|.
-name|getSuperType
+name|getSupertype
 argument_list|(
 name|type
 argument_list|)

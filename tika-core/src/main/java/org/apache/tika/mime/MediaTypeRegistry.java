@@ -362,7 +362,7 @@ name|canonical
 return|;
 block|}
 block|}
-comment|/**      * Checks whether the given media type a is a specialization of a more      * generic type b.      *      * @param a media type      * @param b suspected supertype      * @return<code>true</code> if b is a supertype of a,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given media type a is a specialization of a more      * generic type b.      *      * @since Apache Tika 0.8      * @param a media type      * @param b suspected supertype      * @return<code>true</code> if b is a supertype of a,      *<code>false</code> otherwise      */
 specifier|public
 name|boolean
 name|isSpecializationOf
@@ -377,7 +377,7 @@ block|{
 name|MediaType
 name|x
 init|=
-name|getSuperType
+name|getSupertype
 argument_list|(
 name|a
 argument_list|)
@@ -404,10 +404,10 @@ argument_list|)
 operator|)
 return|;
 block|}
-comment|/**      * Returns the supertype of the given type. If the given type has any      * parameters, then the respective base type is returned. Otherwise      * built-in heuristics like text/... -&gt; text/plain and      * .../...+xml -&gt; application/xml are used in addition to explicit      * type inheritance rules read from the media type database. Finally      * application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
+comment|/**      * Returns the supertype of the given type. If the given type has any      * parameters, then the respective base type is returned. Otherwise      * built-in heuristics like text/... -&gt; text/plain and      * .../...+xml -&gt; application/xml are used in addition to explicit      * type inheritance rules read from the media type database. Finally      * application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @since Apache Tika 0.8      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
 specifier|public
 name|MediaType
-name|getSuperType
+name|getSupertype
 parameter_list|(
 name|MediaType
 name|type

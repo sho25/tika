@@ -241,7 +241,7 @@ name|assertNull
 argument_list|(
 name|registry
 operator|.
-name|getSuperType
+name|getSupertype
 argument_list|(
 name|OCTET_STREAM
 argument_list|)
@@ -253,7 +253,7 @@ name|OCTET_STREAM
 argument_list|,
 name|registry
 operator|.
-name|getSuperType
+name|getSupertype
 argument_list|(
 name|TEXT_PLAIN
 argument_list|)
@@ -265,7 +265,7 @@ name|TEXT_PLAIN
 argument_list|,
 name|registry
 operator|.
-name|getSuperType
+name|getSupertype
 argument_list|(
 name|html
 operator|.
