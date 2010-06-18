@@ -55,6 +55,20 @@ name|TreeSet
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|TikaConfig
+import|;
+end_import
+
 begin_comment
 comment|/**  * Registry of known Internet media types.  */
 end_comment
@@ -64,6 +78,23 @@ specifier|public
 class|class
 name|MediaTypeRegistry
 block|{
+comment|/**      * Returns the built-in media type registry included in Tika.      *      * @since Apache Tika 0.8      * @return default media type registry      */
+specifier|public
+specifier|static
+name|MediaTypeRegistry
+name|getDefaultRegistry
+parameter_list|()
+block|{
+return|return
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+return|;
+block|}
 comment|/**      * Registry of known media types, including type aliases. A canonical      * media type is handled as an identity mapping, while an alias is stored      * as a mapping from the alias to the corresponding canonical type.      */
 specifier|private
 specifier|final
