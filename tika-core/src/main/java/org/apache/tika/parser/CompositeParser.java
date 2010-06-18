@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -129,6 +129,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|mime
+operator|.
+name|MediaTypeRegistry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|TaggedContentHandler
@@ -170,6 +184,24 @@ name|CompositeParser
 implements|implements
 name|Parser
 block|{
+comment|/**      * Serial version UID      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|5613173903360405824L
+decl_stmt|;
+comment|/**      * Media type registry.      */
+specifier|private
+name|MediaTypeRegistry
+name|registry
+init|=
+operator|new
+name|MediaTypeRegistry
+argument_list|()
+decl_stmt|;
 comment|/**      * Set of component parsers, keyed by the supported media types.      */
 specifier|private
 name|Map
@@ -198,6 +230,32 @@ operator|new
 name|EmptyParser
 argument_list|()
 decl_stmt|;
+comment|/**      * Returns the media type registry used to infer type relationships.      *      * @since Apache Tika 0.8      * @return media type registry      */
+specifier|public
+name|MediaTypeRegistry
+name|getMediaTypeRegistry
+parameter_list|()
+block|{
+return|return
+name|registry
+return|;
+block|}
+comment|/**      * Sets the media type registry used to infer type relationships.      *      * @since Apache Tika 0.8      * @param registry media type registry      */
+specifier|public
+name|void
+name|setMediaTypeRegistry
+parameter_list|(
+name|MediaTypeRegistry
+name|registry
+parameter_list|)
+block|{
+name|this
+operator|.
+name|registry
+operator|=
+name|registry
+expr_stmt|;
+block|}
 comment|/**      * Returns the component parsers.      *      * @return component parsers, keyed by media type      */
 specifier|public
 name|Map
@@ -362,10 +420,12 @@ name|parserType
 operator|!=
 literal|null
 operator|&&
-name|type
+name|registry
 operator|.
 name|isSpecializationOf
 argument_list|(
+name|type
+argument_list|,
 name|parserType
 argument_list|)
 condition|)

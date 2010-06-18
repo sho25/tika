@@ -174,6 +174,15 @@ name|AutoDetectParser
 extends|extends
 name|CompositeParser
 block|{
+comment|/**      * Serial version UID      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|6110455808615143122L
+decl_stmt|;
 comment|/**      * The type detector used by this parser to auto-detect the type      * of a document.      */
 specifier|private
 name|Detector
@@ -201,14 +210,11 @@ name|Detector
 name|detector
 parameter_list|)
 block|{
-name|setParsers
+name|this
 argument_list|(
 name|TikaConfig
 operator|.
 name|getDefaultConfig
-argument_list|()
-operator|.
-name|getParsers
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -252,6 +258,14 @@ argument_list|(
 name|config
 operator|.
 name|getMimeRepository
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setMediaTypeRegistry
+argument_list|(
+name|config
+operator|.
+name|getMediaTypeRegistry
 argument_list|()
 argument_list|)
 expr_stmt|;

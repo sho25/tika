@@ -69,41 +69,12 @@ name|void
 name|testConstrctor
 parameter_list|()
 block|{
-comment|// Missing registry
-try|try
-block|{
-operator|new
-name|MimeType
-argument_list|(
-literal|null
-argument_list|,
-name|MediaType
-operator|.
-name|TEXT_PLAIN
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
 comment|// Missing name
 try|try
 block|{
 operator|new
 name|MimeType
 argument_list|(
-name|types
-argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
@@ -292,38 +263,6 @@ block|{
 name|text
 operator|.
 name|setDescription
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
-block|}
-comment|/** Test MimeType setSuperType() */
-specifier|public
-name|void
-name|testSetSuperType
-parameter_list|()
-throws|throws
-name|MimeTypeException
-block|{
-try|try
-block|{
-name|text
-operator|.
-name|setSuperType
 argument_list|(
 literal|null
 argument_list|)

@@ -1281,10 +1281,6 @@ init|=
 operator|new
 name|MimeType
 argument_list|(
-name|this
-operator|.
-name|repo
-argument_list|,
 name|MediaType
 operator|.
 name|parse
@@ -1370,10 +1366,6 @@ init|=
 operator|new
 name|MimeType
 argument_list|(
-name|this
-operator|.
-name|repo
-argument_list|,
 name|MediaType
 operator|.
 name|parse
