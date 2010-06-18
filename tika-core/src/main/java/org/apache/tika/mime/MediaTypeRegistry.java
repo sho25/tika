@@ -277,6 +277,7 @@ name|canonical
 return|;
 block|}
 block|}
+comment|/**      * Returns the supertype of the given type. If the given type has any      * parameters, then the respective base type is returned. Otherwise      * built-in heuristics like text/... -&gt; text/plain and      * .../...+xml -&gt; application/xml are used in addition to explicit      * type inheritance rules read from the media type database. Finally      * application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
 specifier|public
 name|MediaType
 name|getSuperType
@@ -335,6 +336,26 @@ return|return
 name|MediaType
 operator|.
 name|APPLICATION_XML
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|type
+operator|.
+name|getSubtype
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|"+zip"
+argument_list|)
+condition|)
+block|{
+return|return
+name|MediaType
+operator|.
+name|APPLICATION_ZIP
 return|;
 block|}
 elseif|else

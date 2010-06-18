@@ -279,6 +279,17 @@ argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
+name|MediaType
+name|APPLICATION_ZIP
+init|=
+name|application
+argument_list|(
+literal|"zip"
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
 name|MediaType
 name|application
 parameter_list|(
