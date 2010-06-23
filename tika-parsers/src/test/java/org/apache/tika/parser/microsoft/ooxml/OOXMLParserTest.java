@@ -197,6 +197,11 @@ argument_list|(
 literal|"/test-documents/testEXCEL.xlsx"
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+name|input
+argument_list|)
+expr_stmt|;
 name|Parser
 name|parser
 init|=
@@ -502,7 +507,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"($1,599.99)"
+literal|"$1,599.99)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -534,7 +539,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"2%"
+literal|"3%"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -583,7 +588,7 @@ expr_stmt|;
 comment|// Below assertions represent outstanding formatting issues to be addressed
 comment|// they are included to allow the issues to be progressed with the Apache POI
 comment|// team - See TIKA-103.
-comment|/*************************************************************************             // Date Format: m/d/yy             assertTrue(content.contains("03/10/2009"));              // Date/Time Format             assertTrue(content.contains("19/01/2008 04:35"));              // Custom Number (0 "dollars and" .00 "cents")             assertTrue(content.contains("19 dollars and .99 cents"));              // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)             assertTrue(content.contains("At 4:20 AM on Thursday May 17, 2007"));              // Fraction (2.5): # ?/?             assertTrue(content.contains("2 1 / 2"));             **************************************************************************/
+comment|/*************************************************************************             // Date Format: m/d/yy             assertTrue(content.contains("03/10/2009"));              // Date/Time Format             assertTrue(content.contains("19/01/2008 04:35"));              // Currency $#,##0.00;[Red]($#,##0.00)             assertTrue(content.contains("$1,599.99"));             assertTrue(content.contains("($1,599.99)"));                          // Custom Number (0 "dollars and" .00 "cents")             assertTrue(content.contains("19 dollars and .99 cents"));              // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)             assertTrue(content.contains("At 4:20 AM on Thursday May 17, 2007"));              // Fraction (2.5): # ?/?             assertTrue(content.contains("2 1 / 2"));             **************************************************************************/
 block|}
 finally|finally
 block|{

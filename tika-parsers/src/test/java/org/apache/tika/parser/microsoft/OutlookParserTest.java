@@ -231,10 +231,34 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: There's apparently some encoding issue in POI
-comment|//assertEquals(
-comment|//        "L'\u00C9quipe Microsoft Outlook Express",
-comment|//        metadata.get(Metadata.AUTHOR));
+name|assertEquals
+argument_list|(
+literal|"Nouvel utilisateur de Outlook Express"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|MESSAGE_RECIPIENT_ADDRESS
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"L'\u00C9quipe Microsoft Outlook Express"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|AUTHOR
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|content
 init|=
@@ -249,11 +273,30 @@ name|content
 operator|.
 name|contains
 argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
 literal|"Microsoft Outlook Express 6"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertTrue(content.contains("L'\u00C9quipe Microsoft Outlook Express"));
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"L'\u00C9quipe Microsoft Outlook Express"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|content

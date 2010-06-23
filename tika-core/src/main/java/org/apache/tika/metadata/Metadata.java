@@ -70,6 +70,8 @@ name|DublinCore
 implements|,
 name|HttpHeaders
 implements|,
+name|Message
+implements|,
 name|MSOffice
 implements|,
 name|ClimateForcast
