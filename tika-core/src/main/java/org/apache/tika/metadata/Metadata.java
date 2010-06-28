@@ -76,6 +76,8 @@ name|MSOffice
 implements|,
 name|ClimateForcast
 implements|,
+name|TIFF
+implements|,
 name|TikaMetadataKeys
 implements|,
 name|TikaMimeKeys
