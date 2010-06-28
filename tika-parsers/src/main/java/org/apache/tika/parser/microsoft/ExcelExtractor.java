@@ -714,6 +714,18 @@ argument_list|(
 name|locale
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|formatListener
+operator|=
+operator|new
+name|FormatTrackingHSSFListener
+argument_list|(
+name|this
+argument_list|,
+name|locale
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**          * Entry point to listener to start the processing of a file.          *          * @param filesystem POI file system.          * @param listenForAllRecords sets whether the listener is configured to listen          * for all records types or not.          * @throws IOException on any IO errors.          * @throws SAXException on any SAX parsing errors.          */
 specifier|public
@@ -732,14 +744,6 @@ throws|,
 name|SAXException
 block|{
 comment|// Set up listener and register the records we want to process
-name|formatListener
-operator|=
-operator|new
-name|FormatTrackingHSSFListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|HSSFRequest
 name|hssfRequest
 init|=

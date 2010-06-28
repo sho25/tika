@@ -317,10 +317,6 @@ specifier|private
 specifier|final
 name|DataFormatter
 name|formatter
-init|=
-operator|new
-name|DataFormatter
-argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -357,6 +353,14 @@ operator|.
 name|extractor
 operator|=
 name|extractor
+expr_stmt|;
+name|formatter
+operator|=
+operator|new
+name|DataFormatter
+argument_list|(
+name|locale
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see org.apache.poi.xssf.extractor.XSSFExcelExtractor#getText()      */
