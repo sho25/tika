@@ -645,6 +645,36 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|audioAndTags
+operator|.
+name|lyrics
+operator|!=
+literal|null
+operator|&&
+name|audioAndTags
+operator|.
+name|lyrics
+operator|.
+name|hasLyrics
+argument_list|()
+condition|)
+block|{
+name|xhtml
+operator|.
+name|element
+argument_list|(
+literal|"p"
+argument_list|,
+name|audioAndTags
+operator|.
+name|lyrics
+operator|.
+name|lyricsText
+argument_list|)
+expr_stmt|;
+block|}
 name|xhtml
 operator|.
 name|endDocument
@@ -722,6 +752,11 @@ literal|null
 decl_stmt|;
 name|ID3v1Handler
 name|v1
+init|=
+literal|null
+decl_stmt|;
+name|LyricsHandler
+name|lyrics
 init|=
 literal|null
 decl_stmt|;
@@ -849,16 +884,23 @@ expr_stmt|;
 block|}
 block|}
 comment|// ID3v1 tags live at the end of the file
-comment|// Our handler handily seeks to the end for us
-name|v1
+comment|// Lyrics live just before ID3v1, at the end of the file
+comment|// Search for both (handlers seek to the end for us)
+name|lyrics
 operator|=
 operator|new
-name|ID3v1Handler
+name|LyricsHandler
 argument_list|(
 name|stream
 argument_list|,
 name|handler
 argument_list|)
+expr_stmt|;
+name|v1
+operator|=
+name|lyrics
+operator|.
+name|id3v1
 expr_stmt|;
 comment|// Go in order of preference
 comment|// Currently, that's newest to oldest
@@ -970,6 +1012,12 @@ name|firstAudio
 expr_stmt|;
 name|ret
 operator|.
+name|lyrics
+operator|=
+name|lyrics
+expr_stmt|;
+name|ret
+operator|.
 name|tags
 operator|=
 name|tags
@@ -1003,6 +1051,10 @@ decl_stmt|;
 specifier|private
 name|AudioFrame
 name|audio
+decl_stmt|;
+specifier|private
+name|LyricsHandler
+name|lyrics
 decl_stmt|;
 block|}
 block|}
