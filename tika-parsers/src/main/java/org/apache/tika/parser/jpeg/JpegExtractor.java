@@ -307,6 +307,13 @@ name|tag
 argument_list|)
 expr_stmt|;
 block|}
+name|TiffExtractor
+operator|.
+name|handleGeoImageTags
+argument_list|(
+name|metadata
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 catch|catch
