@@ -430,6 +430,13 @@ operator|new
 name|BodyContentHandler
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|parser
@@ -441,6 +448,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -625,6 +634,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * We have a number of different powerpoint files,      *  such as presentation, macro-enabled etc      */
 specifier|public
 name|void
 name|testPowerPoint
@@ -632,6 +642,41 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|String
+index|[]
+name|extensions
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"pptx"
+block|,
+literal|"pptm"
+block|,
+literal|"ppsm"
+block|,
+literal|"ppsx"
+block|,
+comment|//"thmx", // TIKA-418: Will be supported in POI 3.7 beta 2
+comment|//"xps" // TIKA-418: Not yet supported by POI
+block|}
+decl_stmt|;
+for|for
+control|(
+name|String
+name|extension
+range|:
+name|extensions
+control|)
+block|{
+name|String
+name|filename
+init|=
+literal|"testPPT."
+operator|+
+name|extension
+decl_stmt|;
 name|InputStream
 name|input
 init|=
@@ -641,7 +686,9 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testPPT.pptx"
+literal|"/test-documents/"
+operator|+
+name|filename
 argument_list|)
 decl_stmt|;
 name|Parser
@@ -667,7 +714,7 @@ name|Metadata
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
-literal|"testPPT.pptx"
+name|filename
 argument_list|)
 expr_stmt|;
 name|ContentHandler
@@ -675,6 +722,13 @@ name|handler
 init|=
 operator|new
 name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
 argument_list|()
 decl_stmt|;
 try|try
@@ -688,6 +742,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -706,7 +762,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Sample Powerpoint Slide"
+literal|"Attachment Test"
 argument_list|,
 name|metadata
 operator|.
@@ -720,7 +776,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Keith Bennett"
+literal|"Rajiv"
 argument_list|,
 name|metadata
 operator|.
@@ -740,26 +796,118 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|// Theme files don't have the text in them
+if|if
+condition|(
+name|extension
+operator|.
+name|equals
+argument_list|(
+literal|"thmx"
+argument_list|)
+condition|)
+block|{
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|assertTrue
 argument_list|(
+literal|"Text missing for "
+operator|+
+name|filename
+operator|+
+literal|"\n"
+operator|+
+name|content
+argument_list|,
 name|content
 operator|.
 name|contains
 argument_list|(
-literal|"Sample Powerpoint Slide"
+literal|"Attachment Test"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+literal|"Text missing for "
+operator|+
+name|filename
+operator|+
+literal|"\n"
+operator|+
+name|content
+argument_list|,
 name|content
 operator|.
 name|contains
 argument_list|(
-literal|"Powerpoint X for Mac"
+literal|"This is a test file data with the same content"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Text missing for "
+operator|+
+name|filename
+operator|+
+literal|"\n"
+operator|+
+name|content
+argument_list|,
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"content parsing"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Text missing for "
+operator|+
+name|filename
+operator|+
+literal|"\n"
+operator|+
+name|content
+argument_list|,
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"Different words to test against"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Text missing for "
+operator|+
+name|filename
+operator|+
+literal|"\n"
+operator|+
+name|content
+argument_list|,
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"Mystery"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
@@ -768,6 +916,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -822,6 +971,13 @@ operator|new
 name|BodyContentHandler
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|parser
@@ -833,6 +989,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -941,6 +1099,13 @@ operator|new
 name|BodyContentHandler
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|parser
@@ -952,6 +1117,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1033,6 +1200,13 @@ operator|new
 name|BodyContentHandler
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|parser
@@ -1044,6 +1218,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|assertEquals

@@ -453,7 +453,7 @@ name|TikaException
 argument_list|(
 literal|"TIKA-418: RuntimeException while getting content"
 operator|+
-literal|" for ppsx, ppsm, pptm, thmx and xps file types"
+literal|" for thmx and xps file types"
 argument_list|,
 name|e
 argument_list|)
