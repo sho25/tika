@@ -68,6 +68,8 @@ name|CreativeCommons
 implements|,
 name|DublinCore
 implements|,
+name|Geographic
+implements|,
 name|HttpHeaders
 implements|,
 name|Message
