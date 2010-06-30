@@ -51,9 +51,29 @@ begin_import
 import|import
 name|java
 operator|.
+name|text
+operator|.
+name|DecimalFormatSymbols
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
 import|;
 end_import
 
@@ -92,6 +112,20 @@ operator|.
 name|exception
 operator|.
 name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|Geographic
 import|;
 end_import
 
@@ -654,6 +688,7 @@ argument_list|(
 literal|"(-?\\d+)\"(\\d+)'(\\d+\\.?\\d*)"
 argument_list|)
 decl_stmt|;
+comment|/**      * The decimal format used for expressing latitudes and longitudes.      * The basic geo vocabulary defined by W3C (@see {@link Geographic})      * refers to the "float" type in XML Schema as the recommended format      * for latitude and longitude values.      */
 specifier|private
 specifier|static
 specifier|final
@@ -664,6 +699,14 @@ operator|new
 name|DecimalFormat
 argument_list|(
 literal|"##0.0####"
+argument_list|,
+operator|new
+name|DecimalFormatSymbols
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/**      * Maps common TIFF and EXIF tags onto the Tika      *  TIFF image metadata namespace.      */
