@@ -690,7 +690,7 @@ literal|"Author"
 block|,
 literal|"Creator"
 block|,
-literal|"CreationData"
+literal|"CreationDate"
 block|,
 literal|"ModDate"
 block|,
