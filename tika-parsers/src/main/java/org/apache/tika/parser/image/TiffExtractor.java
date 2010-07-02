@@ -845,6 +845,36 @@ name|getDescription
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return;
+block|}
+if|if
+condition|(
+name|tag
+operator|.
+name|getTagName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"Jpeg Comment"
+argument_list|)
+condition|)
+block|{
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|COMMENTS
+argument_list|,
+name|tag
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 comment|// EXIF / TIFF Tags
 name|Property
