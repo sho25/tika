@@ -73,6 +73,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|IllegalCharsetNameException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -565,6 +577,8 @@ index|[
 literal|1
 index|]
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|Charset
@@ -589,6 +603,15 @@ expr_stmt|;
 return|return
 name|charset
 return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IllegalCharsetNameException
+name|e
+parameter_list|)
+block|{
+comment|// Ignore malformed charset names
 block|}
 block|}
 block|}
