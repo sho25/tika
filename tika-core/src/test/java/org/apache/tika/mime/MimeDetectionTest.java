@@ -484,7 +484,7 @@ name|MediaType
 operator|.
 name|parse
 argument_list|(
-literal|"application/vnd.apple.keynote"
+literal|"application/vnd.apple.iwork"
 argument_list|)
 argument_list|,
 name|MediaType
