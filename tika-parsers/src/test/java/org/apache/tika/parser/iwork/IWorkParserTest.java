@@ -111,20 +111,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|helpers
-operator|.
-name|DefaultHandler
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
