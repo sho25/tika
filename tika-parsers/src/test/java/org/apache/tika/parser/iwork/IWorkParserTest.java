@@ -746,8 +746,17 @@ literal|"Cell nine"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// FIXME: This assertion fails on Java 5, probably due to XML parsing
-comment|// assertTrue(content.contains("Both Pages 1.x and Keynote 2.x")); // ...
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"Both Pages 1.x and Keynote 2.x"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// ...
 comment|// text on page 2
 name|assertTrue
 argument_list|(
