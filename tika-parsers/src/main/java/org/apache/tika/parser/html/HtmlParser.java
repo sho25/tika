@@ -265,6 +265,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|CharsetUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -569,19 +583,23 @@ literal|"charset"
 argument_list|)
 condition|)
 block|{
+comment|// TIKA-459: improve charset handling.
 name|String
 name|charset
 init|=
+name|CharsetUtils
+operator|.
+name|clean
+argument_list|(
 name|keyValue
 index|[
 literal|1
 index|]
+argument_list|)
 decl_stmt|;
-try|try
-block|{
 if|if
 condition|(
-name|Charset
+name|CharsetUtils
 operator|.
 name|isSupported
 argument_list|(
@@ -605,19 +623,10 @@ name|charset
 return|;
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|IllegalCharsetNameException
-name|e
-parameter_list|)
-block|{
-comment|// Ignore malformed charset names
 block|}
 block|}
 block|}
-block|}
-block|}
-comment|// No charset in a meta http-equiv tag, see if it's in the passed content-encoding
+comment|// No (valid) charset in a meta http-equiv tag, see if it's in the passed content-encoding
 comment|// hint, or the passed content-type hint.
 name|CharsetDetector
 name|detector
