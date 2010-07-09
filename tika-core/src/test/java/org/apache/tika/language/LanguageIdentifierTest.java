@@ -101,11 +101,13 @@ operator|new
 name|String
 index|[]
 block|{
+comment|// TODO - currently Estonian and Greek fail these tests. Reeable
+comment|// when language detection works better.
 literal|"da"
 block|,
 literal|"de"
 block|,
-comment|/* "el", */
+comment|/* "et", "el", */
 literal|"en"
 block|,
 literal|"es"
@@ -267,6 +269,57 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+comment|// TIKA-453: Fix up language identifier used for Estonian
+specifier|public
+name|void
+name|testEstonia
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|String
+name|estonian
+init|=
+literal|"et"
+decl_stmt|;
+name|ProfilingWriter
+name|writer
+init|=
+operator|new
+name|ProfilingWriter
+argument_list|()
+decl_stmt|;
+name|writeTo
+argument_list|(
+name|estonian
+argument_list|,
+name|writer
+argument_list|)
+expr_stmt|;
+name|LanguageIdentifier
+name|identifier
+init|=
+operator|new
+name|LanguageIdentifier
+argument_list|(
+name|writer
+operator|.
+name|getProfile
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|estonian
+argument_list|,
+name|identifier
+operator|.
+name|getLanguage
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void

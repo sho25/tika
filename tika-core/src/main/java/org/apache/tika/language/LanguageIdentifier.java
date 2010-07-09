@@ -268,9 +268,10 @@ expr_stmt|;
 comment|// German
 name|addProfile
 argument_list|(
-literal|"ee"
+literal|"et"
 argument_list|)
 expr_stmt|;
+comment|// Estonian
 name|addProfile
 argument_list|(
 literal|"el"
