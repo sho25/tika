@@ -59,10 +59,15 @@ name|CONTENT_TYPE
 init|=
 literal|"Content-Type"
 decl_stmt|;
-name|String
+name|Property
 name|LAST_MODIFIED
 init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
 literal|"Last-Modified"
+argument_list|)
 decl_stmt|;
 name|String
 name|LOCATION
