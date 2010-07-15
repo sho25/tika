@@ -154,16 +154,13 @@ name|SECURITY
 init|=
 literal|"Security"
 decl_stmt|;
-name|Property
+comment|/** How long has been spent editing the document? */
+name|String
 name|EDIT_TIME
 init|=
-name|Property
-operator|.
-name|internalDate
-argument_list|(
 literal|"Edit-Time"
-argument_list|)
 decl_stmt|;
+comment|/** When was the document created? */
 name|Property
 name|CREATION_DATE
 init|=

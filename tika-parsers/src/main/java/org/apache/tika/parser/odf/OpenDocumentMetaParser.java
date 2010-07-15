@@ -429,6 +429,9 @@ argument_list|,
 name|Metadata
 operator|.
 name|CREATION_DATE
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 literal|"creation-date"
 argument_list|)

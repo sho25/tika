@@ -36,7 +36,7 @@ name|IDENTIFIER
 init|=
 literal|"identifier"
 decl_stmt|;
-comment|/**      * Date on which the resource was changed.      */
+comment|/**      * Date on which the resource was changed.      * TODO Make me a Date Property      */
 name|String
 name|MODIFIED
 init|=
@@ -60,7 +60,7 @@ name|CREATOR
 init|=
 literal|"creator"
 decl_stmt|;
-comment|/**      * A date associated with an event in the life cycle of the resource.      * Typically, Date will be associated with the creation or availability of      * the resource. Recommended best practice for encoding the date value is      * defined in a profile of ISO 8601 [W3CDTF] and follows the YYYY-MM-DD      * format.      */
+comment|/**      * A date associated with an event in the life cycle of the resource.      * Typically, Date will be associated with the creation or availability of      * the resource. Recommended best practice for encoding the date value is      * defined in a profile of ISO 8601 [W3CDTF] and follows the YYYY-MM-DD      * format.      * TODO Make me a Date Property      */
 name|String
 name|DATE
 init|=
