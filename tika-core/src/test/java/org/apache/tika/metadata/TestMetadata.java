@@ -1621,7 +1621,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1970-01-01T00:00:01Z+0000"
+literal|"1970-01-01T00:00:01Z"
 argument_list|,
 name|meta
 operator|.
@@ -1770,7 +1770,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"1970-01-01T00:00:01Z+0000"
+literal|"1970-01-01T00:00:01Z"
 argument_list|,
 name|meta
 operator|.

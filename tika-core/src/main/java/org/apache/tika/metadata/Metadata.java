@@ -105,6 +105,16 @@ name|Properties
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
 begin_comment
 comment|/**  * A multi-valued metadata container.  */
 end_comment
@@ -147,7 +157,7 @@ name|metadata
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * The ISO-8601 format string we use for Dates      */
+comment|/**      * The ISO-8601 format string we use for Dates.      * All dates are represented as UTC      */
 specifier|private
 name|SimpleDateFormat
 name|iso8601Format
@@ -155,7 +165,7 @@ init|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ss'Z'Z"
+literal|"yyyy-MM-dd'T'HH:mm:ss'Z'"
 argument_list|,
 operator|new
 name|DateFormatSymbols
@@ -166,6 +176,20 @@ name|US
 argument_list|)
 argument_list|)
 decl_stmt|;
+block|{
+name|iso8601Format
+operator|.
+name|setTimeZone
+argument_list|(
+name|TimeZone
+operator|.
+name|getTimeZone
+argument_list|(
+literal|"UTC"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Constructs a new, empty metadata.      */
 specifier|public
 name|Metadata
