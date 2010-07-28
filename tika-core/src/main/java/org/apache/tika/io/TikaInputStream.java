@@ -699,6 +699,11 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+comment|/**      * A opened container, such as a POIFS FileSystem      *  for an OLE2 document, or a Zip file for a      *  zip based (eg ooxml, odf) document.      */
+specifier|private
+name|Object
+name|openContainer
+decl_stmt|;
 comment|/**      *       * @param stream<em>buffered</em> stream (must support the mark feature)      * @param file      * @param length      */
 specifier|private
 name|TikaInputStream
@@ -825,6 +830,30 @@ expr_stmt|;
 return|return
 name|n
 return|;
+block|}
+comment|/**      * Returns the open container object, such as a      *  POIFS FileSystem in the event of an OLE2      *  document being detected and processed by      *  the OLE2 detector.       */
+specifier|public
+name|Object
+name|getOpenContainer
+parameter_list|()
+block|{
+return|return
+name|openContainer
+return|;
+block|}
+comment|/**      * Stores the open container object against      *  the stream, eg after a Zip contents       *  detector has loaded the file to decide      *  what it contains.      */
+specifier|public
+name|void
+name|setOpenContainer
+parameter_list|(
+name|Object
+name|container
+parameter_list|)
+block|{
+name|openContainer
+operator|=
+name|container
+expr_stmt|;
 block|}
 specifier|public
 name|File
@@ -1176,6 +1205,17 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|boolean
+name|markSupported
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|void
 name|reset
 parameter_list|()
@@ -1206,6 +1246,18 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|openContainer
+operator|!=
+literal|null
+condition|)
+block|{
+name|openContainer
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|in
