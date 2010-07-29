@@ -464,9 +464,12 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Office Open XML File detected, but corrupted"
-argument_list|,
+literal|"Office Open XML File detected, but corrupted - "
+operator|+
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
 block|}
