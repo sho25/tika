@@ -832,6 +832,11 @@ range|:
 name|readMatches
 argument_list|(
 name|element
+argument_list|,
+name|mimeType
+operator|.
+name|getType
+argument_list|()
 argument_list|)
 control|)
 block|{
@@ -876,6 +881,9 @@ name|readMatches
 parameter_list|(
 name|Element
 name|element
+parameter_list|,
+name|MediaType
+name|mediaType
 parameter_list|)
 throws|throws
 name|MimeTypeException
@@ -969,6 +977,8 @@ argument_list|(
 name|readMatch
 argument_list|(
 name|nodeElement
+argument_list|,
+name|mediaType
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -986,6 +996,9 @@ name|readMatch
 parameter_list|(
 name|Element
 name|element
+parameter_list|,
+name|MediaType
+name|mediaType
 parameter_list|)
 throws|throws
 name|MimeTypeException
@@ -1315,9 +1328,7 @@ init|=
 operator|new
 name|MagicDetector
 argument_list|(
-name|MediaType
-operator|.
-name|TEXT_PLAIN
+name|mediaType
 argument_list|,
 name|patternBytes
 argument_list|,
@@ -1348,6 +1359,8 @@ init|=
 name|readMatches
 argument_list|(
 name|element
+argument_list|,
+name|mediaType
 argument_list|)
 decl_stmt|;
 if|if

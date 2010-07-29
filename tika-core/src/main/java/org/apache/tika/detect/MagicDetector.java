@@ -112,6 +112,11 @@ specifier|final
 name|int
 name|offsetRangeEnd
 decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|asString
+decl_stmt|;
 comment|/**      * Creates a detector for input documents that have the exact given byte      * pattern at the beginning of the document stream.      *      * @param type matching media type      * @param pattern magic match pattern      */
 specifier|public
 name|MagicDetector
@@ -406,6 +411,37 @@ name|offsetRangeEnd
 operator|=
 name|offsetRangeEnd
 expr_stmt|;
+comment|// Build the string representation. Needs to be unique, as
+comment|//  these get compared. Compute now as may get compared a lot!
+name|this
+operator|.
+name|asString
+operator|=
+literal|"Magic Detection for "
+operator|+
+name|type
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|" looking for "
+operator|+
+name|pattern
+operator|.
+name|length
+operator|+
+literal|" bytes = "
+operator|+
+name|this
+operator|.
+name|pattern
+operator|+
+literal|" mask = "
+operator|+
+name|this
+operator|.
+name|mask
+expr_stmt|;
 block|}
 comment|/**      *       * @param input document input stream, or<code>null</code>      * @param metadata ignored      */
 specifier|public
@@ -687,6 +723,16 @@ name|reset
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Returns a string representation of the Detection Rule.      * Should sort nicely by type and details, as we sometimes      *  compare these.      */
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|asString
+return|;
 block|}
 block|}
 end_class
