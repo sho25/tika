@@ -120,6 +120,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Numeric Cell: "
+operator|+
+name|format
+operator|.
+name|format
+argument_list|(
+name|number
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
