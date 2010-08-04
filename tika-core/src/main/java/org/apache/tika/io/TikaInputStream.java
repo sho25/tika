@@ -160,6 +160,22 @@ name|TikaInputStream
 extends|extends
 name|ProxyInputStream
 block|{
+comment|/**      * Checks whether the given stream is a TikaInputStream instance.      * The given stream can be<code>null</code>, in which case the return      * value is<code>false</code>.      *       * @param stream input stream, possibly<code>null</code>      * @return<code>true</code> if the stream is a TikaInputStream instance,      *<code>false</code> otherwise      */
+specifier|public
+specifier|static
+name|boolean
+name|isTikaInputStream
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+block|{
+return|return
+name|stream
+operator|instanceof
+name|TikaInputStream
+return|;
+block|}
 comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
