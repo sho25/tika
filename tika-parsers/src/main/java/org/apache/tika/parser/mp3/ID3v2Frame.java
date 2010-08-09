@@ -387,7 +387,8 @@ name|size
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Get the frame's data
+comment|// Get the frame's data, or at least as much
+comment|//  of it as we could do
 name|data
 operator|=
 name|readFully
@@ -395,6 +396,8 @@ argument_list|(
 name|inp
 argument_list|,
 name|length
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
@@ -727,6 +730,35 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+return|return
+name|readFully
+argument_list|(
+name|inp
+argument_list|,
+name|length
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+specifier|protected
+specifier|static
+name|byte
+index|[]
+name|readFully
+parameter_list|(
+name|InputStream
+name|inp
+parameter_list|,
+name|int
+name|length
+parameter_list|,
+name|boolean
+name|shortDataIsFatal
+parameter_list|)
+throws|throws
+name|IOException
+block|{
 name|byte
 index|[]
 name|b
@@ -775,6 +807,11 @@ operator|-
 literal|1
 condition|)
 block|{
+if|if
+condition|(
+name|shortDataIsFatal
+condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -790,6 +827,15 @@ operator|+
 literal|" bytes present"
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+comment|// Give them what we found
+comment|// TODO Log the short read
+return|return
+name|b
+return|;
+block|}
 block|}
 name|pos
 operator|+=
