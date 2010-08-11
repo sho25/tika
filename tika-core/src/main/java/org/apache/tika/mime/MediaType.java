@@ -1003,8 +1003,9 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns an immutable sorted map of the parameters of this media type.      * The parameter names are guaranteed to be trimmed and in lower case.      *      * @return sorted map of parameters      */
 specifier|public
-name|SortedMap
+name|Map
 argument_list|<
 name|String
 argument_list|,
