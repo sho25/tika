@@ -299,14 +299,7 @@ specifier|final
 name|String
 name|EMAIL_HEADER_METADATA_PREFIX
 init|=
-name|MboxParser
-operator|.
-name|class
-operator|.
-name|getSimpleName
-argument_list|()
-operator|+
-literal|"-"
+literal|"MboxParser-"
 decl_stmt|;
 specifier|private
 specifier|static
