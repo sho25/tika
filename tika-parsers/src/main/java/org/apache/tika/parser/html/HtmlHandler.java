@@ -444,6 +444,9 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// TIKA-478: For cases where we have either a name or "http-equiv", assume
+comment|// that XHTMLContentHandler will emit these in the<head>, thus passing them
+comment|// through safely.
 if|if
 condition|(
 name|atts
@@ -475,20 +478,8 @@ literal|"content"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|xhtml
-operator|.
-name|startElement
-argument_list|(
-name|uri
-argument_list|,
-name|local
-argument_list|,
-literal|"meta"
-argument_list|,
-name|atts
-argument_list|)
-expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|atts
@@ -521,7 +512,7 @@ literal|"content"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Normalise if possible
+comment|// Normalize if possible
 if|if
 condition|(
 name|atts
@@ -599,20 +590,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// Allow downstream processing
-name|xhtml
-operator|.
-name|startElement
-argument_list|(
-name|uri
-argument_list|,
-name|local
-argument_list|,
-literal|"meta"
-argument_list|,
-name|atts
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -744,6 +721,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|xhtml
 operator|.
 name|startElement
@@ -751,6 +729,7 @@ argument_list|(
 name|safe
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|AttributesImpl
@@ -991,25 +970,6 @@ operator|.
 name|endElement
 argument_list|(
 literal|"base"
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-literal|"META"
-operator|.
-name|equals
-argument_list|(
-name|name
-argument_list|)
-condition|)
-block|{
-name|xhtml
-operator|.
-name|endElement
-argument_list|(
-literal|"meta"
 argument_list|)
 expr_stmt|;
 block|}
