@@ -295,6 +295,22 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|parser
+operator|.
+name|html
+operator|.
+name|BoilerpipeContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|BodyContentHandler
@@ -483,6 +499,12 @@ specifier|final
 name|JEditorPane
 name|text
 decl_stmt|;
+comment|/**      * Main content output.      */
+specifier|private
+specifier|final
+name|JEditorPane
+name|textMain
+decl_stmt|;
 comment|/**      * Raw XHTML source.      */
 specifier|private
 specifier|final
@@ -545,6 +567,15 @@ operator|=
 name|createEditor
 argument_list|(
 literal|"Plain text"
+argument_list|,
+literal|"text/plain"
+argument_list|)
+expr_stmt|;
+name|textMain
+operator|=
+name|createEditor
+argument_list|(
+literal|"Main content"
 argument_list|,
 literal|"text/plain"
 argument_list|)
@@ -648,6 +679,13 @@ name|StringWriter
 argument_list|()
 decl_stmt|;
 name|StringWriter
+name|textMainBuffer
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|StringWriter
 name|xmlBuffer
 init|=
 operator|new
@@ -675,6 +713,11 @@ argument_list|,
 name|getTextContentHandler
 argument_list|(
 name|textBuffer
+argument_list|)
+argument_list|,
+name|getTextMainContentHandler
+argument_list|(
+name|textMainBuffer
 argument_list|)
 argument_list|,
 name|getXmlContentHandler
@@ -798,6 +841,16 @@ argument_list|(
 name|text
 argument_list|,
 name|textBuffer
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|setText
+argument_list|(
+name|textMain
+argument_list|,
+name|textMainBuffer
 operator|.
 name|toString
 argument_list|()
@@ -1230,6 +1283,22 @@ block|{
 return|return
 operator|new
 name|BodyContentHandler
+argument_list|(
+name|writer
+argument_list|)
+return|;
+block|}
+specifier|private
+name|ContentHandler
+name|getTextMainContentHandler
+parameter_list|(
+name|Writer
+name|writer
+parameter_list|)
+block|{
+return|return
+operator|new
+name|BoilerpipeContentHandler
 argument_list|(
 name|writer
 argument_list|)
