@@ -2290,6 +2290,19 @@ name|result
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// There should be ending elements.
+name|assertTrue
+argument_list|(
+name|Pattern
+operator|.
+name|matches
+argument_list|(
+literal|"(?s).*</body>.*</html>$"
+argument_list|,
+name|result
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
