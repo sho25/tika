@@ -207,6 +207,8 @@ argument_list|,
 literal|"head"
 argument_list|,
 literal|"body"
+argument_list|,
+literal|"frameset"
 argument_list|)
 decl_stmt|;
 comment|/**      * The elements that get prepended with the {@link #TAB} character.      */
@@ -230,6 +232,8 @@ argument_list|,
 literal|"td"
 argument_list|,
 literal|"th"
+argument_list|,
+literal|"frame"
 argument_list|)
 decl_stmt|;
 comment|/**      * The elements that get appended with the {@link #NL} character.      */
@@ -358,6 +362,12 @@ name|headEnded
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|boolean
+name|useFrameset
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|XHTMLContentHandler
 parameter_list|(
@@ -451,11 +461,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Generates the following XHTML prefix when called for the first time:      *<pre>      *&lt;html&gt;      *&lt;head&gt;      *&lt;title&gt;...&lt;/title&gt;      *&lt;/head&gt;      *&lt;body&gt;      *</pre>      */
+comment|/**      * Generates the following XHTML prefix when called for the first time:      *<pre>      *&lt;html&gt;      *&lt;head&gt;      *&lt;title&gt;...&lt;/title&gt;      *&lt;/head&gt;      *&lt;body&gt; (or&lt;frameset&gt;      *</pre>      */
 specifier|private
 name|void
 name|lazyEndHead
-parameter_list|()
+parameter_list|(
+name|boolean
+name|isFrameset
+parameter_list|)
 throws|throws
 name|SAXException
 block|{
@@ -471,6 +484,10 @@ block|{
 name|headEnded
 operator|=
 literal|true
+expr_stmt|;
+name|useFrameset
+operator|=
+name|isFrameset
 expr_stmt|;
 comment|// TIKA-478: Emit all metadata values (other than title). We have to call
 comment|// startElement() and characters() directly to avoid recursive problems.
@@ -523,9 +540,24 @@ name|addAttribute
 argument_list|(
 literal|""
 argument_list|,
-name|name
+literal|"name"
+argument_list|,
+literal|"name"
+argument_list|,
+literal|"CDATA"
 argument_list|,
 name|name
+argument_list|)
+expr_stmt|;
+name|attributes
+operator|.
+name|addAttribute
+argument_list|(
+literal|""
+argument_list|,
+literal|"content"
+argument_list|,
+literal|"content"
 argument_list|,
 literal|"CDATA"
 argument_list|,
@@ -642,6 +674,27 @@ argument_list|,
 literal|"head"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|useFrameset
+condition|)
+block|{
+name|super
+operator|.
+name|startElement
+argument_list|(
+name|XHTML
+argument_list|,
+literal|"frameset"
+argument_list|,
+literal|"frameset"
+argument_list|,
+name|EMPTY_ATTRIBUTES
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|super
 operator|.
 name|startElement
@@ -657,6 +710,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * Ends the XHTML document by writing the following footer and      * clearing the namespace mappings:      *<pre>      *&lt;/body&gt;      *&lt;/html&gt;      *</pre>      */
 annotation|@
 name|Override
@@ -668,8 +722,29 @@ throws|throws
 name|SAXException
 block|{
 name|lazyEndHead
-argument_list|()
+argument_list|(
+name|useFrameset
+argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|useFrameset
+condition|)
+block|{
+name|super
+operator|.
+name|endElement
+argument_list|(
+name|XHTML
+argument_list|,
+literal|"frameset"
+argument_list|,
+literal|"frameset"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|super
 operator|.
 name|endElement
@@ -681,6 +756,7 @@ argument_list|,
 literal|"body"
 argument_list|)
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|endElement
@@ -727,6 +803,23 @@ name|SAXException
 block|{
 if|if
 condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+literal|"frameset"
+argument_list|)
+condition|)
+block|{
+name|lazyEndHead
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
 operator|!
 name|AUTO
 operator|.
@@ -753,7 +846,9 @@ block|}
 else|else
 block|{
 name|lazyEndHead
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -885,7 +980,9 @@ throws|throws
 name|SAXException
 block|{
 name|lazyEndHead
-argument_list|()
+argument_list|(
+name|useFrameset
+argument_list|)
 expr_stmt|;
 name|super
 operator|.

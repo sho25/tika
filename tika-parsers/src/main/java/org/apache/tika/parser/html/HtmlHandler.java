@@ -387,6 +387,15 @@ argument_list|(
 name|name
 argument_list|)
 operator|||
+operator|(
+literal|"FRAMESET"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+operator|)
+operator|||
 name|bodyLevel
 operator|>
 literal|0
