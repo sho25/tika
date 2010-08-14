@@ -256,6 +256,14 @@ argument_list|,
 literal|"address"
 argument_list|)
 expr_stmt|;
+comment|// TIKA-460 - add anchors
+name|put
+argument_list|(
+literal|"A"
+argument_list|,
+literal|"a"
+argument_list|)
+expr_stmt|;
 comment|// TIKA-463 - add additional elements that contain URLs
 name|put
 argument_list|(
