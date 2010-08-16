@@ -527,6 +527,15 @@ name|name
 argument_list|)
 control|)
 block|{
+comment|// Putting null values into attributes causes problems, but is
+comment|// allowed by Metadata, so guard against that.
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+condition|)
+block|{
 name|AttributesImpl
 name|attributes
 init|=
@@ -588,6 +597,7 @@ argument_list|,
 literal|"meta"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|super
