@@ -2394,7 +2394,251 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"http://domain.com/frame.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"http://domain.com/frame.html\"/>.*$"
+argument_list|,
+name|result
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+specifier|public
+name|void
+name|testIFrameSrcExtraction
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|String
+name|test
+init|=
+literal|"<html><head><title>Title</title>"
+operator|+
+literal|"<base href=\"http://domain.com\" />"
+operator|+
+literal|"</head><body><iframe src =\"framed.html\" width=\"100%\" height=\"300\">"
+operator|+
+literal|"<p>Your browser doesn't support iframes!</p></body></html>"
+decl_stmt|;
+name|StringWriter
+name|sw
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+operator|new
+name|HtmlParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|test
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+argument_list|,
+name|makeHtmlTransformer
+argument_list|(
+name|sw
+argument_list|)
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|String
+name|result
+init|=
+name|sw
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|//<iframe> tag should exist, with fully resolved URL
+name|assertTrue
+argument_list|(
+name|Pattern
+operator|.
+name|matches
+argument_list|(
+literal|"(?s).*<iframe .* src=\"http://domain.com/framed.html\".*$"
+argument_list|,
+name|result
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+specifier|public
+name|void
+name|testAreaExtraction
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|String
+name|test
+init|=
+literal|"<html><head><title>Title</title>"
+operator|+
+literal|"<base href=\"http://domain.com\" />"
+operator|+
+literal|"</head><body><p><map name=\"map\" id=\"map\">"
+operator|+
+literal|"<area shape=\"rect\" href=\"map.html\" alt=\"\" />"
+operator|+
+literal|"</map></p></body></html>"
+decl_stmt|;
+name|StringWriter
+name|sw
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+operator|new
+name|HtmlParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|test
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+argument_list|,
+name|makeHtmlTransformer
+argument_list|(
+name|sw
+argument_list|)
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|String
+name|result
+init|=
+name|sw
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|//<map> tag should exist, with<area> tag with fully resolved URL
+name|assertTrue
+argument_list|(
+name|Pattern
+operator|.
+name|matches
+argument_list|(
+literal|"(?s).*<map .*<area .* href=\"http://domain.com/map.html\".*</map>.*$"
+argument_list|,
+name|result
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+specifier|public
+name|void
+name|testObjectExtraction
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|String
+name|test
+init|=
+literal|"<html><head><title>Title</title>"
+operator|+
+literal|"<base href=\"http://domain.com\" />"
+operator|+
+literal|"</head><body><p><object data=\"object.data\" type=\"text/html\">"
+operator|+
+literal|"<param name=\"name\" value=\"value\" />"
+operator|+
+literal|"</object></p></body></html>"
+decl_stmt|;
+name|StringWriter
+name|sw
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+operator|new
+name|HtmlParser
+argument_list|()
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|test
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+argument_list|,
+name|makeHtmlTransformer
+argument_list|(
+name|sw
+argument_list|)
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|String
+name|result
+init|=
+name|sw
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|//<object> tag should exist with fully resolved URLs
+name|assertTrue
+argument_list|(
+name|Pattern
+operator|.
+name|matches
+argument_list|(
+literal|"(?s).*<object data=\"http://domain.com/object.data\".*<param .* name=\"name\" value=\"value\"/>.*</object>.*$"
 argument_list|,
 name|result
 argument_list|)
@@ -2513,7 +2757,7 @@ block|}
 comment|/**      * Test case for TIKA-457. Better handling for broken HTML that has<frameset> inside of<body>.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-457">TIKA-457</a>      */
 specifier|public
 name|void
-name|testFBrokenrameset
+name|testBrokenFrameset
 parameter_list|()
 throws|throws
 name|Exception
@@ -2581,7 +2825,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"http://domain.com/frame.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"http://domain.com/frame.html\"/>.*$"
 argument_list|,
 name|result
 argument_list|)
@@ -2669,7 +2913,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"top.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"top.html\"/>.*$"
 argument_list|,
 name|result
 argument_list|)
@@ -2681,7 +2925,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"left.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"left.html\"/>.*$"
 argument_list|,
 name|result
 argument_list|)
@@ -2693,7 +2937,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"invalid.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"invalid.html\"/>.*$"
 argument_list|,
 name|result
 argument_list|)
@@ -2705,7 +2949,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<frame src=\"right.html\"/>.*$"
+literal|"(?s).*<frame .* src=\"right.html\"/>.*$"
 argument_list|,
 name|result
 argument_list|)
