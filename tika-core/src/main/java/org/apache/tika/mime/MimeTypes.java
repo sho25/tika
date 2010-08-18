@@ -627,6 +627,21 @@ literal|"Data is missing"
 argument_list|)
 throw|;
 block|}
+elseif|else
+if|if
+condition|(
+name|data
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+comment|// See https://issues.apache.org/jira/browse/TIKA-483
+return|return
+name|rootMimeType
+return|;
+block|}
 comment|// Then, check for magic bytes
 name|MimeType
 name|result

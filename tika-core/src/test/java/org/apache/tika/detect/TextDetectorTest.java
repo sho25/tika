@@ -139,14 +139,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Test for type detection of empty documents.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-483">TIKA-483</a>      */
 specifier|public
 name|void
-name|testDetectText
+name|testDetectEmpty
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertText
+name|assertNotText
 argument_list|(
 operator|new
 name|byte
@@ -155,6 +156,14 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testDetectText
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 name|assertText
 argument_list|(
 literal|"Hello, World!"
