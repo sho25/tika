@@ -37,6 +37,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -325,6 +337,8 @@ literal|3
 index|]
 condition|)
 block|{
+try|try
+block|{
 return|return
 name|zipDetector
 operator|.
@@ -335,6 +349,29 @@ argument_list|,
 name|metadata
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|ZipException
+name|e
+parameter_list|)
+block|{
+comment|// Problem with the zip file, eg corrupt or truncated
+comment|// Try the fallback in case there is enough data for that
+comment|//  to be able to offer something useful
+name|input
+operator|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|input
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Is this an ole2 file?
 name|long
