@@ -17,6 +17,16 @@ name|html
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Alternative HTML mapping rules that pass the input HTML as-is without any  * modifications.  *   * @since Apache Tika 0.8  */
 end_comment
@@ -65,7 +75,11 @@ return|return
 name|attributeName
 operator|.
 name|toLowerCase
-argument_list|()
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 return|;
 block|}
 specifier|public
