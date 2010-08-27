@@ -224,10 +224,9 @@ name|CONTENT_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
+comment|// TIKA-501: Remove language detection from TXTParser
+name|assertNull
 argument_list|(
-literal|"en"
-argument_list|,
 name|metadata
 operator|.
 name|get
@@ -238,10 +237,8 @@ name|CONTENT_LANGUAGE
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertNull
 argument_list|(
-literal|"en"
-argument_list|,
 name|metadata
 operator|.
 name|get
@@ -252,9 +249,6 @@ name|LANGUAGE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO: ICU reports the content encoding as ISO-8859-1, even though
-comment|// it could just as well be ASCII or UTF-8, so  for now we won't
-comment|// test for the Metadata.CONTENT_ENCODING field
 name|assertTrue
 argument_list|(
 name|content

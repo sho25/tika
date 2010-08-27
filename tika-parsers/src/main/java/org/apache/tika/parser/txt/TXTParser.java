@@ -228,10 +228,15 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream. The input metadata key  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING} is used  * as an encoding hint if the automatic encoding detection fails.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain</code></dd>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING}</dt>  *<dd>The detected text encoding of the document.</dd>  *<dt>  *     {@link org.apache.tika.metadata.HttpHeaders#CONTENT_LANGUAGE} and  *     {@link org.apache.tika.metadata.DublinCore#LANGUAGE}  *</dt>  *<dd>  *     The default language of the detected encoding. Only set if the  *     detected encoding is associated with some specific language  *     (for example KOI8-R with Russian or SJIS with Japanese).  *</dd>  *</dl>  */
+comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream. The input metadata key  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING} is used  * as an encoding hint if the automatic encoding detection fails.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain</code></dd>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING}</dt>  *<dd>The detected text encoding of the document.</dd>  *<dt>  *     {@link org.apache.tika.metadata.HttpHeaders#CONTENT_LANGUAGE} and  *     {@link org.apache.tika.metadata.DublinCore#LANGUAGE}  *</dt>  *</dl>  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 specifier|public
 class|class
 name|TXTParser
@@ -448,45 +453,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Is the encoding language-specific (KOI8-R, SJIS, etc.)?
-name|String
-name|language
-init|=
-name|match
-operator|.
-name|getLanguage
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|language
-operator|!=
-literal|null
-condition|)
-block|{
-name|metadata
-operator|.
-name|add
-argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_LANGUAGE
-argument_list|,
-name|language
-argument_list|)
-expr_stmt|;
-name|metadata
-operator|.
-name|add
-argument_list|(
-name|Metadata
-operator|.
-name|LANGUAGE
-argument_list|,
-name|language
-argument_list|)
-expr_stmt|;
-block|}
 break|break;
 block|}
 block|}
