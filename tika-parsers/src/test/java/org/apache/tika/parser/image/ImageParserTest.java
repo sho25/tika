@@ -1315,22 +1315,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: Add TIFF support
-comment|//    public void testTIFF() throws Exception {
-comment|//        Metadata metadata = new Metadata();
-comment|//        metadata.set(Metadata.CONTENT_TYPE, "image/tiff");
-comment|//        InputStream stream =
-comment|//            getClass().getResourceAsStream("/test-documents/testTIFF.tif");
-comment|//        parser.parse(stream, new DefaultHandler(), metadata);
-comment|//
-comment|//        assertEquals("75", metadata.get("height"));
-comment|//        assertEquals("100", metadata.get("width"));
-comment|//
-comment|//        assertEquals("100", metadata.get(Metadata.IMAGE_WIDTH));
-comment|//        assertEquals("75", metadata.get(Metadata.IMAGE_LENGTH));
-comment|//        assertEquals("8 8 8", metadata.get(Metadata.BITS_PER_SAMPLE));
-comment|//        assertEquals("Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements.  See the NOTICE file distributed with this work for additional information regarding copyright ownership.", metadata.get(Metadata.COMMENTS));
-comment|//    }
 block|}
 end_class
 

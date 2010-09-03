@@ -318,7 +318,7 @@ name|DATE
 argument_list|,
 name|propsHolder
 operator|.
-name|getCreatedPropertyString
+name|getCreatedProperty
 argument_list|()
 argument_list|)
 expr_stmt|;

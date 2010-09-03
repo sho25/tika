@@ -344,6 +344,8 @@ argument_list|,
 literal|"contributor"
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|ch
 operator|=
 name|getDublinCore
@@ -355,10 +357,23 @@ argument_list|,
 name|DublinCore
 operator|.
 name|DATE
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 literal|"date"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// Date format and parsing behavior was undefined and untested when DublinCare
+comment|// date was converted to Property.internalDate so we silently skip date on parse error
+block|}
 name|ch
 operator|=
 name|getDublinCore

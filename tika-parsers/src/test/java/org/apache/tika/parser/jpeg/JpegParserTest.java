@@ -235,7 +235,9 @@ expr_stmt|;
 comment|// Common tags
 name|assertEquals
 argument_list|(
-literal|"2009/10/02 23:02:49"
+literal|"Date/Time for when the photo was taken, unspecified time zone"
+argument_list|,
+literal|"2009-10-02T23:02:49"
 argument_list|,
 name|metadata
 operator|.
@@ -244,6 +246,22 @@ argument_list|(
 name|Metadata
 operator|.
 name|DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Date/Time Original for when the photo was taken, unspecified time zone"
+argument_list|,
+literal|"2009-08-11T09:09:45"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|ORIGINAL_DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -417,7 +435,25 @@ expr_stmt|;
 comment|// Common tags
 name|assertEquals
 argument_list|(
-literal|"2009/10/02 23:02:49"
+literal|"Date/Time Original for when the photo was taken, unspecified time zone"
+argument_list|,
+literal|"2009-08-11T09:09:45"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|ORIGINAL_DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"This image has different Date/Time than Date/Time Original, so it is probably modification date"
+argument_list|,
+literal|"2009-10-02T23:02:49"
 argument_list|,
 name|metadata
 operator|.
@@ -576,9 +612,6 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// xmp handles spaces in keywords, returns "bird watching, nature reserve, coast, grazelands"
-comment|//assertEquals("bird watching nature reserve coast grazelands", metadata.get(Metadata.KEYWORDS));
-comment|// ordering is odd when returned from parser as one string
 name|assertEquals
 argument_list|(
 literal|"grazelands nature reserve bird watching coast"

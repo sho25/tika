@@ -594,7 +594,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Tue, 9 Jun 2009 23:58:45 -0400"
+literal|"Should be ISO date in UTC, converted from 'Tue, 9 Jun 2009 23:58:45 -0400'"
+argument_list|,
+literal|"2009-06-10T03:58:45Z"
 argument_list|,
 name|metadata
 operator|.

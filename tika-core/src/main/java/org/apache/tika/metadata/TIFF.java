@@ -68,6 +68,17 @@ argument_list|(
 literal|"tiff:SamplesPerPixel"
 argument_list|)
 decl_stmt|;
+comment|/**      * "Date and time when original image was generated"      */
+name|Property
+name|ORIGINAL_DATE
+init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
+literal|"exif:DateTimeOriginal"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 

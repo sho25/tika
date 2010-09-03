@@ -267,12 +267,12 @@ throws|,
 name|TikaException
 block|{
 operator|new
-name|TiffExtractor
+name|ImageMetadataExtractor
 argument_list|(
 name|metadata
 argument_list|)
 operator|.
-name|parse
+name|parseTiff
 argument_list|(
 name|stream
 argument_list|)

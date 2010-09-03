@@ -60,11 +60,16 @@ name|CREATOR
 init|=
 literal|"creator"
 decl_stmt|;
-comment|/**      * A date associated with an event in the life cycle of the resource.      * Typically, Date will be associated with the creation or availability of      * the resource. Recommended best practice for encoding the date value is      * defined in a profile of ISO 8601 [W3CDTF] and follows the YYYY-MM-DD      * format.      * TODO Make me a Date Property      */
-name|String
+comment|/**      * A date associated with an event in the life cycle of the resource.      * Typically, Date will be associated with the creation or availability of      * the resource. Recommended best practice for encoding the date value is      * defined in a profile of ISO 8601 [W3CDTF] and follows the YYYY-MM-DD      * format.      */
+name|Property
 name|DATE
 init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
 literal|"date"
+argument_list|)
 decl_stmt|;
 comment|/**      * An account of the content of the resource. Description may include      * but is not limited to: an abstract, table of contents, reference to      * a graphical representation of content or a free-text account of      * the content.      */
 name|String

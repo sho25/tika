@@ -1969,6 +1969,47 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Some documents, like jpegs, might have date in unspecified time zone      * which should be handled like strings but verified to have parseable ISO 8601 format      */
+specifier|public
+name|void
+name|testGetSetDateUnspecifiedTimezone
+parameter_list|()
+block|{
+name|Metadata
+name|meta
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|meta
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|DATE
+argument_list|,
+literal|"1970-01-01T00:00:01"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"should return string without time zone specifier because zone is not known"
+argument_list|,
+literal|"1970-01-01T00:00:01"
+argument_list|,
+name|meta
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
