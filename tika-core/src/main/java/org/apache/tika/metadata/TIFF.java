@@ -68,6 +68,17 @@ argument_list|(
 literal|"tiff:SamplesPerPixel"
 argument_list|)
 decl_stmt|;
+comment|/**      * Did the Flash fire when taking this image?      */
+name|Property
+name|FLASH_FIRED
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+literal|"exif:Flash"
+argument_list|)
+decl_stmt|;
 comment|/**      * "Exposure time in seconds."      */
 name|Property
 name|EXPOSURE_TIME
@@ -79,7 +90,6 @@ argument_list|(
 literal|"exif:ExposureTime"
 argument_list|)
 decl_stmt|;
-comment|//  TODO "exif:Flash"
 comment|/**      * "F-Number."      * The f-number is the focal length divided by the "effective" aperture       *  diameter. It is a dimensionless number that is a measure of lens speed.       */
 name|Property
 name|F_NUMBER

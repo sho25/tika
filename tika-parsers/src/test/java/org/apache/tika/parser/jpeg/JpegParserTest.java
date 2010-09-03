@@ -263,6 +263,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"false"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|FLASH_FIRED
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"194.0"
 argument_list|,
 name|metadata
@@ -388,7 +402,6 @@ name|RESOLUTION_UNIT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO - Flash
 comment|// Common tags
 name|assertEquals
 argument_list|(
@@ -615,6 +628,20 @@ argument_list|(
 name|Metadata
 operator|.
 name|F_NUMBER
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"false"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|FLASH_FIRED
 argument_list|)
 argument_list|)
 expr_stmt|;
