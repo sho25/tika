@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|fork
 package|;
 end_package
 
@@ -107,7 +107,7 @@ end_import
 
 begin_class
 class|class
-name|OutOfProcessSerializer
+name|ForkSerializer
 extends|extends
 name|ObjectInputStream
 block|{
@@ -117,7 +117,7 @@ name|ClassLoader
 name|loader
 decl_stmt|;
 specifier|public
-name|OutOfProcessSerializer
+name|ForkSerializer
 parameter_list|(
 name|InputStream
 name|input
@@ -284,7 +284,7 @@ name|ObjectInputStream
 name|deserializer
 init|=
 operator|new
-name|OutOfProcessSerializer
+name|ForkSerializer
 argument_list|(
 operator|new
 name|ByteArrayInputStream

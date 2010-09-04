@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|fork
 package|;
 end_package
 
@@ -157,7 +157,7 @@ end_import
 
 begin_class
 class|class
-name|OutOfProcessServer
+name|ForkServer
 extends|extends
 name|ClassLoader
 block|{
@@ -214,11 +214,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|OutOfProcessServer
+name|ForkServer
 name|server
 init|=
 operator|new
-name|OutOfProcessServer
+name|ForkServer
 argument_list|(
 name|System
 operator|.
@@ -288,7 +288,7 @@ init|=
 literal|0
 decl_stmt|;
 specifier|public
-name|OutOfProcessServer
+name|ForkServer
 parameter_list|(
 name|InputStream
 name|input
@@ -357,7 +357,7 @@ block|{
 name|Object
 name|message
 init|=
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|deserialize
 argument_list|(
@@ -373,7 +373,7 @@ argument_list|(
 name|ECHO
 argument_list|)
 expr_stmt|;
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|serialize
 argument_list|(
@@ -398,7 +398,7 @@ argument_list|(
 name|ERROR
 argument_list|)
 expr_stmt|;
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|serialize
 argument_list|(

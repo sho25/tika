@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|fork
 package|;
 end_package
 
@@ -145,7 +145,7 @@ end_import
 
 begin_class
 class|class
-name|OutOfProcessClient
+name|ForkClient
 block|{
 specifier|private
 specifier|final
@@ -178,7 +178,7 @@ name|InputStream
 name|error
 decl_stmt|;
 specifier|public
-name|OutOfProcessClient
+name|ForkClient
 parameter_list|(
 name|ClassLoader
 name|loader
@@ -224,14 +224,14 @@ try|try
 block|{
 name|copyClassToDirectory
 argument_list|(
-name|OutOfProcessServer
+name|ForkServer
 operator|.
 name|class
 argument_list|)
 expr_stmt|;
 name|copyClassToDirectory
 argument_list|(
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|class
 argument_list|)
@@ -256,7 +256,7 @@ name|command
 argument_list|(
 literal|"java"
 argument_list|,
-name|OutOfProcessServer
+name|ForkServer
 operator|.
 name|class
 operator|.
@@ -449,12 +449,12 @@ name|output
 operator|.
 name|write
 argument_list|(
-name|OutOfProcessServer
+name|ForkServer
 operator|.
 name|ECHO
 argument_list|)
 expr_stmt|;
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|serialize
 argument_list|(
@@ -474,7 +474,7 @@ expr_stmt|;
 try|try
 block|{
 return|return
-name|OutOfProcessSerializer
+name|ForkSerializer
 operator|.
 name|deserialize
 argument_list|(
@@ -589,7 +589,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|OutOfProcessServer
+name|ForkServer
 operator|.
 name|FIND_RESOURCE
 condition|)
@@ -608,7 +608,7 @@ if|if
 condition|(
 name|type
 operator|==
-name|OutOfProcessServer
+name|ForkServer
 operator|.
 name|FIND_RESOURCES
 condition|)
