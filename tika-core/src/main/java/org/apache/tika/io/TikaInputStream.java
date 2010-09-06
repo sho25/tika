@@ -963,9 +963,18 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+comment|// Re-point the stream at the file now we have it
 name|in
 operator|=
-literal|null
+operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|file
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
