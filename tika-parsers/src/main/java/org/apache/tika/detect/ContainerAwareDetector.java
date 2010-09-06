@@ -395,6 +395,8 @@ operator|.
 name|_signature
 condition|)
 block|{
+try|try
+block|{
 return|return
 name|detect
 argument_list|(
@@ -405,6 +407,29 @@ argument_list|,
 name|poifsDetector
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// Problem with the ole file, eg corrupt or truncated
+comment|// Try the fallback in case there is enough data for that
+comment|//  to be able to offer something useful
+name|input
+operator|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|input
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|// Add further container detection (eg tar.gz, ogg, avi) here
 comment|// Not a supported container, ask our fall back
