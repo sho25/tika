@@ -1092,6 +1092,17 @@ name|container
 expr_stmt|;
 block|}
 specifier|public
+name|boolean
+name|hasFile
+parameter_list|()
+block|{
+return|return
+name|file
+operator|!=
+literal|null
+return|;
+block|}
+specifier|public
 name|File
 name|getFile
 parameter_list|()
@@ -1200,6 +1211,18 @@ block|}
 block|}
 return|return
 name|file
+return|;
+block|}
+specifier|public
+name|boolean
+name|hasLength
+parameter_list|()
+block|{
+return|return
+name|length
+operator|!=
+operator|-
+literal|1
 return|;
 block|}
 comment|/**      * Returns the length (in bytes) of this stream. Note that if the length      * was not available when this stream was instantiated, then this method      * will use the {@link #getFile()} method to buffer the entire stream to      * a temporary file in order to calculate the stream length. This case      * will only work if the stream has not yet been consumed.      *      * @return stream length      * @throws IOException if the length can not be determined      */
