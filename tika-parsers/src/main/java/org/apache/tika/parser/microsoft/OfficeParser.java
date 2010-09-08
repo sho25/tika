@@ -205,7 +205,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|DirectoryNode
+name|DirectoryEntry
 import|;
 end_import
 
@@ -420,6 +420,14 @@ name|OfficeParser
 implements|implements
 name|Parser
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|7393462244028653479L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -705,7 +713,7 @@ specifier|static
 name|POIFSDocumentType
 name|detectType
 parameter_list|(
-name|DirectoryNode
+name|DirectoryEntry
 name|node
 parameter_list|)
 block|{
