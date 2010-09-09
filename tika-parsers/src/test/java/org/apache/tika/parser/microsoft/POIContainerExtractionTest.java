@@ -93,6 +93,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|extractor
+operator|.
+name|ParserContainerExtractor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|io
 operator|.
 name|TikaInputStream
@@ -113,10 +127,14 @@ name|MediaType
 import|;
 end_import
 
+begin_comment
+comment|/**  * Tests that the various POI powered parsers are  *  able to extract their embeded contents.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
-name|POIFSContainerExtractorTest
+name|POIContainerExtractionTest
 extends|extends
 name|TestCase
 block|{
@@ -167,11 +185,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|POIFSContainerExtractor
+name|ContainerExtractor
 name|extractor
 init|=
 operator|new
-name|POIFSContainerExtractor
+name|ParserContainerExtractor
 argument_list|()
 decl_stmt|;
 name|String
@@ -285,11 +303,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|POIFSContainerExtractor
+name|ContainerExtractor
 name|extractor
 init|=
 operator|new
-name|POIFSContainerExtractor
+name|ParserContainerExtractor
 argument_list|()
 decl_stmt|;
 name|TrackingHandler
@@ -347,11 +365,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|POIFSContainerExtractor
+name|ContainerExtractor
 name|extractor
 init|=
 operator|new
-name|POIFSContainerExtractor
+name|ParserContainerExtractor
 argument_list|()
 decl_stmt|;
 name|TrackingHandler
@@ -632,7 +650,7 @@ block|{
 name|InputStream
 name|input
 init|=
-name|POIFSContainerExtractorTest
+name|POIContainerExtractionTest
 operator|.
 name|class
 operator|.
