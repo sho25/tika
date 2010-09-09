@@ -46,7 +46,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|ContainerEmbededResourceHandler
+name|EmbededResourceHandler
 block|{
 comment|/**      * Called to process an embeded resource within the container.      * This will be called once per embeded resource within the      *  container, along with whatever details are available on      *  the embeded resource.      *        * TODO Don't pass in the input stream, so that if the entry      *  isn't desired then work isn't done to extract it      *       * @since Apache Tika 0.8      * @param filename The filename of the embeded resource, if known      * @param mediaType The media type of the embeded resource, if known      * @param stream The contents of the embeded resource      */
 name|void

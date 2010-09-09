@@ -156,7 +156,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Processes a container file, and extracts all the embeded      * resources from within it.      *<p>      * The {@link ContainerEmbededResourceHandler} you supply will      * be called for each embeded resource in the container. It is      * up to you whether you process the contents of the resource or not.       *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * If required, nested containers (such as a .docx within a .zip)      * can automatically be recursed into, and processed inline. If      * no recurseExtractor is given, the nested containers will be      * treated as with any other embeded resources.      *      * @since Apache Tika 0.8      * @param stream the document stream (input)      * @param recurseExtractor the extractor to use on any embeded containers       * @param handler handler for the embeded files (output)      * @throws IOException if the document stream could not be read      * @throws TikaException if the container could not be parsed      */
+comment|/**      * Processes a container file, and extracts all the embeded      * resources from within it.      *<p>      * The {@link EmbededResourceHandler} you supply will      * be called for each embeded resource in the container. It is      * up to you whether you process the contents of the resource or not.       *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * If required, nested containers (such as a .docx within a .zip)      * can automatically be recursed into, and processed inline. If      * no recurseExtractor is given, the nested containers will be      * treated as with any other embeded resources.      *      * @since Apache Tika 0.8      * @param stream the document stream (input)      * @param recurseExtractor the extractor to use on any embeded containers       * @param handler handler for the embeded files (output)      * @throws IOException if the document stream could not be read      * @throws TikaException if the container could not be parsed      */
 name|void
 name|extract
 parameter_list|(
@@ -166,7 +166,7 @@ parameter_list|,
 name|ContainerExtractor
 name|recurseExtractor
 parameter_list|,
-name|ContainerEmbededResourceHandler
+name|EmbededResourceHandler
 name|handler
 parameter_list|)
 throws|throws
