@@ -109,6 +109,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|TikaInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -319,6 +333,21 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+if|if
+condition|(
+name|stream
+operator|instanceof
+name|TikaInputStream
+operator|||
+name|stream
+operator|instanceof
+name|BufferedInputStream
+condition|)
+block|{
+comment|// Input stream can be trusted for type detection
+block|}
+else|else
+block|{
 comment|// We need (reliable!) mark support for type detection before parsing
 name|stream
 operator|=
@@ -328,6 +357,7 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Automatically detect the MIME type of the document
 name|MediaType
 name|type
