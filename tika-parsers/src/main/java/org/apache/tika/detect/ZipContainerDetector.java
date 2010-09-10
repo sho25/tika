@@ -397,6 +397,12 @@ operator|.
 name|open
 argument_list|(
 name|input
+operator|.
+name|getFile
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|input

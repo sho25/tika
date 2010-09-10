@@ -730,6 +730,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Try with a tika input stream
 name|TikaInputStream
 name|tis
 init|=
@@ -764,6 +765,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// There should be an attached OPCPackage as an open container
 name|assertNotNull
 argument_list|(
 name|tis
@@ -790,6 +792,17 @@ name|getOpenContainer
 argument_list|()
 operator|instanceof
 name|OPCPackage
+argument_list|)
+expr_stmt|;
+comment|// The underlying TikaInputStream should still be open, and file based
+name|assertTrue
+argument_list|(
+literal|"TikaInputStream should still have a file"
+argument_list|,
+name|tis
+operator|.
+name|hasFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
