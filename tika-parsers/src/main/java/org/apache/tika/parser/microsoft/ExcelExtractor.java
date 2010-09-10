@@ -2481,7 +2481,7 @@ name|RECORD_ID_WMF
 case|:
 name|mimeType
 operator|=
-literal|"application/x-wmf"
+literal|"image/x-wmf"
 expr_stmt|;
 break|break;
 case|case
@@ -2491,7 +2491,7 @@ name|RECORD_ID_EMF
 case|:
 name|mimeType
 operator|=
-literal|"application/x-emf"
+literal|"image/x-emf"
 expr_stmt|;
 break|break;
 case|case

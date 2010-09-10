@@ -537,7 +537,7 @@ condition|)
 block|{
 name|mimeType
 operator|=
-literal|"application/x-wmf"
+literal|"image/x-wmf"
 expr_stmt|;
 block|}
 if|if
@@ -552,7 +552,7 @@ condition|)
 block|{
 name|mimeType
 operator|=
-literal|"application/x-emf"
+literal|"image/x-emf"
 expr_stmt|;
 block|}
 name|TikaInputStream
