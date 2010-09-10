@@ -210,7 +210,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of {@link ContainerExtractor} powered by the  *  regular {@link Parser} classes.  * This allows you to easily extract out all the embeded resources  *  from within contain files, whilst using the normal parsers  *  to do the work.  * By default the {@link AutoDetectParser} will be used, to allow  *  extraction from the widest range of containers.  */
+comment|/**  * An implementation of {@link ContainerExtractor} powered by the  *  regular {@link Parser} classes.  * This allows you to easily extract out all the embedded resources  *  from within contain files, whilst using the normal parsers  *  to do the work.  * By default the {@link AutoDetectParser} will be used, to allow  *  extraction from the widest range of containers.  */
 end_comment
 
 begin_class
@@ -349,7 +349,7 @@ name|ContainerExtractor
 name|recurseExtractor
 parameter_list|,
 specifier|final
-name|EmbededResourceHandler
+name|EmbeddedResourceHandler
 name|handler
 parameter_list|)
 throws|throws
@@ -468,6 +468,25 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+operator|!
+name|stream
+operator|.
+name|markSupported
+argument_list|()
+condition|)
+block|{
+name|stream
+operator|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
+block|}
 name|type
 operator|=
 name|detector
@@ -480,7 +499,7 @@ name|metadata
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Let the handler process the embeded resource
+comment|// Let the handler process the embedded resource
 name|handler
 operator|.
 name|handle
@@ -500,6 +519,33 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|recurseExtractor
+operator|==
+name|ParserContainerExtractor
+operator|.
+name|this
+condition|)
+block|{
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|recurseExtractor
 operator|.
 name|extract
@@ -516,6 +562,7 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public

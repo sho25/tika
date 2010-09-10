@@ -343,7 +343,7 @@ expr_stmt|;
 block|}
 specifier|protected
 name|void
-name|handleEmbededResource
+name|handleEmbeddedResource
 parameter_list|(
 name|TikaInputStream
 name|resource
@@ -524,7 +524,7 @@ name|Metadata
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|handleEmbededResource
+name|handleEmbeddedResource
 argument_list|(
 name|ooxmlStream
 argument_list|,

@@ -2557,7 +2557,7 @@ decl_stmt|;
 comment|// Handle the embeded resource
 name|extractor
 operator|.
-name|handleEmbededResource
+name|handleEmbeddedResource
 argument_list|(
 name|stream
 argument_list|,

@@ -568,7 +568,7 @@ name|getContent
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|handleEmbededResource
+name|handleEmbeddedResource
 argument_list|(
 name|stream
 argument_list|,

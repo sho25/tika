@@ -31,27 +31,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|Serializable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 
@@ -83,60 +63,8 @@ name|TikaInputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|Metadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|mime
-operator|.
-name|MediaType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|SAXException
-import|;
-end_import
-
 begin_comment
-comment|/**  * Tika container extractor interface.  * Container Extractors provide access to the embeded  *  resources within container formats such as .zip and .doc   */
+comment|/**  * Tika container extractor interface.  * Container Extractors provide access to the embedded  *  resources within container formats such as .zip and .doc   */
 end_comment
 
 begin_interface
@@ -156,7 +84,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Processes a container file, and extracts all the embeded      * resources from within it.      *<p>      * The {@link EmbededResourceHandler} you supply will      * be called for each embeded resource in the container. It is      * up to you whether you process the contents of the resource or not.       *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * If required, nested containers (such as a .docx within a .zip)      * can automatically be recursed into, and processed inline. If      * no recurseExtractor is given, the nested containers will be      * treated as with any other embeded resources.      *      * @since Apache Tika 0.8      * @param stream the document stream (input)      * @param recurseExtractor the extractor to use on any embeded containers       * @param handler handler for the embeded files (output)      * @throws IOException if the document stream could not be read      * @throws TikaException if the container could not be parsed      */
+comment|/**      * Processes a container file, and extracts all the embedded      * resources from within it.      *<p>      * The {@link EmbeddedResourceHandler} you supply will      * be called for each embedded resource in the container. It is      * up to you whether you process the contents of the resource or not.       *<p>      * The given document stream is consumed but not closed by this method.      * The responsibility to close the stream remains on the caller.      *<p>      * If required, nested containers (such as a .docx within a .zip)      * can automatically be recursed into, and processed inline. If      * no recurseExtractor is given, the nested containers will be      * treated as with any other embedded resources.      *      * @since Apache Tika 0.8      * @param stream the document stream (input)      * @param recurseExtractor the extractor to use on any embedded containers       * @param handler handler for the embedded files (output)      * @throws IOException if the document stream could not be read      * @throws TikaException if the container could not be parsed      */
 name|void
 name|extract
 parameter_list|(
@@ -166,7 +94,7 @@ parameter_list|,
 name|ContainerExtractor
 name|recurseExtractor
 parameter_list|,
-name|EmbededResourceHandler
+name|EmbeddedResourceHandler
 name|handler
 parameter_list|)
 throws|throws
