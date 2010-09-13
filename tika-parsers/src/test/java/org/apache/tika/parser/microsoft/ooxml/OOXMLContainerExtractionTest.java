@@ -343,7 +343,127 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// PowerPoint with 2 images + sound
-comment|// TODO
+comment|// TODO Figure out why we can't find the sound anywhere...
+name|handler
+operator|=
+name|process
+argument_list|(
+literal|"testPPT_2imgs.pptx"
+argument_list|,
+name|extractor
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|3
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|3
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|TYPE_GIF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// icon of sound
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Word with 1 image
 name|handler
 operator|=
@@ -714,7 +834,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|9
+literal|23
 argument_list|,
 name|handler
 operator|.
@@ -726,7 +846,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|9
+literal|23
 argument_list|,
 name|handler
 operator|.
@@ -769,7 +889,7 @@ expr_stmt|;
 comment|// Embedded office doc
 name|assertEquals
 argument_list|(
-name|TYPE_DOC
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -781,10 +901,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded office doc
+comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|TYPE_GIF
 argument_list|,
 name|handler
 operator|.
@@ -796,10 +916,10 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//   PNG inside .doc
+comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_DOCX
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -811,10 +931,10 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded office doc
+comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|TYPE_XLSX
 argument_list|,
 name|handler
 operator|.
@@ -826,7 +946,7 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//   PNG inside .docx
+comment|//   .xlsx inside .pptx
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -841,10 +961,10 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|//     PNG inside .xlsx inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_EMF
+name|TYPE_DOCX
 argument_list|,
 name|handler
 operator|.
@@ -856,7 +976,82 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc
+comment|//   .docx inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//     PNG inside .docx inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_JPG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|8
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//     JPG inside .docx inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|9
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//     PNG inside .docx inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_DOC
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|10
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   .doc inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|11
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//    PNG inside .doc inside .pptx
 name|assertEquals
 argument_list|(
 name|TYPE_EMF
@@ -867,7 +1062,127 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|12
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   Icon of item inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|13
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   Icon of item inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|14
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   Icon of item inside .pptx
+name|assertEquals
+argument_list|(
+name|TYPE_DOC
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|15
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|16
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   PNG inside .doc
+name|assertEquals
+argument_list|(
+name|TYPE_DOCX
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|17
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|18
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   PNG inside .docx
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|19
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -882,7 +1197,22 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|8
+literal|21
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|22
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1090,7 +1420,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|11
+literal|14
 argument_list|,
 name|handler
 operator|.
@@ -1102,7 +1432,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|11
+literal|14
 argument_list|,
 name|handler
 operator|.
@@ -1147,7 +1477,7 @@ expr_stmt|;
 comment|// Embedded office doc
 name|assertEquals
 argument_list|(
-name|TYPE_EMF
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -1159,10 +1489,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc
+comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_DOC
+name|TYPE_GIF
 argument_list|,
 name|handler
 operator|.
@@ -1174,7 +1504,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded office doc
+comment|//   GIF inside .pptx
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -1189,10 +1519,10 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//   PNG inside .doc
+comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1204,10 +1534,10 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
-name|TYPE_JPG
+name|TYPE_DOC
 argument_list|,
 name|handler
 operator|.
@@ -1219,7 +1549,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Embedded office doc
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -1234,7 +1564,271 @@ literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//   PNG inside .doc
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_JPG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|8
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|9
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|10
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_XLSX
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|11
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embeded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|12
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//   PNG inside .xlsx
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|13
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded office doc
+comment|// PowerPoint with excel and word
+name|handler
+operator|=
+name|process
+argument_list|(
+literal|"testPPT_embeded.pptx"
+argument_list|,
+name|extractor
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|9
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|9
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// We don't know their filenames
+for|for
+control|(
+name|String
+name|filename
+range|:
+name|handler
+operator|.
+name|filenames
+control|)
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|filename
+argument_list|)
+expr_stmt|;
+comment|// But we do know their types
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_GIF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_PNG
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_XLSX
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_DOCX
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_DOC
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|6
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
 name|TYPE_EMF
@@ -1252,7 +1846,7 @@ expr_stmt|;
 comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
-name|TYPE_XLSX
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1264,39 +1858,7 @@ literal|8
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embeded office doc
-name|assertEquals
-argument_list|(
-name|TYPE_PNG
-argument_list|,
-name|handler
-operator|.
-name|mediaTypes
-operator|.
-name|get
-argument_list|(
-literal|9
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//   PNG inside .xlsx
-name|assertEquals
-argument_list|(
-name|TYPE_EMF
-argument_list|,
-name|handler
-operator|.
-name|mediaTypes
-operator|.
-name|get
-argument_list|(
-literal|10
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Icon of embedded office doc
-comment|// PowerPoint with excel and word
-comment|// TODO
 block|}
 block|}
 end_class
