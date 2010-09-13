@@ -924,7 +924,7 @@ name|input
 init|=
 name|getTestDoc
 argument_list|(
-literal|"testWORD.docx"
+literal|"testEXCEL.xlsx"
 argument_list|)
 decl_stmt|;
 name|byte

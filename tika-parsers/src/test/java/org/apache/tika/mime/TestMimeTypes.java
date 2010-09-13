@@ -572,6 +572,7 @@ literal|"x.ppsm"
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Note - detecting container formats by mime magic is very very      *  iffy, as we can't be sure where things will end up.      * People really ought to use the container aware detection...      */
 specifier|public
 name|void
 name|testOoxmlDetection
@@ -579,13 +580,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|assertTypeByData
-argument_list|(
-literal|"application/x-tika-ooxml"
-argument_list|,
-literal|"testWORD.docx"
-argument_list|)
-expr_stmt|;
+comment|// These two do luckily have [Content_Types].xml near the start,
+comment|//  so our mime magic will spot them
 name|assertTypeByData
 argument_list|(
 literal|"application/x-tika-ooxml"
@@ -598,6 +594,16 @@ argument_list|(
 literal|"application/x-tika-ooxml"
 argument_list|,
 literal|"testPPT.pptx"
+argument_list|)
+expr_stmt|;
+comment|// This one quite legitimately doesn't have its [Content_Types].xml
+comment|//  file as one of the first couple of entries
+comment|// As such, our mime magic can't figure it out...
+name|assertTypeByData
+argument_list|(
+literal|"application/zip"
+argument_list|,
+literal|"testWORD.docx"
 argument_list|)
 expr_stmt|;
 block|}
