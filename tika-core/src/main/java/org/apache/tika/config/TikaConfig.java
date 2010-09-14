@@ -557,12 +557,10 @@ else|else
 block|{
 name|mimeTypes
 operator|=
-name|MimeTypesFactory
+name|MimeTypes
 operator|.
-name|create
-argument_list|(
-literal|"tika-mimetypes.xml"
-argument_list|)
+name|getDefaultMimeTypes
+argument_list|()
 expr_stmt|;
 block|}
 name|NodeList
@@ -935,12 +933,10 @@ block|}
 block|}
 name|mimeTypes
 operator|=
-name|MimeTypesFactory
+name|MimeTypes
 operator|.
-name|create
-argument_list|(
-literal|"tika-mimetypes.xml"
-argument_list|)
+name|getDefaultMimeTypes
+argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Creates a Tika configuration from the built-in media type rules      * and all the {@link Parser} implementations available through the      * {@link ServiceRegistry service provider mechanism} in the context      * class loader of the current thread.      *      * @throws MimeTypeException if the built-in media type rules are broken      * @throws IOException  if the built-in media type rules can not be read      */

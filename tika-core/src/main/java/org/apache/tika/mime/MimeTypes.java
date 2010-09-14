@@ -1787,6 +1787,57 @@ return|return
 name|type
 return|;
 block|}
+comment|/**      * Get the default MimeTypes      *       * @return MimeTypes      * @throws MimeTypeException      * @throws IOException      */
+specifier|public
+specifier|static
+name|MimeTypes
+name|getDefaultMimeTypes
+parameter_list|()
+block|{
+try|try
+block|{
+return|return
+name|MimeTypesFactory
+operator|.
+name|create
+argument_list|(
+literal|"tika-mimetypes.xml"
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|MimeTypeException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unable to read default mimetypes"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Unable to read default mimetypes"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 block|}
 end_class
 
