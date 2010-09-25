@@ -332,6 +332,9 @@ name|mediaType
 parameter_list|,
 name|XHTMLContentHandler
 name|xhtml
+parameter_list|,
+name|boolean
+name|outputHtml
 parameter_list|)
 throws|throws
 name|IOException
@@ -417,6 +420,8 @@ argument_list|,
 name|xhtml
 argument_list|,
 name|metadata
+argument_list|,
+name|outputHtml
 argument_list|)
 expr_stmt|;
 block|}
@@ -512,6 +517,8 @@ name|toString
 argument_list|()
 argument_list|,
 name|xhtml
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 return|return;
@@ -645,6 +652,8 @@ argument_list|,
 name|xhtml
 argument_list|,
 name|metadata
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

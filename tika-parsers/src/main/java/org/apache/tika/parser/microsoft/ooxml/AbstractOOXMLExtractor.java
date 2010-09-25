@@ -738,7 +738,7 @@ name|set
 argument_list|(
 name|Metadata
 operator|.
-name|TIKA_MIME_FILE
+name|RESOURCE_NAME_KEY
 argument_list|,
 name|name
 argument_list|)

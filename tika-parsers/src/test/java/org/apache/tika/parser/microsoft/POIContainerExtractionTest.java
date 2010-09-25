@@ -310,7 +310,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"image1.png"
 argument_list|,
 name|handler
 operator|.
@@ -374,7 +374,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"image1.png"
 argument_list|,
 name|handler
 operator|.
@@ -388,7 +388,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"image2.jpg"
 argument_list|,
 name|handler
 operator|.
@@ -402,7 +402,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"image3.png"
 argument_list|,
 name|handler
 operator|.
@@ -767,7 +767,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"image1.png"
 argument_list|,
 name|handler
 operator|.
@@ -883,7 +883,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+literal|9
 argument_list|,
 name|handler
 operator|.
@@ -895,7 +895,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|8
+literal|9
 argument_list|,
 name|handler
 operator|.
@@ -905,23 +905,9 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// We don't know their filenames
-for|for
-control|(
-name|String
-name|filename
-range|:
-name|handler
-operator|.
-name|filenames
-control|)
-name|assertEquals
-argument_list|(
-literal|null
-argument_list|,
-name|filename
-argument_list|)
-expr_stmt|;
+comment|// Filenames are a bit iffy...
+comment|//       for(String filename : handler.filenames)
+comment|//          assertEquals(null, filename);
 comment|// But we do know their types
 name|assertEquals
 argument_list|(
@@ -965,7 +951,12 @@ expr_stmt|;
 comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -977,10 +968,10 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_JPG
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -995,7 +986,7 @@ expr_stmt|;
 comment|// Embedded image
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -1010,7 +1001,7 @@ expr_stmt|;
 comment|// Embedded image
 name|assertEquals
 argument_list|(
-name|TYPE_DOCX
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -1022,10 +1013,10 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded office doc
+comment|// Embedded image
 name|assertEquals
 argument_list|(
-name|TYPE_PPT
+name|TYPE_DOCX
 argument_list|,
 name|handler
 operator|.
@@ -1040,7 +1031,7 @@ expr_stmt|;
 comment|// Embedded office doc
 name|assertEquals
 argument_list|(
-name|TYPE_XLS
+name|TYPE_PPT
 argument_list|,
 name|handler
 operator|.
@@ -1049,6 +1040,21 @@ operator|.
 name|get
 argument_list|(
 literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_XLS
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1067,7 +1073,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|12
+literal|13
 argument_list|,
 name|handler
 operator|.
@@ -1079,7 +1085,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|12
+literal|13
 argument_list|,
 name|handler
 operator|.
@@ -1089,23 +1095,180 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// We don't know their filenames
-for|for
-control|(
-name|String
-name|filename
-range|:
+comment|// We don't know their filenames, except for doc images + docx
+name|assertEquals
+argument_list|(
+literal|"image1"
+argument_list|,
 name|handler
 operator|.
 name|filenames
-control|)
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image2"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image3"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image4.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image5.jpg"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image6.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|null
 argument_list|,
-name|filename
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|6
+argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image2.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image3.jpeg"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|8
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image4.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|9
+argument_list|)
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|10
+init|;
+name|i
+operator|<
+name|handler
+operator|.
+name|filenames
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|assertNull
+argument_list|(
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|// But we do know their types
 name|assertEquals
 argument_list|(
@@ -1149,7 +1312,12 @@ expr_stmt|;
 comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -1161,10 +1329,10 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_JPG
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -1179,7 +1347,7 @@ expr_stmt|;
 comment|// Embedded image
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -1194,7 +1362,7 @@ expr_stmt|;
 comment|// Embedded image
 name|assertEquals
 argument_list|(
-name|TYPE_DOCX
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -1203,6 +1371,21 @@ operator|.
 name|get
 argument_list|(
 literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded image
+name|assertEquals
+argument_list|(
+name|TYPE_DOCX
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1217,7 +1400,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|6
+literal|7
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1232,7 +1415,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1247,7 +1430,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|8
+literal|9
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1262,7 +1445,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|9
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1277,7 +1460,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|10
+literal|11
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1292,7 +1475,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|11
+literal|12
 argument_list|)
 argument_list|)
 expr_stmt|;

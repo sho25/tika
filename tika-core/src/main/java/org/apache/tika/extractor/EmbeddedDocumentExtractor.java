@@ -375,6 +375,7 @@ return|return
 literal|true
 return|;
 block|}
+comment|/**      * Processes the supplied embedded resource, calling the delegating      *  parser with the appropriate details.      * @param stream The embedded resource      * @param handler The handler to use      * @param metadata The metadata for the embedded resource      * @param outputHtml Should we output HTML for this resource, or has the parser already done so?      * @throws SAXException      * @throws IOException      */
 specifier|public
 name|void
 name|parseEmbedded
@@ -387,11 +388,19 @@ name|handler
 parameter_list|,
 name|Metadata
 name|metadata
+parameter_list|,
+name|boolean
+name|outputHtml
 parameter_list|)
 throws|throws
 name|SAXException
 throws|,
 name|IOException
+block|{
+if|if
+condition|(
+name|outputHtml
+condition|)
 block|{
 name|AttributesImpl
 name|attributes
@@ -428,6 +437,7 @@ argument_list|,
 name|attributes
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|name
 init|=
@@ -452,6 +462,8 @@ name|length
 argument_list|()
 operator|>
 literal|0
+operator|&&
+name|outputHtml
 condition|)
 block|{
 name|handler
@@ -540,6 +552,11 @@ parameter_list|)
 block|{
 comment|// Could not parse the entry, just skip the content
 block|}
+if|if
+condition|(
+name|outputHtml
+condition|)
+block|{
 name|handler
 operator|.
 name|endElement
@@ -551,6 +568,7 @@ argument_list|,
 literal|"div"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

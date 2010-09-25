@@ -901,6 +901,8 @@ argument_list|,
 name|xhtml
 argument_list|,
 name|entrydata
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -1016,6 +1018,8 @@ argument_list|,
 name|xhtml
 argument_list|,
 name|entrydata
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 block|}

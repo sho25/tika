@@ -365,9 +365,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|sax
+name|exception
 operator|.
-name|XHTMLContentHandler
+name|TikaException
 import|;
 end_import
 
@@ -407,9 +407,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|exception
+name|sax
 operator|.
-name|TikaException
+name|XHTMLContentHandler
 import|;
 end_import
 
