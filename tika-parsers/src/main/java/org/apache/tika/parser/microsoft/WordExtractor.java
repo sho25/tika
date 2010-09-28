@@ -2207,6 +2207,22 @@ operator|=
 literal|"subtitle"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|styleName
+operator|.
+name|equals
+argument_list|(
+literal|"HTML Preformatted"
+argument_list|)
+condition|)
+block|{
+name|tag
+operator|=
+literal|"pre"
+expr_stmt|;
+block|}
 else|else
 block|{
 name|styleClass
