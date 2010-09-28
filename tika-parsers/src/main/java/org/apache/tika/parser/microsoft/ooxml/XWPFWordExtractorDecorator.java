@@ -1027,6 +1027,16 @@ name|getEmbeddedPictures
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|paragraph
+operator|.
+name|getDocument
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|XWPFPictureData
 name|data
 init|=
@@ -1065,6 +1075,7 @@ argument_list|(
 literal|"img"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
