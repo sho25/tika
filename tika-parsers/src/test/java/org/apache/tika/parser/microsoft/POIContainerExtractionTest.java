@@ -906,8 +906,133 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Filenames are a bit iffy...
-comment|//       for(String filename : handler.filenames)
-comment|//          assertEquals(null, filename);
+comment|// Should really be 3*embedded pictures then 3*icons then embedded docs
+name|assertEquals
+argument_list|(
+literal|"image1"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image4.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image5.jpg"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image6.png"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image2"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image3"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|6
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|7
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|8
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// But we do know their types
 name|assertEquals
 argument_list|(
@@ -931,12 +1056,7 @@ expr_stmt|;
 comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -948,15 +1068,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Embedded image - logo
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -968,7 +1083,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Embedded image - safe
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -983,10 +1098,15 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Embedded image - try
 name|assertEquals
 argument_list|(
-name|TYPE_JPG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -998,10 +1118,15 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -1013,7 +1138,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
 name|TYPE_DOCX
@@ -1112,7 +1237,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image2"
+literal|"image4.png"
 argument_list|,
 name|handler
 operator|.
@@ -1126,7 +1251,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image3"
+literal|"image5.jpg"
 argument_list|,
 name|handler
 operator|.
@@ -1140,7 +1265,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image4.png"
+literal|"image6.png"
 argument_list|,
 name|handler
 operator|.
@@ -1154,7 +1279,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image5.jpg"
+literal|"image2"
 argument_list|,
 name|handler
 operator|.
@@ -1168,7 +1293,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image6.png"
+literal|"image3"
 argument_list|,
 name|handler
 operator|.
@@ -1292,12 +1417,7 @@ expr_stmt|;
 comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_PNG
 argument_list|,
 name|handler
 operator|.
@@ -1309,15 +1429,10 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Embedded image - logo
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -1329,7 +1444,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Embedded image - safe
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -1344,10 +1459,15 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Embedded image - try
 name|assertEquals
 argument_list|(
-name|TYPE_JPG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -1359,10 +1479,15 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|TYPE_PNG
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"image/unknown"
+argument_list|)
 argument_list|,
 name|handler
 operator|.
@@ -1374,7 +1499,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Embedded image
+comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
 name|TYPE_DOCX
