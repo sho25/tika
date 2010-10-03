@@ -1598,11 +1598,6 @@ expr_stmt|;
 name|out
 operator|.
 name|println
-argument_list|()
-expr_stmt|;
-name|out
-operator|.
-name|println
 argument_list|(
 literal|"    --list-supported-types"
 argument_list|)
@@ -2235,9 +2230,38 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"  alias: "
+literal|"  alias:     "
 operator|+
 name|alias
+argument_list|)
+expr_stmt|;
+block|}
+name|MediaType
+name|supertype
+init|=
+name|registry
+operator|.
+name|getSupertype
+argument_list|(
+name|type
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|supertype
+operator|!=
+literal|null
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"  supertype: "
+operator|+
+name|supertype
 argument_list|)
 expr_stmt|;
 block|}
@@ -2264,7 +2288,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"  parser: "
+literal|"  parser:    "
 operator|+
 name|parser
 operator|.
