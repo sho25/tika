@@ -443,13 +443,6 @@ name|MimeType
 argument_list|>
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|transient
-name|XmlRootExtractor
-name|xmlRootExtractor
-init|=
-literal|null
-decl_stmt|;
 specifier|public
 name|MimeTypes
 parameter_list|()
@@ -683,31 +676,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-try|try
-block|{
-name|XmlRootExtractor
-name|extractor
-init|=
-name|xmlRootExtractor
-decl_stmt|;
-if|if
-condition|(
-name|extractor
-operator|==
-literal|null
-condition|)
-block|{
-name|extractor
-operator|=
-operator|new
-name|XmlRootExtractor
-argument_list|()
-expr_stmt|;
-name|xmlRootExtractor
-operator|=
-name|extractor
-expr_stmt|;
-block|}
 comment|// When detecting generic XML (or possibly XHTML),
 comment|// extract the root element and match it against known types
 if|if
@@ -733,10 +701,17 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|XmlRootExtractor
+name|extractor
+init|=
+operator|new
+name|XmlRootExtractor
+argument_list|()
+decl_stmt|;
 name|QName
 name|rootElement
 init|=
-name|xmlRootExtractor
+name|extractor
 operator|.
 name|extractRootElement
 argument_list|(
@@ -784,23 +759,31 @@ break|break;
 block|}
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+literal|"application/xml"
+operator|.
+name|equals
+argument_list|(
+name|result
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+comment|// Downgrade from application/xml to text/plain since
+comment|// the document seems not to be well-formed.
+name|result
+operator|=
+name|textMimeType
+expr_stmt|;
+block|}
 block|}
 return|return
 name|result
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{             }
-catch|catch
-parameter_list|(
-name|ParserConfigurationException
-name|e
-parameter_list|)
-block|{             }
 block|}
 comment|// Finally, assume plain text if no control bytes are found
 for|for
