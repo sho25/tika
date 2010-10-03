@@ -819,6 +819,42 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Test for things like javascript files whose content is enclosed in XML      * comment delimiters, but that aren't actually XML.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-426">TIKA-426</a>      */
+specifier|public
+name|void
+name|testNotXML
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertEquals
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+name|mimeTypes
+operator|.
+name|detect
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+literal|"<!-- test -->"
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+argument_list|)
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Tests that when we repeatedly test the detection of a document      *  that can be detected with Mime Magic, that we consistently      *  detect it correctly. See TIKA-391 for more details.      */
 specifier|public
 name|void
