@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -122,6 +122,70 @@ name|ParserDecorator
 implements|implements
 name|Parser
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|3861669115439125268L
+decl_stmt|;
+comment|/**      * Decorates the given parser so that it always claims to support      * parsing of the given media types.      *      * @param parser the parser to be decorated      * @param types supported media types      * @return the decorated parser      */
+specifier|public
+specifier|static
+specifier|final
+name|Parser
+name|withTypes
+parameter_list|(
+name|Parser
+name|parser
+parameter_list|,
+specifier|final
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|types
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ParserDecorator
+argument_list|(
+name|parser
+argument_list|)
+block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|7345051519565330731L
+decl_stmt|;
+annotation|@
+name|Override
+specifier|public
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|getSupportedTypes
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+block|{
+return|return
+name|types
+return|;
+block|}
+block|}
+return|;
+block|}
 comment|/**      * The decorated parser instance.      */
 specifier|private
 specifier|final
