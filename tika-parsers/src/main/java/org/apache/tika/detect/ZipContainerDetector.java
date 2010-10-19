@@ -203,6 +203,22 @@ name|MediaType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|iwork
+operator|.
+name|IWorkPackageParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * A detector that works on a Zip document  *  to figure out exactly what the file is  */
 end_comment
@@ -530,7 +546,32 @@ literal|"buildVersionHistory.plist"
 argument_list|)
 condition|)
 block|{
-comment|// TODO - iWork
+comment|// This is an iWork document
+comment|// Reset and ask
+name|zip
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+name|zip
+operator|=
+operator|new
+name|ZipFile
+argument_list|(
+name|input
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|IWorkPackageParser
+operator|.
+name|identifyType
+argument_list|(
+name|zip
+argument_list|)
+return|;
 block|}
 elseif|else
 if|if
