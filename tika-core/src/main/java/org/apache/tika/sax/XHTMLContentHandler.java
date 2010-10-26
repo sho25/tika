@@ -297,6 +297,10 @@ argument_list|,
 literal|"br"
 argument_list|,
 literal|"tr"
+argument_list|,
+literal|"select"
+argument_list|,
+literal|"option"
 argument_list|)
 decl_stmt|;
 specifier|private
