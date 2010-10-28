@@ -222,7 +222,7 @@ argument_list|)
 expr_stmt|;
 name|builderStack
 operator|.
-name|push
+name|addFirst
 argument_list|(
 name|builder
 argument_list|)
@@ -278,7 +278,7 @@ argument_list|)
 expr_stmt|;
 name|builderStack
 operator|.
-name|push
+name|addFirst
 argument_list|(
 name|builder
 argument_list|)
@@ -440,7 +440,7 @@ name|add
 argument_list|(
 name|builderStack
 operator|.
-name|pop
+name|removeFirst
 argument_list|()
 operator|.
 name|getLink
