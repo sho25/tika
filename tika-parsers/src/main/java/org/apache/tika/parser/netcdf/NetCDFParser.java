@@ -411,7 +411,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
+specifier|protected
 name|void
 name|writeStreamToMemory
 parameter_list|(
