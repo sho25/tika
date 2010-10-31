@@ -278,6 +278,16 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+name|setForceParsing
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setSortByPosition
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -537,85 +547,6 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|// Two methods added to work around lack of support for processWordSeparator
-comment|// and processLineSeparator in PDFBox-0.7.3. This is fixed in CVS Head (PDFBox-0.7.4)
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getWordSeparator
-parameter_list|()
-block|{
-try|try
-block|{
-name|handler
-operator|.
-name|characters
-argument_list|(
-literal|" "
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{          }
-return|return
-name|super
-operator|.
-name|getWordSeparator
-argument_list|()
-return|;
-comment|//To change body of overridden methods use File | Settings | File Templates.
-block|}
-annotation|@
-name|Override
-specifier|public
-name|String
-name|getLineSeparator
-parameter_list|()
-block|{
-try|try
-block|{
-name|handler
-operator|.
-name|characters
-argument_list|(
-literal|"\n"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SAXException
-name|e
-parameter_list|)
-block|{          }
-return|return
-name|super
-operator|.
-name|getLineSeparator
-argument_list|()
-return|;
-block|}
-comment|//    protected void processLineSeparator(TextPosition p) throws IOException {
-comment|//        try {
-comment|//            handler.characters("\n");
-comment|//        } catch (SAXException e) {
-comment|//            throw new IOExceptionWithCause("Unable to write a newline", e);
-comment|//        }
-comment|//    }
-comment|//
-comment|//    protected void processWordSeparator(TextPosition a, TextPosition b)
-comment|//            throws IOException {
-comment|//        try {
-comment|//            handler.characters(" ");
-comment|//        } catch (SAXException e) {
-comment|//            throw new IOExceptionWithCause("Unable to write a space", e);
-comment|//        }
-comment|//    }
 block|}
 end_class
 

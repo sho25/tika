@@ -304,6 +304,16 @@ name|PDFParser
 implements|implements
 name|Parser
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|752276948656079347L
+decl_stmt|;
 comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      */
 specifier|public
 specifier|static
@@ -380,6 +390,8 @@ operator|.
 name|load
 argument_list|(
 name|stream
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 try|try
