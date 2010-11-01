@@ -220,7 +220,7 @@ name|MediaType
 operator|.
 name|application
 argument_list|(
-literal|"application/x-netcdf"
+literal|"x-netcdf"
 argument_list|)
 argument_list|)
 decl_stmt|;

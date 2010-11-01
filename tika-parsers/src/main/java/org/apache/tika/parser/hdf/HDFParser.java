@@ -247,7 +247,7 @@ name|MediaType
 operator|.
 name|application
 argument_list|(
-literal|"application/x-hdf"
+literal|"x-hdf"
 argument_list|)
 argument_list|)
 decl_stmt|;
