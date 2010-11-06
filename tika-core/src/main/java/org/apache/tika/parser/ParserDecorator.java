@@ -301,6 +301,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Gets the parser wrapped by this ParserDecorator      * @return      */
+specifier|public
+name|Parser
+name|getWrappedParser
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|parser
+return|;
+block|}
 block|}
 end_class
 
