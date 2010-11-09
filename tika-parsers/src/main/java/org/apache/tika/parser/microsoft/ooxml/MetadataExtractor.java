@@ -240,6 +240,16 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|extractor
+operator|.
+name|getDocument
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|extractMetadata
 argument_list|(
 name|extractor
@@ -260,6 +270,7 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
