@@ -916,7 +916,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Parses the given stream as a package of multiple underlying files.      * The package entries are parsed using the delegate parser instance.      * It is not an error if the entry can not be parsed, in that case      * just the entry name (if given) is emitted.      *      * @param stream package stream      * @param handler content handler      * @param metadata package metadata      * @throws IOException if an IO error occurs      * @throws SAXException if a SAX error occurs      */
+comment|/**      * Parses the given stream as a package of multiple underlying files.      * The package entries are parsed using the delegate parser instance.      * It is not an error if the entry can not be parsed, in that case      * just the entry name (if given) is emitted.      *      * @param archive package stream      * @param xhtml content handler      * @throws IOException if an IO error occurs      * @throws SAXException if a SAX error occurs      */
 specifier|public
 name|void
 name|unpack
