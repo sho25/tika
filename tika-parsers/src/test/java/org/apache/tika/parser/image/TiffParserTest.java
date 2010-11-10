@@ -95,6 +95,26 @@ name|InputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -174,7 +194,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"Image Description"
+name|Metadata
+operator|.
+name|DESCRIPTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -187,7 +209,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"Resolution Unit"
+name|Metadata
+operator|.
+name|RESOLUTION_UNIT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -245,6 +269,55 @@ argument_list|(
 name|Metadata
 operator|.
 name|SAMPLES_PER_PIXEL
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded XMP
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|subject
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|metadata
+operator|.
+name|getValues
+argument_list|(
+name|Metadata
+operator|.
+name|SUBJECT
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"got "
+operator|+
+name|subject
+argument_list|,
+name|subject
+operator|.
+name|contains
+argument_list|(
+literal|"cat"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"got "
+operator|+
+name|subject
+argument_list|,
+name|subject
+operator|.
+name|contains
+argument_list|(
+literal|"garden"
 argument_list|)
 argument_list|)
 expr_stmt|;
