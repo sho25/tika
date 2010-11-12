@@ -2238,6 +2238,13 @@ name|styleName
 operator|.
 name|equals
 argument_list|(
+literal|"heading"
+argument_list|)
+operator|||
+name|styleName
+operator|.
+name|equals
+argument_list|(
 literal|"Heading"
 argument_list|)
 condition|)
@@ -2254,10 +2261,18 @@ name|styleName
 operator|.
 name|startsWith
 argument_list|(
-literal|"Heading "
+literal|"heading"
+argument_list|)
+operator|||
+name|styleName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Heading"
 argument_list|)
 condition|)
 block|{
+comment|// "Heading 3" or "Heading2" or "heading 4"
 name|int
 name|num
 init|=

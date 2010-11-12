@@ -1509,7 +1509,25 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<h3>Heading Level 3</h3>"
+literal|"<h2>Heading Level 2</h2>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Headings with anchor tags in them
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\r?\n"
+argument_list|,
+literal|""
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+literal|"<h3><a name=\"OnLevel3\"/>Heading Level 3</h3>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1563,6 +1581,17 @@ operator|.
 name|contains
 argument_list|(
 literal|"<a href=\"http://tika.apache.org/\">Tika</a>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Anchor links
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<a href=\"#OnMainHeading\">The Main Heading Bookmark</a>"
 argument_list|)
 argument_list|)
 expr_stmt|;
