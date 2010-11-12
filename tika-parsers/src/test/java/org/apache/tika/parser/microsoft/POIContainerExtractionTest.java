@@ -557,7 +557,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"MBD0003271D.ppt"
 argument_list|,
 name|handler
 operator|.
@@ -571,7 +571,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"MBD00032A24.doc"
 argument_list|,
 name|handler
 operator|.
@@ -739,7 +739,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"MBD0003271D.ppt"
 argument_list|,
 name|handler
 operator|.
@@ -1167,7 +1167,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"_1345471035.ppt"
 argument_list|,
 name|handler
 operator|.
@@ -1181,7 +1181,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"_1345470949.xls"
 argument_list|,
 name|handler
 operator|.
@@ -1526,7 +1526,7 @@ control|(
 name|int
 name|i
 init|=
-literal|10
+literal|12
 init|;
 name|i
 operator|<
@@ -1897,7 +1897,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|null
+literal|"__substg1.0_3701000D.msg"
 argument_list|,
 name|handler
 operator|.
