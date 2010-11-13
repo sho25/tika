@@ -454,6 +454,8 @@ operator|=
 operator|new
 name|XSLFPowerPointExtractorDecorator
 argument_list|(
+name|context
+argument_list|,
 operator|(
 name|XSLFPowerPointExtractor
 operator|)
@@ -474,6 +476,8 @@ operator|=
 operator|new
 name|XSSFExcelExtractorDecorator
 argument_list|(
+name|context
+argument_list|,
 operator|(
 name|XSSFExcelExtractor
 operator|)
@@ -496,6 +500,8 @@ operator|=
 operator|new
 name|XWPFWordExtractorDecorator
 argument_list|(
+name|context
+argument_list|,
 operator|(
 name|XWPFWordExtractor
 operator|)
@@ -510,6 +516,8 @@ operator|=
 operator|new
 name|POIXMLTextExtractorDecorator
 argument_list|(
+name|context
+argument_list|,
 name|poiExtractor
 argument_list|)
 expr_stmt|;
