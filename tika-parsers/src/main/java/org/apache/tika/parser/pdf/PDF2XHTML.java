@@ -29,6 +29,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Writer
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -195,6 +205,8 @@ name|TikaException
 block|{
 try|try
 block|{
+comment|// Extract text using a dummy Writer as we override the
+comment|// key methods to output to the given content handler.
 operator|new
 name|PDF2XHTML
 argument_list|(
@@ -203,9 +215,46 @@ argument_list|,
 name|metadata
 argument_list|)
 operator|.
-name|getText
+name|writeText
 argument_list|(
 name|document
+argument_list|,
+operator|new
+name|Writer
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|write
+parameter_list|(
+name|char
+index|[]
+name|cbuf
+parameter_list|,
+name|int
+name|off
+parameter_list|,
+name|int
+name|len
+parameter_list|)
+block|{                 }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|flush
+parameter_list|()
+block|{                 }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{                 }
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -541,6 +590,42 @@ name|text
 operator|.
 name|getCharacter
 argument_list|()
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|writeLineSeparator
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+try|try
+block|{
+name|handler
+operator|.
+name|characters
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SAXException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOExceptionWithCause
+argument_list|(
+literal|"Unable to write a newline character"
 argument_list|,
 name|e
 argument_list|)

@@ -218,7 +218,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Bertrand Delacrétaz"
+literal|"Bertrand Delacr\u00e9taz"
 argument_list|,
 name|metadata
 operator|.
@@ -292,6 +292,33 @@ operator|.
 name|contains
 argument_list|(
 literal|"Apache Software Foundation"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// testing how the end of one paragraph is separated from start of the next one
+name|assertTrue
+argument_list|(
+literal|"should have word boundary after headline"
+argument_list|,
+operator|!
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"ToolkitApache"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"should have word boundary between paragraphs"
+argument_list|,
+operator|!
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"libraries.Apache"
 argument_list|)
 argument_list|)
 expr_stmt|;
