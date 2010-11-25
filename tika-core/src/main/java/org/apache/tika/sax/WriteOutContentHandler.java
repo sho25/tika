@@ -284,7 +284,21 @@ expr_stmt|;
 throw|throw
 operator|new
 name|WriteLimitReachedException
-argument_list|()
+argument_list|(
+literal|"Your document contained more than "
+operator|+
+name|writeLimit
+operator|+
+literal|" "
+operator|+
+literal|"characters, and so your requested limit has been "
+operator|+
+literal|"reached. To receive the full text of the document, "
+operator|+
+literal|"increase your limit. "
+operator|+
+literal|"(Text up to the limit is however available)."
+argument_list|)
 throw|;
 block|}
 block|}
@@ -442,6 +456,19 @@ name|WriteLimitReachedException
 extends|extends
 name|SAXException
 block|{
+specifier|public
+name|WriteLimitReachedException
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|WriteOutContentHandler
 name|getSource
