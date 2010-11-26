@@ -505,6 +505,31 @@ literal|'.'
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// The Macro Enabled formats are a little special
+if|if
+condition|(
+name|docType
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|"macroenabled"
+argument_list|)
+condition|)
+block|{
+name|docType
+operator|=
+name|docType
+operator|.
+name|toLowerCase
+argument_list|()
+operator|+
+literal|".12"
+expr_stmt|;
+block|}
+comment|// Build the MediaType object and return
 return|return
 name|fromString
 argument_list|(
