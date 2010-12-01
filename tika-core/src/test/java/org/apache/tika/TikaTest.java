@@ -4967,7 +4967,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.stardivision.writer"
+literal|"application/x-staroffice-template"
 argument_list|,
 name|tika
 operator|.
