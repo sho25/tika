@@ -7631,7 +7631,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image/bmp"
+literal|"image/x-ms-bmp"
 argument_list|,
 name|tika
 operator|.
