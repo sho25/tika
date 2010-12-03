@@ -301,6 +301,13 @@ argument_list|(
 name|mch
 argument_list|)
 expr_stmt|;
+name|parser
+operator|.
+name|setContentDecoding
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|parser
