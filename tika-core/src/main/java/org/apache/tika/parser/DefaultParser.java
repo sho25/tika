@@ -91,6 +91,15 @@ name|serialVersionUID
 init|=
 literal|3612324825403757520L
 decl_stmt|;
+comment|/**      * The default context class loader to use for all threads, or      *<code>null</code> to automatically select the context class loader.      */
+specifier|private
+specifier|static
+specifier|volatile
+name|ClassLoader
+name|contextClassLoader
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * Returns the context class loader of the current thread. If such      * a class loader is not available, then the loader of this class or      * finally the system class loader is returned.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-441">TIKA-441</a>      * @return context class loader, or<code>null</code> if no loader      *         is available      */
 specifier|private
 specifier|static
@@ -101,6 +110,17 @@ block|{
 name|ClassLoader
 name|loader
 init|=
+name|contextClassLoader
+decl_stmt|;
+if|if
+condition|(
+name|loader
+operator|==
+literal|null
+condition|)
+block|{
+name|loader
+operator|=
 name|Thread
 operator|.
 name|currentThread
@@ -108,7 +128,8 @@ argument_list|()
 operator|.
 name|getContextClassLoader
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|loader
@@ -144,6 +165,21 @@ block|}
 return|return
 name|loader
 return|;
+block|}
+comment|/**      * Sets the context class loader to use for all threads that access      * this class. Used for example in an OSGi environment to avoid problems      * with the default context class loader.      *      * @since Apache Tika 0.9      * @param loader default context class loader,      *               or<code>null</code> to automatically pick the loader      */
+specifier|public
+specifier|static
+name|void
+name|setContextClassLoader
+parameter_list|(
+name|ClassLoader
+name|loader
+parameter_list|)
+block|{
+name|contextClassLoader
+operator|=
+name|loader
+expr_stmt|;
 block|}
 comment|/**      * Returns all the parsers available through the given class loader.      *      * @param loader class loader       * @return available parsers      */
 specifier|private
