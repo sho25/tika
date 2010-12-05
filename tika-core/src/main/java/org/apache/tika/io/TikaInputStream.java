@@ -206,7 +206,7 @@ operator|instanceof
 name|TikaInputStream
 return|;
 block|}
-comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * The given temporary file provider is used for any temporary files,      * and should be disposed when the returned stream is no longer used.      *<p>      * Use this method instead of the {@link #get(InputStream)} alternative      * when you<em>don't</em> explicitly close the returned stream. The      * recommended access pattern is:      *<pre>      * TemporaryFiles tmp = new TemporaryFiles();      * try {      *     TikaInputStream stream = TikaInputStream.get(..., tmp);      *     // process stream but don't close it      * } finally {      *     tmp.dispose();      * }      *</pre>      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -214,6 +214,9 @@ name|get
 parameter_list|(
 name|InputStream
 name|stream
+parameter_list|,
+name|TemporaryFiles
+name|tmp
 parameter_list|)
 block|{
 if|if
@@ -230,44 +233,15 @@ operator|)
 name|stream
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|stream
-operator|instanceof
-name|ByteArrayInputStream
-operator|||
-name|stream
-operator|instanceof
-name|BufferedInputStream
-condition|)
-block|{
-return|return
-operator|new
-name|TikaInputStream
-argument_list|(
-name|stream
-argument_list|,
-literal|null
-argument_list|,
-operator|-
-literal|1
-argument_list|)
-return|;
-block|}
 else|else
 block|{
 return|return
 operator|new
 name|TikaInputStream
 argument_list|(
-operator|new
-name|BufferedInputStream
-argument_list|(
 name|stream
-argument_list|)
 argument_list|,
-literal|null
+name|tmp
 argument_list|,
 operator|-
 literal|1
@@ -275,7 +249,28 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Creates a TikaInputStream from the given array of bytes.      *      * @param data input data      * @return a TikaInputStream instance      * @throws IOException      */
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * Use this method instead of the {@link #get(InputStream, TemporaryFiles)}      * alternative when you<em>do</em> explicitly close the returned stream.      * The recommended access pattern is:      *<pre>      * TikaInputStream stream = TikaInputStream.get(...);      * try {      *     // process stream      * } finally {      *     stream.close();      * }      *</pre>      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
+specifier|public
+specifier|static
+name|TikaInputStream
+name|get
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+block|{
+return|return
+name|get
+argument_list|(
+name|stream
+argument_list|,
+operator|new
+name|TemporaryFiles
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates a TikaInputStream from the given array of bytes.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the given data to a temporary file.      *      * @param data input data      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -297,7 +292,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given array of bytes. The length of      * the array is stored as input metadata in the given metadata instance.      *      * @param data input data      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException      */
+comment|/**      * Creates a TikaInputStream from the given array of bytes. The length of      * the array is stored as input metadata in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the given data to a temporary file.      *      * @param data input data      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -339,7 +334,9 @@ argument_list|(
 name|data
 argument_list|)
 argument_list|,
-literal|null
+operator|new
+name|TemporaryFiles
+argument_list|()
 argument_list|,
 name|data
 operator|.
@@ -347,7 +344,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given file.      *      * @param file input file      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      */
+comment|/**      * Creates a TikaInputStream from the given file.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -370,7 +367,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given file. The file name and      * length are stored as input metadata in the given metadata instance.      *      * @param file input file      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      */
+comment|/**      * Creates a TikaInputStream from the given file. The file name and      * length are stored as input metadata in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -422,26 +419,11 @@ return|return
 operator|new
 name|TikaInputStream
 argument_list|(
-operator|new
-name|BufferedInputStream
-argument_list|(
-operator|new
-name|FileInputStream
-argument_list|(
 name|file
-argument_list|)
-argument_list|)
-argument_list|,
-name|file
-argument_list|,
-name|file
-operator|.
-name|length
-argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given database BLOB.      *<p>      * Note that the result set containing the BLOB may need to be kept open      * until the returned TikaInputStream has been processed and closed.      *      * @param blob database BLOB      * @return a TikaInputStream instance      * @throws SQLException if BLOB data can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the given database BLOB.      *<p>      * Note that the result set containing the BLOB may need to be kept open      * until the returned TikaInputStream has been processed and closed.      * You must also always explicitly close the returned stream as in      * some cases it may end up writing the blob data to a temporary file.      *      * @param blob database BLOB      * @return a TikaInputStream instance      * @throws SQLException if BLOB data can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -475,7 +457,7 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
-comment|/**      * Creates a TikaInputStream from the given database BLOB. The BLOB      * length (if available) is stored as input metadata in the given      * metadata instance.      *<p>      * Note that the result set containing the BLOB may need to be kept open      * until the returned TikaInputStream has been processed and closed.      *      * @param blob database BLOB      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws SQLException if BLOB data can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the given database BLOB. The BLOB      * length (if available) is stored as input metadata in the given      * metadata instance.      *<p>      * Note that the result set containing the BLOB may need to be kept open      * until the returned TikaInputStream has been processed and closed.      * You must also always explicitly close the returned stream as in      * some cases it may end up writing the blob data to a temporary file.      *      * @param blob database BLOB      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws SQLException if BLOB data can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -583,7 +565,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Creates a TikaInputStream from the resource at the given URI.      *      * @param uri resource URI      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the resource at the given URI.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the resource to a temporary file.      *      * @param uri resource URI      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -606,7 +588,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the resource at the given URI. The      * available input metadata is stored in the given metadata instance.      *      * @param uri resource URI      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the resource at the given URI. The      * available input metadata is stored in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the resource to a temporary file.      *      * @param uri resource URI      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -674,7 +656,7 @@ name|metadata
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the resource at the given URL.      *      * @param url resource URL      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the resource at the given URL.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the resource to a temporary file.      *      * @param url resource URL      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -697,7 +679,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the resource at the given URL. The      * available input metadata is stored in the given metadata instance.      *      * @param url resource URL      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
+comment|/**      * Creates a TikaInputStream from the resource at the given URL. The      * available input metadata is stored in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the resource to a temporary file.      *      * @param url resource URL      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws IOException if the resource can not be accessed      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -924,21 +906,68 @@ name|getInputStream
 argument_list|()
 argument_list|)
 argument_list|,
-literal|null
+operator|new
+name|TemporaryFiles
+argument_list|()
 argument_list|,
 name|length
 argument_list|)
 return|;
+block|}
+comment|/**      * Makes sure that a stream is buffered and correctly supports the      * mark feature by wrapping the given stream to a      * {@link BufferedInputStream} if needed.      *      * @param stream original stream      * @return buffered stream that supports the mark feature      */
+specifier|private
+specifier|static
+name|InputStream
+name|withBufferingAndMarkSupport
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+block|{
+if|if
+condition|(
+name|stream
+operator|instanceof
+name|ByteArrayInputStream
+condition|)
+block|{
+return|return
+name|stream
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|stream
+operator|instanceof
+name|BufferedInputStream
+condition|)
+block|{
+return|return
+name|stream
+return|;
+block|}
+else|else
+block|{
+return|return
+operator|new
+name|BufferedInputStream
+argument_list|(
+name|stream
+argument_list|)
+return|;
+block|}
 block|}
 comment|/**      * The file that contains the contents of this stream. This is either      * the original file passed to the {@link #TikaInputStream(File)}      * constructor or a temporary file created by a call to the      * {@link #getFile()} method. If neither has been called, then      * the value is<code>null</code>.      */
 specifier|private
 name|File
 name|file
 decl_stmt|;
-comment|/**      * Flag to indicate that {@link #file} is a temporary file that should      * be removed when this stream is {@link #close() closed}.      */
+comment|/**      * Temporary file provider.      */
 specifier|private
-name|boolean
-name|temporary
+specifier|final
+name|TemporaryFiles
+name|tmp
 decl_stmt|;
 comment|/**      * Total length of the stream, or -1 if unknown.      */
 specifier|private
@@ -965,23 +994,27 @@ specifier|private
 name|Object
 name|openContainer
 decl_stmt|;
-comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param stream<em>buffered</em> stream (must support the mark feature)      * @param file the file that contains the stream, or<code>null</code>      * @param length total length of the stream, or -1 if unknown      */
+comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param file the file that contains the stream      * @throws FileNotFoundException if the file does not exist      */
 specifier|private
 name|TikaInputStream
 parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
 name|File
 name|file
-parameter_list|,
-name|long
-name|length
 parameter_list|)
+throws|throws
+name|FileNotFoundException
 block|{
 name|super
 argument_list|(
-name|stream
+operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
+name|FileInputStream
+argument_list|(
+name|file
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -992,13 +1025,55 @@ name|file
 expr_stmt|;
 name|this
 operator|.
-name|temporary
+name|tmp
 operator|=
-operator|(
+operator|new
+name|TemporaryFiles
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|length
+operator|=
 name|file
-operator|==
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param stream<em>buffered</em> stream (must support the mark feature)      * @param length total length of the stream, or -1 if unknown      */
+specifier|private
+name|TikaInputStream
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|,
+name|TemporaryFiles
+name|tmp
+parameter_list|,
+name|long
+name|length
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|withBufferingAndMarkSupport
+argument_list|(
+name|stream
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|file
+operator|=
 literal|null
-operator|)
+expr_stmt|;
+name|this
+operator|.
+name|tmp
+operator|=
+name|tmp
 expr_stmt|;
 name|this
 operator|.
@@ -1176,14 +1251,10 @@ else|else
 block|{
 name|file
 operator|=
-name|File
+name|tmp
 operator|.
-name|createTempFile
-argument_list|(
-literal|"apache-tika-"
-argument_list|,
-literal|".tmp"
-argument_list|)
+name|createTemporaryFile
+argument_list|()
 expr_stmt|;
 name|OutputStream
 name|out
@@ -1293,10 +1364,6 @@ condition|(
 name|in
 operator|==
 literal|null
-operator|&&
-name|file
-operator|==
-literal|null
 condition|)
 block|{
 return|return
@@ -1328,10 +1395,6 @@ block|{
 if|if
 condition|(
 name|in
-operator|==
-literal|null
-operator|&&
-name|file
 operator|==
 literal|null
 condition|)
@@ -1375,10 +1438,6 @@ condition|(
 name|in
 operator|==
 literal|null
-operator|&&
-name|file
-operator|==
-literal|null
 condition|)
 block|{
 return|return
@@ -1418,10 +1477,6 @@ block|{
 if|if
 condition|(
 name|in
-operator|==
-literal|null
-operator|&&
-name|file
 operator|==
 literal|null
 condition|)
@@ -1541,18 +1596,6 @@ name|IOException
 block|{
 if|if
 condition|(
-name|openContainer
-operator|!=
-literal|null
-condition|)
-block|{
-name|openContainer
-operator|=
-literal|null
-expr_stmt|;
-block|}
-if|if
-condition|(
 name|in
 operator|!=
 literal|null
@@ -1568,29 +1611,19 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|file
-operator|!=
+name|openContainer
+operator|=
 literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|temporary
-condition|)
-block|{
-name|file
-operator|.
-name|delete
-argument_list|()
 expr_stmt|;
-block|}
 name|file
 operator|=
 literal|null
 expr_stmt|;
-block|}
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1611,24 +1644,6 @@ operator|==
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|file
-operator|!=
-literal|null
-condition|)
-block|{
-name|in
-operator|=
-operator|new
-name|FileInputStream
-argument_list|(
-name|file
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
 throw|throw
 operator|new
 name|IOException
@@ -1636,7 +1651,6 @@ argument_list|(
 literal|"End of the stream reached"
 argument_list|)
 throw|;
-block|}
 block|}
 block|}
 annotation|@
