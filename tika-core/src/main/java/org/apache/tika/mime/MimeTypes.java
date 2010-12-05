@@ -173,13 +173,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|org
 operator|.
-name|xml
+name|apache
 operator|.
-name|parsers
+name|tika
 operator|.
-name|ParserConfigurationException
+name|Tika
 import|;
 end_import
 
@@ -222,18 +222,6 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|SAXException
 import|;
 end_import
 
@@ -493,7 +481,7 @@ name|xmlMimeType
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Find the Mime Content Type of a file.      *      * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
+comment|/**      * Find the Mime Content Type of a file.      *      * @deprecated Use the {@link Tika#detect(File)} method      * @param file      *            to analyze.      * @return the Mime Content Type of the specified file, or<code>null</code>      *         if none is found.      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -512,7 +500,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its URL.      *      * @param url      *            of the document to analyze.      * @return the Mime Content Type of the specified document URL, or      *<code>null</code> if none is found.      */
+comment|/**      * Find the Mime Content Type of a document from its URL.      *      * @deprecated Use the {@link Tika#detect(URL)} method      * @param url      *            of the document to analyze.      * @return the Mime Content Type of the specified document URL, or      *<code>null</code> if none is found.      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -531,7 +519,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *      * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
+comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *      * @deprecated Use the {@link Tika#detect(String)} method      * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -595,7 +583,7 @@ name|rootMimeType
 return|;
 block|}
 block|}
-comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns application/octet-stream if no better      * match is found.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type      */
+comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns application/octet-stream if no better      * match is found.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @deprecated Use the {@link Tika#detect(byte[])} method      * @param data first few bytes of a document stream      * @return matching MIME type      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -837,7 +825,7 @@ return|return
 name|textMimeType
 return|;
 block|}
-comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *      * @see #getMimeType(byte[])      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can be read      */
+comment|/**      * Returns the MIME type that best matches the first few bytes of the      * given document stream.      *      * @deprecated Use the {@link Tika#detect(InputStream)} method      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can be read      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -983,6 +971,7 @@ return|return
 name|shorter
 return|;
 block|}
+comment|/**      * @deprecated Use the {@link Tika#detect(InputStream, Metadata))} method      */
 specifier|public
 name|String
 name|getType
@@ -1078,7 +1067,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines the MIME type of the resource pointed to by the specified URL.      * Examines the file's header, and if it cannot determine the MIME type      * from the header, guesses the MIME type from the URL extension      * (e.g. "pdf).      *      * @param url URL of the document      * @return type of the document      * @throws IOException if the document can not be accessed      */
+comment|/**      * Determines the MIME type of the resource pointed to by the specified URL.      * Examines the file's header, and if it cannot determine the MIME type      * from the header, guesses the MIME type from the URL extension      * (e.g. "pdf).      *      * @deprecated Use the {@link Tika#detect(URL)} method      * @param url URL of the document      * @return type of the document      * @throws IOException if the document can not be accessed      */
 specifier|public
 name|String
 name|getType
@@ -1141,7 +1130,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name and its content.      * The policy used to guess the Mime Content Type is:      *<ol>      *<li>Try to find the type based on the provided data.</li>      *<li>If a type is found, then return it, otherwise try to find the type      * based on the file name</li>      *</ol>      *      * @param name      *            of the document to analyze.      * @param data      *            are the first bytes of the document's content.      * @return the Mime Content Type of the specified document, or      *<code>null</code> if none is found.      * @see #getMinLength()      */
+comment|/**      * Find the Mime Content Type of a document from its name and its content.      * The policy used to guess the Mime Content Type is:      *<ol>      *<li>Try to find the type based on the provided data.</li>      *<li>If a type is found, then return it, otherwise try to find the type      * based on the file name</li>      *</ol>      *      *      * @deprecated Use the {@link Tika#detect(byte[], String)} method      * @param name      *            of the document to analyze.      * @param data      *            are the first bytes of the document's content.      * @return the Mime Content Type of the specified document, or      *<code>null</code> if none is found.      * @see #getMinLength()      */
 specifier|public
 name|MimeType
 name|getMimeType
@@ -1156,35 +1145,53 @@ parameter_list|)
 block|{
 comment|// First, try to get the mime-type from the content
 name|MimeType
-name|mimeType
+name|dataType
 init|=
 name|getMimeType
 argument_list|(
 name|data
 argument_list|)
 decl_stmt|;
-comment|// If no mime-type found, then try to get the mime-type from
-comment|// the document name
-if|if
-condition|(
-name|mimeType
-operator|==
-literal|null
-condition|)
-block|{
-name|mimeType
-operator|=
+comment|// Then, try to get the mime-type from the document name
+name|MimeType
+name|nameType
+init|=
 name|getMimeType
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
+comment|// Use the more specific of the two types
+if|if
+condition|(
+name|registry
+operator|.
+name|isSpecializationOf
+argument_list|(
+name|nameType
+operator|.
+name|getType
+argument_list|()
+argument_list|,
+name|dataType
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+condition|)
+block|{
 return|return
-name|mimeType
+name|nameType
 return|;
 block|}
-comment|/**      * Returns the MIME type that best matches the given document name and      * the first few bytes of the given document stream.      *      * @see #getMimeType(String, byte[])      * @param name document name      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can not be read      */
+else|else
+block|{
+return|return
+name|dataType
+return|;
+block|}
+block|}
+comment|/**      * Returns the MIME type that best matches the given document name and      * the first few bytes of the given document stream.      *      * @deprecated Use the {@link Tika#detect(InputStream,String)} method      * @see #getMimeType(String, byte[])      * @param name document name      * @param stream document stream      * @return matching MIME type, or<code>null</code> if no match is found      * @throws IOException if the stream can not be read      */
 specifier|public
 name|MimeType
 name|getMimeType
