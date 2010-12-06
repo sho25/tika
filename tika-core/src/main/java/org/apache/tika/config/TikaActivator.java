@@ -19,20 +19,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|DefaultParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|osgi
 operator|.
 name|framework
@@ -54,7 +40,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Bundle activator that adjust the class loading mechanism of the  * {@link DefaultParser} class to work correctly in an OSGi environment.  *<p>  * Note that you should<strong>not</strong> access this class directly.  * Instead the OSGi environment (if present) will automatically invoke the  * methods of this class based on the Bundle-Activator setting in the bundle  * manifest.  *  * @since Apache Tika 0.9  */
+comment|/**  * Bundle activator that adjust the class loading mechanism of the  * {@link ServiceLoader} class to work correctly in an OSGi environment.  *<p>  * Note that you should<strong>not</strong> access this class directly.  * Instead the OSGi environment (if present) will automatically invoke the  * methods of this class based on the Bundle-Activator setting in the bundle  * manifest.  *  * @since Apache Tika 0.9  */
 end_comment
 
 begin_class
@@ -74,7 +60,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|DefaultParser
+name|ServiceLoader
 operator|.
 name|setContextClassLoader
 argument_list|(
@@ -97,7 +83,7 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|DefaultParser
+name|ServiceLoader
 operator|.
 name|setContextClassLoader
 argument_list|(
