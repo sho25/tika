@@ -402,15 +402,6 @@ name|pdfDocument
 operator|.
 name|isEncrypted
 argument_list|()
-operator|&&
-operator|!
-name|pdfDocument
-operator|.
-name|getCurrentAccessPermission
-argument_list|()
-operator|.
-name|canExtractContent
-argument_list|()
 condition|)
 block|{
 try|try
