@@ -940,6 +940,14 @@ argument_list|,
 literal|"x.DIB"
 argument_list|)
 expr_stmt|;
+comment|//false positive check -- contains part of BMP signature
+name|assertType
+argument_list|(
+literal|"text/plain"
+argument_list|,
+literal|"testBMPfp.txt"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
