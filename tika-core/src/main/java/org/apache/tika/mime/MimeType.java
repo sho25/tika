@@ -282,6 +282,13 @@ name|minLength
 init|=
 literal|0
 decl_stmt|;
+comment|/** Preferred extension with starting dot or empty string */
+specifier|private
+name|String
+name|extension
+init|=
+literal|""
+decl_stmt|;
 comment|/**      * Creates a media type with the give name and containing media type      * registry. The name is expected to be valid and normalized to lower      * case. This constructor should only be called by      * {@link MimeTypes#forName(String)} to keep the media type registry      * up to date.      *      * @param type normalized media type name      */
 name|MimeType
 parameter_list|(
@@ -914,6 +921,30 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+comment|/**      * Get preferred extension      *      * @return extension (with starting dot) or empty string      */
+specifier|public
+name|String
+name|getExtension
+parameter_list|()
+block|{
+return|return
+name|extension
+return|;
+block|}
+name|void
+name|setExtension
+parameter_list|(
+name|String
+name|extension
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extension
+operator|=
+name|extension
+expr_stmt|;
 block|}
 block|}
 end_class
