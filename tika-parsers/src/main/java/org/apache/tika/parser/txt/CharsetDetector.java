@@ -1550,6 +1550,17 @@ name|CharsetRecog_IBM420_ar_ltr
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|recognizers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|CharsetRecog_sbcs
+operator|.
+name|CharsetRecog_IBM866_ru
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Create an array of all charset names, as a side effect.
 comment|// Needed for the getAllDetectableCharsets() API.
 name|String
