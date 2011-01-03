@@ -356,10 +356,8 @@ decl_stmt|;
 try|try
 block|{
 name|String
-name|path
+name|name
 init|=
-literal|"META-INF/services/"
-operator|+
 name|service
 operator|.
 name|getName
@@ -375,7 +373,9 @@ name|loader
 operator|.
 name|getResources
 argument_list|(
-name|path
+literal|"META-INF/services/"
+operator|+
+name|name
 argument_list|)
 decl_stmt|;
 for|for
@@ -414,10 +414,7 @@ name|handler
 operator|.
 name|handleLoadError
 argument_list|(
-name|service
-operator|.
-name|getName
-argument_list|()
+name|name
 argument_list|,
 name|e
 argument_list|)

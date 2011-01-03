@@ -39,11 +39,16 @@ name|Logger
 import|;
 end_import
 
+begin_comment
+comment|/**  * Interface for error handling strategies in service class loading.  * You can implement this interface for a custom error handling mechanism,  * or use one of the predefined strategies.  *  * @since Apache Tika 0.9  */
+end_comment
+
 begin_interface
 specifier|public
 interface|interface
 name|LoadErrorHandler
 block|{
+comment|/**      * Handles a problem encountered when trying to load the specified      * service class. The implementation can log or otherwise process      * the given error information. If the method returns normally, then      * the service loader simply skips this class and continues with the      * next one.      *      * @param classname name of the service class      * @param throwable the encountered problem      */
 name|void
 name|handleLoadError
 parameter_list|(
@@ -54,6 +59,7 @@ name|Throwable
 name|throwable
 parameter_list|)
 function_decl|;
+comment|/**      * Strategy that simply ignores all problems.      */
 name|LoadErrorHandler
 name|IGNORE
 init|=
@@ -74,6 +80,7 @@ parameter_list|)
 block|{         }
 block|}
 decl_stmt|;
+comment|/**      * Strategy that logs warnings of all problems using a {@link Logger}      * created using the given class name.      */
 name|LoadErrorHandler
 name|WARN
 init|=
@@ -115,6 +122,7 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+comment|/**      * Strategy that throws a {@link RuntimeException} with the given      * throwable as the root cause, thus interrupting the entire service      * loading operation.      */
 name|LoadErrorHandler
 name|THROW
 init|=
