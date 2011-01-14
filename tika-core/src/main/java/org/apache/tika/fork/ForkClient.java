@@ -51,16 +51,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|FileOutputStream
 import|;
 end_import
@@ -329,6 +319,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Copies the<code>.class</code> file of the given class to the      * directory from where the forked server process can load it      * during startup before setting up the stdin/out communication      * channel with the parent process.      *      * @param klass the class to be copied      * @throws IOException if the class could not be copied      */
 specifier|private
 name|void
 name|copyClassToDirectory
@@ -340,8 +331,6 @@ argument_list|>
 name|klass
 parameter_list|)
 throws|throws
-name|FileNotFoundException
-throws|,
 name|IOException
 block|{
 name|String
@@ -594,7 +583,7 @@ operator|.
 name|FIND_RESOURCE
 condition|)
 block|{
-name|findResource
+name|sendResource
 argument_list|(
 name|input
 operator|.
@@ -613,7 +602,7 @@ operator|.
 name|FIND_RESOURCES
 condition|)
 block|{
-name|findResources
+name|sendResources
 argument_list|(
 name|input
 operator|.
@@ -633,9 +622,10 @@ return|;
 block|}
 block|}
 block|}
+comment|/**      * Sends the named resource to the forked server process over the      * stdin/out communication channel. The resource stream is preceded      * with a boolean<code>true</code> value if the resource was found,      * otherwise just a boolean<code>false</code> value is written.      *      * @param name resource name      * @throws IOException if the resource could not be sent      */
 specifier|private
 name|void
-name|findResource
+name|sendResource
 parameter_list|(
 name|String
 name|name
@@ -689,9 +679,10 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Sends all the named resources to the forked server process over the      * stdin/out communication channel. Each resource stream is preceded      * with a boolean<code>true</code> value, and a single boolean      *<code>false</code> value is written when no longer resources      * are available.      *      * @param name resource name      * @throws IOException if the resources could not be sent      */
 specifier|private
 name|void
-name|findResources
+name|sendResources
 parameter_list|(
 name|String
 name|name
@@ -752,6 +743,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Sends the given byte stream to the forked server process over the      * stdin/out communication channel. The stream is sent in chunks of      * less than 64kB, each preceded by a short value that indicates the      * length of the following chunk. A zero short value is sent at the      * end to signify the end of the stream.      *<p>      * The stream is guaranteed to be closed by this method, regardless of      * the way it returns.      *      * @param stream the stream to be sent      * @throws IOException if the stream could not be sent      */
 specifier|private
 name|void
 name|writeAndCloseStream

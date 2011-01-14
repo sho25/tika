@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|HashMap
@@ -77,7 +87,18 @@ begin_class
 specifier|public
 class|class
 name|MediaTypeRegistry
+implements|implements
+name|Serializable
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|4710974869988895410L
+decl_stmt|;
 comment|/**      * Returns the built-in media type registry included in Tika.      *      * @since Apache Tika 0.8      * @return default media type registry      */
 specifier|public
 specifier|static
