@@ -888,6 +888,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Recursively deletes the given file or directory.      *      * @param file file or directory      */
 specifier|private
 name|void
 name|delete

@@ -105,18 +105,24 @@ name|ObjectStreamClass
 import|;
 end_import
 
+begin_comment
+comment|/**  * Utility class for serializing and deserializing objects. Normal Java  * serialization is used, but each serialized object graph is first written  * or read into an in-memory buffer before it is written to a given byte  * stream or deserialized. This way the underlying stream can be used for  * other things like loading referenced classes while the object graph is  * still being deserialized.  */
+end_comment
+
 begin_class
 class|class
 name|ForkSerializer
 extends|extends
 name|ObjectInputStream
 block|{
+comment|/** The class loader used when deserializing objects. */
 specifier|private
 specifier|final
 name|ClassLoader
 name|loader
 decl_stmt|;
-specifier|public
+comment|/**      * Creates a new object input stream that uses the given class loader      * when deserializing objects.      *<p>      * Note that this functionality could easily be implemented as a simple      * anonymous {@link ObjectInputStream} subclass, but since the      * functionality is needed during the somewhat complicated bootstrapping      * of the stdin/out communication channel of a forked server process,      * it's better if class has a stable name that can be referenced at      * compile-time by the {@link ForkClient} class.      *      * @param input underlying input stream      * @param loader class loader used when deserializing objects      * @throws IOException if this stream could not be initiated      */
+specifier|private
 name|ForkSerializer
 parameter_list|(
 name|InputStream
@@ -140,6 +146,7 @@ operator|=
 name|loader
 expr_stmt|;
 block|}
+comment|/**      * Loads the identified class from the specified class loader.      *      * @param desc class description      * @return class loaded class      * @throws ClassNotFoundException if the class can not be found      */
 annotation|@
 name|Override
 specifier|protected
@@ -153,8 +160,6 @@ name|ObjectStreamClass
 name|desc
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
 name|ClassNotFoundException
 block|{
 return|return
@@ -173,6 +178,7 @@ name|loader
 argument_list|)
 return|;
 block|}
+comment|/**      * Serializes the object first into an in-memory buffer and then      * writes it to the output stream with a preceding size integer.      *      * @param output output stream to which the serialized object is written      * @param object object to be serialized      * @throws IOException if the object could not be serialized      */
 specifier|static
 name|void
 name|serialize
@@ -240,6 +246,7 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Deserializes an object from the given stream. The serialized object      * is expected to be preceded by a size integer, that is used for reading      * the entire serialization into a memory before deserializing it.      *      * @param input input stream from which the serialized object is read      * @param loader class loader to be used for loading referenced classes      * @throws IOException if the object could not be deserialized      * @throws ClassNotFoundException if a referenced class is not found      */
 specifier|static
 name|Object
 name|deserialize
