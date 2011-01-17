@@ -19,6 +19,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|text
 operator|.
 name|DateFormat
@@ -153,7 +163,18 @@ implements|,
 name|TikaMetadataKeys
 implements|,
 name|TikaMimeKeys
+implements|,
+name|Serializable
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|5623926545693153182L
+decl_stmt|;
 comment|/**      * A map of all metadata attributes.      */
 specifier|private
 name|Map

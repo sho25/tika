@@ -41,16 +41,18 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|Serializable
 import|;
 end_import
 
 begin_interface
 interface|interface
-name|ForkResource
+name|ForkProxy
+extends|extends
+name|Serializable
 block|{
-name|Throwable
-name|process
+name|void
+name|init
 parameter_list|(
 name|DataInputStream
 name|input
@@ -58,8 +60,6 @@ parameter_list|,
 name|DataOutputStream
 name|output
 parameter_list|)
-throws|throws
-name|IOException
 function_decl|;
 block|}
 end_interface
