@@ -202,6 +202,7 @@ name|FIND_RESOURCES
 init|=
 literal|3
 decl_stmt|;
+comment|/**      * Starts a forked server process.      *       * @param args command line arguments, ignored      * @throws Exception if the server could not be started      */
 specifier|public
 specifier|static
 name|void
@@ -229,6 +230,8 @@ operator|.
 name|out
 argument_list|)
 decl_stmt|;
+comment|// Set the server instance as the context class loader
+comment|// to make classes from the parent process available
 name|Thread
 operator|.
 name|currentThread
@@ -265,6 +268,7 @@ operator|.
 name|err
 argument_list|)
 expr_stmt|;
+comment|// Start processing request
 name|server
 operator|.
 name|run
@@ -287,6 +291,7 @@ name|count
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * Sets up a forked server instance using the given stdin/out      * communication channel.      *      * @param input input stream for reading from the parent process      * @param output output stream for writing to the parent process      * @throws IOException if the server instance could not be created      */
 specifier|public
 name|ForkServer
 parameter_list|(

@@ -152,7 +152,7 @@ name|ParseContext
 implements|implements
 name|Serializable
 block|{
-comment|/**      * Serial version UID.      */
+comment|/** Serial version UID. */
 specifier|private
 specifier|static
 specifier|final
@@ -162,14 +162,12 @@ init|=
 operator|-
 literal|5921436862145826534L
 decl_stmt|;
+comment|/** Map of objects in this context */
 specifier|private
 specifier|final
 name|Map
 argument_list|<
-name|Class
-argument_list|<
-name|?
-argument_list|>
+name|String
 argument_list|,
 name|Object
 argument_list|>
@@ -178,15 +176,13 @@ init|=
 operator|new
 name|HashMap
 argument_list|<
-name|Class
-argument_list|<
-name|?
-argument_list|>
+name|String
 argument_list|,
 name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * Adds the given value to the context as an implementation of the given      * interface.      *      * @param key the interface implemented by the given value      * @param value the value to be added, or<code>null</code> to remove      */
 specifier|public
 parameter_list|<
 name|T
@@ -204,16 +200,41 @@ name|T
 name|value
 parameter_list|)
 block|{
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+condition|)
+block|{
 name|context
 operator|.
 name|put
 argument_list|(
 name|key
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|context
+operator|.
+name|remove
+argument_list|(
+name|key
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Returns the object in this context that implements the given interface.      *      * @param key the interface implemented by the requested object      * @return the object that implements the given interface,      *         or<code>null</code> if not found      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -242,9 +263,13 @@ operator|.
 name|get
 argument_list|(
 name|key
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**      * Returns the object in this context that implements the given interface,      * or the given default value if such an object is not found.      *      * @param key the interface implemented by the requested object      * @param defaultValue value to return if the requested object is not found      * @return the object that implements the given interface,      *         or the given default value if not found      */
 specifier|public
 parameter_list|<
 name|T
