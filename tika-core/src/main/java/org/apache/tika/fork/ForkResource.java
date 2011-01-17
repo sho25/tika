@@ -46,6 +46,7 @@ import|;
 end_import
 
 begin_interface
+specifier|public
 interface|interface
 name|ForkResource
 block|{
