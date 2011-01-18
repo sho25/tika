@@ -247,11 +247,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-while|while
-condition|(
-literal|true
-condition|)
-block|{
 name|ClassLoader
 name|loader
 init|=
@@ -286,6 +281,11 @@ argument_list|(
 name|loader
 argument_list|)
 decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
 name|Method
 name|method
 init|=

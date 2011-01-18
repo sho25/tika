@@ -396,8 +396,6 @@ name|client
 operator|.
 name|call
 argument_list|(
-name|parser
-argument_list|,
 literal|"parse"
 argument_list|,
 name|stream
@@ -512,6 +510,8 @@ operator|new
 name|ForkClient
 argument_list|(
 name|loader
+argument_list|,
+name|parser
 argument_list|)
 expr_stmt|;
 block|}
