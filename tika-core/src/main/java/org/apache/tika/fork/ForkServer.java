@@ -435,6 +435,17 @@ if|if
 condition|(
 name|request
 operator|==
+operator|-
+literal|1
+condition|)
+block|{
+break|break;
+block|}
+elseif|else
+if|if
+condition|(
+name|request
+operator|==
 name|CALL
 condition|)
 block|{
@@ -503,15 +514,6 @@ argument_list|,
 name|args
 argument_list|)
 expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|request
-operator|!=
-name|PING
-condition|)
-block|{                                      }
 name|output
 operator|.
 name|write
@@ -524,6 +526,17 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"Unexpected request"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 catch|catch
