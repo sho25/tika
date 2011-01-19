@@ -191,6 +191,14 @@ decl_stmt|;
 comment|// TODO: Make configurable
 specifier|private
 specifier|final
+name|String
+name|mx
+init|=
+literal|"-Xmx32m"
+decl_stmt|;
+comment|// TODO: Make configurable
+specifier|private
+specifier|final
 name|List
 argument_list|<
 name|ForkResource
@@ -267,6 +275,8 @@ operator|.
 name|command
 argument_list|(
 name|java
+argument_list|,
+name|mx
 argument_list|,
 literal|"-jar"
 argument_list|,
@@ -683,7 +693,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// jar.delete();
+name|jar
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|private
