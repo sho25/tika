@@ -250,6 +250,8 @@ name|getData
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|String
 name|mediaType
 init|=
@@ -294,6 +296,15 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
