@@ -289,9 +289,9 @@ name|TYPE_EMF
 init|=
 name|MediaType
 operator|.
-name|image
+name|application
 argument_list|(
-literal|"x-emf"
+literal|"x-msmetafile"
 argument_list|)
 decl_stmt|;
 specifier|protected
