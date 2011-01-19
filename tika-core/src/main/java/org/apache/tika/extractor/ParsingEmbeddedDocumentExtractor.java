@@ -109,6 +109,20 @@ name|tika
 operator|.
 name|io
 operator|.
+name|TemporaryFiles
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -517,6 +531,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Use the delegate parser to parse this entry
+name|TemporaryFiles
+name|tmp
+init|=
+operator|new
+name|TemporaryFiles
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|DELEGATING_PARSER
@@ -532,6 +553,8 @@ name|CloseShieldInputStream
 argument_list|(
 name|stream
 argument_list|)
+argument_list|,
+name|tmp
 argument_list|)
 argument_list|,
 operator|new
@@ -557,6 +580,14 @@ name|e
 parameter_list|)
 block|{
 comment|// Could not parse the entry, just skip the content
+block|}
+finally|finally
+block|{
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 if|if
 condition|(
