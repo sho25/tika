@@ -111,8 +111,8 @@ operator|new
 name|String
 index|[]
 block|{
-comment|// TODO - currently Estonian and Greek fail these tests. Reeable
-comment|// when language detection works better.
+comment|// TODO - currently Estonian, Greek and Lithuanian fail these tests.
+comment|// Enable when language detection works better.
 literal|"da"
 block|,
 literal|"de"
@@ -128,6 +128,7 @@ literal|"fr"
 block|,
 literal|"it"
 block|,
+comment|/* "lt", */
 literal|"nl"
 block|,
 literal|"pt"
@@ -191,6 +192,16 @@ name|getProfile
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+name|language
+argument_list|,
+name|identifier
+operator|.
+name|getLanguage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|identifier
@@ -201,16 +212,6 @@ argument_list|,
 name|identifier
 operator|.
 name|isReasonablyCertain
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|language
-argument_list|,
-name|identifier
-operator|.
-name|getLanguage
 argument_list|()
 argument_list|)
 expr_stmt|;
