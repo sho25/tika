@@ -359,6 +359,17 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Sometimes tagsoup returns double end tags, so the stack might
+comment|// be empty! TODO: Remove this when the tagsoup problem is fixed.
+if|if
+condition|(
+operator|!
+name|matchers
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
 name|matcher
 operator|=
 name|matchers
@@ -366,6 +377,7 @@ operator|.
 name|removeFirst
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|public
 name|void
