@@ -182,6 +182,14 @@ init|=
 literal|"languages"
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|double
+name|CERTAINTY_LIMIT
+init|=
+literal|0.022
+decl_stmt|;
+specifier|private
 specifier|final
 name|String
 name|language
@@ -371,7 +379,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Adds a single language profile      * @param language an ISO 639 code representing language      * @param profile      */
+comment|/**      * Adds a single language profile      * @param language an ISO 639 code representing language      * @param profile the language profile      */
 specifier|public
 specifier|static
 name|void
@@ -394,7 +402,7 @@ name|profile
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Constructs a language identifier based on a LanguageProfile      * @param profile      */
+comment|/**      * Constructs a language identifier based on a LanguageProfile      * @param profile the language profile      */
 specifier|public
 name|LanguageIdentifier
 parameter_list|(
@@ -476,7 +484,7 @@ operator|=
 name|minDistance
 expr_stmt|;
 block|}
-comment|/**      * Constructs a language identifier based on a String of text content      * @param content      */
+comment|/**      * Constructs a language identifier based on a String of text content      * @param content the text      */
 specifier|public
 name|LanguageIdentifier
 parameter_list|(
@@ -504,7 +512,7 @@ return|return
 name|language
 return|;
 block|}
-comment|/**      * Tries to judge whether the identification is certain enough      * to be trusted.      * WARNING: Will never return true for small amount of input texts.       * @return      */
+comment|/**      * Tries to judge whether the identification is certain enough      * to be trusted.      * WARNING: Will never return true for small amount of input texts.       * @return<code>true</code> if the distance is smaller then {@value #CERTAINTY_LIMIT},<code>false</code> otherwise      */
 specifier|public
 name|boolean
 name|isReasonablyCertain
@@ -513,7 +521,7 @@ block|{
 return|return
 name|distance
 operator|<
-literal|0.022
+name|CERTAINTY_LIMIT
 return|;
 block|}
 comment|/**      * Builds the language profiles.      * The list of languages are fetched from a property file named "tika.language.properties"      * If a file called "tika.language.override.properties" is found on classpath, this is used instead      * The property file contains a key "languages" with values being comma-separated language codes      */
@@ -550,6 +558,7 @@ name|stream
 operator|==
 literal|null
 condition|)
+block|{
 name|stream
 operator|=
 name|LanguageIdentifier
@@ -561,6 +570,7 @@ argument_list|(
 name|PROPERTIES_FILE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|stream
@@ -684,7 +694,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Initializes the language profiles from a user supplied initilized Map      * This overrides the default set of profiles initialized at startup,      * and provides an alternative to configuring profiles through property file      */
+comment|/**      * Initializes the language profiles from a user supplied initialized Map.      * This overrides the default set of profiles initialized at startup,      * and provides an alternative to configuring profiles through property file      *      * @param profilesMap map of language profiles      */
 specifier|public
 specifier|static
 name|void
@@ -761,7 +771,7 @@ operator|!=
 literal|""
 return|;
 block|}
-comment|/**      * Returns a string of error messages related to initializing langauge profiles      * @return      */
+comment|/**      * Returns a string of error messages related to initializing langauge profiles      * @return the String containing the error messages      */
 specifier|public
 specifier|static
 name|String

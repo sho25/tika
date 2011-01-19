@@ -212,6 +212,9 @@ operator|.
 name|asList
 argument_list|(
 name|choices
+operator|.
+name|clone
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

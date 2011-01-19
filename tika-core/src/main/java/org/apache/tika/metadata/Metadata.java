@@ -609,9 +609,11 @@ name|PropertyType
 operator|.
 name|SIMPLE
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|property
@@ -625,9 +627,11 @@ name|ValueType
 operator|.
 name|INTEGER
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|v
 init|=
@@ -650,8 +654,9 @@ block|}
 try|try
 block|{
 return|return
-operator|new
 name|Integer
+operator|.
+name|valueOf
 argument_list|(
 name|v
 argument_list|)
@@ -690,9 +695,11 @@ name|PropertyType
 operator|.
 name|SIMPLE
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|property
@@ -706,9 +713,11 @@ name|ValueType
 operator|.
 name|DATE
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|v
 init|=
@@ -1035,6 +1044,7 @@ name|PropertyType
 operator|.
 name|SIMPLE
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1051,6 +1061,7 @@ name|getPropertyType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|property
@@ -1064,6 +1075,7 @@ name|ValueType
 operator|.
 name|INTEGER
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1080,6 +1092,7 @@ name|getValueType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|set
 argument_list|(
 name|property
@@ -1121,6 +1134,7 @@ name|PropertyType
 operator|.
 name|SIMPLE
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1137,6 +1151,7 @@ name|getPropertyType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|property
@@ -1161,6 +1176,7 @@ name|ValueType
 operator|.
 name|RATIONAL
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1177,6 +1193,7 @@ name|getValueType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|set
 argument_list|(
 name|property
@@ -1193,7 +1210,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the date value of the identified metadata property.      *      * @since Apache Tika 0.8      * @param property simple integer property definition      * @param value    property value      */
+comment|/**      * Sets the date value of the identified metadata property.      *      * @since Apache Tika 0.8      * @param property simple integer property definition      * @param date     property value      */
 specifier|public
 name|void
 name|set
@@ -1218,6 +1235,7 @@ name|PropertyType
 operator|.
 name|SIMPLE
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1234,6 +1252,7 @@ name|getPropertyType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|property
@@ -1247,6 +1266,7 @@ name|ValueType
 operator|.
 name|DATE
 condition|)
+block|{
 throw|throw
 operator|new
 name|PropertyTypeException
@@ -1263,6 +1283,7 @@ name|getValueType
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|set
 argument_list|(
 name|property

@@ -454,14 +454,6 @@ argument_list|)
 throw|;
 block|}
 name|String
-name|feedLink
-init|=
-name|feed
-operator|.
-name|getLink
-argument_list|()
-decl_stmt|;
-name|String
 name|feedDesc
 init|=
 name|stripTags
