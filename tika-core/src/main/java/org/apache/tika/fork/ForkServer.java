@@ -649,7 +649,7 @@ name|ObjectInputStream
 name|deserializer
 init|=
 operator|new
-name|ForkSerializer
+name|ForkObjectInputStream
 argument_list|(
 operator|new
 name|ByteArrayInputStream

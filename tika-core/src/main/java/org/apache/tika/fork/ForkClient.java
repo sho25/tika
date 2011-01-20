@@ -994,7 +994,7 @@ name|ForkServer
 operator|.
 name|class
 block|,
-name|ForkSerializer
+name|ForkObjectInputStream
 operator|.
 name|class
 block|,

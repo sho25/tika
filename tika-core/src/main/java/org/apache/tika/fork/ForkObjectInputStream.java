@@ -56,12 +56,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class for serializing and deserializing objects. Normal Java  * serialization is used, but each serialized object graph is first written  * or read into an in-memory buffer before it is written to a given byte  * stream or deserialized. This way the underlying stream can be used for  * other things like loading referenced classes while the object graph is  * still being deserialized.  */
+comment|/**  * An object input stream that uses a given class loader when deserializing  * objects.  *<p>  * Note that this functionality could easily be implemented as a simple  * anonymous {@link ObjectInputStream} subclass, but since the  * functionality is needed during the somewhat complicated bootstrapping  * of the stdin/out communication channel of a forked server process,  * it's better if class has a stable name that can be referenced at  * compile-time by the {@link ForkClient} class.  */
 end_comment
 
 begin_class
 class|class
-name|ForkSerializer
+name|ForkObjectInputStream
 extends|extends
 name|ObjectInputStream
 block|{
@@ -71,9 +71,9 @@ specifier|final
 name|ClassLoader
 name|loader
 decl_stmt|;
-comment|/**      * Creates a new object input stream that uses the given class loader      * when deserializing objects.      *<p>      * Note that this functionality could easily be implemented as a simple      * anonymous {@link ObjectInputStream} subclass, but since the      * functionality is needed during the somewhat complicated bootstrapping      * of the stdin/out communication channel of a forked server process,      * it's better if class has a stable name that can be referenced at      * compile-time by the {@link ForkClient} class.      *      * @param input underlying input stream      * @param loader class loader used when deserializing objects      * @throws IOException if this stream could not be initiated      */
+comment|/**      * Creates a new object input stream that uses the given class loader      * when deserializing objects.      *      * @param input underlying input stream      * @param loader class loader used when deserializing objects      * @throws IOException if this stream could not be initiated      */
 specifier|public
-name|ForkSerializer
+name|ForkObjectInputStream
 parameter_list|(
 name|InputStream
 name|input
