@@ -576,6 +576,13 @@ argument_list|(
 literal|"dl"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|from
+operator|!=
+literal|null
+condition|)
+block|{
 name|header
 argument_list|(
 name|xhtml
@@ -585,6 +592,7 @@ argument_list|,
 name|from
 argument_list|)
 expr_stmt|;
+block|}
 name|header
 argument_list|(
 name|xhtml
