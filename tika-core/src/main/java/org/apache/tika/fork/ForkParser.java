@@ -379,6 +379,14 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|Throwable
+name|t
+decl_stmt|;
+name|boolean
+name|alive
+init|=
+literal|false
+decl_stmt|;
 name|ForkClient
 name|client
 init|=
@@ -387,9 +395,8 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|Throwable
 name|t
-init|=
+operator|=
 name|client
 operator|.
 name|call
@@ -404,7 +411,44 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+name|alive
+operator|=
+literal|true
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Failed to communicate with a forked parser process."
+operator|+
+literal|" The process has most likely crashed due to some error"
+operator|+
+literal|" like running out of memory. A new process will be"
+operator|+
+literal|" started for the next parsing request."
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+finally|finally
+block|{
+name|releaseClient
+argument_list|(
+name|client
+argument_list|,
+name|alive
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|t
@@ -466,15 +510,6 @@ argument_list|,
 name|t
 argument_list|)
 throw|;
-block|}
-block|}
-finally|finally
-block|{
-name|releaseClient
-argument_list|(
-name|client
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -588,6 +623,9 @@ name|releaseClient
 parameter_list|(
 name|ForkClient
 name|client
+parameter_list|,
+name|boolean
+name|alive
 parameter_list|)
 block|{
 if|if
@@ -598,6 +636,8 @@ name|size
 argument_list|()
 operator|<
 name|poolSize
+operator|&&
+name|alive
 condition|)
 block|{
 name|pool
