@@ -597,6 +597,12 @@ condition|(
 name|client
 operator|==
 literal|null
+operator|||
+operator|!
+name|client
+operator|.
+name|ping
+argument_list|()
 condition|)
 block|{
 name|client
