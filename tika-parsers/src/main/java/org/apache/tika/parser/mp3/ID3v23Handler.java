@@ -500,7 +500,9 @@ name|int
 name|length
 parameter_list|)
 block|{
-return|return
+name|String
+name|str
+init|=
 name|ID3v2Frame
 operator|.
 name|getTagString
@@ -510,6 +512,20 @@ argument_list|,
 name|offset
 argument_list|,
 name|length
+argument_list|)
+decl_stmt|;
+comment|// Handle embedded nulls
+return|return
+name|str
+operator|.
+name|replace
+argument_list|(
+operator|(
+name|char
+operator|)
+literal|0
+argument_list|,
+literal|'\n'
 argument_list|)
 return|;
 block|}
