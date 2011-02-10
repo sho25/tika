@@ -229,11 +229,6 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-literal|"usemap"
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
 literal|"data"
 argument_list|)
 expr_stmt|;
