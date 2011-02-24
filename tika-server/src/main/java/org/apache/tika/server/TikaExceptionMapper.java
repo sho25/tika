@@ -95,8 +95,6 @@ argument_list|<
 name|TikaException
 argument_list|>
 block|{
-annotation|@
-name|Override
 specifier|public
 name|Response
 name|toResponse

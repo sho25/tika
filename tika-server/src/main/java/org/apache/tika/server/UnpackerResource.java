@@ -749,8 +749,6 @@ operator|=
 name|zout
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|boolean
 name|shouldParseEmbedded
@@ -763,8 +761,6 @@ return|return
 literal|true
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|parseEmbedded
@@ -1088,8 +1084,6 @@ index|[]
 argument_list|>
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|extract

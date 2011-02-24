@@ -424,8 +424,6 @@ name|parseContext
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|parse
@@ -455,8 +453,6 @@ name|UNSUPPORTED_MEDIA_TYPE
 argument_list|)
 throw|;
 block|}
-annotation|@
-name|Override
 specifier|public
 name|void
 name|parse
@@ -585,8 +581,6 @@ operator|new
 name|Detector
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|MediaType
 name|detect
@@ -710,8 +704,6 @@ operator|new
 name|StreamingOutput
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|write
