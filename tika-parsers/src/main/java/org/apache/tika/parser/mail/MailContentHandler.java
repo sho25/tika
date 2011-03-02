@@ -402,11 +402,19 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+operator|new
+name|TikaException
+argument_list|(
+literal|"Failed to parse email body content"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+argument_list|)
+argument_list|)
+throw|;
 block|}
 catch|catch
 parameter_list|(
@@ -414,11 +422,19 @@ name|TikaException
 name|e
 parameter_list|)
 block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+operator|new
+name|TikaException
+argument_list|(
+literal|"Failed to parse email body content"
+argument_list|,
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+argument_list|)
+argument_list|)
+throw|;
 block|}
 block|}
 specifier|public
