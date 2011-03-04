@@ -203,7 +203,8 @@ condition|)
 block|{
 return|return;
 block|}
-comment|// Are there lyrics?
+comment|// Are there lyrics? Look for the closing Lyrics tag
+comment|//  at the end to decide if there is any
 name|int
 name|lookat
 init|=
@@ -313,6 +314,9 @@ name|foundLyrics
 operator|=
 literal|true
 expr_stmt|;
+comment|// The length (6 bytes) comes just before LYRICS200, and is the
+comment|//  size including the LYRICSBEGIN but excluding the
+comment|//  length+LYRICS200 at the end.
 name|int
 name|length
 init|=
@@ -354,6 +358,7 @@ argument_list|,
 literal|"ASCII"
 argument_list|)
 decl_stmt|;
+comment|// Tags are a 3 letter code, 5 digit length, then data
 name|int
 name|pos
 init|=
@@ -368,7 +373,7 @@ operator|.
 name|length
 argument_list|()
 operator|-
-literal|9
+literal|8
 condition|)
 block|{
 name|String
@@ -402,9 +407,23 @@ literal|3
 argument_list|,
 name|pos
 operator|+
-literal|9
+literal|8
 argument_list|)
 argument_list|)
+decl_stmt|;
+name|int
+name|startPos
+init|=
+name|pos
+operator|+
+literal|8
+decl_stmt|;
+name|int
+name|endPos
+init|=
+name|startPos
+operator|+
+name|tagLen
 decl_stmt|;
 if|if
 condition|(
@@ -422,21 +441,15 @@ name|lyrics
 operator|.
 name|substring
 argument_list|(
-name|pos
-operator|+
-literal|9
+name|startPos
 argument_list|,
-name|pos
-operator|+
-literal|9
-operator|+
-name|tagLen
+name|endPos
 argument_list|)
 expr_stmt|;
 block|}
 name|pos
-operator|+=
-name|tagLen
+operator|=
+name|endPos
 expr_stmt|;
 block|}
 block|}
