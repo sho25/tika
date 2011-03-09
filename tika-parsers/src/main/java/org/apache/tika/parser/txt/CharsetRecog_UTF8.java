@@ -106,7 +106,7 @@ literal|0xFF
 operator|)
 operator|==
 literal|0xbb
-operator|&
+operator|&&
 operator|(
 name|input
 index|[
