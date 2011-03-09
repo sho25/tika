@@ -283,6 +283,8 @@ argument_list|,
 name|DEFAULT_XMP_CHARSET
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|XMPMetadata
 name|xmp
 init|=
@@ -460,6 +462,17 @@ block|}
 comment|// TODO should we set KEYWORDS too?
 comment|// All tested photo managers set the same in Iptc.Application2.Keywords and Xmp.dc.subject
 block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// Could not parse embedded XMP metadata. That's not a serious
+comment|// problem, so we'll just ignore the issue for now.
+comment|// TODO: Make error handling like this configurable.
 block|}
 block|}
 specifier|protected

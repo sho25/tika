@@ -23,6 +23,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -449,8 +459,8 @@ specifier|public
 name|void
 name|parseJpeg
 parameter_list|(
-name|InputStream
-name|stream
+name|File
+name|file
 parameter_list|)
 throws|throws
 name|IOException
@@ -474,7 +484,7 @@ name|JpegMetadataReader
 operator|.
 name|readMetadata
 argument_list|(
-name|stream
+name|file
 argument_list|)
 decl_stmt|;
 name|handle
