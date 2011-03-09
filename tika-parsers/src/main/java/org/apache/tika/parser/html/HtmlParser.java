@@ -73,18 +73,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|IllegalCharsetNameException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Arrays
@@ -439,6 +427,7 @@ operator|+
 literal|"([^'\\\"]+)['\\\"]"
 argument_list|)
 decl_stmt|;
+comment|/**      * HTML schema singleton used to amortize the heavy instantiation time.      */
 specifier|private
 specifier|static
 specifier|final
@@ -1017,7 +1006,7 @@ operator|.
 name|Parser
 argument_list|()
 decl_stmt|;
-comment|// Instantiating HTMLSchema is heavy, therefore reuse a cached instance
+comment|// TIKA-528: Reuse share schema to avoid heavy instantiation
 name|parser
 operator|.
 name|setProperty
@@ -1035,6 +1024,26 @@ operator|.
 name|schemaProperty
 argument_list|,
 name|HTML_SCHEMA
+argument_list|)
+expr_stmt|;
+comment|// TIKA-599: Shared schema is thread-safe only if bogons are ignored
+name|parser
+operator|.
+name|setFeature
+argument_list|(
+name|org
+operator|.
+name|ccil
+operator|.
+name|cowan
+operator|.
+name|tagsoup
+operator|.
+name|Parser
+operator|.
+name|ignoreBogonsFeature
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|parser
