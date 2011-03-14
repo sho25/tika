@@ -413,6 +413,15 @@ argument_list|,
 literal|"application/vnd.ms-powerpoint.slideshow.macroEnabled.12"
 argument_list|)
 expr_stmt|;
+comment|// .xlsb is an OOXML file containing the binary parts, and not
+comment|//  an OLE2 file as you might initially expect!
+name|assertDetect
+argument_list|(
+literal|"testEXCEL.xlsb"
+argument_list|,
+literal|"application/vnd.ms-excel.sheet.binary.macroEnabled.12"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
