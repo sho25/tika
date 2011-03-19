@@ -41,18 +41,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Collections
@@ -265,6 +253,7 @@ block|}
 comment|/** The order of the fields in the header */
 specifier|private
 specifier|static
+specifier|final
 name|String
 index|[]
 name|HEADER_PROPERTIES_ENTRIES
@@ -307,6 +296,7 @@ decl_stmt|;
 comment|/** For the 2000 file, they're indexed */
 specifier|private
 specifier|static
+specifier|final
 name|String
 index|[]
 name|HEADER_2000_PROPERTIES_ENTRIES
@@ -355,22 +345,42 @@ block|}
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
+name|String
+name|HEADER_2000_PROPERTIES_MARKER_STR
+init|=
+literal|"DWGPROPS COOKIE"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|byte
 index|[]
 name|HEADER_2000_PROPERTIES_MARKER
 init|=
-literal|"DWGPROPS COOKIE"
+operator|new
+name|byte
+index|[
+name|HEADER_2000_PROPERTIES_MARKER_STR
 operator|.
-name|getBytes
-argument_list|(
-name|Charset
-operator|.
-name|forName
-argument_list|(
-literal|"ASCII"
-argument_list|)
-argument_list|)
+name|length
+argument_list|()
+index|]
 decl_stmt|;
+static|static
+block|{
+name|StringUtil
+operator|.
+name|putCompressedUnicode
+argument_list|(
+name|HEADER_2000_PROPERTIES_MARKER_STR
+argument_list|,
+name|HEADER_2000_PROPERTIES_MARKER
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**       * How far to skip after the last standard property, before      *  we find any custom properties that might be there.      */
 specifier|private
 specifier|static
