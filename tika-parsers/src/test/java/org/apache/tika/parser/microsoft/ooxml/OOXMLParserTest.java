@@ -650,6 +650,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Scientific 0.00E+00
+comment|// poi<=3.8beta1 returns 1.98E08, newer versions return 1.98+E08
 name|assertTrue
 argument_list|(
 name|content
@@ -657,6 +658,13 @@ operator|.
 name|contains
 argument_list|(
 literal|"1.98E08"
+argument_list|)
+operator|||
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"1.98E+08"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -667,6 +675,13 @@ operator|.
 name|contains
 argument_list|(
 literal|"-1.98E08"
+argument_list|)
+operator|||
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"-1.98E+08"
 argument_list|)
 argument_list|)
 expr_stmt|;
