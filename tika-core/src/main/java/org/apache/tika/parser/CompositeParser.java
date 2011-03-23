@@ -107,6 +107,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|SortedSet
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -600,6 +610,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Try finding a parser for the type
 name|Parser
 name|parser
 init|=
@@ -621,6 +632,50 @@ return|return
 name|parser
 return|;
 block|}
+comment|// Next up, look for one for its aliases
+name|SortedSet
+argument_list|<
+name|MediaType
+argument_list|>
+name|aliases
+init|=
+name|registry
+operator|.
+name|getAliases
+argument_list|(
+name|type
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|MediaType
+name|alias
+range|:
+name|aliases
+control|)
+block|{
+name|parser
+operator|=
+name|map
+operator|.
+name|get
+argument_list|(
+name|alias
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|parser
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|parser
+return|;
+block|}
+block|}
+comment|// Failing that, try for the parent of the type
 name|type
 operator|=
 name|registry
