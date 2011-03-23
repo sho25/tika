@@ -638,6 +638,66 @@ block|}
 comment|/**      * Note - detecting container formats by mime magic is very very      *  iffy, as we can't be sure where things will end up.      * People really ought to use the container aware detection...      */
 specifier|public
 name|void
+name|testOLE2Detection
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// These have the properties block near the start, so our mime
+comment|//  magic will spot them
+name|assertTypeByData
+argument_list|(
+literal|"application/vnd.ms-excel"
+argument_list|,
+literal|"testEXCEL.xls"
+argument_list|)
+expr_stmt|;
+comment|// This one quite legitimately doesn't have its properties block
+comment|//  as one of the first couple of entries
+comment|// As such, our mime magic can't figure it out...
+name|assertTypeByData
+argument_list|(
+literal|"application/x-tika-msoffice"
+argument_list|,
+literal|"testWORD.doc"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-tika-msoffice"
+argument_list|,
+literal|"testPPT.ppt"
+argument_list|)
+expr_stmt|;
+comment|// By name + data:
+comment|// Those we got right to start with are fine
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.ms-excel"
+argument_list|,
+literal|"testEXCEL.xls"
+argument_list|)
+expr_stmt|;
+comment|// And the name lets us specialise the generic OOXML
+comment|//  ones to their actual type
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.ms-powerpoint"
+argument_list|,
+literal|"testPPT.ppt"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/msword"
+argument_list|,
+literal|"testWORD.doc"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Note - detecting container formats by mime magic is very very      *  iffy, as we can't be sure where things will end up.      * People really ought to use the container aware detection...      */
+specifier|public
+name|void
 name|testOoxmlDetection
 parameter_list|()
 throws|throws
@@ -669,6 +729,30 @@ argument_list|,
 literal|"testWORD.docx"
 argument_list|)
 expr_stmt|;
+comment|// If we give the filename as well as the data, we can
+comment|//  specialise the ooxml generic one to the correct type
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+argument_list|,
+literal|"testEXCEL.xlsx"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
+argument_list|,
+literal|"testPPT.pptx"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+argument_list|,
+literal|"testWORD.docx"
+argument_list|)
+expr_stmt|;
+comment|// Test a few of the less usual ones
 name|assertTypeByNameAndData
 argument_list|(
 literal|"application/vnd.ms-excel.sheet.binary.macroenabled.12"
@@ -1863,14 +1947,6 @@ argument_list|,
 literal|"test-documents.zip"
 argument_list|)
 expr_stmt|;
-comment|// TODO: Currently returns generic MS Office type based on
-comment|// the magic header. The getMimeType method should understand
-comment|// MS Office types better.
-comment|// assertEquals("application/vnd.ms-excel",
-comment|// getMimeType("testEXCEL.xls"));
-comment|// assertEquals("application/vnd.ms-powerpoint",
-comment|// getMimeType("testPPT.ppt"));
-comment|// assertEquals("application/msword", getMimeType("testWORD.doc"));
 name|assertType
 argument_list|(
 literal|"text/html"
