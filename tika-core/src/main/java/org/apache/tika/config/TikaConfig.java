@@ -412,6 +412,16 @@ name|getDefaultMimeTypes
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Have the composite parser wired up with the media type
+comment|//  information that has now been loaded
+name|parser
+operator|.
+name|setMediaTypeRegistry
+argument_list|(
+name|getMediaTypeRegistry
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|TikaConfig
