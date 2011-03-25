@@ -74,6 +74,7 @@ name|mark
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * Creates a lookahead wrapper for the given input stream.      * The given input stream should support the mark feature,      * as otherwise the state of that stream will be undefined      * after the lookahead wrapper has been closed. As a special      * case a<code>null</code> stream is treated as an empty stream.      *      * @param stream input stream, can be<code>null</code>      * @param n maximum number of bytes to look ahead      */
 specifier|public
 name|LookaheadInputStream
 parameter_list|(
@@ -97,9 +98,16 @@ operator|=
 operator|new
 name|byte
 index|[
-literal|0
+name|n
 index|]
 expr_stmt|;
+if|if
+condition|(
+name|stream
+operator|!=
+literal|null
+condition|)
+block|{
 name|stream
 operator|.
 name|mark
@@ -107,6 +115,7 @@ argument_list|(
 name|n
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -318,7 +327,12 @@ parameter_list|(
 name|long
 name|n
 parameter_list|)
+throws|throws
+name|IOException
 block|{
+name|fill
+argument_list|()
+expr_stmt|;
 name|n
 operator|=
 name|Math
