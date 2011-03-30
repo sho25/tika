@@ -204,7 +204,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Framework d\'indexation des documents XML, HTML, PDF etc.. "
+literal|"Framework d\'indexation des documents XML, HTML, PDF etc.."
 argument_list|,
 name|metadata
 operator|.
