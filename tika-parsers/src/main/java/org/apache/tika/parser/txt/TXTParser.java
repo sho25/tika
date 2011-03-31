@@ -171,7 +171,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ParseContext
+name|AbstractParser
 import|;
 end_import
 
@@ -185,7 +185,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|Parser
+name|ParseContext
 import|;
 end_import
 
@@ -240,8 +240,8 @@ argument_list|)
 specifier|public
 class|class
 name|TXTParser
-implements|implements
-name|Parser
+extends|extends
+name|AbstractParser
 block|{
 specifier|private
 specifier|static
@@ -648,41 +648,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-block|}
-comment|/**      * @deprecated This method will be removed in Apache Tika 1.0.      */
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|TikaException
-block|{
-name|parse
-argument_list|(
-name|stream
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

@@ -211,8 +211,8 @@ begin_class
 specifier|public
 class|class
 name|ExternalParser
-implements|implements
-name|Parser
+extends|extends
+name|AbstractParser
 block|{
 comment|/**      * Media types supported by the external program.      */
 specifier|private
@@ -404,41 +404,6 @@ name|ignore
 parameter_list|)
 block|{             }
 block|}
-block|}
-comment|/**      * @deprecated This method will be removed in Apache Tika 1.0.      */
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|TikaException
-block|{
-name|parse
-argument_list|(
-name|stream
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Starts a thread that extracts the contents of the standard output      * stream of the given process to the given XHTML content handler.      * The standard output stream is closed once fully processed.      *      * @param process process      * @param xhtml XHTML content handler      * @throws SAXException if the XHTML SAX events could not be handled      * @throws IOException if an input error occurred      */
 specifier|private
