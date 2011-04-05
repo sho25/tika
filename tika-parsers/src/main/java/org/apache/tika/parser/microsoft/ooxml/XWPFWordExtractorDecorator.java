@@ -329,6 +329,13 @@ name|getHeaderFooterPolicy
 argument_list|()
 decl_stmt|;
 comment|// headers
+if|if
+condition|(
+name|hfPolicy
+operator|!=
+literal|null
+condition|)
+block|{
 name|extractHeaders
 argument_list|(
 name|xhtml
@@ -336,6 +343,7 @@ argument_list|,
 name|hfPolicy
 argument_list|)
 expr_stmt|;
+block|}
 comment|// process text in the order that it occurs in
 name|extractIBodyText
 argument_list|(
@@ -345,6 +353,13 @@ name|xhtml
 argument_list|)
 expr_stmt|;
 comment|// then all document tables
+if|if
+condition|(
+name|hfPolicy
+operator|!=
+literal|null
+condition|)
+block|{
 name|extractFooters
 argument_list|(
 name|xhtml
@@ -352,6 +367,7 @@ argument_list|,
 name|hfPolicy
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 specifier|private
 name|void
