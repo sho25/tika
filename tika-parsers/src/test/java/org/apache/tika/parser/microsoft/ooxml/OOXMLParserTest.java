@@ -2008,8 +2008,10 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|==
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
