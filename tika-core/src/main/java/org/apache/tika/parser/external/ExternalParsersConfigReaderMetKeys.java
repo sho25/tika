@@ -47,6 +47,11 @@ init|=
 literal|"check"
 decl_stmt|;
 name|String
+name|ERROR_CODES_TAG
+init|=
+literal|"error-codes"
+decl_stmt|;
+name|String
 name|MIMETYPES_TAG
 init|=
 literal|"mime-types"
