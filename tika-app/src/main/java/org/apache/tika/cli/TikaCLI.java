@@ -760,6 +760,15 @@ operator|new
 name|TikaCLI
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|args
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
 for|for
 control|(
 name|int
@@ -802,6 +811,63 @@ argument_list|(
 literal|"-"
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// Started with no arguments. Wait for up to 0.1s to see if
+comment|// we have something waiting in standard input and use the
+comment|// pipe mode if we have. If no input is seen, start the GUI.
+if|if
+condition|(
+name|System
+operator|.
+name|in
+operator|.
+name|available
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|System
+operator|.
+name|in
+operator|.
+name|available
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|cli
+operator|.
+name|process
+argument_list|(
+literal|"-"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cli
+operator|.
+name|process
+argument_list|(
+literal|"--gui"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 specifier|private
@@ -2302,7 +2368,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    is parsed."
+literal|"    is parsed. If no arguments were given and no input"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    data is available, the GUI is started instead."
 argument_list|)
 expr_stmt|;
 name|out
