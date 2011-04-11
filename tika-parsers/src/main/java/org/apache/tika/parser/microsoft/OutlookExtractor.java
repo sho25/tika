@@ -45,6 +45,22 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|hmef
+operator|.
+name|attribute
+operator|.
+name|MAPIRtfAttribute
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
 name|hsmf
 operator|.
 name|MAPIMessage
@@ -175,7 +191,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -261,6 +277,22 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|rtf
+operator|.
+name|RTFParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|txt
 operator|.
 name|CharsetDetector
@@ -312,7 +344,7 @@ decl_stmt|;
 specifier|public
 name|OutlookExtractor
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|ParseContext
@@ -1060,7 +1092,47 @@ operator|!
 name|doneBody
 condition|)
 block|{
-comment|// TODO Needs POI 3.8 beta 2 for TNEF support
+name|ByteChunk
+name|chunk
+init|=
+operator|(
+name|ByteChunk
+operator|)
+name|rtfChunk
+decl_stmt|;
+name|MAPIRtfAttribute
+name|rtf
+init|=
+operator|new
+name|MAPIRtfAttribute
+argument_list|(
+name|MAPIProperty
+operator|.
+name|RTF_COMPRESSED
+argument_list|,
+name|Types
+operator|.
+name|BINARY
+argument_list|,
+name|chunk
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|RTFParser
+name|rtfParser
+init|=
+operator|new
+name|RTFParser
+argument_list|()
+decl_stmt|;
+comment|// Disabled pending a fix to TIKA-632
+comment|//              rtfParser.parse(
+comment|//                    new ByteArrayInputStream(rtf.getData()),
+comment|//                    xhtml, new Metadata(), new ParseContext()
+comment|//              );
+comment|//              doneBody = true;
 block|}
 if|if
 condition|(
