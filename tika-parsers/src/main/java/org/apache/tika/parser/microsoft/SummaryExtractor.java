@@ -189,7 +189,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -300,7 +300,7 @@ specifier|public
 name|void
 name|parseSummaries
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|)
 throws|throws
@@ -327,7 +327,7 @@ specifier|private
 name|void
 name|parseSummaryEntryIfExists
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|String

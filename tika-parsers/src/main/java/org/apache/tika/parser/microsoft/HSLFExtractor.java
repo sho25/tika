@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -61,7 +81,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -133,26 +153,6 @@ name|SAXException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -177,7 +177,7 @@ specifier|protected
 name|void
 name|parse
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler

@@ -57,7 +57,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -328,7 +328,7 @@ operator|.
 name|getOpenContainer
 argument_list|()
 operator|instanceof
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 argument_list|)
 expr_stmt|;
 block|}

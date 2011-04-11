@@ -343,7 +343,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -439,7 +439,7 @@ specifier|protected
 name|void
 name|parse
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler
@@ -463,6 +463,9 @@ operator|new
 name|HWPFDocument
 argument_list|(
 name|filesystem
+operator|.
+name|getRoot
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2121,7 +2124,7 @@ specifier|protected
 name|void
 name|parseWord6
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler
@@ -2141,6 +2144,9 @@ operator|new
 name|HWPFOldDocument
 argument_list|(
 name|filesystem
+operator|.
+name|getRoot
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|Word6Extractor

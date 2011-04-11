@@ -139,7 +139,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -738,12 +738,36 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// POIFSFileSystem might try close the stream
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|fs
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|stream
+operator|.
+name|hasFile
+argument_list|()
+condition|)
+block|{
+name|fs
+operator|=
 operator|new
-name|POIFSFileSystem
+name|NPOIFSFileSystem
+argument_list|(
+name|stream
+operator|.
+name|getFile
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Load from a stream, but prevent the stream being closed
+name|fs
+operator|=
+operator|new
+name|NPOIFSFileSystem
 argument_list|(
 operator|new
 name|CloseShieldInputStream
@@ -751,7 +775,8 @@ argument_list|(
 name|tagged
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 comment|// Optimize a possible later parsing process by keeping
 comment|// a reference to the already opened POI file system
 name|stream

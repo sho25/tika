@@ -635,7 +635,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 import|;
 end_import
 
@@ -769,7 +769,7 @@ specifier|protected
 name|void
 name|parse
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler
@@ -1029,7 +1029,7 @@ specifier|public
 name|void
 name|processFile
 parameter_list|(
-name|POIFSFileSystem
+name|NPOIFSFileSystem
 name|filesystem
 parameter_list|,
 name|boolean
