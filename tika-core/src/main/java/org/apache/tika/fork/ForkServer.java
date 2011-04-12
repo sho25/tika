@@ -787,7 +787,7 @@ return|return
 name|object
 return|;
 block|}
-comment|//-------------------------------------------------------------< Checsum>
+comment|//------------------------------------------------------------< Checksum>
 specifier|public
 name|void
 name|update
