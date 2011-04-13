@@ -775,6 +775,24 @@ name|e
 argument_list|)
 throw|;
 block|}
+catch|catch
+parameter_list|(
+name|NullPointerException
+name|e
+parameter_list|)
+block|{
+comment|// TIKA-621: RTF parsing fails with Java 7 early access
+comment|// on 64bit platforms
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Error parsing an RTF document"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 finally|finally
 block|{
 name|IOUtils
