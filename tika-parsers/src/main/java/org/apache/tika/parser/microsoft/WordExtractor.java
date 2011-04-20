@@ -2312,11 +2312,19 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{}
+comment|// Turn it into a H1 - H6 (H7+ isn't valid!)
 name|tag
 operator|=
 literal|"h"
 operator|+
+name|Math
+operator|.
+name|min
+argument_list|(
 name|num
+argument_list|,
+literal|6
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
