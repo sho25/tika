@@ -351,6 +351,20 @@ return|return
 name|tmp
 return|;
 block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Tika Counting InputStream wrapping "
+operator|+
+name|in
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
