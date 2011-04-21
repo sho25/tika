@@ -587,8 +587,9 @@ name|this
 operator|.
 name|input
 operator|=
-operator|new
 name|TaggedInputStream
+operator|.
+name|get
 argument_list|(
 name|input
 argument_list|)

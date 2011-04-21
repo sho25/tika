@@ -47,7 +47,7 @@ extends|extends
 name|ProxyInputStream
 block|{
 comment|/**      * Creates a tagging decorator for the given input stream.      *      * @param proxy input stream to be decorated      */
-specifier|public
+specifier|private
 name|TaggedInputStream
 parameter_list|(
 name|InputStream
@@ -59,6 +59,38 @@ argument_list|(
 name|proxy
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Casts or wraps the given stream to a TaggedInputStream instance.      *      * @param stream normal input stream      * @return a TaggedInputStream instance      */
+specifier|public
+specifier|static
+name|TaggedInputStream
+name|get
+parameter_list|(
+name|InputStream
+name|proxy
+parameter_list|)
+block|{
+if|if
+condition|(
+name|proxy
+operator|instanceof
+name|TaggedInputStream
+condition|)
+block|{
+return|return
+operator|(
+name|TaggedInputStream
+operator|)
+name|proxy
+return|;
+block|}
+return|return
+operator|new
+name|TaggedInputStream
+argument_list|(
+name|proxy
+argument_list|)
+return|;
 block|}
 comment|/**      * Tests if the given exception was caused by this stream.      *      * @param exception an exception      * @return<code>true</code> if the exception was thrown by this stream,      *<code>false</code> otherwise      */
 specifier|public
@@ -167,6 +199,20 @@ argument_list|,
 name|this
 argument_list|)
 throw|;
+block|}
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Tika Tagged InputStream wrapping "
+operator|+
+name|in
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 block|}
 end_class

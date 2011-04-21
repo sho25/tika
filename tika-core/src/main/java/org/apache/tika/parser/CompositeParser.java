@@ -799,8 +799,9 @@ decl_stmt|;
 name|TaggedInputStream
 name|taggedStream
 init|=
-operator|new
 name|TaggedInputStream
+operator|.
+name|get
 argument_list|(
 name|stream
 argument_list|)
