@@ -420,15 +420,7 @@ name|NoPropertySetStreamException
 name|e
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|TikaException
-argument_list|(
-literal|"Not a HPSF document"
-argument_list|,
-name|e
-argument_list|)
-throw|;
+comment|// no property stream, just skip it
 block|}
 catch|catch
 parameter_list|(
