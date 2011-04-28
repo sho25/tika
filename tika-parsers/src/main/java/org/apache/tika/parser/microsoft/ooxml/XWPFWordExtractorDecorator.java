@@ -1304,6 +1304,13 @@ block|{
 if|if
 condition|(
 name|hfPolicy
+operator|==
+literal|null
+condition|)
+return|return;
+if|if
+condition|(
+name|hfPolicy
 operator|.
 name|getFirstPageHeader
 argument_list|()
