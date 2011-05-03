@@ -2664,6 +2664,7 @@ comment|// we don't care about internal Tika met classes
 comment|// if we do, then we can take this conditional out
 if|if
 condition|(
+operator|!
 name|modelClass
 operator|.
 name|getSimpleName
