@@ -661,6 +661,31 @@ name|IIOException
 name|e
 parameter_list|)
 block|{
+comment|// TIKA-619: There is a known bug in the Sun API when dealing with GIF images
+comment|//  which Tika will just ignore.
+if|if
+condition|(
+operator|!
+operator|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"Unexpected block type 0!"
+argument_list|)
+operator|&&
+name|type
+operator|.
+name|equals
+argument_list|(
+literal|"image/gif"
+argument_list|)
+operator|)
+condition|)
+block|{
 throw|throw
 operator|new
 name|TikaException
@@ -672,6 +697,7 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 name|XHTMLContentHandler
