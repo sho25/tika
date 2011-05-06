@@ -277,6 +277,21 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Stored as Thu, 5 Apr 2007 09:26:06 -0700
+name|assertEquals
+argument_list|(
+literal|"2007-04-05T16:26:06Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|content
 init|=
