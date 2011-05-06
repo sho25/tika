@@ -484,7 +484,7 @@ name|LAST_PRINTED
 argument_list|,
 name|propsHolder
 operator|.
-name|getLastPrintedPropertyString
+name|getLastPrintedProperty
 argument_list|()
 argument_list|)
 expr_stmt|;

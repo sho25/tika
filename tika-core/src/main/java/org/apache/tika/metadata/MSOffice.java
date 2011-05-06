@@ -50,16 +50,6 @@ init|=
 literal|"Character Count"
 decl_stmt|;
 name|String
-name|LAST_PRINTED
-init|=
-literal|"Last-Printed"
-decl_stmt|;
-name|String
-name|LAST_SAVED
-init|=
-literal|"Last-Save-Date"
-decl_stmt|;
-name|String
 name|PAGE_COUNT
 init|=
 literal|"Page-Count"
@@ -169,6 +159,28 @@ operator|.
 name|internalDate
 argument_list|(
 literal|"Creation-Date"
+argument_list|)
+decl_stmt|;
+comment|/** When was the document last saved? */
+name|Property
+name|LAST_SAVED
+init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
+literal|"Last-Save-Date"
+argument_list|)
+decl_stmt|;
+comment|/** When was the document last printed? */
+name|Property
+name|LAST_PRINTED
+init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
+literal|"Last-Printed"
 argument_list|)
 decl_stmt|;
 block|}
