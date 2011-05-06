@@ -220,6 +220,36 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Mon Oct 01 17:13:56 BST 2007
+name|assertEquals
+argument_list|(
+literal|"2007-10-01T16:13:56Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CREATION_DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Mon Oct 01 17:31:43 BST 2007
+name|assertEquals
+argument_list|(
+literal|"2007-10-01T16:31:43Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|LAST_SAVED
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|content
 init|=
