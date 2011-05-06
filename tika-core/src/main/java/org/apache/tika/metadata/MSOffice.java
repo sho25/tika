@@ -183,6 +183,12 @@ argument_list|(
 literal|"Last-Printed"
 argument_list|)
 decl_stmt|;
+comment|/**       * For user defined metadata entries in the document,      *  what prefix should be attached to the key names.      * eg<meta:user-defined meta:name="Info1">Text1</meta:user-defined> becomes custom:Info1=Text1      */
+name|String
+name|USER_DEFINED_METADATA_NAME_PREFIX
+init|=
+literal|"custom:"
+decl_stmt|;
 block|}
 end_interface
 

@@ -180,6 +180,16 @@ name|OpenDocumentMetaParser
 extends|extends
 name|DcXMLParser
 block|{
+comment|/**      * Serial version UID      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|8739250869531737584L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -193,15 +203,6 @@ literal|"meta"
 argument_list|,
 literal|"urn:oasis:names:tc:opendocument:xmlns:meta:1.0"
 argument_list|)
-decl_stmt|;
-comment|// eg<meta:user-defined meta:name="Info1">Text1</meta:user-defined> becomes custom:Info1=Text1
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|USER_DEFINED_METADATA_NAME_PREFIX
-init|=
-literal|"custom:"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -308,6 +309,7 @@ literal|"//meta:user-defined//text()"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// eg<meta:user-defined meta:name="Info1">Text1</meta:user-defined> becomes custom:Info1=Text1
 name|ContentHandler
 name|branch
 init|=
@@ -321,6 +323,8 @@ name|md
 argument_list|,
 literal|"meta:name"
 argument_list|,
+name|Metadata
+operator|.
 name|USER_DEFINED_METADATA_NAME_PREFIX
 argument_list|)
 argument_list|,
