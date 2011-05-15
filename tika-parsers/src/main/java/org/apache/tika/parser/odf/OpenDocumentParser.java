@@ -203,6 +203,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|EndDocumentShieldingContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -592,7 +606,7 @@ name|InputStream
 name|stream
 parameter_list|,
 name|ContentHandler
-name|handler
+name|baseHandler
 parameter_list|,
 name|Metadata
 name|metadata
@@ -607,6 +621,18 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|// As we don't know which of the metadata or the content
+comment|//  we'll hit first, catch the endDocument call initially
+name|EndDocumentShieldingContentHandler
+name|handler
+init|=
+operator|new
+name|EndDocumentShieldingContentHandler
+argument_list|(
+name|baseHandler
+argument_list|)
+decl_stmt|;
+comment|// Process the file in turn
 name|ZipInputStream
 name|zip
 init|=
@@ -731,6 +757,21 @@ operator|=
 name|zip
 operator|.
 name|getNextEntry
+argument_list|()
+expr_stmt|;
+block|}
+comment|// Only now call the end document
+if|if
+condition|(
+name|handler
+operator|.
+name|getEndDocumentWasCalled
+argument_list|()
+condition|)
+block|{
+name|handler
+operator|.
+name|reallyEndDocument
 argument_list|()
 expr_stmt|;
 block|}

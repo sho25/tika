@@ -174,7 +174,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Office Open XML (OOXML) parser.  *   */
+comment|/**  * Office Open XML (OOXML) parser.  */
 end_comment
 
 begin_class
@@ -184,6 +184,15 @@ name|OOXMLParser
 extends|extends
 name|AbstractParser
 block|{
+comment|/**      * Serial version UID       */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|6535995710857776481L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
