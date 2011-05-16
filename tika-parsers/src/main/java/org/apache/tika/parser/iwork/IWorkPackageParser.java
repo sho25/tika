@@ -802,15 +802,11 @@ name|InputStream
 name|entryStream
 init|=
 operator|new
-name|CloseShieldInputStream
-argument_list|(
-operator|new
 name|BufferedInputStream
 argument_list|(
 name|zip
 argument_list|,
 literal|4096
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|entryStream
@@ -943,7 +939,11 @@ argument_list|()
 operator|.
 name|parse
 argument_list|(
+operator|new
+name|CloseShieldInputStream
+argument_list|(
 name|entryStream
+argument_list|)
 argument_list|,
 operator|new
 name|OfflineContentHandler
