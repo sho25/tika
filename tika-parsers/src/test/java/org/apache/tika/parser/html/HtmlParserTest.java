@@ -2302,7 +2302,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<img src=\"http://domain.com/image.jpg\"/>.*$"
+literal|"(?s).*src=\"http://domain.com/image.jpg\".*$"
 argument_list|,
 name|result
 argument_list|)

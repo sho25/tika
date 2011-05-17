@@ -740,7 +740,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image1.png\"/>"
+literal|"src=\"embedded:image1.png\""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -754,7 +754,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image2.jpg\"/>"
+literal|"src=\"embedded:image2.jpg\""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -768,7 +768,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image3.png\"/>"
+literal|"src=\"embedded:image3.png\""
 argument_list|)
 argument_list|)
 expr_stmt|;
