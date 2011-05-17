@@ -125,6 +125,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|TaggedInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -212,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *   * @author jnioche@digitalpebble.com  **/
+comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *<p>  * A {@link MimeEntityConfig} object can be passed in the parsing context  * to better control the parsing process.  *  * @author jnioche@digitalpebble.com  **/
 end_comment
 
 begin_class
@@ -281,6 +295,7 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|// Get the mime4j configuration, or use a default one
 name|MimeEntityConfig
 name|config
 init|=
@@ -295,7 +310,20 @@ argument_list|(
 literal|10000
 argument_list|)
 expr_stmt|;
-comment|//this is max length of any individual header
+comment|// max length of any individual header
+name|config
+operator|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|MimeEntityConfig
+operator|.
+name|class
+argument_list|,
+name|config
+argument_list|)
+expr_stmt|;
 name|MimeStreamParser
 name|parser
 init|=
@@ -341,15 +369,48 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|TaggedInputStream
+name|tagged
+init|=
+name|TaggedInputStream
+operator|.
+name|get
+argument_list|(
+name|stream
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|parser
 operator|.
 name|parse
 argument_list|(
-name|stream
+name|tagged
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|tagged
+operator|.
+name|throwIfCauseOf
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Failed to parse an email message"
+argument_list|,
+name|e
+argument_list|)
+throw|;
 block|}
 catch|catch
 parameter_list|(
