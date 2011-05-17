@@ -47,7 +47,7 @@ extends|extends
 name|ProxyInputStream
 block|{
 comment|/**      * Creates a tagging decorator for the given input stream.      *      * @param proxy input stream to be decorated      */
-specifier|private
+specifier|public
 name|TaggedInputStream
 parameter_list|(
 name|InputStream

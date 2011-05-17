@@ -198,7 +198,7 @@ specifier|public
 class|class
 name|TikaInputStream
 extends|extends
-name|ProxyInputStream
+name|TaggedInputStream
 block|{
 comment|/**      * Checks whether the given stream is a TikaInputStream instance.      * The given stream can be<code>null</code>, in which case the return      * value is<code>false</code>.      *       * @param stream input stream, possibly<code>null</code>      * @return<code>true</code> if the stream is a TikaInputStream instance,      *<code>false</code> otherwise      */
 specifier|public
