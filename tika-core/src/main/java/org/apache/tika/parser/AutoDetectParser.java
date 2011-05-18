@@ -21,16 +21,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|BufferedInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -111,7 +101,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|CountingInputStream
+name|TemporaryFiles
 import|;
 end_import
 
@@ -432,31 +422,27 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-if|if
-condition|(
-name|stream
-operator|instanceof
-name|TikaInputStream
-operator|||
-name|stream
-operator|instanceof
-name|BufferedInputStream
-condition|)
-block|{
-comment|// Input stream can be trusted for type detection
-block|}
-else|else
-block|{
-comment|// We need (reliable!) mark support for type detection before parsing
-name|stream
-operator|=
+name|TemporaryFiles
+name|tmp
+init|=
 operator|new
-name|BufferedInputStream
+name|TemporaryFiles
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|TikaInputStream
+name|tis
+init|=
+name|TikaInputStream
+operator|.
+name|get
 argument_list|(
 name|stream
+argument_list|,
+name|tmp
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|// Automatically detect the MIME type of the document
 name|MediaType
 name|type
@@ -465,7 +451,7 @@ name|detector
 operator|.
 name|detect
 argument_list|(
-name|stream
+name|tis
 argument_list|,
 name|metadata
 argument_list|)
@@ -485,36 +471,27 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// TIKA-216: Zip bomb prevention
-name|CountingInputStream
-name|count
-init|=
-operator|new
-name|CountingInputStream
-argument_list|(
-name|stream
-argument_list|)
-decl_stmt|;
 name|SecureContentHandler
-name|secure
+name|sch
 init|=
 operator|new
 name|SecureContentHandler
 argument_list|(
 name|handler
 argument_list|,
-name|count
+name|tis
 argument_list|)
 decl_stmt|;
-comment|// Parse the document
 try|try
 block|{
+comment|// Parse the document
 name|super
 operator|.
 name|parse
 argument_list|(
-name|count
+name|tis
 argument_list|,
-name|secure
+name|sch
 argument_list|,
 name|metadata
 argument_list|,
@@ -529,7 +506,7 @@ name|e
 parameter_list|)
 block|{
 comment|// Convert zip bomb exceptions to TikaExceptions
-name|secure
+name|sch
 operator|.
 name|throwIfCauseOf
 argument_list|(
@@ -539,6 +516,15 @@ expr_stmt|;
 throw|throw
 name|e
 throw|;
+block|}
+block|}
+finally|finally
+block|{
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 specifier|public

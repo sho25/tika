@@ -1360,6 +1360,16 @@ return|return
 name|length
 return|;
 block|}
+comment|/**      * Returns the current position within the stream.      *      * @return stream position      */
+specifier|public
+name|long
+name|getPosition
+parameter_list|()
+block|{
+return|return
+name|position
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

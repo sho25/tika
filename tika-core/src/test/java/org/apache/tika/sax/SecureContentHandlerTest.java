@@ -27,15 +27,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|junit
 operator|.
-name|apache
+name|framework
 operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|CountingInputStream
+name|TestCase
 import|;
 end_import
 
@@ -50,6 +46,20 @@ operator|.
 name|io
 operator|.
 name|NullInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|TikaInputStream
 import|;
 end_import
 
@@ -79,16 +89,6 @@ name|DefaultHandler
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_comment
 comment|/**  * Tests for the {@link SecureContentHandler} class.  */
 end_comment
@@ -109,7 +109,7 @@ init|=
 literal|2000000
 decl_stmt|;
 specifier|private
-name|CountingInputStream
+name|TikaInputStream
 name|stream
 decl_stmt|;
 specifier|private
@@ -123,8 +123,9 @@ parameter_list|()
 block|{
 name|stream
 operator|=
-operator|new
-name|CountingInputStream
+name|TikaInputStream
+operator|.
+name|get
 argument_list|(
 operator|new
 name|NullInputStream

@@ -39,7 +39,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|CountingInputStream
+name|TikaInputStream
 import|;
 end_import
 
@@ -81,7 +81,7 @@ block|{
 comment|/**      * The input stream that Tika is parsing.      */
 specifier|private
 specifier|final
-name|CountingInputStream
+name|TikaInputStream
 name|stream
 decl_stmt|;
 comment|/**      * Number of output characters that Tika has produced so far.      */
@@ -105,14 +105,14 @@ name|ratio
 init|=
 literal|100
 decl_stmt|;
-comment|/**      * Decorates the given content handler with zip bomb prevention based      * on the count of bytes read from the given counting input stream.      * The resulting decorator can be passed to a Tika parser along with      * the given counting input stream.      *      * @param handler the content handler to be decorated      * @param stream the input stream to be parsed, wrapped into      *        a {@link CountingInputStream} decorator      */
+comment|/**      * Decorates the given content handler with zip bomb prevention based      * on the count of bytes read from the given counting input stream.      * The resulting decorator can be passed to a Tika parser along with      * the given counting input stream.      *      * @param handler the content handler to be decorated      * @param stream the input stream to be parsed      */
 specifier|public
 name|SecureContentHandler
 parameter_list|(
 name|ContentHandler
 name|handler
 parameter_list|,
-name|CountingInputStream
+name|TikaInputStream
 name|stream
 parameter_list|)
 block|{
@@ -246,7 +246,7 @@ name|characterCount
 operator|>
 name|stream
 operator|.
-name|getByteCount
+name|getPosition
 argument_list|()
 operator|*
 name|ratio
@@ -348,7 +348,7 @@ literal|"Suspected zip bomb: "
 operator|+
 name|stream
 operator|.
-name|getByteCount
+name|getPosition
 argument_list|()
 operator|+
 literal|" input bytes produced "
