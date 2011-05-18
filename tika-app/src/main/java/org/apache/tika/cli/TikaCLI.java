@@ -4430,6 +4430,18 @@ name|getIndex
 argument_list|()
 condition|)
 block|{
+comment|// It's a number. Remove leading zeros and output
+name|value
+operator|=
+name|value
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"^0+(\\d)"
+argument_list|,
+literal|"$1"
+argument_list|)
+expr_stmt|;
 name|writer
 operator|.
 name|print
