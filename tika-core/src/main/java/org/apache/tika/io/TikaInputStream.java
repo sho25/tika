@@ -1313,6 +1313,13 @@ name|file
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|length
+operator|=
+name|file
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 return|return
