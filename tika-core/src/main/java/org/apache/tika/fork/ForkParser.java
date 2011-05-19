@@ -306,6 +306,7 @@ expr_stmt|;
 block|}
 comment|/**      * Returns the size of the process pool.      *      * @return process pool size      */
 specifier|public
+specifier|synchronized
 name|int
 name|getPoolSize
 parameter_list|()
@@ -316,6 +317,7 @@ return|;
 block|}
 comment|/**      * Sets the size of the process pool.      *      * @param poolSize process pool size      */
 specifier|public
+specifier|synchronized
 name|void
 name|setPoolSize
 parameter_list|(
