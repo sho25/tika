@@ -61,6 +61,18 @@ name|xml
 operator|.
 name|sax
 operator|.
+name|Attributes
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
 name|ContentHandler
 import|;
 end_import
@@ -78,7 +90,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that attempts to prevent denial of service  * attacks against Tika parsers.  *<p>  * Currently this class simply compares the number of output characters  * to to the number of input bytes, and throws an exception if the output  * is truly excessive when compared to the input. This is a strong indication  * of a zip bomb.  *  * @since Apache Tika 0.4  * @see<a href="https://issues.apache.org/jira/browse/TIKA-216">TIKA-216</a>  */
+comment|/**  * Content handler decorator that attempts to prevent denial of service  * attacks against Tika parsers.  *<p>  * Currently this class simply compares the number of output characters  * to to the number of input bytes and keeps track of the XML nesting levels.  * An exception gets thrown if the output seems excessive compared to the  * input document. This is a strong indication of a zip bomb.  *  * @since Apache Tika 0.4  * @see<a href="https://issues.apache.org/jira/browse/TIKA-216">TIKA-216</a>  */
 end_comment
 
 begin_class
@@ -101,6 +113,13 @@ name|characterCount
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * The current XML element depth.      */
+specifier|private
+name|int
+name|currentDepth
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Output threshold.      */
 specifier|private
 name|long
@@ -114,6 +133,13 @@ name|long
 name|ratio
 init|=
 literal|100
+decl_stmt|;
+comment|/**      * Maximum XML element nesting level.      */
+specifier|private
+name|int
+name|maxDepth
+init|=
+literal|30
 decl_stmt|;
 comment|/**      * Decorates the given content handler with zip bomb prevention based      * on the count of bytes read from the given counting input stream.      * The resulting decorator can be passed to a Tika parser along with      * the given counting input stream.      *      * @param handler the content handler to be decorated      * @param stream the input stream to be parsed      */
 specifier|public
@@ -188,6 +214,32 @@ operator|.
 name|ratio
 operator|=
 name|ratio
+expr_stmt|;
+block|}
+comment|/**      * Returns the maximum XML element nesting level.      *      * @return maximum XML element nesting level      */
+specifier|public
+name|int
+name|getMaximumDepth
+parameter_list|()
+block|{
+return|return
+name|maxDepth
+return|;
+block|}
+comment|/**      * Sets the maximum XML element nesting level. If this depth level is      * exceeded then an exception gets thrown.      *      * @param depth maximum XML element nesting level      */
+specifier|public
+name|void
+name|setMaximumDepth
+parameter_list|(
+name|int
+name|depth
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxDepth
+operator|=
+name|depth
 expr_stmt|;
 block|}
 comment|/**      * Converts the given {@link SAXException} to a corresponding      * {@link TikaException} if it's caused by this instance detecting      * a zip bomb.      *      * @param e SAX exception      * @throws TikaException zip bomb exception      */
@@ -320,10 +372,111 @@ throw|throw
 operator|new
 name|SecureSAXException
 argument_list|(
+literal|"Suspected zip bomb: "
+operator|+
 name|byteCount
+operator|+
+literal|" input bytes produced "
+operator|+
+name|characterCount
+operator|+
+literal|" output characters"
 argument_list|)
 throw|;
 block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|startElement
+parameter_list|(
+name|String
+name|uri
+parameter_list|,
+name|String
+name|localName
+parameter_list|,
+name|String
+name|name
+parameter_list|,
+name|Attributes
+name|atts
+parameter_list|)
+throws|throws
+name|SAXException
+block|{
+name|currentDepth
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|currentDepth
+operator|<
+name|maxDepth
+condition|)
+block|{
+name|super
+operator|.
+name|startElement
+argument_list|(
+name|uri
+argument_list|,
+name|localName
+argument_list|,
+name|name
+argument_list|,
+name|atts
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|SecureSAXException
+argument_list|(
+literal|"Suspected zip bomb: "
+operator|+
+name|currentDepth
+operator|+
+literal|" levels of XML element nesting"
+argument_list|)
+throw|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|endElement
+parameter_list|(
+name|String
+name|uri
+parameter_list|,
+name|String
+name|localName
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|SAXException
+block|{
+name|currentDepth
+operator|--
+expr_stmt|;
+name|super
+operator|.
+name|endElement
+argument_list|(
+name|uri
+argument_list|,
+name|localName
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -404,26 +557,27 @@ name|SecureSAXException
 extends|extends
 name|SAXException
 block|{
+comment|/** Serial version UID.*/
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|2285245380321771445L
+decl_stmt|;
 specifier|public
 name|SecureSAXException
 parameter_list|(
-name|long
-name|byteCount
+name|String
+name|message
 parameter_list|)
 throws|throws
 name|SAXException
 block|{
 name|super
 argument_list|(
-literal|"Suspected zip bomb: "
-operator|+
-name|byteCount
-operator|+
-literal|" input bytes produced "
-operator|+
-name|characterCount
-operator|+
-literal|" output characters"
+name|message
 argument_list|)
 expr_stmt|;
 block|}
