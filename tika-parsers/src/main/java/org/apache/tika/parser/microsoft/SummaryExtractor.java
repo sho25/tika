@@ -866,7 +866,7 @@ block|{
 for|for
 control|(
 name|String
-name|key
+name|name
 range|:
 name|customProperties
 operator|.
@@ -874,6 +874,17 @@ name|nameSet
 argument_list|()
 control|)
 block|{
+comment|// Apply the custom prefix
+name|String
+name|key
+init|=
+name|Metadata
+operator|.
+name|USER_DEFINED_METADATA_NAME_PREFIX
+operator|+
+name|name
+decl_stmt|;
+comment|// Get, convert and save property value
 name|Object
 name|value
 init|=
@@ -881,28 +892,9 @@ name|customProperties
 operator|.
 name|get
 argument_list|(
-name|key
+name|name
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|value
-operator|==
-literal|null
-condition|)
-block|{
-comment|// Continue, don't support empty properties
-block|}
-comment|// Apply the custom prefix
-name|key
-operator|=
-name|Metadata
-operator|.
-name|USER_DEFINED_METADATA_NAME_PREFIX
-operator|+
-name|key
-expr_stmt|;
-comment|// Convert and save
 if|if
 condition|(
 name|value
