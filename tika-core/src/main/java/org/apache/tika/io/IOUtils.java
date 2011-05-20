@@ -51,6 +51,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|CharArrayWriter
 import|;
 end_import
@@ -371,27 +381,6 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
-block|}
-comment|/**      * Fetches entire contents of an<code>InputStream</code> and represent      * same data as result InputStream.      *<p>      * This method is useful where,      *<ul>      *<li>Source InputStream is slow.</li>      *<li>It has network resources associated, so we cannot keep it open for      * long time.</li>      *<li>It has network timeout associated.</li>      *</ul>      * It can be used in favor of {@link #toByteArray(InputStream)}, since it      * avoids unnecessary allocation and copy of byte[].<br>      * This method buffers the input internally, so there is no need to use a      *<code>BufferedInputStream</code>.      *       * @param input Stream to be fully buffered.      * @return A fully buffered stream.      * @throws IOException if an I/O error occurs      * @since Commons IO 2.0      */
-specifier|public
-specifier|static
-name|InputStream
-name|toBufferedInputStream
-parameter_list|(
-name|InputStream
-name|input
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-return|return
-name|ByteArrayOutputStream
-operator|.
-name|toBufferedInputStream
-argument_list|(
-name|input
-argument_list|)
-return|;
 block|}
 comment|// read toByteArray
 comment|//-----------------------------------------------------------------------
