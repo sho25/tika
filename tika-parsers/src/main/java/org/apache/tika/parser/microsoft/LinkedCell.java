@@ -74,6 +74,11 @@ argument_list|(
 name|cell
 argument_list|)
 expr_stmt|;
+assert|assert
+name|link
+operator|!=
+literal|null
+assert|;
 name|this
 operator|.
 name|link
