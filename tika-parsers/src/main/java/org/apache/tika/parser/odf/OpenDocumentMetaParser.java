@@ -41,6 +41,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|ParseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|xml
 operator|.
 name|AttributeDependantMetadataHandler
@@ -407,6 +421,9 @@ name|ch
 parameter_list|,
 name|Metadata
 name|md
+parameter_list|,
+name|ParseContext
+name|context
 parameter_list|)
 block|{
 comment|// Process the Dublin Core Attributes
@@ -419,6 +436,8 @@ argument_list|(
 name|ch
 argument_list|,
 name|md
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 comment|// Process the OO Meta Attributes

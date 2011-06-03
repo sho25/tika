@@ -426,7 +426,7 @@ return|return
 name|stream
 return|;
 block|}
-specifier|protected
+specifier|public
 specifier|static
 class|class
 name|TrackingHandler
