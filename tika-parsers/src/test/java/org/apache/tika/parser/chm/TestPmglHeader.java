@@ -15,16 +15,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -40,20 +30,6 @@ operator|.
 name|framework
 operator|.
 name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|detect
-operator|.
-name|TestContainerAwareDetector
 import|;
 end_import
 
@@ -144,14 +120,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TikaInputStream
-name|stream
+name|byte
+index|[]
+name|data
 init|=
+name|ChmCommons
+operator|.
+name|toByteArray
+argument_list|(
 name|TikaInputStream
 operator|.
 name|get
 argument_list|(
-name|TestContainerAwareDetector
+name|TestChmBlockInfo
 operator|.
 name|class
 operator|.
@@ -162,16 +143,6 @@ operator|.
 name|chmFile
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|byte
-index|[]
-name|data
-init|=
-name|ChmCommons
-operator|.
-name|toByteArray
-argument_list|(
-name|stream
 argument_list|)
 decl_stmt|;
 name|chmPmglHeader
@@ -184,7 +155,7 @@ name|chmPmglHeader
 operator|.
 name|parse
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -346,7 +317,7 @@ name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 block|}
 end_class
 

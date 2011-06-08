@@ -50,7 +50,7 @@ comment|/* Prevents initialization */
 specifier|private
 name|TestParameters
 parameter_list|()
-block|{ 	}
+block|{     }
 comment|/* Tests values */
 specifier|static
 specifier|final

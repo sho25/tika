@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests public methods of the DirectoryListingEntry class  *   */
+comment|/**  * Tests public methods of the DirectoryListingEntry class  *   * @author olegt  *   */
 end_comment
 
 begin_class

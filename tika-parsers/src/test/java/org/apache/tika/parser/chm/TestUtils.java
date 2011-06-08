@@ -70,7 +70,7 @@ specifier|public
 class|class
 name|TestUtils
 block|{
-comment|/** 	 * Converts InputStream to byte array 	 *  	 * @param is 	 *            InputStream 	 * @return byte[] 	 *  	 * @throws IOException 	 */
+comment|/**      * Converts InputStream to byte array      *       * @param is      *            InputStream      * @return byte[]      *       * @throws IOException      */
 specifier|public
 specifier|static
 name|byte

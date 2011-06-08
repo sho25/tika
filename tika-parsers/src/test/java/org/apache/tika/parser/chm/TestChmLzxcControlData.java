@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -44,20 +34,6 @@ operator|.
 name|framework
 operator|.
 name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|detect
-operator|.
-name|TestContainerAwareDetector
 import|;
 end_import
 
@@ -207,14 +183,19 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TikaInputStream
-name|stream
+name|byte
+index|[]
+name|data
 init|=
+name|TestUtils
+operator|.
+name|toByteArray
+argument_list|(
 name|TikaInputStream
 operator|.
 name|get
 argument_list|(
-name|TestContainerAwareDetector
+name|TestChmBlockInfo
 operator|.
 name|class
 operator|.
@@ -225,16 +206,6 @@ operator|.
 name|chmFile
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|byte
-index|[]
-name|data
-init|=
-name|TestUtils
-operator|.
-name|toByteArray
-argument_list|(
-name|stream
 argument_list|)
 decl_stmt|;
 comment|/* Creates and parses itsf header */
@@ -245,11 +216,13 @@ operator|new
 name|ChmItsfHeader
 argument_list|()
 decl_stmt|;
+comment|// chmItsHeader.parse(Arrays.copyOfRange(data, 0,
+comment|// ChmConstants.CHM_ITSF_V3_LEN - 1), chmItsHeader);
 name|chmItsHeader
 operator|.
 name|parse
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -275,11 +248,15 @@ operator|new
 name|ChmItspHeader
 argument_list|()
 decl_stmt|;
+comment|// chmItspHeader.parse(Arrays.copyOfRange( data, (int)
+comment|// chmItsHeader.getDirOffset(),
+comment|// (int) chmItsHeader.getDirOffset()
+comment|// + ChmConstants.CHM_ITSP_V1_LEN), chmItspHeader);
 name|chmItspHeader
 operator|.
 name|parse
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -361,9 +338,13 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// dir_chunk = Arrays.copyOfRange( data, indexOfResetTable,
+comment|// indexOfResetTable
+comment|// +
+comment|// chmDirListCont.getDirectoryListingEntryList().get(indexOfControlData).getLength());
 name|dir_chunk
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -621,7 +602,7 @@ name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 block|}
 end_class
 

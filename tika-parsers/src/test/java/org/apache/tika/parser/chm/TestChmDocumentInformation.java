@@ -51,20 +51,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|detect
-operator|.
-name|TestContainerAwareDetector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|exception
 operator|.
 name|TikaException
@@ -119,14 +105,17 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TikaInputStream
-name|stream
-init|=
+name|chmDoc
+operator|=
+name|CHMDocumentInformation
+operator|.
+name|load
+argument_list|(
 name|TikaInputStream
 operator|.
 name|get
 argument_list|(
-name|TestContainerAwareDetector
+name|TestChmBlockInfo
 operator|.
 name|class
 operator|.
@@ -137,14 +126,6 @@ operator|.
 name|chmFile
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|chmDoc
-operator|=
-name|CHMDocumentInformation
-operator|.
-name|load
-argument_list|(
-name|stream
 argument_list|)
 expr_stmt|;
 block|}
@@ -218,7 +199,7 @@ name|tearDown
 parameter_list|()
 throws|throws
 name|Exception
-block|{ 	}
+block|{     }
 block|}
 end_class
 
