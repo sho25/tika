@@ -31,16 +31,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -4985,7 +4975,7 @@ name|fill
 operator|++
 control|)
 block|{
-comment|/* 							 * if this path hasn't been taken yet, 'allocate' 							 * two entries 							 */
+comment|/*                              * if this path hasn't been taken yet, 'allocate'                              * two entries                              */
 if|if
 condition|(
 name|tmp
@@ -5056,7 +5046,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/* 							 * follows the path and select either left or right 							 * for next bit 							 */
+comment|/*                              * follows the path and select either left or right                              * for next bit                              */
 name|leaf
 operator|=
 name|tmp
@@ -5167,6 +5157,8 @@ name|endOffset
 operator|-
 name|startOffset
 decl_stmt|;
+comment|// return (getContent() != null) ? Arrays.copyOfRange(getContent(),
+comment|// startOffset, (startOffset + length)) : new byte[1];
 return|return
 operator|(
 name|getContent
@@ -5175,7 +5167,7 @@ operator|!=
 literal|null
 operator|)
 condition|?
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -5207,6 +5199,8 @@ name|int
 name|start
 parameter_list|)
 block|{
+comment|// return (getContent() != null) ? Arrays.copyOfRange(getContent(),
+comment|// start, (getContent().length + start)) : new byte[1];
 return|return
 operator|(
 name|getContent
@@ -5215,7 +5209,7 @@ operator|!=
 literal|null
 operator|)
 condition|?
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -5461,7 +5455,7 @@ operator|=
 name|state
 expr_stmt|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void

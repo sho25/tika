@@ -75,16 +75,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -180,7 +170,7 @@ comment|/* Prevents initialization */
 specifier|private
 name|ChmCommons
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|public
 specifier|static
 name|void
@@ -205,7 +195,7 @@ literal|"byte[] is null"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Represents entry types: uncompressed, compressed 	 */
+comment|/**      * Represents entry types: uncompressed, compressed      */
 specifier|public
 enum|enum
 name|EntryType
@@ -214,7 +204,7 @@ name|UNCOMPRESSED
 block|,
 name|COMPRESSED
 block|}
-comment|/** 	 * Represents lzx states: started decoding, not started decoding 	 */
+comment|/**      * Represents lzx states: started decoding, not started decoding      */
 specifier|public
 enum|enum
 name|LzxState
@@ -223,7 +213,7 @@ name|STARTED_DECODING
 block|,
 name|NOT_STARTED_DECODING
 block|}
-comment|/** 	 * Represents intel file states during decompression 	 */
+comment|/**      * Represents intel file states during decompression      */
 specifier|public
 enum|enum
 name|IntelState
@@ -232,7 +222,7 @@ name|STARTED
 block|,
 name|NOT_STARTED
 block|}
-comment|/** 	 * Represents lzx block types in order to decompress differently 	 */
+comment|/**      * Represents lzx block types in order to decompress differently      */
 specifier|public
 specifier|final
 specifier|static
@@ -265,7 +255,7 @@ name|UNCOMPRESSED
 init|=
 literal|3
 decl_stmt|;
-comment|/** 	 * LZX supports window sizes of 2^15 (32Kb) through 2^21 (2Mb) Returns X, 	 * i.e 2^X 	 *  	 * @param window 	 *            chmLzxControlData.getWindowSize() 	 *  	 * @return window size 	 */
+comment|/**      * LZX supports window sizes of 2^15 (32Kb) through 2^21 (2Mb) Returns X,      * i.e 2^X      *       * @param window      *            chmLzxControlData.getWindowSize()      *       * @return window size      */
 specifier|public
 specifier|static
 name|int
@@ -428,7 +418,7 @@ name|byte
 index|[]
 name|t
 init|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -483,7 +473,7 @@ literal|1
 index|]
 return|;
 block|}
-comment|/** 	 * Returns textual representation of LangID 	 *  	 * @param langID 	 *  	 * @return language name 	 */
+comment|/**      * Returns textual representation of LangID      *       * @param langID      *       * @return language name      */
 specifier|public
 specifier|static
 name|String
@@ -676,7 +666,7 @@ literal|"unknown - http://msdn.microsoft.com/en-us/library/bb165625%28VS.80%29.a
 return|;
 block|}
 block|}
-comment|/** 	 * Checks skippable patterns 	 *  	 * @param directoryListingEntry 	 *  	 * @return boolean 	 */
+comment|/**      * Checks skippable patterns      *       * @param directoryListingEntry      *       * @return boolean      */
 specifier|public
 specifier|static
 name|boolean
@@ -724,7 +714,7 @@ else|:
 literal|false
 return|;
 block|}
-comment|/** 	 * Writes byte[][] to the file 	 *  	 * @param buffer 	 * @param fileToBeSaved 	 *            file name 	 */
+comment|/**      * Writes byte[][] to the file      *       * @param buffer      * @param fileToBeSaved      *            file name      */
 specifier|public
 specifier|static
 name|void
@@ -755,10 +745,12 @@ operator|!=
 literal|null
 operator|&&
 operator|!
-name|fileToBeSaved
+name|ChmCommons
 operator|.
 name|isEmpty
-argument_list|()
+argument_list|(
+name|fileToBeSaved
+argument_list|)
 condition|)
 block|{
 try|try
@@ -874,7 +866,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * Reverses the order of given array 	 *  	 * @param array 	 */
+comment|/**      * Reverses the order of given array      *       * @param array      */
 specifier|public
 specifier|static
 name|void
@@ -950,7 +942,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns byte array Closes the InputStream 	 *  	 * @param is 	 *            InputStream of chm file 	 *  	 * @return byte array 	 *  	 * @throws IOException 	 */
+comment|/**      * Returns byte array Closes the InputStream      *       * @param is      *            InputStream of chm file      *       * @return byte array      *       * @throws IOException      */
 specifier|public
 specifier|static
 name|byte
@@ -1078,7 +1070,7 @@ literal|"InputStream is null"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Returns an index of the reset table 	 *  	 * @param text 	 * @param pattern 	 * @return index of the reset table 	 */
+comment|/**      * Returns an index of the reset table      *       * @param text      * @param pattern      * @return index of the reset table      */
 specifier|public
 specifier|static
 specifier|final
@@ -1107,7 +1099,7 @@ operator|-
 literal|4
 return|;
 block|}
-comment|/** 	 * Searches some pattern in byte[] 	 *  	 * @param text 	 *            byte[] 	 * @param pattern 	 *            byte[] 	 * @return an index, if nothing found returns -1 	 */
+comment|/**      * Searches some pattern in byte[]      *       * @param text      *            byte[]      * @param pattern      *            byte[]      * @return an index, if nothing found returns -1      */
 specifier|public
 specifier|static
 name|int
@@ -1333,7 +1325,7 @@ literal|1
 return|;
 comment|// not found
 block|}
-comment|/** 	 * Searches for some pattern in the directory listing entry list 	 *  	 * @param list 	 * @param pattern 	 * @return an index, if nothing found returns -1 	 */
+comment|/**      * Searches for some pattern in the directory listing entry list      *       * @param list      * @param pattern      * @return an index, if nothing found returns -1      */
 specifier|public
 specifier|static
 name|int
@@ -1410,7 +1402,181 @@ literal|1
 return|;
 comment|// not found
 block|}
-comment|/** 	 * @param args 	 */
+comment|/*      * This method is added because of supporting of Java 5      */
+specifier|public
+specifier|static
+name|byte
+index|[]
+name|copyOfRange
+parameter_list|(
+name|byte
+index|[]
+name|original
+parameter_list|,
+name|int
+name|from
+parameter_list|,
+name|int
+name|to
+parameter_list|)
+block|{
+name|checkCopyOfRangeParams
+argument_list|(
+name|original
+argument_list|,
+name|from
+argument_list|,
+name|to
+argument_list|)
+expr_stmt|;
+name|int
+name|newLength
+init|=
+name|to
+operator|-
+name|from
+decl_stmt|;
+if|if
+condition|(
+name|newLength
+operator|<
+literal|0
+condition|)
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|from
+operator|+
+literal|"> "
+operator|+
+name|to
+argument_list|)
+throw|;
+name|byte
+index|[]
+name|copy
+init|=
+operator|new
+name|byte
+index|[
+name|newLength
+index|]
+decl_stmt|;
+name|System
+operator|.
+name|arraycopy
+argument_list|(
+name|original
+argument_list|,
+name|from
+argument_list|,
+name|copy
+argument_list|,
+literal|0
+argument_list|,
+name|Math
+operator|.
+name|min
+argument_list|(
+name|original
+operator|.
+name|length
+operator|-
+name|from
+argument_list|,
+name|newLength
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|copy
+return|;
+block|}
+specifier|private
+specifier|static
+name|void
+name|checkCopyOfRangeParams
+parameter_list|(
+name|byte
+index|[]
+name|original
+parameter_list|,
+name|int
+name|from
+parameter_list|,
+name|int
+name|to
+parameter_list|)
+block|{
+if|if
+condition|(
+name|original
+operator|==
+literal|null
+condition|)
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"array is null"
+argument_list|)
+throw|;
+if|if
+condition|(
+name|from
+operator|<
+literal|0
+condition|)
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|from
+operator|+
+literal|" should be> 0"
+argument_list|)
+throw|;
+if|if
+condition|(
+name|to
+operator|<
+literal|0
+condition|)
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+name|to
+operator|+
+literal|" should be> 0"
+argument_list|)
+throw|;
+block|}
+comment|/*      * This method is added because of supporting of Java 5      */
+specifier|public
+specifier|static
+name|boolean
+name|isEmpty
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+return|return
+name|str
+operator|==
+literal|null
+operator|||
+name|str
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+return|;
+block|}
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -1420,7 +1586,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
+block|{     }
 block|}
 end_class
 

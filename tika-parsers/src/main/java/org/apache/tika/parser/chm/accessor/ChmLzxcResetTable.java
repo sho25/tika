@@ -193,7 +193,7 @@ operator|=
 name|dataRemained
 expr_stmt|;
 block|}
-comment|/** 	 * Returns block addresses 	 *  	 * @return block addresses 	 */
+comment|/**      * Returns block addresses      *       * @return block addresses      */
 specifier|public
 name|long
 index|[]
@@ -204,7 +204,7 @@ return|return
 name|block_address
 return|;
 block|}
-comment|/** 	 * Sets block addresses 	 *  	 * @param block_address 	 */
+comment|/**      * Sets block addresses      *       * @param block_address      */
 specifier|public
 name|void
 name|setBlockAddress
@@ -400,7 +400,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Enumerates chm block addresses 	 *  	 * @param data 	 *  	 * @return byte[] of addresses 	 */
+comment|/**      * Enumerates chm block addresses      *       * @param data      *       * @return byte[] of addresses      */
 specifier|private
 name|long
 index|[]
@@ -526,7 +526,7 @@ return|return
 name|addresses
 return|;
 block|}
-comment|/** 	 * Validates parameters such as byte[] and chm lzxc reset table 	 *  	 * @param data 	 * @param chmLzxcResetTable 	 *  	 * @return boolean 	 */
+comment|/**      * Validates parameters such as byte[] and chm lzxc reset table      *       * @param data      * @param chmLzxcResetTable      *       * @return boolean      */
 specifier|private
 name|boolean
 name|validateParamaters
@@ -791,7 +791,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/** 	 * Returns the version 	 *  	 * @return - long 	 */
+comment|/**      * Returns the version      *       * @return - long      */
 specifier|public
 name|long
 name|getVersion
@@ -801,7 +801,7 @@ return|return
 name|version
 return|;
 block|}
-comment|/** 	 * Sets the version 	 *  	 * @param version 	 *            - long 	 */
+comment|/**      * Sets the version      *       * @param version      *            - long      */
 specifier|public
 name|void
 name|setVersion
@@ -817,7 +817,7 @@ operator|=
 name|version
 expr_stmt|;
 block|}
-comment|/** 	 * Gets a block count 	 *  	 * @return - int 	 */
+comment|/**      * Gets a block count      *       * @return - int      */
 specifier|public
 name|long
 name|getBlockCount
@@ -827,7 +827,7 @@ return|return
 name|block_count
 return|;
 block|}
-comment|/** 	 * Sets a block count 	 *  	 * @param block_count 	 *            - long 	 */
+comment|/**      * Sets a block count      *       * @param block_count      *            - long      */
 specifier|public
 name|void
 name|setBlockCount
@@ -843,7 +843,7 @@ operator|=
 name|block_count
 expr_stmt|;
 block|}
-comment|/** 	 * Gets unknown 	 *  	 * @return - long 	 */
+comment|/**      * Gets unknown      *       * @return - long      */
 specifier|public
 name|long
 name|getUnknown
@@ -853,7 +853,7 @@ return|return
 name|unknown
 return|;
 block|}
-comment|/** 	 * Sets an unknown 	 *  	 * @param unknown 	 *            - long 	 */
+comment|/**      * Sets an unknown      *       * @param unknown      *            - long      */
 specifier|public
 name|void
 name|setUnknown
@@ -869,7 +869,7 @@ operator|=
 name|unknown
 expr_stmt|;
 block|}
-comment|/** 	 * Gets a table offset 	 *  	 * @return - long 	 */
+comment|/**      * Gets a table offset      *       * @return - long      */
 specifier|public
 name|long
 name|getTableOffset
@@ -879,7 +879,7 @@ return|return
 name|table_offset
 return|;
 block|}
-comment|/** 	 * Sets a table offset 	 *  	 * @param table_offset 	 *            - long 	 */
+comment|/**      * Sets a table offset      *       * @param table_offset      *            - long      */
 specifier|public
 name|void
 name|setTableOffset
@@ -895,7 +895,7 @@ operator|=
 name|table_offset
 expr_stmt|;
 block|}
-comment|/** 	 * Gets uncompressed length 	 *  	 * @return - {@link BigInteger } 	 */
+comment|/**      * Gets uncompressed length      *       * @return - {@link BigInteger }      */
 specifier|public
 name|long
 name|getUncompressedLen
@@ -905,7 +905,7 @@ return|return
 name|uncompressed_len
 return|;
 block|}
-comment|/** 	 * Sets uncompressed length 	 *  	 * @param uncompressed_len 	 *            - {@link BigInteger} 	 */
+comment|/**      * Sets uncompressed length      *       * @param uncompressed_len      *            - {@link BigInteger}      */
 specifier|public
 name|void
 name|setUncompressedLen
@@ -921,7 +921,7 @@ operator|=
 name|uncompressed_len
 expr_stmt|;
 block|}
-comment|/** 	 * Gets compressed length 	 *  	 * @return - {@link BigInteger} 	 */
+comment|/**      * Gets compressed length      *       * @return - {@link BigInteger}      */
 specifier|public
 name|long
 name|getCompressedLen
@@ -931,7 +931,7 @@ return|return
 name|compressed_len
 return|;
 block|}
-comment|/** 	 * Sets compressed length 	 *  	 * @param compressed_len 	 *            - {@link BigInteger} 	 */
+comment|/**      * Sets compressed length      *       * @param compressed_len      *            - {@link BigInteger}      */
 specifier|public
 name|void
 name|setCompressedLen
@@ -947,7 +947,7 @@ operator|=
 name|compressed_len
 expr_stmt|;
 block|}
-comment|/** 	 * Gets a block length 	 *  	 * @return - {@link BigInteger} 	 */
+comment|/**      * Gets a block length      *       * @return - {@link BigInteger}      */
 specifier|public
 name|long
 name|getBlockLen
@@ -957,7 +957,7 @@ return|return
 name|block_len
 return|;
 block|}
-comment|/** 	 * Sets a block length 	 *  	 * @param block_len 	 *            - {@link BigInteger} 	 */
+comment|/**      * Sets a block length      *       * @param block_len      *            - {@link BigInteger}      */
 specifier|public
 name|void
 name|setBlockLlen
@@ -973,7 +973,7 @@ operator|=
 name|block_len
 expr_stmt|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -983,7 +983,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{  	}
+block|{      }
 comment|// @Override
 specifier|public
 name|void

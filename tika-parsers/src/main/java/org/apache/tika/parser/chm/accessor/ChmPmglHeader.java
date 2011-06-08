@@ -112,7 +112,7 @@ operator|.
 name|getBytes
 argument_list|()
 decl_stmt|;
-comment|/* 																		 * 0 																		 * (PMGL 																		 * ) 																		 */
+comment|/*                                                                           * 0                                                                           * (PMGL                                                                           * )                                                                           */
 specifier|private
 name|long
 name|free_space
@@ -843,7 +843,7 @@ operator|=
 name|block_next
 expr_stmt|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -853,7 +853,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{  	}
+block|{      }
 block|}
 end_class
 

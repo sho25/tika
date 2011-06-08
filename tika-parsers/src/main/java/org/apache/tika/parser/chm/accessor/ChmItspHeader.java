@@ -130,7 +130,7 @@ operator|.
 name|getBytes
 argument_list|()
 decl_stmt|;
-comment|/* 																		 * 0 																		 * (ITSP 																		 * ) 																		 */
+comment|/*                                                                           * 0                                                                           * (ITSP                                                                           * )                                                                           */
 specifier|private
 name|int
 name|version
@@ -529,7 +529,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Copies 4 bits from data[] 	 *  	 * @param data 	 * @param chmItspHeader 	 * @param count 	 */
+comment|/**      * Copies 4 bits from data[]      *       * @param data      * @param chmItspHeader      * @param count      */
 specifier|private
 name|void
 name|unmarshalCharArray
@@ -895,7 +895,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/** 	 * Returns how many bytes remained 	 *  	 * @return int 	 */
+comment|/**      * Returns how many bytes remained      *       * @return int      */
 specifier|private
 name|int
 name|getDataRemained
@@ -905,7 +905,7 @@ return|return
 name|dataRemained
 return|;
 block|}
-comment|/** 	 * Sets how many bytes remained 	 *  	 * @param dataRemained 	 */
+comment|/**      * Sets how many bytes remained      *       * @param dataRemained      */
 specifier|private
 name|void
 name|setDataRemained
@@ -921,7 +921,7 @@ operator|=
 name|dataRemained
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a place holder 	 *  	 * @return current place 	 */
+comment|/**      * Returns a place holder      *       * @return current place      */
 specifier|private
 name|int
 name|getCurrentPlace
@@ -931,7 +931,7 @@ return|return
 name|currentPlace
 return|;
 block|}
-comment|/** 	 * Sets current place 	 *  	 * @param currentPlace 	 */
+comment|/**      * Sets current place      *       * @param currentPlace      */
 specifier|private
 name|void
 name|setCurrentPlace
@@ -947,7 +947,7 @@ operator|=
 name|currentPlace
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a signature of the header 	 *  	 * @return itsp signature 	 */
+comment|/**      * Returns a signature of the header      *       * @return itsp signature      */
 specifier|public
 name|byte
 index|[]
@@ -958,7 +958,7 @@ return|return
 name|signature
 return|;
 block|}
-comment|/** 	 * Sets itsp signature 	 *  	 * @param signature 	 */
+comment|/**      * Sets itsp signature      *       * @param signature      */
 specifier|protected
 name|void
 name|setSignature
@@ -975,7 +975,7 @@ operator|=
 name|signature
 expr_stmt|;
 block|}
-comment|/** 	 * Returns version of itsp header 	 *  	 * @return version 	 */
+comment|/**      * Returns version of itsp header      *       * @return version      */
 specifier|public
 name|int
 name|getVersion
@@ -985,7 +985,7 @@ return|return
 name|version
 return|;
 block|}
-comment|/** 	 * Sets a version of itsp header 	 *  	 * @param version 	 */
+comment|/**      * Sets a version of itsp header      *       * @param version      */
 specifier|protected
 name|void
 name|setVersion
@@ -1001,7 +1001,7 @@ operator|=
 name|version
 expr_stmt|;
 block|}
-comment|/** 	 * Returns header length 	 *  	 * @return header length 	 */
+comment|/**      * Returns header length      *       * @return header length      */
 specifier|public
 name|int
 name|getHeader_len
@@ -1011,7 +1011,7 @@ return|return
 name|header_len
 return|;
 block|}
-comment|/** 	 * Sets itsp header length 	 *  	 * @param header_len 	 */
+comment|/**      * Sets itsp header length      *       * @param header_len      */
 specifier|protected
 name|void
 name|setHeader_len
@@ -1027,7 +1027,7 @@ operator|=
 name|header_len
 expr_stmt|;
 block|}
-comment|/** 	 * Returns 000c unknown bytes 	 */
+comment|/**      * Returns 000c unknown bytes      */
 specifier|public
 name|int
 name|getUnknown_000c
@@ -1037,7 +1037,7 @@ return|return
 name|unknown_000c
 return|;
 block|}
-comment|/** 	 * Sets 000c unknown bytes Unknown means here that those guys who cracked 	 * the chm format do not know what's it purposes for 	 *  	 * @param unknown_000c 	 */
+comment|/**      * Sets 000c unknown bytes Unknown means here that those guys who cracked      * the chm format do not know what's it purposes for      *       * @param unknown_000c      */
 specifier|protected
 name|void
 name|setUnknown_000c
@@ -1053,7 +1053,7 @@ operator|=
 name|unknown_000c
 expr_stmt|;
 block|}
-comment|/** 	 * Returns block's length 	 *  	 * @return block_length 	 */
+comment|/**      * Returns block's length      *       * @return block_length      */
 specifier|public
 name|long
 name|getBlock_len
@@ -1063,7 +1063,7 @@ return|return
 name|block_len
 return|;
 block|}
-comment|/** 	 * Sets block length 	 *  	 * @param block_len 	 */
+comment|/**      * Sets block length      *       * @param block_len      */
 specifier|protected
 name|void
 name|setBlock_len
@@ -1079,7 +1079,7 @@ operator|=
 name|block_len
 expr_stmt|;
 block|}
-comment|/** 	 * Returns block index interval 	 *  	 * @return blockidx_intvl 	 */
+comment|/**      * Returns block index interval      *       * @return blockidx_intvl      */
 specifier|public
 name|int
 name|getBlockidx_intvl
@@ -1089,7 +1089,7 @@ return|return
 name|blockidx_intvl
 return|;
 block|}
-comment|/** 	 * Sets block index interval 	 *  	 * @param blockidx_intvl 	 */
+comment|/**      * Sets block index interval      *       * @param blockidx_intvl      */
 specifier|protected
 name|void
 name|setBlockidx_intvl
@@ -1105,7 +1105,7 @@ operator|=
 name|blockidx_intvl
 expr_stmt|;
 block|}
-comment|/** 	 * Returns an index depth 	 *  	 * @return index_depth 	 */
+comment|/**      * Returns an index depth      *       * @return index_depth      */
 specifier|public
 name|int
 name|getIndex_depth
@@ -1115,7 +1115,7 @@ return|return
 name|index_depth
 return|;
 block|}
-comment|/** 	 * Sets an index depth 	 *  	 * @param index_depth 	 */
+comment|/**      * Sets an index depth      *       * @param index_depth      */
 specifier|protected
 name|void
 name|setIndex_depth
@@ -1131,7 +1131,7 @@ operator|=
 name|index_depth
 expr_stmt|;
 block|}
-comment|/** 	 * Returns index root 	 *  	 * @return index_root 	 */
+comment|/**      * Returns index root      *       * @return index_root      */
 specifier|public
 name|int
 name|getIndex_root
@@ -1141,7 +1141,7 @@ return|return
 name|index_root
 return|;
 block|}
-comment|/** 	 * Sets an index root 	 *  	 * @param index_root 	 */
+comment|/**      * Sets an index root      *       * @param index_root      */
 specifier|protected
 name|void
 name|setIndex_root
@@ -1157,7 +1157,7 @@ operator|=
 name|index_root
 expr_stmt|;
 block|}
-comment|/** 	 * Returns an index head 	 *  	 * @return index_head 	 */
+comment|/**      * Returns an index head      *       * @return index_head      */
 specifier|public
 name|int
 name|getIndex_head
@@ -1167,7 +1167,7 @@ return|return
 name|index_head
 return|;
 block|}
-comment|/** 	 * Sets an index head 	 *  	 * @param index_head 	 */
+comment|/**      * Sets an index head      *       * @param index_head      */
 specifier|protected
 name|void
 name|setIndex_head
@@ -1183,7 +1183,7 @@ operator|=
 name|index_head
 expr_stmt|;
 block|}
-comment|/** 	 * Returns 0024 unknown bytes 	 *  	 * @return unknown_0024 	 */
+comment|/**      * Returns 0024 unknown bytes      *       * @return unknown_0024      */
 specifier|public
 name|int
 name|getUnknown_0024
@@ -1193,7 +1193,7 @@ return|return
 name|unknown_0024
 return|;
 block|}
-comment|/** 	 * Sets 0024 unknown bytes 	 *  	 * @param unknown_0024 	 */
+comment|/**      * Sets 0024 unknown bytes      *       * @param unknown_0024      */
 specifier|protected
 name|void
 name|setUnknown_0024
@@ -1209,7 +1209,7 @@ operator|=
 name|unknown_0024
 expr_stmt|;
 block|}
-comment|/** 	 * Returns number of blocks 	 *  	 * @return num_blocks 	 */
+comment|/**      * Returns number of blocks      *       * @return num_blocks      */
 specifier|public
 name|long
 name|getNum_blocks
@@ -1219,7 +1219,7 @@ return|return
 name|num_blocks
 return|;
 block|}
-comment|/** 	 * Sets number of blocks containing in the chm file 	 *  	 * @param num_blocks 	 */
+comment|/**      * Sets number of blocks containing in the chm file      *       * @param num_blocks      */
 specifier|protected
 name|void
 name|setNum_blocks
@@ -1235,7 +1235,7 @@ operator|=
 name|num_blocks
 expr_stmt|;
 block|}
-comment|/** 	 * Returns 002c unknown bytes 	 *  	 * @return unknown_002c 	 */
+comment|/**      * Returns 002c unknown bytes      *       * @return unknown_002c      */
 specifier|public
 name|int
 name|getUnknown_002c
@@ -1245,7 +1245,7 @@ return|return
 name|unknown_002c
 return|;
 block|}
-comment|/** 	 * Sets 002c unknown bytes 	 *  	 * @param unknown_002c 	 */
+comment|/**      * Sets 002c unknown bytes      *       * @param unknown_002c      */
 specifier|protected
 name|void
 name|setUnknown_002c
@@ -1261,7 +1261,7 @@ operator|=
 name|unknown_002c
 expr_stmt|;
 block|}
-comment|/** 	 * Returns language id 	 *  	 * @return lang_id 	 */
+comment|/**      * Returns language id      *       * @return lang_id      */
 specifier|public
 name|long
 name|getLang_id
@@ -1271,7 +1271,7 @@ return|return
 name|lang_id
 return|;
 block|}
-comment|/** 	 * Sets language id 	 *  	 * @param lang_id 	 */
+comment|/**      * Sets language id      *       * @param lang_id      */
 specifier|protected
 name|void
 name|setLang_id
@@ -1287,7 +1287,7 @@ operator|=
 name|lang_id
 expr_stmt|;
 block|}
-comment|/** 	 * Returns system uuid 	 *  	 * @return system_uuid 	 */
+comment|/**      * Returns system uuid      *       * @return system_uuid      */
 specifier|public
 name|byte
 index|[]
@@ -1298,7 +1298,7 @@ return|return
 name|system_uuid
 return|;
 block|}
-comment|/** 	 * Sets system uuid 	 *  	 * @param system_uuid 	 */
+comment|/**      * Sets system uuid      *       * @param system_uuid      */
 specifier|protected
 name|void
 name|setSystem_uuid
@@ -1315,7 +1315,7 @@ operator|=
 name|system_uuid
 expr_stmt|;
 block|}
-comment|/** 	 * Returns 0044 unknown bytes 	 *  	 * @return unknown_0044 	 */
+comment|/**      * Returns 0044 unknown bytes      *       * @return unknown_0044      */
 specifier|public
 name|byte
 index|[]
@@ -1326,7 +1326,7 @@ return|return
 name|unknown_0044
 return|;
 block|}
-comment|/** 	 * Sets 0044 unknown bytes 	 *  	 * @param unknown_0044 	 */
+comment|/**      * Sets 0044 unknown bytes      *       * @param unknown_0044      */
 specifier|protected
 name|void
 name|setUnknown_0044
@@ -1772,7 +1772,7 @@ literal|"!= ChmConstants.CHM_ITSP_V1_LEN"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -1782,7 +1782,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
+block|{     }
 block|}
 end_class
 

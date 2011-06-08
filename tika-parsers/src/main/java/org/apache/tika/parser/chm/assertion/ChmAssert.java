@@ -110,7 +110,7 @@ specifier|public
 class|class
 name|ChmAssert
 block|{
-comment|/** 	 * Checks a validity of the chmBlockSegment parameters 	 *  	 * @param data 	 *            byte[] 	 * @param resetTable 	 *            ChmLzxcResetTable 	 * @param blockNumber 	 *            int 	 * @param lzxcBlockOffset 	 *            int 	 * @param lzxcBlockLength 	 *            int 	 */
+comment|/**      * Checks a validity of the chmBlockSegment parameters      *       * @param data      *            byte[]      * @param resetTable      *            ChmLzxcResetTable      * @param blockNumber      *            int      * @param lzxcBlockOffset      *            int      * @param lzxcBlockLength      *            int      */
 specifier|public
 specifier|static
 specifier|final
@@ -237,7 +237,7 @@ literal|"lzxcBlockLength should be positive number"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Checks if InputStream is not null 	 *  	 * @param is 	 *            InputStream 	 */
+comment|/**      * Checks if InputStream is not null      *       * @param is      *            InputStream      */
 specifier|public
 specifier|static
 specifier|final
@@ -262,7 +262,7 @@ literal|"input sream is null"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Checks validity of ChmAccessor parameters 	 *  	 * @param data 	 * @param chmItsfHeader 	 * @param count 	 */
+comment|/**      * Checks validity of ChmAccessor parameters      *       * @param data      * @param chmItsfHeader      * @param count      */
 specifier|public
 specifier|static
 specifier|final
@@ -294,7 +294,7 @@ name|chmAccessor
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Checks if byte[] is not null 	 *  	 * @param data 	 */
+comment|/**      * Checks if byte[] is not null      *       * @param data      */
 specifier|public
 specifier|static
 specifier|final
@@ -320,7 +320,7 @@ literal|"byte[] data is null"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Checks if ChmAccessor is not null In case of null throws exception 	 *  	 * @param ChmAccessor 	 */
+comment|/**      * Checks if ChmAccessor is not null In case of null throws exception      *       * @param ChmAccessor      */
 specifier|public
 specifier|static
 specifier|final
@@ -348,7 +348,7 @@ literal|"chm header is null"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Checks validity of the DirectoryListingEntry's parameters In case of 	 * invalid parameter(s) throws an exception 	 *  	 * @param name_length 	 *            length of the chm entry name 	 * @param name 	 *            chm entry name 	 * @param entryType 	 *            EntryType 	 * @param offset 	 * @param length 	 */
+comment|/**      * Checks validity of the DirectoryListingEntry's parameters In case of      * invalid parameter(s) throws an exception      *       * @param name_length      *            length of the chm entry name      * @param name      *            chm entry name      * @param entryType      *            EntryType      * @param offset      * @param length      */
 specifier|public
 specifier|static
 specifier|final
@@ -481,7 +481,7 @@ literal|"cannot parse chm file index> data.length"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Checks if int param is greater than zero In case param<=0 throws an 	 * exception 	 *  	 * @param param 	 */
+comment|/**      * Checks if int param is greater than zero In case param<=0 throws an      * exception      *       * @param param      */
 specifier|public
 specifier|static
 name|void

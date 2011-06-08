@@ -443,7 +443,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/** 	 * Returns pmgi signature if exists 	 *  	 * @return signature 	 */
+comment|/**      * Returns pmgi signature if exists      *       * @return signature      */
 specifier|public
 name|byte
 index|[]
@@ -454,7 +454,7 @@ return|return
 name|signature
 return|;
 block|}
-comment|/** 	 * Sets pmgi signature 	 *  	 * @param signature 	 */
+comment|/**      * Sets pmgi signature      *       * @param signature      */
 specifier|protected
 name|void
 name|setSignature
@@ -471,7 +471,7 @@ operator|=
 name|signature
 expr_stmt|;
 block|}
-comment|/** 	 * Returns pmgi free space 	 *  	 * @return free_space 	 */
+comment|/**      * Returns pmgi free space      *       * @return free_space      */
 specifier|public
 name|long
 name|getFreeSpace
@@ -481,7 +481,7 @@ return|return
 name|free_space
 return|;
 block|}
-comment|/** 	 * Sets pmgi free space 	 *  	 * @param free_space 	 */
+comment|/**      * Sets pmgi free space      *       * @param free_space      */
 specifier|protected
 name|void
 name|setFreeSpace
@@ -497,7 +497,7 @@ operator|=
 name|free_space
 expr_stmt|;
 block|}
-comment|/** 	 * Returns textual representation of the pmgi header 	 */
+comment|/**      * Returns textual representation of the pmgi header      */
 specifier|public
 name|String
 name|toString
@@ -641,7 +641,7 @@ literal|"it does not seem to be valid a PMGI signature, check ChmItsp index_root
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -651,7 +651,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{  	}
+block|{      }
 block|}
 end_class
 

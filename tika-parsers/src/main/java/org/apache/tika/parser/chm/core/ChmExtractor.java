@@ -55,16 +55,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -346,7 +336,7 @@ specifier|private
 name|long
 name|lzxBlockLength
 decl_stmt|;
-comment|/** 	 * Returns lzxc control data. 	 *  	 * @return ChmLzxcControlData 	 */
+comment|/**      * Returns lzxc control data.      *       * @return ChmLzxcControlData      */
 specifier|private
 name|ChmLzxcControlData
 name|getChmLzxcControlData
@@ -356,7 +346,7 @@ return|return
 name|chmLzxcControlData
 return|;
 block|}
-comment|/** 	 * Sets lzxc control data 	 *  	 * @param chmLzxcControlData 	 */
+comment|/**      * Sets lzxc control data      *       * @param chmLzxcControlData      */
 specifier|private
 name|void
 name|setChmLzxcControlData
@@ -396,7 +386,7 @@ operator|=
 name|chmItspHeader
 expr_stmt|;
 block|}
-comment|/** 	 * Returns lzxc reset table 	 *  	 * @return ChmLzxcResetTable 	 */
+comment|/**      * Returns lzxc reset table      *       * @return ChmLzxcResetTable      */
 specifier|private
 name|ChmLzxcResetTable
 name|getChmLzxcResetTable
@@ -406,7 +396,7 @@ return|return
 name|chmLzxcResetTable
 return|;
 block|}
-comment|/** 	 * Sets lzxc reset table 	 *  	 * @param chmLzxcResetTable 	 */
+comment|/**      * Sets lzxc reset table      *       * @param chmLzxcResetTable      */
 specifier|private
 name|void
 name|setChmLzxcResetTable
@@ -422,7 +412,7 @@ operator|=
 name|chmLzxcResetTable
 expr_stmt|;
 block|}
-comment|/** 	 * Returns lzxc block length 	 *  	 * @return lzxBlockLength 	 */
+comment|/**      * Returns lzxc block length      *       * @return lzxBlockLength      */
 specifier|private
 name|long
 name|getLzxBlockLength
@@ -432,7 +422,7 @@ return|return
 name|lzxBlockLength
 return|;
 block|}
-comment|/** 	 * Sets lzxc block length 	 *  	 * @param lzxBlockLength 	 */
+comment|/**      * Sets lzxc block length      *       * @param lzxBlockLength      */
 specifier|private
 name|void
 name|setLzxBlockLength
@@ -448,7 +438,7 @@ operator|=
 name|lzxBlockLength
 expr_stmt|;
 block|}
-comment|/** 	 * Returns lzxc block offset 	 *  	 * @return lzxBlockOffset 	 */
+comment|/**      * Returns lzxc block offset      *       * @return lzxBlockOffset      */
 specifier|private
 name|long
 name|getLzxBlockOffset
@@ -458,7 +448,7 @@ return|return
 name|lzxBlockOffset
 return|;
 block|}
-comment|/** 	 * Sets lzxc block offset 	 */
+comment|/**      * Sets lzxc block offset      */
 specifier|private
 name|void
 name|setLzxBlockOffset
@@ -558,12 +548,14 @@ name|ChmItsfHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// getChmItsfHeader().parse(Arrays.copyOfRange(getData(), 0,
+comment|// ChmConstants.CHM_ITSF_V3_LEN - 1), getChmItsfHeader());
 name|getChmItsfHeader
 argument_list|()
 operator|.
 name|parse
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -591,12 +583,16 @@ name|ChmItspHeader
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// getChmItspHeader().parse(Arrays.copyOfRange( getData(), (int)
+comment|// getChmItsfHeader().getDirOffset(),
+comment|// (int) getChmItsfHeader().getDirOffset() +
+comment|// ChmConstants.CHM_ITSP_V1_LEN), getChmItspHeader());
 name|getChmItspHeader
 argument_list|()
 operator|.
 name|parse
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -688,7 +684,7 @@ literal|0
 condition|)
 name|dir_chunk
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -714,6 +710,10 @@ name|getLength
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// dir_chunk = Arrays.copyOfRange(getData(), indexOfResetData,
+comment|// indexOfResetData
+comment|// +
+comment|// getChmDirList().getDirectoryListingEntryList().get(indexOfControlData).getLength());
 comment|/* Creates and parses chm control data */
 name|setChmLzxcControlData
 argument_list|(
@@ -788,9 +788,12 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+comment|// dir_chunk = Arrays.copyOfRange(getData(), startIndex, startIndex
+comment|// +
+comment|// getChmDirList().getDirectoryListingEntryList().get(indexOfResetTable).getLength());
 name|dir_chunk
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -920,7 +923,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Enumerates chm entities 	 *  	 * @return list of chm entities 	 */
+comment|/**      * Enumerates chm entities      *       * @return list of chm entities      */
 specifier|public
 name|List
 argument_list|<
@@ -984,7 +987,7 @@ return|return
 name|listOfEntries
 return|;
 block|}
-comment|/** 	 * Decompresses a chm entry 	 *  	 * @param directoryListingEntry 	 *  	 * @return decompressed data 	 */
+comment|/**      * Decompresses a chm entry      *       * @param directoryListingEntry      *       * @return decompressed data      */
 specifier|public
 name|byte
 index|[]
@@ -1062,9 +1065,11 @@ name|getOffset
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// dataSegment = Arrays.copyOfRange(getData(), dataOffset,
+comment|// dataOffset + directoryListingEntry.getLength());
 name|dataSegment
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(

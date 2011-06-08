@@ -213,7 +213,7 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
-comment|/** 	 * Prints the values of ChmfHeader 	 */
+comment|/**      * Prints the values of ChmfHeader      */
 specifier|public
 name|String
 name|toString
@@ -367,7 +367,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns a signature of itsf header 	 *  	 * @return itsf header 	 */
+comment|/**      * Returns a signature of itsf header      *       * @return itsf header      */
 specifier|public
 name|byte
 index|[]
@@ -378,7 +378,7 @@ return|return
 name|signature
 return|;
 block|}
-comment|/** 	 * Sets itsf header signature 	 *  	 * @param signature 	 */
+comment|/**      * Sets itsf header signature      *       * @param signature      */
 specifier|protected
 name|void
 name|setSignature
@@ -395,7 +395,7 @@ operator|=
 name|signature
 expr_stmt|;
 block|}
-comment|/** 	 * Returns itsf header version 	 *  	 * @return itsf version 	 */
+comment|/**      * Returns itsf header version      *       * @return itsf version      */
 specifier|public
 name|int
 name|getVersion
@@ -405,7 +405,7 @@ return|return
 name|version
 return|;
 block|}
-comment|/** 	 * Sets itsf version 	 *  	 * @param version 	 */
+comment|/**      * Sets itsf version      *       * @param version      */
 specifier|protected
 name|void
 name|setVersion
@@ -421,7 +421,7 @@ operator|=
 name|version
 expr_stmt|;
 block|}
-comment|/** 	 * Returns itsf header length 	 *  	 * @return length 	 */
+comment|/**      * Returns itsf header length      *       * @return length      */
 specifier|public
 name|int
 name|getHeaderLen
@@ -431,7 +431,7 @@ return|return
 name|header_len
 return|;
 block|}
-comment|/** 	 * Sets itsf header length 	 *  	 * @param header_len 	 */
+comment|/**      * Sets itsf header length      *       * @param header_len      */
 specifier|protected
 name|void
 name|setHeaderLen
@@ -447,7 +447,7 @@ operator|=
 name|header_len
 expr_stmt|;
 block|}
-comment|/** 	 * Returns unknown_00c value 	 *  	 * @return unknown_00c 	 */
+comment|/**      * Returns unknown_00c value      *       * @return unknown_00c      */
 specifier|public
 name|int
 name|getUnknown_000c
@@ -457,7 +457,7 @@ return|return
 name|unknown_000c
 return|;
 block|}
-comment|/** 	 * Sets unknown_00c 	 *  	 * @param unknown_000c 	 */
+comment|/**      * Sets unknown_00c      *       * @param unknown_000c      */
 specifier|protected
 name|void
 name|setUnknown_000c
@@ -473,7 +473,7 @@ operator|=
 name|unknown_000c
 expr_stmt|;
 block|}
-comment|/** 	 * Returns last modified date of the chm file 	 *  	 * @return last modified date as long 	 */
+comment|/**      * Returns last modified date of the chm file      *       * @return last modified date as long      */
 specifier|public
 name|long
 name|getLastModified
@@ -483,7 +483,7 @@ return|return
 name|last_modified
 return|;
 block|}
-comment|/** 	 * Sets last modified date of the chm file 	 *  	 * @param last_modified 	 */
+comment|/**      * Sets last modified date of the chm file      *       * @param last_modified      */
 specifier|protected
 name|void
 name|setLastModified
@@ -499,7 +499,7 @@ operator|=
 name|last_modified
 expr_stmt|;
 block|}
-comment|/** 	 * Returns language ID 	 *  	 * @return language_id 	 */
+comment|/**      * Returns language ID      *       * @return language_id      */
 specifier|public
 name|long
 name|getLangId
@@ -509,7 +509,7 @@ return|return
 name|lang_id
 return|;
 block|}
-comment|/** 	 * Sets language_id 	 *  	 * @param lang_id 	 */
+comment|/**      * Sets language_id      *       * @param lang_id      */
 specifier|protected
 name|void
 name|setLangId
@@ -525,7 +525,7 @@ operator|=
 name|lang_id
 expr_stmt|;
 block|}
-comment|/** 	 * Returns directory uuid 	 *  	 * @return dir_uuid 	 */
+comment|/**      * Returns directory uuid      *       * @return dir_uuid      */
 specifier|public
 name|byte
 index|[]
@@ -536,7 +536,7 @@ return|return
 name|dir_uuid
 return|;
 block|}
-comment|/** 	 * Sets directory uuid 	 *  	 * @param dir_uuid 	 */
+comment|/**      * Sets directory uuid      *       * @param dir_uuid      */
 specifier|protected
 name|void
 name|setDir_uuid
@@ -553,7 +553,7 @@ operator|=
 name|dir_uuid
 expr_stmt|;
 block|}
-comment|/** 	 * Returns stream uuid 	 *  	 * @return stream_uuid 	 */
+comment|/**      * Returns stream uuid      *       * @return stream_uuid      */
 specifier|public
 name|byte
 index|[]
@@ -564,7 +564,7 @@ return|return
 name|stream_uuid
 return|;
 block|}
-comment|/** 	 * Sets stream uuid 	 *  	 * @param stream_uuid 	 */
+comment|/**      * Sets stream uuid      *       * @param stream_uuid      */
 specifier|protected
 name|void
 name|setStream_uuid
@@ -581,7 +581,7 @@ operator|=
 name|stream_uuid
 expr_stmt|;
 block|}
-comment|/** 	 * Returns unknown offset 	 *  	 * @return unknown_offset 	 */
+comment|/**      * Returns unknown offset      *       * @return unknown_offset      */
 specifier|public
 name|long
 name|getUnknownOffset
@@ -591,7 +591,7 @@ return|return
 name|unknown_offset
 return|;
 block|}
-comment|/** 	 * Sets unknown offset 	 *  	 * @param unknown_offset 	 */
+comment|/**      * Sets unknown offset      *       * @param unknown_offset      */
 specifier|protected
 name|void
 name|setUnknownOffset
@@ -607,7 +607,7 @@ operator|=
 name|unknown_offset
 expr_stmt|;
 block|}
-comment|/** 	 * Returns unknown length 	 *  	 * @return unknown_length 	 */
+comment|/**      * Returns unknown length      *       * @return unknown_length      */
 specifier|public
 name|long
 name|getUnknownLen
@@ -617,7 +617,7 @@ return|return
 name|unknown_len
 return|;
 block|}
-comment|/** 	 * Sets unknown length 	 *  	 * @param unknown_len 	 */
+comment|/**      * Sets unknown length      *       * @param unknown_len      */
 specifier|protected
 name|void
 name|setUnknownLen
@@ -633,7 +633,7 @@ operator|=
 name|unknown_len
 expr_stmt|;
 block|}
-comment|/** 	 * Returns directory offset 	 *  	 * @return directory_offset 	 */
+comment|/**      * Returns directory offset      *       * @return directory_offset      */
 specifier|public
 name|long
 name|getDirOffset
@@ -643,7 +643,7 @@ return|return
 name|dir_offset
 return|;
 block|}
-comment|/** 	 * Sets directory offset 	 *  	 * @param dir_offset 	 */
+comment|/**      * Sets directory offset      *       * @param dir_offset      */
 specifier|protected
 name|void
 name|setDirOffset
@@ -659,7 +659,7 @@ operator|=
 name|dir_offset
 expr_stmt|;
 block|}
-comment|/** 	 * Returns directory length 	 *  	 * @return directory_offset 	 */
+comment|/**      * Returns directory length      *       * @return directory_offset      */
 specifier|public
 name|long
 name|getDirLen
@@ -669,7 +669,7 @@ return|return
 name|dir_len
 return|;
 block|}
-comment|/** 	 * Sets directory length 	 *  	 * @param dir_len 	 */
+comment|/**      * Sets directory length      *       * @param dir_len      */
 specifier|protected
 name|void
 name|setDirLen
@@ -685,7 +685,7 @@ operator|=
 name|dir_len
 expr_stmt|;
 block|}
-comment|/** 	 * Returns data offset 	 *  	 * @return data_offset 	 */
+comment|/**      * Returns data offset      *       * @return data_offset      */
 specifier|public
 name|long
 name|getDataOffset
@@ -695,7 +695,7 @@ return|return
 name|data_offset
 return|;
 block|}
-comment|/** 	 * Sets data offset 	 *  	 * @param data_offset 	 */
+comment|/**      * Sets data offset      *       * @param data_offset      */
 specifier|protected
 name|void
 name|setDataOffset
@@ -711,7 +711,7 @@ operator|=
 name|data_offset
 expr_stmt|;
 block|}
-comment|/** 	 * Copies 4 first bytes of the byte[] 	 *  	 * @param data 	 * @param chmItsfHeader 	 * @param count 	 */
+comment|/**      * Copies 4 first bytes of the byte[]      *       * @param data      * @param chmItsfHeader      * @param count      */
 specifier|private
 name|void
 name|unmarshalCharArray
@@ -780,7 +780,7 @@ name|count
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Copies X bytes of source byte[] to the dest byte[] 	 *  	 * @param data 	 * @param dest 	 * @param count 	 * @return 	 */
+comment|/**      * Copies X bytes of source byte[] to the dest byte[]      *       * @param data      * @param dest      * @param count      * @return      */
 specifier|private
 name|byte
 index|[]
@@ -844,7 +844,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/** 	 * Takes 8 bytes and reverses them 	 *  	 * @param data 	 * @param dest 	 * @return 	 */
+comment|/**      * Takes 8 bytes and reverses them      *       * @param data      * @param dest      * @return      */
 specifier|private
 name|long
 name|unmarshalUint64
@@ -1183,8 +1183,8 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
-comment|/** 	 * Sets data remained to be processed 	 *  	 * @param dataRemained 	 */
+block|{     }
+comment|/**      * Sets data remained to be processed      *       * @param dataRemained      */
 specifier|private
 name|void
 name|setDataRemained
@@ -1200,7 +1200,7 @@ operator|=
 name|dataRemained
 expr_stmt|;
 block|}
-comment|/** 	 * Returns data remained 	 *  	 * @return data_remainned 	 */
+comment|/**      * Returns data remained      *       * @return data_remainned      */
 specifier|private
 name|int
 name|getDataRemained
@@ -1210,7 +1210,7 @@ return|return
 name|dataRemained
 return|;
 block|}
-comment|/** 	 * Sets current place in the byte[] 	 *  	 * @param currentPlace 	 */
+comment|/**      * Sets current place in the byte[]      *       * @param currentPlace      */
 specifier|private
 name|void
 name|setCurrentPlace
@@ -1226,7 +1226,7 @@ operator|=
 name|currentPlace
 expr_stmt|;
 block|}
-comment|/** 	 * Returns current place in the byte[] 	 *  	 * @return current place 	 */
+comment|/**      * Returns current place in the byte[]      *       * @return current place      */
 specifier|private
 name|int
 name|getCurrentPlace
@@ -1584,7 +1584,7 @@ argument_list|(
 literal|"unsupported chm format"
 argument_list|)
 throw|;
-comment|/* 		 * now, if we have a V3 structure, unmarshal the rest, otherwise, 		 * compute it 		 */
+comment|/*          * now, if we have a V3 structure, unmarshal the rest, otherwise,          * compute it          */
 if|if
 condition|(
 name|chmItsfHeader

@@ -45,16 +45,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -156,7 +146,7 @@ name|isNotResetTableFound
 init|=
 literal|true
 decl_stmt|;
-comment|/** 	 * Constructs chm directory listing set 	 *  	 * @param data 	 *            byte[] 	 * @param chmItsHeader 	 * @param chmItspHeader 	 */
+comment|/**      * Constructs chm directory listing set      *       * @param data      *            byte[]      * @param chmItsHeader      * @param chmItspHeader      */
 specifier|public
 name|ChmDirectoryListingSet
 parameter_list|(
@@ -253,7 +243,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns control data index that located in List 	 *  	 * @return control data index 	 */
+comment|/**      * Returns control data index that located in List      *       * @return control data index      */
 specifier|public
 name|int
 name|getControlDataIndex
@@ -263,7 +253,7 @@ return|return
 name|controlDataIndex
 return|;
 block|}
-comment|/** 	 * Sets control data index 	 *  	 * @param controlDataIndex 	 */
+comment|/**      * Sets control data index      *       * @param controlDataIndex      */
 specifier|protected
 name|void
 name|setControlDataIndex
@@ -279,7 +269,7 @@ operator|=
 name|controlDataIndex
 expr_stmt|;
 block|}
-comment|/** 	 * Return index of reset table 	 *  	 * @return reset table index 	 */
+comment|/**      * Return index of reset table      *       * @return reset table index      */
 specifier|public
 name|int
 name|getResetTableIndex
@@ -289,7 +279,7 @@ return|return
 name|resetTableIndex
 return|;
 block|}
-comment|/** 	 * Sets reset table index 	 *  	 * @param resetTableIndex 	 */
+comment|/**      * Sets reset table index      *       * @param resetTableIndex      */
 specifier|protected
 name|void
 name|setResetTableIndex
@@ -305,7 +295,7 @@ operator|=
 name|resetTableIndex
 expr_stmt|;
 block|}
-comment|/** 	 * Gets place holder 	 *  	 * @return place holder 	 */
+comment|/**      * Gets place holder      *       * @return place holder      */
 specifier|private
 name|int
 name|getPlaceHolder
@@ -315,7 +305,7 @@ return|return
 name|placeHolder
 return|;
 block|}
-comment|/** 	 * Sets place holder 	 *  	 * @param placeHolder 	 */
+comment|/**      * Sets place holder      *       * @param placeHolder      */
 specifier|private
 name|void
 name|setPlaceHolder
@@ -331,7 +321,7 @@ operator|=
 name|placeHolder
 expr_stmt|;
 block|}
-comment|/** 	 * Enumerates chm directory listing entries 	 *  	 * @param chmItsHeader 	 *            chm itsf header 	 * @param chmItspHeader 	 *            chm itsp header 	 */
+comment|/**      * Enumerates chm directory listing entries      *       * @param chmItsHeader      *            chm itsf header      * @param chmItspHeader      *            chm itsp header      */
 specifier|private
 name|void
 name|enumerateChmDirectoryListingList
@@ -456,9 +446,12 @@ name|getBlock_len
 argument_list|()
 index|]
 expr_stmt|;
+comment|// dir_chunk = Arrays.copyOfRange(getData(), dir_offset,
+comment|// (((1+i) * (int)chmItspHeader.getBlock_len()) +
+comment|// dir_offset));
 name|dir_chunk
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -509,9 +502,12 @@ name|getBlock_len
 argument_list|()
 index|]
 expr_stmt|;
+comment|// dir_chunk = Arrays.copyOfRange(getData(), previous_index,
+comment|// (((1+i) * (int)chmItspHeader.getBlock_len()) +
+comment|// dir_offset));
 name|dir_chunk
 operator|=
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -578,7 +574,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Checks control data 	 *  	 * @param dle 	 *            chm directory listing entry 	 */
+comment|/**      * Checks control data      *       * @param dle      *            chm directory listing entry      */
 specifier|private
 name|void
 name|checkControlData
@@ -623,7 +619,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Checks reset table 	 *  	 * @param dle 	 *            chm directory listing entry 	 */
+comment|/**      * Checks reset table      *       * @param dle      *            chm directory listing entry      */
 specifier|private
 name|void
 name|checkResetTable
@@ -668,7 +664,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Enumerates chm directory listing entries in single chm segment 	 *  	 * @param dir_chunk 	 */
+comment|/**      * Enumerates chm directory listing entries in single chm segment      *       * @param dir_chunk      */
 specifier|private
 name|void
 name|enumerateOneSegment
@@ -785,6 +781,10 @@ argument_list|,
 name|dle
 argument_list|)
 expr_stmt|;
+comment|// dle.setName(new
+comment|// String(Arrays.copyOfRange(dir_chunk,
+comment|// getPlaceHolder(), (getPlaceHolder() +
+comment|// dle.getNameLength()))));
 name|dle
 operator|.
 name|setName
@@ -792,7 +792,7 @@ argument_list|(
 operator|new
 name|String
 argument_list|(
-name|Arrays
+name|ChmCommons
 operator|.
 name|copyOfRange
 argument_list|(
@@ -947,7 +947,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Checks if a name and name length are correct. If not then handles it as 	 * follows: 1. when dir_chunk[getPlaceHolder() - 1] == 0x73 ('/') 2. when 	 * dir_chunk[getPlaceHolder() + 1] == 0x2f ('s') 	 *  	 * @param dir_chunk 	 * @param dle 	 */
+comment|/**      * Checks if a name and name length are correct. If not then handles it as      * follows: 1. when dir_chunk[getPlaceHolder() - 1] == 0x73 ('/') 2. when      * dir_chunk[getPlaceHolder() + 1] == 0x2f ('s')      *       * @param dir_chunk      * @param dle      */
 specifier|private
 name|void
 name|doNameCheck
@@ -1040,7 +1040,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Checks if it's possible move further on byte[] 	 *  	 * @param dir_chunk 	 *  	 * @return boolean 	 */
+comment|/**      * Checks if it's possible move further on byte[]      *       * @param dir_chunk      *       * @return boolean      */
 specifier|private
 name|boolean
 name|hasNext
@@ -1137,7 +1137,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Returns encrypted integer 	 *  	 * @param data_chunk 	 *  	 * @return 	 */
+comment|/**      * Returns encrypted integer      *       * @param data_chunk      *       * @return      */
 specifier|private
 name|int
 name|getEncint
@@ -1285,7 +1285,7 @@ name|intValue
 argument_list|()
 return|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -1295,8 +1295,8 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
-comment|/** 	 * Sets chm directory listing entry list 	 *  	 * @param dlel 	 *            chm directory listing entry list 	 */
+block|{     }
+comment|/**      * Sets chm directory listing entry list      *       * @param dlel      *            chm directory listing entry list      */
 specifier|public
 name|void
 name|setDirectoryListingEntryList
@@ -1315,7 +1315,7 @@ operator|=
 name|dlel
 expr_stmt|;
 block|}
-comment|/** 	 * Returns chm directory listing entry list 	 *  	 * @return List<DirectoryListingEntry> 	 */
+comment|/**      * Returns chm directory listing entry list      *       * @return List<DirectoryListingEntry>      */
 specifier|public
 name|List
 argument_list|<
@@ -1328,7 +1328,7 @@ return|return
 name|dlel
 return|;
 block|}
-comment|/** 	 * Sets data 	 *  	 * @param data 	 */
+comment|/**      * Sets data      *       * @param data      */
 specifier|private
 name|void
 name|setData
@@ -1345,7 +1345,7 @@ operator|=
 name|data
 expr_stmt|;
 block|}
-comment|/** 	 * Returns data 	 *  	 * @return 	 */
+comment|/**      * Returns data      *       * @return      */
 specifier|private
 name|byte
 index|[]
@@ -1356,7 +1356,7 @@ return|return
 name|data
 return|;
 block|}
-comment|/** 	 * Sets data offset 	 *  	 * @param dataOffset 	 */
+comment|/**      * Sets data offset      *       * @param dataOffset      */
 specifier|private
 name|void
 name|setDataOffset
@@ -1372,7 +1372,7 @@ operator|=
 name|dataOffset
 expr_stmt|;
 block|}
-comment|/** 	 * Returns data offset 	 *  	 * @return dataOffset 	 */
+comment|/**      * Returns data offset      *       * @return dataOffset      */
 specifier|public
 name|long
 name|getDataOffset

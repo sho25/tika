@@ -113,8 +113,8 @@ decl_stmt|;
 specifier|private
 name|ChmBlockInfo
 parameter_list|()
-block|{  	}
-comment|/** 	 * Returns an information related to the chmBlockInfo 	 *  	 * @param dle 	 *            - DirectoryListingEntry 	 * @param bytesPerBlock 	 *            - int, = chmLzxcResetTable.block_length 	 * @param clcd 	 *            - ChmLzxcControlData 	 * @param chmBlockInfo 	 *            - ChmBlockInfo 	 *  	 * @return ChmBlockInfo 	 */
+block|{      }
+comment|/**      * Returns an information related to the chmBlockInfo      *       * @param dle      *            - DirectoryListingEntry      * @param bytesPerBlock      *            - int, = chmLzxcResetTable.block_length      * @param clcd      *            - ChmLzxcControlData      * @param chmBlockInfo      *            - ChmBlockInfo      *       * @return ChmBlockInfo      */
 specifier|protected
 name|ChmBlockInfo
 name|getChmBlockInfo
@@ -363,7 +363,7 @@ name|getChmBlockInfo
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns textual representation of ChmBlockInfo 	 */
+comment|/**      * Returns textual representation of ChmBlockInfo      */
 specifier|public
 name|String
 name|toString
@@ -523,8 +523,8 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
-comment|/** 	 * Returns an initial block index 	 *  	 * @return int 	 */
+block|{     }
+comment|/**      * Returns an initial block index      *       * @return int      */
 specifier|public
 name|int
 name|getIniBlock
@@ -534,7 +534,7 @@ return|return
 name|iniBlock
 return|;
 block|}
-comment|/** 	 * Sets the initial block index 	 *  	 * @param iniBlock 	 *            - int 	 */
+comment|/**      * Sets the initial block index      *       * @param iniBlock      *            - int      */
 specifier|private
 name|void
 name|setIniBlock
@@ -550,7 +550,7 @@ operator|=
 name|iniBlock
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the start block index 	 *  	 * @return int 	 */
+comment|/**      * Returns the start block index      *       * @return int      */
 specifier|public
 name|int
 name|getStartBlock
@@ -560,7 +560,7 @@ return|return
 name|startBlock
 return|;
 block|}
-comment|/** 	 * Sets the start block index 	 *  	 * @param startBlock 	 *            - int 	 */
+comment|/**      * Sets the start block index      *       * @param startBlock      *            - int      */
 specifier|private
 name|void
 name|setStartBlock
@@ -576,7 +576,7 @@ operator|=
 name|startBlock
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the end block index 	 *  	 * @return - int 	 */
+comment|/**      * Returns the end block index      *       * @return - int      */
 specifier|public
 name|int
 name|getEndBlock
@@ -586,7 +586,7 @@ return|return
 name|endBlock
 return|;
 block|}
-comment|/** 	 * Sets the end block index 	 *  	 * @param endBlock 	 *            - int 	 */
+comment|/**      * Sets the end block index      *       * @param endBlock      *            - int      */
 specifier|private
 name|void
 name|setEndBlock
@@ -602,7 +602,7 @@ operator|=
 name|endBlock
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the start offset index 	 *  	 * @return - int 	 */
+comment|/**      * Returns the start offset index      *       * @return - int      */
 specifier|public
 name|int
 name|getStartOffset
@@ -612,7 +612,7 @@ return|return
 name|startOffset
 return|;
 block|}
-comment|/** 	 * Sets the start offset index 	 *  	 * @param startOffset 	 *            - int 	 */
+comment|/**      * Sets the start offset index      *       * @param startOffset      *            - int      */
 specifier|private
 name|void
 name|setStartOffset
@@ -628,7 +628,7 @@ operator|=
 name|startOffset
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the end offset index 	 *  	 * @return - int 	 */
+comment|/**      * Returns the end offset index      *       * @return - int      */
 specifier|public
 name|int
 name|getEndOffset
@@ -638,7 +638,7 @@ return|return
 name|endOffset
 return|;
 block|}
-comment|/** 	 * Sets the end offset index 	 *  	 * @param endOffset 	 *            - int 	 */
+comment|/**      * Sets the end offset index      *       * @param endOffset      *            - int      */
 specifier|private
 name|void
 name|setEndOffset

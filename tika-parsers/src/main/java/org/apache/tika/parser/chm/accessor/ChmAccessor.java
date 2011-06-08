@@ -43,7 +43,7 @@ parameter_list|>
 extends|extends
 name|Serializable
 block|{
-comment|/** 	 * Parses chm accessor 	 *  	 * @param data 	 *            chm file 	 * @param chmAccessor 	 */
+comment|/**      * Parses chm accessor      *       * @param data      *            chm file      * @param chmAccessor      */
 name|void
 name|parse
 parameter_list|(

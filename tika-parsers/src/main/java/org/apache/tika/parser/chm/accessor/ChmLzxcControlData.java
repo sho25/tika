@@ -118,7 +118,7 @@ operator|.
 name|getBytes
 argument_list|()
 decl_stmt|;
-comment|/* 																		 * 4 																		 * (LZXC 																		 * ) 																		 */
+comment|/*                                                                           * 4                                                                           * (LZXC                                                                           * )                                                                           */
 specifier|private
 name|long
 name|version
@@ -155,7 +155,7 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
-comment|/** 	 * Returns a remained data 	 *  	 * @return dataRemained 	 */
+comment|/**      * Returns a remained data      *       * @return dataRemained      */
 specifier|private
 name|int
 name|getDataRemained
@@ -165,7 +165,7 @@ return|return
 name|dataRemained
 return|;
 block|}
-comment|/** 	 * Sets a remained data 	 *  	 * @param dataRemained 	 */
+comment|/**      * Sets a remained data      *       * @param dataRemained      */
 specifier|private
 name|void
 name|setDataRemained
@@ -181,7 +181,7 @@ operator|=
 name|dataRemained
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a place holder 	 *  	 * @return current_place 	 */
+comment|/**      * Returns a place holder      *       * @return current_place      */
 specifier|private
 name|int
 name|getCurrentPlace
@@ -191,7 +191,7 @@ return|return
 name|currentPlace
 return|;
 block|}
-comment|/** 	 * Sets a place holder 	 *  	 * @param current_place 	 */
+comment|/**      * Sets a place holder      *       * @param current_place      */
 specifier|private
 name|void
 name|setCurrentPlace
@@ -207,7 +207,7 @@ operator|=
 name|currentPlace
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a size of control data 	 *  	 * @return size 	 */
+comment|/**      * Returns a size of control data      *       * @return size      */
 specifier|public
 name|long
 name|getSize
@@ -217,7 +217,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/** 	 * Sets a size of control data 	 *  	 * @param size 	 */
+comment|/**      * Sets a size of control data      *       * @param size      */
 specifier|protected
 name|void
 name|setSize
@@ -233,7 +233,7 @@ operator|=
 name|size
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a signature of control data block 	 *  	 * @return signature 	 */
+comment|/**      * Returns a signature of control data block      *       * @return signature      */
 specifier|public
 name|byte
 index|[]
@@ -244,7 +244,7 @@ return|return
 name|signature
 return|;
 block|}
-comment|/** 	 * Sets a signature of control data block 	 *  	 * @param signature 	 */
+comment|/**      * Sets a signature of control data block      *       * @param signature      */
 specifier|protected
 name|void
 name|setSignature
@@ -261,7 +261,7 @@ operator|=
 name|signature
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a version of control data block 	 *  	 * @return version 	 */
+comment|/**      * Returns a version of control data block      *       * @return version      */
 specifier|public
 name|long
 name|getVersion
@@ -271,7 +271,7 @@ return|return
 name|version
 return|;
 block|}
-comment|/** 	 * Sets version of control data block 	 *  	 * @param version 	 */
+comment|/**      * Sets version of control data block      *       * @param version      */
 specifier|protected
 name|void
 name|setVersion
@@ -287,7 +287,7 @@ operator|=
 name|version
 expr_stmt|;
 block|}
-comment|/** 	 * Returns reset interval 	 *  	 * @return reset_interval 	 */
+comment|/**      * Returns reset interval      *       * @return reset_interval      */
 specifier|public
 name|long
 name|getResetInterval
@@ -297,7 +297,7 @@ return|return
 name|resetInterval
 return|;
 block|}
-comment|/** 	 * Sets a reset interval 	 *  	 * @param resetInterval 	 */
+comment|/**      * Sets a reset interval      *       * @param resetInterval      */
 specifier|protected
 name|void
 name|setResetInterval
@@ -313,7 +313,7 @@ operator|=
 name|resetInterval
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a window size 	 *  	 * @return window_size 	 */
+comment|/**      * Returns a window size      *       * @return window_size      */
 specifier|public
 name|long
 name|getWindowSize
@@ -323,7 +323,7 @@ return|return
 name|windowSize
 return|;
 block|}
-comment|/** 	 * Sets a window size 	 *  	 * @param window_size 	 */
+comment|/**      * Sets a window size      *       * @param window_size      */
 specifier|protected
 name|void
 name|setWindowSize
@@ -339,7 +339,7 @@ operator|=
 name|windowSize
 expr_stmt|;
 block|}
-comment|/** 	 * Returns windows per reset 	 *  	 * @return 	 */
+comment|/**      * Returns windows per reset      *       * @return      */
 specifier|public
 name|long
 name|getWindowsPerReset
@@ -349,7 +349,7 @@ return|return
 name|windowsPerReset
 return|;
 block|}
-comment|/** 	 * Sets windows per reset 	 *  	 * @param windows_per_reset 	 */
+comment|/**      * Sets windows per reset      *       * @param windows_per_reset      */
 specifier|protected
 name|void
 name|setWindowsPerReset
@@ -365,7 +365,7 @@ operator|=
 name|windowsPerReset
 expr_stmt|;
 block|}
-comment|/** 	 * Returns unknown 18 bytes 	 *  	 * @return unknown_18 	 */
+comment|/**      * Returns unknown 18 bytes      *       * @return unknown_18      */
 specifier|public
 name|long
 name|getUnknown_18
@@ -375,7 +375,7 @@ return|return
 name|unknown_18
 return|;
 block|}
-comment|/** 	 * Sets unknown 18 bytes 	 *  	 * @param unknown_18 	 */
+comment|/**      * Sets unknown 18 bytes      *       * @param unknown_18      */
 specifier|protected
 name|void
 name|setUnknown_18
@@ -581,7 +581,7 @@ name|count
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns textual representation of ChmLzxcControlData 	 */
+comment|/**      * Returns textual representation of ChmLzxcControlData      */
 specifier|public
 name|String
 name|toString
@@ -969,7 +969,7 @@ literal|"the signature does not seem to be correct"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void
@@ -979,7 +979,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
+block|{     }
 block|}
 end_class
 

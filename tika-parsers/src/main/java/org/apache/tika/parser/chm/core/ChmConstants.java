@@ -28,7 +28,7 @@ comment|/* Prevents instantiation */
 specifier|private
 name|ChmConstants
 parameter_list|()
-block|{ 	}
+block|{     }
 specifier|public
 specifier|static
 specifier|final
@@ -255,7 +255,7 @@ name|LZX_BLOCKTYPE_INVALID
 init|=
 literal|0
 decl_stmt|;
-comment|/* 														 * also blocktypes 4-7 														 * invalid 														 */
+comment|/*                                                         * also blocktypes 4-7                                                         * invalid                                                         */
 specifier|public
 specifier|static
 specifier|final
@@ -305,7 +305,7 @@ name|LZX_ALIGNED_NUM_ELEMENTS
 init|=
 literal|8
 decl_stmt|;
-comment|/* 														 * aligned offset tree 														 * #elements 														 */
+comment|/*                                                            * aligned offset tree                                                            * #elements                                                            */
 specifier|public
 specifier|static
 specifier|final
@@ -314,7 +314,7 @@ name|LZX_NUM_PRIMARY_LENGTHS
 init|=
 literal|7
 decl_stmt|;
-comment|/* 														 * this one missing from 														 * spec! 														 */
+comment|/*                                                           * this one missing                                                           * from spec!                                                           */
 specifier|public
 specifier|static
 specifier|final
@@ -323,7 +323,7 @@ name|LZX_NUM_SECONDARY_LENGTHS
 init|=
 literal|249
 decl_stmt|;
-comment|/* 															 * length tree 															 * #elements 															 */
+comment|/*                                                               * length tree                                                               * #elements                                                               */
 comment|/* LZX huffman defines: tweak tablebits as desired */
 specifier|public
 specifier|static

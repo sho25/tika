@@ -211,7 +211,7 @@ name|chmExtractor
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * Loads chm file as input stream and returns a new instance of chm doc info 	 *  	 * @param is 	 *            InputStream 	 *  	 * @return chm document information 	 */
+comment|/**      * Loads chm file as input stream and returns a new instance of chm doc info      *       * @param is      *            InputStream      *       * @return chm document information      */
 specifier|public
 specifier|static
 name|CHMDocumentInformation
@@ -232,7 +232,7 @@ name|is
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns instance of chm document information 	 *  	 * @param is 	 *            InputStream 	 *  	 * @return 	 */
+comment|/**      * Returns instance of chm document information      *       * @param is      *            InputStream      *       * @return      */
 specifier|private
 name|CHMDocumentInformation
 name|getInstance
@@ -254,7 +254,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Appends extracted data from chm listing entries 	 *  	 * @return extracted content of chm 	 */
+comment|/**      * Appends extracted data from chm listing entries      *       * @return extracted content of chm      */
 specifier|private
 name|String
 name|getContent
@@ -377,7 +377,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Checks if an entry is a html or not. 	 *  	 * @param entry 	 *            chm directory listing entry 	 *  	 * @return boolean 	 */
+comment|/**      * Checks if an entry is a html or not.      *       * @param entry      *            chm directory listing entry      *       * @return boolean      */
 specifier|private
 name|boolean
 name|isRightEntry
@@ -410,7 +410,7 @@ argument_list|)
 operator|)
 return|;
 block|}
-comment|/** 	 * Returns chm extractor 	 *  	 * @return chmExtractor 	 */
+comment|/**      * Returns chm extractor      *       * @return chmExtractor      */
 specifier|private
 name|ChmExtractor
 name|getChmExtractor
@@ -420,7 +420,7 @@ return|return
 name|chmExtractor
 return|;
 block|}
-comment|/** 	 * Sets a chm extractor 	 *  	 * @param chmExtractor 	 */
+comment|/**      * Sets a chm extractor      *       * @param chmExtractor      */
 specifier|private
 name|void
 name|setChmExtractor
@@ -436,7 +436,7 @@ operator|=
 name|chmExtractor
 expr_stmt|;
 block|}
-comment|/** 	 * Returns chm metadata 	 *  	 * @param metadata 	 *  	 * @throws TikaException 	 * @throws IOException 	 */
+comment|/**      * Returns chm metadata      *       * @param metadata      *       * @throws TikaException      * @throws IOException      */
 specifier|public
 name|void
 name|getCHMDocInformation
@@ -485,7 +485,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns extracted text from chm file 	 *  	 * @return text 	 *  	 * @throws TikaException 	 */
+comment|/**      * Returns extracted text from chm file      *       * @return text      *       * @throws TikaException      */
 specifier|public
 name|String
 name|getText
@@ -498,7 +498,7 @@ name|getContent
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Extracts data from byte[][] 	 *  	 * @param byteObject 	 * @return 	 * @throws IOException 	 * @throws SAXException 	 */
+comment|/**      * Extracts data from byte[][]      *       * @param byteObject      * @return      * @throws IOException      * @throws SAXException      */
 specifier|private
 name|String
 name|extract
@@ -734,7 +734,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{  	}
+block|{      }
 block|}
 end_class
 

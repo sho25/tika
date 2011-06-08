@@ -1009,7 +1009,7 @@ operator|=
 name|buffer
 expr_stmt|;
 block|}
-comment|/** 	 * @param args 	 */
+comment|/**      * @param args      */
 specifier|public
 specifier|static
 name|void

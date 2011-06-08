@@ -359,7 +359,7 @@ operator|=
 name|alignedLenTable
 expr_stmt|;
 block|}
-comment|/** 	 * It suits for informative outlook 	 */
+comment|/**      * It suits for informative outlook      */
 specifier|public
 name|String
 name|toString
@@ -1225,7 +1225,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
+block|{     }
 specifier|public
 name|void
 name|setMainTreeLengtsTable

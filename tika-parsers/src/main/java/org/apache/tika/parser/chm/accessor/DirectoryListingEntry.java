@@ -94,8 +94,8 @@ decl_stmt|;
 specifier|public
 name|DirectoryListingEntry
 parameter_list|()
-block|{  	}
-comment|/** 	 * Constructs directoryListingEntry 	 *  	 * @param name_length 	 *            int 	 * @param name 	 *            String 	 * @param isCompressed 	 *            ChmCommons.EntryType 	 * @param offset 	 *            int 	 * @param length 	 *            int 	 */
+block|{      }
+comment|/**      * Constructs directoryListingEntry      *       * @param name_length      *            int      * @param name      *            String      * @param isCompressed      *            ChmCommons.EntryType      * @param offset      *            int      * @param length      *            int      */
 specifier|public
 name|DirectoryListingEntry
 parameter_list|(
@@ -255,7 +255,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns an entry name length 	 *  	 * @return int 	 */
+comment|/**      * Returns an entry name length      *       * @return int      */
 specifier|public
 name|int
 name|getNameLength
@@ -265,7 +265,7 @@ return|return
 name|name_length
 return|;
 block|}
-comment|/** 	 * Sets an entry name length 	 *  	 * @param name_length 	 *            int 	 */
+comment|/**      * Sets an entry name length      *       * @param name_length      *            int      */
 specifier|protected
 name|void
 name|setNameLength
@@ -281,7 +281,7 @@ operator|=
 name|name_length
 expr_stmt|;
 block|}
-comment|/** 	 * Returns an entry name 	 *  	 * @return String 	 */
+comment|/**      * Returns an entry name      *       * @return String      */
 specifier|public
 name|String
 name|getName
@@ -291,7 +291,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/** 	 * Sets entry name 	 *  	 * @param name 	 *            String 	 */
+comment|/**      * Sets entry name      *       * @param name      *            String      */
 specifier|protected
 name|void
 name|setName
@@ -307,7 +307,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/** 	 * Returns ChmCommons.EntryType (COMPRESSED or UNCOMPRESSED) 	 *  	 * @return ChmCommons.EntryType 	 */
+comment|/**      * Returns ChmCommons.EntryType (COMPRESSED or UNCOMPRESSED)      *       * @return ChmCommons.EntryType      */
 specifier|public
 name|ChmCommons
 operator|.
@@ -393,7 +393,7 @@ name|String
 index|[]
 name|args
 parameter_list|)
-block|{ 	}
+block|{     }
 block|}
 end_class
 
