@@ -277,6 +277,8 @@ specifier|public
 name|void
 name|testExtractChmEntry
 parameter_list|()
+throws|throws
+name|TikaException
 block|{
 name|ChmDirectoryListingSet
 name|entries

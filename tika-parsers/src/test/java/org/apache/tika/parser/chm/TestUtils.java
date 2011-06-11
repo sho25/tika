@@ -55,13 +55,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
-operator|.
-name|chm
-operator|.
 name|exception
 operator|.
-name|ChmParsingException
+name|TikaException
 import|;
 end_import
 
@@ -70,7 +66,7 @@ specifier|public
 class|class
 name|TestUtils
 block|{
-comment|/**      * Converts InputStream to byte array      *       * @param is      *            InputStream      * @return byte[]      *       * @throws IOException      */
+comment|/**      * Converts InputStream to byte array      *       * @param is      *            InputStream      * @return byte[]      *       * @throws IOException      * @throws TikaException       */
 specifier|public
 specifier|static
 name|byte
@@ -82,6 +78,8 @@ name|is
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 synchronized|synchronized
 init|(
@@ -176,11 +174,8 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+operator|new
+name|TikaException
 argument_list|(
 name|e
 operator|.
@@ -199,7 +194,7 @@ block|}
 else|else
 throw|throw
 operator|new
-name|ChmParsingException
+name|IOException
 argument_list|(
 literal|"InputStream is null"
 argument_list|)
