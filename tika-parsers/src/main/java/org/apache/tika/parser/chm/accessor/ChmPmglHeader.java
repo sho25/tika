@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -318,6 +332,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -388,6 +404,8 @@ parameter_list|,
 name|int
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -407,7 +425,7 @@ argument_list|()
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"4> dataLenght"
 argument_list|)
@@ -497,6 +515,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|ChmAssert
 operator|.
@@ -603,6 +623,8 @@ parameter_list|,
 name|ChmPmglHeader
 name|chmPmglHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -616,7 +638,7 @@ name|CHM_PMGL_LEN
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 name|ChmPmglHeader
 operator|.

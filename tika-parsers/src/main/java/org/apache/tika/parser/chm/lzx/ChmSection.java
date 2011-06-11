@@ -47,6 +47,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -89,6 +103,8 @@ name|byte
 index|[]
 name|data
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmCommons
 operator|.
@@ -113,6 +129,8 @@ name|byte
 index|[]
 name|toBeReversed
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmCommons
 operator|.
@@ -1009,7 +1027,7 @@ operator|=
 name|buffer
 expr_stmt|;
 block|}
-comment|/**      * @param args      */
+comment|/**      * @param args      * @throws TikaException       */
 specifier|public
 specifier|static
 name|void
@@ -1019,25 +1037,9 @@ name|String
 index|[]
 name|args
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
-name|int
-name|result
-init|=
-literal|8
-operator|&
-literal|255
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"result "
-operator|+
-name|result
-argument_list|)
-expr_stmt|;
 name|byte
 index|[]
 name|array

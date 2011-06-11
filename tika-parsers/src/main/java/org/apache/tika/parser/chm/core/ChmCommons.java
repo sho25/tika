@@ -97,6 +97,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -180,6 +194,8 @@ name|byte
 index|[]
 name|data
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -189,7 +205,7 @@ literal|null
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"byte[] is null"
 argument_list|)
@@ -311,6 +327,8 @@ parameter_list|,
 name|int
 name|lzxcBlockLength
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -714,7 +732,7 @@ else|:
 literal|false
 return|;
 block|}
-comment|/**      * Writes byte[][] to the file      *       * @param buffer      * @param fileToBeSaved      *            file name      */
+comment|/**      * Writes byte[][] to the file      *       * @param buffer      * @param fileToBeSaved      *            file name      * @throws TikaException       */
 specifier|public
 specifier|static
 name|void
@@ -728,6 +746,8 @@ parameter_list|,
 name|String
 name|fileToBeSaved
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|FileOutputStream
 name|output
@@ -804,19 +824,16 @@ name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+throw|throw
+operator|new
+name|TikaException
 argument_list|(
-literal|"The "
-operator|+
-name|fileToBeSaved
-operator|+
-literal|" does not seem correct"
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 catch|catch
 parameter_list|(
@@ -942,7 +959,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns byte array Closes the InputStream      *       * @param is      *            InputStream of chm file      *       * @return byte array      *       * @throws IOException      */
+comment|/**      * Returns byte array Closes the InputStream      *       * @param is      *            InputStream of chm file      *       * @return byte array      *       * @throws IOException      * @throws TikaException       */
 specifier|public
 specifier|static
 name|byte
@@ -954,6 +971,8 @@ name|is
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 if|if
 condition|(
@@ -1041,18 +1060,16 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+throw|throw
+operator|new
+name|TikaException
 argument_list|(
 name|e
 operator|.
 name|getMessage
 argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 return|return
 name|buffer
@@ -1064,13 +1081,13 @@ block|}
 else|else
 throw|throw
 operator|new
-name|ChmParsingException
+name|IOException
 argument_list|(
 literal|"InputStream is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Returns an index of the reset table      *       * @param text      * @param pattern      * @return index of the reset table      */
+comment|/**      * Returns an index of the reset table      *       * @param text      * @param pattern      * @return index of the reset table      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -1085,6 +1102,8 @@ name|byte
 index|[]
 name|pattern
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 return|return
 operator|(
@@ -1099,7 +1118,7 @@ operator|-
 literal|4
 return|;
 block|}
-comment|/**      * Searches some pattern in byte[]      *       * @param text      *            byte[]      * @param pattern      *            byte[]      * @return an index, if nothing found returns -1      */
+comment|/**      * Searches some pattern in byte[]      *       * @param text      *            byte[]      * @param pattern      *            byte[]      * @return an index, if nothing found returns -1      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 name|int
@@ -1113,6 +1132,8 @@ name|byte
 index|[]
 name|pattern
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|int
 index|[]

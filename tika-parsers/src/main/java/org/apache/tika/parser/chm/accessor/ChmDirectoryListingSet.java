@@ -57,6 +57,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -146,7 +160,7 @@ name|isNotResetTableFound
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Constructs chm directory listing set      *       * @param data      *            byte[]      * @param chmItsHeader      * @param chmItspHeader      */
+comment|/**      * Constructs chm directory listing set      *       * @param data      *            byte[]      * @param chmItsHeader      * @param chmItspHeader      * @throws TikaException       */
 specifier|public
 name|ChmDirectoryListingSet
 parameter_list|(
@@ -160,6 +174,8 @@ parameter_list|,
 name|ChmItspHeader
 name|chmItspHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|setDirectoryListingEntryList
 argument_list|(

@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -529,7 +543,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Copies 4 bits from data[]      *       * @param data      * @param chmItspHeader      * @param count      */
+comment|/**      * Copies 4 bits from data[]      *       * @param data      * @param chmItspHeader      * @param count      * @throws TikaException       */
 specifier|private
 name|void
 name|unmarshalCharArray
@@ -544,6 +558,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -624,6 +640,8 @@ parameter_list|,
 name|int
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -643,7 +661,7 @@ argument_list|()
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"4> dataLenght"
 argument_list|)
@@ -736,6 +754,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -752,7 +772,7 @@ name|dataLenght
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"4> dataLenght"
 argument_list|)
@@ -1355,6 +1375,8 @@ parameter_list|,
 name|ChmItspHeader
 name|chmItspHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 comment|/* we only know how to deal with the 0x58 and 0x60 byte structures */
 if|if

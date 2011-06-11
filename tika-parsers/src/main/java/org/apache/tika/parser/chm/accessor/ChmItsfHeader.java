@@ -37,6 +37,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -711,7 +725,7 @@ operator|=
 name|data_offset
 expr_stmt|;
 block|}
-comment|/**      * Copies 4 first bytes of the byte[]      *       * @param data      * @param chmItsfHeader      * @param count      */
+comment|/**      * Copies 4 first bytes of the byte[]      *       * @param data      * @param chmItsfHeader      * @param count      * @throws TikaException       */
 specifier|private
 name|void
 name|unmarshalCharArray
@@ -726,6 +740,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -844,7 +860,7 @@ return|return
 name|dest
 return|;
 block|}
-comment|/**      * Takes 8 bytes and reverses them      *       * @param data      * @param dest      * @return      */
+comment|/**      * Takes 8 bytes and reverses them      *       * @param data      * @param dest      * @return      * @throws TikaException       */
 specifier|private
 name|long
 name|unmarshalUint64
@@ -856,6 +872,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|byte
 index|[]
@@ -883,7 +901,7 @@ argument_list|()
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"8> this.getDataRemained()"
 argument_list|)
@@ -971,6 +989,8 @@ parameter_list|,
 name|int
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -990,7 +1010,7 @@ argument_list|()
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"4> dataLenght"
 argument_list|)
@@ -1080,6 +1100,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -1097,7 +1119,7 @@ argument_list|()
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"4> dataLenght"
 argument_list|)
@@ -1248,6 +1270,8 @@ parameter_list|,
 name|ChmItsfHeader
 name|chmItsfHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -1269,7 +1293,7 @@ name|CHM_ITSF_V3_LEN
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"we only know how to deal with the 0x58 and 0x60 byte structures"
 argument_list|)
@@ -1508,7 +1532,7 @@ argument_list|)
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"seems not valid file"
 argument_list|)
@@ -1538,7 +1562,7 @@ name|CHM_ITSF_V2_LEN
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"something wrong with header"
 argument_list|)
@@ -1570,7 +1594,7 @@ name|CHM_ITSF_V3_LEN
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"unknown v3 header lenght"
 argument_list|)
@@ -1624,7 +1648,7 @@ expr_stmt|;
 else|else
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"cannot set data offset, no data remained"
 argument_list|)

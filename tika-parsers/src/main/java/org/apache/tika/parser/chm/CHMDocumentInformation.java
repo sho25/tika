@@ -145,24 +145,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|chm
-operator|.
-name|exception
-operator|.
-name|ChmParsingException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|html
 operator|.
 name|HtmlParser
@@ -211,7 +193,7 @@ name|chmExtractor
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * Loads chm file as input stream and returns a new instance of chm doc info      *       * @param is      *            InputStream      *       * @return chm document information      */
+comment|/**      * Loads chm file as input stream and returns a new instance of chm doc info      *       * @param is      *            InputStream      *       * @return chm document information      * @throws TikaException       * @throws IOException       */
 specifier|public
 specifier|static
 name|CHMDocumentInformation
@@ -220,6 +202,10 @@ parameter_list|(
 name|InputStream
 name|is
 parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
 block|{
 return|return
 operator|new
@@ -232,7 +218,7 @@ name|is
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns instance of chm document information      *       * @param is      *            InputStream      *       * @return      */
+comment|/**      * Returns instance of chm document information      *       * @param is      *            InputStream      *       * @return      * @throws TikaException       * @throws IOException       */
 specifier|private
 name|CHMDocumentInformation
 name|getInstance
@@ -240,6 +226,10 @@ parameter_list|(
 name|InputStream
 name|is
 parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
 block|{
 name|setChmExtractor
 argument_list|(
@@ -349,23 +339,11 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|ChmParsingException
+name|TikaException
 name|e
 parameter_list|)
 block|{
-comment|// catch (IOException e) {
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//ignore
 block|}
 comment|// catch (IOException e) {//Pushback exception from tagsoup
 comment|// System.err.println(e.getMessage());
@@ -620,29 +598,9 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"\n"
-operator|+
-name|CHMDocumentInformation
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" extract "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//                    System.err.println("\n"
+comment|//                            + CHMDocumentInformation.class.getName()
+comment|//                            + " extract " + e.getMessage());
 block|}
 finally|finally
 block|{
@@ -673,41 +631,17 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|ChmParsingException
-name|e
-parameter_list|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+throw|throw
+operator|new
+name|RuntimeException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 catch|catch
 parameter_list|(
@@ -715,8 +649,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+comment|//
 comment|// Pushback overflow from tagsoup
-comment|// System.err.println(e.getMessage());
 block|}
 return|return
 name|wBuf

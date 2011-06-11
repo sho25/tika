@@ -47,6 +47,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -400,7 +414,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Enumerates chm block addresses      *       * @param data      *       * @return byte[] of addresses      */
+comment|/**      * Enumerates chm block addresses      *       * @param data      *       * @return byte[] of addresses      * @throws TikaException       */
 specifier|private
 name|long
 index|[]
@@ -410,6 +424,8 @@ name|byte
 index|[]
 name|data
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -519,14 +535,23 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// System.err.println(e.getMessage());
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
 block|}
 block|}
 return|return
 name|addresses
 return|;
 block|}
-comment|/**      * Validates parameters such as byte[] and chm lzxc reset table      *       * @param data      * @param chmLzxcResetTable      *       * @return boolean      */
+comment|/**      * Validates parameters such as byte[] and chm lzxc reset table      *       * @param data      * @param chmLzxcResetTable      *       * @return boolean      * @throws TikaException       */
 specifier|private
 name|boolean
 name|validateParamaters
@@ -538,6 +563,8 @@ parameter_list|,
 name|ChmLzxcResetTable
 name|chmLzxcResetTable
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|int
 name|goodParameter
@@ -583,6 +610,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -674,6 +703,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -758,7 +789,7 @@ block|}
 else|else
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"data is too small to calculate address block"
 argument_list|)
@@ -996,6 +1027,8 @@ parameter_list|,
 name|ChmLzxcResetTable
 name|chmLzxcResetTable
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|setDataRemained
 argument_list|(

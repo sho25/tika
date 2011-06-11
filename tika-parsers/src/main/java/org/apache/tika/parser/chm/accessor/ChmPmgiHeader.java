@@ -37,6 +37,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -219,6 +233,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|int
 name|index
@@ -297,22 +313,10 @@ name|count
 argument_list|)
 expr_stmt|;
 else|else
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|ChmPmgiHeader
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|" does not exist a PMGI, use PMGL instead"
-argument_list|)
-expr_stmt|;
+block|{
+comment|//Some chm documents (actually most of them) do not contain
+comment|//PMGI header, in this case, we just notice about it.
+block|}
 name|this
 operator|.
 name|setCurrentPlace
@@ -349,6 +353,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|ChmAssert
 operator|.
@@ -562,6 +568,8 @@ parameter_list|,
 name|ChmPmgiHeader
 name|chmPmgiHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 comment|/* we only know how to deal with a 0x8 byte structures */
 if|if
@@ -576,7 +584,7 @@ name|CHM_PMGI_LEN
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"we only know how to deal with a 0x8 byte structures"
 argument_list|)
@@ -635,7 +643,7 @@ argument_list|)
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"it does not seem to be valid a PMGI signature, check ChmItsp index_root if it was -1, means no PMGI, use PMGL insted"
 argument_list|)

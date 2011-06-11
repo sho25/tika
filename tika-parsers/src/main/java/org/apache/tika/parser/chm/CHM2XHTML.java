@@ -139,16 +139,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-comment|/* The error handling should be added */
-name|System
-operator|.
-name|err
-operator|.
-name|println
+throw|throw
+operator|new
+name|TikaException
 argument_list|(
 literal|"Could not extract content"
 argument_list|)
-expr_stmt|;
+throw|;
 block|}
 catch|catch
 parameter_list|(
@@ -156,7 +153,13 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-comment|// System.err.println(ChmParserUtils.getStackTrace(e.getStackTrace()));
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 block|}
 specifier|protected

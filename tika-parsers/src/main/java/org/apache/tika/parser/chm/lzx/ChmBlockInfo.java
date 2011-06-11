@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -114,7 +128,7 @@ specifier|private
 name|ChmBlockInfo
 parameter_list|()
 block|{      }
-comment|/**      * Returns an information related to the chmBlockInfo      *       * @param dle      *            - DirectoryListingEntry      * @param bytesPerBlock      *            - int, = chmLzxcResetTable.block_length      * @param clcd      *            - ChmLzxcControlData      * @param chmBlockInfo      *            - ChmBlockInfo      *       * @return ChmBlockInfo      */
+comment|/**      * Returns an information related to the chmBlockInfo      *       * @param dle      *            - DirectoryListingEntry      * @param bytesPerBlock      *            - int, = chmLzxcResetTable.block_length      * @param clcd      *            - ChmLzxcControlData      * @param chmBlockInfo      *            - ChmBlockInfo      *       * @return ChmBlockInfo      * @throws TikaException       */
 specifier|protected
 name|ChmBlockInfo
 name|getChmBlockInfo
@@ -131,6 +145,8 @@ parameter_list|,
 name|ChmBlockInfo
 name|chmBlockInfo
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(

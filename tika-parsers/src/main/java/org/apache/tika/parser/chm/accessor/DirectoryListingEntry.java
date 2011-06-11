@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -95,7 +109,7 @@ specifier|public
 name|DirectoryListingEntry
 parameter_list|()
 block|{      }
-comment|/**      * Constructs directoryListingEntry      *       * @param name_length      *            int      * @param name      *            String      * @param isCompressed      *            ChmCommons.EntryType      * @param offset      *            int      * @param length      *            int      */
+comment|/**      * Constructs directoryListingEntry      *       * @param name_length      *            int      * @param name      *            String      * @param isCompressed      *            ChmCommons.EntryType      * @param offset      *            int      * @param length      *            int      * @throws TikaException       */
 specifier|public
 name|DirectoryListingEntry
 parameter_list|(
@@ -116,6 +130,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.

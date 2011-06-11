@@ -77,6 +77,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -212,24 +226,6 @@ operator|.
 name|ChmCommons
 operator|.
 name|EntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|chm
-operator|.
-name|exception
-operator|.
-name|ChmParsingException
 import|;
 end_import
 
@@ -520,6 +516,10 @@ parameter_list|(
 name|InputStream
 name|is
 parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
 block|{
 name|ChmAssert
 operator|.
@@ -909,18 +909,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|// ignore
 block|}
 block|}
 comment|/**      * Enumerates chm entities      *       * @return list of chm entities      */
@@ -987,7 +976,7 @@ return|return
 name|listOfEntries
 return|;
 block|}
-comment|/**      * Decompresses a chm entry      *       * @param directoryListingEntry      *       * @return decompressed data      */
+comment|/**      * Decompresses a chm entry      *       * @param directoryListingEntry      *       * @return decompressed data      * @throws TikaException       */
 specifier|public
 name|byte
 index|[]
@@ -997,6 +986,8 @@ parameter_list|(
 name|DirectoryListingEntry
 name|directoryListingEntry
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|byte
 index|[]
@@ -1674,12 +1665,20 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|ChmParsingException
+name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// e.printStackTrace();
-comment|// System.err.println("Unknown exception");
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
 block|}
 return|return
 operator|(

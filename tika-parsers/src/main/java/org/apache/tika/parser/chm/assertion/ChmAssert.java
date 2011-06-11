@@ -25,7 +25,31 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
 import|;
 end_import
 
@@ -110,7 +134,7 @@ specifier|public
 class|class
 name|ChmAssert
 block|{
-comment|/**      * Checks a validity of the chmBlockSegment parameters      *       * @param data      *            byte[]      * @param resetTable      *            ChmLzxcResetTable      * @param blockNumber      *            int      * @param lzxcBlockOffset      *            int      * @param lzxcBlockLength      *            int      */
+comment|/**      * Checks a validity of the chmBlockSegment parameters      *       * @param data      *            byte[]      * @param resetTable      *            ChmLzxcResetTable      * @param blockNumber      *            int      * @param lzxcBlockOffset      *            int      * @param lzxcBlockLength      *            int      * @throws TikaException       */
 specifier|public
 specifier|static
 specifier|final
@@ -133,6 +157,8 @@ parameter_list|,
 name|int
 name|lzxcBlockLength
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -144,7 +170,7 @@ operator|)
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"data[] is null"
 argument_list|)
@@ -161,7 +187,7 @@ operator|)
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"data[] length should be greater than zero"
 argument_list|)
@@ -174,7 +200,7 @@ literal|null
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"resetTable is null"
 argument_list|)
@@ -192,7 +218,7 @@ literal|1
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"resetTable.getBlockAddress().length should be greater than zero"
 argument_list|)
@@ -205,7 +231,7 @@ literal|0
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"blockNumber should be positive number"
 argument_list|)
@@ -218,7 +244,7 @@ literal|0
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"lzxcBlockOffset should be positive number"
 argument_list|)
@@ -231,13 +257,13 @@ literal|0
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|TikaException
 argument_list|(
 literal|"lzxcBlockLength should be positive number"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks if InputStream is not null      *       * @param is      *            InputStream      */
+comment|/**      * Checks if InputStream is not null      *       * @param is      *            InputStream      * @throws ChmParsingException       * @throws IOException       */
 specifier|public
 specifier|static
 specifier|final
@@ -247,6 +273,8 @@ parameter_list|(
 name|InputStream
 name|is
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -256,13 +284,13 @@ literal|null
 condition|)
 throw|throw
 operator|new
-name|ChmParsingException
+name|IOException
 argument_list|(
 literal|"input sream is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks validity of ChmAccessor parameters      *       * @param data      * @param chmItsfHeader      * @param count      */
+comment|/**      * Checks validity of ChmAccessor parameters      *       * @param data      * @param chmItsfHeader      * @param count      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -282,6 +310,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|assertByteArrayNotNull
 argument_list|(
@@ -294,7 +324,7 @@ name|chmAccessor
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Checks if byte[] is not null      *       * @param data      */
+comment|/**      * Checks if byte[] is not null      *       * @param data      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -305,6 +335,8 @@ name|byte
 index|[]
 name|data
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 if|if
 condition|(
@@ -320,7 +352,7 @@ literal|"byte[] data is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks if ChmAccessor is not null In case of null throws exception      *       * @param ChmAccessor      */
+comment|/**      * Checks if ChmAccessor is not null In case of null throws exception      *       * @param ChmAccessor      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -333,6 +365,8 @@ name|?
 argument_list|>
 name|chmAccessor
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 if|if
 condition|(
@@ -348,7 +382,7 @@ literal|"chm header is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks validity of the DirectoryListingEntry's parameters In case of      * invalid parameter(s) throws an exception      *       * @param name_length      *            length of the chm entry name      * @param name      *            chm entry name      * @param entryType      *            EntryType      * @param offset      * @param length      */
+comment|/**      * Checks validity of the DirectoryListingEntry's parameters In case of      * invalid parameter(s) throws an exception      *       * @param name_length      *            length of the chm entry name      * @param name      *            chm entry name      * @param entryType      *            EntryType      * @param offset      * @param length      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -372,6 +406,8 @@ parameter_list|,
 name|int
 name|length
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 if|if
 condition|(
@@ -466,6 +502,8 @@ parameter_list|,
 name|int
 name|dataLength
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 if|if
 condition|(
@@ -481,7 +519,7 @@ literal|"cannot parse chm file index> data.length"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks if int param is greater than zero In case param<=0 throws an      * exception      *       * @param param      */
+comment|/**      * Checks if int param is greater than zero In case param<=0 throws an      * exception      *       * @param param      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 name|void
@@ -490,6 +528,8 @@ parameter_list|(
 name|int
 name|param
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 if|if
 condition|(

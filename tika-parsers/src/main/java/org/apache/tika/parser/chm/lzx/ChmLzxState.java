@@ -39,6 +39,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -278,6 +292,8 @@ name|short
 index|[]
 name|getLengthTreeTable
 parameter_list|()
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -678,6 +694,8 @@ parameter_list|(
 name|int
 name|window
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
@@ -717,15 +735,13 @@ name|win
 argument_list|>
 literal|21
 condition|)
-name|System
-operator|.
-name|err
-operator|.
-name|println
+throw|throw
+operator|new
+name|ChmParsingException
 argument_list|(
 literal|"window less than 15 or window greater than 21"
 argument_list|)
-expr_stmt|;
+throw|;
 comment|/* Calculates required position slots */
 if|if
 condition|(

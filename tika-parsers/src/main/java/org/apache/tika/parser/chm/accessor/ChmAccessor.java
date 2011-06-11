@@ -29,6 +29,20 @@ name|Serializable
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * Defines an accessor interface  *   * @param<T>  */
 end_comment
@@ -43,7 +57,7 @@ parameter_list|>
 extends|extends
 name|Serializable
 block|{
-comment|/**      * Parses chm accessor      *       * @param data      *            chm file      * @param chmAccessor      */
+comment|/**      * Parses chm accessor      *       * @param data      *            chm file      * @param chmAccessor      * @throws TikaException       */
 name|void
 name|parse
 parameter_list|(
@@ -54,6 +68,8 @@ parameter_list|,
 name|T
 name|chmAccessor
 parameter_list|)
+throws|throws
+name|TikaException
 function_decl|;
 block|}
 end_interface

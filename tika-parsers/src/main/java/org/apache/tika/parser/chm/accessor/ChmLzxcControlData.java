@@ -27,6 +27,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -402,6 +416,8 @@ parameter_list|,
 name|long
 name|dest
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 assert|assert
 operator|(
@@ -516,6 +532,8 @@ parameter_list|,
 name|int
 name|count
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|ChmAssert
 operator|.
@@ -725,6 +743,8 @@ parameter_list|,
 name|ChmLzxcControlData
 name|chmLzxcControlData
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 if|if
 condition|(
