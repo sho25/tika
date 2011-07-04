@@ -55,18 +55,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
-name|InflaterOutputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -212,6 +200,14 @@ name|PRTParser
 extends|extends
 name|AbstractParser
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|4659638314375035178L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
