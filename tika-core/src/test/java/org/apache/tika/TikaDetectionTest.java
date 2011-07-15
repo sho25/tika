@@ -26,7 +26,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TikaTest
+name|TikaDetectionTest
 extends|extends
 name|TestCase
 block|{
