@@ -6237,9 +6237,12 @@ literal|"x.pfb"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// TODO Get these fixed upstream too
+comment|//assertEquals("application/x-font-type1", tika.detect("x.pfm"));
+comment|//assertEquals("application/x-font-type1", tika.detect("x.afm"));
 name|assertEquals
 argument_list|(
-literal|"application/x-font-type1"
+literal|"application/x-font-printer-metric"
 argument_list|,
 name|tika
 operator|.
@@ -6251,7 +6254,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/x-font-type1"
+literal|"application/x-font-adobe-metric"
 argument_list|,
 name|tika
 operator|.
