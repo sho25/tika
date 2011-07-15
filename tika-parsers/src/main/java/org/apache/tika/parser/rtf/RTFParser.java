@@ -804,6 +804,18 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
+comment|// TODO Extract some of the metadata
+name|metadata
+operator|.
+name|add
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|,
+literal|"application/rtf"
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
