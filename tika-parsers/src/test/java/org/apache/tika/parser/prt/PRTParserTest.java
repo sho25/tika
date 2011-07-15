@@ -29,11 +29,13 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|TestCase
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -82,7 +84,7 @@ specifier|public
 class|class
 name|PRTParserTest
 extends|extends
-name|TestCase
+name|TikaTest
 block|{
 comment|/**      * Try with a simple file      */
 specifier|public
@@ -95,10 +97,6 @@ block|{
 name|InputStream
 name|input
 init|=
-name|PRTParserTest
-operator|.
-name|class
-operator|.
 name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testCADKEY.prt"
@@ -284,10 +282,6 @@ block|{
 name|InputStream
 name|input
 init|=
-name|PRTParserTest
-operator|.
-name|class
-operator|.
 name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testCADKEY2.prt"
@@ -549,34 +543,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|void
-name|assertContains
-parameter_list|(
-name|String
-name|needle
-parameter_list|,
-name|String
-name|haystack
-parameter_list|)
-block|{
-name|assertTrue
-argument_list|(
-name|needle
-operator|+
-literal|" not found in:\n"
-operator|+
-name|haystack
-argument_list|,
-name|haystack
-operator|.
-name|contains
-argument_list|(
-name|needle
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
