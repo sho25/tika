@@ -159,7 +159,8 @@ block|{
 name|String
 name|responseMsg
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -193,7 +194,8 @@ block|{
 name|String
 name|responseMsg
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -240,7 +242,8 @@ block|{
 name|String
 name|serviceWadl
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -284,7 +287,8 @@ block|{
 name|ClientResponse
 name|cr
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(

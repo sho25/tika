@@ -23,22 +23,6 @@ name|sun
 operator|.
 name|jersey
 operator|.
-name|api
-operator|.
-name|client
-operator|.
-name|ClientResponse
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|sun
-operator|.
-name|jersey
-operator|.
 name|test
 operator|.
 name|framework
@@ -150,30 +134,6 @@ operator|.
 name|Assert
 operator|.
 name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -440,7 +400,8 @@ block|{
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -525,7 +486,8 @@ block|{
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -598,7 +560,8 @@ block|{
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -671,7 +634,8 @@ block|{
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -756,7 +720,8 @@ decl_stmt|;
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
@@ -837,7 +802,8 @@ block|{
 name|InputStream
 name|is
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(

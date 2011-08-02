@@ -148,7 +148,8 @@ block|{
 name|Reader
 name|reader
 init|=
-name|webResource
+name|resource
+argument_list|()
 operator|.
 name|path
 argument_list|(
