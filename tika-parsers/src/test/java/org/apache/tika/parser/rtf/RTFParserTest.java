@@ -431,6 +431,30 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testTextWithCurlyBraces
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|content
+init|=
+name|getText
+argument_list|(
+literal|"testRTFWithCurlyBraces.rtf"
+argument_list|)
+decl_stmt|;
+comment|//assertContains("{ some text inside curly brackets }", content);
+name|assertContains
+argument_list|(
+literal|"{  some text inside curly brackets  }"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|String
 name|getText
