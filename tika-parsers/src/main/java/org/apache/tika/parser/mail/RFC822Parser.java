@@ -353,6 +353,11 @@ argument_list|(
 name|xhtml
 argument_list|,
 name|metadata
+argument_list|,
+name|config
+operator|.
+name|isStrictParsing
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|parser
