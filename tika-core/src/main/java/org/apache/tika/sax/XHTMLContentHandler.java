@@ -450,6 +450,9 @@ argument_list|,
 name|EMPTY_ATTRIBUTES
 argument_list|)
 expr_stmt|;
+name|newline
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|startElement
@@ -462,6 +465,9 @@ literal|"head"
 argument_list|,
 name|EMPTY_ATTRIBUTES
 argument_list|)
+expr_stmt|;
+name|newline
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -601,6 +607,9 @@ argument_list|,
 literal|"meta"
 argument_list|)
 expr_stmt|;
+name|newline
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -677,6 +686,9 @@ argument_list|,
 literal|"title"
 argument_list|)
 expr_stmt|;
+name|newline
+argument_list|()
+expr_stmt|;
 name|super
 operator|.
 name|endElement
@@ -687,6 +699,9 @@ literal|"head"
 argument_list|,
 literal|"head"
 argument_list|)
+expr_stmt|;
+name|newline
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
