@@ -130,7 +130,7 @@ name|TestCase
 block|{
 specifier|private
 specifier|final
-name|ContainerAwareDetector
+name|Detector
 name|detector
 init|=
 operator|new
@@ -618,7 +618,10 @@ name|assertEquals
 argument_list|(
 name|MediaType
 operator|.
-name|APPLICATION_ZIP
+name|application
+argument_list|(
+literal|"x-tika-ooxml"
+argument_list|)
 argument_list|,
 name|detector
 operator|.

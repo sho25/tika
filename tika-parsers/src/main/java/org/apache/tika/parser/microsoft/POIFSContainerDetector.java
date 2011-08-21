@@ -11,7 +11,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|detect
+name|parser
+operator|.
+name|microsoft
 package|;
 end_package
 
@@ -120,6 +122,34 @@ operator|.
 name|filesystem
 operator|.
 name|NPOIFSFileSystem
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|detect
+operator|.
+name|Detector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|TemporaryFiles
 import|;
 end_import
 
@@ -396,7 +426,6 @@ block|}
 comment|// We can only detect the exact type when given a TikaInputStream
 if|if
 condition|(
-operator|!
 name|TikaInputStream
 operator|.
 name|isTikaInputStream
@@ -405,10 +434,15 @@ name|input
 argument_list|)
 condition|)
 block|{
-return|return
-name|OLE
-return|;
-block|}
+name|TemporaryFiles
+name|tmp
+init|=
+operator|new
+name|TemporaryFiles
+argument_list|()
+decl_stmt|;
+try|try
+block|{
 comment|// Look for known top level entry names to detect the document type
 name|Set
 argument_list|<
@@ -423,6 +457,8 @@ operator|.
 name|get
 argument_list|(
 name|input
+argument_list|,
+name|tmp
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -597,12 +633,6 @@ argument_list|)
 return|;
 comment|// .wb?
 block|}
-else|else
-block|{
-return|return
-name|OLE
-return|;
-block|}
 block|}
 elseif|else
 if|if
@@ -650,10 +680,21 @@ name|MSG
 return|;
 block|}
 block|}
+block|}
+block|}
+finally|finally
+block|{
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|// Couldn't detect a more specific type
 return|return
 name|OLE
 return|;
-block|}
 block|}
 specifier|private
 specifier|static
