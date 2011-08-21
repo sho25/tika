@@ -3762,7 +3762,7 @@ name|OutputKeys
 operator|.
 name|INDENT
 argument_list|,
-literal|"yes"
+literal|"no"
 argument_list|)
 expr_stmt|;
 if|if
