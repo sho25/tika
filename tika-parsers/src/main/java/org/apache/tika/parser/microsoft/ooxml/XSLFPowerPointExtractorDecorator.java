@@ -418,7 +418,7 @@ name|context
 argument_list|,
 name|extractor
 argument_list|,
-literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
