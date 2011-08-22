@@ -476,14 +476,6 @@ range|:
 name|slides
 control|)
 block|{
-name|CTSlide
-name|rawSlide
-init|=
-name|slide
-operator|.
-name|_getCTSlide
-argument_list|()
-decl_stmt|;
 name|CTSlideIdListEntry
 name|slideId
 init|=
