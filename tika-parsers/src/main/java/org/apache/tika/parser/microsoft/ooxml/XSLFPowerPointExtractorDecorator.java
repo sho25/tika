@@ -475,8 +475,12 @@ operator|new
 name|IOException
 argument_list|(
 name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 throw|;
+comment|// Shouldn't happen
 block|}
 name|XSLFSlide
 index|[]
@@ -777,6 +781,7 @@ name|getMessage
 argument_list|()
 argument_list|)
 throw|;
+comment|// Shouldn't happen
 block|}
 for|for
 control|(
