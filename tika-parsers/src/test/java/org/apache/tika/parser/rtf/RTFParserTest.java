@@ -368,7 +368,7 @@ argument_list|)
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"ESPÍRITO"
+literal|"ESP\u00cdRITO"
 argument_list|,
 name|content
 argument_list|)
@@ -391,14 +391,14 @@ argument_list|)
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"zażółć gęślą jaźń"
+literal|"za\u017c\u00f3\u0142\u0107 g\u0119\u015bl\u0105 ja\u017a\u0144"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"ZAŻÓŁĆ GĘŚLĄ JAŹŃ"
+literal|"ZA\u017b\u00d3\u0141\u0106 G\u0118\u015aL\u0104 JA\u0179\u0143"
 argument_list|,
 name|content
 argument_list|)
