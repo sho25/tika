@@ -145,7 +145,9 @@ name|poi
 operator|.
 name|xslf
 operator|.
-name|XSLFSlideShow
+name|extractor
+operator|.
+name|XSLFPowerPointExtractor
 import|;
 end_import
 
@@ -159,9 +161,9 @@ name|poi
 operator|.
 name|xslf
 operator|.
-name|extractor
+name|usermodel
 operator|.
-name|XSLFPowerPointExtractor
+name|XMLSlideShow
 import|;
 end_import
 
@@ -534,7 +536,7 @@ if|if
 condition|(
 name|document
 operator|instanceof
-name|XSLFSlideShow
+name|XMLSlideShow
 condition|)
 block|{
 name|extractor
