@@ -39,16 +39,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -148,20 +138,6 @@ operator|.
 name|detect
 operator|.
 name|Detector
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|TemporaryResources
 import|;
 end_import
 
@@ -436,27 +412,23 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// We can only detect the exact type when given a TikaInputStream
-if|if
-condition|(
-name|TikaInputStream
-operator|.
-name|isTikaInputStream
-argument_list|(
-name|input
-argument_list|)
-condition|)
-block|{
-comment|// No TemporaryResources as this is for sure a TikaInputStream
 name|TikaInputStream
 name|tis
 init|=
 name|TikaInputStream
 operator|.
-name|get
+name|cast
 argument_list|(
 name|input
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|tis
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// Look for known top level entry names to detect the document type
 name|Set
 argument_list|<

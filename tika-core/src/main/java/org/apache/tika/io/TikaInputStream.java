@@ -228,7 +228,7 @@ operator|instanceof
 name|TikaInputStream
 return|;
 block|}
-comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * The given temporary file provider is used for any temporary files,      * and should be disposed when the returned stream is no longer used.      *<p>      * Use this method instead of the {@link #get(InputStream)} alternative      * when you<em>don't</em> explicitly close the returned stream. The      * recommended access pattern is:      *<pre>      * TemporaryResources tmp = new TemporaryResources();      * try {      *     TikaInputStream stream = TikaInputStream.get(..., tmp);      *     // process stream but don't close it      * } finally {      *     tmp.close();      * }      *</pre>      *<p>      * The given stream instance will<em>not</em> be closed when the      * {@link TemporaryResources#close()} method is called. The caller      * is expected to explicitly close the original stream when it's no      * longer used.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * The given temporary file provider is used for any temporary files,      * and should be disposed when the returned stream is no longer used.      *<p>      * Use this method instead of the {@link #get(InputStream)} alternative      * when you<em>don't</em> explicitly close the returned stream. The      * recommended access pattern is:      *<pre>      * TemporaryResources tmp = new TemporaryResources();      * try {      *     TikaInputStream stream = TikaInputStream.get(..., tmp);      *     // process stream but don't close it      * } finally {      *     tmp.close();      * }      *</pre>      *<p>      * The given stream instance will<em>not</em> be closed when the      * {@link TemporaryResources#close()} method is called. The caller      * is expected to explicitly close the original stream when it's no      * longer used.      *      * @since Apache Tika 1.0      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -344,6 +344,37 @@ name|TemporaryResources
 argument_list|()
 argument_list|)
 return|;
+block|}
+comment|/**      * Returns the given stream casts to a TikaInputStream, or      *<code>null</code> if the stream is not a TikaInputStream.      *      * @since Apache Tika 1.0      * @param stream normal input stream      * @return a TikaInputStream instance      */
+specifier|public
+specifier|static
+name|TikaInputStream
+name|cast
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+block|{
+if|if
+condition|(
+name|stream
+operator|instanceof
+name|TikaInputStream
+condition|)
+block|{
+return|return
+operator|(
+name|TikaInputStream
+operator|)
+name|stream
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 comment|/**      * Creates a TikaInputStream from the given array of bytes.      *<p>      * Note that you must always explicitly close the returned stream as in      * some cases it may end up writing the given data to a temporary file.      *      * @param data input data      * @return a TikaInputStream instance      */
 specifier|public
