@@ -507,19 +507,35 @@ parameter_list|)
 block|{
 try|try
 block|{
-return|return
-name|detect
-argument_list|(
+name|InputStream
+name|stream
+init|=
 name|TikaInputStream
 operator|.
 name|get
 argument_list|(
 name|prefix
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|detect
+argument_list|(
+name|stream
 argument_list|,
 name|name
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -550,17 +566,33 @@ parameter_list|)
 block|{
 try|try
 block|{
-return|return
-name|detect
-argument_list|(
+name|InputStream
+name|stream
+init|=
 name|TikaInputStream
 operator|.
 name|get
 argument_list|(
 name|prefix
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+return|return
+name|detect
+argument_list|(
+name|stream
 argument_list|)
 return|;
+block|}
+finally|finally
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -693,7 +725,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      * Input metadata like a file name or a content type hint can be passed      * in the given metadata instance. Metadata information extracted from      * the document is returned in that same metadata instance.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      * Input metadata like a file name or a content type hint can be passed      * in the given metadata instance. Metadata information extracted from      * the document is returned in that same metadata instance.      *<p>      * The returned reader will be responsible for closing the given stream.      * The stream and any associated resources will be closed at or before      * the time when the {@link Reader#close()} method is called.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
 specifier|public
 name|Reader
 name|parse
@@ -739,7 +771,7 @@ name|context
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      *<p>      * The returned reader will be responsible for closing the given stream.      * The stream and any associated resources will be closed at or before      * the time when the {@link Reader#close()} method is called.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read or parsed      */
 specifier|public
 name|Reader
 name|parse
@@ -824,7 +856,7 @@ name|metadata
 argument_list|)
 return|;
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *<p>      *<strong>NOTE:</strong> Unlike most other Tika methods that taken an      * {@link InputStream}, this method will close the given stream for      * you as a convenience. With other methods you are still responsible      * for closing the stream or a wrapper instance returned by Tika.      *      * @param stream the document to be parsed      * @param metadata document metadata      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
 name|String
 name|parseToString
@@ -931,7 +963,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
+comment|/**      * Parses the given document and returns the extracted text content.      * The given input stream is closed by this method.      *<p>      * To avoid unpredictable excess memory use, the returned string contains      * only up to {@link #getMaxStringLength()} first characters extracted      * from the input document. Use the {@link #setMaxStringLength(int)}      * method to adjust this limitation.      *<p>      *<strong>NOTE:</strong> Unlike most other Tika methods that taken an      * {@link InputStream}, this method will close the given stream for      * you as a convenience. With other methods you are still responsible      * for closing the stream or a wrapper instance returned by Tika.      *      * @param stream the document to be parsed      * @return extracted text content      * @throws IOException if the document can not be read      * @throws TikaException if the document can not be parsed      */
 specifier|public
 name|String
 name|parseToString
