@@ -67,6 +67,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|channels
+operator|.
+name|FileChannel
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -149,7 +161,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -434,15 +446,17 @@ name|input
 argument_list|)
 condition|)
 block|{
-name|TemporaryFiles
-name|tmp
+comment|// No TemporaryResources as this is for sure a TikaInputStream
+name|TikaInputStream
+name|tis
 init|=
-operator|new
-name|TemporaryFiles
-argument_list|()
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|input
+argument_list|)
 decl_stmt|;
-try|try
-block|{
 comment|// Look for known top level entry names to detect the document type
 name|Set
 argument_list|<
@@ -452,14 +466,7 @@ name|names
 init|=
 name|getTopLevelNames
 argument_list|(
-name|TikaInputStream
-operator|.
-name|get
-argument_list|(
-name|input
-argument_list|,
-name|tmp
-argument_list|)
+name|tis
 argument_list|)
 decl_stmt|;
 if|if
@@ -682,15 +689,6 @@ block|}
 block|}
 block|}
 block|}
-finally|finally
-block|{
-name|tmp
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 comment|// Couldn't detect a more specific type
 return|return
 name|OLE
@@ -712,12 +710,12 @@ name|IOException
 block|{
 comment|// Force the document stream to a (possibly temporary) file
 comment|// so we don't modify the current position of the stream
-name|File
-name|file
+name|FileChannel
+name|channel
 init|=
 name|stream
 operator|.
-name|getFile
+name|getFileChannel
 argument_list|()
 decl_stmt|;
 try|try
@@ -728,7 +726,7 @@ init|=
 operator|new
 name|NPOIFSFileSystem
 argument_list|(
-name|file
+name|channel
 argument_list|)
 decl_stmt|;
 comment|// Optimize a possible later parsing process by keeping

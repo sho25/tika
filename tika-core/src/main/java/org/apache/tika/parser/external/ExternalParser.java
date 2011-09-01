@@ -213,7 +213,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -402,11 +402,11 @@ literal|"cat"
 block|}
 decl_stmt|;
 specifier|private
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 specifier|public

@@ -1024,7 +1024,7 @@ name|NPOIFSFileSystem
 argument_list|(
 name|tstream
 operator|.
-name|getFile
+name|getFileChannel
 argument_list|()
 argument_list|)
 expr_stmt|;

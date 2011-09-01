@@ -129,7 +129,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -902,11 +902,11 @@ argument_list|(
 name|metadata
 argument_list|)
 decl_stmt|;
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 try|try

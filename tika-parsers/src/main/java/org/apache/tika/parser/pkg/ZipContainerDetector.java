@@ -215,7 +215,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -416,11 +416,11 @@ operator|.
 name|APPLICATION_ZIP
 return|;
 block|}
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 name|ZipFile
@@ -580,7 +580,7 @@ block|{                 }
 block|}
 name|tmp
 operator|.
-name|dispose
+name|close
 argument_list|()
 expr_stmt|;
 block|}

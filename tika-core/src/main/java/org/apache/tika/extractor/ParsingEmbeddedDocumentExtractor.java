@@ -109,7 +109,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -531,11 +531,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Use the delegate parser to parse this entry
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 try|try
@@ -585,7 +585,7 @@ finally|finally
 block|{
 name|tmp
 operator|.
-name|dispose
+name|close
 argument_list|()
 expr_stmt|;
 block|}

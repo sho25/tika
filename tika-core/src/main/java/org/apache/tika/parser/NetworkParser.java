@@ -167,7 +167,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -397,11 +397,11 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 try|try

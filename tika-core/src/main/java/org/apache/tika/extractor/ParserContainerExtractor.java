@@ -121,7 +121,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|TemporaryFiles
+name|TemporaryResources
 import|;
 end_import
 
@@ -554,11 +554,11 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-name|TemporaryFiles
+name|TemporaryResources
 name|tmp
 init|=
 operator|new
-name|TemporaryFiles
+name|TemporaryResources
 argument_list|()
 decl_stmt|;
 try|try
@@ -632,6 +632,18 @@ name|getFile
 argument_list|()
 decl_stmt|;
 comment|// Let the handler process the embedded resource
+name|InputStream
+name|input
+init|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|file
+argument_list|)
+decl_stmt|;
+try|try
+block|{
 name|handler
 operator|.
 name|handle
@@ -640,14 +652,18 @@ name|filename
 argument_list|,
 name|type
 argument_list|,
-name|TikaInputStream
-operator|.
-name|get
-argument_list|(
-name|file
-argument_list|)
+name|input
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|input
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Recurse
 name|extractor
 operator|.
