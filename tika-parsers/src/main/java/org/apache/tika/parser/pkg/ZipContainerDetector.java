@@ -406,6 +406,8 @@ name|getFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|MediaType
 name|type
 init|=
@@ -478,6 +480,15 @@ argument_list|(
 literal|"java-archive"
 argument_list|)
 return|;
+block|}
+block|}
+finally|finally
+block|{
+name|zip
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 catch|catch
