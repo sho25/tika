@@ -207,30 +207,15 @@ name|TikaException
 throws|,
 name|IOException
 block|{
-return|return
+name|CHMDocumentInformation
+name|document
+init|=
 operator|new
 name|CHMDocumentInformation
 argument_list|()
+decl_stmt|;
+name|document
 operator|.
-name|getInstance
-argument_list|(
-name|is
-argument_list|)
-return|;
-block|}
-comment|/**      * Returns instance of chm document information      *       * @param is      *            InputStream      *       * @return      * @throws TikaException       * @throws IOException       */
-specifier|private
-name|CHMDocumentInformation
-name|getInstance
-parameter_list|(
-name|InputStream
-name|is
-parameter_list|)
-throws|throws
-name|TikaException
-throws|,
-name|IOException
-block|{
 name|setChmExtractor
 argument_list|(
 operator|new
@@ -241,7 +226,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-name|this
+name|document
 return|;
 block|}
 comment|/**      * Appends extracted data from chm listing entries      *       * @return extracted content of chm      */
