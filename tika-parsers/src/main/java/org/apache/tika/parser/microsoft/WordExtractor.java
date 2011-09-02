@@ -1402,6 +1402,12 @@ block|{
 comment|// Skip trailing newlines
 if|if
 condition|(
+operator|!
+name|isRendered
+argument_list|(
+name|cr
+argument_list|)
+operator|||
 name|cr
 operator|.
 name|text
@@ -2120,6 +2126,12 @@ name|TikaException
 block|{
 if|if
 condition|(
+operator|!
+name|isRendered
+argument_list|(
+name|cr
+argument_list|)
+operator|||
 name|picture
 operator|==
 literal|null
@@ -2730,6 +2742,28 @@ literal|"h"
 argument_list|)
 return|;
 block|}
+block|}
+comment|/**      * Determines if character run should be included in the extraction.      *       * @param cr character run.      * @return true if character run should be included in extraction.      */
+specifier|private
+name|boolean
+name|isRendered
+parameter_list|(
+specifier|final
+name|CharacterRun
+name|cr
+parameter_list|)
+block|{
+return|return
+name|cr
+operator|==
+literal|null
+operator|||
+operator|!
+name|cr
+operator|.
+name|isMarkedDeleted
+argument_list|()
+return|;
 block|}
 comment|/**      * Provides access to the pictures both by offset, iteration      *  over the un-claimed, and peeking forward      */
 specifier|private
