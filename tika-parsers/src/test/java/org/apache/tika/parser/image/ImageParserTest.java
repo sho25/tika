@@ -188,7 +188,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"8 8 8 "
+literal|"8 8 8"
 argument_list|,
 name|metadata
 operator|.
@@ -380,7 +380,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"TRUE"
+literal|"true"
 argument_list|,
 name|metadata
 operator|.
@@ -512,7 +512,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"TRUE"
+literal|"true"
 argument_list|,
 name|metadata
 operator|.
