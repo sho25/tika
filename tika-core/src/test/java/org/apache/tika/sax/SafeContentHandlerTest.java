@@ -251,7 +251,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ab a c bc"
+literal|"ab\ufffda\ufffdc\ufffdbc"
 argument_list|,
 name|output
 operator|.
@@ -311,7 +311,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ab a c bc"
+literal|"ab\ufffda\ufffdc\ufffdbc"
 argument_list|,
 name|output
 operator|.
@@ -343,7 +343,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|" \ubfff"
+literal|"\ufffd\ubfff"
 argument_list|,
 name|output
 operator|.

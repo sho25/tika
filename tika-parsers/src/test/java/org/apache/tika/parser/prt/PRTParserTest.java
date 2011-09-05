@@ -514,7 +514,7 @@ name|assertContains
 argument_list|(
 literal|'\u00d8'
 operator|+
-literal|" 2.000"
+literal|"\ufffd2.000"
 argument_list|,
 name|contents
 argument_list|)

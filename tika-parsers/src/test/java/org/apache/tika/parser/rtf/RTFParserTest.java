@@ -67,20 +67,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|config
-operator|.
-name|TikaConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -127,10 +113,6 @@ extends|extends
 name|TikaTest
 block|{
 specifier|private
-name|TikaConfig
-name|tc
-decl_stmt|;
-specifier|private
 name|RTFParser
 name|parser
 decl_stmt|;
@@ -141,13 +123,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|tc
-operator|=
-name|TikaConfig
-operator|.
-name|getDefaultConfig
-argument_list|()
-expr_stmt|;
 name|parser
 operator|=
 operator|new
@@ -426,6 +401,17 @@ name|content
 operator|.
 name|replaceAll
 argument_list|(
+literal|"\ufffd"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|content
+operator|=
+name|content
+operator|.
+name|replaceAll
+argument_list|(
 literal|"\\s+"
 argument_list|,
 literal|" "
@@ -455,6 +441,17 @@ literal|"testRTFTableCellSeparation2.rtf"
 argument_list|)
 decl_stmt|;
 comment|// TODO: why do we insert extra whitespace...?
+name|content
+operator|=
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\ufffd"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 name|content
 operator|=
 name|content

@@ -635,6 +635,21 @@ name|String
 name|content
 init|=
 name|s1
+decl_stmt|;
+name|content
+operator|=
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\ufffd"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|content
+operator|=
+name|content
 operator|.
 name|replaceAll
 argument_list|(
@@ -642,7 +657,7 @@ literal|"\\s+"
 argument_list|,
 literal|" "
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|content

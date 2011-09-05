@@ -88,7 +88,7 @@ operator|new
 name|char
 index|[]
 block|{
-literal|' '
+literal|'\ufffd'
 block|}
 decl_stmt|;
 comment|/**      * Internal interface that allows both character and      * ignorable whitespace content to be filtered the same way.      */
