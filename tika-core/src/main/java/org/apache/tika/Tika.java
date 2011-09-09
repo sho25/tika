@@ -1080,6 +1080,26 @@ operator|=
 name|maxStringLength
 expr_stmt|;
 block|}
+comment|/**      * Returns the parser instance used by this facade.      *      * @since Apache Tika 1.0      * @return parser instance      */
+specifier|public
+name|Parser
+name|getParser
+parameter_list|()
+block|{
+return|return
+name|parser
+return|;
+block|}
+comment|/**      * Returns the detector instance used by this facade.      *      * @since Apache Tika 1.0      * @return detector instance      */
+specifier|public
+name|Detector
+name|getDetector
+parameter_list|()
+block|{
+return|return
+name|detector
+return|;
+block|}
 block|}
 end_class
 
