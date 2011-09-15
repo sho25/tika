@@ -15,6 +15,10 @@ name|sax
 package|;
 end_package
 
+begin_comment
+comment|/* import java.util.ArrayList; import java.util.List; */
+end_comment
+
 begin_import
 import|import
 name|org
@@ -579,6 +583,7 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*     private final List<String> elements = new ArrayList<String>();      // Called only from assert     private boolean verifyStartElement(String name) {         // TODO: we could strengthen this to do full         // XTHML validation, eg you shouldn't start p inside         // another p (but ODF parser, at least, seems to         // violate this):         //if (name.equals("p")) {         //assert elements.size() == 0 || !elements.get(elements.size()-1).equals("p");         //}         elements.add(name);         return true;     }      // Called only from assert     private boolean verifyEndElement(String name) {         assert elements.size()> 0: "end tag=" + name + " with no startElement";         final String currentElement = elements.get(elements.size()-1);         assert currentElement.equals(name): "mismatched elements open=" + currentElement + " close=" + name;         elements.remove(elements.size()-1);         return true;     }      // Called only from assert     private boolean verifyEndDocument() {         assert elements.size() == 0;         return true;     }     */
 comment|//------------------------------------------------------< ContentHandler>
 annotation|@
 name|Override
@@ -601,6 +606,9 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
+comment|// TODO: enable this, but some parsers currently
+comment|// trip it
+comment|//assert verifyStartElement(name);
 comment|// Look for any invalid characters in attribute values.
 for|for
 control|(
@@ -769,6 +777,57 @@ name|name
 argument_list|,
 name|atts
 argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|endElement
+parameter_list|(
+name|String
+name|uri
+parameter_list|,
+name|String
+name|localName
+parameter_list|,
+name|String
+name|name
+parameter_list|)
+throws|throws
+name|SAXException
+block|{
+comment|// TODO: enable this, but some parsers currently
+comment|// trip it
+comment|//assert verifyEndElement(name);
+name|super
+operator|.
+name|endElement
+argument_list|(
+name|uri
+argument_list|,
+name|localName
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|endDocument
+parameter_list|()
+throws|throws
+name|SAXException
+block|{
+comment|// TODO: enable this, but some parsers currently
+comment|// trip it
+comment|//assert verifyEndDocument();
+name|super
+operator|.
+name|endDocument
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@

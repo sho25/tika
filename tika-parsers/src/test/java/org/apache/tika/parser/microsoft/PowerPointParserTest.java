@@ -395,6 +395,20 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
+literal|"Row 1 Col 1 Row 1 Col 2 Row 1 Col 3 Row 2 Col 1 Row 2 Col 2 Row 2 Col 3"
+argument_list|,
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
 literal|"Row 1 column 1 Row 2 column 1 Row 1 column 2 Row 2 column 2"
 argument_list|,
 name|content
