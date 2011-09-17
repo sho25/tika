@@ -1355,11 +1355,52 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test that the word converter is able to generate the      *  correct HTML for the document      */
+specifier|private
+specifier|static
+class|class
+name|XMLResult
+block|{
 specifier|public
-name|void
-name|testWordHTML
-parameter_list|()
+specifier|final
+name|String
+name|xml
+decl_stmt|;
+specifier|public
+specifier|final
+name|Metadata
+name|metadata
+decl_stmt|;
+specifier|public
+name|XMLResult
+parameter_list|(
+name|String
+name|xml
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|)
+block|{
+name|this
+operator|.
+name|xml
+operator|=
+name|xml
+expr_stmt|;
+name|this
+operator|.
+name|metadata
+operator|=
+name|metadata
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|XMLResult
+name|getXML
+parameter_list|(
+name|String
+name|filePath
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -1373,13 +1414,6 @@ name|metadata
 init|=
 operator|new
 name|Metadata
-argument_list|()
-decl_stmt|;
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
 argument_list|()
 decl_stmt|;
 name|StringWriter
@@ -1456,7 +1490,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testWORD.docx"
+name|filePath
 argument_list|)
 expr_stmt|;
 try|try
@@ -1476,16 +1510,62 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-name|context
+operator|new
+name|ParseContext
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|String
-name|xml
-init|=
+return|return
+operator|new
+name|XMLResult
+argument_list|(
 name|sw
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|metadata
+argument_list|)
+return|;
+block|}
+finally|finally
+block|{
+name|input
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Test that the word converter is able to generate the      *  correct HTML for the document      */
+specifier|public
+name|void
+name|testWordHTML
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"/test-documents/testWORD.docx"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+name|result
+operator|.
+name|metadata
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1664,76 +1744,62 @@ literal|"<p class=\"signature\">This one"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-comment|// Try with a document that contains images
-name|sw
+name|result
 operator|=
-operator|new
-name|StringWriter
-argument_list|()
-expr_stmt|;
-name|handler
-operator|.
-name|setResult
-argument_list|(
-operator|new
-name|StreamResult
-argument_list|(
-name|sw
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|input
-operator|=
-name|OOXMLParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
+name|getXML
 argument_list|(
 literal|"/test-documents/testWORD_3imgs.docx"
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-name|parser
+name|xml
+operator|=
+name|result
 operator|.
-name|parse
+name|xml
+expr_stmt|;
+comment|// Images 2-4 (there is no 1!)
+name|assertTrue
 argument_list|(
-name|TikaInputStream
+literal|"Image not found in:\n"
+operator|+
+name|xml
+argument_list|,
+name|xml
 operator|.
-name|get
+name|contains
 argument_list|(
-name|input
+literal|"<img src=\"embedded:image2.png\" alt=\"A description...\"/>"
 argument_list|)
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-name|context
 argument_list|)
 expr_stmt|;
-name|String
+name|assertTrue
+argument_list|(
+literal|"Image not found in:\n"
+operator|+
 name|xml
-init|=
-name|sw
+argument_list|,
+name|xml
 operator|.
-name|toString
-argument_list|()
-decl_stmt|;
-comment|// Images 2-4 (there is no 1!)
-comment|//            assertTrue("Image not found in:\n"+xml, xml.contains("<img src=\"embedded:image2.png\"/>"));
-comment|//            assertTrue("Image not found in:\n"+xml, xml.contains("<img src=\"embedded:image3.jpeg\"/>"));
-comment|//            assertTrue("Image not found in:\n"+xml, xml.contains("<img src=\"embedded:image4.png\"/>"));
+name|contains
+argument_list|(
+literal|"<img src=\"embedded:image3.jpeg\" alt=\"A description...\"/>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Image not found in:\n"
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<img src=\"embedded:image4.png\" alt=\"A description...\"/>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Text too
 name|assertTrue
 argument_list|(
@@ -1745,15 +1811,62 @@ literal|"<p>The end!</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
+comment|// TIKA-692: test document containing multiple
+comment|// character runs within a bold tag:
+name|xml
+operator|=
+name|getXML
+argument_list|(
+literal|"/test-documents/testWORD_bold_character_runs.docx"
+argument_list|)
 operator|.
-name|close
-argument_list|()
+name|xml
 expr_stmt|;
-block|}
+comment|// Make sure bold text arrived as single
+comment|// contiguous string even though Word parser
+comment|// handled this as 3 character runs
+name|assertTrue
+argument_list|(
+literal|"Bold text wasn't contiguous: "
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"F<b>oob</b>a<b>r</b>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// TIKA-692: test document containing multiple
+comment|// character runs within a bold tag:
+name|xml
+operator|=
+name|getXML
+argument_list|(
+literal|"/test-documents/testWORD_bold_character_runs2.docx"
+argument_list|)
+operator|.
+name|xml
+expr_stmt|;
+comment|// Make sure bold text arrived as single
+comment|// contiguous string even though Word parser
+comment|// handled this as 3 character runs
+name|assertTrue
+argument_list|(
+literal|"Bold text wasn't contiguous: "
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"F<b>oob</b>a<b>r</b>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Test that we can extract image from docx header      */
 specifier|public

@@ -1071,6 +1071,8 @@ argument_list|,
 literal|"xml"
 argument_list|,
 name|encoding
+argument_list|,
+name|prettyPrint
 argument_list|)
 return|;
 block|}
@@ -1105,6 +1107,8 @@ argument_list|,
 literal|"html"
 argument_list|,
 name|encoding
+argument_list|,
+name|prettyPrint
 argument_list|)
 return|;
 block|}
@@ -1597,6 +1601,10 @@ name|String
 name|profileName
 init|=
 literal|null
+decl_stmt|;
+specifier|private
+name|boolean
+name|prettyPrint
 decl_stmt|;
 specifier|public
 name|TikaCLI
@@ -2148,6 +2156,29 @@ name|arg
 operator|.
 name|equals
 argument_list|(
+literal|"-r"
+argument_list|)
+operator|||
+name|arg
+operator|.
+name|equals
+argument_list|(
+literal|"--pretty-print"
+argument_list|)
+condition|)
+block|{
+name|prettyPrint
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|arg
+operator|.
+name|equals
+argument_list|(
 literal|"-p"
 argument_list|)
 operator|||
@@ -2489,33 +2520,14 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -?  or --help        Print this usage message"
+literal|"    -?  or --help          Print this usage message"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -v  or --verbose     Print debug level messages"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|()
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -g  or --gui         Start the Apache Tika GUI"
-argument_list|)
-expr_stmt|;
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"    -s  or --server      Start the Apache Tika server"
+literal|"    -v  or --verbose       Print debug level messages"
 argument_list|)
 expr_stmt|;
 name|out
@@ -2527,70 +2539,103 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -x  or --xml         Output XHTML content (default)"
+literal|"    -g  or --gui           Start the Apache Tika GUI"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -h  or --html        Output HTML content"
+literal|"    -s  or --server        Start the Apache Tika server"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|()
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    -x  or --xml           Output XHTML content (default)"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -j  or --json        Output JSON content"
+literal|"    -h  or --html          Output HTML content"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -t  or --text        Output plain text content"
+literal|"    -j  or --json          Output JSON content"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -T  or --text-main   Output plain text content (main content only)"
+literal|"    -t  or --text          Output plain text content"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -m  or --metadata    Output only metadata"
+literal|"    -T  or --text-main     Output plain text content (main content only)"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -l  or --language    Output only language"
+literal|"    -m  or --metadata      Output only metadata"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -d  or --detect      Detect document type"
+literal|"    -l  or --language      Output only language"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -eX or --encoding=X  Use output encoding X"
+literal|"    -d  or --detect        Detect document type"
 argument_list|)
 expr_stmt|;
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"    -z  or --extract     Extract all attachements into current directory"
+literal|"    -eX or --encoding=X    Use output encoding X"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    -z  or --extract       Extract all attachements into current directory"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    -r  or --pretty-print  For XML and XHTML outputs, adds newlines and"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"                           whitespace, for better readability"
 argument_list|)
 expr_stmt|;
 name|out
@@ -3714,6 +3759,9 @@ name|method
 parameter_list|,
 name|String
 name|encoding
+parameter_list|,
+name|boolean
+name|prettyPrint
 parameter_list|)
 throws|throws
 name|TransformerConfigurationException
@@ -3762,6 +3810,10 @@ name|OutputKeys
 operator|.
 name|INDENT
 argument_list|,
+name|prettyPrint
+condition|?
+literal|"yes"
+else|:
 literal|"no"
 argument_list|)
 expr_stmt|;
