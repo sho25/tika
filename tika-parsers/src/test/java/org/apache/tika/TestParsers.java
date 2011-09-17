@@ -45,26 +45,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -1110,7 +1090,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TIKA-717: re-enable ppt, rtf once we fix it
+comment|// TIKA-717: re-enable ppt once we fix it
 comment|//final String[] extensions = new String[] {"ppt", "pptx", "doc", "docx", "pdf", "rtf"};
 specifier|final
 name|String
@@ -1128,21 +1108,9 @@ block|,
 literal|"docx"
 block|,
 literal|"pdf"
+block|,
+literal|"rtf"
 block|}
-decl_stmt|;
-specifier|final
-name|List
-argument_list|<
-name|String
-argument_list|>
-name|failures
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -1159,19 +1127,10 @@ argument_list|,
 literal|"testComment"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|extension
-operator|.
-name|equals
-argument_list|(
-literal|"pdf"
-argument_list|)
-condition|)
-block|{
 comment|// TIKA-717: re-enable once we fix this:
+comment|//if (extension.equals("pdf")) {
 comment|//verifyComment(extension, "testComment2");
-block|}
+comment|//}
 block|}
 block|}
 block|}
