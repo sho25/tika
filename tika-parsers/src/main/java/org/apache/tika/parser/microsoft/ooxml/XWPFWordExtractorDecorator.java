@@ -699,20 +699,6 @@ name|getRuns
 argument_list|()
 control|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"RUN: "
-operator|+
-name|run
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|run
