@@ -4,7 +4,7 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * Multi-valued metadata container, and set of constant metadata fields.  */
+comment|/**  * Apache Tika.  */
 end_comment
 
 begin_annotation
@@ -28,8 +28,6 @@ operator|.
 name|apache
 operator|.
 name|tika
-operator|.
-name|metadata
 package|;
 end_package
 
