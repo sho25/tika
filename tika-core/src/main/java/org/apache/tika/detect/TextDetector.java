@@ -74,7 +74,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content type detection of plain text documents. This detector looks at the  * beginning of the document input stream and considers the document to be  * a text document if no ASCII (ISO-Latin-1, UTF-8, etc.) control bytes are  * found.  *<p>  * Note that text documents with a character encoding like UTF-16 are better  * detected with {@link MagicDetector} and an appropriate magic byte pattern.  *  * @since Apache Tika 0.3  */
+comment|/**  * Content type detection of plain text documents. This detector looks at the  * beginning of the document input stream and considers the document to be  * a text document if no ASCII (ISO-Latin-1, UTF-8, etc.) control bytes are  * found. As a special case some control bytes (up to 2% of all characters)  * are also allowed in a text document if it also contains no or just a few  * (less than 10%) characters above the 7-bit ASCII range.  *<p>  * Note that text documents with a character encoding like UTF-16 are better  * detected with {@link MagicDetector} and an appropriate magic byte pattern.  *  * @since Apache Tika 0.3  */
 end_comment
 
 begin_class
@@ -84,6 +84,15 @@ name|TextDetector
 implements|implements
 name|Detector
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|4774601079503507765L
+decl_stmt|;
 comment|/**      * The number of bytes from the beginning of the document stream      * to test for control bytes.      */
 specifier|private
 specifier|static
