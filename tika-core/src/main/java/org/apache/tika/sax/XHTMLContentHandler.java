@@ -675,6 +675,25 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// TIKA-725: Prefer<title></title> over<title/>
+name|super
+operator|.
+name|characters
+argument_list|(
+operator|new
+name|char
+index|[
+literal|0
+index|]
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 name|super
 operator|.
 name|endElement
