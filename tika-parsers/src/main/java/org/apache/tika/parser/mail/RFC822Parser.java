@@ -83,7 +83,7 @@ name|mime4j
 operator|.
 name|parser
 operator|.
-name|MimeEntityConfig
+name|MimeStreamParser
 import|;
 end_import
 
@@ -97,9 +97,9 @@ name|james
 operator|.
 name|mime4j
 operator|.
-name|parser
+name|stream
 operator|.
-name|MimeStreamParser
+name|MimeConfig
 import|;
 end_import
 
@@ -296,11 +296,11 @@ throws|,
 name|TikaException
 block|{
 comment|// Get the mime4j configuration, or use a default one
-name|MimeEntityConfig
+name|MimeConfig
 name|config
 init|=
 operator|new
-name|MimeEntityConfig
+name|MimeConfig
 argument_list|()
 decl_stmt|;
 name|config
@@ -317,7 +317,7 @@ name|context
 operator|.
 name|get
 argument_list|(
-name|MimeEntityConfig
+name|MimeConfig
 operator|.
 name|class
 argument_list|,
