@@ -261,6 +261,22 @@ name|org
 operator|.
 name|apache
 operator|.
+name|poi
+operator|.
+name|xslf
+operator|.
+name|usermodel
+operator|.
+name|XSLFSlideMaster
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|exception
@@ -559,6 +575,14 @@ block|{
 comment|// This shouldn't normally happen
 continue|continue;
 block|}
+name|XSLFSlideMaster
+name|master
+init|=
+name|slide
+operator|.
+name|getMasterSheet
+argument_list|()
+decl_stmt|;
 name|CTNotesSlide
 name|notes
 init|=
@@ -579,6 +603,7 @@ argument_list|(
 name|slideId
 argument_list|)
 decl_stmt|;
+comment|// TODO In POI 3.8 beta 5, improve how we get this
 name|xhtml
 operator|.
 name|startElement
@@ -608,6 +633,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+comment|// If there are comments, extract them
 if|if
 condition|(
 name|comments
@@ -640,6 +666,33 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Get text from the master slide
+if|if
+condition|(
+name|master
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// TODO In POI 3.8 beta 5, improve how we get this
+name|extractShapeContent
+argument_list|(
+operator|new
+name|XSLFCommonSlideData
+argument_list|(
+name|master
+operator|.
+name|getXmlObject
+argument_list|()
+operator|.
+name|getCSld
+argument_list|()
+argument_list|)
+argument_list|,
+name|xhtml
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|notes
@@ -647,6 +700,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// TODO In POI 3.8 beta 5, improve how we get this
 name|extractShapeContent
 argument_list|(
 operator|new
