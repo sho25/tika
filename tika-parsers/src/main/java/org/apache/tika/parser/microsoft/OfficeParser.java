@@ -235,6 +235,20 @@ name|tika
 operator|.
 name|exception
 operator|.
+name|EncryptedDocumentException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
 name|TikaException
 import|;
 end_import
@@ -1319,10 +1333,8 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|TikaException
-argument_list|(
-literal|"Unable to process: document is encrypted"
-argument_list|)
+name|EncryptedDocumentException
+argument_list|()
 throw|;
 block|}
 name|OOXMLParser
@@ -1367,10 +1379,8 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|TikaException
+name|EncryptedDocumentException
 argument_list|(
-literal|"Unable to process encrypted document"
-argument_list|,
 name|ex
 argument_list|)
 throw|;
