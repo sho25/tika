@@ -1288,14 +1288,8 @@ name|getValue
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|RTFParser
-name|rtfParser
-init|=
-operator|new
-name|RTFParser
-argument_list|()
-decl_stmt|;
 comment|// Disabled pending a fix to TIKA-632
+comment|//              RTFParser rtfParser = new RTFParser();
 comment|//              rtfParser.parse(
 comment|//                    new ByteArrayInputStream(rtf.getData()),
 comment|//                    xhtml, new Metadata(), new ParseContext()
