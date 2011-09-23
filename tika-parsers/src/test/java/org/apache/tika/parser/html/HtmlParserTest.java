@@ -2620,6 +2620,10 @@ decl_stmt|;
 comment|//<object> tag should exist with fully resolved URLs
 name|assertTrue
 argument_list|(
+literal|"<object> tag not correctly found in:\n"
+operator|+
+name|result
+argument_list|,
 name|Pattern
 operator|.
 name|matches
