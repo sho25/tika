@@ -575,6 +575,51 @@ literal|null
 decl_stmt|;
 comment|// User's input stream, or null if the user
 comment|//   gave us a byte array.
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+literal|"Match of "
+operator|+
+name|fRecognizer
+operator|.
+name|getName
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|fRecognizer
+operator|.
+name|getLanguage
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|s
+operator|+=
+literal|" in "
+operator|+
+name|fRecognizer
+operator|.
+name|getLanguage
+argument_list|()
+expr_stmt|;
+block|}
+name|s
+operator|+=
+literal|" with confidence "
+operator|+
+name|fConfidence
+expr_stmt|;
+return|return
+name|s
+return|;
+block|}
 block|}
 end_class
 
