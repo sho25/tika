@@ -667,32 +667,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// Get text from the master slide
-if|if
-condition|(
-name|master
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// TODO In POI 3.8 beta 5, improve how we get this
-name|extractShapeContent
-argument_list|(
-operator|new
-name|XSLFCommonSlideData
-argument_list|(
-name|master
-operator|.
-name|getXmlObject
-argument_list|()
-operator|.
-name|getCSld
-argument_list|()
-argument_list|)
-argument_list|,
-name|xhtml
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TODO: re-enable this once we fix TIKA-712
+comment|/*             if(master != null) {                // TODO In POI 3.8 beta 5, improve how we get this                extractShapeContent(new XSLFCommonSlideData(master.getXmlObject().getCSld()), xhtml);             }             */
 if|if
 condition|(
 name|notes

@@ -451,50 +451,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Slide master, if present
-name|MasterSheet
-name|master
-init|=
-name|slide
-operator|.
-name|getMasterSheet
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|master
-operator|!=
-literal|null
-condition|)
-block|{
-name|xhtml
-operator|.
-name|startElement
-argument_list|(
-literal|"p"
-argument_list|,
-literal|"class"
-argument_list|,
-literal|"slide-master-content"
-argument_list|)
-expr_stmt|;
-name|textRunsToText
-argument_list|(
-name|xhtml
-argument_list|,
-name|master
-operator|.
-name|getTextRuns
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|endElement
-argument_list|(
-literal|"p"
-argument_list|)
-expr_stmt|;
-block|}
+comment|// TODO: re-enable this once we fix TIKA-712
+comment|/*          MasterSheet master = slide.getMasterSheet();          if(master != null) {             xhtml.startElement("p", "class", "slide-master-content");             textRunsToText(xhtml, master.getTextRuns() );             xhtml.endElement("p");          }          */
 comment|// Slide text
 block|{
 name|xhtml
