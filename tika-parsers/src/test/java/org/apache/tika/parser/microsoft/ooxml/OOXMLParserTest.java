@@ -3128,7 +3128,7 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
-name|testMasterSlide
+name|testMasterFooter
 parameter_list|()
 throws|throws
 name|Exception
@@ -3203,6 +3203,10 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO: once we fix TIKA-712, re-enable this
+comment|/*     public void testMasterText() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = OOXMLParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText.pptx");         try {             new AutoDetectParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
+comment|// TODO: once we fix TIKA-712, re-enable this
+comment|/*     public void testMasterText2() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = OOXMLParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText2.pptx");         try {             new AutoDetectParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
 block|}
 end_class
 
