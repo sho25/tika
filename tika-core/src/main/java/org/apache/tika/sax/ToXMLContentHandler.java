@@ -312,13 +312,13 @@ specifier|final
 name|String
 name|encoding
 decl_stmt|;
-specifier|private
+specifier|protected
 name|boolean
 name|inStartElement
 init|=
 literal|false
 decl_stmt|;
-specifier|private
+specifier|protected
 specifier|final
 name|Map
 argument_list|<
