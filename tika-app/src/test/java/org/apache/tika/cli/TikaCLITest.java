@@ -186,7 +186,7 @@ name|reassign
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a welsh language profile 	 *  	 * @throws Exception 	 */
+comment|/**      * Creates a welsh language profile      *       * @throws Exception      */
 specifier|public
 name|void
 name|testCreateProfile
@@ -226,7 +226,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests --list-parser-detail option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests --list-parser-detail option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testListParserDetail
@@ -265,7 +265,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests --list-parser option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests --list-parser option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testListParsers
@@ -291,7 +291,7 @@ expr_stmt|;
 comment|//Assert was commented temporarily for finding the problem
 comment|//		Assert.assertTrue(outContent != null&& outContent.toString().contains("org.apache.tika.parser.iwork.IWorkPackageParser"));
 block|}
-comment|/** 	 * Tests -x option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests -x option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testXMLOutput
@@ -334,7 +334,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests a -h option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests a -h option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testHTMLOutput
@@ -377,7 +377,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests -t option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests -t option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testTextOutput
@@ -420,7 +420,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests -m option of the cli 	 * @throws Exception 	 */
+comment|/**      * Tests -m option of the cli      * @throws Exception      */
 specifier|public
 name|void
 name|testMetadataOutput
@@ -463,7 +463,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests -l option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests -l option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testLanguageOutput
@@ -506,7 +506,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests -d option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests -d option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testDetectOutput
@@ -549,7 +549,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests --list-met-models option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests --list-met-models option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testListMetModels
@@ -592,7 +592,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests --list-supported-types option of the cli 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests --list-supported-types option of the cli      *       * @throws Exception      */
 specifier|public
 name|void
 name|testListSupportedTypes
@@ -635,7 +635,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tears down the test. Returns the System.out 	 */
+comment|/**      * Tears down the test. Returns the System.out      */
 specifier|public
 name|void
 name|tearDown
