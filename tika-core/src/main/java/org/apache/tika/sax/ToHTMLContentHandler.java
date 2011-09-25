@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX event handler that serializes the HTML document to a character stream.  * The incoming SAX events are expected to be well-formed (properly nested,  * etc.) and valid HTML.  *  * @since Apache Tika 1.0  */
+comment|/**  * SAX event handler that serializes the HTML document to a character stream.  * The incoming SAX events are expected to be well-formed (properly nested,  * etc.) and valid HTML.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

@@ -1080,7 +1080,7 @@ operator|=
 name|maxStringLength
 expr_stmt|;
 block|}
-comment|/**      * Returns the parser instance used by this facade.      *      * @since Apache Tika 1.0      * @return parser instance      */
+comment|/**      * Returns the parser instance used by this facade.      *      * @since Apache Tika 0.10      * @return parser instance      */
 specifier|public
 name|Parser
 name|getParser
@@ -1090,7 +1090,7 @@ return|return
 name|parser
 return|;
 block|}
-comment|/**      * Returns the detector instance used by this facade.      *      * @since Apache Tika 1.0      * @return detector instance      */
+comment|/**      * Returns the detector instance used by this facade.      *      * @since Apache Tika 0.10      * @return detector instance      */
 specifier|public
 name|Detector
 name|getDetector

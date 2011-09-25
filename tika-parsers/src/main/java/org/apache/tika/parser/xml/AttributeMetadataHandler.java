@@ -56,7 +56,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX event handler that maps the contents of an XML attribute into  * a metadata field.  *  * @since Apache Tika 1.0  */
+comment|/**  * SAX event handler that maps the contents of an XML attribute into  * a metadata field.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

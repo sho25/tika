@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX event handler that writes all character content out to a character  * stream. No escaping or other transformations are made on the character  * content.  *  * @since Apache Tika 1.0  */
+comment|/**  * SAX event handler that writes all character content out to a character  * stream. No escaping or other transformations are made on the character  * content.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

@@ -1033,7 +1033,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Returns the list of all known file extensions of this media type.      *      * @since Apache Tika 1.0      * @return known extensions in order of preference (best first)      */
+comment|/**      * Returns the list of all known file extensions of this media type.      *      * @since Apache Tika 0.10      * @return known extensions in order of preference (best first)      */
 specifier|public
 name|List
 argument_list|<

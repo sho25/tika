@@ -88,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for new parsers. This method implements the old  * deprecated parse method so subclasses won't have to.  *  * @since Apache Tika 1.0  */
+comment|/**  * Abstract base class for new parsers. This method implements the old  * deprecated parse method so subclasses won't have to.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

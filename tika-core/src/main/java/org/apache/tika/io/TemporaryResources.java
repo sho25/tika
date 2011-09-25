@@ -80,7 +80,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class for tracking and ultimately closing or otherwise disposing  * a collection of temporary resources.  *<p>  * Note that this class is not thread-safe.  *  * @since Apache Tika 1.0  */
+comment|/**  * Utility class for tracking and ultimately closing or otherwise disposing  * a collection of temporary resources.  *<p>  * Note that this class is not thread-safe.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

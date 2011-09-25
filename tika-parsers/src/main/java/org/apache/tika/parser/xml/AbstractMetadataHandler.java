@@ -46,7 +46,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for SAX handlers that map SAX events into document metadata.  *  * @since Apache Tika 1.0  */
+comment|/**  * Base class for SAX handlers that map SAX events into document metadata.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

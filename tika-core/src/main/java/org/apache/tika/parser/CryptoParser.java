@@ -196,7 +196,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Decrypts the incoming document stream and delegates further parsing to  * another parser instance. The decryption key and other settings as well  * as the delegate parser are taken from the parsing context.  *  * @since Apache Tika 1.0  */
+comment|/**  * Decrypts the incoming document stream and delegates further parsing to  * another parser instance. The decryption key and other settings as well  * as the delegate parser are taken from the parsing context.  *  * @since Apache Tika 0.10  */
 end_comment
 
 begin_class

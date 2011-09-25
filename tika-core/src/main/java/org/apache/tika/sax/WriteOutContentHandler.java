@@ -134,7 +134,7 @@ name|writeCount
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * Creates a content handler that writes content up to the given      * write limit to the given content handler.      *      * @since Apache Tika 1.0      * @param handler content handler to be decorated      * @param writeLimit write limit      */
+comment|/**      * Creates a content handler that writes content up to the given      * write limit to the given content handler.      *      * @since Apache Tika 0.10      * @param handler content handler to be decorated      * @param writeLimit write limit      */
 specifier|public
 name|WriteOutContentHandler
 parameter_list|(
@@ -157,7 +157,7 @@ operator|=
 name|writeLimit
 expr_stmt|;
 block|}
-comment|/**      * Creates a content handler that writes content up to the given      * write limit to the given character stream.      *      * @since Apache Tika 1.0      * @param writer character stream      * @param writeLimit write limit      */
+comment|/**      * Creates a content handler that writes content up to the given      * write limit to the given character stream.      *      * @since Apache Tika 0.10      * @param writer character stream      * @param writeLimit write limit      */
 specifier|public
 name|WriteOutContentHandler
 parameter_list|(
