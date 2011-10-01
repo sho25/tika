@@ -867,10 +867,9 @@ argument_list|)
 expr_stmt|;
 comment|//assertEquals(2, content.split("<\\/body>").length); // TODO Fix
 block|}
-comment|/**      * Disabled pending a fix for TIKA-632      */
 specifier|public
 name|void
-name|DISABLEDtestOutlookHTMLfromRTF
+name|testOutlookHTMLfromRTF
 parameter_list|()
 throws|throws
 name|Exception
@@ -1010,7 +1009,6 @@ argument_list|,
 literal|"<p>"
 argument_list|)
 decl_stmt|;
-comment|//System.err.println(content);
 name|assertTrue
 argument_list|(
 name|content
@@ -1037,7 +1035,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"<p>Cached Exchange Mode"
+literal|"<p><a href=\"http://r.office.microsoft.com/r/rlidOutlookWelcomeMail10?clid=1033\">Cached Exchange Mode</a>"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1288,13 +1288,41 @@ name|getValue
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Disabled pending a fix to TIKA-632
-comment|//              RTFParser rtfParser = new RTFParser();
-comment|//              rtfParser.parse(
-comment|//                    new ByteArrayInputStream(rtf.getData()),
-comment|//                    xhtml, new Metadata(), new ParseContext()
-comment|//              );
-comment|//              doneBody = true;
+name|RTFParser
+name|rtfParser
+init|=
+operator|new
+name|RTFParser
+argument_list|()
+decl_stmt|;
+name|rtfParser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|rtf
+operator|.
+name|getData
+argument_list|()
+argument_list|)
+argument_list|,
+name|xhtml
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|doneBody
+operator|=
+literal|true
+expr_stmt|;
 block|}
 if|if
 condition|(
