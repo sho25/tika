@@ -1662,10 +1662,9 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Disable until I can add this file:
 specifier|public
 name|void
-name|DISABLEtestHyperlink
+name|testHyperlink
 parameter_list|()
 throws|throws
 name|Exception
