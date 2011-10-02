@@ -98,7 +98,7 @@ specifier|public
 class|class
 name|CharsetDetector
 block|{
-comment|//   Question: Should we have getters corresponding to the setters for inut text
+comment|//   Question: Should we have getters corresponding to the setters for input text
 comment|//   and declared encoding?
 comment|//   A thought: If we were to create our own type of Java Reader, we could defer
 comment|//   figuring out an actual charset for data that starts out with too much English
