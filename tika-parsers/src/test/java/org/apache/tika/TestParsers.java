@@ -1014,8 +1014,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TIKA-711: re-enable doc once it's fixed
-comment|//final String[] extensions = new String[] {"ppt", "pptx", "doc", "docx", "rtf", "pdf"};
 specifier|final
 name|String
 index|[]
@@ -1028,6 +1026,8 @@ block|{
 literal|"ppt"
 block|,
 literal|"pptx"
+block|,
+literal|"doc"
 block|,
 literal|"docx"
 block|,
@@ -1091,6 +1091,14 @@ literal|"optional\u00adhyphen"
 argument_list|)
 operator|||
 comment|// soft hyphen
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"optional\u200bhyphen"
+argument_list|)
+operator|||
+comment|// zero width space
 name|content
 operator|.
 name|contains
