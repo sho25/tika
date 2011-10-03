@@ -1222,10 +1222,6 @@ argument_list|,
 literal|"testComment"
 argument_list|)
 expr_stmt|;
-comment|// TIKA-717: re-enable once we fix this:
-comment|//if (extension.equals("pdf")) {
-comment|//verifyComment(extension, "testComment2");
-comment|//}
 block|}
 block|}
 block|}
