@@ -1185,8 +1185,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TIKA-717: re-enable ppt once we fix it
-comment|//final String[] extensions = new String[] {"ppt", "pptx", "doc", "docx", "pdf", "rtf"};
 specifier|final
 name|String
 index|[]
@@ -1196,6 +1194,8 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"ppt"
+block|,
 literal|"pptx"
 block|,
 literal|"doc"
