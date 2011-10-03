@@ -4843,6 +4843,19 @@ name|ansiSkip
 operator|=
 literal|0
 expr_stmt|;
+comment|// Be robust if RTF doc is corrupt (has too many
+comment|// closing }s):
+comment|// TODO: log a warning?
+if|if
+condition|(
+name|groupStates
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 comment|// Restore group state:
 specifier|final
 name|GroupState
@@ -4952,6 +4965,7 @@ name|groupState
 operator|=
 name|outerGroupState
 expr_stmt|;
+block|}
 assert|assert
 name|groupStates
 operator|.
