@@ -587,13 +587,16 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
 name|skipToPropertyInfoSection
 argument_list|(
 name|stream
 argument_list|,
 name|header
 argument_list|)
-expr_stmt|;
+condition|)
+block|{
 name|get2007and2010Props
 argument_list|(
 name|stream
@@ -603,6 +606,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
