@@ -556,14 +556,16 @@ block|}
 catch|catch
 parameter_list|(
 name|SAXException
-name|se
+name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|IOExceptionWithCause
 argument_list|(
-name|se
+literal|"Unable to start a paragraph"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
@@ -608,14 +610,16 @@ block|}
 catch|catch
 parameter_list|(
 name|SAXException
-name|se
+name|e
 parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|IOExceptionWithCause
 argument_list|(
-name|se
+literal|"Unable to end a paragraph"
+argument_list|,
+name|e
 argument_list|)
 throw|;
 block|}
