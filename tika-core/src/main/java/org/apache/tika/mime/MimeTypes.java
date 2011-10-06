@@ -1722,7 +1722,7 @@ return|return
 name|type
 return|;
 block|}
-comment|/**      * Get the default MimeTypes      *       * @return MimeTypes      * @throws MimeTypeException      * @throws IOException      */
+comment|/**      * Get the default MimeTypes. This includes all the build in      *  mimetypes, and any custom override ones present.       *       * @return MimeTypes      * @throws MimeTypeException      * @throws IOException      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -1737,6 +1737,8 @@ operator|.
 name|create
 argument_list|(
 literal|"tika-mimetypes.xml"
+argument_list|,
+literal|"custom-mimetypes.xml"
 argument_list|)
 return|;
 block|}
