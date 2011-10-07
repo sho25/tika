@@ -87,11 +87,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|poi
+name|tika
 operator|.
-name|util
+name|exception
 operator|.
-name|LittleEndian
+name|TikaException
 import|;
 end_import
 
@@ -103,9 +103,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|EndianUtils
 import|;
 end_import
 
@@ -731,9 +731,9 @@ block|}
 name|int
 name|length
 init|=
-name|LittleEndian
+name|EndianUtils
 operator|.
-name|readUShort
+name|readUShortLE
 argument_list|(
 name|stream
 argument_list|)
@@ -787,9 +787,9 @@ comment|// Is it 8 byte zero padded?
 name|int
 name|maybeLength
 init|=
-name|LittleEndian
+name|EndianUtils
 operator|.
-name|readUShort
+name|readUShortLE
 argument_list|(
 name|stream
 argument_list|)
@@ -866,9 +866,9 @@ expr_stmt|;
 name|int
 name|length
 init|=
-name|LittleEndian
+name|EndianUtils
 operator|.
-name|getUShort
+name|getUShortLE
 argument_list|(
 name|b2
 argument_list|)
