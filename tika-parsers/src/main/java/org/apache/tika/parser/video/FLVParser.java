@@ -475,10 +475,8 @@ argument_list|)
 decl_stmt|;
 name|input
 operator|.
-name|skip
-argument_list|(
-literal|2
-argument_list|)
+name|readShort
+argument_list|()
 expr_stmt|;
 comment|// time zone
 return|return
@@ -1035,19 +1033,15 @@ name|datainput
 argument_list|)
 decl_stmt|;
 comment|//body length
-name|stream
-operator|.
-name|skip
+name|readUInt32
 argument_list|(
-literal|4
+name|datainput
 argument_list|)
 expr_stmt|;
 comment|// timestamp
-name|stream
-operator|.
-name|skip
+name|readUInt24
 argument_list|(
-literal|3
+name|datainput
 argument_list|)
 expr_stmt|;
 comment|// streamid
@@ -1235,31 +1229,22 @@ comment|// Tag was not metadata, skip over data we cannot handle
 for|for
 control|(
 name|int
-name|skiplen
+name|i
 init|=
 literal|0
 init|;
-name|skiplen
+name|i
 operator|<
 name|datalen
 condition|;
+name|i
+operator|++
 control|)
 block|{
-name|long
-name|currentSkipLen
-init|=
 name|datainput
 operator|.
-name|skip
-argument_list|(
-name|datalen
-operator|-
-name|skiplen
-argument_list|)
-decl_stmt|;
-name|skiplen
-operator|+=
-name|currentSkipLen
+name|readByte
+argument_list|()
 expr_stmt|;
 block|}
 block|}
