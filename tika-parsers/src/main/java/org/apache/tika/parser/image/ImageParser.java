@@ -381,13 +381,6 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"x-psd"
-argument_list|)
-argument_list|,
-name|MediaType
-operator|.
-name|image
-argument_list|(
 literal|"x-xcf"
 argument_list|)
 argument_list|)
