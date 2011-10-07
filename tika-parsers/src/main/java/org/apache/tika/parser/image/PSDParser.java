@@ -41,11 +41,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
+name|io
 operator|.
-name|charset
-operator|.
-name|Charset
+name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -95,6 +93,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|poi
+operator|.
+name|util
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|exception
@@ -114,20 +126,6 @@ operator|.
 name|io
 operator|.
 name|EndianUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
-name|util
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -951,6 +949,8 @@ name|getDataAsString
 parameter_list|()
 block|{
 comment|// Will be null padded
+try|try
+block|{
 return|return
 operator|new
 name|String
@@ -965,14 +965,24 @@ name|length
 operator|-
 literal|1
 argument_list|,
-name|Charset
-operator|.
-name|forName
-argument_list|(
 literal|"ASCII"
 argument_list|)
-argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Something is very broken in your JVM!"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 block|}
