@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser for a very simple XPath subset. Only the following XPath constructs  * (with namespaces) are supported:  *<ul>  *<li><code>.../text()</code></li>  *<li><code>.../@*</code></li>  *<li><code>.../@name</code></li>  *<li><code>.../*...</code></li>  *<li><code>.../name...</code></li>  *<li><code>...//*...</code></li>  *<li><code>...//name...</code></li>  *</ul>  */
+comment|/**  * Parser for a very simple XPath subset. Only the following XPath constructs  * (with namespaces) are supported:  *<ul>  *<li><code>.../node()</code></li>  *<li><code>.../text()</code></li>  *<li><code>.../@*</code></li>  *<li><code>.../@name</code></li>  *<li><code>.../*...</code></li>  *<li><code>.../name...</code></li>  *<li><code>...//*...</code></li>  *<li><code>...//name...</code></li>  *</ul>  *<p>  * In addition the non-abbreviated<code>.../descendant::node()</code>  * construct can be used for cases where the descendant-or-self axis  * used by the<code>...//node()</code> construct is not appropriate.  */
 end_comment
 
 begin_class
@@ -157,10 +157,18 @@ name|xpath
 operator|.
 name|equals
 argument_list|(
+literal|"/descendant::node()"
+argument_list|)
+operator|||
+name|xpath
+operator|.
+name|equals
+argument_list|(
 literal|"/descendant:node()"
 argument_list|)
 condition|)
 block|{
+comment|// for compatibility
 return|return
 operator|new
 name|CompositeMatcher

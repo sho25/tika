@@ -146,7 +146,7 @@ name|PARSER
 operator|.
 name|parse
 argument_list|(
-literal|"/xhtml:html/xhtml:body/descendant:node()"
+literal|"/xhtml:html/xhtml:body/descendant::node()"
 argument_list|)
 decl_stmt|;
 comment|/**      * Creates a content handler that passes all XHTML body events to the      * given underlying content handler.      *      * @param handler content handler      */
