@@ -373,6 +373,14 @@ literal|true
 decl_stmt|;
 specifier|private
 name|int
+name|chIndex
+decl_stmt|;
+specifier|private
+name|int
+name|lastGroupStart
+decl_stmt|;
+specifier|private
+name|int
 name|fontTableState
 decl_stmt|;
 specifier|private
@@ -1885,6 +1893,9 @@ operator|.
 name|read
 argument_list|()
 expr_stmt|;
+name|chIndex
+operator|++
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -3041,12 +3052,23 @@ comment|// Ignorable destination (control words defined
 comment|// after the 1987 RTF spec).  Note that
 comment|// sometimes we un-ignore within this group, eg
 comment|// when handling upr escape.
+if|if
+condition|(
+name|chIndex
+operator|==
+name|lastGroupStart
+operator|+
+literal|2
+condition|)
+block|{
+comment|// Only ignore if \* comes right after {:
 name|groupState
 operator|.
 name|ignore
 operator|=
 literal|true
 expr_stmt|;
+block|}
 break|break;
 case|case
 literal|'-'
@@ -4782,6 +4804,10 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+name|lastGroupStart
+operator|=
+name|chIndex
+expr_stmt|;
 block|}
 comment|// Pop current GroupState
 specifier|private

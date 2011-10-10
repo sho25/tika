@@ -1687,6 +1687,26 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testIgnoredControlWord
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertContains
+argument_list|(
+literal|"<p>The quick brown fox jumps over the lazy dog</p>"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testRTFIgnoredControlWord.rtf"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|Result
 name|getResult
