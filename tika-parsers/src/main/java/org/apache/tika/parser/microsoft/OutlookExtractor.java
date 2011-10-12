@@ -1485,7 +1485,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|handleEmbededOfficeDoc
+name|handleEmbeddedOfficeDoc
 argument_list|(
 name|attachment
 operator|.

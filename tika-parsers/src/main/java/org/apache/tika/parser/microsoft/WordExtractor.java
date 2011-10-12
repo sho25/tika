@@ -440,14 +440,6 @@ specifier|private
 specifier|static
 specifier|final
 name|char
-name|RECORD_SEPARATOR
-init|=
-literal|30
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|char
 name|UNICODECHAR_NONBREAKING_HYPHEN
 init|=
 literal|'\u2011'
@@ -809,7 +801,7 @@ operator|instanceof
 name|DirectoryEntry
 condition|)
 block|{
-name|handleEmbededOfficeDoc
+name|handleEmbeddedOfficeDoc
 argument_list|(
 operator|(
 name|DirectoryEntry

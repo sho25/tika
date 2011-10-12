@@ -857,7 +857,7 @@ condition|)
 block|{
 try|try
 block|{
-name|handleEmbededOfficeDoc
+name|handleEmbeddedOfficeDoc
 argument_list|(
 operator|(
 name|DirectoryEntry
