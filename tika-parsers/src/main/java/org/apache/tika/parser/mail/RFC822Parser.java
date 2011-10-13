@@ -307,7 +307,14 @@ name|config
 operator|.
 name|setMaxLineLen
 argument_list|(
-literal|10000
+literal|100000
+argument_list|)
+expr_stmt|;
+name|config
+operator|.
+name|setMaxHeaderLen
+argument_list|(
+literal|100000
 argument_list|)
 expr_stmt|;
 comment|// max length of any individual header
