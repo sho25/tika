@@ -16,22 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|XHTMLContentHandler
-operator|.
-name|XHTML
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -246,6 +230,22 @@ operator|.
 name|helpers
 operator|.
 name|AttributesImpl
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|XHTMLContentHandler
+operator|.
+name|XHTML
 import|;
 end_import
 
@@ -540,10 +540,10 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|DELEGATING_PARSER
-operator|.
-name|parse
-argument_list|(
+specifier|final
+name|TikaInputStream
+name|newStream
+init|=
 name|TikaInputStream
 operator|.
 name|get
@@ -556,6 +556,73 @@ argument_list|)
 argument_list|,
 name|tmp
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|stream
+operator|instanceof
+name|TikaInputStream
+condition|)
+block|{
+specifier|final
+name|Object
+name|container
+init|=
+operator|(
+operator|(
+name|TikaInputStream
+operator|)
+name|stream
+operator|)
+operator|.
+name|getOpenContainer
+argument_list|()
+decl_stmt|;
+comment|// TODO: we can't let ZipPackage through,
+comment|// becase of POI bug 51949.  This is less
+comment|// efficient because the inner parser will
+comment|// have to re-open the zip archive again.
+comment|// Once we upgrade to POI 3.8 beta 5 we can
+comment|// remove this:
+if|if
+condition|(
+operator|(
+name|container
+operator|!=
+literal|null
+operator|&&
+operator|!
+operator|(
+name|container
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"ZipPackage"
+argument_list|)
+operator|)
+operator|)
+condition|)
+block|{
+name|newStream
+operator|.
+name|setOpenContainer
+argument_list|(
+name|container
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|DELEGATING_PARSER
+operator|.
+name|parse
+argument_list|(
+name|newStream
 argument_list|,
 operator|new
 name|EmbeddedContentHandler
@@ -579,6 +646,7 @@ name|TikaException
 name|e
 parameter_list|)
 block|{
+comment|// TODO: can we log a warning somehow?
 comment|// Could not parse the entry, just skip the content
 block|}
 finally|finally

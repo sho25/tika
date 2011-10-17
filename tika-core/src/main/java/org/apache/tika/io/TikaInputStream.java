@@ -1689,6 +1689,22 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|openContainer
+operator|!=
+literal|null
+condition|)
+block|{
+name|str
+operator|+=
+literal|" (in "
+operator|+
+name|openContainer
+operator|+
+literal|")"
+expr_stmt|;
+block|}
 return|return
 name|str
 return|;
