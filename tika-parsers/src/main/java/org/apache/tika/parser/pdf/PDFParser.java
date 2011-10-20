@@ -328,6 +328,13 @@ init|=
 operator|-
 literal|752276948656079347L
 decl_stmt|;
+comment|// True if we let PDFBox "guess" where spaces should go:
+specifier|private
+name|boolean
+name|enableAutoSpace
+init|=
+literal|true
+decl_stmt|;
 comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      */
 specifier|public
 specifier|static
@@ -498,6 +505,8 @@ argument_list|,
 name|metadata
 argument_list|,
 name|extractAnnotationText
+argument_list|,
+name|enableAutoSpace
 argument_list|)
 expr_stmt|;
 block|}
@@ -990,6 +999,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      *  If true (the default), the parser should estimate      *  where spaces should be inserted between words.  For      *  many PDFs this is necessary as they do not include      *  explicit whitespace characters.      */
+specifier|public
+name|void
+name|setEnableAutoSpace
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+block|{
+name|enableAutoSpace
+operator|=
+name|v
+expr_stmt|;
+block|}
+comment|/** @see #setEnableAutoSpace. */
+specifier|public
+name|boolean
+name|getEnableAutoSpace
+parameter_list|()
+block|{
+return|return
+name|enableAutoSpace
+return|;
 block|}
 comment|/**      * If true (the default), text in annotations will be      * extracted.      */
 specifier|public

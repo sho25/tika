@@ -243,6 +243,9 @@ name|metadata
 parameter_list|,
 name|boolean
 name|extractAnnotationText
+parameter_list|,
+name|boolean
+name|enableAutoSpace
 parameter_list|)
 throws|throws
 name|SAXException
@@ -261,6 +264,8 @@ argument_list|,
 name|metadata
 argument_list|,
 name|extractAnnotationText
+argument_list|,
+name|enableAutoSpace
 argument_list|)
 operator|.
 name|writeText
@@ -367,6 +372,9 @@ name|metadata
 parameter_list|,
 name|boolean
 name|extractAnnotationText
+parameter_list|,
+name|boolean
+name|enableAutoSpace
 parameter_list|)
 throws|throws
 name|IOException
@@ -399,6 +407,28 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|enableAutoSpace
+condition|)
+block|{
+name|setWordSeparator
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|setWordSeparator
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
+comment|// TODO: maybe expose setting these too:
+comment|//setAverageCharTolerance(1.0f);
+comment|//setSpacingTolerance(1.0f);
 block|}
 annotation|@
 name|Override
@@ -1018,7 +1048,8 @@ name|handler
 operator|.
 name|characters
 argument_list|(
-literal|" "
+name|getWordSeparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
