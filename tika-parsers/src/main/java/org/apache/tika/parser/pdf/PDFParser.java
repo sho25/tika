@@ -338,6 +338,12 @@ init|=
 literal|"org.apache.tika.parser.pdf.password"
 decl_stmt|;
 specifier|private
+name|boolean
+name|extractAnnotationText
+init|=
+literal|true
+decl_stmt|;
+specifier|private
 specifier|static
 specifier|final
 name|Set
@@ -490,6 +496,8 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|extractAnnotationText
 argument_list|)
 expr_stmt|;
 block|}
@@ -982,6 +990,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * If true (the default), text in annotations will be      * extracted.      */
+specifier|public
+name|void
+name|setExtractAnnotationText
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+block|{
+name|extractAnnotationText
+operator|=
+name|v
+expr_stmt|;
+block|}
+comment|/**      * If true, text in annotations will be extracted.      */
+specifier|public
+name|boolean
+name|getExtractAnnotationText
+parameter_list|()
+block|{
+return|return
+name|extractAnnotationText
+return|;
 block|}
 block|}
 end_class
