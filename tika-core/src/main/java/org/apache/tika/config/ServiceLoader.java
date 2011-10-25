@@ -156,7 +156,6 @@ init|=
 literal|null
 decl_stmt|;
 comment|/**      * Returns the context class loader of the current thread. If such      * a class loader is not available, then the loader of this class or      * finally the system class loader is returned.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-441">TIKA-441</a>      * @return context class loader, or<code>null</code> if no loader      *         is available      */
-specifier|private
 specifier|static
 name|ClassLoader
 name|getContextClassLoader
