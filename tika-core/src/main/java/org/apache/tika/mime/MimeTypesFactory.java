@@ -194,6 +194,32 @@ return|return
 name|mimeTypes
 return|;
 block|}
+comment|/** @see #create(InputStream...) */
+specifier|public
+specifier|static
+name|MimeTypes
+name|create
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|MimeTypeException
+block|{
+return|return
+name|create
+argument_list|(
+operator|new
+name|InputStream
+index|[]
+block|{
+name|stream
+block|}
+argument_list|)
+return|;
+block|}
 comment|/**      * Creates and returns a MimeTypes instance from the resource      * at the location specified by the URL.  Opens and closes the      * InputStream from the URL.      * If multiple URLs are supplied, then they are loaded in turn.       *      * @throws IOException if the URL can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
@@ -278,6 +304,32 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|/** @see #create(URL...) */
+specifier|public
+specifier|static
+name|MimeTypes
+name|create
+parameter_list|(
+name|URL
+name|url
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|MimeTypeException
+block|{
+return|return
+name|create
+argument_list|(
+operator|new
+name|URL
+index|[]
+block|{
+name|url
+block|}
+argument_list|)
+return|;
 block|}
 comment|/**      * Creates and returns a MimeTypes instance from the specified file path,      * as interpreted by the class loader in getResource().      *      * @throws IOException if the file can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
