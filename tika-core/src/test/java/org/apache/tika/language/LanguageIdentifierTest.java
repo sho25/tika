@@ -111,7 +111,7 @@ operator|new
 name|String
 index|[]
 block|{
-comment|// TODO - currently Estonian, Greek and Lithuanian fail these tests.
+comment|// TODO - currently Estonian and Greek fail these tests.
 comment|// Enable when language detection works better.
 literal|"da"
 block|,
@@ -128,7 +128,8 @@ literal|"fr"
 block|,
 literal|"it"
 block|,
-comment|/* "lt", */
+literal|"lt"
+block|,
 literal|"nl"
 block|,
 literal|"pt"
@@ -202,6 +203,18 @@ name|getLanguage
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Lithuanian is detected but isn't reasonably certain:
+if|if
+condition|(
+operator|!
+name|language
+operator|.
+name|equals
+argument_list|(
+literal|"lt"
+argument_list|)
+condition|)
+block|{
 name|assertTrue
 argument_list|(
 name|identifier
@@ -215,6 +228,7 @@ name|isReasonablyCertain
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
@@ -489,6 +503,25 @@ name|other
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|language
+operator|.
+name|equals
+argument_list|(
+literal|"lt"
+argument_list|)
+operator|||
+name|other
+operator|.
+name|equals
+argument_list|(
+literal|"lt"
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|ProfilingWriter
 name|writer
 init|=
@@ -528,6 +561,18 @@ argument_list|)
 expr_stmt|;
 name|assertFalse
 argument_list|(
+literal|"mix of "
+operator|+
+name|language
+operator|+
+literal|" and "
+operator|+
+name|other
+operator|+
+literal|" incorrectly detected as "
+operator|+
+name|identifier
+argument_list|,
 name|identifier
 operator|.
 name|isReasonablyCertain
