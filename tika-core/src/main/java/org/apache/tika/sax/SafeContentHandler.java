@@ -539,25 +539,6 @@ literal|0x10FFFF
 return|;
 block|}
 block|}
-comment|/**      * @deprecated Use {@link #isInvalid(int)} instead      */
-specifier|protected
-name|boolean
-name|isInvalid
-parameter_list|(
-name|char
-name|ch
-parameter_list|)
-block|{
-return|return
-name|isInvalid
-argument_list|(
-operator|(
-name|int
-operator|)
-name|ch
-argument_list|)
-return|;
-block|}
 comment|/**      * Outputs the replacement for an invalid character. Subclasses can      * override this method to use a custom replacement.      *      * @param output where the replacement is written to      * @throws SAXException if the replacement could not be written      */
 specifier|protected
 name|void

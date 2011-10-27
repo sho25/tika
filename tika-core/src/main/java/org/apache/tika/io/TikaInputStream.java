@@ -299,31 +299,6 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * @deprecated Use the {@link #get(InputStream, TemporaryResources)} instead      */
-specifier|public
-specifier|static
-name|TikaInputStream
-name|get
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|TemporaryFiles
-name|tmp
-parameter_list|)
-block|{
-return|return
-name|get
-argument_list|(
-name|stream
-argument_list|,
-operator|(
-name|TemporaryResources
-operator|)
-name|tmp
-argument_list|)
-return|;
-block|}
 comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * Use this method instead of the      * {@link #get(InputStream, TemporaryResources)} alternative when you      *<em>do</em> explicitly close the returned stream. The recommended      * access pattern is:      *<pre>      * TikaInputStream stream = TikaInputStream.get(...);      * try {      *     // process stream      * } finally {      *     stream.close();      * }      *</pre>      *<p>      * The given stream instance will be closed along with any other resources      * associated with the returned TikaInputStream instance when the      * {@link #close()} method is called.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static

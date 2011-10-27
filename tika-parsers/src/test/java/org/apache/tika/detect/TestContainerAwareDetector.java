@@ -123,20 +123,6 @@ name|MediaType
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|mime
-operator|.
-name|MimeTypes
-import|;
-end_import
-
 begin_comment
 comment|/**  * Junit test class for {@link ContainerAwareDetector}  */
 end_comment
@@ -154,13 +140,8 @@ name|Detector
 name|detector
 init|=
 operator|new
-name|ContainerAwareDetector
-argument_list|(
-name|MimeTypes
-operator|.
-name|getDefaultMimeTypes
+name|DefaultDetector
 argument_list|()
-argument_list|)
 decl_stmt|;
 specifier|private
 name|void

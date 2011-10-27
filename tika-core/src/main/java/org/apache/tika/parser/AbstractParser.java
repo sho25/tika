@@ -108,7 +108,7 @@ name|serialVersionUID
 init|=
 literal|7186985395903074255L
 decl_stmt|;
-comment|/**      * Calls the      * {@link Parser#parse(InputStream, ContentHandler, Metadata, ParseContext)}      * method with an empty {@link ParseContext}.      */
+comment|/**      * Calls the      * {@link Parser#parse(InputStream, ContentHandler, Metadata, ParseContext)}      * method with an empty {@link ParseContext}. This method exists as a      * leftover from Tika 0.x when the three-argument parse() method still      * existed in the {@link Parser} interface. No new code should call this      * method anymore, it's only here for backwards compatibility.      *      * @deprecated use the {@link Parser#parse(InputStream, ContentHandler, Metadata, ParseContext)} method instead      */
 specifier|public
 name|void
 name|parse

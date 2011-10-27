@@ -166,26 +166,6 @@ name|SAXException
 throws|,
 name|TikaException
 function_decl|;
-comment|/**      * The parse() method from Tika 0.4 and earlier. Please use the      * {@link #parse(InputStream, ContentHandler, Metadata, ParseContext)}      * method instead in new code. Calls to this backwards compatibility      * method are forwarded to the new parse() method with an empty parse      * context.      *      * @deprecated This method will be removed in Apache Tika 1.0.      */
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|TikaException
-function_decl|;
 block|}
 end_interface
 

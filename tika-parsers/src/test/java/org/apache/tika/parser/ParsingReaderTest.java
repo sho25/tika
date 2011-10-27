@@ -545,6 +545,10 @@ argument_list|,
 name|stream
 argument_list|,
 name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
 argument_list|)
 decl_stmt|;
 try|try

@@ -53,7 +53,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|ByteArrayInputStream
 import|;
 end_import
 
@@ -63,7 +63,21 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|Metadata
 import|;
 end_import
 
@@ -521,39 +535,14 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Test getMimeType(byte[]) */
+comment|/** Test getMimeType(byte[])       * @throws IOException */
 specifier|public
 name|void
 name|testGetMimeType_byteArray
 parameter_list|()
+throws|throws
+name|IOException
 block|{
-try|try
-block|{
-name|types
-operator|.
-name|getMimeType
-argument_list|(
-operator|(
-name|byte
-index|[]
-operator|)
-literal|null
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
 comment|// Plain text detection
 name|assertText
 argument_list|(
@@ -673,6 +662,8 @@ name|byte
 index|[]
 name|prefix
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|assertMagic
 argument_list|(
@@ -690,6 +681,8 @@ name|byte
 index|[]
 name|prefix
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|assertMagic
 argument_list|(
@@ -710,15 +703,25 @@ name|byte
 index|[]
 name|prefix
 parameter_list|)
+throws|throws
+name|IOException
 block|{
-name|MimeType
+name|MediaType
 name|type
 init|=
 name|types
 operator|.
-name|getMimeType
+name|detect
+argument_list|(
+operator|new
+name|ByteArrayInputStream
 argument_list|(
 name|prefix
+argument_list|)
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertNotNull
@@ -732,45 +735,10 @@ name|expected
 argument_list|,
 name|type
 operator|.
-name|getName
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-comment|/** Test getMimeType(InputStream) */
-specifier|public
-name|void
-name|testGetMimeType_InputStream
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-try|try
-block|{
-name|types
-operator|.
-name|getMimeType
-argument_list|(
-operator|(
-name|InputStream
-operator|)
-literal|null
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"Expected IllegalArgumentException"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IllegalArgumentException
-name|e
-parameter_list|)
-block|{
-comment|// expected result
-block|}
 block|}
 block|}
 end_class
