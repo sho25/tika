@@ -484,6 +484,10 @@ block|}
 block|}
 finally|finally
 block|{
+comment|// TODO: shouldn't we record the open
+comment|// container so it can be later
+comment|// reused...?
+comment|// tis.setOpenContainer(zip);
 name|zip
 operator|.
 name|close

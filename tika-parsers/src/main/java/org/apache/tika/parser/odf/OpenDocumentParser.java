@@ -101,6 +101,14 @@ name|ZipInputStream
 import|;
 end_import
 
+begin_comment
+comment|//import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+end_comment
+
+begin_comment
+comment|//import org.apache.commons.compress.archivers.zip.ZipFile;
+end_comment
+
 begin_import
 import|import
 name|org
@@ -210,6 +218,20 @@ operator|.
 name|sax
 operator|.
 name|EndDocumentShieldingContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|XHTMLContentHandler
 import|;
 end_import
 
@@ -621,6 +643,26 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|// TODO: reuse the already opened ZIPFile, if
+comment|// present
+comment|/*         ZipFile zipFile;         if (stream instanceof TikaInputStream) {             TikaInputStream tis = (TikaInputStream) stream;             Object container = ((TikaInputStream) stream).getOpenContainer();             if (container instanceof ZipFile) {                 zipFile = (ZipFile) container;             } else if (tis.hasFile()) {                 zipFile = new ZipFile(tis.getFile());                             }         }         */
+comment|// TODO: if incoming IS is a TIS with a file
+comment|// associated, we should open ZipFile so we can
+comment|// visit metadata, mimetype first; today we lose
+comment|// all the metadata if meta.xml is hit after
+comment|// content.xml in the stream.  Then we can still
+comment|// read-once for the content.xml.
+name|XHTMLContentHandler
+name|xhtml
+init|=
+operator|new
+name|XHTMLContentHandler
+argument_list|(
+name|baseHandler
+argument_list|,
+name|metadata
+argument_list|)
+decl_stmt|;
 comment|// As we don't know which of the metadata or the content
 comment|//  we'll hit first, catch the endDocument call initially
 name|EndDocumentShieldingContentHandler
@@ -629,7 +671,7 @@ init|=
 operator|new
 name|EndDocumentShieldingContentHandler
 argument_list|(
-name|baseHandler
+name|xhtml
 argument_list|)
 decl_stmt|;
 comment|// Process the file in turn
@@ -738,6 +780,35 @@ literal|"content.xml"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|content
+operator|instanceof
+name|OpenDocumentContentParser
+condition|)
+block|{
+operator|(
+operator|(
+name|OpenDocumentContentParser
+operator|)
+name|content
+operator|)
+operator|.
+name|parseInternal
+argument_list|(
+name|zip
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Foreign content parser was set:
 name|content
 operator|.
 name|parse
@@ -751,6 +822,65 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|entry
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|"styles.xml"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|content
+operator|instanceof
+name|OpenDocumentContentParser
+condition|)
+block|{
+operator|(
+operator|(
+name|OpenDocumentContentParser
+operator|)
+name|content
+operator|)
+operator|.
+name|parseInternal
+argument_list|(
+name|zip
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Foreign content parser was set:
+name|content
+operator|.
+name|parse
+argument_list|(
+name|zip
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|entry
 operator|=
