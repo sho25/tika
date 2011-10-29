@@ -76,7 +76,7 @@ specifier|final
 name|String
 name|localName
 decl_stmt|;
-specifier|protected
+specifier|public
 name|AttributeMetadataHandler
 parameter_list|(
 name|String
