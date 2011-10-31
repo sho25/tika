@@ -71,42 +71,6 @@ name|Set
 import|;
 end_import
 
-begin_comment
-comment|//TIKA imports
-end_comment
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Component
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Service
-import|;
-end_import
-
 begin_import
 import|import
 name|org
@@ -201,20 +165,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|Parser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|netcdf
 operator|.
 name|NetCDFParser
@@ -259,10 +209,6 @@ name|SAXException
 import|;
 end_import
 
-begin_comment
-comment|//NetCDF imports
-end_comment
-
 begin_import
 import|import
 name|ucar
@@ -294,25 +240,25 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Since the {@link NetCDFParser} depends on the<a  * href="http://www.unidata.ucar.edu/software/netcdf-java">NetCDF-Java</a> API,  * we are able to use it to parse HDF files as well. See<a href=  * "http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html"  *>this link</a> for more information.  *   */
+comment|/**  *   * Since the {@link NetCDFParser} depends on the<a  * href="http://www.unidata.ucar.edu/software/netcdf-java">NetCDF-Java</a> API,  * we are able to use it to parse HDF files as well. See<a href=  * "http://www.unidata.ucar.edu/software/netcdf-java/formats/FileTypes.html"  *>this link</a> for more information.  */
 end_comment
 
 begin_class
-annotation|@
-name|Component
-annotation|@
-name|Service
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|)
 specifier|public
 class|class
 name|HDFParser
 extends|extends
 name|AbstractParser
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1091208208003437549L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final

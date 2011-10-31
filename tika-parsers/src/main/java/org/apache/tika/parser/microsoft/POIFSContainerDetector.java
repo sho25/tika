@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|mime
+operator|.
+name|MediaType
+operator|.
+name|application
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -76,38 +92,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Component
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Service
 import|;
 end_import
 
@@ -215,43 +199,18 @@ name|MediaType
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|mime
-operator|.
-name|MediaType
-operator|.
-name|application
-import|;
-end_import
-
 begin_comment
 comment|/**  * A detector that works on a POIFS OLE2 document  *  to figure out exactly what the file is.  * This should work for all OLE2 documents, whether  *  they are ones supported by POI or not.  */
 end_comment
 
 begin_class
-annotation|@
-name|Component
-annotation|@
-name|Service
-argument_list|(
-name|Detector
-operator|.
-name|class
-argument_list|)
 specifier|public
 class|class
 name|POIFSContainerDetector
 implements|implements
 name|Detector
 block|{
-comment|/**      * Serial version UID.      */
+comment|/** Serial version UID */
 specifier|private
 specifier|static
 specifier|final

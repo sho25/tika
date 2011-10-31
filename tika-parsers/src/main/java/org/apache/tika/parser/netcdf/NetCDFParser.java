@@ -71,42 +71,6 @@ name|Set
 import|;
 end_import
 
-begin_comment
-comment|//TIKA imports
-end_comment
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Component
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|felix
-operator|.
-name|scr
-operator|.
-name|annotations
-operator|.
-name|Service
-import|;
-end_import
-
 begin_import
 import|import
 name|org
@@ -243,10 +207,6 @@ name|SAXException
 import|;
 end_import
 
-begin_comment
-comment|//NETCDF imports
-end_comment
-
 begin_import
 import|import
 name|ucar
@@ -272,21 +232,22 @@ comment|/**  * A {@link Parser} for<a  * href="http://www.unidata.ucar.edu/softw
 end_comment
 
 begin_class
-annotation|@
-name|Component
-annotation|@
-name|Service
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|)
 specifier|public
 class|class
 name|NetCDFParser
 extends|extends
 name|AbstractParser
 block|{
+comment|/** Serial version UID */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|5940938274907708665L
+decl_stmt|;
 specifier|private
 specifier|final
 name|Set
