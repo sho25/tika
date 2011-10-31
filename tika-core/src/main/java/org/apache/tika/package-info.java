@@ -17,7 +17,7 @@ name|annotation
 operator|.
 name|Version
 argument_list|(
-literal|"0.10"
+literal|"1.0.0"
 argument_list|)
 end_annotation
 
