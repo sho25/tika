@@ -35,6 +35,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -148,6 +158,18 @@ operator|.
 name|namespace
 operator|.
 name|QName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|Tika
 import|;
 end_import
 
@@ -397,8 +419,8 @@ name|xmlMimeType
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *      * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
-specifier|private
+comment|/**      * Find the Mime Content Type of a document from its name.      * Returns application/octet-stream if no better match is found.      *      * @deprecated Use {@link Tika#detect(String)} instead      * @param name of the document to analyze.      * @return the Mime Content Type of the specified document name      */
+specifier|public
 name|MimeType
 name|getMimeType
 parameter_list|(
@@ -460,6 +482,35 @@ return|return
 name|rootMimeType
 return|;
 block|}
+block|}
+comment|/**      * Find the Mime Content Type of a document stored in the given file.      * Returns application/octet-stream if no better match is found.      *      * @deprecated Use {@link Tika#detect(File)} instead      * @param file file to analyze      * @return the Mime Content Type of the specified document      * @throws MimeTypeException if the type can't be detected      * @throws IOException if the file can't be read      */
+specifier|public
+name|MimeType
+name|getMimeType
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+throws|throws
+name|MimeTypeException
+throws|,
+name|IOException
+block|{
+return|return
+name|forName
+argument_list|(
+operator|new
+name|Tika
+argument_list|(
+name|this
+argument_list|)
+operator|.
+name|detect
+argument_list|(
+name|file
+argument_list|)
+argument_list|)
+return|;
 block|}
 comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns application/octet-stream if no better      * match is found.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type      */
 specifier|private

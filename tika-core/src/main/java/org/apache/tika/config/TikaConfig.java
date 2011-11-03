@@ -1024,6 +1024,27 @@ literal|""
 return|;
 block|}
 block|}
+comment|/**      * @deprecated Use the {@link #getParser()} method instead      */
+specifier|public
+name|Parser
+name|getParser
+parameter_list|(
+name|MediaType
+name|mimeType
+parameter_list|)
+block|{
+return|return
+name|parser
+operator|.
+name|getParsers
+argument_list|()
+operator|.
+name|get
+argument_list|(
+name|mimeType
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the configured parser instance.      *      * @return configured parser      */
 specifier|public
 name|Parser
