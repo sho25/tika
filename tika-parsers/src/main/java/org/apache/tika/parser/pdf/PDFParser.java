@@ -335,6 +335,11 @@ name|enableAutoSpace
 init|=
 literal|true
 decl_stmt|;
+comment|// True if we let PDFBox remove duplicate overlapping text:
+specifier|private
+name|boolean
+name|suppressDuplicateOverlappingText
+decl_stmt|;
 comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      */
 specifier|public
 specifier|static
@@ -507,6 +512,8 @@ argument_list|,
 name|extractAnnotationText
 argument_list|,
 name|enableAutoSpace
+argument_list|,
+name|suppressDuplicateOverlappingText
 argument_list|)
 expr_stmt|;
 block|}
@@ -1046,6 +1053,30 @@ parameter_list|()
 block|{
 return|return
 name|extractAnnotationText
+return|;
+block|}
+comment|/**      *  If true, the parser should try to remove duplicated      *  text over the same region.  This is needed for some      *  PDFs that achieve bolding by re-writing the same      *  text in the same area.  Note that this can      *  slow down extraction substantially (PDFBOX-956) and      *  sometimes remove characters that were not in fact      *  duplicated (PDFBOX-1155).  By default this is disabled.      */
+specifier|public
+name|void
+name|setSuppressDuplicateOverlappingText
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+block|{
+name|suppressDuplicateOverlappingText
+operator|=
+name|v
+expr_stmt|;
+block|}
+comment|/** @see #setSuppressDuplicateOverlappingText. */
+specifier|public
+name|boolean
+name|getSuppressDuplicateOverlappingText
+parameter_list|()
+block|{
+return|return
+name|suppressDuplicateOverlappingText
 return|;
 block|}
 block|}

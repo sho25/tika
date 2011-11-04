@@ -246,6 +246,9 @@ name|extractAnnotationText
 parameter_list|,
 name|boolean
 name|enableAutoSpace
+parameter_list|,
+name|boolean
+name|suppressDuplicateOverlappingText
 parameter_list|)
 throws|throws
 name|SAXException
@@ -266,6 +269,8 @@ argument_list|,
 name|extractAnnotationText
 argument_list|,
 name|enableAutoSpace
+argument_list|,
+name|suppressDuplicateOverlappingText
 argument_list|)
 operator|.
 name|writeText
@@ -375,6 +380,9 @@ name|extractAnnotationText
 parameter_list|,
 name|boolean
 name|enableAutoSpace
+parameter_list|,
+name|boolean
+name|suppressDuplicateOverlappingText
 parameter_list|)
 throws|throws
 name|IOException
@@ -429,6 +437,11 @@ block|}
 comment|// TODO: maybe expose setting these too:
 comment|//setAverageCharTolerance(1.0f);
 comment|//setSpacingTolerance(1.0f);
+name|setSuppressDuplicateOverlappingText
+argument_list|(
+name|suppressDuplicateOverlappingText
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
