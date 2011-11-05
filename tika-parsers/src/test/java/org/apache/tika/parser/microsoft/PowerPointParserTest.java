@@ -698,11 +698,25 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+comment|// Make sure boilerplate text didn't come through:
+name|assertEquals
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"Click to edit Master"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// TODO: once we fix TIKA-712, re-enable this
-comment|/*     public void testMasterText() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = PowerPointParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText.ppt");         try {             new OfficeParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
+comment|/*     public void testMasterText() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = PowerPointParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText.ppt");         try {             new OfficeParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);          // Make sure boilerplate text didn't come through:         assertEquals(-1, content.indexOf("Click to edit Master"));     }     */
 comment|// TODO: once we fix TIKA-712, re-enable this
-comment|/*     public void testMasterText2() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = PowerPointParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText2.ppt");         try {             new OfficeParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
+comment|/*     public void testMasterText2() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = PowerPointParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText2.ppt");         try {             new OfficeParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);          // Make sure boilerplate text didn't come through:         assertEquals(-1, content.indexOf("Click to edit Master"));     }     */
 block|}
 end_class
 
