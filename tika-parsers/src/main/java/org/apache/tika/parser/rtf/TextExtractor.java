@@ -3556,6 +3556,11 @@ operator|)
 name|param
 argument_list|)
 decl_stmt|;
+comment|// Push any buffered text before changing
+comment|// font:
+name|pushText
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|fontCharset

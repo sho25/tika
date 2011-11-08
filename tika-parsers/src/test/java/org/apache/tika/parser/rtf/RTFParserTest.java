@@ -1504,6 +1504,26 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testFontAfterBufferedText
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertContains
+argument_list|(
+literal|"\u0423\u0432\u0430\u0436\u0430\u0435\u043c\u044b\u0439 \u043a\u043b\u0438\u0435\u043d\u0442!"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testFontAfterBufferedText.rtf"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|Result
 name|getResult
