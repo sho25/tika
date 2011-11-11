@@ -139,6 +139,11 @@ argument_list|(
 name|document
 argument_list|)
 expr_stmt|;
+name|mimeTypes
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 return|return
 name|mimeTypes
 return|;
@@ -190,6 +195,11 @@ name|inputStream
 argument_list|)
 expr_stmt|;
 block|}
+name|mimeTypes
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
 return|return
 name|mimeTypes
 return|;

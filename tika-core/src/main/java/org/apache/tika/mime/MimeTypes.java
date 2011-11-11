@@ -95,7 +95,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
 import|;
 end_import
 
@@ -106,6 +116,16 @@ operator|.
 name|util
 operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -126,26 +146,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|SortedSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeSet
 import|;
 end_import
 
@@ -339,31 +339,33 @@ argument_list|(
 name|registry
 argument_list|)
 decl_stmt|;
-comment|/** List of all registered magics */
+comment|/** Sorted list of all registered magics */
 specifier|private
-name|SortedSet
+specifier|final
+name|List
 argument_list|<
 name|Magic
 argument_list|>
 name|magics
 init|=
 operator|new
-name|TreeSet
+name|ArrayList
 argument_list|<
 name|Magic
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** List of all registered rootXML */
+comment|/** Sorted list of all registered rootXML */
 specifier|private
-name|SortedSet
+specifier|final
+name|List
 argument_list|<
 name|MimeType
 argument_list|>
 name|xmls
 init|=
 operator|new
-name|TreeSet
+name|ArrayList
 argument_list|<
 name|MimeType
 argument_list|>
@@ -1138,15 +1140,10 @@ name|magics
 operator|.
 name|addAll
 argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|type
 operator|.
 name|getMagics
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1167,6 +1164,64 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Called after all configured types have been loaded.      * Initializes the magics and xmls sets.      */
+name|void
+name|init
+parameter_list|()
+block|{
+for|for
+control|(
+name|MimeType
+name|type
+range|:
+name|types
+operator|.
+name|values
+argument_list|()
+control|)
+block|{
+name|magics
+operator|.
+name|addAll
+argument_list|(
+name|type
+operator|.
+name|getMagics
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|type
+operator|.
+name|hasRootXML
+argument_list|()
+condition|)
+block|{
+name|xmls
+operator|.
+name|add
+argument_list|(
+name|type
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|magics
+argument_list|)
+expr_stmt|;
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|xmls
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Automatically detects the MIME type of a document based on magic      * markers in the stream prefix and any given metadata hints.      *<p>      * The given stream is expected to support marks, so that this method      * can reset the stream to the position it was in before this method      * was called.      *      * @param input document stream, or<code>null</code>      * @param metadata metadata hints      * @return MIME type of the document      * @throws IOException if the document stream could not be read      */
 specifier|public
@@ -1436,16 +1491,32 @@ return|return
 name|type
 return|;
 block|}
-comment|/**      * Get the default MimeTypes. This includes all the build in      *  mimetypes, and any custom override ones present.       *       * @return MimeTypes      * @throws MimeTypeException      * @throws IOException      */
+specifier|private
+specifier|static
+name|MimeTypes
+name|DEFAULT_TYPES
+init|=
+literal|null
+decl_stmt|;
+comment|/**      * Get the default MimeTypes. This includes all the build in      * media types, and any custom override ones present.      *       * @return MimeTypes default type registry      */
 specifier|public
 specifier|static
+specifier|synchronized
 name|MimeTypes
 name|getDefaultMimeTypes
 parameter_list|()
 block|{
+if|if
+condition|(
+name|DEFAULT_TYPES
+operator|==
+literal|null
+condition|)
+block|{
 try|try
 block|{
-return|return
+name|DEFAULT_TYPES
+operator|=
 name|MimeTypesFactory
 operator|.
 name|create
@@ -1454,7 +1525,7 @@ literal|"tika-mimetypes.xml"
 argument_list|,
 literal|"custom-mimetypes.xml"
 argument_list|)
-return|;
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1466,7 +1537,7 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Unable to read default mimetypes"
+literal|"Unable to parse the default media type registry"
 argument_list|,
 name|e
 argument_list|)
@@ -1482,12 +1553,16 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Unable to read default mimetypes"
+literal|"Unable to read the default media type registry"
 argument_list|,
 name|e
 argument_list|)
 throw|;
 block|}
+block|}
+return|return
+name|DEFAULT_TYPES
+return|;
 block|}
 block|}
 end_class
