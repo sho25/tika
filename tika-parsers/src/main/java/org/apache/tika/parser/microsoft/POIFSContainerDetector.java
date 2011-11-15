@@ -649,6 +649,30 @@ literal|"SPELLING"
 argument_list|)
 condition|)
 block|{
+comment|// Newer Works files
+return|return
+name|WPS
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"CONTENTS"
+argument_list|)
+operator|&&
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"\u0001CompObj"
+argument_list|)
+condition|)
+block|{
+comment|// Normally an older Works file
 return|return
 name|WPS
 return|;
@@ -664,8 +688,8 @@ literal|"CONTENTS"
 argument_list|)
 condition|)
 block|{
-comment|// CONTENTS without SPELLING normally means some sort of
-comment|//  embedded non-office file inside an OLE2 document
+comment|// CONTENTS without SPELLING nor CompObj normally means some sort
+comment|//  of embedded non-office file inside an OLE2 document
 comment|// This is most commonly triggered on nested directories
 return|return
 name|OLE

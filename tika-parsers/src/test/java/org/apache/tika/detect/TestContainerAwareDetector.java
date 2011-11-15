@@ -247,6 +247,13 @@ argument_list|)
 expr_stmt|;
 name|assertDetect
 argument_list|(
+literal|"testWORKS2000.wps"
+argument_list|,
+literal|"application/vnd.ms-works"
+argument_list|)
+expr_stmt|;
+name|assertDetect
+argument_list|(
 literal|"testCOREL.shw"
 argument_list|,
 literal|"application/x-corelpresentations"
