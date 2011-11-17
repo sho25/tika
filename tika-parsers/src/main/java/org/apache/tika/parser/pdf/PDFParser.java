@@ -340,6 +340,22 @@ specifier|private
 name|boolean
 name|suppressDuplicateOverlappingText
 decl_stmt|;
+comment|// True if we extract annotation text ourselves
+comment|// (workaround for PDFBOX-1143):
+specifier|private
+name|boolean
+name|extractAnnotationText
+init|=
+literal|true
+decl_stmt|;
+comment|// True if we should sort text tokens by position
+comment|// (necessary for some PDFs, but messes up other PDFs):
+specifier|private
+name|boolean
+name|sortByPosition
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      */
 specifier|public
 specifier|static
@@ -348,12 +364,6 @@ name|String
 name|PASSWORD
 init|=
 literal|"org.apache.tika.parser.pdf.password"
-decl_stmt|;
-specifier|private
-name|boolean
-name|extractAnnotationText
-init|=
-literal|true
 decl_stmt|;
 specifier|private
 specifier|static
@@ -514,6 +524,8 @@ argument_list|,
 name|enableAutoSpace
 argument_list|,
 name|suppressDuplicateOverlappingText
+argument_list|,
+name|sortByPosition
 argument_list|)
 expr_stmt|;
 block|}
@@ -1077,6 +1089,30 @@ parameter_list|()
 block|{
 return|return
 name|suppressDuplicateOverlappingText
+return|;
+block|}
+comment|/**      *  If true, sort text tokens by their x/y position      *  before extracting text.  This may be necessary for      *  some PDFs (if the text tokens are not rendered "in      *  order"), while for other PDFs it can produce the      *  wrong result (for example if there are 2 columns,      *  the text will be interleaved).  Default is false.      */
+specifier|public
+name|void
+name|setSortByPosition
+parameter_list|(
+name|boolean
+name|v
+parameter_list|)
+block|{
+name|sortByPosition
+operator|=
+name|v
+expr_stmt|;
+block|}
+comment|/** @see #setSortByPosition. */
+specifier|public
+name|boolean
+name|getSortByPosition
+parameter_list|()
+block|{
+return|return
+name|sortByPosition
 return|;
 block|}
 block|}

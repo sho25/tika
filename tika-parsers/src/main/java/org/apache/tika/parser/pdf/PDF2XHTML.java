@@ -249,6 +249,9 @@ name|enableAutoSpace
 parameter_list|,
 name|boolean
 name|suppressDuplicateOverlappingText
+parameter_list|,
+name|boolean
+name|sortByPosition
 parameter_list|)
 throws|throws
 name|SAXException
@@ -271,6 +274,8 @@ argument_list|,
 name|enableAutoSpace
 argument_list|,
 name|suppressDuplicateOverlappingText
+argument_list|,
+name|sortByPosition
 argument_list|)
 operator|.
 name|writeText
@@ -383,6 +388,9 @@ name|enableAutoSpace
 parameter_list|,
 name|boolean
 name|suppressDuplicateOverlappingText
+parameter_list|,
+name|boolean
+name|sortByPosition
 parameter_list|)
 throws|throws
 name|IOException
@@ -412,7 +420,7 @@ argument_list|)
 expr_stmt|;
 name|setSortByPosition
 argument_list|(
-literal|false
+name|sortByPosition
 argument_list|)
 expr_stmt|;
 if|if
