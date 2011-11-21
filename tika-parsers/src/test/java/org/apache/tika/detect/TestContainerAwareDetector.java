@@ -367,10 +367,33 @@ literal|"application/vnd.ms-powerpoint"
 argument_list|)
 expr_stmt|;
 comment|// With the wrong filename supplied, data will trump filename
-comment|// TODO Fix this! (TIKA-786)
-comment|//        assertTypeByNameAndData("testEXCEL.xls", "notWord.doc",  "application/vnd.ms-excel");
-comment|//        assertTypeByNameAndData("testWORD.doc",  "notExcel.xls", "application/msword");
-comment|//        assertTypeByNameAndData("testPPT.ppt",   "notWord.doc",  "application/vnd.ms-powerpoint");
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testEXCEL.xls"
+argument_list|,
+literal|"notWord.doc"
+argument_list|,
+literal|"application/vnd.ms-excel"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testWORD.doc"
+argument_list|,
+literal|"notExcel.xls"
+argument_list|,
+literal|"application/msword"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testPPT.ppt"
+argument_list|,
+literal|"notWord.doc"
+argument_list|,
+literal|"application/vnd.ms-powerpoint"
+argument_list|)
+expr_stmt|;
 comment|// With a filename of a totally different type, data will trump filename
 name|assertTypeByNameAndData
 argument_list|(
@@ -570,10 +593,33 @@ literal|"application/vnd.openxmlformats-officedocument.presentationml.presentati
 argument_list|)
 expr_stmt|;
 comment|// With the wrong filename supplied, data will trump filename
-comment|// TODO Fix this! (TIKA-786)
-comment|//        assertTypeByNameAndData("testEXCEL.xlsx", "notWord.docx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-comment|//        assertTypeByNameAndData("testWORD.docx",  "notExcel.xlsx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-comment|//        assertTypeByNameAndData("testPPT.pptx",   "notWord.docx", "application/vnd.openxmlformats-officedocument.presentationml.presentation");
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testEXCEL.xlsx"
+argument_list|,
+literal|"notWord.docx"
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testWORD.docx"
+argument_list|,
+literal|"notExcel.xlsx"
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testPPT.pptx"
+argument_list|,
+literal|"notWord.docx"
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
+argument_list|)
+expr_stmt|;
 comment|// With an incorrect filename of a different container type, data trumps filename
 name|assertTypeByNameAndData
 argument_list|(
