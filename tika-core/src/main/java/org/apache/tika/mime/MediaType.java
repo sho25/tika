@@ -1511,6 +1511,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns the base form of the MediaType, excluding      *  any parameters, such as "text/plain" for      *  "text/plain; charset=utf-8"      */
 specifier|public
 name|MediaType
 name|getBaseType
@@ -1547,6 +1548,7 @@ argument_list|)
 return|;
 block|}
 block|}
+comment|/**      * Return the Type of the MediaType, such as      *  "text" for "text/plain"      */
 specifier|public
 name|String
 name|getType
@@ -1563,6 +1565,7 @@ name|slash
 argument_list|)
 return|;
 block|}
+comment|/**      * Return the Sub-Type of the MediaType,       *  such as "plain" for "text/plain"      */
 specifier|public
 name|String
 name|getSubtype
