@@ -162,7 +162,7 @@ specifier|final
 name|int
 name|kBufSize
 init|=
-literal|8000
+literal|12000
 decl_stmt|;
 specifier|private
 specifier|static
