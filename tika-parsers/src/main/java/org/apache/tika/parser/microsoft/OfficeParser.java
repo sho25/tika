@@ -544,10 +544,17 @@ name|type
 argument_list|,
 name|POIFSDocumentType
 operator|.
+name|PROJECT
+operator|.
+name|type
+argument_list|,
+name|POIFSDocumentType
+operator|.
 name|VISIO
 operator|.
 name|type
 argument_list|,
+comment|// Works isn't supported
 name|POIFSDocumentType
 operator|.
 name|OUTLOOK
