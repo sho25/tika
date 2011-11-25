@@ -652,6 +652,18 @@ literal|"x-mspublisher"
 argument_list|)
 argument_list|)
 block|,
+name|PROJECT
+argument_list|(
+literal|"mpp"
+argument_list|,
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"vnd.ms-project"
+argument_list|)
+argument_list|)
+block|,
 name|VISIO
 argument_list|(
 literal|"vsd"
@@ -817,6 +829,7 @@ return|return
 name|UNKNOWN
 return|;
 block|}
+comment|// TODO Avoid this duplication with POIFSContainerDetector (TIKA-790)
 specifier|private
 specifier|final
 specifier|static
@@ -913,6 +926,36 @@ operator|.
 name|OLE10_NATIVE
 argument_list|)
 expr_stmt|;
+name|typeMap
+operator|.
+name|put
+argument_list|(
+literal|"Props"
+argument_list|,
+name|PROJECT
+argument_list|)
+expr_stmt|;
+comment|// Project 8
+name|typeMap
+operator|.
+name|put
+argument_list|(
+literal|"Props9"
+argument_list|,
+name|PROJECT
+argument_list|)
+expr_stmt|;
+comment|// Project 9, 10, 11
+name|typeMap
+operator|.
+name|put
+argument_list|(
+literal|"Props12"
+argument_list|,
+name|PROJECT
+argument_list|)
+expr_stmt|;
+comment|// Project 12+
 block|}
 specifier|public
 specifier|static
@@ -1351,6 +1394,11 @@ argument_list|,
 name|locale
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|PROJECT
+case|:
+comment|// We currently can't do anything beyond the metadata
 break|break;
 case|case
 name|VISIO
