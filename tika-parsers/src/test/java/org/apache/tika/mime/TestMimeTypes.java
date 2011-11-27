@@ -837,6 +837,77 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|testArchiveDetection
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertTypeByName
+argument_list|(
+literal|"application/x-archive"
+argument_list|,
+literal|"test.ar"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/zip"
+argument_list|,
+literal|"test.zip"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/x-tar"
+argument_list|,
+literal|"test.tar"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/x-gzip"
+argument_list|,
+literal|"test.tgz"
+argument_list|)
+expr_stmt|;
+comment|// See GZIP, not tar contents of it
+name|assertTypeByName
+argument_list|(
+literal|"application/x-cpio"
+argument_list|,
+literal|"test.cpio"
+argument_list|)
+expr_stmt|;
+comment|// Check the mime magic patterns for them work too
+comment|//       assertTypeByData("application/x-archive", "testARofText.ar"); // TODO TIKA-697
+comment|//       assertTypeByData("application/x-archive", "testARofSND.ar");  // TODO TIKA-697
+name|assertTypeByData
+argument_list|(
+literal|"application/zip"
+argument_list|,
+literal|"test-documents.zip"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-gtar"
+argument_list|,
+literal|"test-documents.tar"
+argument_list|)
+expr_stmt|;
+comment|// GNU TAR
+name|assertTypeByData
+argument_list|(
+literal|"application/x-gzip"
+argument_list|,
+literal|"test-documents.tgz"
+argument_list|)
+expr_stmt|;
+comment|// See GZIP, not tar contents of it
+comment|//       assertTypeByData("application/x-cpio", "test-documents.cpio"); // TODO Magic isn't correct?
+block|}
+specifier|public
+name|void
 name|testJpegDetection
 parameter_list|()
 throws|throws
