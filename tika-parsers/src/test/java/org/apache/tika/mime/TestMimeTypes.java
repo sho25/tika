@@ -878,9 +878,24 @@ argument_list|,
 literal|"test.cpio"
 argument_list|)
 expr_stmt|;
+comment|// TODO Add an example .deb and .udeb, then check these
 comment|// Check the mime magic patterns for them work too
-comment|//       assertTypeByData("application/x-archive", "testARofText.ar"); // TODO TIKA-697
-comment|//       assertTypeByData("application/x-archive", "testARofSND.ar");  // TODO TIKA-697
+name|assertTypeByData
+argument_list|(
+literal|"application/x-archive"
+argument_list|,
+literal|"testARofText.ar"
+argument_list|)
+expr_stmt|;
+comment|// TODO TIKA-697
+name|assertTypeByData
+argument_list|(
+literal|"application/x-archive"
+argument_list|,
+literal|"testARofSND.ar"
+argument_list|)
+expr_stmt|;
+comment|// TODO TIKA-697
 name|assertTypeByData
 argument_list|(
 literal|"application/zip"
