@@ -887,7 +887,6 @@ argument_list|,
 literal|"testARofText.ar"
 argument_list|)
 expr_stmt|;
-comment|// TODO TIKA-697
 name|assertTypeByData
 argument_list|(
 literal|"application/x-archive"
@@ -895,7 +894,6 @@ argument_list|,
 literal|"testARofSND.ar"
 argument_list|)
 expr_stmt|;
-comment|// TODO TIKA-697
 name|assertTypeByData
 argument_list|(
 literal|"application/zip"
@@ -919,7 +917,13 @@ literal|"test-documents.tgz"
 argument_list|)
 expr_stmt|;
 comment|// See GZIP, not tar contents of it
-comment|//       assertTypeByData("application/x-cpio", "test-documents.cpio"); // TODO Magic isn't correct?
+name|assertTypeByData
+argument_list|(
+literal|"application/x-cpio"
+argument_list|,
+literal|"test-documents.cpio"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

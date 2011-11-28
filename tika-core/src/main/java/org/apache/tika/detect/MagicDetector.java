@@ -419,8 +419,8 @@ name|byte
 call|)
 argument_list|(
 name|i
-operator|>>
-literal|8
+operator|&
+literal|0x00FF
 argument_list|)
 block|,
 call|(
@@ -428,8 +428,8 @@ name|byte
 call|)
 argument_list|(
 name|i
-operator|&
-literal|0x00FF
+operator|>>
+literal|8
 argument_list|)
 block|}
 expr_stmt|;
