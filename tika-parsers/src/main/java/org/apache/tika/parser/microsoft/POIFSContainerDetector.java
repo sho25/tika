@@ -244,6 +244,18 @@ argument_list|(
 literal|"x-tika-msoffice"
 argument_list|)
 decl_stmt|;
+comment|/** The protected OOXML base file format */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|OOXML_PROTECTED
+init|=
+name|application
+argument_list|(
+literal|"x-tika-ooxml-protected"
+argument_list|)
+decl_stmt|;
 comment|/** Microsoft Excel */
 specifier|public
 specifier|static
@@ -592,6 +604,40 @@ condition|)
 block|{
 return|return
 name|XLS
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"EncryptedPackage"
+argument_list|)
+operator|&&
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"EncryptionInfo"
+argument_list|)
+operator|&&
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"\u0006DataSpaces"
+argument_list|)
+condition|)
+block|{
+comment|// This is a protected OOXML document, which is an OLE2 file
+comment|//  with an Encrypted Stream which holds the OOXML data
+comment|// Without decrypting the stream, we can't tell what kind of
+comment|//  OOXML file we have. Return a general OOXML Protected type,
+comment|//  and hope the name based detection can guess the rest!
+return|return
+name|OOXML_PROTECTED
 return|;
 block|}
 elseif|else

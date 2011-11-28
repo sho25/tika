@@ -631,7 +631,7 @@ name|MediaType
 operator|.
 name|application
 argument_list|(
-literal|"x-tika-msoffice"
+literal|"x-tika-ooxml-protected"
 argument_list|)
 argument_list|)
 block|,
@@ -1500,6 +1500,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+comment|// TODO Allow the user to specify the password via the ParseContext
 if|if
 condition|(
 operator|!
@@ -1519,6 +1520,8 @@ name|EncryptedDocumentException
 argument_list|()
 throw|;
 block|}
+comment|// Decrypt the OLE2 stream, and delegate the resulting OOXML
+comment|//  file to the regular OOXML parser for normal handling
 name|OOXMLParser
 name|parser
 init|=
