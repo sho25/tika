@@ -1084,8 +1084,13 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|// TODO: WordExtractor misses this
-comment|//assertContains("Here is a text box", content);
+name|assertContains
+argument_list|(
+literal|"Here is a text box"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"Bold"
