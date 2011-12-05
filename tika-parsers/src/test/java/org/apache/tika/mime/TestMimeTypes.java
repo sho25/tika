@@ -1516,12 +1516,18 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO: Need a test wmf file
 name|assertTypeByName
 argument_list|(
 literal|"application/x-msmetafile"
 argument_list|,
 literal|"x.wmf"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-msmetafile"
+argument_list|,
+literal|"testWMF.wmf"
 argument_list|)
 expr_stmt|;
 name|assertTypeByName
@@ -1531,17 +1537,23 @@ argument_list|,
 literal|"x.WMF"
 argument_list|)
 expr_stmt|;
-comment|// TODO: Need a test emf file
 name|assertTypeByName
 argument_list|(
-literal|"application/x-msmetafile"
+literal|"application/x-emf"
 argument_list|,
 literal|"x.emf"
 argument_list|)
 expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-emf"
+argument_list|,
+literal|"testEMF.emf"
+argument_list|)
+expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/x-msmetafile"
+literal|"application/x-emf"
 argument_list|,
 literal|"x.EMF"
 argument_list|)
@@ -1561,7 +1573,7 @@ argument_list|,
 literal|"x.WMZ"
 argument_list|)
 expr_stmt|;
-comment|// TODO: Need a test emf file
+comment|// TODO: Need a test emz file
 name|assertTypeByName
 argument_list|(
 literal|"application/x-gzip"
