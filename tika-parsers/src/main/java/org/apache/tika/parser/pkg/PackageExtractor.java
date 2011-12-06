@@ -265,6 +265,20 @@ name|tika
 operator|.
 name|io
 operator|.
+name|TemporaryResources
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -973,7 +987,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Parses the given stream as a package of multiple underlying files.      * The package entries are parsed using the delegate parser instance.      * It is not an error if the entry can not be parsed, in that case      * just the entry name (if given) is emitted.      *      * @param archive package stream      * @param xhtml content handler      * @throws IOException if an IO error occurs      * @throws SAXException if a SAX error occurs      */
+comment|/**      * Parses the given stream as a package of multiple underlying files.      * The package entries are parsed using the delegate parser instance.      * It is not an error if the entry can not be parsed, in that case      * just the entry name (if given) is emitted.      *      * @param archive package stream      * @param xhtml content handler      * @throws IOException if an IO error occurs      * @throws SAXException if a SAX error occurs      * @throws TikaException if another error occurs      */
 specifier|public
 name|void
 name|unpack
@@ -988,6 +1002,8 @@ throws|throws
 name|IOException
 throws|,
 name|SAXException
+throws|,
+name|TikaException
 block|{
 try|try
 block|{
@@ -1078,6 +1094,15 @@ condition|)
 block|{
 comment|// For detectors to work, we need a mark/reset supporting
 comment|//  InputStream, which ArchiveInputStream isn't, so wrap
+name|TemporaryResources
+name|tmp
+init|=
+operator|new
+name|TemporaryResources
+argument_list|()
+decl_stmt|;
+try|try
+block|{
 name|TikaInputStream
 name|stream
 init|=
@@ -1086,6 +1111,8 @@ operator|.
 name|get
 argument_list|(
 name|archive
+argument_list|,
+name|tmp
 argument_list|)
 decl_stmt|;
 name|extractor
@@ -1101,6 +1128,15 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
