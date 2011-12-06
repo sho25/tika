@@ -263,6 +263,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|TikaInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -1062,11 +1076,23 @@ name|entrydata
 argument_list|)
 condition|)
 block|{
+comment|// For detectors to work, we need a mark/reset supporting
+comment|//  InputStream, which ArchiveInputStream isn't, so wrap
+name|TikaInputStream
+name|stream
+init|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|archive
+argument_list|)
+decl_stmt|;
 name|extractor
 operator|.
 name|parseEmbedded
 argument_list|(
-name|archive
+name|stream
 argument_list|,
 name|xhtml
 argument_list|,
