@@ -1201,6 +1201,17 @@ name|doneBody
 init|=
 literal|false
 decl_stmt|;
+name|xhtml
+operator|.
+name|startElement
+argument_list|(
+literal|"div"
+argument_list|,
+literal|"class"
+argument_list|,
+literal|"message-body"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|htmlChunk
@@ -1415,6 +1426,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|xhtml
+operator|.
+name|endElement
+argument_list|(
+literal|"div"
+argument_list|)
+expr_stmt|;
 comment|// Process the attachments
 for|for
 control|(
