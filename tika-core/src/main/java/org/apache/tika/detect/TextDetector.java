@@ -98,7 +98,7 @@ specifier|private
 specifier|static
 specifier|final
 name|int
-name|NUMBER_OF_BYTES_TO_TEST
+name|DEFAULT_NUMBER_OF_BYTES_TO_TEST
 init|=
 literal|512
 decl_stmt|;
@@ -168,6 +168,37 @@ literal|false
 expr_stmt|;
 comment|// escape
 block|}
+specifier|private
+specifier|final
+name|int
+name|bytesToTest
+decl_stmt|;
+comment|/**      * Constructs a {@link TextDetector} which will look at the default number      * of bytes from the beginning of the document.      */
+specifier|public
+name|TextDetector
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|DEFAULT_NUMBER_OF_BYTES_TO_TEST
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Constructs a {@link TextDetector} which will look at a given number of      * bytes from the beginning of the document.      */
+specifier|public
+name|TextDetector
+parameter_list|(
+name|int
+name|bytesToTest
+parameter_list|)
+block|{
+name|this
+operator|.
+name|bytesToTest
+operator|=
+name|bytesToTest
+expr_stmt|;
+block|}
 comment|/**      * Looks at the beginning of the document input stream to determine      * whether the document is text or not.      *      * @param input document input stream, or<code>null</code>      * @param metadata ignored      * @return "text/plain" if the input stream suggest a text document,      *         "application/octet-stream" otherwise      */
 specifier|public
 name|MediaType
@@ -199,7 +230,7 @@ name|input
 operator|.
 name|mark
 argument_list|(
-name|NUMBER_OF_BYTES_TO_TEST
+name|bytesToTest
 argument_list|)
 expr_stmt|;
 try|try
@@ -236,7 +267,7 @@ literal|1
 operator|&&
 name|chars
 operator|<
-name|NUMBER_OF_BYTES_TO_TEST
+name|bytesToTest
 condition|)
 block|{
 if|if

@@ -712,7 +712,10 @@ name|detector
 init|=
 operator|new
 name|TextDetector
+argument_list|(
+name|getMinLength
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|ByteArrayInputStream
 name|stream
