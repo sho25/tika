@@ -352,6 +352,13 @@ argument_list|)
 expr_stmt|;
 name|assertTypeByData
 argument_list|(
+literal|"testWORKSSpreadsheet7.0.xlr"
+argument_list|,
+literal|"application/x-tika-msworks-spreadsheet"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
 literal|"testPROJECT2003.mpp"
 argument_list|,
 literal|"application/vnd.ms-project"

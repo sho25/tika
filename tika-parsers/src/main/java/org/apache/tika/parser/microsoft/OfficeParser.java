@@ -537,6 +537,13 @@ argument_list|,
 comment|// Works isn't supported
 name|POIFSDocumentType
 operator|.
+name|XLR
+operator|.
+name|type
+argument_list|,
+comment|// but Works 7.0 Spreadsheet is
+name|POIFSDocumentType
+operator|.
 name|OUTLOOK
 operator|.
 name|type
@@ -672,6 +679,18 @@ operator|.
 name|application
 argument_list|(
 literal|"vnd.ms-works"
+argument_list|)
+argument_list|)
+block|,
+name|XLR
+argument_list|(
+literal|"xlr"
+argument_list|,
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"x-tika-msworks-spreadsheet"
 argument_list|)
 argument_list|)
 block|,
@@ -1188,6 +1207,9 @@ expr_stmt|;
 break|break;
 case|case
 name|WORKBOOK
+case|:
+case|case
+name|XLR
 case|:
 name|Locale
 name|locale

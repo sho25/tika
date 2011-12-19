@@ -340,6 +340,18 @@ argument_list|(
 literal|"vnd.ms-works"
 argument_list|)
 decl_stmt|;
+comment|/** Microsoft Works Spreadsheet 7.0 */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|XLR
+init|=
+name|application
+argument_list|(
+literal|"x-tika-msworks-spreadsheet"
+argument_list|)
+decl_stmt|;
 comment|/** Microsoft Outlook */
 specifier|public
 specifier|static
@@ -625,6 +637,24 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"WksSSWorkBook"
+argument_list|)
+condition|)
+block|{
+comment|// This check has to be before names.contains("Workbook")
+comment|// Works 7.0 spreadsheet files contain both
+comment|// we want to avoid classifying this as Excel
+return|return
+name|XLR
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|names
