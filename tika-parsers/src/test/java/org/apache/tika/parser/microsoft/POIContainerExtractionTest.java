@@ -1069,7 +1069,7 @@ comment|// Filenames are a bit iffy...
 comment|// Should really be 3*embedded pictures then 3*icons then embedded docs
 name|assertEquals
 argument_list|(
-literal|"image1"
+literal|"image1.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1125,7 +1125,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image2"
+literal|"image2.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1139,7 +1139,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image3"
+literal|"image3.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1196,12 +1196,7 @@ expr_stmt|;
 comment|// But we do know their types
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1261,12 +1256,7 @@ expr_stmt|;
 comment|// Embedded image - try
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1281,12 +1271,7 @@ expr_stmt|;
 comment|// Icon of embedded office doc?
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1383,7 +1368,7 @@ expr_stmt|;
 comment|// We don't know their filenames, except for doc images + docx
 name|assertEquals
 argument_list|(
-literal|"image1"
+literal|"image1.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1439,7 +1424,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image2"
+literal|"image2.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1453,7 +1438,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image3"
+literal|"image3.emf"
 argument_list|,
 name|handler
 operator|.
@@ -1557,12 +1542,7 @@ block|}
 comment|// But we do know their types
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1574,7 +1554,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
 name|TYPE_PNG
@@ -1622,12 +1602,7 @@ expr_stmt|;
 comment|// Embedded image - try
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1639,15 +1614,10 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
-name|MediaType
-operator|.
-name|parse
-argument_list|(
-literal|"image/unknown"
-argument_list|)
+name|TYPE_EMF
 argument_list|,
 name|handler
 operator|.
@@ -1659,7 +1629,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc?
+comment|// Icon of embedded office doc
 name|assertEquals
 argument_list|(
 name|TYPE_DOCX

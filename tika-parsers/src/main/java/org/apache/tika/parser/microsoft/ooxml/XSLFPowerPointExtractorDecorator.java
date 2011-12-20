@@ -580,7 +580,7 @@ name|master
 init|=
 name|slide
 operator|.
-name|getMasterSheet
+name|getSlideMaster
 argument_list|()
 decl_stmt|;
 name|CTNotesSlide
