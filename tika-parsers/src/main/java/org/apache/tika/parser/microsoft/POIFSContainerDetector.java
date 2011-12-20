@@ -800,6 +800,22 @@ name|names
 operator|.
 name|contains
 argument_list|(
+literal|"MatOST"
+argument_list|)
+condition|)
+block|{
+comment|// this occurs on older Works Word Processor files (versions 3.0 and 4.0)
+return|return
+name|WPS
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
 literal|"CONTENTS"
 argument_list|)
 operator|&&

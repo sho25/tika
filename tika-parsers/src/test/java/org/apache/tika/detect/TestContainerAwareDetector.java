@@ -350,6 +350,23 @@ argument_list|,
 literal|"application/vnd.ms-works"
 argument_list|)
 expr_stmt|;
+comment|// older Works Word Processor files can't be recognized
+comment|// they were created with Works Word Processor 7.0 (hence the text inside)
+comment|// and exported to the older formats with the "Save As" feature
+name|assertTypeByData
+argument_list|(
+literal|"testWORKSWordProcessor3.0.wps"
+argument_list|,
+literal|"application/vnd.ms-works"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testWORKSWordProcessor4.0.wps"
+argument_list|,
+literal|"application/vnd.ms-works"
+argument_list|)
+expr_stmt|;
 name|assertTypeByData
 argument_list|(
 literal|"testWORKSSpreadsheet7.0.xlr"
