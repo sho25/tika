@@ -843,6 +843,8 @@ operator|.
 name|detect
 argument_list|(
 name|names
+argument_list|,
+name|node
 argument_list|)
 decl_stmt|;
 for|for
