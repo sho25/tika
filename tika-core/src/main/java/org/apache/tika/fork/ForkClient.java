@@ -1130,6 +1130,10 @@ block|,
 name|MemoryURLStreamHandlerFactory
 operator|.
 name|class
+block|,
+name|MemoryURLStreamRecord
+operator|.
+name|class
 block|}
 decl_stmt|;
 name|ClassLoader
