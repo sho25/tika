@@ -35,6 +35,26 @@ name|InputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UUID
+import|;
+end_import
+
 begin_comment
 comment|/**  * An input stream decorator that tags potential exceptions so that the  * stream that caused the exception can easily be identified. This is  * done by using the {@link TaggedIOException} class to wrap all thrown  * {@link IOException}s. See below for an example of using this class.  *<pre>  * TaggedInputStream stream = new TaggedInputStream(...);  * try {  *     // Processing that may throw an IOException either from this stream  *     // or from some other IO activity like temporary files, etc.  *     processStream(stream);  * } catch (IOException e) {  *     if (stream.isCauseOf(e)) {  *         // The exception was caused by this stream.  *         // Use e.getCause() to get the original exception.  *     } else {  *         // The exception was caused by something else.  *     }  * }  *</pre>  *<p>  * Alternatively, the {@link #throwIfCauseOf(Exception)} method can be  * used to let higher levels of code handle the exception caused by this  * stream while other processing errors are being taken care of at this  * lower level.  *<pre>  * TaggedInputStream stream = new TaggedInputStream(...);  * try {  *     processStream(stream);  * } catch (IOException e) {  *     stream.throwIfCauseOf(e);  *     // ... or process the exception that was caused by something else  * }  *</pre>  *  * @see TaggedIOException  */
 end_comment
@@ -46,6 +66,17 @@ name|TaggedInputStream
 extends|extends
 name|ProxyInputStream
 block|{
+comment|/**      * The unique (serializable) tag of this stream.      */
+specifier|private
+specifier|final
+name|Serializable
+name|tag
+init|=
+name|UUID
+operator|.
+name|randomUUID
+argument_list|()
+decl_stmt|;
 comment|/**      * Creates a tagging decorator for the given input stream.      *      * @param proxy input stream to be decorated      */
 specifier|public
 name|TaggedInputStream
@@ -117,12 +148,15 @@ operator|)
 name|exception
 decl_stmt|;
 return|return
-name|this
-operator|==
+name|tag
+operator|.
+name|equals
+argument_list|(
 name|tagged
 operator|.
 name|getTag
 argument_list|()
+argument_list|)
 return|;
 block|}
 else|else
@@ -160,12 +194,15 @@ name|exception
 decl_stmt|;
 if|if
 condition|(
-name|this
-operator|==
+name|tag
+operator|.
+name|equals
+argument_list|(
 name|tagged
 operator|.
 name|getTag
 argument_list|()
+argument_list|)
 condition|)
 block|{
 throw|throw
@@ -196,7 +233,7 @@ name|TaggedIOException
 argument_list|(
 name|e
 argument_list|,
-name|this
+name|tag
 argument_list|)
 throw|;
 block|}
@@ -209,9 +246,6 @@ return|return
 literal|"Tika Tagged InputStream wrapping "
 operator|+
 name|in
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}
