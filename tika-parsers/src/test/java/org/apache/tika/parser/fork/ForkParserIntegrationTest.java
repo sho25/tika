@@ -45,6 +45,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|Tika
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|fork
 operator|.
 name|ForkParser
@@ -116,15 +128,21 @@ name|ForkParserIntegrationTest
 extends|extends
 name|TestCase
 block|{
-comment|/**      * Simple text parsing      * TODO Fix this test so it passes      */
+comment|/**      * Simple text parsing      */
 specifier|public
 name|void
-name|DISABLEDtestForkedTextParsing
+name|testForkedTextParsing
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
+name|Tika
+name|tika
+init|=
+operator|new
+name|Tika
+argument_list|()
+decl_stmt|;
 name|ForkParser
 name|parser
 init|=
@@ -138,8 +156,9 @@ operator|.
 name|getClassLoader
 argument_list|()
 argument_list|,
-operator|new
-name|ForkParser
+name|tika
+operator|.
+name|getParser
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -161,7 +180,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"testTXT.txt"
+literal|"/test-documents/testTXT.txt"
 argument_list|)
 decl_stmt|;
 name|ParseContext
@@ -210,7 +229,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"http://www.apache.org/"
+literal|"http://www.apache.org"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -224,15 +243,21 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * TIKA-808 - Ensure that parsing of our test PDFs work under      *  the Fork Parser, to ensure that complex parsing behaves      * TODO Fix this test so it passes      */
+comment|/**      * TIKA-808 - Ensure that parsing of our test PDFs work under      * the Fork Parser, to ensure that complex parsing behaves      */
 specifier|public
 name|void
-name|DISABLEDtestForkedPDFParsing
+name|testForkedPDFParsing
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-specifier|final
+name|Tika
+name|tika
+init|=
+operator|new
+name|Tika
+argument_list|()
+decl_stmt|;
 name|ForkParser
 name|parser
 init|=
@@ -246,8 +271,9 @@ operator|.
 name|getClassLoader
 argument_list|()
 argument_list|,
-operator|new
-name|ForkParser
+name|tika
+operator|.
+name|getParser
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -269,7 +295,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"testPDF.pdf"
+literal|"/test-documents/testPDF.pdf"
 argument_list|)
 decl_stmt|;
 name|ParseContext
@@ -351,13 +377,6 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-specifier|public
-name|void
-name|testDUMMY
-parameter_list|()
-block|{
-comment|// To avoid warnings about no tests while others are disabled
 block|}
 block|}
 end_class
