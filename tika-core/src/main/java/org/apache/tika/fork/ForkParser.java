@@ -249,6 +249,7 @@ name|ForkClient
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/**      * @param loader The ClassLoader to use       * @param parser the parser to delegate to. This one cannot be another ForkParser      */
 specifier|public
 name|ForkParser
 parameter_list|(
@@ -259,6 +260,21 @@ name|Parser
 name|parser
 parameter_list|)
 block|{
+if|if
+condition|(
+name|parser
+operator|instanceof
+name|ForkParser
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"The underlying parser of a ForkParser should not be a ForkParser, but a specific implementation."
+argument_list|)
+throw|;
+block|}
 name|this
 operator|.
 name|loader
@@ -401,6 +417,21 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+if|if
+condition|(
+name|stream
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"null stream"
+argument_list|)
+throw|;
+block|}
 name|Throwable
 name|t
 decl_stmt|;

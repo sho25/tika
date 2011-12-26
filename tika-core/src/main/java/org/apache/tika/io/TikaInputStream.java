@@ -244,6 +244,21 @@ block|{
 if|if
 condition|(
 name|stream
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|NullPointerException
+argument_list|(
+literal|"The Stream must not be null"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|stream
 operator|instanceof
 name|TikaInputStream
 condition|)
