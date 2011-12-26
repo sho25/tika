@@ -859,6 +859,9 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
+name|byte
+operator|)
 name|type
 operator|==
 name|ForkServer
