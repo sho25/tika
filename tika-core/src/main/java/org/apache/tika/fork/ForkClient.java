@@ -79,6 +79,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|NotSerializableException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -138,6 +148,20 @@ operator|.
 name|zip
 operator|.
 name|ZipEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
 import|;
 end_import
 
@@ -244,6 +268,8 @@ name|java
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 name|boolean
 name|ok
@@ -490,6 +516,8 @@ name|args
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 name|List
 argument_list|<
@@ -573,6 +601,8 @@ name|resources
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 name|int
 name|n
@@ -674,6 +704,8 @@ name|n
 argument_list|)
 expr_stmt|;
 block|}
+try|try
+block|{
 name|ForkObjectInputStream
 operator|.
 name|sendObject
@@ -683,6 +715,34 @@ argument_list|,
 name|output
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NotSerializableException
+name|nse
+parameter_list|)
+block|{
+comment|// Build a more friendly error message for this
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Unable to serialize "
+operator|+
+name|object
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getSimpleName
+argument_list|()
+operator|+
+literal|" to pass to the Forked Parser"
+argument_list|,
+name|nse
+argument_list|)
+throw|;
+block|}
 name|waitForResponse
 argument_list|(
 name|resources

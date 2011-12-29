@@ -472,10 +472,26 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|TikaException
+name|te
+parameter_list|)
+block|{
+comment|// Problem occurred on our side
+name|alive
+operator|=
+literal|true
+expr_stmt|;
+throw|throw
+name|te
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
 block|{
+comment|// Problem occurred on the other side
 throw|throw
 operator|new
 name|TikaException
