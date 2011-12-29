@@ -107,20 +107,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|config
-operator|.
-name|TikaConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|detect
 operator|.
 name|Detector
@@ -494,6 +480,106 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * This error isn't serializable on the server, so can't be sent back      *  to the Fork Client once it has occured      */
+specifier|static
+class|class
+name|WontBeSerializedError
+extends|extends
+name|RuntimeException
+block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
+name|WontBeSerializedError
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|writeObject
+parameter_list|(
+name|java
+operator|.
+name|io
+operator|.
+name|ObjectOutputStream
+name|out
+parameter_list|)
+block|{
+name|RuntimeException
+name|e
+init|=
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"Bang!"
+argument_list|)
+decl_stmt|;
+name|boolean
+name|found
+init|=
+literal|false
+decl_stmt|;
+for|for
+control|(
+name|StackTraceElement
+name|ste
+range|:
+name|e
+operator|.
+name|getStackTrace
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|ste
+operator|.
+name|getClassName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|ForkParser
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+condition|)
+block|{
+name|found
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|found
+condition|)
+block|{
+throw|throw
+name|e
+throw|;
+block|}
+block|}
+block|}
 specifier|static
 class|class
 name|BrokenParser
@@ -510,13 +596,19 @@ literal|995871497930817839L
 decl_stmt|;
 specifier|public
 name|Error
-name|e
+name|err
 init|=
 operator|new
 name|AnError
 argument_list|(
 literal|"Simulated fail"
 argument_list|)
+decl_stmt|;
+specifier|public
+name|RuntimeException
+name|re
+init|=
+literal|null
 decl_stmt|;
 specifier|public
 name|Set
@@ -570,8 +662,17 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+if|if
+condition|(
+name|re
+operator|!=
+literal|null
+condition|)
 throw|throw
-name|e
+name|re
+throw|;
+throw|throw
+name|err
 throw|;
 block|}
 block|}
@@ -617,6 +718,7 @@ argument_list|(
 literal|"/test-documents/testTXT.txt"
 argument_list|)
 decl_stmt|;
+comment|// With a serializable error, we'll get that back
 try|try
 block|{
 name|ContentHandler
@@ -664,7 +766,7 @@ name|assertEquals
 argument_list|(
 name|brokenParser
 operator|.
-name|e
+name|err
 argument_list|,
 name|e
 operator|.
@@ -673,6 +775,48 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// With a non serializable one, we'll get something else
+comment|// TODO Fix this test
+name|brokenParser
+operator|=
+operator|new
+name|BrokenParser
+argument_list|()
+expr_stmt|;
+name|brokenParser
+operator|.
+name|re
+operator|=
+operator|new
+name|WontBeSerializedError
+argument_list|(
+literal|"Can't Serialize"
+argument_list|)
+expr_stmt|;
+name|parser
+operator|=
+operator|new
+name|ForkParser
+argument_list|(
+name|ForkParser
+operator|.
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
+argument_list|,
+name|brokenParser
+argument_list|)
+expr_stmt|;
+comment|//        try {
+comment|//           ContentHandler output = new BodyContentHandler();
+comment|//           ParseContext context = new ParseContext();
+comment|//           parser.parse(stream, output, new Metadata(), context);
+comment|//           fail("Expected TikaException caused by Error");
+comment|//       } catch (TikaException e) {
+comment|//           assertEquals(TikaException.class, e.getCause().getClass());
+comment|//           assertEquals("Bang!", e.getCause().getMessage());
+comment|//       }
 block|}
 comment|/**      * If we supply a non serializable object on the ParseContext,      *  check we get a helpful exception back      */
 specifier|public
