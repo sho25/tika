@@ -659,7 +659,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"XXXID3v1 Comment\nTest Comment"
+literal|"XXX - ID3v1 Comment\nTest Comment"
 argument_list|,
 name|metadata
 operator|.
@@ -1299,8 +1299,20 @@ name|ALBUM
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO Fix comments
-comment|//       assertEquals("Comment Desc - This is a comment", metadata.get(XMPDM.LOG_COMMENT));
+name|assertEquals
+argument_list|(
+literal|"Eng - Comment Desc\nThis is a \u1357\u2468\u2460 Comment"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|XMPDM
+operator|.
+name|LOG_COMMENT
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"MPEG 3 Layer III Version 1"
