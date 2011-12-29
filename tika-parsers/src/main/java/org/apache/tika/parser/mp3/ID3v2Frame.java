@@ -907,7 +907,7 @@ decl_stmt|;
 name|String
 name|encoding
 init|=
-literal|"ISO-8859-1"
+literal|"ISO8859_1"
 decl_stmt|;
 name|byte
 name|maybeEncodingFlag
