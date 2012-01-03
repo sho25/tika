@@ -135,6 +135,7 @@ decl_stmt|;
 comment|/**      * Singleton instance of this class.      */
 specifier|public
 specifier|static
+specifier|final
 name|EmptyParser
 name|INSTANCE
 init|=
