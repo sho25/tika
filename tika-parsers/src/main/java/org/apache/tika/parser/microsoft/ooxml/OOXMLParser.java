@@ -145,6 +145,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|EmptyParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ParseContext
 import|;
 end_import
@@ -442,6 +456,22 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
+comment|// Not a supported type, delegate to Empty Parser
+name|EmptyParser
+operator|.
+name|INSTANCE
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 comment|// Have the OOXML file processed
