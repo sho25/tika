@@ -1152,6 +1152,7 @@ block|}
 block|}
 comment|/**      * Turns formatted sheet events into HTML      */
 specifier|protected
+specifier|static
 class|class
 name|SheetTextAsHTML
 implements|implements
@@ -1431,6 +1432,7 @@ name|HeaderFooterHelper
 argument_list|()
 decl_stmt|;
 specifier|protected
+specifier|static
 class|class
 name|HeaderFooterFromString
 implements|implements
@@ -1523,6 +1525,7 @@ block|{}
 block|}
 comment|/**      * Captures information on interesting tags, whilst      *  delegating the main work to the formatting handler      */
 specifier|protected
+specifier|static
 class|class
 name|XSSFSheetInterestingPartsCapturer
 implements|implements

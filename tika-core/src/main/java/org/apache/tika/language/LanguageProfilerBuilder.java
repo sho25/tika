@@ -2397,6 +2397,7 @@ comment|// throw new TikaException("");
 block|}
 block|}
 comment|/**      * Inner class that describes a NGram      */
+specifier|static
 class|class
 name|NGramEntry
 implements|implements
@@ -2690,6 +2691,7 @@ block|}
 block|}
 block|}
 specifier|private
+specifier|static
 class|class
 name|QuickStringBuffer
 implements|implements

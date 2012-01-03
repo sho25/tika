@@ -659,6 +659,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Defines a RootXML description. RootXML is made of a localName and/or a      * namespaceURI.      */
+specifier|static
 class|class
 name|RootXML
 implements|implements

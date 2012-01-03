@@ -105,6 +105,7 @@ init|=
 literal|0
 decl_stmt|;
 specifier|private
+specifier|static
 class|class
 name|Counter
 block|{
