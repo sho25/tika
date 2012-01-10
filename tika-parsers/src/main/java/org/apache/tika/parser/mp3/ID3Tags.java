@@ -17,6 +17,16 @@ name|mp3
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface that defines the common interface for ID3 tag parsers,  *  such as ID3v1 and ID3v2.3.  * Implementations should return NULL if the file lacks a given  *  tag, or if the tag isn't defined for the version.  *    * Note that so far, only the ID3v1 core tags are listed here. In  *  future, we may wish to add more to cover the extra tags that  *  our ID3v2 handlers can produce.  */
 end_comment
@@ -438,8 +448,12 @@ name|String
 name|getComposer
 parameter_list|()
 function_decl|;
-name|String
-name|getComment
+comment|/**      * Retrieves the comments, if any.      * Files may have more than one comment, but normally only       *  one with any language/description pair.      */
+name|List
+argument_list|<
+name|ID3Comment
+argument_list|>
+name|getComments
 parameter_list|()
 function_decl|;
 name|String
@@ -454,6 +468,103 @@ name|String
 name|getTrackNumber
 parameter_list|()
 function_decl|;
+comment|/**      * Represents a comments in ID3 (especially ID3 v2), where are       *  made up of several parts      */
+specifier|public
+specifier|static
+class|class
+name|ID3Comment
+block|{
+specifier|private
+name|String
+name|language
+decl_stmt|;
+specifier|private
+name|String
+name|description
+decl_stmt|;
+specifier|private
+name|String
+name|text
+decl_stmt|;
+comment|/**          * Creates an ID3 v1 style comment tag          */
+specifier|public
+name|ID3Comment
+parameter_list|(
+name|String
+name|id3v1Text
+parameter_list|)
+block|{
+name|this
+operator|.
+name|text
+operator|=
+name|id3v1Text
+expr_stmt|;
+block|}
+comment|/**          * Creates an ID3 v2 style comment tag          */
+specifier|public
+name|ID3Comment
+parameter_list|(
+name|String
+name|language
+parameter_list|,
+name|String
+name|description
+parameter_list|,
+name|String
+name|text
+parameter_list|)
+block|{
+name|this
+operator|.
+name|language
+operator|=
+name|language
+expr_stmt|;
+name|this
+operator|.
+name|description
+operator|=
+name|description
+expr_stmt|;
+name|this
+operator|.
+name|text
+operator|=
+name|text
+expr_stmt|;
+block|}
+comment|/**          * Gets the language, if present          */
+specifier|public
+name|String
+name|getLanguage
+parameter_list|()
+block|{
+return|return
+name|language
+return|;
+block|}
+comment|/**          * Gets the description, if present          */
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|description
+return|;
+block|}
+comment|/**          * Gets the text, if present          */
+specifier|public
+name|String
+name|getText
+parameter_list|()
+block|{
+return|return
+name|text
+return|;
+block|}
+block|}
 block|}
 end_interface
 

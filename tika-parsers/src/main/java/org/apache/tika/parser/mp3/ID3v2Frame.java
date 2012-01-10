@@ -57,6 +57,24 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|mp3
+operator|.
+name|ID3Tags
+operator|.
+name|ID3Comment
+import|;
+end_import
+
 begin_comment
 comment|/**  * A frame of ID3v2 data, which is then passed to a handler to   * be turned into useful data.  */
 end_comment
@@ -1146,11 +1164,11 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Returns the comment string, in the form [LANG]: [Desc]\n[Text]      */
+comment|/**      * Builds up the ID3 comment, by parsing and extracting      *  the comment string parts from the given data.       */
 specifier|protected
 specifier|static
-name|String
-name|getCommentString
+name|ID3Comment
+name|getComment
 parameter_list|(
 name|byte
 index|[]
@@ -1191,7 +1209,7 @@ else|else
 block|{
 comment|// Invalid string
 return|return
-literal|""
+literal|null
 return|;
 block|}
 name|TextEncoding
@@ -1441,42 +1459,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Return
-if|if
-condition|(
-name|description
-operator|==
-literal|null
-operator|||
-name|description
-operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
 return|return
+operator|new
+name|ID3Comment
+argument_list|(
 name|lang
-operator|+
-literal|" - "
-operator|+
-name|text
-return|;
-block|}
-else|else
-block|{
-return|return
-name|lang
-operator|+
-literal|" - "
-operator|+
+argument_list|,
 name|description
-operator|+
-literal|"\n"
-operator|+
+argument_list|,
 name|text
+argument_list|)
 return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
