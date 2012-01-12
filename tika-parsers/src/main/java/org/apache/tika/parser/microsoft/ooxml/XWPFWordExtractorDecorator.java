@@ -290,6 +290,7 @@ name|XWPFWordExtractor
 name|extractor
 parameter_list|)
 block|{
+comment|// TODO Have the type detected rather than hard coded
 name|super
 argument_list|(
 name|context

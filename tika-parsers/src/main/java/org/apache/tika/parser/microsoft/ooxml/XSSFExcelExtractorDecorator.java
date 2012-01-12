@@ -646,6 +646,7 @@ name|Boolean
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// TODO Have this detected rather than hard coded
 specifier|private
 specifier|static
 specifier|final
