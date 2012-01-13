@@ -416,16 +416,6 @@ name|XSLFPowerPointExtractorDecorator
 extends|extends
 name|AbstractOOXMLExtractor
 block|{
-comment|// TODO Have this detected rather than hard coded
-comment|//private static final String TYPE = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|TYPE
-init|=
-literal|null
-decl_stmt|;
 specifier|public
 name|XSLFPowerPointExtractorDecorator
 parameter_list|(
@@ -441,8 +431,6 @@ argument_list|(
 name|context
 argument_list|,
 name|extractor
-argument_list|,
-name|TYPE
 argument_list|)
 expr_stmt|;
 block|}

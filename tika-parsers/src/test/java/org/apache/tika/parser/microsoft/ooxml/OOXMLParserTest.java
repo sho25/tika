@@ -3825,10 +3825,20 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|// When detection / type is fixed, re-enable this
-comment|//       assertEquals(
-comment|//             "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-comment|//             metadata.get(Metadata.CONTENT_TYPE));
+name|assertEquals
+argument_list|(
+literal|"application/vnd.openxmlformats-officedocument.presentationml.presentation"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"JOUVIN ETIENNE"

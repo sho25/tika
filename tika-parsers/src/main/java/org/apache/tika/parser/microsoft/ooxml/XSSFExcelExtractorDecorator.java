@@ -646,15 +646,6 @@ name|Boolean
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// TODO Have this detected rather than hard coded
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|TYPE
-init|=
-literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-decl_stmt|;
 specifier|public
 name|XSSFExcelExtractorDecorator
 parameter_list|(
@@ -673,8 +664,6 @@ argument_list|(
 name|context
 argument_list|,
 name|extractor
-argument_list|,
-name|TYPE
 argument_list|)
 expr_stmt|;
 name|this
@@ -2014,8 +2003,6 @@ operator|new
 name|MetadataExtractor
 argument_list|(
 name|extractor
-argument_list|,
-name|TYPE
 argument_list|)
 block|{
 annotation|@
