@@ -1515,6 +1515,15 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+name|long
+name|hour
+init|=
+literal|60
+operator|*
+literal|60
+operator|*
+literal|1000
+decl_stmt|;
 comment|// Isn't initially set, will get null back
 name|assertEquals
 argument_list|(
@@ -1968,7 +1977,7 @@ name|getTime
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Dates without times
+comment|// Dates without times, come in at midday UTC
 name|meta
 operator|.
 name|set
@@ -1982,7 +1991,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|12
+operator|*
+name|hour
 argument_list|,
 name|meta
 operator|.
@@ -2010,7 +2021,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|12
+operator|*
+name|hour
 argument_list|,
 name|meta
 operator|.
