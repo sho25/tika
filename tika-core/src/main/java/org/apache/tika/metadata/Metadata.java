@@ -259,6 +259,23 @@ literal|null
 argument_list|)
 block|,
 comment|// Without timezone
+comment|// Date without time, set to Midnight UTC
+name|createDateFormat
+argument_list|(
+literal|"yyyy-MM-dd"
+argument_list|,
+literal|"UTC"
+argument_list|)
+block|,
+comment|// Normal date format
+name|createDateFormat
+argument_list|(
+literal|"yyyy:MM:dd"
+argument_list|,
+literal|"UTC"
+argument_list|)
+block|,
+comment|// Image (IPTC/EXIF) format
 block|}
 decl_stmt|;
 specifier|private
