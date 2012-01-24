@@ -770,6 +770,7 @@ literal|"ppsm"
 block|,
 literal|"ppsx"
 block|,
+literal|"potm"
 comment|//"thmx", // TIKA-418: Will be supported in POI 3.7 beta 2
 comment|//"xps" // TIKA-418: Not yet supported by POI
 block|}
@@ -789,6 +790,8 @@ block|,
 literal|"application/vnd.ms-powerpoint.slideshow.macroenabled.12"
 block|,
 literal|"application/vnd.openxmlformats-officedocument.presentationml.slideshow"
+block|,
+literal|"application/vnd.ms-powerpoint.template.macroenabled.12"
 block|}
 decl_stmt|;
 for|for
