@@ -80,16 +80,6 @@ init|=
 literal|"Manager"
 decl_stmt|;
 name|String
-name|LINE_COUNT
-init|=
-literal|"Line-Count"
-decl_stmt|;
-name|String
-name|CHARACTER_COUNT_WITH_SPACES
-init|=
-literal|"Character-Count-With-Spaces"
-decl_stmt|;
-name|String
 name|APPLICATION_VERSION
 init|=
 literal|"Application-Version"
@@ -152,6 +142,17 @@ argument_list|(
 literal|"Paragraph-Count"
 argument_list|)
 decl_stmt|;
+comment|/** The number of lines in the document */
+name|Property
+name|LINE_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Line-Count"
+argument_list|)
+decl_stmt|;
 comment|/** The number of Words in the document */
 name|Property
 name|WORD_COUNT
@@ -172,6 +173,17 @@ operator|.
 name|internalInteger
 argument_list|(
 literal|"Character Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Characters in the document, including spaces */
+name|Property
+name|CHARACTER_COUNT_WITH_SPACES
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Character-Count-With-Spaces"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Tables in the document */
