@@ -45,24 +45,9 @@ init|=
 literal|"Application-Name"
 decl_stmt|;
 name|String
-name|CHARACTER_COUNT
-init|=
-literal|"Character Count"
-decl_stmt|;
-name|String
-name|PAGE_COUNT
-init|=
-literal|"Page-Count"
-decl_stmt|;
-name|String
 name|REVISION_NUMBER
 init|=
 literal|"Revision-Number"
-decl_stmt|;
-name|String
-name|WORD_COUNT
-init|=
-literal|"Word-Count"
 decl_stmt|;
 name|String
 name|TEMPLATE
@@ -80,19 +65,9 @@ init|=
 literal|"Total-Time"
 decl_stmt|;
 name|String
-name|SLIDE_COUNT
-init|=
-literal|"Slide-Count"
-decl_stmt|;
-name|String
 name|PRESENTATION_FORMAT
 init|=
 literal|"Presentation-Format"
-decl_stmt|;
-name|String
-name|PARAGRAPH_COUNT
-init|=
-literal|"Paragraph-Count"
 decl_stmt|;
 name|String
 name|NOTES
@@ -143,6 +118,94 @@ name|String
 name|SECURITY
 init|=
 literal|"Security"
+decl_stmt|;
+comment|/** The number of Slides are there in the (presentation) document */
+name|Property
+name|SLIDE_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Slide-Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Pages are there in the (paged) document */
+name|Property
+name|PAGE_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Page-Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of individual Paragraphs in the document */
+name|Property
+name|PARAGRAPH_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Paragraph-Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Words in the document */
+name|Property
+name|WORD_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Word-Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Characters in the document */
+name|Property
+name|CHARACTER_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Character Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Tables in the document */
+name|Property
+name|TABLE_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Table-Count"
+argument_list|)
+decl_stmt|;
+comment|/** The number of Images in the document */
+name|Property
+name|IMAGE_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Image-Count"
+argument_list|)
+decl_stmt|;
+comment|/**       * The number of Objects in the document.      * This is typically non-Image resources embedded in the      *  document, such as other documents or non-Image media.       */
+name|Property
+name|OBJECT_COUNT
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+literal|"Object-Count"
+argument_list|)
 decl_stmt|;
 comment|/** How long has been spent editing the document? */
 name|String
