@@ -152,6 +152,8 @@ name|Geographic
 implements|,
 name|HttpHeaders
 implements|,
+name|IPTC
+implements|,
 name|Message
 implements|,
 name|MSOffice
