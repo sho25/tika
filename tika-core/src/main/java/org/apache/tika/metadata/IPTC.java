@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * IPTC Photo Metadata schema. This is a collection of  * {@link Property property definition} constants for the Photo Metadata  * properties defined in the IPTC standard.  *  * @since Apache Tika 1.1  * @see<a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-201007_1.pdf">IPTC Photo Metadata</a>  */
+comment|/**  * IPTC Photo Metadata schema. This is a collection of  * {@link Property property definition} constants for the Photo Metadata  * properties defined in the IPTC standard.  *   * Note - the Properties with the _DCPROPERTY are expected to change shortly  *  * @since Apache Tika 1.1  * @see<a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-201007_1.pdf">IPTC Photo Metadata</a>  */
 end_comment
 
 begin_interface
@@ -136,7 +136,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * A textual description, including captions, of the item's content, 	 * particularly used where the object is not text. 	 *<p> 	 * Note: the XMP property (dc:description) which stores the value of this 	 * IPTC Core property is of type Lang Alt. Hence any software agent dealing 	 * with this property must abide to the processing rules for 	 * Lang Alt value type as specified by the XMP specifications. 	 *<p> 	 * Maps to this IIM property: 2:120 Caption/Abstract 	 */
 name|Property
-name|DESCRIPTION
+name|DESCRIPTION_DCPROPERTY
 init|=
 name|Property
 operator|.
@@ -181,7 +181,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * Keywords to express the subject of the content. Keywords may be free 	 * text and don't have to be taken from a controlled vocabulary. Codes from 	 * the controlled vocabulary IPTC Subject NewsCodes must go to the 	 * "Subject Code" field. 	 *<p> 	 * Single values of this field should not be restricted to single words 	 * but must allow for phrases as well. 	 *<p> 	 * Maps to this IIM property: 2:25 Keywords 	 */
 name|Property
-name|KEYWORDS
+name|KEYWORDS_DCPROPERTY
 init|=
 name|Property
 operator|.
@@ -316,7 +316,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * A shorthand reference for the item. Title provides a short human readable 	 * name which can be a text and/or numeric reference. It is not the same as 	 * Headline. 	 *<p> 	 * Many use the Title field to store the filename of the image, though the 	 * field may be used in many ways. Formal identifiers are provided by the 	 * Digital Image Id, or the Registry Entry property of the IPTC Extension. 	 *<p> 	 * Note 1: This element aligns with the use of Dublin Core's "Title" 	 * element. 	 * Note 2: the XMP property (dc:title) which stores the value of 	 * this IPTC Core property is of type Lang Alt. Hence any software agent 	 * dealing with this property must abide to the processing rules for Lang 	 * Alt value type as specified by the XMP specifications. 	 *<p> 	 * Maps to this IIM property: 2:05 Object Name 	 */
 name|Property
-name|TITLE
+name|TITLE_DCPROPERTY
 init|=
 name|Property
 operator|.
@@ -346,7 +346,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * Contains the name of the person who created the content of this item, a 	 * photographer for photos, a graphic artist for graphics, or a writer for 	 * textual news, but in cases where the photographer should not be 	 * identified the name of a company or organisation may be appropriate. 	 *<p> 	 * The creator can be expressed in a more controlled way using the 	 * "Image Creator" of PLUS in the IPTC Extension additionally. It is the 	 * user's responsibility to keep the values of the IPTC Core and the PLUS 	 * fields in sync. 	 *<p> 	 * Maps to this IIM property: 2:80 By-line 	 */
 name|Property
-name|CREATOR
+name|CREATOR_DCPROPERTY
 init|=
 name|Property
 operator|.
@@ -554,9 +554,9 @@ operator|+
 literal|"CiUrlWork"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * As this metadata element pertains to distribution management, it was not 	 * adopted. However, this data is still synchronised with the XMP property 	 * �photoshop:Urgency�, and hence, available for future use, but outside the 	 * IPTC Core. 	 * 	 * @deprecated 	 */
+comment|/** 	 * As this metadata element pertains to distribution management, it was not 	 * adopted. However, this data is still synchronised with the XMP property 	 * [photoshop:Urgency], and hence, available for future use, but outside the 	 * IPTC Core. 	 * 	 * @deprecated 	 */
 name|Property
-name|URGENCY
+name|PHOTOSHOP_URGENCY
 init|=
 name|Property
 operator|.
@@ -571,7 +571,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * As this metadata element was earmarked as deprecated already for IIM 4.1, 	 * it was not adopted. However, this data is still synchronised with the XMP 	 * property [photoshop:Category], and hence available for future use - but 	 * outside the IPTC Core. For migrating from Category codes to Subject Codes 	 * please read the Guideline for mapping Category Codes to Subject NewsCodes 	 * section below. 	 * 	 * @deprecated 	 */
 name|Property
-name|CATEGORY
+name|PHOTOSHOP_CATEGORY
 init|=
 name|Property
 operator|.
@@ -586,7 +586,7 @@ argument_list|)
 decl_stmt|;
 comment|/** 	 * As this metadata element was earmarked as deprecated already for IIM 4.1, 	 * it was not adopted. However, this data is still synchronised with the XMP 	 * property [photoshop:SupplementalCategories], and hence available for 	 * future use - but outside the IPTC Core. 	 * 	 * @deprecated 	 */
 name|Property
-name|SUPPLEMENTAL_CATEGORIES
+name|PHOTOSHOP_SUPPLEMENTAL_CATEGORIES
 init|=
 name|Property
 operator|.
@@ -1603,13 +1603,13 @@ name|COUNTRY
 block|,
 name|COUNTRY_CODE
 block|,
-name|DESCRIPTION
+name|DESCRIPTION_DCPROPERTY
 block|,
 name|HEADLINE
 block|,
 name|INTELLECTUAL_GENRE
 block|,
-name|KEYWORDS
+name|KEYWORDS_DCPROPERTY
 block|,
 name|PROVINCE_OR_STATE
 block|,
@@ -1627,11 +1627,11 @@ name|INSTRUCTIONS
 block|,
 name|JOB_ID
 block|,
-name|TITLE
+name|TITLE_DCPROPERTY
 block|,
 name|COPYRIGHT_NOTICE
 block|,
-name|CREATOR
+name|CREATOR_DCPROPERTY
 block|,
 name|CREATORS_JOB_TITLE
 block|,
