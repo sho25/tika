@@ -303,7 +303,7 @@ name|iso
 operator|.
 name|boxes
 operator|.
-name|AbstractContainerBox
+name|Box
 import|;
 end_import
 
@@ -317,7 +317,7 @@ name|iso
 operator|.
 name|boxes
 operator|.
-name|Box
+name|ContainerBox
 import|;
 end_import
 
@@ -374,6 +374,34 @@ operator|.
 name|boxes
 operator|.
 name|MovieHeaderBox
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|coremedia
+operator|.
+name|iso
+operator|.
+name|boxes
+operator|.
+name|SampleDescriptionBox
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|coremedia
+operator|.
+name|iso
+operator|.
+name|boxes
+operator|.
+name|SampleTableBox
 import|;
 end_import
 
@@ -608,6 +636,22 @@ operator|.
 name|apple
 operator|.
 name|AppleTrackTitleBox
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|coremedia
+operator|.
+name|iso
+operator|.
+name|boxes
+operator|.
+name|sampleentry
+operator|.
+name|AudioSampleEntry
 import|;
 end_import
 
@@ -888,6 +932,9 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|IsoFile
+name|isoFile
+decl_stmt|;
 comment|// The MP4Parser library accepts either a File, or a byte array
 comment|// As MP4 video files are typically large, always use a file to
 comment|//  avoid OOMs that may occur with in-memory buffering
@@ -901,6 +948,8 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|IsoBufferWrapper
 name|isoBufferWrapper
 init|=
@@ -913,20 +962,28 @@ name|getFile
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|IsoFile
 name|isoFile
-init|=
+operator|=
 operator|new
 name|IsoFile
 argument_list|(
 name|isoBufferWrapper
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|isoFile
 operator|.
 name|parse
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|tstream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Grab the file type box
 name|FileTypeBox
 name|fileType
@@ -1221,30 +1278,24 @@ operator|>
 literal|0
 condition|)
 block|{
-name|TrackHeaderBox
-name|header
+name|TrackBox
+name|track
 init|=
-name|getOrNull
-argument_list|(
 name|tb
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-argument_list|,
-name|TrackHeaderBox
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
-if|if
-condition|(
+name|TrackHeaderBox
 name|header
-operator|!=
-literal|null
-condition|)
-block|{
+init|=
+name|track
+operator|.
+name|getTrackHeaderBox
+argument_list|()
+decl_stmt|;
 comment|// Get the creation and modification dates
 name|metadata
 operator|.
@@ -1321,6 +1372,72 @@ name|getHeight
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Get the sample information
+name|SampleTableBox
+name|samples
+init|=
+name|track
+operator|.
+name|getSampleTableBox
+argument_list|()
+decl_stmt|;
+name|SampleDescriptionBox
+name|sampleDesc
+init|=
+name|samples
+operator|.
+name|getSampleDescriptionBox
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|sampleDesc
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Look for the first Audio Sample, if present
+name|AudioSampleEntry
+name|sample
+init|=
+name|getOrNull
+argument_list|(
+name|sampleDesc
+argument_list|,
+name|AudioSampleEntry
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sample
+operator|!=
+literal|null
+condition|)
+block|{
+comment|//metadata.set(XMPDM.AUDIO_CHANNEL_TYPE, sample.getChannelCount()); // TODO Num -> Name mapping
+comment|//metadata.set(XMPDM.AUDIO_SAMPLE_TYPE, sample.getSampleSize());    // TODO Num -> Type mapping
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|XMPDM
+operator|.
+name|AUDIO_SAMPLE_RATE
+argument_list|,
+operator|(
+name|int
+operator|)
+name|sample
+operator|.
+name|getSampleRate
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//metadata.set(XMPDM.AUDIO_, sample.getSamplesPerPacket());
+comment|//metadata.set(XMPDM.AUDIO_, sample.getBytesPerSample());
+block|}
 block|}
 block|}
 comment|// Get metadata from the User Data Box
@@ -1794,7 +1911,7 @@ parameter_list|>
 name|T
 name|getOrNull
 parameter_list|(
-name|AbstractContainerBox
+name|ContainerBox
 name|box
 parameter_list|,
 name|Class
