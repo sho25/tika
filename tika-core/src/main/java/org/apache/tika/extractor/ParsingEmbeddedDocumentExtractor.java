@@ -578,35 +578,11 @@ operator|.
 name|getOpenContainer
 argument_list|()
 decl_stmt|;
-comment|// TODO: we can't let ZipPackage through,
-comment|// becase of POI bug 51949.  This is less
-comment|// efficient because the inner parser will
-comment|// have to re-open the zip archive again.
-comment|// Once we upgrade to POI 3.8 beta 5 we can
-comment|// remove this:
 if|if
 condition|(
-operator|(
 name|container
 operator|!=
 literal|null
-operator|&&
-operator|!
-operator|(
-name|container
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getSimpleName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"ZipPackage"
-argument_list|)
-operator|)
-operator|)
 condition|)
 block|{
 name|newStream
