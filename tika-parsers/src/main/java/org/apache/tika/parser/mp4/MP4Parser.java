@@ -1416,7 +1416,20 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//metadata.set(XMPDM.AUDIO_CHANNEL_TYPE, sample.getChannelCount()); // TODO Num -> Name mapping
+name|XMPDM
+operator|.
+name|ChannelTypePropertyConverter
+operator|.
+name|convertAndSet
+argument_list|(
+name|metadata
+argument_list|,
+name|sample
+operator|.
+name|getChannelCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|//metadata.set(XMPDM.AUDIO_SAMPLE_TYPE, sample.getSampleSize());    // TODO Num -> Type mapping
 name|metadata
 operator|.
