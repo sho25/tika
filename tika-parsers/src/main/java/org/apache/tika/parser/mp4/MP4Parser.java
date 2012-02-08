@@ -1921,6 +1921,15 @@ argument_list|>
 name|clazz
 parameter_list|)
 block|{
+if|if
+condition|(
+name|box
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 name|List
 argument_list|<
 name|T
