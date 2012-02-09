@@ -732,7 +732,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// assertAutoDetect("testKeynote.key", KEYNOTE, "A sample presentation");
+name|assertAutoDetect
+argument_list|(
+literal|"testKeynote.key"
+argument_list|,
+name|KEYNOTE
+argument_list|,
+literal|"A sample presentation"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -741,7 +749,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// assertAutoDetect("testPages.pages", PAGES, "Sample pages document");
+name|assertAutoDetect
+argument_list|(
+literal|"testPages.pages"
+argument_list|,
+name|PAGES
+argument_list|,
+literal|"Sample pages document"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -750,7 +766,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// assertAutoDetect("testNumbers.numbers", NUMBERS, "Checking Account: 300545668");
+name|assertAutoDetect
+argument_list|(
+literal|"testNumbers.numbers"
+argument_list|,
+name|NUMBERS
+argument_list|,
+literal|"Checking Account: 300545668"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
