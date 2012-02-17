@@ -65,20 +65,6 @@ name|TreeSet
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|TikaConfig
-import|;
-end_import
-
 begin_comment
 comment|/**  * Registry of known Internet media types.  */
 end_comment
@@ -107,9 +93,9 @@ name|getDefaultRegistry
 parameter_list|()
 block|{
 return|return
-name|TikaConfig
+name|MimeTypes
 operator|.
-name|getDefaultConfig
+name|getDefaultMimeTypes
 argument_list|()
 operator|.
 name|getMediaTypeRegistry
