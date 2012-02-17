@@ -71,6 +71,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Calendar
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Date
 import|;
 end_import
@@ -82,6 +92,16 @@ operator|.
 name|util
 operator|.
 name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|GregorianCalendar
 import|;
 end_import
 
@@ -190,18 +210,32 @@ name|metadata
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * The ISO-8601 format string we use for Dates.      * All dates are represented as UTC      */
+comment|/**      * The UTC time zone. Not sure if {@link TimeZone#getTimeZone(String)}      * understands "UTC" in all environments, but it'll fall back to GMT      * in such cases, which is in practice equivalent to UTC.      */
 specifier|private
 specifier|static
 specifier|final
-name|DateFormat
-name|iso8601Format
+name|TimeZone
+name|UTC
 init|=
-name|createDateFormat
+name|TimeZone
+operator|.
+name|getTimeZone
 argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ss'Z'"
-argument_list|,
 literal|"UTC"
+argument_list|)
+decl_stmt|;
+comment|/**      * Custom time zone used to interpret date values without a time      * component in a way that most likely falls within the same day      * regardless of in which time zone it is later interpreted. For      * example, the "2012-02-17" date would map to "2012-02-17T12:00:00Z"      * (instead of the default "2012-02-17T00:00:00Z"), which would still      * map to "2012-02-17" if interpreted in say Pacific time (while the      * default mapping would result in "2012-02-16" for UTC-8).      */
+specifier|private
+specifier|static
+specifier|final
+name|TimeZone
+name|MIDDAY
+init|=
+name|TimeZone
+operator|.
+name|getTimeZone
+argument_list|(
+literal|"GMT-12:00"
 argument_list|)
 decl_stmt|;
 comment|/**      * Some parsers will have the date as a ISO-8601 string      *  already, and will set that into the Metadata object.      * So we can return Date objects for these, this is the      *  list (in preference order) of the various ISO-8601      *  variants that we try when processing a date based      *  property.      */
@@ -217,7 +251,12 @@ name|DateFormat
 index|[]
 block|{
 comment|// yyyy-mm-ddThh...
-name|iso8601Format
+name|createDateFormat
+argument_list|(
+literal|"yyyy-MM-dd'T'HH:mm:ss'Z'"
+argument_list|,
+name|UTC
+argument_list|)
 block|,
 comment|// UTC/Zulu
 name|createDateFormat
@@ -241,7 +280,7 @@ name|createDateFormat
 argument_list|(
 literal|"yyyy-MM-dd' 'HH:mm:ss'Z'"
 argument_list|,
-literal|"UTC"
+name|UTC
 argument_list|)
 block|,
 comment|// UTC/Zulu
@@ -266,7 +305,7 @@ name|createDateFormat
 argument_list|(
 literal|"yyyy-MM-dd"
 argument_list|,
-literal|"GMT-12:00"
+name|MIDDAY
 argument_list|)
 block|,
 comment|// Normal date format
@@ -274,7 +313,7 @@ name|createDateFormat
 argument_list|(
 literal|"yyyy:MM:dd"
 argument_list|,
-literal|"GMT-12:00"
+name|MIDDAY
 argument_list|)
 block|,
 comment|// Image (IPTC/EXIF) format
@@ -288,7 +327,7 @@ parameter_list|(
 name|String
 name|format
 parameter_list|,
-name|String
+name|TimeZone
 name|timezone
 parameter_list|)
 block|{
@@ -320,12 +359,7 @@ name|sdf
 operator|.
 name|setTimeZone
 argument_list|(
-name|TimeZone
-operator|.
-name|getTimeZone
-argument_list|(
 name|timezone
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -449,7 +483,6 @@ block|}
 comment|/**      * Returns a ISO 8601 representation of the given date. This method is      * synchronized to prevent concurrent access to the thread-unsafe date      * formats.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-495">TIKA-495</a>      * @param date given date      * @return ISO 8601 date string      */
 specifier|private
 specifier|static
-specifier|synchronized
 name|String
 name|formatDate
 parameter_list|(
@@ -457,12 +490,89 @@ name|Date
 name|date
 parameter_list|)
 block|{
+name|Calendar
+name|calendar
+init|=
+name|GregorianCalendar
+operator|.
+name|getInstance
+argument_list|(
+name|UTC
+argument_list|,
+name|Locale
+operator|.
+name|US
+argument_list|)
+decl_stmt|;
+name|calendar
+operator|.
+name|setTime
+argument_list|(
+name|date
+argument_list|)
+expr_stmt|;
 return|return
-name|iso8601Format
+name|String
 operator|.
 name|format
 argument_list|(
-name|date
+literal|"%04d-%02d-%02dT%02d:%02d:%02dZ"
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|YEAR
+argument_list|)
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|MONTH
+argument_list|)
+operator|+
+literal|1
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|DAY_OF_MONTH
+argument_list|)
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|HOUR_OF_DAY
+argument_list|)
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|MINUTE
+argument_list|)
+argument_list|,
+name|calendar
+operator|.
+name|get
+argument_list|(
+name|Calendar
+operator|.
+name|SECOND
+argument_list|)
 argument_list|)
 return|;
 block|}
