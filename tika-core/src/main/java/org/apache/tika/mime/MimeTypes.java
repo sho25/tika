@@ -938,7 +938,7 @@ condition|)
 block|{
 synchronized|synchronized
 init|(
-name|types
+name|this
 init|)
 block|{
 comment|// Double check it didn't already get added while
