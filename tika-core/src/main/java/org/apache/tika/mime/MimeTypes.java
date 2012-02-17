@@ -883,7 +883,6 @@ return|;
 block|}
 comment|/**      * Returns the registered media type with the given name (or alias).      * The named media type is automatically registered (and returned) if      * it doesn't already exist.      *      * @param name media type name (case-insensitive)      * @return the registered media type with the given name or alias      * @throws MimeTypeException if the given media type name is invalid      */
 specifier|public
-specifier|synchronized
 name|MimeType
 name|forName
 parameter_list|(
@@ -910,6 +909,16 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|MediaType
+name|normalisedType
+init|=
+name|registry
+operator|.
+name|normalize
+argument_list|(
+name|type
+argument_list|)
+decl_stmt|;
 name|MimeType
 name|mime
 init|=
@@ -917,14 +926,32 @@ name|types
 operator|.
 name|get
 argument_list|(
-name|registry
-operator|.
-name|normalize
-argument_list|(
-name|type
-argument_list|)
+name|normalisedType
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|mime
+operator|==
+literal|null
+condition|)
+block|{
+synchronized|synchronized
+init|(
+name|types
+init|)
+block|{
+comment|// Double check it didn't already get added while
+comment|//  we were waiting for the lock
+name|mime
+operator|=
+name|types
+operator|.
+name|get
+argument_list|(
+name|normalisedType
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|mime
@@ -954,6 +981,8 @@ argument_list|,
 name|mime
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 return|return
 name|mime
