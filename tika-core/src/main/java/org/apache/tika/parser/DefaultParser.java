@@ -283,7 +283,7 @@ return|return
 name|parsers
 return|;
 block|}
-specifier|private
+specifier|public
 name|DefaultParser
 parameter_list|(
 name|MediaTypeRegistry

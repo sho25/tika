@@ -297,7 +297,7 @@ return|return
 name|detectors
 return|;
 block|}
-specifier|private
+specifier|public
 name|DefaultDetector
 parameter_list|(
 name|MimeTypes
