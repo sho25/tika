@@ -131,6 +131,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|imageio
+operator|.
+name|stream
+operator|.
+name|ImageInputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -507,10 +519,11 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|reader
-operator|.
-name|setInput
-argument_list|(
+try|try
+block|{
+name|ImageInputStream
+name|imageStream
+init|=
 name|ImageIO
 operator|.
 name|createImageInputStream
@@ -521,6 +534,14 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|reader
+operator|.
+name|setInput
+argument_list|(
+name|imageStream
 argument_list|)
 expr_stmt|;
 name|metadata
@@ -615,11 +636,24 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|imageStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
 name|reader
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// Translate certain Metadata tags from the ImageIO
 comment|//  specific namespace into the general Tika one
