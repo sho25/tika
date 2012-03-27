@@ -134,6 +134,16 @@ name|TikaException
 name|expected
 parameter_list|)
 block|{         }
+finally|finally
+block|{
+name|System
+operator|.
+name|clearProperty
+argument_list|(
+literal|"tika.config"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Make sure that a configuration file can reference also a composite      * parser class like {@link DefaultParser} in a&lt;parser&gt;      * configuration element.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-866">TIKA-866</a>      */
 specifier|public
@@ -188,6 +198,16 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
+name|System
+operator|.
+name|clearProperty
+argument_list|(
+literal|"tika.config"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Make sure that a valid configuration file without mimetypes or      * detector entries can be loaded without problems.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-866">TIKA-866</a>      */
 specifier|public
@@ -239,6 +259,16 @@ argument_list|(
 literal|"Unexpected TikaException: "
 operator|+
 name|e
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|System
+operator|.
+name|clearProperty
+argument_list|(
+literal|"tika.config"
 argument_list|)
 expr_stmt|;
 block|}
