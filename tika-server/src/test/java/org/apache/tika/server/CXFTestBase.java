@@ -87,6 +87,20 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
+name|core
+operator|.
+name|HttpHeaders
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -556,7 +570,7 @@ name|String
 name|address
 parameter_list|,
 name|String
-name|accept
+name|contentType
 parameter_list|,
 name|InputStream
 name|content
@@ -585,7 +599,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|accept
+name|contentType
 operator|!=
 literal|null
 condition|)
@@ -593,9 +607,11 @@ name|put
 operator|.
 name|setRequestHeader
 argument_list|(
-literal|"Accept"
+name|HttpHeaders
+operator|.
+name|CONTENT_TYPE
 argument_list|,
-name|accept
+name|contentType
 argument_list|)
 expr_stmt|;
 name|HttpClient
@@ -813,17 +829,6 @@ name|releaseConnection
 argument_list|()
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"DATA: "
-operator|+
-name|data
-argument_list|)
-expr_stmt|;
 return|return
 name|data
 return|;
