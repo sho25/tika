@@ -230,7 +230,8 @@ control|(
 name|Detector
 name|detector
 range|:
-name|detectors
+name|getDetectors
+argument_list|()
 control|)
 block|{
 name|MediaType
