@@ -1063,10 +1063,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//FIXME: Disabled until TIKA-593 is done @Test
+comment|//FIXME: Disabled for now until TIKA-593 is done @Test
 specifier|public
 name|void
-name|Xtest415
+name|test415
 parameter_list|()
 throws|throws
 name|Exception
@@ -1090,7 +1090,7 @@ argument_list|)
 operator|.
 name|accept
 argument_list|(
-literal|"application/zip"
+literal|"*/*"
 argument_list|)
 operator|.
 name|put
