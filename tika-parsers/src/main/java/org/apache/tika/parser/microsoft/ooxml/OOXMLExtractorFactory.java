@@ -143,6 +143,22 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|openxml4j
+operator|.
+name|opc
+operator|.
+name|PackageAccess
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
 name|xslf
 operator|.
 name|extractor
@@ -444,7 +460,7 @@ decl_stmt|;
 name|OPCPackage
 name|pkg
 decl_stmt|;
-comment|// Open the OPCPackage for the file
+comment|// Locate or Open the OPCPackage for the file
 name|TikaInputStream
 name|tis
 init|=
@@ -506,6 +522,17 @@ argument_list|()
 operator|.
 name|getPath
 argument_list|()
+argument_list|,
+name|PackageAccess
+operator|.
+name|READ
+argument_list|)
+expr_stmt|;
+name|tis
+operator|.
+name|setOpenContainer
+argument_list|(
+name|pkg
 argument_list|)
 expr_stmt|;
 block|}
