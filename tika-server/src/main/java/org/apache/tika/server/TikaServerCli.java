@@ -466,6 +466,15 @@ operator|.
 name|add
 argument_list|(
 operator|new
+name|TikaExceptionMapper
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|providers
+operator|.
+name|add
+argument_list|(
+operator|new
 name|SingletonResourceProvider
 argument_list|(
 operator|new
