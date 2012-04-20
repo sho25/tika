@@ -188,6 +188,13 @@ name|testFile
 argument_list|(
 literal|"application/xml"
 argument_list|,
+literal|"test-utf8-bom.xml"
+argument_list|)
+expr_stmt|;
+name|testFile
+argument_list|(
+literal|"application/xml"
+argument_list|,
 literal|"test-utf16le.xml"
 argument_list|)
 expr_stmt|;
