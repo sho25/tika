@@ -113,6 +113,24 @@ name|archivers
 operator|.
 name|zip
 operator|.
+name|UnsupportedZipFeatureException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|compress
+operator|.
+name|archivers
+operator|.
+name|zip
+operator|.
 name|ZipArchiveEntry
 import|;
 end_import
@@ -411,6 +429,20 @@ argument_list|(
 literal|"vnd.apple.pages"
 argument_list|)
 argument_list|)
+block|,
+name|ENCRYPTED
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"x-tika-iworks-protected"
+argument_list|)
+argument_list|)
 block|;
 specifier|private
 specifier|final
@@ -600,6 +632,13 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|qname
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|uri
 init|=
@@ -652,6 +691,38 @@ return|return
 name|type
 return|;
 block|}
+block|}
+block|}
+else|else
+block|{
+comment|// There was a problem with extracting the root type
+comment|// Password Protected iWorks files are funny, but we can usually
+comment|//  spot them because they encrypt part of the zip stream
+try|try
+block|{
+name|stream
+operator|.
+name|read
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedZipFeatureException
+name|e
+parameter_list|)
+block|{
+comment|// Compression field was likely encrypted
+return|return
+name|ENCRYPTED
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ignored
+parameter_list|)
+block|{              }
 block|}
 return|return
 literal|null
@@ -899,6 +970,15 @@ name|metadata
 argument_list|)
 expr_stmt|;
 break|break;
+case|case
+name|ENCRYPTED
+case|:
+comment|// We can't do anything for the file right now
+name|contentHandler
+operator|=
+literal|null
+expr_stmt|;
+break|break;
 default|default:
 throw|throw
 operator|new
@@ -932,6 +1012,13 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|contentHandler
+operator|!=
+literal|null
+condition|)
+block|{
 name|context
 operator|.
 name|getSAXParser
@@ -952,6 +1039,7 @@ name|contentHandler
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|xhtml
 operator|.
 name|endDocument
