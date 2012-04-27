@@ -1775,6 +1775,33 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Test to ensure that Links are extracted from the text      *       * Note - the PDF contains the text "This is a hyperlink" which      *  a hyperlink annotation, linking to the tika site, on it. This      *  test will need updating when we're able to apply the annotation      *  to the text itself, rather than following on afterwards as now       */
+specifier|public
+name|void
+name|testLinks
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+specifier|final
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testPDFVarious.pdf"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"annotation\"><a href=\"http://tika.apache.org/\"/></div>"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|void
 name|testDisableAutoSpace
