@@ -1091,7 +1091,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Check we get headers, footers and footnotes from keynote      */
+comment|/**      * Check we get headers, footers and footnotes from Pages      */
 specifier|public
 name|void
 name|testParsePagesHeadersFootersFootnotes
@@ -1206,6 +1206,112 @@ argument_list|(
 name|contents
 argument_list|,
 name|footnote
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Check we get annotations (eg comments) from Pages      */
+specifier|public
+name|void
+name|testParsePagesAnnotations
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|commentA
+init|=
+literal|"comment about the APXL file"
+decl_stmt|;
+name|String
+name|commentB
+init|=
+literal|"comment about UIMA"
+decl_stmt|;
+name|InputStream
+name|input
+init|=
+name|IWorkParserTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/test-documents/testPagesComments.pages"
+argument_list|)
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|ContentHandler
+name|handler
+init|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|iWorkParser
+operator|.
+name|parse
+argument_list|(
+name|input
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|parseContext
+argument_list|)
+expr_stmt|;
+name|String
+name|contents
+init|=
+name|handler
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// Check regular text
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"Both Pages 1.x"
+argument_list|)
+expr_stmt|;
+comment|// P1
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"understanding the Pages document"
+argument_list|)
+expr_stmt|;
+comment|// P1
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"should be page 2"
+argument_list|)
+expr_stmt|;
+comment|// P2
+comment|// Check for comments
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+name|commentA
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+name|commentB
 argument_list|)
 expr_stmt|;
 block|}
