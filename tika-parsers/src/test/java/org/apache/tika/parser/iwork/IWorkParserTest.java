@@ -1091,6 +1091,152 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Check we get headers, footers and footnotes from keynote      */
+specifier|public
+name|void
+name|testParsePagesHeadersFootersFootnotes
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|footnote
+init|=
+literal|"Footnote: Do a lot of people really use iWork?!?!"
+decl_stmt|;
+name|String
+name|header
+init|=
+literal|"THIS IS SOME HEADER TEXT"
+decl_stmt|;
+name|String
+name|footer
+init|=
+literal|"THIS IS SOME FOOTER TEXT"
+decl_stmt|;
+name|InputStream
+name|input
+init|=
+name|IWorkParserTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/test-documents/testPagesHeadersFootersFootnotes.pages"
+argument_list|)
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|ContentHandler
+name|handler
+init|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|iWorkParser
+operator|.
+name|parse
+argument_list|(
+name|input
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|parseContext
+argument_list|)
+expr_stmt|;
+name|String
+name|contents
+init|=
+name|handler
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// Check regular text
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"Both Pages 1.x"
+argument_list|)
+expr_stmt|;
+comment|// P1
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"understanding the Pages document"
+argument_list|)
+expr_stmt|;
+comment|// P1
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+literal|"should be page 2"
+argument_list|)
+expr_stmt|;
+comment|// P2
+comment|// Check for headers, footers and footnotes
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+name|header
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+name|footer
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+name|contents
+argument_list|,
+name|footnote
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|assertContains
+parameter_list|(
+name|String
+name|haystack
+parameter_list|,
+name|String
+name|needle
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+name|needle
+operator|+
+literal|" not found in:\n"
+operator|+
+name|haystack
+argument_list|,
+name|haystack
+operator|.
+name|contains
+argument_list|(
+name|needle
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
