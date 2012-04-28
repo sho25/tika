@@ -148,12 +148,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for parsing mp4 files.  *   * TODO Work out why this test passes in Eclipse, but fails from Maven  */
+comment|/**  * Test case for parsing mp4 files.  */
 end_comment
 
 begin_class
 specifier|public
-specifier|abstract
 class|class
 name|MP4ParserTest
 extends|extends
