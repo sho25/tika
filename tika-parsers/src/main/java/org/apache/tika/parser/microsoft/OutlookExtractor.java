@@ -1273,7 +1273,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// nocommit same problem here?
 name|HtmlParser
 name|htmlParser
 init|=
