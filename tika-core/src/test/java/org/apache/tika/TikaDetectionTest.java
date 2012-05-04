@@ -1509,18 +1509,8 @@ literal|"x.swi"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/vnd.audiograph"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.aep"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - Adobe After Effects is a much more common user of .AEP these days
+comment|//assertEquals("application/vnd.audiograph", tika.detect("x.aep"));
 name|assertEquals
 argument_list|(
 literal|"application/vnd.blueice.multipass"
