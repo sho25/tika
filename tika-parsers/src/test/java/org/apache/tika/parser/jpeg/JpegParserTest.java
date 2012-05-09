@@ -909,7 +909,7 @@ block|}
 comment|/**      * Test for an image with the geographic information stored in a slightly      *  different way, see TIKA-915 for details      * Disabled for now, pending a fix to the underlying library      */
 specifier|public
 name|void
-name|testJPEGGeo2
+name|DISABLEDtestJPEGGeo2
 parameter_list|()
 throws|throws
 name|Exception
