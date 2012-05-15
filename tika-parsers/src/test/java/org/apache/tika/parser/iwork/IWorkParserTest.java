@@ -1121,15 +1121,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"MKM done"
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * We don't currently support password protected Pages files, as      *  we don't know how the encryption works (it's not regular Zip      *  Encryption). See TIKA-903 for details      */
 specifier|public
