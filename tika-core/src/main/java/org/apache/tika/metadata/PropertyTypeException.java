@@ -103,6 +103,35 @@ name|found
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|PropertyTypeException
+parameter_list|(
+name|PropertyType
+name|unsupportedPropertyType
+parameter_list|)
+block|{
+name|super
+argument_list|(
+operator|(
+name|unsupportedPropertyType
+operator|!=
+name|PropertyType
+operator|.
+name|COMPOSITE
+operator|)
+condition|?
+operator|(
+name|unsupportedPropertyType
+operator|+
+literal|" is not supported"
+operator|)
+else|:
+operator|(
+literal|"Composite Properties must not include other Composite Properties as either Primary or Secondary"
+operator|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
