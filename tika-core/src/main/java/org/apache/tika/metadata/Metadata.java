@@ -653,7 +653,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Returns a ISO 8601 representation of the given date. This method is      * synchronized to prevent concurrent access to the thread-unsafe date      * formats.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-495">TIKA-495</a>      * @param date given date      * @return ISO 8601 date string      */
+comment|/**      * Returns a ISO 8601 representation of the given date. This method       * is thread safe and non-blocking.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-495">TIKA-495</a>      * @param date given date      * @return ISO 8601 date string      */
 specifier|private
 specifier|static
 name|String
