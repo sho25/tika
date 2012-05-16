@@ -218,7 +218,7 @@ name|get
 argument_list|(
 name|ExecutableParser
 operator|.
-name|ARCHITECTURE
+name|ARCHITECTURE_BITS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -354,7 +354,7 @@ name|get
 argument_list|(
 name|ExecutableParser
 operator|.
-name|ARCHITECTURE
+name|ARCHITECTURE_BITS
 argument_list|)
 argument_list|)
 expr_stmt|;
