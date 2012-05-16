@@ -115,16 +115,21 @@ specifier|static
 enum|enum
 name|PropertyType
 block|{
+comment|/** A single value */
 name|SIMPLE
 block|,
 name|STRUCTURE
 block|,
+comment|/** An un-ordered array */
 name|BAG
 block|,
+comment|/** An ordered array */
 name|SEQ
 block|,
+comment|/** An ordered array with some sort of criteria */
 name|ALT
 block|,
+comment|/** Multiple child properties */
 name|COMPOSITE
 block|}
 specifier|public
