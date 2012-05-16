@@ -571,9 +571,9 @@ decl_stmt|;
 if|if
 condition|(
 name|type
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 name|OOXMLParser
 operator|.
 name|UNSUPPORTED_OOXML_TYPES
