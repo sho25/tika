@@ -27,7 +27,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
+name|Metadata
 import|;
 end_import
 
@@ -93,7 +93,7 @@ name|MetadataFields
 operator|.
 name|isMetadataField
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)

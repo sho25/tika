@@ -397,7 +397,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|DATE
 argument_list|,
@@ -421,7 +421,7 @@ name|Property
 operator|.
 name|internalDate
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|MODIFIED
 argument_list|)

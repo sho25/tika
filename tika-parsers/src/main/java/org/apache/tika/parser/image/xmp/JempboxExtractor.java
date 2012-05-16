@@ -318,7 +318,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|TITLE
 argument_list|,
@@ -343,7 +343,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|DESCRIPTION
 argument_list|,
@@ -378,7 +378,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|CREATOR
 argument_list|,
@@ -438,7 +438,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|,

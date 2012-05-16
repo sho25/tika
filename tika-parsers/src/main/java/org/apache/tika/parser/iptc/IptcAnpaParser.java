@@ -4651,7 +4651,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|SOURCE
 argument_list|,
@@ -4684,7 +4684,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*         metadata.set(DublinCore.DATE, font.getHeader().getCreated().getTime());         metadata.set(                 Property.internalDate(DublinCore.MODIFIED),                 font.getHeader().getModified().getTime()); */
+comment|/*         metadata.set(Metadata.DATE, font.getHeader().getCreated().getTime());         metadata.set(                 Property.internalDate(Metadata.MODIFIED),                 font.getHeader().getModified().getTime()); */
 block|}
 specifier|private
 name|String

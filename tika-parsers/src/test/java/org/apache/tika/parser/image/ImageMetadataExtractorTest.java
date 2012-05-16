@@ -466,7 +466,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|DATE
 argument_list|)
@@ -572,7 +572,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|DATE
 argument_list|)
@@ -664,7 +664,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|DublinCore
+name|Metadata
 operator|.
 name|DATE
 argument_list|)

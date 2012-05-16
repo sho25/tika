@@ -167,7 +167,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|TITLE
 argument_list|,
@@ -178,7 +178,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|,
@@ -189,7 +189,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|CREATOR
 argument_list|,
@@ -200,7 +200,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|DESCRIPTION
 argument_list|,
@@ -211,7 +211,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -222,7 +222,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|CONTRIBUTOR
 argument_list|,
@@ -233,7 +233,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|DATE
 operator|.
@@ -247,7 +247,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|TYPE
 argument_list|,
@@ -258,7 +258,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|FORMAT
 argument_list|,
@@ -269,7 +269,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|IDENTIFIER
 argument_list|,
@@ -280,7 +280,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|LANGUAGE
 argument_list|,
@@ -291,7 +291,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|DublinCore
+name|Metadata
 operator|.
 name|RIGHTS
 argument_list|,
