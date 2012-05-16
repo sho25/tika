@@ -1398,9 +1398,6 @@ block|}
 name|set
 argument_list|(
 name|property
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|Integer
 operator|.
@@ -1499,9 +1496,6 @@ block|}
 name|set
 argument_list|(
 name|property
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|Double
 operator|.
@@ -1589,9 +1583,6 @@ block|}
 name|set
 argument_list|(
 name|property
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|formatDate
 argument_list|(
