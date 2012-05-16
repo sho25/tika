@@ -1507,7 +1507,7 @@ operator|.
 name|read
 argument_list|()
 decl_stmt|;
-comment|// Byte 8 is the OS
+comment|// Byte 8 is the OS, if set (lots of compilers don't)
 comment|// Byte 9 is the OS (specific) ABI version
 name|int
 name|os
@@ -1525,57 +1525,183 @@ operator|.
 name|read
 argument_list|()
 decl_stmt|;
-comment|// TODO Fix up, doesn't seem to be working
-comment|//       switch (os) {
-comment|//         case 0:
-comment|//            metadata.set(PLATFORM, PLATFORM_SYSV);
-comment|//            break;
-comment|//
-comment|//         case 1:
-comment|//            metadata.set(PLATFORM, PLATFORM_HPUX);
-comment|//            break;
-comment|//
-comment|//         case 2:
-comment|//            metadata.set(PLATFORM, PLATFORM_NETBSD);
-comment|//            break;
-comment|//
-comment|//         case 3:
-comment|//            metadata.set(PLATFORM, PLATFORM_LINUX);
-comment|//            break;
-comment|//
-comment|//         case 6:
-comment|//            metadata.set(PLATFORM, PLATFORM_SOLARIS);
-comment|//            break;
-comment|//
-comment|//         case 7:
-comment|//            metadata.set(PLATFORM, PLATFORM_AIX);
-comment|//            break;
-comment|//
-comment|//         case 8:
-comment|//            metadata.set(PLATFORM, PLATFORM_IRIX);
-comment|//            break;
-comment|//
-comment|//         case 9:
-comment|//            metadata.set(PLATFORM, PLATFORM_FREEBSD);
-comment|//            break;
-comment|//
-comment|//         case 10:
-comment|//            metadata.set(PLATFORM, PLATFORM_TRU64);
-comment|//            break;
-comment|//
-comment|//         case 12:
-comment|//            metadata.set(PLATFORM, PLATFORM_FREEBSD);
-comment|//            break;
-comment|//
-comment|//         case 64:
-comment|//         case 97:
-comment|//            metadata.set(PLATFORM, PLATFORM_ARM);
-comment|//            break;
-comment|//
-comment|//         case 255:
-comment|//            metadata.set(PLATFORM, PLATFORM_EMBEDDED);
-comment|//            break;
-comment|//       }
+if|if
+condition|(
+name|os
+operator|>
+literal|0
+operator|||
+name|osVer
+operator|>
+literal|0
+condition|)
+block|{
+switch|switch
+condition|(
+name|os
+condition|)
+block|{
+case|case
+literal|0
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_SYSV
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|1
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_HPUX
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|2
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_NETBSD
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|3
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_LINUX
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|6
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_SOLARIS
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|7
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_AIX
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|8
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_IRIX
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|9
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_FREEBSD
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|10
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_TRU64
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|12
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_FREEBSD
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|64
+case|:
+case|case
+literal|97
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_ARM
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|255
+case|:
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PLATFORM
+argument_list|,
+name|PLATFORM_EMBEDDED
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
 comment|// Bytes 10-16 are padding and lengths
 name|byte
 index|[]
