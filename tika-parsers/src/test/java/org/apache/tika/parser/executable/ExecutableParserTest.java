@@ -222,6 +222,20 @@ name|ARCHITECTURE_BITS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Windows"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|ExecutableParser
+operator|.
+name|PLATFORM
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|String
 name|content
 init|=
@@ -358,6 +372,8 @@ name|ARCHITECTURE_BITS
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//         assertEquals("Linux",
+comment|//               metadata.get(ExecutableParser.PLATFORM));
 name|String
 name|content
 init|=
