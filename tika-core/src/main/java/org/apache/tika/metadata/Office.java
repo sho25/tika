@@ -70,7 +70,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"keyword"
 argument_list|)
@@ -87,7 +87,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"initial-author"
 argument_list|)
@@ -104,7 +104,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"last-author"
 argument_list|)
@@ -121,7 +121,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"creation-date"
 argument_list|)
@@ -138,7 +138,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"save-date"
 argument_list|)
@@ -155,7 +155,7 @@ name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"print-date"
 argument_list|)
@@ -172,7 +172,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"slide-count"
 argument_list|)
@@ -189,7 +189,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"page-count"
 argument_list|)
@@ -206,7 +206,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"paragraph-count"
 argument_list|)
@@ -223,7 +223,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"line-count"
 argument_list|)
@@ -240,7 +240,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"word-count"
 argument_list|)
@@ -257,7 +257,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"character-count"
 argument_list|)
@@ -274,7 +274,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"character-count-with-spaces"
 argument_list|)
@@ -291,7 +291,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"table-count"
 argument_list|)
@@ -308,7 +308,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"image-count"
 argument_list|)
@@ -325,7 +325,7 @@ name|PREFIX_DOC_META_STATS
 operator|+
 name|Metadata
 operator|.
-name|PREFIX_DELIMITER
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"object-count"
 argument_list|)
