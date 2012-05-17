@@ -954,6 +954,9 @@ if|if
 condition|(
 name|property
 operator|.
+name|getPrimaryProperty
+argument_list|()
+operator|.
 name|getPropertyType
 argument_list|()
 operator|!=
@@ -971,6 +974,9 @@ block|}
 if|if
 condition|(
 name|property
+operator|.
+name|getPrimaryProperty
+argument_list|()
 operator|.
 name|getValueType
 argument_list|()
@@ -1040,6 +1046,9 @@ if|if
 condition|(
 name|property
 operator|.
+name|getPrimaryProperty
+argument_list|()
+operator|.
 name|getPropertyType
 argument_list|()
 operator|!=
@@ -1057,6 +1066,9 @@ block|}
 if|if
 condition|(
 name|property
+operator|.
+name|getPrimaryProperty
+argument_list|()
 operator|.
 name|getValueType
 argument_list|()

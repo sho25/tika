@@ -1384,7 +1384,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1537,7 +1537,7 @@ name|meta
 operator|.
 name|getInt
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1575,7 +1575,7 @@ name|meta
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1589,7 +1589,7 @@ name|meta
 operator|.
 name|getInt
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1659,7 +1659,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1678,7 +1678,7 @@ name|meta
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1692,7 +1692,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1706,7 +1706,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1721,7 +1721,7 @@ name|meta
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1735,7 +1735,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1746,7 +1746,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1765,7 +1765,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1796,7 +1796,7 @@ name|meta
 operator|.
 name|getInt
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1808,7 +1808,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1827,7 +1827,7 @@ name|meta
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1841,7 +1841,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1855,7 +1855,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1870,7 +1870,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1883,7 +1883,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1898,7 +1898,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1911,7 +1911,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1926,7 +1926,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1939,7 +1939,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1954,7 +1954,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1967,7 +1967,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -1982,7 +1982,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -1995,7 +1995,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -2010,7 +2010,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -2024,7 +2024,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -2041,7 +2041,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -2054,7 +2054,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -2071,7 +2071,7 @@ name|meta
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -2122,6 +2122,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Defines a composite property, then checks that when set as the      *  composite the value can be retrieved with the property or the aliases      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 specifier|public
 name|void
 name|testCompositeProperty
@@ -2157,6 +2163,13 @@ name|Metadata
 operator|.
 name|DESCRIPTION
 argument_list|)
+block|,
+name|Property
+operator|.
+name|internalText
+argument_list|(
+literal|"testDescriptionAlt"
+argument_list|)
 block|}
 argument_list|)
 decl_stmt|;
@@ -2174,6 +2187,20 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+comment|// Fetch as the composite
+name|assertEquals
+argument_list|(
+name|message
+argument_list|,
+name|meta
+operator|.
+name|get
+argument_list|(
+name|compositeProperty
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Fetch as the primary property on the composite
 name|assertEquals
 argument_list|(
 name|message
@@ -2188,6 +2215,7 @@ name|DESCRIPTION
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Fetch as the aliases
 name|assertEquals
 argument_list|(
 name|message
@@ -2199,6 +2227,18 @@ argument_list|(
 name|Metadata
 operator|.
 name|DESCRIPTION
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|message
+argument_list|,
+name|meta
+operator|.
+name|get
+argument_list|(
+literal|"testDescriptionAlt"
 argument_list|)
 argument_list|)
 expr_stmt|;
