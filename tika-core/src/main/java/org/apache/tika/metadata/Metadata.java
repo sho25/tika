@@ -1349,9 +1349,6 @@ block|{
 name|set
 argument_list|(
 name|property
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 name|value
 argument_list|)
