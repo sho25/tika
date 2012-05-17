@@ -59,6 +59,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|BodyContentHandler
@@ -337,7 +351,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|)
@@ -351,7 +365,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -414,9 +428,38 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RELATION
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Check some of the old style metadata too
+name|assertEquals
+argument_list|(
+literal|"The quick brown fox jumps over the lazy dog"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Gym class featuring a brown fox and lazy dog"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -527,7 +570,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|)
@@ -539,7 +582,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -587,7 +630,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RELATION
 argument_list|)
@@ -682,7 +725,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|)
@@ -696,7 +739,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -766,7 +809,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RELATION
 argument_list|)
