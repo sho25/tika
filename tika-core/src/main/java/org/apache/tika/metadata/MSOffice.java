@@ -114,6 +114,8 @@ init|=
 literal|"Security"
 decl_stmt|;
 comment|/** The number of Slides are there in the (presentation) document */
+annotation|@
+name|Deprecated
 name|Property
 name|SLIDE_COUNT
 init|=
@@ -125,6 +127,8 @@ literal|"Slide-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Pages are there in the (paged) document */
+annotation|@
+name|Deprecated
 name|Property
 name|PAGE_COUNT
 init|=
@@ -136,6 +140,8 @@ literal|"Page-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of individual Paragraphs in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|PARAGRAPH_COUNT
 init|=
@@ -147,6 +153,8 @@ literal|"Paragraph-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of lines in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|LINE_COUNT
 init|=
@@ -158,6 +166,8 @@ literal|"Line-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Words in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|WORD_COUNT
 init|=
@@ -169,6 +179,8 @@ literal|"Word-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Characters in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|CHARACTER_COUNT
 init|=
@@ -180,6 +192,8 @@ literal|"Character Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Characters in the document, including spaces */
+annotation|@
+name|Deprecated
 name|Property
 name|CHARACTER_COUNT_WITH_SPACES
 init|=
@@ -191,6 +205,8 @@ literal|"Character-Count-With-Spaces"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Tables in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|TABLE_COUNT
 init|=
@@ -202,6 +218,8 @@ literal|"Table-Count"
 argument_list|)
 decl_stmt|;
 comment|/** The number of Images in the document */
+annotation|@
+name|Deprecated
 name|Property
 name|IMAGE_COUNT
 init|=
@@ -213,6 +231,8 @@ literal|"Image-Count"
 argument_list|)
 decl_stmt|;
 comment|/**       * The number of Objects in the document.      * This is typically non-Image resources embedded in the      *  document, such as other documents or non-Image media.       */
+annotation|@
+name|Deprecated
 name|Property
 name|OBJECT_COUNT
 init|=
