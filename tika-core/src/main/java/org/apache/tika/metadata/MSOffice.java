@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A collection of Microsoft Office documents property names.  */
+comment|/**  * A collection of Microsoft Office and Open Document property names.  *   * This is being replaced with cleaner, better defined properties in  *  {@link Office}.  */
 end_comment
 
 begin_interface
