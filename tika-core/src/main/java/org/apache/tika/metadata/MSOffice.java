@@ -24,6 +24,8 @@ specifier|public
 interface|interface
 name|MSOffice
 block|{
+annotation|@
+name|Deprecated
 name|String
 name|KEYWORDS
 init|=
@@ -34,6 +36,8 @@ name|COMMENTS
 init|=
 literal|"Comments"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|String
 name|LAST_AUTHOR
 init|=
@@ -226,6 +230,8 @@ init|=
 literal|"Edit-Time"
 decl_stmt|;
 comment|/** When was the document created? */
+annotation|@
+name|Deprecated
 name|Property
 name|CREATION_DATE
 init|=
@@ -237,6 +243,8 @@ literal|"Creation-Date"
 argument_list|)
 decl_stmt|;
 comment|/** When was the document last saved? */
+annotation|@
+name|Deprecated
 name|Property
 name|LAST_SAVED
 init|=
@@ -248,6 +256,8 @@ literal|"Last-Save-Date"
 argument_list|)
 decl_stmt|;
 comment|/** When was the document last printed? */
+annotation|@
+name|Deprecated
 name|Property
 name|LAST_PRINTED
 init|=
