@@ -4572,7 +4572,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|,
@@ -4591,7 +4591,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,

@@ -81,6 +81,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|Office
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|TikaCoreProperties
 import|;
 end_import
@@ -323,6 +337,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//        assertTrue("Metadata not found in " + metadataKeys, metadataKeys.contains(Office.SLIDE_COUNT.getName()));
 name|assertTrue
 argument_list|(
 literal|"Metadata not found in "
@@ -333,9 +348,12 @@ name|metadataKeys
 operator|.
 name|contains
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -349,9 +367,12 @@ name|metadataKeys
 operator|.
 name|contains
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -420,7 +441,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -726,9 +747,12 @@ name|metadataKeys
 operator|.
 name|contains
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -742,9 +766,12 @@ name|metadataKeys
 operator|.
 name|contains
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -806,7 +833,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1161,9 +1188,12 @@ name|metadataKeys
 operator|.
 name|contains
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1241,7 +1271,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)

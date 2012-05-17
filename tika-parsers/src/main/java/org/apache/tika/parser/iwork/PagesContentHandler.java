@@ -1630,7 +1630,7 @@ condition|)
 block|{
 name|metaDataKey
 operator|=
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 expr_stmt|;
@@ -1666,7 +1666,7 @@ condition|)
 block|{
 name|metaDataKey
 operator|=
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 expr_stmt|;

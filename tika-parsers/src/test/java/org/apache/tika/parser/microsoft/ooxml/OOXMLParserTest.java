@@ -153,6 +153,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|Office
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|TikaCoreProperties
 import|;
 end_import
@@ -380,7 +394,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -946,7 +960,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1342,7 +1356,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1695,7 +1709,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -3455,7 +3469,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -3469,7 +3483,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LAST_AUTHOR
 argument_list|)
@@ -3696,7 +3710,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -3710,7 +3724,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LAST_AUTHOR
 argument_list|)
@@ -3738,7 +3752,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -3752,9 +3766,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|LAST_MODIFIED
+name|MODIFIED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3780,7 +3794,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|Office
 operator|.
 name|PAGE_COUNT
 argument_list|)
@@ -3794,7 +3808,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|Office
 operator|.
 name|WORD_COUNT
 argument_list|)
@@ -3822,7 +3836,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|KEYWORDS
 argument_list|)
@@ -4035,7 +4049,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -4049,7 +4063,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LAST_AUTHOR
 argument_list|)
@@ -4077,7 +4091,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|)
@@ -4091,9 +4105,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|LAST_MODIFIED
+name|MODIFIED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4105,7 +4119,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|Office
 operator|.
 name|SLIDE_COUNT
 argument_list|)
@@ -4119,7 +4133,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|Office
 operator|.
 name|WORD_COUNT
 argument_list|)

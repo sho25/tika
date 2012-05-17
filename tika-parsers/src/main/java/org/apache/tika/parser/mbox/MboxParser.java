@@ -1024,7 +1024,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|,

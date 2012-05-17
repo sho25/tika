@@ -279,7 +279,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|)
@@ -293,7 +293,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LAST_AUTHOR
 argument_list|)
@@ -307,7 +307,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|KEYWORDS
 argument_list|)

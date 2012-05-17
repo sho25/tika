@@ -141,6 +141,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|XMPDM
 import|;
 end_import
@@ -1328,6 +1342,8 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//             assertEquals("Test Artist", metadata.get(TikaCoreProperties.AUTHOR));
+comment|//             assertEquals("Test Title", metadata.get(TikaCoreProperties.TITLE));
 comment|// Check some of the XMPDM metadata
 name|assertEquals
 argument_list|(

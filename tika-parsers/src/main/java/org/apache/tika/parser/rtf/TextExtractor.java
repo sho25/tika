@@ -3903,9 +3903,12 @@ condition|)
 block|{
 name|nextMetaData
 operator|=
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
+operator|.
+name|getName
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else
@@ -3957,9 +3960,12 @@ condition|)
 block|{
 name|nextMetaData
 operator|=
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|KEYWORDS
+operator|.
+name|getName
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else

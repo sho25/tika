@@ -109,13 +109,13 @@ operator|+
 literal|"last-author"
 argument_list|)
 decl_stmt|;
-comment|/**     * Name of the principal author of a document     */
+comment|/**     * Name of the principal author(s) of a document     */
 name|Property
 name|AUTHOR
 init|=
 name|Property
 operator|.
-name|internalText
+name|internalTextBag
 argument_list|(
 name|PREFIX_DOC_META
 operator|+

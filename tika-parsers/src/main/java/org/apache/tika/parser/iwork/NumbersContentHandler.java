@@ -1011,14 +1011,9 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
-argument_list|)
 return|;
 block|}
 if|if

@@ -814,7 +814,7 @@ name|addMetadata
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
 argument_list|,
@@ -842,7 +842,7 @@ name|addMetadata
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|KEYWORDS
 argument_list|,
@@ -908,7 +908,7 @@ name|addMetadata
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATION_DATE
 argument_list|,
@@ -944,6 +944,17 @@ argument_list|,
 name|Metadata
 operator|.
 name|LAST_MODIFIED
+argument_list|,
+name|modified
+argument_list|)
+expr_stmt|;
+name|addMetadata
+argument_list|(
+name|metadata
+argument_list|,
+name|TikaCoreProperties
+operator|.
+name|MODIFIED
 argument_list|,
 name|modified
 argument_list|)

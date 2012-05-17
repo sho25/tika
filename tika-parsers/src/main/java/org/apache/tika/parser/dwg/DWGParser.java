@@ -305,14 +305,9 @@ name|TikaCoreProperties
 operator|.
 name|SUBJECT
 block|,
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
-argument_list|)
 block|,
 name|TikaCoreProperties
 operator|.
@@ -367,14 +362,9 @@ operator|.
 name|SUBJECT
 block|,
 comment|// 0x03
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|AUTHOR
-argument_list|)
 block|,
 comment|// 0x04
 literal|null
