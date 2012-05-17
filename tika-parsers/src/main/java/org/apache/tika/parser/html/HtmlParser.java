@@ -833,7 +833,7 @@ comment|// TIKA-339: Don't set language, as it's typically not a very good
 comment|// guess, and it can create ambiguity if another (better) language
 comment|// value is specified by a meta tag in the HTML (or via HTTP response
 comment|// header).
-comment|/*                 String language = match.getLanguage();                 if (language != null) {                     metadata.set(Metadata.CONTENT_LANGUAGE, match.getLanguage());                     metadata.set(Metadata.LANGUAGE, match.getLanguage());                 }                 */
+comment|/*                 String language = match.getLanguage();                 if (language != null) {                     metadata.set(Metadata.CONTENT_LANGUAGE, match.getLanguage());                     metadata.set(TikaCoreProperties.LANGUAGE, match.getLanguage());                 }                 */
 break|break;
 block|}
 block|}

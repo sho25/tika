@@ -57,7 +57,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
+name|Metadata
 import|;
 end_import
 
@@ -71,7 +71,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Metadata
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -466,7 +466,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|)
@@ -572,7 +572,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|)
@@ -664,7 +664,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|)
@@ -782,9 +782,12 @@ argument_list|)
 operator|.
 name|thenReturn
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|when
@@ -885,7 +888,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
 argument_list|)

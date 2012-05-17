@@ -151,7 +151,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
+name|Metadata
 import|;
 end_import
 
@@ -165,7 +165,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Metadata
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -318,7 +318,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|,
@@ -343,7 +343,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
 argument_list|,
@@ -378,7 +378,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATOR
 argument_list|,
@@ -438,7 +438,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,

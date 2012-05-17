@@ -123,20 +123,6 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
 name|Metadata
 import|;
 end_import
@@ -151,7 +137,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Property
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -397,7 +383,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|,
@@ -417,14 +403,9 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Property
-operator|.
-name|internalDate
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
-argument_list|)
 argument_list|,
 name|font
 operator|.

@@ -41,28 +41,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|text
 operator|.
 name|ParseException
@@ -153,7 +131,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
+name|Metadata
 import|;
 end_import
 
@@ -167,7 +145,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Metadata
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -4556,7 +4534,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|,
@@ -4575,7 +4553,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,
@@ -4632,7 +4610,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|,
@@ -4651,7 +4629,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SOURCE
 argument_list|,
@@ -4666,12 +4644,12 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//      metadata.set(Metadata.PUBLISHER,     clean(properties.get("publisher")));
+comment|//      metadata.set(TikaCoreProperties.PUBLISHER,     clean(properties.get("publisher")));
 name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -4684,7 +4662,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*         metadata.set(Metadata.DATE, font.getHeader().getCreated().getTime());         metadata.set(                 Property.internalDate(Metadata.MODIFIED),                 font.getHeader().getModified().getTime()); */
+comment|/*         metadata.set(TikaCoreProperties.DATE, font.getHeader().getCreated().getTime());         metadata.set(                 Property.internalDate(TikaCoreProperties.MODIFIED),                 font.getHeader().getModified().getTime()); */
 block|}
 specifier|private
 name|String

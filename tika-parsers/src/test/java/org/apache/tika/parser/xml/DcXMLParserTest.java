@@ -59,6 +59,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|BodyContentHandler
@@ -168,7 +182,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|)
@@ -182,7 +196,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATOR
 argument_list|)
@@ -198,7 +212,7 @@ name|metadata
 operator|.
 name|isMultiValued
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -212,7 +226,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -228,7 +242,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -245,7 +259,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -262,7 +276,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -279,7 +293,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -296,7 +310,7 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
@@ -313,7 +327,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
 argument_list|)
@@ -327,7 +341,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|IDENTIFIER
 argument_list|)
@@ -341,7 +355,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TYPE
 argument_list|)
@@ -355,7 +369,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|FORMAT
 argument_list|)
@@ -369,7 +383,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LANGUAGE
 argument_list|)
@@ -381,7 +395,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RIGHTS
 argument_list|)
@@ -418,7 +432,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|)
@@ -491,7 +505,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RIGHTS
 argument_list|)

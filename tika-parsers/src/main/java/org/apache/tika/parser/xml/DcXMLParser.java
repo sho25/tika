@@ -27,7 +27,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|DublinCore
+name|Metadata
 import|;
 end_import
 
@@ -41,7 +41,21 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Metadata
+name|Property
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -113,8 +127,8 @@ parameter_list|(
 name|Metadata
 name|metadata
 parameter_list|,
-name|String
-name|name
+name|Property
+name|property
 parameter_list|,
 name|String
 name|element
@@ -130,7 +144,7 @@ name|element
 argument_list|,
 name|metadata
 argument_list|,
-name|name
+name|property
 argument_list|)
 return|;
 block|}
@@ -167,7 +181,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|,
@@ -178,7 +192,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,
@@ -189,7 +203,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATOR
 argument_list|,
@@ -200,7 +214,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
 argument_list|,
@@ -211,7 +225,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|PUBLISHER
 argument_list|,
@@ -222,7 +236,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CONTRIBUTOR
 argument_list|,
@@ -233,12 +247,9 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
-operator|.
-name|getName
-argument_list|()
 argument_list|,
 literal|"date"
 argument_list|)
@@ -247,7 +258,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TYPE
 argument_list|,
@@ -258,7 +269,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|FORMAT
 argument_list|,
@@ -269,7 +280,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|IDENTIFIER
 argument_list|,
@@ -280,7 +291,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LANGUAGE
 argument_list|,
@@ -291,7 +302,7 @@ name|getDublinCoreHandler
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RIGHTS
 argument_list|,

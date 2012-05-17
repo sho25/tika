@@ -173,6 +173,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|XMPDM
 import|;
 end_import
@@ -1155,16 +1169,10 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Property
-operator|.
-name|externalDate
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
-argument_list|)
 argument_list|,
-comment|// TODO Should be a real property
 name|MP4TimeToDate
 argument_list|(
 name|mHeader
@@ -1280,16 +1288,10 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Property
-operator|.
-name|externalDate
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
-argument_list|)
 argument_list|,
-comment|// TODO Should be a real property
 name|MP4TimeToDate
 argument_list|(
 name|header
@@ -1484,7 +1486,7 @@ argument_list|)
 decl_stmt|;
 name|addMetadata
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|TITLE
 argument_list|,

@@ -27,7 +27,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|Metadata
+name|TIFF
 import|;
 end_import
 
@@ -41,7 +41,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|TIFF
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -93,7 +93,7 @@ name|MetadataFields
 operator|.
 name|isMetadataField
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|)
