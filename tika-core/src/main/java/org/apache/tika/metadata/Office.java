@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Office Document properties collection. These properties apply to   *  Office / Productivity Documents of all forms, including (but not limited   *  to) MS Office and OpenDocument formats.  * This is a logical collection of properties, which may be drawn from a  *  few different external definitions.  *   * Note that some of the legacy properties from the {@link MSOffice}  *  collection still need to be migrated over  */
+comment|/**  * Office Document properties collection. These properties apply to   *  Office / Productivity Documents of all forms, including (but not limited   *  to) MS Office and OpenDocument formats.  * This is a logical collection of properties, which may be drawn from a  *  few different external definitions.  *   * Note that some of the legacy properties from the {@link MSOffice}  *  collection still need to be migrated over  *    * @since Apache Tika 1.2  */
 end_comment
 
 begin_interface

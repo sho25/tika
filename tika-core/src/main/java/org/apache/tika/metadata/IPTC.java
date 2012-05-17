@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * IPTC Photo Metadata schema. This is a collection of  * {@link Property property definition} constants for the Photo Metadata  * properties defined in the IPTC standard.  *   * Note - the Properties with the _DCPROPERTY are expected to change shortly  *  * @since Apache Tika 1.1  * @see<a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-201007_1.pdf">IPTC Photo Metadata</a>  */
+comment|/**  * IPTC photo metadata schema.  *   * A collection of  * {@link Property property definition} constants for the photo metadata  * properties defined in the IPTC standard.  *   * @since Apache Tika 1.1  * @see<a href="http://www.iptc.org/std/photometadata/specification/IPTC-PhotoMetadata-201007_1.pdf">IPTC Photo Metadata</a>  */
 end_comment
 
 begin_interface
@@ -24,11 +24,6 @@ specifier|public
 interface|interface
 name|IPTC
 block|{
-name|String
-name|NAMESPACE_URI_DC
-init|=
-literal|"http://purl.org/dc/elements/1.1/"
-decl_stmt|;
 name|String
 name|NAMESPACE_URI_IPTC_CORE
 init|=
@@ -40,24 +35,9 @@ init|=
 literal|"http://iptc.org/std/Iptc4xmpExt/2008-02-29/"
 decl_stmt|;
 name|String
-name|NAMESPACE_URI_PHOTOSHOP
-init|=
-literal|"http://ns.adobe.com/photoshop/1.0/"
-decl_stmt|;
-name|String
 name|NAMESPACE_URI_PLUS
 init|=
 literal|"http://ns.useplus.org/ldf/xmp/1.0/"
-decl_stmt|;
-name|String
-name|NAMESPACE_URI_XMP_RIGHTS
-init|=
-literal|"http://ns.adobe.com/xap/1.0/rights/"
-decl_stmt|;
-name|String
-name|PREFIX_DC
-init|=
-literal|"dc"
 decl_stmt|;
 name|String
 name|PREFIX_IPTC_CORE
@@ -70,56 +50,27 @@ init|=
 literal|"Iptc4xmpExt"
 decl_stmt|;
 name|String
-name|PREFIX_PHOTOSHOP
-init|=
-literal|"photoshop"
-decl_stmt|;
-name|String
 name|PREFIX_PLUS
 init|=
 literal|"plus"
 decl_stmt|;
-name|String
-name|PREFIX_XMP_RIGHTS
-init|=
-literal|"xmpRights"
-decl_stmt|;
-name|String
-name|PREFIX_DELIMITER
-init|=
-literal|":"
-decl_stmt|;
-comment|/** 	 * Name of the city the content is focussing on -- either the place shown 	 * in visual media or referenced by text or audio media. This element is at 	 * the third level of a top-down geographical hierarchy. 	 *<p> 	 * This is a detail of a location with blurred semantics as it does not 	 * clearly indicate whether it is the location in the image or the location 	 * the photo was taken - which can be different. Two more concise properties 	 * are available in IPTC Extension with Location Created and Location Shown 	 * in the Image. 	 *<p> 	 * Maps to this IIM property: 2:90 City 	 */
+comment|/**     * Name of the city the content is focussing on -- either the place shown     * in visual media or referenced by text or audio media. This element is at     * the third level of a top-down geographical hierarchy.     *<p>     * This is a detail of a location with blurred semantics as it does not     * clearly indicate whether it is the location in the image or the location     * the photo was taken - which can be different. Two more concise properties     * are available in IPTC Extension with Location Created and Location Shown     * in the Image.     *<p>     * Maps to this IIM property: 2:90 City     *      * @see Photoshop#CITY     */
 name|Property
 name|CITY
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"City"
-argument_list|)
+name|CITY
 decl_stmt|;
-comment|/** 	 * Full name of the country the content is focussing on -- either the 	 * country shown in visual media or referenced in text or audio media. This 	 * element is at the top/first level of a top- down geographical hierarchy. 	 * The full name should be expressed as a verbal name and not as a code, a 	 * code should go to the element "CountryCode" 	 *<p> 	 * This is a detail of a location with blurred semantics as it does not 	 * clearly indicate whether it is the location in the image or the location 	 * the photo was taken - which can be different. Two more concise properties 	 * are available in IPTC Extension with Location Created and Location Shown 	 * in the Image. 	 *<p> 	 * Maps to this IIM property: 2:101 Country/Primary Location Name 	 */
+comment|/**     * Full name of the country the content is focussing on -- either the     * country shown in visual media or referenced in text or audio media. This     * element is at the top/first level of a top- down geographical hierarchy.     * The full name should be expressed as a verbal name and not as a code, a     * code should go to the element "CountryCode"     *<p>     * This is a detail of a location with blurred semantics as it does not     * clearly indicate whether it is the location in the image or the location     * the photo was taken - which can be different. Two more concise properties     * are available in IPTC Extension with Location Created and Location Shown     * in the Image.     *<p>     * Maps to this IIM property: 2:101 Country/Primary Location Name     *      * @see Photoshop#COUNTRY     */
 name|Property
 name|COUNTRY
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Country"
-argument_list|)
+name|COUNTRY
 decl_stmt|;
-comment|/** 	 * Code of the country the content is focussing on -- either the country 	 * shown in visual media or referenced in text or audio media. This element 	 * is at the top/first level of a top-down geographical hierarchy. The code 	 * should be taken from ISO 3166 two or three letter code. The full name of 	 * a country should go to the "Country" element. 	 *<p> 	 * This is a detail of a location with blurred semantics as it does not 	 * clearly indicate whether it is the location in the image or the location 	 * the photo was taken - which can be different. Two more concise properties 	 * are available in IPTC Extension with Location Created and Location Shown 	 * in the Image. 	 *<p> 	 * Maps to this IIM property: 2:100 Country/Primary Location Code 	 */
+comment|/**     * Code of the country the content is focussing on -- either the country     * shown in visual media or referenced in text or audio media. This element     * is at the top/first level of a top-down geographical hierarchy. The code     * should be taken from ISO 3166 two or three letter code. The full name of     * a country should go to the "Country" element.     *<p>     * This is a detail of a location with blurred semantics as it does not     * clearly indicate whether it is the location in the image or the location     * the photo was taken - which can be different. Two more concise properties     * are available in IPTC Extension with Location Created and Location Shown     * in the Image.     *<p>     * Maps to this IIM property: 2:100 Country/Primary Location Code     */
 name|Property
 name|COUNTRY_CODE
 init|=
@@ -129,42 +80,30 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CountryCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A textual description, including captions, of the item's content, 	 * particularly used where the object is not text. 	 *<p> 	 * Note: the XMP property (dc:description) which stores the value of this 	 * IPTC Core property is of type Lang Alt. Hence any software agent dealing 	 * with this property must abide to the processing rules for 	 * Lang Alt value type as specified by the XMP specifications. 	 *<p> 	 * Maps to this IIM property: 2:120 Caption/Abstract 	 */
+comment|/**     * A textual description, including captions, of the item's content,     * particularly used where the object is not text.     *<p>     * Note: the XMP property (dc:description) which stores the value of this     * IPTC Core property is of type Lang Alt. Hence any software agent dealing     * with this property must abide to the processing rules for     * Lang Alt value type as specified by the XMP specifications.     *<p>     * Maps to this IIM property: 2:120 Caption/Abstract     *      * @see DublinCore#DESCRIPTION     */
 name|Property
-name|DESCRIPTION_DCPROPERTY
+name|DESCRIPTION
 init|=
-name|Property
+name|DublinCore
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_DC
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"description"
-argument_list|)
+name|DESCRIPTION
 decl_stmt|;
-comment|/** 	 * A brief synopsis of the caption. Headline is not the same as Title. 	 *<p> 	 * Maps to this IIM property: 2:105 Headline 	 */
+comment|/**     * A brief synopsis of the caption. Headline is not the same as Title.     *<p>     * Maps to this IIM property: 2:105 Headline     *      * @see Photoshop#HEADLINE     */
 name|Property
 name|HEADLINE
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Headline"
-argument_list|)
+name|HEADLINE
 decl_stmt|;
-comment|/** 	 * Describes the nature, intellectual, artistic or journalistic 	 * characteristic of a item, not specifically its content. 	 *<p> 	 * The IPTC recognizes that the corresponding IPTC Genre NewsCodes needs 	 * photo specific extension to be better usable with this field (as of the 	 * release of this standard in the year 2008). 	 *<p> 	 * Maps to this IIM property: 2:04 Object Attribute Reference 	 */
+comment|/**     * Describes the nature, intellectual, artistic or journalistic     * characteristic of a item, not specifically its content.     *<p>     * The IPTC recognizes that the corresponding IPTC Genre NewsCodes needs     * photo specific extension to be better usable with this field (as of the     * release of this standard in the year 2008).     *<p>     * Maps to this IIM property: 2:04 Object Attribute Reference     */
 name|Property
 name|INTELLECTUAL_GENRE
 init|=
@@ -174,42 +113,30 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"IntellectualGenre"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Keywords to express the subject of the content. Keywords may be free 	 * text and don't have to be taken from a controlled vocabulary. Codes from 	 * the controlled vocabulary IPTC Subject NewsCodes must go to the 	 * "Subject Code" field. 	 *<p> 	 * Single values of this field should not be restricted to single words 	 * but must allow for phrases as well. 	 *<p> 	 * Maps to this IIM property: 2:25 Keywords 	 */
+comment|/**     * Keywords to express the subject of the content. Keywords may be free     * text and don't have to be taken from a controlled vocabulary. Codes from     * the controlled vocabulary IPTC Subject NewsCodes must go to the     * "Subject Code" field.     *<p>     * Single values of this field should not be restricted to single words     * but must allow for phrases as well.     *<p>     * Maps to this IIM property: 2:25 Keywords     *      * @see DublinCore#SUBJECT     */
 name|Property
-name|KEYWORDS_DCPROPERTY
+name|KEYWORDS
 init|=
-name|Property
+name|DublinCore
 operator|.
-name|internalTextBag
-argument_list|(
-name|PREFIX_DC
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"subject"
-argument_list|)
+name|SUBJECT
 decl_stmt|;
-comment|/** 	 * Name of the subregion of a country -- either called province or state or 	 * anything else -- the content is focussing on -- either the subregion 	 * shown in visual media or referenced by text or audio media. This element 	 * is at the second level of a top-down geographical hierarchy. 	 *<p> 	 * This is a detail of a location with blurred semantics as it does not 	 * clearly indicate whether it is the location in the image or the location 	 * the photo was taken - which can be different. Two more concise properties 	 * are available in IPTC Extension with Location Created and Location Shown 	 * in the Image. 	 *<p> 	 * Maps to this IIM property: 2:95 Province/State 	 */
+comment|/**     * Name of the subregion of a country -- either called province or state or     * anything else -- the content is focussing on -- either the subregion     * shown in visual media or referenced by text or audio media. This element     * is at the second level of a top-down geographical hierarchy.     *<p>     * This is a detail of a location with blurred semantics as it does not     * clearly indicate whether it is the location in the image or the location     * the photo was taken - which can be different. Two more concise properties     * are available in IPTC Extension with Location Created and Location Shown     * in the Image.     *<p>     * Maps to this IIM property: 2:95 Province/State     *      * @see Photoshop#STATE     */
 name|Property
 name|PROVINCE_OR_STATE
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"State"
-argument_list|)
+name|STATE
 decl_stmt|;
-comment|/** 	 * Describes the scene of a news content. Specifies one or more terms 	 * from the IPTC "Scene-NewsCodes". Each Scene is represented as a string of 	 * 6 digits in an unordered list. 	 *<p> 	 * Note: Only Scene values from this IPTC taxonomy should be used here. More 	 * about the IPTC Scene-NewsCodes at www.newscodes.org. 	 */
+comment|/**     * Describes the scene of a news content. Specifies one or more terms     * from the IPTC "Scene-NewsCodes". Each Scene is represented as a string of     * 6 digits in an unordered list.     *<p>     * Note: Only Scene values from this IPTC taxonomy should be used here. More     * about the IPTC Scene-NewsCodes at www.newscodes.org.     */
 name|Property
 name|SCENE_CODE
 init|=
@@ -219,12 +146,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"Scene"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Specifies one or more Subjects from the IPTC Subject-NewsCodes taxonomy 	 * to categorise the content. Each Subject is represented as a string of 8 	 * digits in an unordered list. 	 *<p> 	 * Note: Only Subjects from a controlled vocabulary should be used here, 	 * free text has to be put into the Keyword element. More about 	 * IPTC Subject-NewsCodes at www.newscodes.org. 	 */
+comment|/**     * Specifies one or more Subjects from the IPTC Subject-NewsCodes taxonomy     * to categorise the content. Each Subject is represented as a string of 8     * digits in an unordered list.     *<p>     * Note: Only Subjects from a controlled vocabulary should be used here,     * free text has to be put into the Keyword element. More about     * IPTC Subject-NewsCodes at www.newscodes.org.     */
 name|Property
 name|SUBJECT_CODE
 init|=
@@ -234,12 +163,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"SubjectCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of a sublocation the content is focussing on -- either the 	 * location shown in visual media or referenced by text or audio media. This 	 * location name could either be the name of a sublocation to a city or the 	 * name of a well known location or (natural) monument outside a city. In 	 * the sense of a sublocation to a city this element is at the fourth level 	 * of a top-down geographical hierarchy. 	 *<p> 	 * This is a detail of a location with blurred semantics as it does not 	 * clearly indicate whether it is the location in the image or the location 	 * the photo was taken - which can be different. Two more concise properties 	 * are available in IPTC Extension with Location Created and Location Shown 	 * in the Image. 	 *<p> 	 * Maps to this IIM property: 2:92 Sublocation 	 */
+comment|/**     * Name of a sublocation the content is focussing on -- either the     * location shown in visual media or referenced by text or audio media. This     * location name could either be the name of a sublocation to a city or the     * name of a well known location or (natural) monument outside a city. In     * the sense of a sublocation to a city this element is at the fourth level     * of a top-down geographical hierarchy.     *<p>     * This is a detail of a location with blurred semantics as it does not     * clearly indicate whether it is the location in the image or the location     * the photo was taken - which can be different. Two more concise properties     * are available in IPTC Extension with Location Created and Location Shown     * in the Image.     *<p>     * Maps to this IIM property: 2:92 Sublocation     */
 name|Property
 name|SUBLOCATION
 init|=
@@ -249,117 +180,70 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"Location"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Designates the date and optionally the time the intellectual content was 	 * created rather than the date of the creation of the physical 	 * representation. 	 *<p> 	 * If a software system requires explicit time values and no time is given 	 * by the Date Created property the software system should default the time 	 * to 00:00:00. If the software system does not require an explicit time 	 * value the time part should be left empty as it is. 	 *<p> 	 * Note 1: Any content of the IIM dataset 2:60, Time Created, should be 	 * merged to this element. 	 * Note 2: Implementers are encouraged to provide 	 * the creation date and time from the EXIF data of a digital 	 * camera to the user for entering this date for the first time. 	 *<p> 	 * Maps to this IIM property: 2:55 Date Created 	 */
+comment|/**     * Designates the date and optionally the time the intellectual content was     * created rather than the date of the creation of the physical     * representation.     *<p>     * If a software system requires explicit time values and no time is given     * by the Date Created property the software system should default the time     * to 00:00:00. If the software system does not require an explicit time     * value the time part should be left empty as it is.     *<p>     * Note 1: Any content of the IIM dataset 2:60, Time Created, should be     * merged to this element.     * Note 2: Implementers are encouraged to provide     * the creation date and time from the EXIF data of a digital     * camera to the user for entering this date for the first time.     *<p>     * Maps to this IIM property: 2:55 Date Created     *      * @see Photoshop#DATE_CREATED     */
 name|Property
 name|DATE_CREATED
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalDate
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"DateCreated"
-argument_list|)
+name|DATE_CREATED
 decl_stmt|;
-comment|/** 	 * Identifier or the name of the person involved in writing, editing or 	 * correcting the description of the content. 	 *<p> 	 * Maps to this IIM property: 2:122 Writer/Editor 	 */
+comment|/**     * Identifier or the name of the person involved in writing, editing or     * correcting the description of the content.     *<p>     * Maps to this IIM property: 2:122 Writer/Editor     *      * @see Photoshop#CAPTION_WRITER     */
 name|Property
 name|DESCRIPTION_WRITER
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"CaptionWriter"
-argument_list|)
+name|CAPTION_WRITER
 decl_stmt|;
-comment|/** 	 * Any of a number of instructions from the provider or creator to the 	 * receiver of the item. 	 *<p> 	 * Maps to this IIM property: 2:40 Special Instruction 	 */
+comment|/**     * Any of a number of instructions from the provider or creator to the     * receiver of the item.     *<p>     * Maps to this IIM property: 2:40 Special Instruction     *      * @see Photoshop#INSTRUCTIONS     */
 name|Property
 name|INSTRUCTIONS
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Instructions"
-argument_list|)
+name|INSTRUCTIONS
 decl_stmt|;
-comment|/** 	 * Number or identifier for the purpose of improved workflow handling. This 	 * is a user created identifier related to the job for which the item is 	 * supplied. 	 *<p> 	 * Note: As this identifier references a job of the receiver's workflow it 	 * must first be issued by the receiver, then transmitted to the creator or 	 * provider of the news object and finally added by the creator 	 * to this field. 	 *<p> 	 * Maps to this IIM property: 2:103 Original Transmission Reference 	 */
+comment|/**     * Number or identifier for the purpose of improved workflow handling. This     * is a user created identifier related to the job for which the item is     * supplied.     *<p>     * Note: As this identifier references a job of the receiver's workflow it     * must first be issued by the receiver, then transmitted to the creator or     * provider of the news object and finally added by the creator     * to this field.     *<p>     * Maps to this IIM property: 2:103 Original Transmission Reference     *      * @see Photoshop#TRANSMISSION_REFERENCE     */
 name|Property
 name|JOB_ID
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"TransmissionReference"
-argument_list|)
+name|TRANSMISSION_REFERENCE
 decl_stmt|;
-comment|/** 	 * A shorthand reference for the item. Title provides a short human readable 	 * name which can be a text and/or numeric reference. It is not the same as 	 * Headline. 	 *<p> 	 * Many use the Title field to store the filename of the image, though the 	 * field may be used in many ways. Formal identifiers are provided by the 	 * Digital Image Id, or the Registry Entry property of the IPTC Extension. 	 *<p> 	 * Note 1: This element aligns with the use of Dublin Core's "Title" 	 * element. 	 * Note 2: the XMP property (dc:title) which stores the value of 	 * this IPTC Core property is of type Lang Alt. Hence any software agent 	 * dealing with this property must abide to the processing rules for Lang 	 * Alt value type as specified by the XMP specifications. 	 *<p> 	 * Maps to this IIM property: 2:05 Object Name 	 */
+comment|/**     * A shorthand reference for the item. Title provides a short human readable     * name which can be a text and/or numeric reference. It is not the same as     * Headline.     *<p>     * Many use the Title field to store the filename of the image, though the     * field may be used in many ways. Formal identifiers are provided by the     * Digital Image Id, or the Registry Entry property of the IPTC Extension.     *<p>     * Note 1: This element aligns with the use of Dublin Core's "Title"     * element.     * Note 2: the XMP property (dc:title) which stores the value of     * this IPTC Core property is of type Lang Alt. Hence any software agent     * dealing with this property must abide to the processing rules for Lang     * Alt value type as specified by the XMP specifications.     *<p>     * Maps to this IIM property: 2:05 Object Name     *      * @see DublinCore#TITLE     */
 name|Property
-name|TITLE_DCPROPERTY
+name|TITLE
 init|=
-name|Property
+name|DublinCore
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_DC
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"title"
-argument_list|)
+name|TITLE
 decl_stmt|;
-comment|/** 	 * Contains any necessary copyright notice for claiming the intellectual 	 * property for this item and should identify the current owner of the 	 * copyright for the item. Other entities like the creator of the item may 	 * be added in the corresponding field. Notes on usage rights should be 	 * provided in "Rights usage terms". 	 *<p> 	 * Copyright ownership can be expressed in a more controlled way using the 	 * PLUS fields "Copyright Owner", "Copyright Owner ID", 	 * "Copyright Owner Name" of the IPTC Extension. It is the user's 	 * responsibility to keep the values of the four fields in sync. 	 *<p> 	 * Note: the XMP property (dc:rights) which stores the value of this IPTC 	 * Core property is of type Lang Alt. Hence any software agent dealing with 	 * this property must abide to the processing rules for Lang Alt 	 * value type as specified by the XMP specifications. 	 *<p> 	 * Maps to this IIM property: 2:116 Copyright Notice 	 */
+comment|/**     * Contains any necessary copyright notice for claiming the intellectual     * property for this item and should identify the current owner of the     * copyright for the item. Other entities like the creator of the item may     * be added in the corresponding field. Notes on usage rights should be     * provided in "Rights usage terms".     *<p>     * Copyright ownership can be expressed in a more controlled way using the     * PLUS fields "Copyright Owner", "Copyright Owner ID",     * "Copyright Owner Name" of the IPTC Extension. It is the user's     * responsibility to keep the values of the four fields in sync.     *<p>     * Note: the XMP property (dc:rights) which stores the value of this IPTC     * Core property is of type Lang Alt. Hence any software agent dealing with     * this property must abide to the processing rules for Lang Alt     * value type as specified by the XMP specifications.     *<p>     * Maps to this IIM property: 2:116 Copyright Notice     *      * @see DublinCore#RIGHTS     */
 name|Property
 name|COPYRIGHT_NOTICE
 init|=
-name|Property
+name|DublinCore
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_DC
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"rights"
-argument_list|)
+name|RIGHTS
 decl_stmt|;
-comment|/** 	 * Contains the name of the person who created the content of this item, a 	 * photographer for photos, a graphic artist for graphics, or a writer for 	 * textual news, but in cases where the photographer should not be 	 * identified the name of a company or organisation may be appropriate. 	 *<p> 	 * The creator can be expressed in a more controlled way using the 	 * "Image Creator" of PLUS in the IPTC Extension additionally. It is the 	 * user's responsibility to keep the values of the IPTC Core and the PLUS 	 * fields in sync. 	 *<p> 	 * Maps to this IIM property: 2:80 By-line 	 */
+comment|/**     * Contains the name of the person who created the content of this item, a     * photographer for photos, a graphic artist for graphics, or a writer for     * textual news, but in cases where the photographer should not be     * identified the name of a company or organisation may be appropriate.     *<p>     * The creator can be expressed in a more controlled way using the     * "Image Creator" of PLUS in the IPTC Extension additionally. It is the     * user's responsibility to keep the values of the IPTC Core and the PLUS     * fields in sync.     *<p>     * Maps to this IIM property: 2:80 By-line     *      * @see DublinCore#CREATOR     */
 name|Property
-name|CREATOR_DCPROPERTY
+name|CREATOR
 init|=
-name|Property
+name|DublinCore
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_DC
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"creator"
-argument_list|)
+name|CREATOR
 decl_stmt|;
-comment|/** 	 * The creator's contact information provides all necessary information to 	 * get in contact with the creator of this item and comprises a set of 	 * sub-properties for proper addressing. 	 *<p> 	 * The IPTC Extension Licensor fields should be used instead of these 	 * Creator's Contact Info fields if you are using IPTC Extension fields. If 	 * the creator is also the licensor his or her contact information should be 	 * provided in the Licensor fields. 	 *<p> 	 * Note 1 to user interface implementers: All sub-properties of "Creator's 	 * contact information" should be shown as group on the form. 	 * Note 2: the 	 * CreatorContactInfo sub-properties' naming aligns with the vCard 	 * specification RFC 2426. 	 */
+comment|/**     * The creator's contact information provides all necessary information to     * get in contact with the creator of this item and comprises a set of     * sub-properties for proper addressing.     *<p>     * The IPTC Extension Licensor fields should be used instead of these     * Creator's Contact Info fields if you are using IPTC Extension fields. If     * the creator is also the licensor his or her contact information should be     * provided in the Licensor fields.     *<p>     * Note 1 to user interface implementers: All sub-properties of "Creator's     * contact information" should be shown as group on the form.     * Note 2: the     * CreatorContactInfo sub-properties' naming aligns with the vCard     * specification RFC 2426.     */
 name|Property
 name|CREATORS_CONTACT_INFO
 init|=
@@ -369,72 +253,46 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CreatorContactInfo"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Contains the job title of the person who created the content of this 	 * item. As this is sort of a qualifier the Creator element has to be filled 	 * in as mandatory prerequisite for using Creator's Jobtitle. 	 *<p> 	 * Maps to this IIM property: 2:85 By-line Title 	 */
+comment|/**     * Contains the job title of the person who created the content of this     * item. As this is sort of a qualifier the Creator element has to be filled     * in as mandatory prerequisite for using Creator's Jobtitle.     *<p>     * Maps to this IIM property: 2:85 By-line Title     *      * @see Photoshop#AUTHORS_POSITION     */
 name|Property
 name|CREATORS_JOB_TITLE
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"AuthorsPosition"
-argument_list|)
+name|AUTHORS_POSITION
 decl_stmt|;
-comment|/** 	 * The credit to person(s) and/or organisation(s) required by the supplier 	 * of the item to be used when published. This is a free-text field. 	 *<p> 	 * Note 1: For more formal identifications of the creator or the owner of 	 * the copyrights of this image other rights properties may be used. 	 * Note 2: 	 * This property was named "Credit" by the IIM metadata, then it was renamed 	 * to "Provider" in IPTC Core 1.0. In IPTC Core 1.1. it has been renamed to 	 * "Credit Line" as the field is used for this purpose by many users. 	 *<p> 	 * Maps to this IIM property: 2:110 Credit 	 */
+comment|/**     * The credit to person(s) and/or organisation(s) required by the supplier     * of the item to be used when published. This is a free-text field.     *<p>     * Note 1: For more formal identifications of the creator or the owner of     * the copyrights of this image other rights properties may be used.     * Note 2:     * This property was named "Credit" by the IIM metadata, then it was renamed     * to "Provider" in IPTC Core 1.0. In IPTC Core 1.1. it has been renamed to     * "Credit Line" as the field is used for this purpose by many users.     *<p>     * Maps to this IIM property: 2:110 Credit     *      * @see Photoshop#CREDIT_LINE     */
 name|Property
 name|CREDIT_LINE
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Credit"
-argument_list|)
+name|CREDIT
 decl_stmt|;
-comment|/** 	 * The licensing parameters of the item expressed in free-text. 	 *<p> 	 * The PLUS fields of the IPTC Extension can be used in parallel to express 	 * the licensed usage in more controlled terms. 	 */
+comment|/**     * The licensing parameters of the item expressed in free-text.     *<p>     * The PLUS fields of the IPTC Extension can be used in parallel to express     * the licensed usage in more controlled terms.     */
 name|Property
 name|RIGHTS_USAGE_TERMS
 init|=
-name|Property
+name|XMPRights
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"UsageTerms"
-argument_list|)
+name|USAGE_TERMS
 decl_stmt|;
-comment|/** 	 * Identifies the original owner of the copyright for the intellectual 	 * content of the item. This could be an agency, a member of an agency or an 	 * individual. Source could be different from Creator and from the entities 	 * in the CopyrightNotice. 	 *<p> 	 * The original owner can never change. For that reason the content of this 	 * property should never be changed or deleted after the information is 	 * entered following the news object's initial creation. 	 *<p> 	 * Maps to this IIM property: 2:115 Source 	 */
+comment|/**     * Identifies the original owner of the copyright for the intellectual     * content of the item. This could be an agency, a member of an agency or an     * individual. Source could be different from Creator and from the entities     * in the CopyrightNotice.     *<p>     * The original owner can never change. For that reason the content of this     * property should never be changed or deleted after the information is     * entered following the news object's initial creation.     *<p>     * Maps to this IIM property: 2:115 Source     *      * @see Photoshop#SOURCE     */
 name|Property
 name|SOURCE
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Source"
-argument_list|)
+name|SOURCE
 decl_stmt|;
-comment|/** 	 * The contact information address part. Comprises an optional company name 	 * and all required information to locate the building or postbox to which 	 * mail should be sent. To that end, the address is a multiline field. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426. 	 */
+comment|/**     * The contact information address part. Comprises an optional company name     * and all required information to locate the building or postbox to which     * mail should be sent. To that end, the address is a multiline field.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_ADDRESS
 init|=
@@ -444,12 +302,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiAdrExtadr"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information city part. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426. 	 */
+comment|/**     * The contact information city part.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_CITY
 init|=
@@ -459,12 +319,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiAdrCity"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information country part. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426. 	 */
+comment|/**     * The contact information country part.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_COUNTRY
 init|=
@@ -474,12 +336,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiAdrCtry"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information email address part. 	 *<p> 	 * Multiple email addresses can be given. May have to be separated by a 	 * comma in the user interface. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2 to user interface 	 * implementers: provide sufficient space to fill in multiple e-mail 	 * addresses. 	 * Note 3: the ContactInfo naming aligns with the vCard 	 * specification RFC 2426. 	 */
+comment|/**     * The contact information email address part.     *<p>     * Multiple email addresses can be given. May have to be separated by a     * comma in the user interface.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2 to user interface     * implementers: provide sufficient space to fill in multiple e-mail     * addresses.     * Note 3: the ContactInfo naming aligns with the vCard     * specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_EMAIL
 init|=
@@ -489,12 +353,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiEmailWork"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information phone number part. 	 *<p> 	 * Multiple numbers can be given. May have to be separated by a 	 * comma in the user interface. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2 to user interface 	 * implementers: provide sufficient space to fill in multiple international 	 * numbers. 	 * Note 3: the ContactInfo naming aligns with the vCard 	 * specification RFC 2426. 	 */
+comment|/**     * The contact information phone number part.     *<p>     * Multiple numbers can be given. May have to be separated by a     * comma in the user interface.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2 to user interface     * implementers: provide sufficient space to fill in multiple international     * numbers.     * Note 3: the ContactInfo naming aligns with the vCard     * specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_PHONE
 init|=
@@ -504,12 +370,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiTelWork"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information part denoting the local postal code. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426. 	 */
+comment|/**     * The contact information part denoting the local postal code.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_POSTAL_CODE
 init|=
@@ -519,12 +387,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiAdrPcode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information part denoting regional information such as state or province. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426. 	 */
+comment|/**     * The contact information part denoting regional information such as state or province.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2: the ContactInfo naming aligns with the vCard specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_STATE_PROVINCE
 init|=
@@ -534,12 +404,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiAdrRegion"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The contact information web address part. Multiple addresses can be given, separated by a comma. 	 *<p> 	 * Note 1: to user interface implementers: This field should be part of a 	 * "Contact information" group on the form. 	 * Note 2 to user interface 	 * implementers: provide sufficient space to fill in multiple URLs. 	 * Note 3: the ContactInfo naming aligns with the vCard 	 * specification RFC 2426. 	 */
+comment|/**     * The contact information web address part. Multiple addresses can be given, separated by a comma.     *<p>     * Note 1: to user interface implementers: This field should be part of a     * "Contact information" group on the form.     * Note 2 to user interface     * implementers: provide sufficient space to fill in multiple URLs.     * Note 3: the ContactInfo naming aligns with the vCard     * specification RFC 2426.     */
 name|Property
 name|CONTACT_INFO_WEB_URL
 init|=
@@ -549,57 +421,38 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CiUrlWork"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * As this metadata element pertains to distribution management, it was not 	 * adopted. However, this data is still synchronised with the XMP property 	 * [photoshop:Urgency], and hence, available for future use, but outside the 	 * IPTC Core. 	 * 	 * @deprecated 	 */
+comment|/**     * As this metadata element pertains to distribution management, it was not     * adopted. However, this data is still synchronised with the XMP property     * [photoshop:Urgency], and hence, available for future use, but outside the     * IPTC Core.     *     * @deprecated     */
 name|Property
 name|PHOTOSHOP_URGENCY
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Urgency"
-argument_list|)
+name|URGENCY
 decl_stmt|;
-comment|/** 	 * As this metadata element was earmarked as deprecated already for IIM 4.1, 	 * it was not adopted. However, this data is still synchronised with the XMP 	 * property [photoshop:Category], and hence available for future use - but 	 * outside the IPTC Core. For migrating from Category codes to Subject Codes 	 * please read the Guideline for mapping Category Codes to Subject NewsCodes 	 * section below. 	 * 	 * @deprecated 	 */
+comment|/**     * As this metadata element was earmarked as deprecated already for IIM 4.1,     * it was not adopted. However, this data is still synchronised with the XMP     * property [photoshop:Category], and hence available for future use - but     * outside the IPTC Core. For migrating from Category codes to Subject Codes     * please read the Guideline for mapping Category Codes to Subject NewsCodes     * section below.     *     * @deprecated     */
 name|Property
 name|PHOTOSHOP_CATEGORY
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalText
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"Category"
-argument_list|)
+name|CATEGORY
 decl_stmt|;
-comment|/** 	 * As this metadata element was earmarked as deprecated already for IIM 4.1, 	 * it was not adopted. However, this data is still synchronised with the XMP 	 * property [photoshop:SupplementalCategories], and hence available for 	 * future use - but outside the IPTC Core. 	 * 	 * @deprecated 	 */
+comment|/**     * As this metadata element was earmarked as deprecated already for IIM 4.1,     * it was not adopted. However, this data is still synchronised with the XMP     * property [photoshop:SupplementalCategories], and hence available for     * future use - but outside the IPTC Core.     *     * @deprecated     */
 name|Property
 name|PHOTOSHOP_SUPPLEMENTAL_CATEGORIES
 init|=
-name|Property
+name|Photoshop
 operator|.
-name|internalTextBag
-argument_list|(
-name|PREFIX_PHOTOSHOP
-operator|+
-name|PREFIX_DELIMITER
-operator|+
-literal|"SupplementalCategories"
-argument_list|)
+name|SUPPLEMENTAL_CATEGORIES
 decl_stmt|;
-comment|/** 	 * Information about the ethnicity and other facets of the model(s) in a 	 * model-released image. 	 *<p> 	 * Use the Model Age field for the age of model(s). 	 */
+comment|/**     * Information about the ethnicity and other facets of the model(s) in a     * model-released image.     *<p>     * Use the Model Age field for the age of model(s).     */
 name|Property
 name|ADDITIONAL_MODEL_INFO
 init|=
@@ -609,12 +462,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AddlModelInfo"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A set of metadata about artwork or an object in the item 	 */
+comment|/**     * A set of metadata about artwork or an object in the item     */
 name|Property
 name|ARTWORK_OR_OBJECT
 init|=
@@ -624,12 +479,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ArtworkOrObject"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A set of metadata about artwork or an object in the item 	 */
+comment|/**     * A set of metadata about artwork or an object in the item     */
 name|Property
 name|ORGANISATION_CODE
 init|=
@@ -639,12 +496,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"OrganisationInImageCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A term to describe the content of the image by a value from a Controlled 	 * Vocabulary. 	 *<p> 	 * This property is part of the Photo Metadata 2008 specifications, but 	 * should not released to the public on the standard Adobe Custom Panels for 	 * IPTC metadata or other user interfaces unless agreed by the IPTC. 	 */
+comment|/**     * A term to describe the content of the image by a value from a Controlled     * Vocabulary.     *<p>     * This property is part of the Photo Metadata 2008 specifications, but     * should not released to the public on the standard Adobe Custom Panels for     * IPTC metadata or other user interfaces unless agreed by the IPTC.     */
 name|Property
 name|CONTROLLED_VOCABULARY_TERM
 init|=
@@ -654,12 +513,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CVterm"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A location the content of the item is about. For photos that is a 	 * location shown in the image. 	 *<p> 	 * If the location the image was taken in is different from this location 	 * the property Location Created should be used too. 	 */
+comment|/**     * A location the content of the item is about. For photos that is a     * location shown in the image.     *<p>     * If the location the image was taken in is different from this location     * the property Location Created should be used too.     */
 name|Property
 name|LOCATION_SHOWN
 init|=
@@ -669,12 +530,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShown"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Age of the human model(s) at the time this image was taken in a model 	 * released image. 	 *<p> 	 * The user should be aware of any legal implications of providing ages for 	 * young models. Ages below 18 years should not be included. 	 */
+comment|/**     * Age of the human model(s) at the time this image was taken in a model     * released image.     *<p>     * The user should be aware of any legal implications of providing ages for     * young models. Ages below 18 years should not be included.     */
 name|Property
 name|MODEL_AGE
 init|=
@@ -684,12 +547,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ModelAge"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of the organisation or company which is featured in the content. 	 *<p> 	 * May be supplemented by values from a controlled vocabulary in the 	 * Organisation Code field. 	 */
+comment|/**     * Name of the organisation or company which is featured in the content.     *<p>     * May be supplemented by values from a controlled vocabulary in the     * Organisation Code field.     */
 name|Property
 name|ORGANISATION_NAME
 init|=
@@ -699,12 +564,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"OrganisationInImageName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of a person the content of the item is about. For photos that is a 	 * person shown in the image. 	 */
+comment|/**     * Name of a person the content of the item is about. For photos that is a     * person shown in the image.     */
 name|Property
 name|PERSON
 init|=
@@ -714,12 +581,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"PersonInImage"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Globally unique identifier for the item. It is created and applied by the 	 * creator of the item at the time of its creation . This value shall not be 	 * changed after that time. 	 *<p> 	 * The identifier will probably be generated by the technical means of an 	 * imaging device or software and should be applied to the digital image 	 * file as early as possible in its life cycle. This identifier does not 	 * identify any pictured content, particularly in case of a scan of non- 	 * digital images, only this digital representation. 	 *<p> 	 * Any algorithm to create this identifier has to comply with the technical 	 * requirements to create a globally unique id. Any device creating digital 	 * images - e.g. still image cameras, video cameras, scanners - should 	 * create such an identifer right at the time of the creation of the digital 	 * data and add the id to the set of metadata without compromising 	 * performance. It is recommended that this image identifier allows 	 * identifying the device by which the image data and the GUID were created. 	 * IPTC's basic requirements for unique ids are: 	 * - It must be globally unique. Algorithms for this purpose exist. 	 * - It should identify the camera body. 	 * - It should identify each individual photo from this camera body. 	 * - It should identify the date and time of the creation of the picture. 	 * - It should be secured against tampering. 	 * This field should be implemented in a way to prove it has not been changed since its value has 	 * been applied. If the identifier has been created by the imaging device 	 * its type and brand can be found in the Exif/technical metadata. 	 */
+comment|/**     * Globally unique identifier for the item. It is created and applied by the     * creator of the item at the time of its creation . This value shall not be     * changed after that time.     *<p>     * The identifier will probably be generated by the technical means of an     * imaging device or software and should be applied to the digital image     * file as early as possible in its life cycle. This identifier does not     * identify any pictured content, particularly in case of a scan of non-     * digital images, only this digital representation.     *<p>     * Any algorithm to create this identifier has to comply with the technical     * requirements to create a globally unique id. Any device creating digital     * images - e.g. still image cameras, video cameras, scanners - should     * create such an identifer right at the time of the creation of the digital     * data and add the id to the set of metadata without compromising     * performance. It is recommended that this image identifier allows     * identifying the device by which the image data and the GUID were created.     * IPTC's basic requirements for unique ids are:     * - It must be globally unique. Algorithms for this purpose exist.     * - It should identify the camera body.     * - It should identify each individual photo from this camera body.     * - It should identify the date and time of the creation of the picture.     * - It should be secured against tampering.     * This field should be implemented in a way to prove it has not been changed since its value has     * been applied. If the identifier has been created by the imaging device     * its type and brand can be found in the Exif/technical metadata.     */
 name|Property
 name|DIGITAL_IMAGE_GUID
 init|=
@@ -729,12 +598,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"DigImageGUID"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The type of the source digital file. 	 *<p> 	 * The IPTC recommends not to implement this property any longer. 	 * 	 * @deprecated 	 */
+comment|/**     * The type of the source digital file.     *<p>     * The IPTC recommends not to implement this property any longer.     *     * @deprecated     */
 name|Property
 name|DIGITAL_SOURCE_FILE_TYPE
 init|=
@@ -744,12 +615,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"DigitalSourcefileType"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The type of the source of this digital image 	 */
+comment|/**     * The type of the source of this digital image     */
 name|Property
 name|DIGITAL_SOURCE_TYPE
 init|=
@@ -759,12 +632,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"DigitalSourceType"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Names or describes the specific event the content relates to. 	 *<p> 	 * Examples are: a press conference, dedication ceremony, etc. If this is a 	 * sub-event of a larger event both can be provided by the field: e.g. XXXIX 	 * Olympic Summer Games (Beijing): opening ceremony. Unplanned events could 	 * be named by this property too. 	 */
+comment|/**     * Names or describes the specific event the content relates to.     *<p>     * Examples are: a press conference, dedication ceremony, etc. If this is a     * sub-event of a larger event both can be provided by the field: e.g. XXXIX     * Olympic Summer Games (Beijing): opening ceremony. Unplanned events could     * be named by this property too.     */
 name|Property
 name|EVENT
 init|=
@@ -774,12 +649,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"Event"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Both a Registry Item Id and a Registry Organisation Id to record any 	 * registration of this item with a registry. 	 *<p> 	 * Typically an id from a registry is negotiated and applied after the 	 * creation of the digital image. 	 *<p> 	 * Any user interface implementation must show both sub-properties - Item Id 	 * and Organisation Id - as corresponding values. Further an input to both 	 * fields should be made mandatory. 	 */
+comment|/**     * Both a Registry Item Id and a Registry Organisation Id to record any     * registration of this item with a registry.     *<p>     * Typically an id from a registry is negotiated and applied after the     * creation of the digital image.     *<p>     * Any user interface implementation must show both sub-properties - Item Id     * and Organisation Id - as corresponding values. Further an input to both     * fields should be made mandatory.     */
 name|Property
 name|IMAGE_REGISTRY_ENTRY
 init|=
@@ -789,12 +666,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"RegistryId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Identifies the most recent supplier of the item, who is not necessarily 	 * its owner or creator. 	 *<p> 	 * For identifying the supplier either a well known and/or registered 	 * company name or a URL of the company's web site may be used. This 	 * property succeeds the Provider property of IPTC Core 1.0 by its semantics 	 * as that Provider was renamed to Credit Line. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Identifies the most recent supplier of the item, who is not necessarily     * its owner or creator.     *<p>     * For identifying the supplier either a well known and/or registered     * company name or a URL of the company's web site may be used. This     * property succeeds the Provider property of IPTC Core 1.0 by its semantics     * as that Provider was renamed to Credit Line.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_SUPPLIER
 init|=
@@ -804,12 +683,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageSupplier"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Identifies the most recent supplier of the item, who is not necessarily 	 * its owner or creator. 	 *<p> 	 * For identifying the supplier either a well known and/or registered 	 * company name or a URL of the company's web site may be used. This 	 * property succeeds the Provider property of IPTC Core 1.0 by its semantics 	 * as that Provider was renamed to Credit Line. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Identifies the most recent supplier of the item, who is not necessarily     * its owner or creator.     *<p>     * For identifying the supplier either a well known and/or registered     * company name or a URL of the company's web site may be used. This     * property succeeds the Provider property of IPTC Core 1.0 by its semantics     * as that Provider was renamed to Credit Line.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_SUPPLIER_ID
 init|=
@@ -819,12 +700,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageSupplierId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Identifies the most recent supplier of the item, who is not necessarily 	 * its owner or creator. 	 *<p> 	 * For identifying the supplier either a well known and/or registered 	 * company name or a URL of the company's web site may be used. This 	 * property succeeds the Provider property of IPTC Core 1.0 by its semantics 	 * as that Provider was renamed to Credit Line. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Identifies the most recent supplier of the item, who is not necessarily     * its owner or creator.     *<p>     * For identifying the supplier either a well known and/or registered     * company name or a URL of the company's web site may be used. This     * property succeeds the Provider property of IPTC Core 1.0 by its semantics     * as that Provider was renamed to Credit Line.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_SUPPLIER_NAME
 init|=
@@ -834,12 +717,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageSupplierName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Optional identifier assigned by the Image Supplier to the image. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Optional identifier assigned by the Image Supplier to the image.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_SUPPLIER_IMAGE_ID
 init|=
@@ -849,12 +734,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageSupplierImageID"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The date and optionally time when any of the IPTC photo metadata fields 	 * has been last edited 	 *<p> 	 * The public use of this property is deprecated by IPTC Extension version 	 * 1.1. It may only still be used by a private user interface for a use 	 * scoped to a company. If used this field should be a timestamp of the 	 * latest change applied to any of the fields. 	 *<p> 	 * The value of this property should never be set by software. XMP-aware 	 * software should reflect any changes to metadata by the xmp:MetadataDate 	 * property of the XMP Basic scheme. 	 */
+comment|/**     * The date and optionally time when any of the IPTC photo metadata fields     * has been last edited     *<p>     * The public use of this property is deprecated by IPTC Extension version     * 1.1. It may only still be used by a private user interface for a use     * scoped to a company. If used this field should be a timestamp of the     * latest change applied to any of the fields.     *<p>     * The value of this property should never be set by software. XMP-aware     * software should reflect any changes to metadata by the xmp:MetadataDate     * property of the XMP Basic scheme.     */
 name|Property
 name|IPTC_LAST_EDITED
 init|=
@@ -864,12 +751,14 @@ name|internalDate
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"IptcLastEdited"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The location the content of the item was created. 	 *<p> 	 * If the location in the image is different from the location the photo was 	 * taken the IPTC Extension property Location Shown in the Image should be 	 * used. 	 */
+comment|/**     * The location the content of the item was created.     *<p>     * If the location in the image is different from the location the photo was     * taken the IPTC Extension property Location Shown in the Image should be     * used.     */
 name|Property
 name|LOCATION_CREATED
 init|=
@@ -879,12 +768,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreated"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The maximum available height in pixels of the original photo from which 	 * this photo has been derived by downsizing. 	 */
+comment|/**     * The maximum available height in pixels of the original photo from which     * this photo has been derived by downsizing.     */
 name|Property
 name|MAX_AVAIL_HEIGHT
 init|=
@@ -894,12 +785,14 @@ name|internalInteger
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"MaxAvailHeight"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The maximum available width in pixels of the original photo from which 	 * this photo has been derived by downsizing. 	 */
+comment|/**     * The maximum available width in pixels of the original photo from which     * this photo has been derived by downsizing.     */
 name|Property
 name|MAX_AVAIL_WIDTH
 init|=
@@ -909,12 +802,14 @@ name|internalInteger
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"MaxAvailWidth"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The version number of the PLUS standards in place at the time of the 	 * transaction. 	 *<p> 	 * This property was included into the IPTC Extension schema from PLUS 	 * version 1.2 as all other PLUS properties. To reflect this the value of 	 * "PLUS Version" should be set to the string "1.2.0" 	 */
+comment|/**     * The version number of the PLUS standards in place at the time of the     * transaction.     *<p>     * This property was included into the IPTC Extension schema from PLUS     * version 1.2 as all other PLUS properties. To reflect this the value of     * "PLUS Version" should be set to the string "1.2.0"     */
 name|Property
 name|PLUS_VERSION
 init|=
@@ -924,12 +819,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"Version"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Owner or owners of the copyright in the licensed image. 	 *<p> 	 * Serves to identify the rights holder/s for the image. The Copyright 	 * Owner, Image Creator and Licensor may be the same or different entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Owner or owners of the copyright in the licensed image.     *<p>     * Serves to identify the rights holder/s for the image. The Copyright     * Owner, Image Creator and Licensor may be the same or different entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|COPYRIGHT_OWNER
 init|=
@@ -939,12 +836,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CopyrightOwner"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The ID of the owner or owners of the copyright in the licensed image. 	 *<p> 	 * Serves to identify the rights holder/s for the image. The Copyright 	 * Owner, Image Creator and Licensor may be the same or different entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The ID of the owner or owners of the copyright in the licensed image.     *<p>     * Serves to identify the rights holder/s for the image. The Copyright     * Owner, Image Creator and Licensor may be the same or different entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|COPYRIGHT_OWNER_ID
 init|=
@@ -954,12 +853,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CopyrightOwnerId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of the owner or owners of the copyright in the licensed image. 	 *<p> 	 * Serves to identify the rights holder/s for the image. The Copyright 	 * Owner, Image Creator and Licensor may be the same or different entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The name of the owner or owners of the copyright in the licensed image.     *<p>     * Serves to identify the rights holder/s for the image. The Copyright     * Owner, Image Creator and Licensor may be the same or different entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|COPYRIGHT_OWNER_NAME
 init|=
@@ -969,12 +870,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"CopyrightOwnerName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Creator or creators of the image. 	 *<p> 	 * The creator can be additionally expressed in free-text using the IPTC 	 * Core Creator field. In many countries, the Image Creator must be 	 * attributed in association with any use of the image. The Image Creator, 	 * Copyright Owner, Image Supplier and Licensor may be the same or different 	 * entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Creator or creators of the image.     *<p>     * The creator can be additionally expressed in free-text using the IPTC     * Core Creator field. In many countries, the Image Creator must be     * attributed in association with any use of the image. The Image Creator,     * Copyright Owner, Image Supplier and Licensor may be the same or different     * entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_CREATOR
 init|=
@@ -984,12 +887,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageCreator"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The ID of the creator or creators of the image. 	 *<p> 	 * The creator can be additionally expressed in free-text using the IPTC 	 * Core Creator field. In many countries, the Image Creator must be 	 * attributed in association with any use of the image. The Image Creator, 	 * Copyright Owner, Image Supplier and Licensor may be the same or different 	 * entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The ID of the creator or creators of the image.     *<p>     * The creator can be additionally expressed in free-text using the IPTC     * Core Creator field. In many countries, the Image Creator must be     * attributed in association with any use of the image. The Image Creator,     * Copyright Owner, Image Supplier and Licensor may be the same or different     * entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_CREATOR_ID
 init|=
@@ -999,12 +904,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageCreatorId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of the creator or creators of the image. 	 *<p> 	 * The creator can be additionally expressed in free-text using the IPTC 	 * Core Creator field. In many countries, the Image Creator must be 	 * attributed in association with any use of the image. The Image Creator, 	 * Copyright Owner, Image Supplier and Licensor may be the same or different 	 * entities. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The name of the creator or creators of the image.     *<p>     * The creator can be additionally expressed in free-text using the IPTC     * Core Creator field. In many countries, the Image Creator must be     * attributed in association with any use of the image. The Image Creator,     * Copyright Owner, Image Supplier and Licensor may be the same or different     * entities.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|IMAGE_CREATOR_NAME
 init|=
@@ -1014,12 +921,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ImageCreatorName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * A person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR
 init|=
@@ -1029,12 +938,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"Licensor"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The ID of the person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The ID of the person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_ID
 init|=
@@ -1044,12 +955,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of the person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The name of the person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_NAME
 init|=
@@ -1059,12 +972,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The city of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The city of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_CITY
 init|=
@@ -1074,12 +989,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorCity"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The country of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The country of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_COUNTRY
 init|=
@@ -1089,12 +1006,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorCountry"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The email of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The email of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_EMAIL
 init|=
@@ -1104,12 +1023,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorEmail"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The extended address of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The extended address of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_EXTENDED_ADDRESS
 init|=
@@ -1119,12 +1040,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorExtendedAddress"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The postal code of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The postal code of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_POSTAL_CODE
 init|=
@@ -1134,12 +1057,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorPostalCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The region of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The region of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_REGION
 init|=
@@ -1149,12 +1074,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorRegion"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The street address of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The street address of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_STREET_ADDRESS
 init|=
@@ -1164,12 +1091,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorStreetAddress"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The phone number of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The phone number of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_TELEPHONE_1
 init|=
@@ -1179,12 +1108,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorTelephone1"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The phone number of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The phone number of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_TELEPHONE_2
 init|=
@@ -1194,12 +1125,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorTelephone2"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The URL of a person or company that should be contacted to obtain a licence for 	 * using the item or who has licensed the item. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * The URL of a person or company that should be contacted to obtain a licence for     * using the item or who has licensed the item.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|LICENSOR_URL
 init|=
@@ -1209,12 +1142,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LicensorURL"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Age of the youngest model pictured in the image, at the time that the 	 * image was made. 	 *<p> 	 * This age should not be displayed to the public on open web portals and 	 * the like. But it may be used by image repositories in a 	 * B2B enviroment. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Age of the youngest model pictured in the image, at the time that the     * image was made.     *<p>     * This age should not be displayed to the public on open web portals and     * the like. But it may be used by image repositories in a     * B2B enviroment.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|MINOR_MODEL_AGE_DISCLOSURE
 init|=
@@ -1224,12 +1159,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"MinorModelAgeDisclosure"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Optional identifier associated with each Model Release. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Optional identifier associated with each Model Release.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|MODEL_RELEASE_ID
 init|=
@@ -1239,12 +1176,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ModelReleaseID"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Summarizes the availability and scope of model releases authorizing usage 	 * of the likenesses of persons appearing in the photograph. 	 *<p> 	 * It is recommended to apply the PLUS controlled value Unlimited Model 	 * Releases (MR- UMR) very carefully and to check the wording of the model 	 * release thoroughly before applying it. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Summarizes the availability and scope of model releases authorizing usage     * of the likenesses of persons appearing in the photograph.     *<p>     * It is recommended to apply the PLUS controlled value Unlimited Model     * Releases (MR- UMR) very carefully and to check the wording of the model     * release thoroughly before applying it.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|MODEL_RELEASE_STATUS
 init|=
@@ -1254,12 +1193,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"ModelReleaseStatus"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Optional identifier associated with each Property Release. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Optional identifier associated with each Property Release.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|PROPERTY_RELEASE_ID
 init|=
@@ -1269,12 +1210,14 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"PropertyReleaseID"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Summarises the availability and scope of property releases authorizing 	 * usage of the properties appearing in the photograph. 	 *<p> 	 * It is recommended to apply the value PR-UPR very carefully and to check 	 * the wording of the property release thoroughly before applying it. 	 *<p> 	 * This is a PLUS version 1.2 property included in the IPTC Extension 	 * schema. 	 */
+comment|/**     * Summarises the availability and scope of property releases authorizing     * usage of the properties appearing in the photograph.     *<p>     * It is recommended to apply the value PR-UPR very carefully and to check     * the wording of the property release thoroughly before applying it.     *<p>     * This is a PLUS version 1.2 property included in the IPTC Extension     * schema.     */
 name|Property
 name|PROPERTY_RELEASE_STATUS
 init|=
@@ -1284,12 +1227,14 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"PropertyReleaseStatus"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Contains any necessary copyright notice for claiming the intellectual 	 * property for artwork or an object in the image and should identify the 	 * current owner of the copyright of this work with associated intellectual 	 * property rights. 	 */
+comment|/**     * Contains any necessary copyright notice for claiming the intellectual     * property for artwork or an object in the image and should identify the     * current owner of the copyright of this work with associated intellectual     * property rights.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_COPYRIGHT_NOTICE
 init|=
@@ -1299,12 +1244,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AOCopyrightNotice"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Contains the name of the artist who has created artwork or an object in the image. 	 */
+comment|/**     * Contains the name of the artist who has created artwork or an object in the image.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_CREATOR
 init|=
@@ -1314,12 +1261,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AOCreator"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Designates the date and optionally the time the artwork or object in the 	 * image was created. This relates to artwork or objects with associated 	 * intellectual property rights. 	 */
+comment|/**     * Designates the date and optionally the time the artwork or object in the     * image was created. This relates to artwork or objects with associated     * intellectual property rights.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_DATE_CREATED
 init|=
@@ -1329,12 +1278,14 @@ name|internalDate
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AODateCreated"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The organisation or body holding and registering the artwork or object in 	 * the image for inventory purposes. 	 */
+comment|/**     * The organisation or body holding and registering the artwork or object in     * the image for inventory purposes.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_SOURCE
 init|=
@@ -1344,12 +1295,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AOSource"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The inventory number issued by the organisation or body holding and 	 * registering the artwork or object in the image. 	 */
+comment|/**     * The inventory number issued by the organisation or body holding and     * registering the artwork or object in the image.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_SOURCE_INVENTORY_NUMBER
 init|=
@@ -1359,12 +1312,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AOSourceInvNo"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A reference for the artwork or object in the image. 	 */
+comment|/**     * A reference for the artwork or object in the image.     */
 name|Property
 name|ARTWORK_OR_OBJECT_DETAIL_TITLE
 init|=
@@ -1374,12 +1329,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"AOTitle"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of the city of a location. This element is at the fourth level of a 	 * top-down geographical hierarchy. 	 */
+comment|/**     * Name of the city of a location. This element is at the fourth level of a     * top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_SHOWN_CITY
 init|=
@@ -1389,12 +1346,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownCity"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The ISO code of a country of a location. This element is at the second 	 * level of a top-down geographical hierarchy. 	 *<p> 	 * Note 1: an implementer would have to derive from the length of the value 	 * string whether this is the country code from the two or three letter 	 * scheme as no explicit indication can be provided. 	 */
+comment|/**     * The ISO code of a country of a location. This element is at the second     * level of a top-down geographical hierarchy.     *<p>     * Note 1: an implementer would have to derive from the length of the value     * string whether this is the country code from the two or three letter     * scheme as no explicit indication can be provided.     */
 name|Property
 name|LOCATION_SHOWN_COUNTRY_CODE
 init|=
@@ -1404,12 +1363,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownCountryCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a country of a location. This element is at the second level 	 * of a top-down geographical hierarchy. 	 */
+comment|/**     * The name of a country of a location. This element is at the second level     * of a top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_SHOWN_COUNTRY_NAME
 init|=
@@ -1419,12 +1380,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownCountryName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a subregion of a country - a province or state - of a 	 * location. This element is at the third level of a top-down geographical 	 * hierarchy. 	 */
+comment|/**     * The name of a subregion of a country - a province or state - of a     * location. This element is at the third level of a top-down geographical     * hierarchy.     */
 name|Property
 name|LOCATION_SHOWN_PROVINCE_OR_STATE
 init|=
@@ -1434,12 +1397,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownProvinceState"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of a sublocation. This sublocation name could either be the name of 	 * a sublocation to a city or the name of a well known location or (natural) 	 * monument outside a city. In the sense of a sublocation to a city this 	 * element is at the fifth level of a top-down geographical hierarchy. 	 */
+comment|/**     * Name of a sublocation. This sublocation name could either be the name of     * a sublocation to a city or the name of a well known location or (natural)     * monument outside a city. In the sense of a sublocation to a city this     * element is at the fifth level of a top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_SHOWN_SUBLOCATION
 init|=
@@ -1449,12 +1414,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownSublocation"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a world region of a location. This element is at the first 	 * (topI) level of a top- down geographical hierarchy. 	 */
+comment|/**     * The name of a world region of a location. This element is at the first     * (topI) level of a top- down geographical hierarchy.     */
 name|Property
 name|LOCATION_SHOWN_WORLD_REGION
 init|=
@@ -1464,12 +1431,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationShownWorldRegion"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of the city of a location. This element is at the fourth level of a 	 * top-down geographical hierarchy. 	 */
+comment|/**     * Name of the city of a location. This element is at the fourth level of a     * top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_CREATED_CITY
 init|=
@@ -1479,12 +1448,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedCity"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The ISO code of a country of a location. This element is at the second 	 * level of a top-down geographical hierarchy. 	 *<p> 	 * Note 1: an implementer would have to derive from the length of the value 	 * string whether this is the country code from the two or three letter 	 * scheme as no explicit indication can be provided. 	 */
+comment|/**     * The ISO code of a country of a location. This element is at the second     * level of a top-down geographical hierarchy.     *<p>     * Note 1: an implementer would have to derive from the length of the value     * string whether this is the country code from the two or three letter     * scheme as no explicit indication can be provided.     */
 name|Property
 name|LOCATION_CREATED_COUNTRY_CODE
 init|=
@@ -1494,12 +1465,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedCountryCode"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a country of a location. This element is at the second level 	 * of a top-down geographical hierarchy. 	 */
+comment|/**     * The name of a country of a location. This element is at the second level     * of a top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_CREATED_COUNTRY_NAME
 init|=
@@ -1509,12 +1482,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedCountryName"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a subregion of a country - a province or state - of a 	 * location. This element is at the third level of a top-down geographical 	 * hierarchy. 	 */
+comment|/**     * The name of a subregion of a country - a province or state - of a     * location. This element is at the third level of a top-down geographical     * hierarchy.     */
 name|Property
 name|LOCATION_CREATED_PROVINCE_OR_STATE
 init|=
@@ -1524,12 +1499,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedProvinceState"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Name of a sublocation. This sublocation name could either be the name of 	 * a sublocation to a city or the name of a well known location or (natural) 	 * monument outside a city. In the sense of a sublocation to a city this 	 * element is at the fifth level of a top-down geographical hierarchy. 	 */
+comment|/**     * Name of a sublocation. This sublocation name could either be the name of     * a sublocation to a city or the name of a well known location or (natural)     * monument outside a city. In the sense of a sublocation to a city this     * element is at the fifth level of a top-down geographical hierarchy.     */
 name|Property
 name|LOCATION_CREATED_SUBLOCATION
 init|=
@@ -1539,12 +1516,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedSublocation"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The name of a world region of a location. This element is at the first 	 * (topI) level of a top- down geographical hierarchy. 	 */
+comment|/**     * The name of a world region of a location. This element is at the first     * (topI) level of a top- down geographical hierarchy.     */
 name|Property
 name|LOCATION_CREATED_WORLD_REGION
 init|=
@@ -1554,12 +1533,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LocationCreatedWorldRegion"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * A unique identifier created by a registry and applied by the creator of 	 * the item. This value shall not be changed after being applied. This 	 * identifier is linked to a corresponding Registry Organisation Identifier. 	 */
+comment|/**     * A unique identifier created by a registry and applied by the creator of     * the item. This value shall not be changed after being applied. This     * identifier is linked to a corresponding Registry Organisation Identifier.     */
 name|Property
 name|REGISTRY_ENTRY_CREATED_ITEM_ID
 init|=
@@ -1569,12 +1550,14 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"RegItemId"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * An identifier for the registry which issued the corresponding Registry Image Id. 	 */
+comment|/**     * An identifier for the registry which issued the corresponding Registry Image Id.     */
 name|Property
 name|REGISTRY_ENTRY_CREATED_ORGANISATION_ID
 init|=
@@ -1584,7 +1567,9 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|PREFIX_DELIMITER
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"RegOrgId"
 argument_list|)
@@ -1603,13 +1588,13 @@ name|COUNTRY
 block|,
 name|COUNTRY_CODE
 block|,
-name|DESCRIPTION_DCPROPERTY
+name|DESCRIPTION
 block|,
 name|HEADLINE
 block|,
 name|INTELLECTUAL_GENRE
 block|,
-name|KEYWORDS_DCPROPERTY
+name|KEYWORDS
 block|,
 name|PROVINCE_OR_STATE
 block|,
@@ -1627,11 +1612,11 @@ name|INSTRUCTIONS
 block|,
 name|JOB_ID
 block|,
-name|TITLE_DCPROPERTY
+name|TITLE
 block|,
 name|COPYRIGHT_NOTICE
 block|,
-name|CREATOR_DCPROPERTY
+name|CREATOR
 block|,
 name|CREATORS_JOB_TITLE
 block|,
