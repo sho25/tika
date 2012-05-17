@@ -2098,7 +2098,7 @@ name|meta
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|,
@@ -2115,7 +2115,7 @@ name|meta
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DATE
 argument_list|)
