@@ -43,6 +43,13 @@ name|LAST_AUTHOR
 init|=
 literal|"Last-Author"
 decl_stmt|;
+annotation|@
+name|Deprecated
+name|String
+name|AUTHOR
+init|=
+literal|"Author"
+decl_stmt|;
 name|String
 name|APPLICATION_NAME
 init|=
@@ -57,11 +64,6 @@ name|String
 name|TEMPLATE
 init|=
 literal|"Template"
-decl_stmt|;
-name|String
-name|AUTHOR
-init|=
-literal|"Author"
 decl_stmt|;
 name|String
 name|TOTAL_TIME

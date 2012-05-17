@@ -190,6 +190,17 @@ name|Office
 operator|.
 name|INITIAL_AUTHOR
 decl_stmt|;
+comment|/**      * @see Office#AUTHOR      */
+specifier|public
+specifier|static
+specifier|final
+name|Property
+name|AUTHOR
+init|=
+name|Office
+operator|.
+name|AUTHOR
+decl_stmt|;
 comment|/**      * @see Office#LAST_AUTHOR      */
 specifier|public
 specifier|static

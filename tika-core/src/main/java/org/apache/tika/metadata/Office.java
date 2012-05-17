@@ -109,6 +109,23 @@ operator|+
 literal|"last-author"
 argument_list|)
 decl_stmt|;
+comment|/**     * Name of the principal author of a document     */
+name|Property
+name|AUTHOR
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|PREFIX_DOC_META
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+operator|+
+literal|"author"
+argument_list|)
+decl_stmt|;
 comment|/** When was the document created? */
 name|Property
 name|CREATION_DATE
