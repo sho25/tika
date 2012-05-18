@@ -430,7 +430,7 @@ argument_list|)
 decl_stmt|;
 comment|/**     * As this metadata element pertains to distribution management, it was not     * adopted. However, this data is still synchronised with the XMP property     * [photoshop:Urgency], and hence, available for future use, but outside the     * IPTC Core.     *     * @deprecated     */
 name|Property
-name|PHOTOSHOP_URGENCY
+name|URGENCY
 init|=
 name|Photoshop
 operator|.
@@ -438,7 +438,7 @@ name|URGENCY
 decl_stmt|;
 comment|/**     * As this metadata element was earmarked as deprecated already for IIM 4.1,     * it was not adopted. However, this data is still synchronised with the XMP     * property [photoshop:Category], and hence available for future use - but     * outside the IPTC Core. For migrating from Category codes to Subject Codes     * please read the Guideline for mapping Category Codes to Subject NewsCodes     * section below.     *     * @deprecated     */
 name|Property
-name|PHOTOSHOP_CATEGORY
+name|CATEGORY
 init|=
 name|Photoshop
 operator|.
@@ -446,7 +446,7 @@ name|CATEGORY
 decl_stmt|;
 comment|/**     * As this metadata element was earmarked as deprecated already for IIM 4.1,     * it was not adopted. However, this data is still synchronised with the XMP     * property [photoshop:SupplementalCategories], and hence available for     * future use - but outside the IPTC Core.     *     * @deprecated     */
 name|Property
-name|PHOTOSHOP_SUPPLEMENTAL_CATEGORIES
+name|SUPPLEMENTAL_CATEGORIES
 init|=
 name|Photoshop
 operator|.
