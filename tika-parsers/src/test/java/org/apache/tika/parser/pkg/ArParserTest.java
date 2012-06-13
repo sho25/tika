@@ -139,7 +139,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testAROfText.ar"
+literal|"/test-documents/testARofText.ar"
 argument_list|)
 decl_stmt|;
 try|try
@@ -226,7 +226,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testAROfSND.ar"
+literal|"/test-documents/testARofSND.ar"
 argument_list|)
 expr_stmt|;
 try|try
@@ -324,7 +324,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testAROfText.ar"
+literal|"/test-documents/testARofText.ar"
 argument_list|)
 decl_stmt|;
 try|try
@@ -418,7 +418,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testAROfSND.ar"
+literal|"/test-documents/testARofSND.ar"
 argument_list|)
 expr_stmt|;
 try|try
