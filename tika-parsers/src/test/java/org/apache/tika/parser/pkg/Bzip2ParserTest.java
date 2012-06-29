@@ -173,7 +173,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"application/x-bzip"
+literal|"application/x-bzip2"
 argument_list|,
 name|metadata
 operator|.
