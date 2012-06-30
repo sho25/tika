@@ -1426,6 +1426,23 @@ argument_list|,
 literal|0x20
 argument_list|)
 decl_stmt|;
+comment|// Sanity check the offset. Some files seem to use a different format,
+comment|//  and the offset isn't available at 0x20. Until we can work out how
+comment|//  to find the offset in those files, skip them if detected
+if|if
+condition|(
+name|offsetToSection
+operator|>
+literal|0xa00000l
+condition|)
+block|{
+comment|// Header should never be more than 10mb into the file, something is wrong
+name|offsetToSection
+operator|=
+literal|0
+expr_stmt|;
+block|}
+comment|// Work out how far to skip, and sanity check
 name|long
 name|toSkip
 init|=
