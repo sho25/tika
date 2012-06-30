@@ -30,14 +30,16 @@ name|PREFIX
 init|=
 literal|"xmpMM"
 decl_stmt|;
+comment|/** The xmpMM prefix followed by the colon delimiter */
 name|String
-name|PREFIX_DELIMITER
+name|PREFIX_
 init|=
+name|PREFIX
+operator|+
 literal|":"
 decl_stmt|;
 comment|/**      * A reference to the resource from which this one is derived.      * This should be a minimal reference, in which missing      * components can be assumed to be unchanged.      *       * TODO This property is of type RessourceRef which is a struct      */
-comment|//    Property DERIVED_FROM = Property.externalText(
-comment|//            PREFIX + PREFIX_DELIMITER + "DerivedFrom");
+comment|//    Property DERIVED_FROM = Property.externalText(PREFIX_ + "DerivedFrom");
 comment|/**      * The common identifier for all versions and renditions of a resource.      */
 name|Property
 name|DOCUMENTID
@@ -46,9 +48,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"DocumentID"
 argument_list|)
@@ -61,9 +61,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"InstanceID"
 argument_list|)
@@ -76,9 +74,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"OriginalDocumentID"
 argument_list|)
@@ -91,9 +87,7 @@ name|Property
 operator|.
 name|externalOpenChoise
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"RenditionClass"
 argument_list|,
@@ -118,9 +112,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"RenditionParams"
 argument_list|)

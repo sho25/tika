@@ -30,9 +30,12 @@ name|PREFIX
 init|=
 literal|"xmp"
 decl_stmt|;
+comment|/** The xmp prefix followed by the colon delimiter */
 name|String
-name|PREFIX_DELIMITER
+name|PREFIX_
 init|=
+name|PREFIX
+operator|+
 literal|":"
 decl_stmt|;
 comment|/**      * The date and time the resource was created. For a digital file, this need not      * match a file-system creation time. For a freshly created resource, it should      * be close to that time, modulo the time taken to write the file. Later file      * transfer, copying, and so on, can make the file-system time arbitrarily different.      */
@@ -43,9 +46,7 @@ name|Property
 operator|.
 name|externalDate
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"CreateDate"
 argument_list|)
@@ -58,9 +59,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"CreatorTool"
 argument_list|)
@@ -73,9 +72,7 @@ name|Property
 operator|.
 name|externalTextBag
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Identifier"
 argument_list|)
@@ -88,9 +85,7 @@ name|Property
 operator|.
 name|externalDate
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Label"
 argument_list|)
@@ -103,9 +98,7 @@ name|Property
 operator|.
 name|externalDate
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"MetadataDate"
 argument_list|)
@@ -118,9 +111,7 @@ name|Property
 operator|.
 name|externalDate
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"ModifyDate"
 argument_list|)
@@ -133,9 +124,7 @@ name|Property
 operator|.
 name|externalReal
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Rating"
 argument_list|)

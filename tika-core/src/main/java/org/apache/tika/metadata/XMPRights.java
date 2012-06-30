@@ -34,6 +34,14 @@ name|PREFIX_XMP_RIGHTS
 init|=
 literal|"xmpRights"
 decl_stmt|;
+comment|/** The xmpRights prefix followed by the colon delimiter */
+name|String
+name|PREFIX_
+init|=
+name|PREFIX_XMP_RIGHTS
+operator|+
+literal|":"
+decl_stmt|;
 comment|/**      * A Web URL for a rights management certificate.      */
 name|Property
 name|CERTIFICATE
@@ -42,11 +50,7 @@ name|Property
 operator|.
 name|internalText
 argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Certificate"
 argument_list|)
@@ -59,11 +63,7 @@ name|Property
 operator|.
 name|internalBoolean
 argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Marked"
 argument_list|)
@@ -76,11 +76,7 @@ name|Property
 operator|.
 name|internalTextBag
 argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Owner"
 argument_list|)
@@ -93,11 +89,7 @@ name|Property
 operator|.
 name|internalText
 argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"UsageTerms"
 argument_list|)
@@ -110,11 +102,7 @@ name|Property
 operator|.
 name|internalText
 argument_list|(
-name|PREFIX_XMP_RIGHTS
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"WebStatement"
 argument_list|)

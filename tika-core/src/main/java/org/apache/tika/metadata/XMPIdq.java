@@ -30,9 +30,12 @@ name|PREFIX
 init|=
 literal|"xmpidq"
 decl_stmt|;
+comment|/** The xmpidq prefix followed by the colon delimiter */
 name|String
-name|PREFIX_DELIMITER
+name|PREFIX_
 init|=
+name|PREFIX
+operator|+
 literal|":"
 decl_stmt|;
 comment|/**      * A qualifier providing the name of the formal identification      * scheme used for an item in the xmp:Identifier array.      */
@@ -43,9 +46,7 @@ name|Property
 operator|.
 name|externalText
 argument_list|(
-name|PREFIX
-operator|+
-name|PREFIX_DELIMITER
+name|PREFIX_
 operator|+
 literal|"Scheme"
 argument_list|)
