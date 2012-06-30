@@ -218,6 +218,14 @@ name|RESOURCE
 init|=
 literal|3
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|byte
+name|READY
+init|=
+literal|4
+decl_stmt|;
 comment|/**      * Starts a forked server process using the standard input and output      * streams for communication with the parent process. Any attempts by      * stray code to read from standard input or write to standard output      * is redirected to avoid interfering with the communication channel.      *       * @param args command line arguments, ignored      * @throws Exception if the server could not be started      */
 specifier|public
 specifier|static
@@ -419,6 +427,18 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|output
+operator|.
+name|writeByte
+argument_list|(
+name|READY
+argument_list|)
+expr_stmt|;
+name|output
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|ClassLoader
 name|loader
 init|=
