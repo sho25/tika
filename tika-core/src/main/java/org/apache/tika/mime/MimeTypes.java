@@ -1124,7 +1124,7 @@ block|{
 comment|// This needs to be reasonably large to be able to correctly detect
 comment|// things like XML root elements after initial comment and DTDs
 return|return
-literal|8
+literal|64
 operator|*
 literal|1024
 return|;
