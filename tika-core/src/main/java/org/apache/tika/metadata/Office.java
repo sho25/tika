@@ -39,15 +39,7 @@ specifier|final
 name|String
 name|PREFIX_DOC_META
 init|=
-literal|"doc-meta"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PREFIX_DOC_META_STATS
-init|=
-literal|"doc-meta-stats"
+literal|"meta"
 decl_stmt|;
 comment|/**      * For user defined metadata entries in the document,     *  what prefix should be attached to the key names.     * eg<meta:user-defined meta:name="Info1">Text1</meta:user-defined> becomes custom:Info1=Text1     */
 specifier|public
@@ -185,7 +177,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -202,7 +194,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -219,7 +211,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -236,7 +228,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -253,7 +245,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -270,7 +262,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -287,7 +279,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -304,7 +296,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -321,7 +313,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
@@ -338,7 +330,7 @@ name|Property
 operator|.
 name|internalInteger
 argument_list|(
-name|PREFIX_DOC_META_STATS
+name|PREFIX_DOC_META
 operator|+
 name|Metadata
 operator|.
