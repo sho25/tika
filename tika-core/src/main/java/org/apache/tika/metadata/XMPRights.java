@@ -34,6 +34,7 @@ name|PREFIX_XMP_RIGHTS
 init|=
 literal|"xmpRights"
 decl_stmt|;
+comment|/**      * A Web URL for a rights management certificate.      */
 name|Property
 name|CERTIFICATE
 init|=
@@ -50,6 +51,7 @@ operator|+
 literal|"Certificate"
 argument_list|)
 decl_stmt|;
+comment|/**      * When true, indicates that this is a rights-managed resource. When      * false, indicates that this is a public-domain resource. Omit if the      * state is unknown.      */
 name|Property
 name|MARKED
 init|=
@@ -66,6 +68,7 @@ operator|+
 literal|"Marked"
 argument_list|)
 decl_stmt|;
+comment|/**      * A list of legal owners of the resource.      */
 name|Property
 name|OWNER
 init|=
@@ -82,6 +85,7 @@ operator|+
 literal|"Owner"
 argument_list|)
 decl_stmt|;
+comment|/**      * A word or short phrase that identifies a resource as a member of a userdefined collection.      * TODO This is actually a language alternative property      */
 name|Property
 name|USAGE_TERMS
 init|=
@@ -98,6 +102,7 @@ operator|+
 literal|"UsageTerms"
 argument_list|)
 decl_stmt|;
+comment|/**      * A Web URL for a statement of the ownership and usage rights for this resource.      */
 name|Property
 name|WEB_STATEMENT
 init|=
