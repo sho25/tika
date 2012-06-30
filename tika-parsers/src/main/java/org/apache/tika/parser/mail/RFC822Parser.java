@@ -371,6 +371,8 @@ name|xhtml
 argument_list|,
 name|metadata
 argument_list|,
+name|context
+argument_list|,
 name|config
 operator|.
 name|isStrictParsing
