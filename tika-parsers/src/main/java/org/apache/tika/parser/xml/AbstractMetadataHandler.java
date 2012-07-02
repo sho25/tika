@@ -304,6 +304,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|property
+operator|.
+name|isMultiValuePermitted
+argument_list|()
+condition|)
+block|{
 name|metadata
 operator|.
 name|add
@@ -313,6 +321,20 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Replace the existing value if isMultiValuePermitted is false
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|property
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
