@@ -133,15 +133,13 @@ operator|.
 name|COMPOSITE
 operator|)
 condition|?
-operator|(
 name|unsupportedPropertyType
 operator|+
 literal|" is not supported"
-operator|)
 else|:
-operator|(
-literal|"Composite Properties must not include other Composite Properties as either Primary or Secondary"
-operator|)
+literal|"Composite Properties must not include other Composite"
+operator|+
+literal|" Properties as either Primary or Secondary"
 argument_list|)
 expr_stmt|;
 block|}
