@@ -584,11 +584,12 @@ block|}
 block|}
 if|if
 condition|(
-operator|!
 name|creatorTool
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|>
+literal|0
 condition|)
 block|{
 name|meta
