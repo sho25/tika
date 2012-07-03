@@ -304,6 +304,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"This is a test message"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|SUBJECT
 argument_list|)
 argument_list|)

@@ -95,7 +95,7 @@ name|isMetadataField
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|KEYWORDS
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -303,28 +303,23 @@ name|TITLE
 block|,
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|TRANSITION_SUBJECT_TO_DC_DESCRIPTION
 block|,
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 block|,
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|TRANSITION_KEYWORDS_TO_DC_SUBJECT
 block|,
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
-argument_list|)
 block|,
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 block|,
 literal|null
 block|,
@@ -359,34 +354,29 @@ block|,
 comment|// 0x02
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|TRANSITION_SUBJECT_TO_DC_DESCRIPTION
 block|,
 comment|// 0x03
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 block|,
 comment|// 0x04
 literal|null
 block|,
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
-argument_list|)
 block|,
 comment|// 0x06
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|TRANSITION_KEYWORDS_TO_DC_SUBJECT
 block|,
 comment|// 0x07
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 block|,
 comment|// 0x08
 block|}

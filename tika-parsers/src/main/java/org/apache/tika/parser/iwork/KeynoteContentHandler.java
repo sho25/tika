@@ -594,7 +594,7 @@ name|add
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|attributes
 operator|.

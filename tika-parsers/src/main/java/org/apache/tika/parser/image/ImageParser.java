@@ -205,6 +205,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|mime
 operator|.
 name|MediaType
@@ -663,7 +677,7 @@ name|metadata
 argument_list|,
 literal|"CommentExtensions CommentExtension"
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|)
@@ -674,7 +688,7 @@ name|metadata
 argument_list|,
 literal|"markerSequence com"
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|)

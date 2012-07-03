@@ -385,7 +385,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|,
 name|font
 operator|.

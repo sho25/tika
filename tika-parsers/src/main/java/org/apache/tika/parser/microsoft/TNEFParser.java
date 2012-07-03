@@ -494,13 +494,14 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|// TODO: Move to title in Tika 2.0
 name|metadata
 operator|.
 name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|TRANSITION_SUBJECT_TO_DC_TITLE
 argument_list|,
 name|subject
 argument_list|)

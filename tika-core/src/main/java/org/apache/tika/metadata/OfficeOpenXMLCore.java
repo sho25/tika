@@ -136,6 +136,23 @@ operator|+
 literal|"version"
 argument_list|)
 decl_stmt|;
+comment|/**      * The document's subject.      */
+name|Property
+name|SUBJECT
+init|=
+name|Property
+operator|.
+name|externalText
+argument_list|(
+name|PREFIX
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+operator|+
+literal|"subject"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 

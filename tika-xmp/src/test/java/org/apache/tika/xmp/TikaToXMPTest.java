@@ -368,7 +368,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 argument_list|,
 literal|"lastModifiedBy"
 argument_list|)
@@ -790,7 +790,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|KEYWORDS
 argument_list|,
 operator|new
 name|String

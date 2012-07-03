@@ -546,7 +546,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)
@@ -560,7 +560,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|Metadata
 operator|.
 name|AUTHOR
 argument_list|)
@@ -618,7 +618,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1094,6 +1094,21 @@ name|ParseContext
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO: Remove subject and author in Tika 2.0
+name|assertEquals
+argument_list|(
+literal|"Re: question about when shuffle/sort start working"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|SUBJECT
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Re: question about when shuffle/sort start working"
@@ -1110,27 +1125,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Re: question about when shuffle/sort start working"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|TikaCoreProperties
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"Jothi Padmanabhan<jothipn@yahoo-inc.com>"
 argument_list|,
 name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|Metadata
 operator|.
 name|AUTHOR
 argument_list|)

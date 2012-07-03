@@ -202,7 +202,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;

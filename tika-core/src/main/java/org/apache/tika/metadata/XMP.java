@@ -36,7 +36,9 @@ name|PREFIX_
 init|=
 name|PREFIX
 operator|+
-literal|":"
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
 comment|/**      * The date and time the resource was created. For a digital file, this need not      * match a file-system creation time. For a freshly created resource, it should      * be close to that time, modulo the time taken to write the file. Later file      * transfer, copying, and so on, can make the file-system time arbitrarily different.      */
 name|Property

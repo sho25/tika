@@ -36,9 +36,25 @@ specifier|public
 specifier|static
 specifier|final
 name|String
+name|NAMESPACE_URI_DC_TERMS
+init|=
+literal|"http://purl.org/dc/terms/"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|PREFIX_DC
 init|=
 literal|"dc"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PREFIX_DC_TERMS
+init|=
+literal|"dcterms"
 decl_stmt|;
 comment|/**      * Typically, Format may include the media-type or dimensions of the      * resource. Format may be used to determine the software, hardware or      * other equipment needed to display or operate the resource. Examples      * of dimensions include size and duration. Recommended best practice is      * to select a value from a controlled vocabulary (for example, the list      * of Internet Media Types [MIME] defining computer media formats).      */
 name|Property
@@ -82,7 +98,7 @@ name|Property
 operator|.
 name|internalDate
 argument_list|(
-name|PREFIX_DC
+name|PREFIX_DC_TERMS
 operator|+
 name|Metadata
 operator|.
@@ -97,7 +113,7 @@ name|CONTRIBUTOR
 init|=
 name|Property
 operator|.
-name|internalText
+name|internalTextBag
 argument_list|(
 name|PREFIX_DC
 operator|+
@@ -131,7 +147,7 @@ name|CREATOR
 init|=
 name|Property
 operator|.
-name|internalText
+name|internalTextBag
 argument_list|(
 name|PREFIX_DC
 operator|+
@@ -140,6 +156,23 @@ operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"creator"
+argument_list|)
+decl_stmt|;
+comment|/**      * Date of creation of the resource.      */
+name|Property
+name|CREATED
+init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
+name|PREFIX_DC_TERMS
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+operator|+
+literal|"created"
 argument_list|)
 decl_stmt|;
 comment|/**      * A date associated with an event in the life cycle of the resource.      * Typically, Date will be associated with the creation or availability of      * the resource. Recommended best practice for encoding the date value is      * defined in a profile of ISO 8601 [W3CDTF] and follows the YYYY-MM-DD      * format.      */

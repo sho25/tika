@@ -351,6 +351,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"L'\u00C9quipe Microsoft Outlook Express"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|AUTHOR
 argument_list|)
 argument_list|)
@@ -366,7 +380,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;

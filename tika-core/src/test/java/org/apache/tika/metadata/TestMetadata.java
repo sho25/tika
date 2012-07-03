@@ -1386,7 +1386,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|1
 argument_list|)
@@ -1539,7 +1539,7 @@ name|getInt
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1577,7 +1577,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1591,7 +1591,7 @@ name|getInt
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1661,7 +1661,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 operator|new
 name|Date
@@ -1680,7 +1680,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1694,7 +1694,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1708,7 +1708,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"INVALID"
 argument_list|)
@@ -1723,7 +1723,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1737,7 +1737,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1748,7 +1748,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 operator|new
 name|Date
@@ -1767,7 +1767,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1798,7 +1798,7 @@ name|getInt
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1810,7 +1810,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 operator|new
 name|Date
@@ -1829,7 +1829,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1843,7 +1843,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1857,7 +1857,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01T00:00:01Z"
 argument_list|)
@@ -1872,7 +1872,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1885,7 +1885,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01 00:00:01Z"
 argument_list|)
@@ -1900,7 +1900,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1913,7 +1913,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01T01:00:01+01:00"
 argument_list|)
@@ -1928,7 +1928,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1941,7 +1941,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01 01:00:01+01:00"
 argument_list|)
@@ -1956,7 +1956,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1969,7 +1969,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01T12:00:01+12:00"
 argument_list|)
@@ -1984,7 +1984,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -1997,7 +1997,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1969-12-31T12:00:01-12:00"
 argument_list|)
@@ -2012,7 +2012,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -2026,7 +2026,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01"
 argument_list|)
@@ -2043,7 +2043,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -2056,7 +2056,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 literal|"1970:01:01"
 argument_list|)
@@ -2073,7 +2073,7 @@ name|getDate
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 operator|.
 name|getTime
@@ -2100,7 +2100,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|,
 literal|"1970-01-01T00:00:01"
 argument_list|)
@@ -2117,7 +2117,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;

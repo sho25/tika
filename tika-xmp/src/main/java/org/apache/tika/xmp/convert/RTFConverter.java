@@ -298,7 +298,7 @@ name|createCommaSeparatedArray
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|XMPConst
 operator|.
@@ -328,7 +328,7 @@ name|createLangAltProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|DESCRIPTION
 argument_list|,
 name|XMPConst
 operator|.
@@ -382,9 +382,9 @@ argument_list|)
 expr_stmt|;
 name|createProperty
 argument_list|(
-name|ClimateForcast
+name|TikaCoreProperties
 operator|.
-name|COMMENT
+name|COMMENTS
 argument_list|,
 name|XMPConst
 operator|.

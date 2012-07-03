@@ -31,6 +31,8 @@ name|KEYWORDS
 init|=
 literal|"Keywords"
 decl_stmt|;
+annotation|@
+name|Deprecated
 name|String
 name|COMMENTS
 init|=

@@ -151,6 +151,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|OfficeOpenXMLCore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|OfficeOpenXMLExtended
 import|;
 end_import
@@ -323,6 +337,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Keith Bennett"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|AUTHOR
 argument_list|)
@@ -675,6 +703,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Keith Bennett"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|AUTHOR
 argument_list|)
 argument_list|)
@@ -995,7 +1037,21 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|OfficeOpenXMLCore
+operator|.
+name|SUBJECT
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Gym class featuring a brown fox and lazy dog"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)
@@ -1010,6 +1066,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Nevin Nollop"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|AUTHOR
 argument_list|)
@@ -1376,6 +1446,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+comment|// TODO: Move to OO subject in Tika 2.0
 name|assertEquals
 argument_list|(
 literal|"Subject is here"
@@ -1384,7 +1455,21 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|Metadata
+operator|.
+name|SUBJECT
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Subject is here"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|OfficeOpenXMLCore
 operator|.
 name|SUBJECT
 argument_list|)
@@ -1535,7 +1620,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1549,7 +1634,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1563,7 +1648,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SAVE_DATE
+name|MODIFIED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1577,7 +1662,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1673,9 +1758,24 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// TODO: Move to OO subject in Tika 2.0
+name|assertEquals
+argument_list|(
+literal|"My subject"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1687,7 +1787,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|OfficeOpenXMLCore
 operator|.
 name|SUBJECT
 argument_list|)

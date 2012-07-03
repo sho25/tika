@@ -468,7 +468,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -574,7 +574,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -666,7 +666,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;

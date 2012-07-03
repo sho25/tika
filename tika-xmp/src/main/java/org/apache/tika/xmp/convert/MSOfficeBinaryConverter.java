@@ -339,7 +339,7 @@ name|createCommaSeparatedArray
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|XMPConst
 operator|.
@@ -369,7 +369,7 @@ name|createProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|XMPConst
 operator|.
@@ -393,7 +393,7 @@ argument_list|)
 expr_stmt|;
 name|createProperty
 argument_list|(
-name|MSOffice
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|,
@@ -438,7 +438,7 @@ name|createLangAltProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|DESCRIPTION
 argument_list|,
 name|XMPConst
 operator|.
@@ -477,7 +477,7 @@ name|createProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SAVE_DATE
+name|MODIFIED
 argument_list|,
 name|XMPConst
 operator|.

@@ -440,7 +440,7 @@ name|add
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|KEYWORDS
 argument_list|,
 name|keywords
 operator|.

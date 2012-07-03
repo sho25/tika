@@ -401,7 +401,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|tag
 operator|.

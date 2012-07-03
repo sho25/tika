@@ -367,6 +367,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|DESCRIPTION
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Gym class featuring a brown fox and lazy dog"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|SUBJECT
 argument_list|)
 argument_list|)
@@ -381,7 +395,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -407,7 +421,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|)
@@ -584,6 +598,18 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|DESCRIPTION
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertNull
+argument_list|(
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|SUBJECT
 argument_list|)
 argument_list|)
@@ -596,7 +622,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -618,7 +644,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|)
@@ -741,6 +767,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|DESCRIPTION
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Test Subject"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|SUBJECT
 argument_list|)
 argument_list|)
@@ -755,7 +795,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -781,7 +821,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|)
@@ -795,9 +835,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 argument_list|)
 argument_list|)
 expr_stmt|;

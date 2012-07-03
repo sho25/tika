@@ -1273,7 +1273,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|MP4TimeToDate
 argument_list|(
@@ -1512,7 +1512,7 @@ name|addMetadata
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|metadata
 argument_list|,

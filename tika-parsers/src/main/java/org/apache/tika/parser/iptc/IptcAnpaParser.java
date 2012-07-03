@@ -4555,7 +4555,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|KEYWORDS
 argument_list|,
 name|clean
 argument_list|(
@@ -4574,7 +4574,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|clean
 argument_list|(
@@ -4593,7 +4593,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|clean
 argument_list|(

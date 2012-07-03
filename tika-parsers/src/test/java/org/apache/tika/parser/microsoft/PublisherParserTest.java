@@ -202,6 +202,20 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Nick Burch"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
 name|AUTHOR
 argument_list|)
 argument_list|)

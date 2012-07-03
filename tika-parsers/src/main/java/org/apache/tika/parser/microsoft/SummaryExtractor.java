@@ -583,7 +583,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|summary
 operator|.
@@ -603,11 +603,12 @@ name|getKeywords
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO Move to OO subject in Tika 2.0
 name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|TRANSITION_SUBJECT_TO_OO_SUBJECT
 argument_list|,
 name|summary
 operator|.
@@ -619,7 +620,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 argument_list|,
 name|summary
 operator|.
@@ -629,7 +630,7 @@ argument_list|)
 expr_stmt|;
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|COMMENTS
 argument_list|,
@@ -679,7 +680,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|summary
 operator|.
@@ -691,7 +692,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SAVE_DATE
+name|MODIFIED
 argument_list|,
 name|summary
 operator|.

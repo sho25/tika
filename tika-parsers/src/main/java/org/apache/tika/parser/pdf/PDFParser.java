@@ -1210,7 +1210,7 @@ name|metadata
 argument_list|,
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|,
 name|info
 operator|.
@@ -1224,7 +1224,7 @@ name|metadata
 argument_list|,
 name|TikaCoreProperties
 operator|.
-name|CREATOR
+name|CREATOR_TOOL
 argument_list|,
 name|info
 operator|.
@@ -1258,13 +1258,14 @@ name|getProducer
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// TODO: Move to description in Tika 2.0
 name|addMetadata
 argument_list|(
 name|metadata
 argument_list|,
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|TRANSITION_SUBJECT_TO_OO_SUBJECT
 argument_list|,
 name|info
 operator|.
@@ -1286,6 +1287,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
+comment|// TODO Remove these in Tika 2.0
 name|addMetadata
 argument_list|(
 name|metadata
@@ -1304,7 +1306,7 @@ name|metadata
 argument_list|,
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|info
 operator|.

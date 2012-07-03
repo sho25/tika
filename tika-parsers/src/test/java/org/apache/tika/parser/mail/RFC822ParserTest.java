@@ -463,7 +463,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -476,6 +476,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"[jira] Commented: (TIKA-461) RFC822 messages not parsed"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)
@@ -1078,7 +1092,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1091,6 +1105,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"If you can read this you understand the example."
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)
@@ -1180,7 +1208,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1193,6 +1221,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Air Permit Programs | Air& Radiation | US EPA"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)
@@ -1384,7 +1426,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1451,7 +1493,7 @@ name|isMultiValued
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1465,7 +1507,7 @@ name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 index|[
 literal|0
@@ -1482,7 +1524,7 @@ name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 argument_list|)
 index|[
 literal|1
@@ -1594,6 +1636,20 @@ operator|.
 name|get
 argument_list|(
 name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"abcd"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
 operator|.
 name|SUBJECT
 argument_list|)

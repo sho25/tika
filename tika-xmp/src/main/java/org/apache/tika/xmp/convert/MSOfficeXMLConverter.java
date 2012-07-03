@@ -339,7 +339,7 @@ name|createProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|XMPConst
 operator|.
@@ -369,7 +369,7 @@ name|createProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|DESCRIPTION
+name|COMMENTS
 argument_list|,
 name|XMPConst
 operator|.
@@ -412,7 +412,7 @@ name|createLangAltProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|SUBJECT
+name|DESCRIPTION
 argument_list|,
 name|XMPConst
 operator|.
@@ -438,7 +438,7 @@ name|createProperty
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|LAST_AUTHOR
+name|MODIFIER
 argument_list|,
 name|OfficeOpenXMLCore
 operator|.

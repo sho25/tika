@@ -1715,7 +1715,7 @@ name|metaDataKey
 operator|=
 name|TikaCoreProperties
 operator|.
-name|AUTHOR
+name|CREATOR
 expr_stmt|;
 block|}
 elseif|else
@@ -1751,7 +1751,7 @@ name|metaDataKey
 operator|=
 name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 expr_stmt|;
 block|}
 elseif|else
