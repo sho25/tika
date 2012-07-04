@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  *  * IPTC Metadata Descriptions taken from the IPTC Photo Metadata (July 2010)   * standard. These parts Copyright 2010 International Press Telecommunications   * Council.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -224,7 +224,7 @@ specifier|public
 class|class
 name|TikaToXMP
 block|{
-comment|/**  	 * Map from mimetype to converter class  	 * Must only be accessed through<code>getConverterMap</code> 	 */
+comment|/**      * Map from mimetype to converter class Must only be accessed through      *<code>getConverterMap</code>      */
 specifier|private
 specifier|static
 name|Map
@@ -247,7 +247,7 @@ parameter_list|()
 block|{
 comment|// Nothing to do
 block|}
-comment|/** 	 * @see ITikaToXMP#convert(Metadata, String) 	 * But the mimetype is retrieved from the metadata map. 	 */
+comment|/**      * @see ITikaToXMP#convert(Metadata, String) But the mimetype is retrieved from the metadata      *      map.      */
 specifier|public
 specifier|static
 name|XMPMeta
@@ -314,7 +314,7 @@ name|mimetype
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Convert the given Tika metadata map to XMP object. 	 * If a mimetype is provided in the Metadata map, a specific converter can be used, that converts all      * available metadata.      * If there is no mimetype provided or no specific converter available a generic conversion is done      * which will convert only those properties that are in known namespaces and are using the correct prefixes. 	 * 	 * @param tikaMetadata the Metadata map from Tika 	 * @param mimetype depicts the format's converter to use 	 * @return XMP object 	 * @throws TikaException 	 */
+comment|/**      * Convert the given Tika metadata map to XMP object. If a mimetype is provided in the Metadata      * map, a specific converter can be used, that converts all available metadata. If there is no      * mimetype provided or no specific converter available a generic conversion is done which will      * convert only those properties that are in known namespaces and are using the correct      * prefixes.      *      * @param tikaMetadata      *            the Metadata map from Tika      * @param mimetype      *            depicts the format's converter to use      * @return XMP object      * @throws TikaException      */
 specifier|public
 specifier|static
 name|XMPMeta
@@ -430,7 +430,7 @@ return|return
 name|xmp
 return|;
 block|}
-comment|/**  	 * Check if there is a converter available which allows to convert the 	 * Tika metadata to XMP 	 * @param mimetype the Mimetype 	 * @return true if the Metadata object can be converted or false if not 	 */
+comment|/**      * Check if there is a converter available which allows to convert the Tika metadata to XMP      *      * @param mimetype      *            the Mimetype      * @return true if the Metadata object can be converted or false if not      */
 specifier|public
 specifier|static
 name|boolean
@@ -475,7 +475,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Retrieve a specific converter according to the mimetype 	 * @param mimetype the Mimetype 	 * @return the converter or null, if none exists 	 * @throws TikaException 	 */
+comment|/**      * Retrieve a specific converter according to the mimetype      *      * @param mimetype      *            the Mimetype      * @return the converter or null, if none exists      * @throws TikaException      */
 specifier|public
 specifier|static
 name|ITikaToXMPConverter
@@ -632,7 +632,7 @@ return|return
 name|converterMap
 return|;
 block|}
-comment|/** 	 * Initializes the map with supported converters. 	 */
+comment|/**      * Initializes the map with supported converters.      */
 specifier|private
 specifier|static
 name|void

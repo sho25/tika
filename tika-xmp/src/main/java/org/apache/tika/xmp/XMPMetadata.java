@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  *  * IPTC Metadata Descriptions taken from the IPTC Photo Metadata (July 2010)   * standard. These parts Copyright 2010 International Press Telecommunications   * Council.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -334,7 +334,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a conversion of the Metadata map from Tika to the XMP data model  * by also providing the Metadata API for clients to ease transition.  * But clients can also work directly on the XMP data model, by getting the XMPMeta   * reference from this class.  * Usually the instance would be initialized by providing the Metadata object that  * had been returned from Tika-core which populates the XMP data model with  * all properties that can be converted.  *   * This class is not serializable!  */
+comment|/**  * Provides a conversion of the Metadata map from Tika to the XMP data model by also providing the  * Metadata API for clients to ease transition. But clients can also work directly on the XMP data  * model, by getting the XMPMeta reference from this class. Usually the instance would be  * initialized by providing the Metadata object that had been returned from Tika-core which  * populates the XMP data model with all properties that can be converted.  *  * This class is not serializable!  */
 end_comment
 
 begin_class
@@ -366,7 +366,7 @@ operator|.
 name|getSchemaRegistry
 argument_list|()
 decl_stmt|;
-comment|/** 	 *  Initializes with an empty XMP packet  	 */
+comment|/**      * Initializes with an empty XMP packet      */
 specifier|public
 name|XMPMetadata
 parameter_list|()
@@ -379,7 +379,7 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.tika.xmp.XMPMetadata(org.apache.tika.metadata.Metadata, java.lang.String) 	 * But the mimetype is retrieved from the metadata map. 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata(org.apache.tika.metadata.Metadata, java.lang.String)      * But the mimetype is retrieved from the metadata map.      */
 specifier|public
 name|XMPMetadata
 parameter_list|(
@@ -401,7 +401,7 @@ name|meta
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Initializes the data by converting the Metadata information to XMP.      * If a mimetype is provided, a specific converter can be used, that converts all      * available metadata. If there is no mimetype provided or no specific converter       * available a generic conversion is done which will convert only those properties       * that are in known namespaces and are using the correct prefixes      *       * @param meta the Metadata information from Tika-core      * @param mimetype mimetype information      * @throws In case an error occured during conversion      */
+comment|/**      * Initializes the data by converting the Metadata information to XMP. If a mimetype is      * provided, a specific converter can be used, that converts all available metadata. If there is      * no mimetype provided or no specific converter available a generic conversion is done which      * will convert only those properties that are in known namespaces and are using the correct      * prefixes      *      * @param meta      *            the Metadata information from Tika-core      * @param mimetype      *            mimetype information      * @throws In      *             case an error occured during conversion      */
 specifier|public
 name|XMPMetadata
 parameter_list|(
@@ -428,7 +428,7 @@ name|mimetype
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.tika.xmp.XMPMetadata#process(org.apache.tika.metadata.Metadata, java.lang.String) 	 * But the mimetype is retrieved from the metadata map. 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#process(org.apache.tika.metadata.Metadata,      *      java.lang.String)      *  But the mimetype is retrieved from the metadata map.      */
 specifier|public
 name|void
 name|process
@@ -451,7 +451,7 @@ name|meta
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Converts the Metadata information to XMP.      * If a mimetype is provided, a specific converter can be used, that converts all      * available metadata. If there is no mimetype provided or no specific converter       * available a generic conversion is done which will convert only those properties       * that are in known namespaces and are using the correct prefixes      *       * @param meta the Metadata information from Tika-core      * @param mimetype mimetype information      * @throws In case an error occured during conversion      */
+comment|/**      * Converts the Metadata information to XMP. If a mimetype is provided, a specific converter can      * be used, that converts all available metadata. If there is no mimetype provided or no      * specific converter available a generic conversion is done which will convert only those      * properties that are in known namespaces and are using the correct prefixes      *      * @param meta      *            the Metadata information from Tika-core      * @param mimetype      *            mimetype information      * @throws In      *             case an error occured during conversion      */
 specifier|public
 name|void
 name|process
@@ -479,7 +479,7 @@ name|mimetype
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Provides direct access to the XMP data model, in case a client prefers to work directly on it      * instead of using the Metadata API      * @return the "internal" XMP data object      */
+comment|/**      * Provides direct access to the XMP data model, in case a client prefers to work directly on it      * instead of using the Metadata API      *      * @return the "internal" XMP data object      */
 specifier|public
 name|XMPMeta
 name|getXMPData
@@ -490,7 +490,7 @@ name|xmpData
 return|;
 block|}
 comment|// === Namespace Registry API === //
-comment|/** 	 * Register a namespace URI with a suggested prefix. It is not an error if 	 * the URI is already registered, no matter what the prefix is. If the URI 	 * is not registered but the suggested prefix is in use, a unique prefix is 	 * created from the suggested one. The actual registeed prefix is always 	 * returned. The function result tells if the registered prefix is the 	 * suggested one. 	 *<p> 	 * Note: No checking is presently done on either the URI or the prefix. 	 * 	 * @param namespaceURI 	 *            The URI for the namespace. Must be a valid XML URI. 	 * @param suggestedPrefix 	 *            The suggested prefix to be used if the URI is not yet 	 *            registered. Must be a valid XML name. 	 * @return Returns the registered prefix for this URI, is equal to the 	 *         suggestedPrefix if the namespace hasn't been registered before, 	 *         otherwise the existing prefix. 	 * @throws XMPException If the parameters are not accordingly set 	 */
+comment|/**      * Register a namespace URI with a suggested prefix. It is not an error if the URI is already      * registered, no matter what the prefix is. If the URI is not registered but the suggested      * prefix is in use, a unique prefix is created from the suggested one. The actual registeed      * prefix is always returned. The function result tells if the registered prefix is the      * suggested one.      * Note: No checking is presently done on either the URI or the prefix.      *      * @param namespaceURI      *            The URI for the namespace. Must be a valid XML URI.      * @param suggestedPrefix      *            The suggested prefix to be used if the URI is not yet registered. Must be a valid      *            XML name.      * @return Returns the registered prefix for this URI, is equal to the suggestedPrefix if the      *         namespace hasn't been registered before, otherwise the existing prefix.      * @throws XMPException      *             If the parameters are not accordingly set      */
 specifier|public
 specifier|static
 name|String
@@ -516,7 +516,7 @@ name|suggestedPrefix
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Obtain the prefix for a registered namespace URI. 	 *<p> 	 * It is not an error if the namespace URI is not registered. 	 * 	 * @param namespaceURI 	 *            The URI for the namespace. Must not be null or the empty 	 *            string. 	 * @return Returns the prefix registered for this namespace URI or null. 	 */
+comment|/**      * Obtain the prefix for a registered namespace URI.      * It is not an error if the namespace URI is not registered.      *      * @param namespaceURI      *            The URI for the namespace. Must not be null or the empty string.      * @return Returns the prefix registered for this namespace URI or null.      */
 specifier|public
 specifier|static
 name|String
@@ -535,7 +535,7 @@ name|namespaceURI
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Obtain the URI for a registered namespace prefix. 	 *<p> 	 * It is not an error if the namespace prefix is not registered. 	 * 	 * @param namespacePrefix 	 *            The prefix for the namespace. Must not be null or the empty 	 *            string. 	 * @return Returns the URI registered for this prefix or null. 	 */
+comment|/**      * Obtain the URI for a registered namespace prefix.      * It is not an error if the namespace prefix is not registered.      *      * @param namespacePrefix      *            The prefix for the namespace. Must not be null or the empty string.      * @return Returns the URI registered for this prefix or null.      */
 specifier|public
 specifier|static
 name|String
@@ -554,7 +554,7 @@ name|namespacePrefix
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @return Returns the registered prefix/namespace-pairs as map, where the keys are the 	 *         namespaces and the values are the prefixes. 	 */
+comment|/**      * @return Returns the registered prefix/namespace-pairs as map, where the keys are the      *         namespaces and the values are the prefixes.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -578,7 +578,7 @@ name|getNamespaces
 argument_list|()
 return|;
 block|}
-comment|/** 	 * @return Returns the registered namespace/prefix-pairs as map, where the keys are the 	 *         prefixes and the values are the namespaces. 	 */
+comment|/**      * @return Returns the registered namespace/prefix-pairs as map, where the keys are the prefixes      *         and the values are the namespaces.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -602,7 +602,7 @@ name|getPrefixes
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Deletes a namespace from the registry. 	 *<p> 	 * Does nothing if the URI is not registered, or if the namespaceURI 	 * parameter is null or the empty string. 	 *<p> 	 * Note: Not yet implemented. 	 * 	 * @param namespaceURI 	 *            The URI for the namespace. 	 */
+comment|/**      * Deletes a namespace from the registry.      *<p>      * Does nothing if the URI is not registered, or if the namespaceURI parameter is null or the      * empty string.      *<p>      * Note: Not yet implemented.      *      * @param namespaceURI      *            The URI for the namespace.      */
 specifier|public
 specifier|static
 name|void
@@ -621,7 +621,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// === Metadata API === //
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#isMultiValued(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#isMultiValued(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -644,7 +644,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Checks if the named property is an array. 	 * @see org.apache.tika.metadata.Metadata#isMultiValued(java.lang.String) 	 */
+comment|/**      * Checks if the named property is an array.      *      * @see org.apache.tika.metadata.Metadata#isMultiValued(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -729,7 +729,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * For XMP it is not clear what that API should return, therefor not implemented 	 */
+comment|/**      * For XMP it is not clear what that API should return, therefor not implemented      */
 annotation|@
 name|Override
 specifier|public
@@ -746,7 +746,7 @@ literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Returns the value of a simple property or the first one of an array.  	 * The given name must contain a namespace prefix of a registered namespace. 	 *  	 * @see org.apache.tika.metadata.Metadata#get(java.lang.String) 	 */
+comment|/**      * Returns the value of a simple property or the first one of an array. The given name must      * contain a namespace prefix of a registered namespace.      *      * @see org.apache.tika.metadata.Metadata#get(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -891,7 +891,7 @@ return|return
 name|value
 return|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -914,7 +914,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -960,13 +960,13 @@ name|XMPException
 name|e
 parameter_list|)
 block|{
-comment|//Ignore
+comment|// Ignore
 block|}
 return|return
 name|result
 return|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#get(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1034,13 +1034,13 @@ name|XMPException
 name|e
 parameter_list|)
 block|{
-comment|//Ignore
+comment|// Ignore
 block|}
 return|return
 name|result
 return|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#getValues(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#getValues(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1064,7 +1064,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the value of a simple property or all if the property is an array and the elements are of simple type.  	 * The given name must contain a namespace prefix of a registered namespace. 	 * @see org.apache.tika.metadata.Metadata#getValues(java.lang.String) 	 */
+comment|/**      * Returns the value of a simple property or all if the property is an array and the elements      * are of simple type. The given name must contain a namespace prefix of a registered namespace.      *      * @see org.apache.tika.metadata.Metadata#getValues(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1303,7 +1303,7 @@ return|return
 name|value
 return|;
 block|}
-comment|/** 	 * As this API could only possibly work for simple properties in XMP, 	 * it just calls the set method, which replaces any existing value 	 * @see org.apache.tika.metadata.Metadata#add(java.lang.String, java.lang.String) 	 */
+comment|/**      * As this API could only possibly work for simple properties in XMP, it just calls the set      * method, which replaces any existing value      *      * @see org.apache.tika.metadata.Metadata#add(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1325,7 +1325,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the given property. If the property already exists, it is overwritten.  	 * Only simple properties that use a registered prefix are stored in the XMP. 	 *   	 * @see org.apache.tika.metadata.Metadata#set(java.lang.String, java.lang.String) 	 */
+comment|/**      * Sets the given property. If the property already exists, it is overwritten. Only simple      * properties that use a registered prefix are stored in the XMP.      *      * @see org.apache.tika.metadata.Metadata#set(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1400,7 +1400,7 @@ comment|// Ignore
 block|}
 block|}
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1427,7 +1427,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1453,7 +1453,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1477,7 +1477,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#set(java.lang.String, java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1501,7 +1501,7 @@ name|date
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Sets array properties. If the property already exists, it is overwritten.  	 * Only array properties that use a registered prefix are stored in the XMP. 	 * @see org.apache.tika.metadata.Metadata#set(org.apache.tika.metadata.Property, java.lang.String[]) 	 */
+comment|/**      * Sets array properties. If the property already exists, it is overwritten. Only array      * properties that use a registered prefix are stored in the XMP.      *      * @see org.apache.tika.metadata.Metadata#set(org.apache.tika.metadata.Property,      *      java.lang.String[])      */
 annotation|@
 name|Override
 specifier|public
@@ -1643,7 +1643,7 @@ comment|// Ignore
 block|}
 block|}
 block|}
-comment|/** 	 * It will set all simple and array properties that have QName keys in registered namespaces. 	 * @see org.apache.tika.metadata.Metadata#setAll(java.util.Properties) 	 */
+comment|/**      * It will set all simple and array properties that have QName keys in registered namespaces.      *      * @see org.apache.tika.metadata.Metadata#setAll(java.util.Properties)      */
 annotation|@
 name|Override
 specifier|public
@@ -1766,7 +1766,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * @see org.apache.tika.xmp.XMPMetadata#remove(java.lang.String) 	 */
+comment|/**      * @see org.apache.tika.xmp.XMPMetadata#remove(java.lang.String)      */
 specifier|public
 name|void
 name|remove
@@ -1786,7 +1786,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Removes the given property from the XMP data.  	 * If it is a complex property the whole subtree is removed 	 * @see org.apache.tika.metadata.Metadata#remove(java.lang.String) 	 */
+comment|/**      * Removes the given property from the XMP data. If it is a complex property the whole subtree      * is removed      *      * @see org.apache.tika.metadata.Metadata#remove(java.lang.String)      */
 annotation|@
 name|Override
 specifier|public
@@ -1845,7 +1845,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns the number of top-level namespaces 	 */
+comment|/**      * Returns the number of top-level namespaces      */
 annotation|@
 name|Override
 specifier|public
@@ -1914,7 +1914,7 @@ return|return
 name|size
 return|;
 block|}
-comment|/** 	 * This method is not implemented, yet. It is very tedious to check for semantic equality of XMP packets 	 */
+comment|/**      * This method is not implemented, yet. It is very tedious to check for semantic equality of XMP      * packets      */
 annotation|@
 name|Override
 specifier|public
@@ -1933,7 +1933,7 @@ literal|"Not implemented"
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * Serializes the XMP data in compact form without packet wrapper 	 * @see org.apache.tika.metadata.Metadata#toString() 	 */
+comment|/**      * Serializes the XMP data in compact form without packet wrapper      *      * @see org.apache.tika.metadata.Metadata#toString()      */
 annotation|@
 name|Override
 specifier|public
@@ -2020,7 +2020,7 @@ name|NotSerializableException
 argument_list|()
 throw|;
 block|}
-comment|/** 	 * Checks if the given key is a valid QName with a known standard namespace prefix 	 *  	 * @param key 	 *            the key to check 	 * @return true if the key is valid otherwise false 	 */
+comment|/**      * Checks if the given key is a valid QName with a known standard namespace prefix      *      * @param key      *            the key to check      * @return true if the key is valid otherwise false      */
 specifier|private
 name|void
 name|checkKey
@@ -2101,7 +2101,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * Split the given key at the namespace prefix delimiter 	 * @param key the key to split 	 * @return prefix and local name of the property or null if the key did not 	 * contain a delimiter or too much of them 	 */
+comment|/**      * Split the given key at the namespace prefix delimiter      *      * @param key      *            the key to split      * @return prefix and local name of the property or null if the key did not contain a delimiter      *         or too much of them      */
 specifier|private
 name|String
 index|[]
@@ -2148,7 +2148,7 @@ literal|null
 return|;
 block|}
 comment|// checkKeyPrefix
-comment|/** 	 * Convert Tika array types to XMP array types 	 * @param type 	 * @return 	 */
+comment|/**      * Convert Tika array types to XMP array types      *      * @param type      * @return      */
 specifier|private
 name|int
 name|tikaToXMPArrayType

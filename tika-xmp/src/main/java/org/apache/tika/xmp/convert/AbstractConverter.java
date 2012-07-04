@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  *  * IPTC Metadata Descriptions taken from the IPTC Photo Metadata (July 2010)   * standard. These parts Copyright 2010 International Press Telecommunications   * Council.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -156,7 +156,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for Tika Metadata to XMP converter which provides some needed  * common functionality.  */
+comment|/**  * Base class for Tika Metadata to XMP converter which provides some needed common functionality.  */
 end_comment
 
 begin_class
@@ -186,7 +186,7 @@ parameter_list|)
 throws|throws
 name|XMPException
 function_decl|;
-comment|/** 	 * Every Converter has to provide information about namespaces 	 * that are used additionally to the core set of XMP namespaces. 	 *  	 * @return the additional namespace information 	 */
+comment|/**      * Every Converter has to provide information about namespaces that are used additionally to the      * core set of XMP namespaces.      *      * @return the additional namespace information      */
 specifier|abstract
 specifier|protected
 name|Set
@@ -247,7 +247,7 @@ name|meta
 return|;
 block|}
 comment|// --- utility methods used by sub-classes ---
-comment|/**  	 * Registers a number<code>Namespace</code> information with XMPCore. 	 * Any already registered namespace is not registered again. 	 *  	 * @param namespaces the list of namespaces to be registered 	 * @throws TikaException in case a namespace oculd not be registered 	 */
+comment|/**      * Registers a number<code>Namespace</code> information with XMPCore. Any already registered      * namespace is not registered again.      *      * @param namespaces      *            the list of namespaces to be registered      * @throws TikaException      *             in case a namespace oculd not be registered      */
 specifier|protected
 name|void
 name|registerNamespaces
@@ -312,7 +312,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/** 	 * @see AbstractConverter#createProperty(String, String, String); 	 */
+comment|/**      * @see AbstractConverter#createProperty(String, String, String);      */
 specifier|protected
 name|void
 name|createProperty
@@ -342,7 +342,7 @@ name|propertyName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a simple property. 	 * @param tikaKey Key in the Tika metadata map 	 * @param ns namespace the property should be created in 	 * @param propertyName name of the property 	 * @throws XMPException if the property could not be created 	 */
+comment|/**      * Creates a simple property.      *      * @param tikaKey      *            Key in the Tika metadata map      * @param ns      *            namespace the property should be created in      * @param propertyName      *            name of the property      * @throws XMPException      *             if the property could not be created      */
 specifier|protected
 name|void
 name|createProperty
@@ -396,7 +396,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @see AbstractConverter#createLangAltProperty(String, String, String); 	 */
+comment|/**      * @see AbstractConverter#createLangAltProperty(String, String, String);      */
 specifier|protected
 name|void
 name|createLangAltProperty
@@ -426,7 +426,7 @@ name|propertyName
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a language alternative property in the x-default language 	 * @param tikaKey Key in the Tika metadata map 	 * @param ns namespace the property should be created in 	 * @param propertyName name of the property 	 * @throws XMPException if the property could not be created 	 */
+comment|/**      * Creates a language alternative property in the x-default language      *      * @param tikaKey      *            Key in the Tika metadata map      * @param ns      *            namespace the property should be created in      * @param propertyName      *            name of the property      * @throws XMPException      *             if the property could not be created      */
 specifier|protected
 name|void
 name|createLangAltProperty
@@ -520,7 +520,7 @@ name|arrayType
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates an array property from a list of values. 	 * @param tikaKey Key in the Tika metadata map 	 * @param ns namespace the property should be created in 	 * @param propertyName name of the property 	 * @param arrayType depicts which kind of array shall be created 	 * @throws XMPException if the property could not be created 	 */
+comment|/**      * Creates an array property from a list of values.      *      * @param tikaKey      *            Key in the Tika metadata map      * @param ns      *            namespace the property should be created in      * @param propertyName      *            name of the property      * @param arrayType      *            depicts which kind of array shall be created      * @throws XMPException      *             if the property could not be created      */
 specifier|protected
 name|void
 name|createArrayProperty
@@ -631,7 +631,7 @@ name|arrayType
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates an array property from a comma separated list. 	 * @param tikaKey Key in the Tika metadata map 	 * @param ns namespace the property should be created in 	 * @param propertyName name of the property 	 * @param arrayType depicts which kind of array shall be created 	 * @throws XMPException if the property could not be created 	 */
+comment|/**      * Creates an array property from a comma separated list.      *      * @param tikaKey      *            Key in the Tika metadata map      * @param ns      *            namespace the property should be created in      * @param propertyName      *            name of the property      * @param arrayType      *            depicts which kind of array shall be created      * @throws XMPException      *             if the property could not be created      */
 specifier|protected
 name|void
 name|createCommaSeparatedArray
