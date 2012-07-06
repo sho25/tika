@@ -729,7 +729,7 @@ name|File
 argument_list|(
 name|tempFile
 argument_list|,
-literal|"MBD002B040A.ole"
+literal|"MBD002B040A.bin"
 argument_list|)
 decl_stmt|;
 comment|// OLE10Native

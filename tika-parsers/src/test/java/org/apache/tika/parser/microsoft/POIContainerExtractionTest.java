@@ -1782,10 +1782,9 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertEquals("_1402837031.pdf", handler.filenames.get(1)); // TODO Fix, TIKA-48
 name|assertEquals
 argument_list|(
-literal|"_1402837031.ole"
+literal|"_1402837031.pdf"
 argument_list|,
 name|handler
 operator|.
@@ -1797,7 +1796,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO Fix, TIKA-48
 name|assertEquals
 argument_list|(
 name|TYPE_EMF
