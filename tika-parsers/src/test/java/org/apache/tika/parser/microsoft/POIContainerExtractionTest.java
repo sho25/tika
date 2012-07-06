@@ -1732,6 +1732,102 @@ expr_stmt|;
 comment|//    PNG inside .xls
 comment|// PowerPoint with excel and word
 comment|// TODO
+comment|// Word, with a non-office file (PDF)
+name|handler
+operator|=
+name|process
+argument_list|(
+literal|"testWORD_embedded_pdf.doc"
+argument_list|,
+name|extractor
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image1.emf"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//assertEquals("_1402837031.pdf", handler.filenames.get(1)); // TODO Fix, TIKA-48
+name|assertEquals
+argument_list|(
+literal|"_1402837031.ole"
+argument_list|,
+name|handler
+operator|.
+name|filenames
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// TODO Fix, TIKA-48
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded pdf
+name|assertEquals
+argument_list|(
+name|TYPE_PDF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// The embedded PDF itself
 comment|// Outlook with a text file and a word document
 name|handler
 operator|=
