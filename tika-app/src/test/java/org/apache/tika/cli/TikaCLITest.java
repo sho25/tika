@@ -720,6 +720,7 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
+comment|// ChemDraw file, currently doesn't have the correct extension
 name|File
 name|expected1
 init|=
@@ -728,9 +729,10 @@ name|File
 argument_list|(
 name|tempFile
 argument_list|,
-literal|"MBD002B040A.wps"
+literal|"MBD002B040A.ole"
 argument_list|)
 decl_stmt|;
+comment|// OLE10Native
 name|File
 name|expected2
 init|=
@@ -740,6 +742,18 @@ argument_list|(
 name|tempFile
 argument_list|,
 literal|"file5"
+argument_list|)
+decl_stmt|;
+comment|// Image of one of the embedded resources
+name|File
+name|expected3
+init|=
+operator|new
+name|File
+argument_list|(
+name|tempFile
+argument_list|,
+literal|"file0.emf"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -753,6 +767,14 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|expected2
+operator|.
+name|exists
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|expected3
 operator|.
 name|exists
 argument_list|()
@@ -771,6 +793,16 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|expected2
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|expected3
 operator|.
 name|length
 argument_list|()
