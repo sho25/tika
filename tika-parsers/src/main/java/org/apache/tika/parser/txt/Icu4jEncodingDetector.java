@@ -87,6 +87,20 @@ name|MediaType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|CharsetUtils
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -192,10 +206,24 @@ name|detector
 operator|.
 name|setDeclaredEncoding
 argument_list|(
+name|CharsetUtils
+operator|.
+name|clean
+argument_list|(
 name|incomingCharset
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-341 without enabling input filtering (stripping of tags)
+comment|// short HTML tests don't work well
+name|detector
+operator|.
+name|enableInputFilter
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|detector
 operator|.
 name|setText
