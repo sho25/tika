@@ -670,7 +670,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -791,7 +791,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
