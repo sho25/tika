@@ -720,7 +720,7 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-comment|// ChemDraw file, currently doesn't have the correct extension
+comment|// ChemDraw file
 name|File
 name|expected1
 init|=
@@ -729,7 +729,7 @@ name|File
 argument_list|(
 name|tempFile
 argument_list|,
-literal|"MBD002B040A.bin"
+literal|"MBD002B040A.cdx"
 argument_list|)
 decl_stmt|;
 comment|// OLE10Native
