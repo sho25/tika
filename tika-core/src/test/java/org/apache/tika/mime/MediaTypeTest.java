@@ -905,6 +905,73 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * TIKA-349      */
+specifier|public
+name|void
+name|testOddParameters
+parameter_list|()
+block|{
+name|assertEquals
+argument_list|(
+literal|"text/html; charset=UTF-8"
+argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"text/html;; charset=UTF-8"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/html; charset=UTF-8"
+argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"text/html;; charset=UTF-8"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/html; charset=UTF-8"
+argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"text/html;; charset=\"UTF-8\""
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/html; charset=UTF-8"
+argument_list|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+literal|"text/html;; charset=\"UTF-8"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

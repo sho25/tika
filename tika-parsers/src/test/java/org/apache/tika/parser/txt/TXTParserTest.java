@@ -593,7 +593,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Could be UTF-8 or ISO 8859-1 or ...
+comment|// Could be ISO 8859-1 or ISO 8859-15 or ...
 comment|// u00e1 is latin small letter a with acute
 specifier|final
 name|String
@@ -619,7 +619,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -636,7 +636,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|,
 name|metadata
 operator|.
@@ -656,7 +656,7 @@ name|Metadata
 operator|.
 name|CONTENT_ENCODING
 argument_list|,
-literal|"ISO-8859-1"
+literal|"ISO-8859-15"
 argument_list|)
 expr_stmt|;
 name|parser
@@ -687,7 +687,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ISO-8859-1"
+literal|"ISO-8859-15"
 argument_list|,
 name|metadata
 operator|.
@@ -708,7 +708,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// Could be UTF-8 or ISO 8859-1 or ...
+comment|// Could be ISO 8859-1 or ISO 8859-15 or ...
 comment|// u00e1 is latin small letter a with acute
 specifier|final
 name|String
@@ -734,7 +734,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -751,7 +751,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|,
 name|metadata
 operator|.
@@ -777,7 +777,7 @@ name|Metadata
 operator|.
 name|CONTENT_TYPE
 argument_list|,
-literal|"text/html; charset=ISO-8859-1"
+literal|"text/html; charset=ISO-8859-15"
 argument_list|)
 expr_stmt|;
 name|parser
@@ -808,7 +808,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ISO-8859-1"
+literal|"ISO-8859-15"
 argument_list|,
 name|metadata
 operator|.

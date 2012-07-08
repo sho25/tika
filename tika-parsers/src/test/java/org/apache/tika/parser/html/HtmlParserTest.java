@@ -1301,7 +1301,7 @@ name|test
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1694,7 +1694,7 @@ name|test1
 init|=
 literal|"<html><head><meta http-equiv=\"content-type\""
 operator|+
-literal|" content=\"text/html; charset=ISO-8859-1; charset=iso-8859-1\" />"
+literal|" content=\"text/html; charset=ISO-8859-15; charset=iso-8859-15\" />"
 operator|+
 literal|"<title>the name is \u00e1ndre</title>"
 operator|+
@@ -1720,7 +1720,7 @@ name|test1
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1737,7 +1737,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ISO-8859-1"
+literal|"ISO-8859-15"
 argument_list|,
 name|metadata
 operator|.
@@ -1755,7 +1755,7 @@ name|test2
 init|=
 literal|"<html><head><meta http-equiv=\"content-type\""
 operator|+
-literal|" content=\"text/html;;charset=ISO-8859-1\" />"
+literal|" content=\"text/html;;charset=ISO-8859-15\" />"
 operator|+
 literal|"<title>the name is \u00e1ndre</title>"
 operator|+
@@ -1780,7 +1780,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1797,7 +1797,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"ISO-8859-1"
+literal|"ISO-8859-15"
 argument_list|,
 name|metadata
 operator|.
