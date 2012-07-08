@@ -875,7 +875,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/postscript"
+literal|"application/illustrator"
 argument_list|,
 name|tika
 operator|.
@@ -3229,7 +3229,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.lotus-screencam"
+literal|"text/x-scheme"
 argument_list|,
 name|tika
 operator|.
@@ -4429,7 +4429,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/vnd.palm"
+literal|"chemical/x-pdb"
 argument_list|,
 name|tika
 operator|.
@@ -6448,7 +6448,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/x-msdownload"
+literal|"application/x-dosexec"
 argument_list|,
 name|tika
 operator|.
@@ -6820,7 +6820,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/x-tcl"
+literal|"text/x-tcl"
 argument_list|,
 name|tika
 operator|.
@@ -8488,7 +8488,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/x-log"
 argument_list|,
 name|tika
 operator|.
@@ -8824,7 +8824,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-asm"
+literal|"text/x-assembly"
 argument_list|,
 name|tika
 operator|.
@@ -8836,7 +8836,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-asm"
+literal|"text/x-assembly"
 argument_list|,
 name|tika
 operator|.
@@ -8848,7 +8848,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-csrc"
 argument_list|,
 name|tika
 operator|.
@@ -8860,7 +8860,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-c++src"
 argument_list|,
 name|tika
 operator|.
@@ -8872,7 +8872,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-c++src"
 argument_list|,
 name|tika
 operator|.
@@ -8884,7 +8884,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-c++src"
 argument_list|,
 name|tika
 operator|.
@@ -8896,7 +8896,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-chdr"
 argument_list|,
 name|tika
 operator|.
@@ -8908,25 +8908,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/x-c"
+literal|"text/x-c++hdr"
 argument_list|,
 name|tika
 operator|.
 name|detect
 argument_list|(
 literal|"x.hh"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/x-c"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.dic"
 argument_list|)
 argument_list|)
 expr_stmt|;
