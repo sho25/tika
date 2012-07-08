@@ -274,7 +274,7 @@ argument_list|(
 operator|new
 name|ByteArrayInputStream
 argument_list|(
-literal|"\ufffetest"
+literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(
@@ -301,7 +301,7 @@ argument_list|(
 operator|new
 name|ByteArrayInputStream
 argument_list|(
-literal|"\ufffetest"
+literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(
@@ -328,7 +328,7 @@ argument_list|(
 operator|new
 name|ByteArrayInputStream
 argument_list|(
-literal|"\ufffetest"
+literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(

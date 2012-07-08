@@ -2739,7 +2739,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<meta name=\"Content-Type\" content=\"text/html; charset=utf-8\"/>.*$"
+literal|"(?s).*<meta name=\"Content-Type\" content=\"text/html; charset=UTF-8\"/>.*$"
 argument_list|,
 name|result
 argument_list|)

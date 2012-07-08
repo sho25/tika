@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -135,6 +135,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
+import|;
+end_import
+
+begin_import
+import|import
 name|junit
 operator|.
 name|framework
@@ -199,7 +213,7 @@ name|text
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -226,7 +240,7 @@ argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/plain; charset=ISO-8859-1"
 argument_list|,
 name|metadata
 operator|.
@@ -356,7 +370,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/plain; charset=UTF-8"
 argument_list|,
 name|metadata
 operator|.
@@ -382,6 +396,7 @@ name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// deprecated
 name|assertTrue
 argument_list|(
 name|handler
@@ -442,7 +457,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/plain; charset=UTF-8"
 argument_list|,
 name|metadata
 operator|.
@@ -462,6 +477,171 @@ name|handler
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test for the heuristics that we use to assign an eight-bit character      * encoding to mostly ASCII sequences. If a more specific match can not      * be made, a string with a CR(LF) in it is most probably windows-1252,      * otherwise ISO-8859-1, except if it contains the currency/euro symbol      * (byte 0xa4) in which case it's more likely to be ISO-8859-15.      */
+specifier|public
+name|void
+name|testLatinDetectionHeuristics
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|windows
+init|=
+literal|"test\r\n"
+decl_stmt|;
+name|String
+name|unix
+init|=
+literal|"test\n"
+decl_stmt|;
+name|String
+name|euro
+init|=
+literal|"test \u20ac\n"
+decl_stmt|;
+name|Metadata
+name|metadata
+decl_stmt|;
+name|metadata
+operator|=
+operator|new
+name|Metadata
+argument_list|()
+expr_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|windows
+operator|.
+name|getBytes
+argument_list|(
+literal|"ISO-8859-15"
+argument_list|)
+argument_list|)
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/plain; charset=windows-1252"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|metadata
+operator|=
+operator|new
+name|Metadata
+argument_list|()
+expr_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|unix
+operator|.
+name|getBytes
+argument_list|(
+literal|"ISO-8859-15"
+argument_list|)
+argument_list|)
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/plain; charset=ISO-8859-1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|metadata
+operator|=
+operator|new
+name|Metadata
+argument_list|()
+expr_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|euro
+operator|.
+name|getBytes
+argument_list|(
+literal|"ISO-8859-15"
+argument_list|)
+argument_list|)
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/plain; charset=ISO-8859-15"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -636,6 +816,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"text/plain; charset=ISO-8859-1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"ISO-8859-1"
 argument_list|,
 name|metadata
@@ -648,15 +842,16 @@ name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// deprecated
 name|metadata
 operator|.
 name|set
 argument_list|(
 name|Metadata
 operator|.
-name|CONTENT_ENCODING
+name|CONTENT_TYPE
 argument_list|,
-literal|"ISO-8859-15"
+literal|"text/plain; charset=ISO-8859-15"
 argument_list|)
 expr_stmt|;
 name|parser
@@ -687,6 +882,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"text/plain; charset=ISO-8859-15"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"ISO-8859-15"
 argument_list|,
 name|metadata
@@ -699,6 +908,7 @@ name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// deprecated
 block|}
 comment|/**      * Test case for TIKA-341: using charset in content-type      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>       */
 specifier|public
@@ -751,6 +961,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"text/plain; charset=ISO-8859-1"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"ISO-8859-1"
 argument_list|,
 name|metadata
@@ -763,6 +987,7 @@ name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// deprecated
 name|metadata
 operator|=
 operator|new
@@ -808,6 +1033,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"text/plain; charset=ISO-8859-15"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"ISO-8859-15"
 argument_list|,
 name|metadata
@@ -820,6 +1059,7 @@ name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// deprecated
 block|}
 specifier|private
 name|void
@@ -888,20 +1128,6 @@ argument_list|,
 operator|new
 name|ParseContext
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/plain"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_TYPE
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1039,7 +1265,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/plain; charset=IBM866"
 argument_list|,
 name|metadata
 operator|.
@@ -1048,20 +1274,6 @@ argument_list|(
 name|Metadata
 operator|.
 name|CONTENT_TYPE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"IBM866"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1115,7 +1327,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain"
+literal|"text/plain; charset=IBM500"
 argument_list|,
 name|metadata
 operator|.
@@ -1124,20 +1336,6 @@ argument_list|(
 name|Metadata
 operator|.
 name|CONTENT_TYPE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"IBM500"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|CONTENT_ENCODING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1165,7 +1363,7 @@ literal|"<html><body>hello world</body></html>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+literal|"ISO-8859-1"
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1182,9 +1380,9 @@ name|ParseContext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotSame
+name|assertEquals
 argument_list|(
-literal|"IBM500"
+literal|"text/plain; charset=ISO-8859-1"
 argument_list|,
 name|metadata
 operator|.
@@ -1192,7 +1390,7 @@ name|get
 argument_list|(
 name|Metadata
 operator|.
-name|CONTENT_ENCODING
+name|CONTENT_TYPE
 argument_list|)
 argument_list|)
 expr_stmt|;

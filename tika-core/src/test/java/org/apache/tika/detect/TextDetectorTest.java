@@ -184,7 +184,7 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertText
+name|assertNotText
 argument_list|(
 operator|new
 name|byte
@@ -276,7 +276,7 @@ name|data
 argument_list|,
 literal|100
 argument_list|,
-literal|109
+literal|110
 argument_list|,
 operator|(
 name|byte
@@ -298,7 +298,7 @@ name|data
 argument_list|,
 literal|100
 argument_list|,
-literal|110
+literal|111
 argument_list|,
 operator|(
 name|byte

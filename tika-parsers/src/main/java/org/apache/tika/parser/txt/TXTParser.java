@@ -41,6 +41,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -208,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream. The input metadata key  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING} is used  * as an encoding hint if the automatic encoding detection fails.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain</code></dd>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_ENCODING}</dt>  *<dd>The detected text encoding of the document.</dd>  *<dt>  *     {@link org.apache.tika.metadata.HttpHeaders#CONTENT_LANGUAGE} and  *     {@link org.apache.tika.metadata.DublinCore#LANGUAGE}  *</dt>  *</dl>  */
+comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream and the given document metadata, most  * notably the<code>charset</code> parameter of a  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE} value.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain; charset=...</code></dd>  *</dl>  */
 end_comment
 
 begin_class
@@ -321,6 +333,27 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|Charset
+name|charset
+init|=
+name|reader
+operator|.
+name|getCharset
+argument_list|()
+decl_stmt|;
+name|MediaType
+name|type
+init|=
+operator|new
+name|MediaType
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+name|charset
+argument_list|)
+decl_stmt|;
 name|metadata
 operator|.
 name|set
@@ -329,10 +362,13 @@ name|Metadata
 operator|.
 name|CONTENT_TYPE
 argument_list|,
-literal|"text/plain"
+name|type
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// TODO: charset
+comment|// deprecated, see TIKA-431
 name|metadata
 operator|.
 name|set
@@ -341,10 +377,7 @@ name|Metadata
 operator|.
 name|CONTENT_ENCODING
 argument_list|,
-name|reader
-operator|.
-name|getCharset
-argument_list|()
+name|charset
 operator|.
 name|name
 argument_list|()

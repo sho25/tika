@@ -141,20 +141,6 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|TikaCoreProperties
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
 name|XMPDM
 import|;
 end_import
@@ -238,7 +224,7 @@ specifier|final
 name|String
 name|HTML
 init|=
-literal|"text/html"
+literal|"text/html; charset=ISO-8859-1"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -294,7 +280,7 @@ specifier|final
 name|String
 name|PLAINTEXT
 init|=
-literal|"text/plain"
+literal|"text/plain; charset=ISO-8859-1"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1120,6 +1106,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test to ensure that the Vorbis and FLAC parsers have been correctly      *  included, and are available      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"deprecation"
+argument_list|)
 specifier|public
 name|void
 name|testVorbisFlac
