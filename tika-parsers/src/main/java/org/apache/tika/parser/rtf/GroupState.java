@@ -17,6 +17,18 @@ name|rtf
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/* Holds all state associated with current RTF group, ie {  * ... }. */
 end_comment
@@ -51,7 +63,7 @@ init|=
 literal|1
 decl_stmt|;
 specifier|public
-name|String
+name|Charset
 name|fontCharset
 decl_stmt|;
 comment|// Create default (root) GroupState

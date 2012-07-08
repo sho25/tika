@@ -75,6 +75,18 @@ name|nio
 operator|.
 name|charset
 operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
 name|CharsetDecoder
 import|;
 end_import
@@ -266,6 +278,798 @@ specifier|final
 class|class
 name|TextExtractor
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|ASCII
+init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
+literal|"US-ASCII"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+name|Charset
+name|getCharset
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+try|try
+block|{
+return|return
+name|CharsetUtils
+operator|.
+name|forName
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+return|return
+name|ASCII
+return|;
+block|}
+block|}
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_1252
+init|=
+name|getCharset
+argument_list|(
+literal|"WINDOWS-1252"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_ROMAN
+init|=
+name|getCharset
+argument_list|(
+literal|"MacRoman"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|SHIFT_JIS
+init|=
+name|getCharset
+argument_list|(
+literal|"Shift_JIS"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57011
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57011"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57010
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57010"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57009
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57009"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57008
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57008"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57007
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57007"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57006
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57006"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57005
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57005"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57004
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57004"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_57003
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-57003"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|X_ISCII91
+init|=
+name|getCharset
+argument_list|(
+literal|"x-ISCII91"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|X_MAC_CENTRAL_EUROPE
+init|=
+name|getCharset
+argument_list|(
+literal|"x-MacCentralEurope"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_CYRILLIC
+init|=
+name|getCharset
+argument_list|(
+literal|"MacCyrillic"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|X_JOHAB
+init|=
+name|getCharset
+argument_list|(
+literal|"x-Johab"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12582
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1258"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12572
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1257"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12562
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1256"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12552
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1255"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12542
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1254"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12532
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1253"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1252
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1252"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12512
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1251"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP12502
+init|=
+name|getCharset
+argument_list|(
+literal|"CP1250"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP950
+init|=
+name|getCharset
+argument_list|(
+literal|"CP950"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP949
+init|=
+name|getCharset
+argument_list|(
+literal|"CP949"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS9362
+init|=
+name|getCharset
+argument_list|(
+literal|"MS936"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS8742
+init|=
+name|getCharset
+argument_list|(
+literal|"MS874"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP866
+init|=
+name|getCharset
+argument_list|(
+literal|"CP866"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP865
+init|=
+name|getCharset
+argument_list|(
+literal|"CP865"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP864
+init|=
+name|getCharset
+argument_list|(
+literal|"CP864"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP863
+init|=
+name|getCharset
+argument_list|(
+literal|"CP863"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP862
+init|=
+name|getCharset
+argument_list|(
+literal|"CP862"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP860
+init|=
+name|getCharset
+argument_list|(
+literal|"CP860"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP852
+init|=
+name|getCharset
+argument_list|(
+literal|"CP852"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP8502
+init|=
+name|getCharset
+argument_list|(
+literal|"CP850"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP819
+init|=
+name|getCharset
+argument_list|(
+literal|"CP819"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_720
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-720"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_711
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-711"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_710
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-710"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|WINDOWS_709
+init|=
+name|getCharset
+argument_list|(
+literal|"windows-709"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|ISO_8859_6
+init|=
+name|getCharset
+argument_list|(
+literal|"ISO-8859-6"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP4372
+init|=
+name|getCharset
+argument_list|(
+literal|"CP437"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP850
+init|=
+name|getCharset
+argument_list|(
+literal|"cp850"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP437
+init|=
+name|getCharset
+argument_list|(
+literal|"cp437"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS874
+init|=
+name|getCharset
+argument_list|(
+literal|"ms874"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1257
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1257"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1256
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1256"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1255
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1255"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1258
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1258"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1254
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1254"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1253
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1253"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS950
+init|=
+name|getCharset
+argument_list|(
+literal|"ms950"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS936
+init|=
+name|getCharset
+argument_list|(
+literal|"ms936"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS1361
+init|=
+name|getCharset
+argument_list|(
+literal|"ms1361"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS932
+init|=
+name|getCharset
+argument_list|(
+literal|"MS932"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1251
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1251"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|CP1250
+init|=
+name|getCharset
+argument_list|(
+literal|"cp1250"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_THAI
+init|=
+name|getCharset
+argument_list|(
+literal|"MacThai"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_TURKISH
+init|=
+name|getCharset
+argument_list|(
+literal|"MacTurkish"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_GREEK
+init|=
+name|getCharset
+argument_list|(
+literal|"MacGreek"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_ARABIC
+init|=
+name|getCharset
+argument_list|(
+literal|"MacArabic"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MAC_HEBREW
+init|=
+name|getCharset
+argument_list|(
+literal|"MacHebrew"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|JOHAB
+init|=
+name|getCharset
+argument_list|(
+literal|"johab"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|BIG5
+init|=
+name|getCharset
+argument_list|(
+literal|"Big5"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|GB2312
+init|=
+name|getCharset
+argument_list|(
+literal|"GB2312"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Charset
+name|MS949
+init|=
+name|getCharset
+argument_list|(
+literal|"ms949"
+argument_list|)
+decl_stmt|;
 comment|// Hold pending bytes (encoded in the current charset)
 comment|// for text output:
 specifier|private
@@ -357,14 +1161,14 @@ name|CharsetDecoder
 name|decoder
 decl_stmt|;
 specifier|private
-name|String
+name|Charset
 name|lastCharset
 decl_stmt|;
 specifier|private
-name|String
+name|Charset
 name|globalCharset
 init|=
-literal|"windows-1252"
+name|WINDOWS_1252
 decl_stmt|;
 specifier|private
 name|int
@@ -389,7 +1193,7 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 name|fontToCharset
 init|=
@@ -398,7 +1202,7 @@ name|HashMap
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -514,7 +1318,7 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 name|FCHARSET_MAP
 init|=
@@ -523,7 +1327,7 @@ name|HashMap
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -535,7 +1339,7 @@ name|put
 argument_list|(
 literal|0
 argument_list|,
-literal|"windows-1252"
+name|WINDOWS_1252
 argument_list|)
 expr_stmt|;
 comment|// ANSI
@@ -547,7 +1351,7 @@ name|put
 argument_list|(
 literal|77
 argument_list|,
-literal|"MacRoman"
+name|MAC_ROMAN
 argument_list|)
 expr_stmt|;
 comment|// Mac Roman
@@ -557,7 +1361,7 @@ name|put
 argument_list|(
 literal|78
 argument_list|,
-literal|"Shift_JIS"
+name|SHIFT_JIS
 argument_list|)
 expr_stmt|;
 comment|// Mac Shift Jis
@@ -567,7 +1371,7 @@ name|put
 argument_list|(
 literal|79
 argument_list|,
-literal|"ms949"
+name|MS949
 argument_list|)
 expr_stmt|;
 comment|// Mac Hangul
@@ -577,7 +1381,7 @@ name|put
 argument_list|(
 literal|80
 argument_list|,
-literal|"GB2312"
+name|GB2312
 argument_list|)
 expr_stmt|;
 comment|// Mac GB2312
@@ -587,7 +1391,7 @@ name|put
 argument_list|(
 literal|81
 argument_list|,
-literal|"Big5"
+name|BIG5
 argument_list|)
 expr_stmt|;
 comment|// Mac Big5
@@ -597,7 +1401,7 @@ name|put
 argument_list|(
 literal|82
 argument_list|,
-literal|"johab"
+name|JOHAB
 argument_list|)
 expr_stmt|;
 comment|// Mac Johab (old)
@@ -607,7 +1411,7 @@ name|put
 argument_list|(
 literal|83
 argument_list|,
-literal|"MacHebrew"
+name|MAC_HEBREW
 argument_list|)
 expr_stmt|;
 comment|// Mac Hebrew
@@ -617,7 +1421,7 @@ name|put
 argument_list|(
 literal|84
 argument_list|,
-literal|"MacArabic"
+name|MAC_ARABIC
 argument_list|)
 expr_stmt|;
 comment|// Mac Arabic
@@ -627,7 +1431,7 @@ name|put
 argument_list|(
 literal|85
 argument_list|,
-literal|"MacGreek"
+name|MAC_GREEK
 argument_list|)
 expr_stmt|;
 comment|// Mac Greek
@@ -637,7 +1441,7 @@ name|put
 argument_list|(
 literal|86
 argument_list|,
-literal|"MacTurkish"
+name|MAC_TURKISH
 argument_list|)
 expr_stmt|;
 comment|// Mac Turkish
@@ -647,7 +1451,7 @@ name|put
 argument_list|(
 literal|87
 argument_list|,
-literal|"MacThai"
+name|MAC_THAI
 argument_list|)
 expr_stmt|;
 comment|// Mac Thai
@@ -657,7 +1461,7 @@ name|put
 argument_list|(
 literal|88
 argument_list|,
-literal|"cp1250"
+name|CP1250
 argument_list|)
 expr_stmt|;
 comment|// Mac East Europe
@@ -667,7 +1471,7 @@ name|put
 argument_list|(
 literal|89
 argument_list|,
-literal|"cp1251"
+name|CP1251
 argument_list|)
 expr_stmt|;
 comment|// Mac Russian
@@ -677,7 +1481,7 @@ name|put
 argument_list|(
 literal|128
 argument_list|,
-literal|"MS932"
+name|MS932
 argument_list|)
 expr_stmt|;
 comment|// Shift JIS
@@ -687,7 +1491,7 @@ name|put
 argument_list|(
 literal|129
 argument_list|,
-literal|"ms949"
+name|MS949
 argument_list|)
 expr_stmt|;
 comment|// Hangul
@@ -697,7 +1501,7 @@ name|put
 argument_list|(
 literal|130
 argument_list|,
-literal|"ms1361"
+name|MS1361
 argument_list|)
 expr_stmt|;
 comment|// Johab
@@ -707,7 +1511,7 @@ name|put
 argument_list|(
 literal|134
 argument_list|,
-literal|"ms936"
+name|MS936
 argument_list|)
 expr_stmt|;
 comment|// GB2312
@@ -717,7 +1521,7 @@ name|put
 argument_list|(
 literal|136
 argument_list|,
-literal|"ms950"
+name|MS950
 argument_list|)
 expr_stmt|;
 comment|// Big5
@@ -727,7 +1531,7 @@ name|put
 argument_list|(
 literal|161
 argument_list|,
-literal|"cp1253"
+name|CP1253
 argument_list|)
 expr_stmt|;
 comment|// Greek
@@ -737,7 +1541,7 @@ name|put
 argument_list|(
 literal|162
 argument_list|,
-literal|"cp1254"
+name|CP1254
 argument_list|)
 expr_stmt|;
 comment|// Turkish
@@ -747,7 +1551,7 @@ name|put
 argument_list|(
 literal|163
 argument_list|,
-literal|"cp1258"
+name|CP1258
 argument_list|)
 expr_stmt|;
 comment|// Vietnamese
@@ -757,7 +1561,7 @@ name|put
 argument_list|(
 literal|177
 argument_list|,
-literal|"cp1255"
+name|CP1255
 argument_list|)
 expr_stmt|;
 comment|// Hebrew
@@ -767,7 +1571,7 @@ name|put
 argument_list|(
 literal|178
 argument_list|,
-literal|"cp1256"
+name|CP1256
 argument_list|)
 expr_stmt|;
 comment|// Arabic
@@ -780,7 +1584,7 @@ name|put
 argument_list|(
 literal|186
 argument_list|,
-literal|"cp1257"
+name|CP1257
 argument_list|)
 expr_stmt|;
 comment|// Baltic
@@ -790,7 +1594,7 @@ name|put
 argument_list|(
 literal|204
 argument_list|,
-literal|"cp1251"
+name|CP1251
 argument_list|)
 expr_stmt|;
 comment|// Russian
@@ -800,7 +1604,7 @@ name|put
 argument_list|(
 literal|222
 argument_list|,
-literal|"ms874"
+name|MS874
 argument_list|)
 expr_stmt|;
 comment|// Thai
@@ -810,7 +1614,7 @@ name|put
 argument_list|(
 literal|238
 argument_list|,
-literal|"cp1250"
+name|CP1250
 argument_list|)
 expr_stmt|;
 comment|// Eastern European
@@ -820,7 +1624,7 @@ name|put
 argument_list|(
 literal|254
 argument_list|,
-literal|"cp437"
+name|CP437
 argument_list|)
 expr_stmt|;
 comment|// PC 437
@@ -830,7 +1634,7 @@ name|put
 argument_list|(
 literal|255
 argument_list|,
-literal|"cp850"
+name|CP850
 argument_list|)
 expr_stmt|;
 comment|// OEM
@@ -845,7 +1649,7 @@ name|Map
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 name|ANSICPG_MAP
 init|=
@@ -854,7 +1658,7 @@ name|HashMap
 argument_list|<
 name|Integer
 argument_list|,
-name|String
+name|Charset
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -866,7 +1670,7 @@ name|put
 argument_list|(
 literal|437
 argument_list|,
-literal|"CP437"
+name|CP4372
 argument_list|)
 expr_stmt|;
 comment|// US IBM
@@ -876,7 +1680,7 @@ name|put
 argument_list|(
 literal|708
 argument_list|,
-literal|"ISO-8859-6"
+name|ISO_8859_6
 argument_list|)
 expr_stmt|;
 comment|// Arabic (ASMO 708)
@@ -886,7 +1690,7 @@ name|put
 argument_list|(
 literal|709
 argument_list|,
-literal|"windows-709"
+name|WINDOWS_709
 argument_list|)
 expr_stmt|;
 comment|// Arabic (ASMO 449+, BCON V4)
@@ -896,7 +1700,7 @@ name|put
 argument_list|(
 literal|710
 argument_list|,
-literal|"windows-710"
+name|WINDOWS_710
 argument_list|)
 expr_stmt|;
 comment|// Arabic (transparent Arabic)
@@ -906,7 +1710,7 @@ name|put
 argument_list|(
 literal|710
 argument_list|,
-literal|"windows-711"
+name|WINDOWS_711
 argument_list|)
 expr_stmt|;
 comment|// Arabic (Nafitha Enhanced)
@@ -916,7 +1720,7 @@ name|put
 argument_list|(
 literal|710
 argument_list|,
-literal|"windows-720"
+name|WINDOWS_720
 argument_list|)
 expr_stmt|;
 comment|// Arabic (transparent ASMO)
@@ -926,7 +1730,7 @@ name|put
 argument_list|(
 literal|819
 argument_list|,
-literal|"CP819"
+name|CP819
 argument_list|)
 expr_stmt|;
 comment|// Windows 3.1 (US& Western Europe)
@@ -936,7 +1740,7 @@ name|put
 argument_list|(
 literal|819
 argument_list|,
-literal|"CP819"
+name|CP819
 argument_list|)
 expr_stmt|;
 comment|// Windows 3.1 (US& Western Europe)
@@ -946,7 +1750,7 @@ name|put
 argument_list|(
 literal|819
 argument_list|,
-literal|"CP819"
+name|CP819
 argument_list|)
 expr_stmt|;
 comment|// Windows 3.1 (US& Western Europe)
@@ -956,7 +1760,7 @@ name|put
 argument_list|(
 literal|850
 argument_list|,
-literal|"CP850"
+name|CP8502
 argument_list|)
 expr_stmt|;
 comment|// IBM Multilingual
@@ -966,7 +1770,7 @@ name|put
 argument_list|(
 literal|852
 argument_list|,
-literal|"CP852"
+name|CP852
 argument_list|)
 expr_stmt|;
 comment|// Eastern European
@@ -976,7 +1780,7 @@ name|put
 argument_list|(
 literal|860
 argument_list|,
-literal|"CP860"
+name|CP860
 argument_list|)
 expr_stmt|;
 comment|// Portuguese
@@ -986,7 +1790,7 @@ name|put
 argument_list|(
 literal|862
 argument_list|,
-literal|"CP862"
+name|CP862
 argument_list|)
 expr_stmt|;
 comment|// Hebrew
@@ -996,7 +1800,7 @@ name|put
 argument_list|(
 literal|863
 argument_list|,
-literal|"CP863"
+name|CP863
 argument_list|)
 expr_stmt|;
 comment|// French Canadian
@@ -1006,7 +1810,7 @@ name|put
 argument_list|(
 literal|864
 argument_list|,
-literal|"CP864"
+name|CP864
 argument_list|)
 expr_stmt|;
 comment|// Arabic
@@ -1016,7 +1820,7 @@ name|put
 argument_list|(
 literal|865
 argument_list|,
-literal|"CP865"
+name|CP865
 argument_list|)
 expr_stmt|;
 comment|// Norwegian
@@ -1026,7 +1830,7 @@ name|put
 argument_list|(
 literal|866
 argument_list|,
-literal|"CP866"
+name|CP866
 argument_list|)
 expr_stmt|;
 comment|// Soviet Union
@@ -1036,7 +1840,7 @@ name|put
 argument_list|(
 literal|874
 argument_list|,
-literal|"MS874"
+name|MS8742
 argument_list|)
 expr_stmt|;
 comment|// Thai
@@ -1046,7 +1850,7 @@ name|put
 argument_list|(
 literal|932
 argument_list|,
-literal|"MS932"
+name|MS932
 argument_list|)
 expr_stmt|;
 comment|// Japanese
@@ -1056,7 +1860,7 @@ name|put
 argument_list|(
 literal|936
 argument_list|,
-literal|"MS936"
+name|MS9362
 argument_list|)
 expr_stmt|;
 comment|// Simplified Chinese
@@ -1066,7 +1870,7 @@ name|put
 argument_list|(
 literal|949
 argument_list|,
-literal|"CP949"
+name|CP949
 argument_list|)
 expr_stmt|;
 comment|// Korean
@@ -1076,7 +1880,7 @@ name|put
 argument_list|(
 literal|950
 argument_list|,
-literal|"CP950"
+name|CP950
 argument_list|)
 expr_stmt|;
 comment|// Traditional Chinese
@@ -1086,7 +1890,7 @@ name|put
 argument_list|(
 literal|1250
 argument_list|,
-literal|"CP1250"
+name|CP12502
 argument_list|)
 expr_stmt|;
 comment|// Eastern European
@@ -1096,7 +1900,7 @@ name|put
 argument_list|(
 literal|1251
 argument_list|,
-literal|"CP1251"
+name|CP12512
 argument_list|)
 expr_stmt|;
 comment|// Cyrillic
@@ -1106,7 +1910,7 @@ name|put
 argument_list|(
 literal|1252
 argument_list|,
-literal|"CP1252"
+name|CP1252
 argument_list|)
 expr_stmt|;
 comment|// Western European
@@ -1116,7 +1920,7 @@ name|put
 argument_list|(
 literal|1253
 argument_list|,
-literal|"CP1253"
+name|CP12532
 argument_list|)
 expr_stmt|;
 comment|// Greek
@@ -1126,7 +1930,7 @@ name|put
 argument_list|(
 literal|1254
 argument_list|,
-literal|"CP1254"
+name|CP12542
 argument_list|)
 expr_stmt|;
 comment|// Turkish
@@ -1136,7 +1940,7 @@ name|put
 argument_list|(
 literal|1255
 argument_list|,
-literal|"CP1255"
+name|CP12552
 argument_list|)
 expr_stmt|;
 comment|// Hebrew
@@ -1146,7 +1950,7 @@ name|put
 argument_list|(
 literal|1256
 argument_list|,
-literal|"CP1256"
+name|CP12562
 argument_list|)
 expr_stmt|;
 comment|// Arabic
@@ -1156,7 +1960,7 @@ name|put
 argument_list|(
 literal|1257
 argument_list|,
-literal|"CP1257"
+name|CP12572
 argument_list|)
 expr_stmt|;
 comment|// Baltic
@@ -1166,7 +1970,7 @@ name|put
 argument_list|(
 literal|1258
 argument_list|,
-literal|"CP1258"
+name|CP12582
 argument_list|)
 expr_stmt|;
 comment|// Vietnamese
@@ -1176,7 +1980,7 @@ name|put
 argument_list|(
 literal|1361
 argument_list|,
-literal|"x-Johab"
+name|X_JOHAB
 argument_list|)
 expr_stmt|;
 comment|// Johab
@@ -1186,7 +1990,7 @@ name|put
 argument_list|(
 literal|10000
 argument_list|,
-literal|"MacRoman"
+name|MAC_ROMAN
 argument_list|)
 expr_stmt|;
 comment|// Mac Roman
@@ -1196,7 +2000,7 @@ name|put
 argument_list|(
 literal|10001
 argument_list|,
-literal|"Shift_JIS"
+name|SHIFT_JIS
 argument_list|)
 expr_stmt|;
 comment|// Mac Japan
@@ -1206,7 +2010,7 @@ name|put
 argument_list|(
 literal|10004
 argument_list|,
-literal|"MacArabic"
+name|MAC_ARABIC
 argument_list|)
 expr_stmt|;
 comment|// Mac Arabic
@@ -1216,7 +2020,7 @@ name|put
 argument_list|(
 literal|10005
 argument_list|,
-literal|"MacHebrew"
+name|MAC_HEBREW
 argument_list|)
 expr_stmt|;
 comment|// Mac Hebrew
@@ -1226,7 +2030,7 @@ name|put
 argument_list|(
 literal|10006
 argument_list|,
-literal|"MacGreek"
+name|MAC_GREEK
 argument_list|)
 expr_stmt|;
 comment|// Mac Hebrew
@@ -1236,7 +2040,7 @@ name|put
 argument_list|(
 literal|10007
 argument_list|,
-literal|"MacCyrillic"
+name|MAC_CYRILLIC
 argument_list|)
 expr_stmt|;
 comment|// Mac Cyrillic
@@ -1246,7 +2050,7 @@ name|put
 argument_list|(
 literal|10029
 argument_list|,
-literal|"x-MacCentralEurope"
+name|X_MAC_CENTRAL_EUROPE
 argument_list|)
 expr_stmt|;
 comment|// MAC Latin2
@@ -1256,7 +2060,7 @@ name|put
 argument_list|(
 literal|10081
 argument_list|,
-literal|"MacTurkish"
+name|MAC_TURKISH
 argument_list|)
 expr_stmt|;
 comment|// Mac Turkish
@@ -1266,7 +2070,7 @@ name|put
 argument_list|(
 literal|57002
 argument_list|,
-literal|"x-ISCII91"
+name|X_ISCII91
 argument_list|)
 expr_stmt|;
 comment|// Devanagari
@@ -1279,7 +2083,7 @@ name|put
 argument_list|(
 literal|57003
 argument_list|,
-literal|"windows-57003"
+name|WINDOWS_57003
 argument_list|)
 expr_stmt|;
 comment|// Bengali
@@ -1289,7 +2093,7 @@ name|put
 argument_list|(
 literal|57004
 argument_list|,
-literal|"windows-57004"
+name|WINDOWS_57004
 argument_list|)
 expr_stmt|;
 comment|// Tamil
@@ -1299,7 +2103,7 @@ name|put
 argument_list|(
 literal|57005
 argument_list|,
-literal|"windows-57005"
+name|WINDOWS_57005
 argument_list|)
 expr_stmt|;
 comment|// Telugu
@@ -1309,7 +2113,7 @@ name|put
 argument_list|(
 literal|57006
 argument_list|,
-literal|"windows-57006"
+name|WINDOWS_57006
 argument_list|)
 expr_stmt|;
 comment|// Assamese
@@ -1319,7 +2123,7 @@ name|put
 argument_list|(
 literal|57007
 argument_list|,
-literal|"windows-57007"
+name|WINDOWS_57007
 argument_list|)
 expr_stmt|;
 comment|// Oriya
@@ -1329,7 +2133,7 @@ name|put
 argument_list|(
 literal|57008
 argument_list|,
-literal|"windows-57008"
+name|WINDOWS_57008
 argument_list|)
 expr_stmt|;
 comment|// Kannada
@@ -1339,7 +2143,7 @@ name|put
 argument_list|(
 literal|57009
 argument_list|,
-literal|"windows-57009"
+name|WINDOWS_57009
 argument_list|)
 expr_stmt|;
 comment|// Malayalam
@@ -1349,7 +2153,7 @@ name|put
 argument_list|(
 literal|57010
 argument_list|,
-literal|"windows-57010"
+name|WINDOWS_57010
 argument_list|)
 expr_stmt|;
 comment|// Gujariti
@@ -1359,7 +2163,7 @@ name|put
 argument_list|(
 literal|57011
 argument_list|,
-literal|"windows-57011"
+name|WINDOWS_57011
 argument_list|)
 expr_stmt|;
 comment|// Punjabi
@@ -3134,8 +3938,7 @@ parameter_list|()
 throws|throws
 name|TikaException
 block|{
-specifier|final
-name|String
+name|Charset
 name|charset
 init|=
 name|getCharset
@@ -3160,33 +3963,11 @@ condition|)
 block|{
 name|decoder
 operator|=
-name|CharsetUtils
-operator|.
-name|forName
-argument_list|(
 name|charset
-argument_list|)
 operator|.
 name|newDecoder
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|decoder
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|TikaException
-argument_list|(
-literal|"cannot find decoder for charset="
-operator|+
-name|charset
-argument_list|)
-throw|;
-block|}
 name|decoder
 operator|.
 name|onMalformedInput
@@ -3216,7 +3997,7 @@ return|;
 block|}
 comment|// Return current charset in-use
 specifier|private
-name|String
+name|Charset
 name|getCharset
 parameter_list|()
 throws|throws
@@ -3238,8 +4019,7 @@ operator|.
 name|fontCharset
 return|;
 block|}
-comment|// Else, if global default font (defN) was set, use
-comment|// that
+comment|// Else, if global default font (defN) was set, use that one
 if|if
 condition|(
 name|globalDefaultFont
@@ -3251,8 +4031,7 @@ operator|!
 name|inHeader
 condition|)
 block|{
-specifier|final
-name|String
+name|Charset
 name|cs
 init|=
 name|fontToCharset
@@ -3332,8 +4111,7 @@ argument_list|)
 condition|)
 block|{
 comment|// ANSI codepage
-specifier|final
-name|String
+name|Charset
 name|cs
 init|=
 name|ANSICPG_MAP
@@ -3419,8 +4197,7 @@ literal|"fcharset"
 argument_list|)
 condition|)
 block|{
-specifier|final
-name|String
+name|Charset
 name|cs
 init|=
 name|FCHARSET_MAP
@@ -3565,8 +4342,7 @@ argument_list|)
 condition|)
 block|{
 comment|// Change current font
-specifier|final
-name|String
+name|Charset
 name|fontCharset
 init|=
 name|fontToCharset
@@ -3854,7 +4630,7 @@ condition|)
 block|{
 name|globalCharset
 operator|=
-literal|"cp1252"
+name|WINDOWS_1252
 expr_stmt|;
 block|}
 elseif|else
@@ -3868,7 +4644,7 @@ condition|)
 block|{
 name|globalCharset
 operator|=
-literal|"cp850"
+name|CP850
 expr_stmt|;
 block|}
 elseif|else
@@ -3882,7 +4658,7 @@ condition|)
 block|{
 name|globalCharset
 operator|=
-literal|"cp437"
+name|CP437
 expr_stmt|;
 block|}
 elseif|else
@@ -3896,7 +4672,7 @@ condition|)
 block|{
 name|globalCharset
 operator|=
-literal|"MacRoman"
+name|MAC_ROMAN
 expr_stmt|;
 block|}
 if|if

@@ -380,15 +380,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|charset
-operator|=
-name|CharsetUtils
-operator|.
-name|clean
-argument_list|(
-name|charset
-argument_list|)
-expr_stmt|;
 return|return
 name|CharsetUtils
 operator|.
