@@ -316,6 +316,17 @@ name|MediaType
 name|type
 parameter_list|)
 block|{
+if|if
+condition|(
+name|type
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
 name|MediaType
 name|canonical
 init|=
@@ -369,7 +380,7 @@ name|canonical
 return|;
 block|}
 block|}
-comment|/**      * Checks whether the given media type a is a specialization of a more      * generic type b.      *      * @since Apache Tika 0.8      * @param a media type      * @param b suspected supertype      * @return<code>true</code> if b is a supertype of a,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given media type a is a specialization of a more      * generic type b. Both types should be already normalised.      *      * @since Apache Tika 0.8      * @param a media type, normalised      * @param b suspected supertype, normalised      * @return<code>true</code> if b is a supertype of a,      *<code>false</code> otherwise      */
 specifier|public
 name|boolean
 name|isSpecializationOf
@@ -393,7 +404,7 @@ name|b
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks whether the given media type equals the given base type or      * is a specialization of it.      *      * @since Apache Tika 1.2      * @param a media type      * @param b base type      * @return<code>true</code> if b equals a or is a specialization of it,      *<code>false</code> otherwise      */
+comment|/**      * Checks whether the given media type equals the given base type or      * is a specialization of it. Both types should be already normalised.      *      * @since Apache Tika 1.2      * @param a media type, normalised      * @param b base type, normalised      * @return<code>true</code> if b equals a or is a specialization of it,      *<code>false</code> otherwise      */
 specifier|public
 name|boolean
 name|isInstanceOf
@@ -427,6 +438,35 @@ argument_list|)
 operator|)
 return|;
 block|}
+comment|/**      * Parses and normalises the given media type string and checks whether      * the result equals the given base type or is a specialization of it.      * The given base type should already be normalised.      *      * @since Apache Tika 1.2      * @param a media type      * @param b base type, normalised      * @return<code>true</code> if b equals a or is a specialization of it,      *<code>false</code> otherwise      */
+specifier|public
+name|boolean
+name|isInstanceOf
+parameter_list|(
+name|String
+name|a
+parameter_list|,
+name|MediaType
+name|b
+parameter_list|)
+block|{
+return|return
+name|isInstanceOf
+argument_list|(
+name|normalize
+argument_list|(
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+name|a
+argument_list|)
+argument_list|)
+argument_list|,
+name|b
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the supertype of the given type. If the given type has any      * parameters, then the respective base type is returned. Otherwise      * built-in heuristics like text/... -&gt; text/plain and      * .../...+xml -&gt; application/xml are used in addition to explicit      * type inheritance rules read from the media type database. Finally      * application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @since Apache Tika 0.8      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
 specifier|public
 name|MediaType
@@ -436,6 +476,18 @@ name|MediaType
 name|type
 parameter_list|)
 block|{
+if|if
+condition|(
+name|type
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|type
