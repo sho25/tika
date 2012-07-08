@@ -380,6 +380,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 return|return
 name|CharsetUtils
 operator|.
@@ -388,6 +390,15 @@ argument_list|(
 name|charset
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// ignore
+block|}
 block|}
 block|}
 block|}

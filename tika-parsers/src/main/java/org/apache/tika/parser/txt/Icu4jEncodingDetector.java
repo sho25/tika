@@ -273,7 +273,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IllegalArgumentException
+name|Exception
 name|e
 parameter_list|)
 block|{
