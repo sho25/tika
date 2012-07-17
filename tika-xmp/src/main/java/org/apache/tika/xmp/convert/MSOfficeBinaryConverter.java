@@ -276,7 +276,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * @throws XMPException      *             Forwards XMP errors      * @see XMPFilesProcessor.MSOfficeXMLConverter.onverter#process(Metadata)      */
+comment|/**      * @throws XMPException      *             Forwards XMP errors      * @see ITikaToXMPConverter#process(Metadata)      */
 specifier|public
 name|XMPMeta
 name|process

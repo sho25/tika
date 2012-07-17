@@ -312,7 +312,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * @see AbstractConverter#createProperty(String, String, String);      */
+comment|/**      * @see AbstractConverter#createProperty(String, String, String)      */
 specifier|protected
 name|void
 name|createProperty
@@ -396,7 +396,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @see AbstractConverter#createLangAltProperty(String, String, String);      */
+comment|/**      * @see AbstractConverter#createLangAltProperty(String, String, String)      */
 specifier|protected
 name|void
 name|createLangAltProperty

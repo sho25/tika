@@ -379,7 +379,7 @@ name|create
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @see org.apache.tika.xmp.XMPMetadata(org.apache.tika.metadata.Metadata, java.lang.String)      * But the mimetype is retrieved from the metadata map.      */
+comment|/**      * @see #XMPMetadata(Metadata, String)      * But the mimetype is retrieved from the metadata map.      */
 specifier|public
 name|XMPMetadata
 parameter_list|(

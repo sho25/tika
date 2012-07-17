@@ -247,7 +247,7 @@ parameter_list|()
 block|{
 comment|// Nothing to do
 block|}
-comment|/**      * @see ITikaToXMP#convert(Metadata, String) But the mimetype is retrieved from the metadata      *      map.      */
+comment|/**      * @see TikaToXMP#convert(Metadata, String) But the mimetype is retrieved from the metadata      *      map.      */
 specifier|public
 specifier|static
 name|XMPMeta

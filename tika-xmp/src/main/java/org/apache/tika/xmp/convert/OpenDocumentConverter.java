@@ -264,7 +264,7 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @throws XMPException      *             Forwards XMP errors      * @see XMPFilesProcessor.onverter#process(Metadata)      */
+comment|/**      * @throws XMPException      *             Forwards XMP errors      * @see ITikaToXMPConverter#process(Metadata)      */
 annotation|@
 name|Override
 specifier|public
