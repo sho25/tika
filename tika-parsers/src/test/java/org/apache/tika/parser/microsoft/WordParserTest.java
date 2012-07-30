@@ -1640,6 +1640,20 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"Etienne Jouvin"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|LAST_AUTHOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"2012-01-03T22:14:00Z"
 argument_list|,
 name|metadata
