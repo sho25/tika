@@ -494,7 +494,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2007-09-14T11:06:08"
+literal|"2007-09-14T11:07:10"
 argument_list|,
 name|metadata
 operator|.

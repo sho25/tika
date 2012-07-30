@@ -471,6 +471,18 @@ argument_list|,
 name|formattedDate
 argument_list|)
 expr_stmt|;
+comment|// TODO Metadata.DATE is used as modified, should it be here?
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|DATE
+argument_list|,
+name|formattedDate
+argument_list|)
+expr_stmt|;
 block|}
 name|metadata
 operator|.

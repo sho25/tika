@@ -544,14 +544,10 @@ block|,
 name|MSOffice
 operator|.
 name|CREATION_DATE
-block|,
-name|Metadata
-operator|.
-name|DATE
 block|}
 argument_list|)
 decl_stmt|;
-comment|/**        * @see DublinCore#MODIFIED       * @see Office#SAVE_DATE        */
+comment|/**        * @see DublinCore#MODIFIED       * @see Metadata#DATE       * @see Office#SAVE_DATE        */
 specifier|public
 specifier|static
 specifier|final
@@ -570,6 +566,10 @@ operator|new
 name|Property
 index|[]
 block|{
+name|Metadata
+operator|.
+name|DATE
+block|,
 name|Office
 operator|.
 name|SAVE_DATE
