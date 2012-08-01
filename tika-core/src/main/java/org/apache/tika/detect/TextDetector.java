@@ -338,6 +338,11 @@ name|stats
 operator|.
 name|isMostlyAscii
 argument_list|()
+operator|||
+name|stats
+operator|.
+name|looksLikeUTF8
+argument_list|()
 condition|)
 block|{
 return|return

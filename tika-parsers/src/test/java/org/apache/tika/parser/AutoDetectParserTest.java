@@ -286,6 +286,14 @@ specifier|private
 specifier|static
 specifier|final
 name|String
+name|UTF8TEXT
+init|=
+literal|"text/plain; charset=UTF-8"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|WORD
 init|=
 literal|"application/msword"
@@ -926,6 +934,23 @@ argument_list|,
 name|PLAINTEXT
 argument_list|,
 literal|"indexation de Txt"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
+name|testTextNonASCIIUTF8
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertAutoDetect
+argument_list|(
+literal|"testTXTNonASCIIUTF8.txt"
+argument_list|,
+name|UTF8TEXT
+argument_list|,
+literal|"The quick brown fox jumps over the lazy dog"
 argument_list|)
 expr_stmt|;
 block|}
