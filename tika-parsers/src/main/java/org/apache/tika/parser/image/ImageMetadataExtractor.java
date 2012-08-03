@@ -940,6 +940,13 @@ name|isMetadataField
 argument_list|(
 name|name
 argument_list|)
+operator|&&
+name|tag
+operator|.
+name|getDescription
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|String
