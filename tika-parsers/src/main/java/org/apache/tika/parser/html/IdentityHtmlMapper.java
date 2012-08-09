@@ -92,6 +92,13 @@ parameter_list|)
 block|{
 return|return
 name|name
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
 return|;
 block|}
 block|}
