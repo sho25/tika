@@ -130,6 +130,40 @@ name|Link
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/** Whether to collapse whitespace in anchor text */
+specifier|private
+name|boolean
+name|collapseWhitespaceInAnchor
+decl_stmt|;
+comment|/**      * Default constructor      */
+specifier|public
+name|LinkContentHandler
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Default constructor      *      * @boolean collapseWhitespaceInAnchor      */
+specifier|public
+name|LinkContentHandler
+parameter_list|(
+name|boolean
+name|collapseWhitespaceInAnchor
+parameter_list|)
+block|{
+name|super
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|collapseWhitespaceInAnchor
+operator|=
+name|collapseWhitespaceInAnchor
+expr_stmt|;
+block|}
 comment|/**      * Returns the list of collected links.      *      * @return collected links      */
 specifier|public
 name|List
@@ -472,7 +506,9 @@ name|removeFirst
 argument_list|()
 operator|.
 name|getLink
-argument_list|()
+argument_list|(
+name|collapseWhitespaceInAnchor
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
