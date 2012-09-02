@@ -336,6 +336,21 @@ operator|.
 name|getSignedContent
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|content
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"cannot parse detached pkcs7 signature (no signed data to parse)"
+argument_list|)
+throw|;
+block|}
 name|InputStream
 name|input
 init|=
