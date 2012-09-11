@@ -307,15 +307,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|name
-argument_list|)
-expr_stmt|;
 comment|// ignore
 block|}
 block|}
