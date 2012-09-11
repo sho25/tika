@@ -34,6 +34,11 @@ name|PROTECTED
 init|=
 literal|"protected"
 decl_stmt|;
+name|String
+name|EMBEDDED_RELATIONSHIP_ID
+init|=
+literal|"embeddedRelationshipId"
+decl_stmt|;
 block|}
 end_interface
 
