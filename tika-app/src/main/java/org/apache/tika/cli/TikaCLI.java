@@ -5189,6 +5189,19 @@ range|:
 name|names
 control|)
 block|{
+for|for
+control|(
+name|String
+name|value
+range|:
+name|metadata
+operator|.
+name|getValues
+argument_list|(
+name|name
+argument_list|)
+control|)
+block|{
 name|writer
 operator|.
 name|println
@@ -5197,14 +5210,10 @@ name|name
 operator|+
 literal|": "
 operator|+
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|name
-argument_list|)
+name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 specifier|public
