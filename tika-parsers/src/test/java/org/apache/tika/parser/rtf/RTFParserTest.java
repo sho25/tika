@@ -1862,10 +1862,8 @@ name|CHARACTER_COUNT
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|"2012-09-02T17:01:00Z"
-argument_list|,
 name|xml
 operator|.
 name|metadata
@@ -1875,6 +1873,11 @@ argument_list|(
 name|Office
 operator|.
 name|CREATION_DATE
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"2012-09-02T"
 argument_list|)
 argument_list|)
 expr_stmt|;
