@@ -4837,6 +4837,16 @@ name|toString
 argument_list|()
 decl_stmt|;
 name|int
+name|h
+init|=
+name|xml
+operator|.
+name|indexOf
+argument_list|(
+literal|"<div class=\"embedded\" id=\"rId3\"/>"
+argument_list|)
+decl_stmt|;
+name|int
 name|i
 init|=
 name|xml
@@ -4868,6 +4878,14 @@ argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
+name|h
+operator|!=
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
 name|i
 operator|!=
 operator|-
@@ -4888,6 +4906,13 @@ name|k
 operator|!=
 operator|-
 literal|1
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|h
+operator|<
+name|i
 argument_list|)
 expr_stmt|;
 name|assertTrue
