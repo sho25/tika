@@ -863,6 +863,13 @@ name|getStyleID
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|style
+operator|!=
+literal|null
+condition|)
+block|{
 name|TagAndStyle
 name|tas
 init|=
@@ -899,6 +906,7 @@ operator|.
 name|getStyleClass
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

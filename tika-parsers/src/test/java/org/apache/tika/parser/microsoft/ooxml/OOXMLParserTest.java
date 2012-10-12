@@ -4930,6 +4930,32 @@ name|k
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-1006
+specifier|public
+name|void
+name|testWordNullStyle
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_null_style.docx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Test av styrt dokument"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
