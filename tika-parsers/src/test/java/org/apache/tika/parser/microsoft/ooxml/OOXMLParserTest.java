@@ -4956,6 +4956,53 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-1005:
+specifier|public
+name|void
+name|testTextInsideTextBox
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_text_box.docx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"This text is directly in the body of the document."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This text is inside of a text box in the body of the document."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This text is inside of a text box in the header of the document."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This text is inside of a text box in the footer of the document."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
