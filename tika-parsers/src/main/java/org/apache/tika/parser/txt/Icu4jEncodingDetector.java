@@ -217,18 +217,35 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|detector
-operator|.
-name|setDeclaredEncoding
-argument_list|(
+name|String
+name|cleaned
+init|=
 name|CharsetUtils
 operator|.
 name|clean
 argument_list|(
 name|incomingCharset
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|cleaned
+operator|!=
+literal|null
+condition|)
+block|{
+name|detector
+operator|.
+name|setDeclaredEncoding
+argument_list|(
+name|cleaned
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// TODO: log a warning?
+block|}
 block|}
 comment|// TIKA-341 without enabling input filtering (stripping of tags)
 comment|// short HTML tests don't work well
