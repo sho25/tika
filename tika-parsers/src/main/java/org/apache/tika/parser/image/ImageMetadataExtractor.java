@@ -53,6 +53,16 @@ name|java
 operator|.
 name|text
 operator|.
+name|DecimalFormatSymbols
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|text
+operator|.
 name|SimpleDateFormat
 import|;
 end_import
@@ -74,6 +84,16 @@ operator|.
 name|util
 operator|.
 name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
 import|;
 end_import
 
@@ -405,14 +425,10 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|DecimalFormat
-name|GEO_DECIMAL_FORMAT
+name|String
+name|GEO_DECIMAL_FORMAT_STRING
 init|=
-operator|new
-name|DecimalFormat
-argument_list|(
 literal|"#.######"
-argument_list|)
 decl_stmt|;
 comment|// 6 dp seems to be reasonable
 comment|/**      * @param metadata to extract to, using default directory handlers      */
@@ -2730,6 +2746,24 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|DecimalFormat
+name|geoDecimalFormat
+init|=
+operator|new
+name|DecimalFormat
+argument_list|(
+name|GEO_DECIMAL_FORMAT_STRING
+argument_list|,
+name|DecimalFormatSymbols
+operator|.
+name|getInstance
+argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|metadata
 operator|.
 name|set
@@ -2738,7 +2772,7 @@ name|TikaCoreProperties
 operator|.
 name|LATITUDE
 argument_list|,
-name|GEO_DECIMAL_FORMAT
+name|geoDecimalFormat
 operator|.
 name|format
 argument_list|(
@@ -2761,7 +2795,7 @@ name|TikaCoreProperties
 operator|.
 name|LONGITUDE
 argument_list|,
-name|GEO_DECIMAL_FORMAT
+name|geoDecimalFormat
 operator|.
 name|format
 argument_list|(
