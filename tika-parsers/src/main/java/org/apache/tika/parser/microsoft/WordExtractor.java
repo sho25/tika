@@ -1356,7 +1356,7 @@ literal|58
 condition|)
 block|{
 comment|// Embedded Object: add a<div
-comment|// embedded="name"/> so consumer can see where
+comment|// class="embedded" id="_X"/> so consumer can see where
 comment|// in the main text each embedded document
 comment|// occurred:
 name|String
@@ -2566,6 +2566,8 @@ argument_list|(
 name|stream
 argument_list|,
 name|filename
+argument_list|,
+literal|null
 argument_list|,
 name|mimeType
 argument_list|,

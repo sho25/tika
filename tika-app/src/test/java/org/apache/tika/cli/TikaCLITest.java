@@ -741,7 +741,7 @@ name|File
 argument_list|(
 name|tempFile
 argument_list|,
-literal|"file5"
+literal|"MBD002B0FA6_file5"
 argument_list|)
 decl_stmt|;
 comment|// Image of one of the embedded resources

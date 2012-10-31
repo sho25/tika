@@ -4652,6 +4652,14 @@ condition|(
 name|relID
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|name
+operator|.
+name|startsWith
+argument_list|(
+name|relID
+argument_list|)
 condition|)
 block|{
 name|name
