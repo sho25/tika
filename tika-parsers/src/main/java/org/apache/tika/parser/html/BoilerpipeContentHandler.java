@@ -244,7 +244,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses the<a href="http://code.google.com/p/boilerpipe/">boilerpipe</a>  * library to automatically extract the main content from a web page.  *   * Use this as a {@link ContentHandler} object passed to  * {@link HtmlParser#parse(java.io.InputStream, ContentHandler, Metadata, org.apache.tika.parser.ParseContext)}  */
+comment|/**  * Uses the<a href="http://code.google.com/p/boilerpipe/">boilerpipe</a>  * library to automatically extract the main content from a web page.  *  * Use this as a {@link ContentHandler} object passed to  * {@link HtmlParser#parse(java.io.InputStream, ContentHandler, Metadata, org.apache.tika.parser.ParseContext)}  */
 end_comment
 
 begin_class
@@ -570,7 +570,11 @@ name|RecordedElement
 argument_list|>
 name|elements
 decl_stmt|;
-comment|/**      * Creates a new boilerpipe-based content extractor, using the      * {@link DefaultExtractor} extraction rules and "delegate" as the content handler.      *       * @param delegate      *            The {@link ContentHandler} object      */
+specifier|private
+name|TextDocument
+name|td
+decl_stmt|;
+comment|/**      * Creates a new boilerpipe-based content extractor, using the      * {@link DefaultExtractor} extraction rules and "delegate" as the content handler.      *      * @param delegate      *            The {@link ContentHandler} object      */
 specifier|public
 name|BoilerpipeContentHandler
 parameter_list|(
@@ -606,7 +610,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a new boilerpipe-based content extractor, using the given      * extraction rules. The extracted main content will be passed to the      *<delegate> content handler.      *       * @param delegate      *            The {@link ContentHandler} object      * @param extractor      *            Extraction rules to use, e.g. {@link ArticleExtractor}      */
+comment|/**      * Creates a new boilerpipe-based content extractor, using the given      * extraction rules. The extracted main content will be passed to the      *<delegate> content handler.      *      * @param delegate      *            The {@link ContentHandler} object      * @param extractor      *            Extraction rules to use, e.g. {@link ArticleExtractor}      */
 specifier|public
 name|BoilerpipeContentHandler
 parameter_list|(
@@ -617,6 +621,12 @@ name|BoilerpipeExtractor
 name|extractor
 parameter_list|)
 block|{
+name|this
+operator|.
+name|td
+operator|=
+literal|null
+expr_stmt|;
 name|this
 operator|.
 name|delegate
@@ -652,6 +662,16 @@ parameter_list|()
 block|{
 return|return
 name|includeMarkup
+return|;
+block|}
+comment|/**      * Retrieves the built TextDocument      *      * @return TextDocument      */
+specifier|public
+name|TextDocument
+name|getTextDocument
+parameter_list|()
+block|{
+return|return
+name|td
 return|;
 block|}
 annotation|@
@@ -1086,12 +1106,11 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
-name|TextDocument
 name|td
-init|=
+operator|=
 name|toTextDocument
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 try|try
 block|{
 name|extractor
