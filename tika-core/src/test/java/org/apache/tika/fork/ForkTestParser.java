@@ -229,6 +229,17 @@ operator|.
 name|read
 argument_list|()
 expr_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|,
+literal|"text/plain"
+argument_list|)
+expr_stmt|;
 name|XHTMLContentHandler
 name|xhtml
 init|=
