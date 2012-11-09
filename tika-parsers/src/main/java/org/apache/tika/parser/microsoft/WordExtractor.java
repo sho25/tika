@@ -1341,18 +1341,29 @@ name|getStartOffset
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// 58 is an embedded document
+comment|// 56 is a document link
 if|if
 condition|(
 name|field
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|field
 operator|.
 name|getType
 argument_list|()
 operator|==
 literal|58
+operator|||
+name|field
+operator|.
+name|getType
+argument_list|()
+operator|==
+literal|56
+operator|)
 condition|)
 block|{
 comment|// Embedded Object: add a<div
