@@ -1096,6 +1096,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-1025
+specifier|public
+name|void
+name|testEmbeddedPlacedholder
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_embedded2.ppt"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"1\"/>"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"14\"/>"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
