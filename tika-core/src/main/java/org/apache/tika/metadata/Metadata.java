@@ -1460,7 +1460,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Set metadata name/value. Associate the specified value to the specified      * metadata name. If some previous values were associated to this name, they      * are removed.      *       * @param name      *          the metadata name.      * @param value      *          the metadata value.      */
+comment|/**      * Set metadata name/value. Associate the specified value to the specified      * metadata name. If some previous values were associated to this name,      * they are removed. If the given value is<code>null</code>, then the      * metadata entry is removed.      *      * @param name the metadata name.      * @param value  the metadata value, or<code>null</code>      */
 specifier|public
 name|void
 name|set
@@ -1471,6 +1471,13 @@ parameter_list|,
 name|String
 name|value
 parameter_list|)
+block|{
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+condition|)
 block|{
 name|metadata
 operator|.
@@ -1486,6 +1493,17 @@ name|value
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|metadata
+operator|.
+name|remove
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Sets the value of the identified metadata property.      *      * @since Apache Tika 0.7      * @param property property definition      * @param value    property value      */
 specifier|public
@@ -1976,14 +1994,31 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-name|set
-argument_list|(
-name|property
-argument_list|,
+name|String
+name|dateString
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|date
+operator|!=
+literal|null
+condition|)
+block|{
+name|dateString
+operator|=
 name|formatDate
 argument_list|(
 name|date
 argument_list|)
+expr_stmt|;
+block|}
+name|set
+argument_list|(
+name|property
+argument_list|,
+name|dateString
 argument_list|)
 expr_stmt|;
 block|}
