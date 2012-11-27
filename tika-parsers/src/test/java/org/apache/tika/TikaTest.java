@@ -510,7 +510,6 @@ argument_list|,
 name|parser
 argument_list|)
 expr_stmt|;
-comment|// Try with a document containing various tables and formattings
 name|input
 operator|=
 name|getResourceAsStream
