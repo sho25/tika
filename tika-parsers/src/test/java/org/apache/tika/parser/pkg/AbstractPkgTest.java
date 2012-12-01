@@ -69,11 +69,13 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|TestCase
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -209,7 +211,7 @@ specifier|abstract
 class|class
 name|AbstractPkgTest
 extends|extends
-name|TestCase
+name|TikaTest
 block|{
 specifier|protected
 name|ParseContext

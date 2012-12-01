@@ -660,6 +660,39 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-1036
+specifier|public
+name|void
+name|testPlaceholders
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEmbedded.zip"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"test1.txt\"/>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"test2.txt\"/>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
