@@ -4682,28 +4682,44 @@ argument_list|,
 name|name
 argument_list|)
 decl_stmt|;
+name|File
+name|parent
+init|=
+name|outputFile
+operator|.
+name|getParentFile
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
-name|outputFile
+operator|!
+name|parent
 operator|.
 name|exists
 argument_list|()
 condition|)
 block|{
-name|System
+if|if
+condition|(
+operator|!
+name|parent
 operator|.
-name|err
-operator|.
-name|println
+name|mkdirs
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
 argument_list|(
-literal|"File '"
+literal|"unable to create directory \""
 operator|+
-name|name
+name|parent
 operator|+
-literal|"' already exists; skipping"
+literal|"\""
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
+block|}
 block|}
 name|System
 operator|.
@@ -4719,7 +4735,9 @@ literal|"' ("
 operator|+
 name|contentType
 operator|+
-literal|")"
+literal|") to "
+operator|+
+name|outputFile
 argument_list|)
 expr_stmt|;
 name|FileOutputStream
