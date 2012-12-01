@@ -411,7 +411,52 @@ expr_stmt|;
 block|}
 comment|// Slide master, if present
 comment|// TODO: re-enable this once we fix TIKA-712
-comment|/*          MasterSheet master = slide.getMasterSheet();          if(master != null) {             xhtml.startElement("p", "class", "slide-master-content");             textRunsToText(xhtml, master.getTextRuns() );             xhtml.endElement("p");          }          */
+name|MasterSheet
+name|master
+init|=
+name|slide
+operator|.
+name|getMasterSheet
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|master
+operator|!=
+literal|null
+condition|)
+block|{
+name|xhtml
+operator|.
+name|startElement
+argument_list|(
+literal|"p"
+argument_list|,
+literal|"class"
+argument_list|,
+literal|"slide-master-content"
+argument_list|)
+expr_stmt|;
+name|textRunsToText
+argument_list|(
+name|xhtml
+argument_list|,
+name|master
+operator|.
+name|getTextRuns
+argument_list|()
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|endElement
+argument_list|(
+literal|"p"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Slide text
 block|{
 name|xhtml
@@ -433,6 +478,8 @@ name|slide
 operator|.
 name|getTextRuns
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|xhtml
@@ -771,6 +818,8 @@ name|notes
 operator|.
 name|getTextRuns
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 comment|// Repeat the notes footer, if set
@@ -848,6 +897,9 @@ parameter_list|,
 name|TextRun
 index|[]
 name|runs
+parameter_list|,
+name|boolean
+name|isMaster
 parameter_list|)
 throws|throws
 name|SAXException
@@ -876,6 +928,30 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Avoid boiler-plate text on the master slide (0
+comment|// = TextHeaderAtom.TITLE_TYPE, 1 = TextHeaderAtom.BODY_TYPE):
+if|if
+condition|(
+operator|!
+name|isMaster
+operator|||
+operator|(
+name|run
+operator|.
+name|getRunType
+argument_list|()
+operator|!=
+literal|0
+operator|&&
+name|run
+operator|.
+name|getRunType
+argument_list|()
+operator|!=
+literal|1
+operator|)
+condition|)
+block|{
 name|xhtml
 operator|.
 name|characters
@@ -900,6 +976,7 @@ argument_list|(
 literal|"br"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
