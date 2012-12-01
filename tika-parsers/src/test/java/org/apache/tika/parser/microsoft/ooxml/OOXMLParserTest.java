@@ -4674,7 +4674,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"rId3\"/>"
+literal|"<div class=\"embedded\" id=\"slide1_rId3\"/>"
 argument_list|)
 decl_stmt|;
 name|int
@@ -4694,7 +4694,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"rId4\"/>"
+literal|"<div class=\"embedded\" id=\"slide2_rId4\"/>"
 argument_list|)
 decl_stmt|;
 name|int
@@ -4829,6 +4829,39 @@ expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"This text is inside of a text box in the footer of the document."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+comment|// TIKA-1032:
+specifier|public
+name|void
+name|testEmbeddedPPTXTwoSlides
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_embedded_two_slides.pptx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"slide1_rId7\"/>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<div class=\"embedded\" id=\"slide2_rId7\"/>"
 argument_list|,
 name|xml
 argument_list|)
