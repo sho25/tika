@@ -961,6 +961,25 @@ literal|"Extracting 'subdir/foo.txt'"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// clean up. TODO: These should be in target.
+operator|new
+name|File
+argument_list|(
+literal|"subdir/foo.txt"
+argument_list|)
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
+operator|new
+name|File
+argument_list|(
+literal|"subdir"
+argument_list|)
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
