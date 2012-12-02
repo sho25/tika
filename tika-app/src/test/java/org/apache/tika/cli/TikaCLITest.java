@@ -913,6 +913,8 @@ init|=
 block|{
 literal|"-z"
 block|,
+literal|"--extract-dir=target"
+block|,
 name|resourcePrefix
 operator|+
 literal|"testWithSubdirs.zip"
@@ -965,7 +967,7 @@ comment|// clean up. TODO: These should be in target.
 operator|new
 name|File
 argument_list|(
-literal|"subdir/foo.txt"
+literal|"target/subdir/foo.txt"
 argument_list|)
 operator|.
 name|delete
@@ -974,7 +976,7 @@ expr_stmt|;
 operator|new
 name|File
 argument_list|(
-literal|"subdir"
+literal|"target/subdir"
 argument_list|)
 operator|.
 name|delete
