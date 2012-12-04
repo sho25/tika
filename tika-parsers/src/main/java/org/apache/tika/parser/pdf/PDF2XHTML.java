@@ -426,12 +426,6 @@ block|{                 }
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Also extract text for any bookmarks:
-name|pdf2XHTML
-operator|.
-name|extractBookmarkText
-argument_list|()
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -587,16 +581,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|handler
-operator|.
-name|newline
-argument_list|()
-expr_stmt|;
 name|extractBookmarkText
 argument_list|(
 name|outline
-argument_list|,
-literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -606,9 +593,6 @@ name|extractBookmarkText
 parameter_list|(
 name|PDOutlineNode
 name|bookmark
-parameter_list|,
-name|String
-name|indent
 parameter_list|)
 throws|throws
 name|SAXException
@@ -621,6 +605,20 @@ operator|.
 name|getFirstChild
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|current
+operator|!=
+literal|null
+condition|)
+block|{
+name|handler
+operator|.
+name|startElement
+argument_list|(
+literal|"ul"
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|current
@@ -630,9 +628,9 @@ condition|)
 block|{
 name|handler
 operator|.
-name|characters
+name|startElement
 argument_list|(
-name|indent
+literal|"li"
 argument_list|)
 expr_stmt|;
 name|handler
@@ -647,17 +645,15 @@ argument_list|)
 expr_stmt|;
 name|handler
 operator|.
-name|newline
-argument_list|()
+name|endElement
+argument_list|(
+literal|"li"
+argument_list|)
 expr_stmt|;
 comment|// Recurse:
 name|extractBookmarkText
 argument_list|(
 name|current
-argument_list|,
-name|indent
-operator|+
-literal|"    "
 argument_list|)
 expr_stmt|;
 name|current
@@ -666,6 +662,14 @@ name|current
 operator|.
 name|getNextSibling
 argument_list|()
+expr_stmt|;
+block|}
+name|handler
+operator|.
+name|endElement
+argument_list|(
+literal|"ul"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -720,6 +724,10 @@ name|IOException
 block|{
 try|try
 block|{
+comment|// Extract text for any bookmarks:
+name|extractBookmarkText
+argument_list|()
+expr_stmt|;
 name|handler
 operator|.
 name|endDocument
