@@ -1023,6 +1023,17 @@ argument_list|(
 literal|"div"
 argument_list|)
 expr_stmt|;
+name|entrydata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|EMBEDDED_RELATIONSHIP_ID
+argument_list|,
+name|name
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
