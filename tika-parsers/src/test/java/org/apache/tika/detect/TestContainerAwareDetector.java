@@ -692,6 +692,23 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|testDetectLotusNotesEml
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Lotus .eml files aren't guaranteed to have any of the magic
+comment|// matches as the first line, but should have X-Notes-Item and Message-ID
+name|assertTypeByData
+argument_list|(
+literal|"testLotusEml.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|testDetectODF
 parameter_list|()
 throws|throws
