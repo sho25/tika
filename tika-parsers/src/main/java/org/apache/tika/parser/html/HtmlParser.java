@@ -408,7 +408,16 @@ argument_list|)
 argument_list|,
 name|metadata
 argument_list|,
+name|context
+operator|.
+name|get
+argument_list|(
+name|ServiceLoader
+operator|.
+name|class
+argument_list|,
 name|LOADER
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try

@@ -490,6 +490,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns the load error handler used by this loader.      *      * @return load error handler      * @since Apache Tika 1.3      */
+specifier|public
+name|LoadErrorHandler
+name|getLoadErrorHandler
+parameter_list|()
+block|{
+return|return
+name|handler
+return|;
+block|}
 comment|/**      * Returns an input stream for reading the specified resource from the      * configured class loader.      *      * @param name resource name      * @return input stream, or<code>null</code> if the resource was not found      * @see ClassLoader#getResourceAsStream(String)      * @since Apache Tika 1.1      */
 specifier|public
 name|InputStream
