@@ -507,7 +507,7 @@ name|chans
 init|=
 name|h4
 operator|&
-literal|0x03
+literal|0x192
 decl_stmt|;
 if|if
 condition|(

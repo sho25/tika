@@ -386,7 +386,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"1"
 argument_list|,
 name|metadata
 operator|.
@@ -618,7 +618,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"1"
 argument_list|,
 name|metadata
 operator|.
@@ -746,7 +746,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Stereo"
+literal|"Mono"
 argument_list|,
 name|metadata
 operator|.
@@ -991,7 +991,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"1"
 argument_list|,
 name|metadata
 operator|.
@@ -1220,7 +1220,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"1"
 argument_list|,
 name|metadata
 operator|.
@@ -1423,7 +1423,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2"
+literal|"1"
 argument_list|,
 name|metadata
 operator|.
