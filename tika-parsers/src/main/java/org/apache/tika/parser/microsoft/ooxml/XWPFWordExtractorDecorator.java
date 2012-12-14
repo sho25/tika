@@ -886,6 +886,13 @@ condition|(
 name|style
 operator|!=
 literal|null
+operator|&&
+name|style
+operator|.
+name|getName
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
 name|TagAndStyle
