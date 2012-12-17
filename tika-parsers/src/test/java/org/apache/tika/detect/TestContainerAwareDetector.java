@@ -419,6 +419,14 @@ argument_list|,
 literal|"application/vnd.ms-project"
 argument_list|)
 expr_stmt|;
+comment|// Excel95 can be detected by not parsed
+name|assertTypeByData
+argument_list|(
+literal|"testEXCEL_95.xls"
+argument_list|,
+literal|"application/vnd.ms-excel"
+argument_list|)
+expr_stmt|;
 comment|// Try some ones that POI doesn't handle, that are still OLE2 based
 name|assertTypeByData
 argument_list|(

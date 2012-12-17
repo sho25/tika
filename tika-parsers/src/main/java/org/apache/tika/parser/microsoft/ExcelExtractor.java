@@ -759,6 +759,14 @@ name|listenForAllRecords
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|WORKBOOK_ENTRY
+init|=
+literal|"Workbook"
+decl_stmt|;
 specifier|public
 name|ExcelExtractor
 parameter_list|(
@@ -852,6 +860,20 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+if|if
+condition|(
+operator|!
+name|root
+operator|.
+name|hasEntry
+argument_list|(
+name|WORKBOOK_ENTRY
+argument_list|)
+condition|)
+block|{
+comment|// Corrupt file / very old file, just skip
+return|return;
+block|}
 name|TikaHSSFListener
 name|listener
 init|=
@@ -1368,7 +1390,7 @@ name|root
 operator|.
 name|createDocumentInputStream
 argument_list|(
-literal|"Workbook"
+name|WORKBOOK_ENTRY
 argument_list|)
 decl_stmt|;
 name|HSSFEventFactory
