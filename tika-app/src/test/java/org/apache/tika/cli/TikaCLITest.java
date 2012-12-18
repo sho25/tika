@@ -370,6 +370,23 @@ literal|"html xmlns=\"http://www.w3.org/1999/xhtml"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertTrue
+argument_list|(
+literal|"Expanded<title></title> element should be present"
+argument_list|,
+name|outContent
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"<title></title>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Tests -t option of the cli      *       * @throws Exception      */
 specifier|public
