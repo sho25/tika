@@ -502,6 +502,8 @@ operator|new
 name|TextContentHandler
 argument_list|(
 name|handler
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}

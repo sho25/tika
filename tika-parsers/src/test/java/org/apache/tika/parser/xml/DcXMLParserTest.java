@@ -29,11 +29,13 @@ end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|apache
 operator|.
-name|TestCase
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -110,7 +112,7 @@ specifier|public
 class|class
 name|DcXMLParserTest
 extends|extends
-name|TestCase
+name|TikaTest
 block|{
 specifier|public
 name|void
@@ -635,6 +637,35 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|// TIKA-1048
+specifier|public
+name|void
+name|testNoSpaces
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|text
+init|=
+name|getXML
+argument_list|(
+literal|"testXML2.xml"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertFalse
+argument_list|(
+name|text
+operator|.
+name|contains
+argument_list|(
+literal|"testSubject"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
