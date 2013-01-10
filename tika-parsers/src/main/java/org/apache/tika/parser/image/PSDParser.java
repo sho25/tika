@@ -884,7 +884,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Even size, may be padded
+comment|// The name length is padded to be even
 if|if
 condition|(
 name|nameLen
@@ -936,6 +936,23 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|dataLen
+operator|%
+literal|2
+operator|==
+literal|1
+condition|)
+block|{
+comment|// Data Length is even padded
+name|dataLen
+operator|=
+name|dataLen
+operator|+
+literal|1
+expr_stmt|;
+block|}
 name|totalLength
 operator|=
 literal|4
