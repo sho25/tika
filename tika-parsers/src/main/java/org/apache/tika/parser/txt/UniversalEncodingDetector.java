@@ -246,14 +246,14 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|LinkageError
 name|e
 parameter_list|)
 block|{
-comment|// if juniversalchardet is not available
 return|return
 literal|null
 return|;
+comment|// juniversalchardet is not available
 block|}
 finally|finally
 block|{
