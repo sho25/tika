@@ -255,7 +255,7 @@ block|}
 comment|/** Test MimeType setDescription() */
 specifier|public
 name|void
-name|testSetDescription
+name|testSetEmptyValues
 parameter_list|()
 block|{
 try|try
@@ -263,6 +263,75 @@ block|{
 name|text
 operator|.
 name|setDescription
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+try|try
+block|{
+name|text
+operator|.
+name|setAcronym
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+try|try
+block|{
+name|text
+operator|.
+name|addLink
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Expected IllegalArgumentException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+comment|// expected result
+block|}
+try|try
+block|{
+name|text
+operator|.
+name|setUniformTypeIdentifier
 argument_list|(
 literal|null
 argument_list|)
