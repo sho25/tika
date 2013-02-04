@@ -1110,7 +1110,7 @@ operator|.
 name|getMainChunks
 argument_list|()
 operator|.
-name|getAll
+name|getChunks
 argument_list|()
 control|)
 block|{
@@ -1322,6 +1322,9 @@ argument_list|,
 name|Types
 operator|.
 name|BINARY
+operator|.
+name|getId
+argument_list|()
 argument_list|,
 name|chunk
 operator|.
