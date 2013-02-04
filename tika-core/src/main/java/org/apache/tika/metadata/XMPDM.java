@@ -143,7 +143,9 @@ argument_list|,
 literal|"7.1"
 argument_list|)
 decl_stmt|;
-comment|/**      * Converter for {@link XMPDM#AUDIO_CHANNEL_TYPE}       * @deprecated Experimental method, will change shortly      */
+comment|/**      * Converter for {@link XMPDM#AUDIO_CHANNEL_TYPE}      * @deprecated Experimental method, will change shortly      */
+annotation|@
+name|Deprecated
 specifier|static
 class|class
 name|ChannelTypePropertyConverter
@@ -370,10 +372,17 @@ argument_list|(
 literal|"xmpDM:copyright"
 argument_list|)
 decl_stmt|;
-comment|//    /**
-comment|//     * "The duration of the media file."
-comment|//     */
-comment|//    Property DURATION = "xmpDM:duration";
+comment|/**      * "The duration of the media file."      */
+name|Property
+name|DURATION
+init|=
+name|Property
+operator|.
+name|externalReal
+argument_list|(
+literal|"xmpDM:duration"
+argument_list|)
+decl_stmt|;
 comment|/**      * "The engineer's name."      */
 name|Property
 name|ENGINEER
