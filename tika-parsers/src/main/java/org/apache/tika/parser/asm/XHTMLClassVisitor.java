@@ -220,7 +220,7 @@ end_comment
 begin_class
 class|class
 name|XHTMLClassVisitor
-implements|implements
+extends|extends
 name|ClassVisitor
 block|{
 specifier|private
@@ -251,6 +251,13 @@ name|Metadata
 name|metadata
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|Opcodes
+operator|.
+name|ASM4
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|xhtml
