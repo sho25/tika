@@ -293,7 +293,8 @@ operator|-
 literal|1
 return|;
 block|}
-comment|// @Override -- not until Java 1.6
+annotation|@
+name|Override
 specifier|public
 name|void
 name|writeTo
