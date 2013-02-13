@@ -8066,18 +8066,9 @@ literal|"x.fh7"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"image/x-icon"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.ico"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - An official mimetype has subsequently been issued
+comment|//  favicon.ico +friends should now be image/vnd.microsoft.icon
+comment|//assertEquals("image/x-icon", tika.detect("x.ico"));
 name|assertEquals
 argument_list|(
 literal|"image/x-pcx"
