@@ -231,9 +231,7 @@ name|NAMESPACE_PREFIX_DELIMITER
 init|=
 literal|":"
 decl_stmt|;
-comment|// These properties are being moved to a new Tika core properties definition, javadocs will be added once it's available
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#FORMAT */
 specifier|public
 specifier|static
 specifier|final
@@ -242,8 +240,7 @@ name|FORMAT
 init|=
 literal|"format"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#IDENTIFIER */
 specifier|public
 specifier|static
 specifier|final
@@ -252,8 +249,7 @@ name|IDENTIFIER
 init|=
 literal|"identifier"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#MODIFIED */
 specifier|public
 specifier|static
 specifier|final
@@ -262,8 +258,7 @@ name|MODIFIED
 init|=
 literal|"modified"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#CONTRIBUTOR */
 specifier|public
 specifier|static
 specifier|final
@@ -272,8 +267,7 @@ name|CONTRIBUTOR
 init|=
 literal|"contributor"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#COVERAGE */
 specifier|public
 specifier|static
 specifier|final
@@ -282,8 +276,7 @@ name|COVERAGE
 init|=
 literal|"coverage"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#CREATOR */
 specifier|public
 specifier|static
 specifier|final
@@ -292,8 +285,7 @@ name|CREATOR
 init|=
 literal|"creator"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#CREATED */
 specifier|public
 specifier|static
 specifier|final
@@ -307,8 +299,7 @@ argument_list|(
 literal|"date"
 argument_list|)
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#DESCRIPTION */
 specifier|public
 specifier|static
 specifier|final
@@ -317,8 +308,7 @@ name|DESCRIPTION
 init|=
 literal|"description"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#LANGUAGE */
 specifier|public
 specifier|static
 specifier|final
@@ -327,8 +317,7 @@ name|LANGUAGE
 init|=
 literal|"language"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#PUBLISHER */
 specifier|public
 specifier|static
 specifier|final
@@ -337,8 +326,7 @@ name|PUBLISHER
 init|=
 literal|"publisher"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#RELATION */
 specifier|public
 specifier|static
 specifier|final
@@ -347,8 +335,7 @@ name|RELATION
 init|=
 literal|"relation"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#RIGHTS */
 specifier|public
 specifier|static
 specifier|final
@@ -357,8 +344,7 @@ name|RIGHTS
 init|=
 literal|"rights"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#SOURCE */
 specifier|public
 specifier|static
 specifier|final
@@ -367,8 +353,7 @@ name|SOURCE
 init|=
 literal|"source"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#KEYWORDS */
 specifier|public
 specifier|static
 specifier|final
@@ -377,8 +362,7 @@ name|SUBJECT
 init|=
 literal|"subject"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#TITLE */
 specifier|public
 specifier|static
 specifier|final
@@ -387,8 +371,7 @@ name|TITLE
 init|=
 literal|"title"
 decl_stmt|;
-annotation|@
-name|Deprecated
+comment|/** @deprecated use TikaCoreProperties#TYPE */
 specifier|public
 specifier|static
 specifier|final
