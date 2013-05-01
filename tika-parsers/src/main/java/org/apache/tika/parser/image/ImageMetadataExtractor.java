@@ -2393,6 +2393,13 @@ operator|.
 name|TAG_DATETIME
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|datetime
+operator|!=
+literal|null
+condition|)
+block|{
 name|String
 name|datetimeNoTimeZone
 init|=
@@ -2440,6 +2447,7 @@ argument_list|,
 name|datetimeNoTimeZone
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
