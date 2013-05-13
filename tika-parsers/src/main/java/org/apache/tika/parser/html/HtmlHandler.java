@@ -630,7 +630,9 @@ literal|null
 condition|)
 block|{
 comment|// TIKA-983: Handle<meta property="og:xxx" content="yyy" /> tags
-name|addHtmlMetadata
+name|metadata
+operator|.
+name|add
 argument_list|(
 name|atts
 operator|.

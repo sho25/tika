@@ -3232,7 +3232,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create ContentHandler that transforms SAX events into textual HTML output,      * and writes it out to<writer> - typically this is a StringWriter.      *       * @param writer Where to write resulting HTML text.      * @return ContentHandler suitable for passing to parse() methods.      * @throws Exception      */
+comment|/**      * Create ContentHandler that transforms SAX events into textual HTML output,      * and writes it out to<writer> - typically this is a StringWriter.      *      * @param writer Where to write resulting HTML text.      * @return ContentHandler suitable for passing to parse() methods.      * @throws Exception      */
 specifier|private
 name|ContentHandler
 name|makeHtmlTransformer
@@ -3510,7 +3510,7 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-869      * IdentityHtmlMapper needs to lower-case tag names.      *       * @see<a href="https://issues.apache.org/jira/browse/TIKA-869">TIKA-869</a>      */
+comment|/**      * Test case for TIKA-869      * IdentityHtmlMapper needs to lower-case tag names.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-869">TIKA-869</a>      */
 specifier|public
 name|void
 name|testIdentityMapper
@@ -3609,7 +3609,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-889      * XHTMLContentHandler wont emit newline when html element matches ENDLINE set.      *       * @see<a href="https://issues.apache.org/jira/browse/TIKA-889">TIKA-889</a>      */
+comment|/**      * Test case for TIKA-889      * XHTMLContentHandler wont emit newline when html element matches ENDLINE set.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-889">TIKA-889</a>      */
 specifier|public
 name|void
 name|testNewlineAndIndent
@@ -3682,7 +3682,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-983:  HTML parser should add Open Graph meta tag data to Metadata returned by parser      *       * @see<a href="https://issues.apache.org/jira/browse/TIKA-983">TIKA-983</a>      */
+comment|/**      * Test case for TIKA-983:  HTML parser should add Open Graph meta tag data to Metadata returned by parser      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-983">TIKA-983</a>      */
 specifier|public
 name|void
 name|testOpenGraphMetadata
@@ -3696,6 +3696,10 @@ init|=
 literal|"<html><head><meta property=\"og:description\""
 operator|+
 literal|" content=\"some description\" />"
+operator|+
+literal|"<meta property=\"og:image\" content=\"http://example.com/image1.jpg\" />"
+operator|+
+literal|"<meta property=\"og:image\" content=\"http://example.com/image2.jpg\" />"
 operator|+
 literal|"<title>hello</title>"
 operator|+
@@ -3745,6 +3749,16 @@ operator|.
 name|get
 argument_list|(
 literal|"og:description"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|metadata
+operator|.
+name|isMultiValued
+argument_list|(
+literal|"og:image"
 argument_list|)
 argument_list|)
 expr_stmt|;
