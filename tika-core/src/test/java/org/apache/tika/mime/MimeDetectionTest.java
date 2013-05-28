@@ -253,6 +253,14 @@ argument_list|,
 literal|"testlargerbuffer.html"
 argument_list|)
 expr_stmt|;
+comment|// test fragment of HTML with<div> (TIKA-1102)
+name|testFile
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"htmlfragment"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
