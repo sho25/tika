@@ -1941,6 +1941,21 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Copied from POI's org/apache/poi/hwpf/converter/AbstractWordConverter.processCharacters:
+comment|// line tabulator as break line
+name|text
+operator|=
+name|text
+operator|.
+name|replace
+argument_list|(
+operator|(
+name|char
+operator|)
+literal|0x000b
+argument_list|,
+literal|'\n'
+argument_list|)
+expr_stmt|;
 comment|// Non-breaking hyphens are returned as char 30
 name|text
 operator|=
