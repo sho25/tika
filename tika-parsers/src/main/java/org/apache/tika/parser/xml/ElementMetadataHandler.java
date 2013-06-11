@@ -106,7 +106,7 @@ name|ElementMetadataHandler
 extends|extends
 name|AbstractMetadataHandler
 block|{
-comment|/** 	 * Logger for this class 	 */
+comment|/**      * Logger for this class      */
 specifier|private
 specifier|static
 specifier|final
@@ -219,7 +219,7 @@ name|parentMatchLevel
 init|=
 literal|0
 decl_stmt|;
-comment|/**      * Constructor for string metadata keys.      *       * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param name the Tika metadata field key      */
+comment|/**      * Constructor for string metadata keys.      *      * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param name the Tika metadata field key      */
 specifier|public
 name|ElementMetadataHandler
 parameter_list|(
@@ -300,7 +300,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Constructor for string metadata keys which allows change of behavior      * for duplicate and empty entry values.      *       * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param name the Tika metadata field key      * @param allowDuplicateValues add duplicate values to the Tika metadata      * @param allowEmptyValues add empty values to the Tika metadata      */
+comment|/**      * Constructor for string metadata keys which allows change of behavior      * for duplicate and empty entry values.      *      * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param name the Tika metadata field key      * @param allowDuplicateValues add duplicate values to the Tika metadata      * @param allowEmptyValues add empty values to the Tika metadata      */
 specifier|public
 name|ElementMetadataHandler
 parameter_list|(
@@ -387,7 +387,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Constructor for Property metadata keys.      *       * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param targetProperty the Tika metadata Property key      */
+comment|/**      * Constructor for Property metadata keys.      *      * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param targetProperty the Tika metadata Property key      */
 specifier|public
 name|ElementMetadataHandler
 parameter_list|(
@@ -477,7 +477,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Constructor for Property metadata keys which allows change of behavior      * for duplicate and empty entry values.      *       * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param targetProperty the Tika metadata Property key      * @param allowDuplicateValues add duplicate values to the Tika metadata      * @param allowEmptyValues add empty values to the Tika metadata      */
+comment|/**      * Constructor for Property metadata keys which allows change of behavior      * for duplicate and empty entry values.      *      * @param uri the uri of the namespace of the element      * @param localName the local name of the element      * @param metadata the Tika metadata object to populate      * @param targetProperty the Tika metadata Property key      * @param allowDuplicateValues add duplicate values to the Tika metadata      * @param allowEmptyValues add empty values to the Tika metadata      */
 specifier|public
 name|ElementMetadataHandler
 parameter_list|(
