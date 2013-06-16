@@ -1984,7 +1984,7 @@ name|Exception
 block|{
 name|assertContains
 argument_list|(
-literal|"one\ntwo"
+literal|"one two"
 argument_list|,
 name|getXML
 argument_list|(
@@ -1992,6 +1992,13 @@ literal|"testWORD_tabular_symbol.doc"
 argument_list|)
 operator|.
 name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
