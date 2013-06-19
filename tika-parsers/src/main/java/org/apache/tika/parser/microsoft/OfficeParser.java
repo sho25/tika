@@ -1354,7 +1354,8 @@ name|Decryptor
 operator|.
 name|DEFAULT_PASSWORD
 decl_stmt|;
-comment|// If they supplyed a Password Provider, ask that for the password
+comment|// If they supplied a Password Provider, ask that for the password,
+comment|//  and use the provider given one if available (stick with default if not)
 name|PasswordProvider
 name|passwordProvider
 init|=
@@ -1374,15 +1375,28 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|password
-operator|=
+name|String
+name|suppliedPassword
+init|=
 name|passwordProvider
 operator|.
 name|getPassword
 argument_list|(
 name|metadata
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|suppliedPassword
+operator|!=
+literal|null
+condition|)
+block|{
+name|password
+operator|=
+name|suppliedPassword
 expr_stmt|;
+block|}
 block|}
 comment|// Check if we've the right password or not
 if|if
