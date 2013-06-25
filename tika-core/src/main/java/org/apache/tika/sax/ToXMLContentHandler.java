@@ -770,6 +770,14 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+comment|// Reset the position in the tree, to avoid endless stack overflow
+comment|// chains (see TIKA-1070)
+name|currentElement
+operator|=
+name|currentElement
+operator|.
+name|parent
+expr_stmt|;
 block|}
 annotation|@
 name|Override
