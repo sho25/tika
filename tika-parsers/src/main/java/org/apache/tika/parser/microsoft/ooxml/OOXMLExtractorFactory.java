@@ -351,20 +351,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|EndDocumentShieldingContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|xmlbeans
 operator|.
 name|XmlException
@@ -735,29 +721,8 @@ name|poiExtractor
 argument_list|)
 expr_stmt|;
 block|}
-comment|// We need to get the content first, but not end
-comment|//  the document just yet
-name|EndDocumentShieldingContentHandler
-name|handler
-init|=
-operator|new
-name|EndDocumentShieldingContentHandler
-argument_list|(
-name|baseHandler
-argument_list|)
-decl_stmt|;
-name|extractor
-operator|.
-name|getXHTML
-argument_list|(
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-comment|// Now we can get the metadata
+comment|// Get the bulk of the metadata first, so that it's accessible during
+comment|//  parsing if desired by the client (see TIKA-1109)
 name|extractor
 operator|.
 name|getMetadataExtractor
@@ -768,11 +733,17 @@ argument_list|(
 name|metadata
 argument_list|)
 expr_stmt|;
-comment|// Then finish up
-name|handler
+comment|// Extract the text, along with any in-document metadata
+name|extractor
 operator|.
-name|reallyEndDocument
-argument_list|()
+name|getXHTML
+argument_list|(
+name|baseHandler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
