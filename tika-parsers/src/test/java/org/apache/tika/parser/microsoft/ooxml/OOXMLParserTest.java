@@ -5196,15 +5196,14 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      *       * @throws Exception      */
+comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      */
 specifier|public
 name|void
-name|disabledTestMissingText
+name|testMissingText
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO: Enable test once POI has been updated.
 name|Metadata
 name|metadata
 init|=
