@@ -369,7 +369,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates and returns a MimeTypes instance. The core mimetypes      *  will be loaded from the specified file path, and any custom      *  override mimetypes found will loaded afterwards.      * The file paths will be interpreted by the class loader in       *  getResource().      *       * @param coreFilePath The main MimeTypes file to load      * @param extensionFilePath The name of extension MimeType files to load afterwards      *      * @throws IOException if the file can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
+comment|/**      * Creates and returns a MimeTypes instance. The core mimetypes      *  will be loaded from the specified file path, and any custom      *  override mimetypes found will loaded afterwards.      * The file paths will be interpreted by the default class loader in       *  getResource().      *       * @param coreFilePath The main MimeTypes file to load      * @param extensionFilePath The name of extension MimeType files to load afterwards      *      * @throws IOException if the file can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
 specifier|public
 specifier|static
 name|MimeTypes
@@ -386,6 +386,55 @@ name|IOException
 throws|,
 name|MimeTypeException
 block|{
+return|return
+name|create
+argument_list|(
+name|coreFilePath
+argument_list|,
+name|extensionFilePath
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates and returns a MimeTypes instance. The core mimetypes      *  will be loaded from the specified file path, and any custom      *  override mimetypes found will loaded afterwards.      * The file paths will be interpreted by the specified class        *  loader in getResource().      *       * @param coreFilePath The main MimeTypes file to load      * @param extensionFilePath The name of extension MimeType files to load afterwards      *      * @throws IOException if the file can not be accessed      * @throws MimeTypeException if the type configuration is invalid      */
+specifier|public
+specifier|static
+name|MimeTypes
+name|create
+parameter_list|(
+name|String
+name|coreFilePath
+parameter_list|,
+name|String
+name|extensionFilePath
+parameter_list|,
+name|ClassLoader
+name|classLoader
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|MimeTypeException
+block|{
+comment|// If no specific classloader was requested, use our own class's one
+if|if
+condition|(
+name|classLoader
+operator|==
+literal|null
+condition|)
+block|{
+name|classLoader
+operator|=
+name|MimeTypesReader
+operator|.
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
+expr_stmt|;
+block|}
 comment|// This allows us to replicate class.getResource() when using
 comment|//  the classloader directly
 name|String
@@ -410,21 +459,11 @@ argument_list|)
 operator|+
 literal|"/"
 decl_stmt|;
-name|ClassLoader
-name|cl
-init|=
-name|MimeTypesReader
-operator|.
-name|class
-operator|.
-name|getClassLoader
-argument_list|()
-decl_stmt|;
 comment|// Get the core URL, and all the extensions URLs
 name|URL
 name|coreURL
 init|=
-name|cl
+name|classLoader
 operator|.
 name|getResource
 argument_list|(
@@ -443,7 +482,7 @@ name|Collections
 operator|.
 name|list
 argument_list|(
-name|cl
+name|classLoader
 operator|.
 name|getResources
 argument_list|(
