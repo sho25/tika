@@ -1429,14 +1429,13 @@ operator|!
 name|inputToStdIn
 condition|)
 block|{
-comment|// Clean up temp input files
+comment|// Close input file (and delete if created by up TemporaryResources.createTemporaryFile)
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
 name|tikaInputStream
-operator|.
-name|getFile
-argument_list|()
-operator|.
-name|delete
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|IOUtils
