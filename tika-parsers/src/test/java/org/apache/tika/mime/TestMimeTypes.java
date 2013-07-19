@@ -2845,6 +2845,21 @@ literal|"message/x-emlx"
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|void
+name|testGroupWiseEml
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertTypeDetection
+argument_list|(
+literal|"testGroupWiseEml.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Test getMimeType(byte[]) */
 specifier|public
 name|void
