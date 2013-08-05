@@ -2837,6 +2837,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// AMR matches on name, data or both
 name|assertTypeDetection
 argument_list|(
 literal|"testAMR.amr"
@@ -2844,6 +2845,20 @@ argument_list|,
 literal|"audio/amr"
 argument_list|)
 expr_stmt|;
+comment|// AMR-WB subtype shares extension, so needs data to identify
+name|assertTypeDetection
+argument_list|(
+literal|"testAMR-WB.amr"
+argument_list|,
+literal|"audio/amr"
+argument_list|,
+literal|"audio/amr-wb"
+argument_list|,
+literal|"audio/amr-wb"
+argument_list|)
+expr_stmt|;
+comment|// Ditto for the AMR-WB+ subtype, which we don't have a sample file of yet
+comment|//assertTypeDetection("testAMR-WB+.amr", "audio/amr", "audio/amr-wb+", "audio/amr-wb+");
 block|}
 specifier|public
 name|void
