@@ -2693,7 +2693,7 @@ name|j
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TIKA-1142
+comment|//TIKA-1124
 specifier|public
 name|void
 name|testEmbeddedPDFEmbeddingAnotherDocument
