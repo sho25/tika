@@ -248,11 +248,11 @@ literal|"test-difficult-rdf2.xml"
 argument_list|)
 expr_stmt|;
 comment|// add evil test from TIKA-327
-name|testUrlOnly
+name|testFile
 argument_list|(
 literal|"text/html"
 argument_list|,
-literal|"http://www.nheri.org"
+literal|"test-tika-327.html"
 argument_list|)
 expr_stmt|;
 comment|// add another evil html test from TIKA-357
