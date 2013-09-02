@@ -1736,6 +1736,24 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|testJavaDetection
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// TODO Classloader doesn't seem to find the .class file in test-documents
+comment|//assertTypeDetection("AutoDetectParser.class", "application/java-vm");
+comment|// OSX Native Extension
+name|assertTypeDetection
+argument_list|(
+literal|"testJNILIB.jnilib"
+argument_list|,
+literal|"application/x-java-jnilib"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|testWmfDetection
 parameter_list|()
 throws|throws
