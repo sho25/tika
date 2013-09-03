@@ -279,6 +279,14 @@ argument_list|,
 literal|"plotutils-bin-cgm-v3.cgm"
 argument_list|)
 expr_stmt|;
+comment|// test HTML detection of malformed file, previously identified as image/cgm (TIKA-1170)
+name|testFile
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"test-malformed-header.html.bin"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
