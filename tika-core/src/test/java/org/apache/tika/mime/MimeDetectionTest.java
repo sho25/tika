@@ -271,6 +271,14 @@ argument_list|,
 literal|"htmlfragment"
 argument_list|)
 expr_stmt|;
+comment|// test binary CGM detection (TIKA-1170)
+name|testFile
+argument_list|(
+literal|"image/cgm"
+argument_list|,
+literal|"plotutils-bin-cgm-v3.cgm"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void
