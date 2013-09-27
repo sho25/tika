@@ -5515,6 +5515,36 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|//TIKA-817
+specifier|public
+name|void
+name|testPPTXAutodate
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//Following POI-52368, the stored date is extracted,
+comment|//not the auto-generated date.
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_autodate.pptx"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>Now</p>\n"
+operator|+
+literal|"<p>2011-12-19 10:20:04 AM</p>\n"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

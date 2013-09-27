@@ -1300,6 +1300,37 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TIKA-817
+specifier|public
+name|void
+name|testAutoDatePPT
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//decision was made in POI-52367 not to generate
+comment|//autodate automatically.  For pptx, where value is stored,
+comment|//value is extracted.  For ppt, however, no date is extracted.
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_autodate.ppt"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p class=\"slide-content\">Now<br/>\n"
+operator|+
+literal|"*<br/>\n*<br/>"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
