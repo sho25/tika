@@ -782,6 +782,20 @@ literal|"Click to edit Master"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//TIKA-1171
+name|assertEquals
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"*"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// TODO: once we fix TIKA-712, re-enable this
 specifier|public
@@ -874,6 +888,20 @@ literal|"Click to edit Master"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//TIKA-1171
+name|assertEquals
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"*"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// TODO: once we fix TIKA-712, re-enable this
 specifier|public
@@ -963,6 +991,20 @@ operator|.
 name|indexOf
 argument_list|(
 literal|"Click to edit Master"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//TIKA-1171
+name|assertEquals
+argument_list|(
+operator|-
+literal|1
+argument_list|,
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"*"
 argument_list|)
 argument_list|)
 expr_stmt|;
