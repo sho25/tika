@@ -2944,8 +2944,21 @@ argument_list|,
 literal|"testMKV.mkv"
 argument_list|)
 expr_stmt|;
-comment|// TODO: need better magic value for data detection
-comment|// assertTypeByData("video/x-matroska", "testMKV.mkv");
+comment|// TODO: Need custom detector data detection, see TIKA-1180
+name|assertTypeByData
+argument_list|(
+literal|"application/x-matroska"
+argument_list|,
+literal|"testMKV.mkv"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"video/x-matroska"
+argument_list|,
+literal|"testMKV.mkv"
+argument_list|)
+expr_stmt|;
 name|assertTypeByName
 argument_list|(
 literal|"video/x-matroska"
@@ -2989,8 +3002,21 @@ argument_list|,
 literal|"testWEBM.webm"
 argument_list|)
 expr_stmt|;
-comment|// TODO: need better magic value for data detection
-comment|// assertTypeByData("video/x-matroska", "testMKV.mkv");
+comment|// TODO: Need custom detector data detection, see TIKA-1180
+name|assertTypeByData
+argument_list|(
+literal|"application/x-matroska"
+argument_list|,
+literal|"testWEBM.webm"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"video/webm"
+argument_list|,
+literal|"testWEBM.webm"
+argument_list|)
+expr_stmt|;
 name|assertTypeByName
 argument_list|(
 literal|"video/webm"
