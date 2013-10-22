@@ -5160,7 +5160,7 @@ block|{
 try|try
 block|{
 name|InputStream
-name|input
+name|rawInput
 init|=
 name|socket
 operator|.
@@ -5174,6 +5174,16 @@ name|socket
 operator|.
 name|getOutputStream
 argument_list|()
+decl_stmt|;
+name|InputStream
+name|input
+init|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|rawInput
+argument_list|)
 decl_stmt|;
 name|type
 operator|.
