@@ -364,10 +364,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Outlook Message Parser.  */
+comment|/**  * Extractor for Common OLE2 (HPSF) metadata  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|SummaryExtractor
 block|{
