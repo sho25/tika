@@ -2093,7 +2093,7 @@ argument_list|)
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"annotation\"><a href=\"http://tika.apache.org/\"/></div>"
+literal|"<div class=\"annotation\"><a href=\"http://tika.apache.org/\" /></div>"
 argument_list|,
 name|result
 operator|.

@@ -1325,7 +1325,7 @@ argument_list|)
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"1\"/>"
+literal|"<div class=\"embedded\" id=\"1\" />"
 argument_list|,
 name|result
 operator|.
@@ -1334,7 +1334,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"14\"/>"
+literal|"<div class=\"embedded\" id=\"14\" />"
 argument_list|,
 name|result
 operator|.
@@ -1363,9 +1363,7 @@ argument_list|)
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p class=\"slide-content\">Now<br/>\n"
-operator|+
-literal|"*<br/>\n*<br/>"
+literal|"<p class=\"slide-content\">Now<br />\n*<br />\n*<br />"
 argument_list|,
 name|result
 operator|.

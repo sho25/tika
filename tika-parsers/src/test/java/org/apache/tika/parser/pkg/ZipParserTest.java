@@ -813,14 +813,14 @@ name|xml
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"test1.txt\"/>"
+literal|"<div class=\"embedded\" id=\"test1.txt\" />"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"test2.txt\"/>"
+literal|"<div class=\"embedded\" id=\"test2.txt\" />"
 argument_list|,
 name|xml
 argument_list|)

@@ -756,7 +756,7 @@ name|result
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"_1402837031\"/>"
+literal|"<div class=\"embedded\" id=\"_1402837031\" />"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -824,7 +824,7 @@ name|result
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"_1404039792\"/>"
+literal|"<div class=\"embedded\" id=\"_1404039792\" />"
 argument_list|)
 operator|!=
 operator|-
@@ -869,7 +869,7 @@ name|result
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"_1327495610\"/>"
+literal|"<div class=\"embedded\" id=\"_1327495610\" />"
 argument_list|)
 operator|!=
 operator|-

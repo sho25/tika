@@ -1940,16 +1940,9 @@ name|assertTrue
 argument_list|(
 name|xml
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\r?\n"
-argument_list|,
-literal|""
-argument_list|)
-operator|.
 name|contains
 argument_list|(
-literal|"<h3><a name=\"OnLevel3\"/>Heading Level 3</h3>"
+literal|"<h3><a name=\"OnLevel3\" />Heading Level 3</h3>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2052,7 +2045,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image2.png\" alt=\"A description...\"/>"
+literal|"<img src=\"embedded:image2.png\" alt=\"A description...\" />"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2066,7 +2059,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image3.jpeg\" alt=\"A description...\"/>"
+literal|"<img src=\"embedded:image3.jpeg\" alt=\"A description...\" />"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2080,7 +2073,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<img src=\"embedded:image4.png\" alt=\"A description...\"/>"
+literal|"<img src=\"embedded:image4.png\" alt=\"A description...\" />"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4818,125 +4811,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|InputStream
-name|input
-init|=
-name|OOXMLParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/test_embedded_zip.pptx"
-argument_list|)
-decl_stmt|;
-name|Metadata
-name|metadata
-init|=
-operator|new
-name|Metadata
-argument_list|()
-decl_stmt|;
-name|StringWriter
-name|sw
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
-name|SAXTransformerFactory
-name|factory
-init|=
-operator|(
-name|SAXTransformerFactory
-operator|)
-name|SAXTransformerFactory
-operator|.
-name|newInstance
-argument_list|()
-decl_stmt|;
-name|TransformerHandler
-name|handler
-init|=
-name|factory
-operator|.
-name|newTransformerHandler
-argument_list|()
-decl_stmt|;
-name|handler
-operator|.
-name|getTransformer
-argument_list|()
-operator|.
-name|setOutputProperty
-argument_list|(
-name|OutputKeys
-operator|.
-name|METHOD
-argument_list|,
-literal|"xml"
-argument_list|)
-expr_stmt|;
-name|handler
-operator|.
-name|getTransformer
-argument_list|()
-operator|.
-name|setOutputProperty
-argument_list|(
-name|OutputKeys
-operator|.
-name|INDENT
-argument_list|,
-literal|"no"
-argument_list|)
-expr_stmt|;
-name|handler
-operator|.
-name|setResult
-argument_list|(
-operator|new
-name|StreamResult
-argument_list|(
-name|sw
-argument_list|)
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-operator|new
-name|OOXMLParser
-argument_list|()
-operator|.
-name|parse
-argument_list|(
-name|input
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|String
 name|xml
 init|=
-name|sw
+name|getXML
+argument_list|(
+literal|"test_embedded_zip.pptx"
+argument_list|)
 operator|.
-name|toString
-argument_list|()
+name|xml
 decl_stmt|;
 name|int
 name|h
@@ -4945,7 +4828,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"slide1_rId3\"/>"
+literal|"<div class=\"embedded\" id=\"slide1_rId3\" />"
 argument_list|)
 decl_stmt|;
 name|int
@@ -4965,7 +4848,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"slide2_rId4\"/>"
+literal|"<div class=\"embedded\" id=\"slide2_rId4\" />"
 argument_list|)
 decl_stmt|;
 name|int
@@ -5203,14 +5086,14 @@ name|xml
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"slide1_rId7\"/>"
+literal|"<div class=\"embedded\" id=\"slide1_rId7\" />"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"slide2_rId7\"/>"
+literal|"<div class=\"embedded\" id=\"slide2_rId7\" />"
 argument_list|,
 name|xml
 argument_list|)
