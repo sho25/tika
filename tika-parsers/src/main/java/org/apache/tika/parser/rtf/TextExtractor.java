@@ -5592,6 +5592,11 @@ name|equals
 argument_list|(
 literal|"list"
 argument_list|)
+operator|||
+name|equals
+argument_list|(
+literal|"listoverride"
+argument_list|)
 condition|)
 block|{
 name|currentList
