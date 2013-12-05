@@ -189,14 +189,6 @@ operator|.
 name|DEFAULT_PORT
 decl_stmt|;
 specifier|private
-specifier|static
-specifier|final
-name|String
-name|WADL_MEDIA_TYPE
-init|=
-literal|"application/vnd.sun.wadl+xml"
-decl_stmt|;
-specifier|private
 name|Server
 name|server
 decl_stmt|;

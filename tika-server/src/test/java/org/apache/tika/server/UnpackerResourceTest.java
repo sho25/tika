@@ -460,10 +460,16 @@ name|JAXRSServerFactoryBean
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|Object
+argument_list|>
 name|providers
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|providers
