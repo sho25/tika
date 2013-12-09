@@ -664,25 +664,18 @@ name|Metadata
 name|metadata
 parameter_list|,
 name|PDFParserConfig
-name|defaultConfig
+name|config
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//source of config (derives from context or PDFParser?) is
+comment|//already determined in PDFParser.  No need to check context here.
 name|this
 operator|.
 name|config
 operator|=
-name|context
-operator|.
-name|get
-argument_list|(
-name|PDFParserConfig
-operator|.
-name|class
-argument_list|,
-name|defaultConfig
-argument_list|)
+name|config
 expr_stmt|;
 name|this
 operator|.
