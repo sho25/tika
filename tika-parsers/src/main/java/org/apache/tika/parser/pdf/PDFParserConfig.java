@@ -111,6 +111,13 @@ name|useNonSequentialParser
 init|=
 literal|false
 decl_stmt|;
+comment|//True if acroform content should be extracted
+specifier|private
+name|boolean
+name|extractAcroFormContent
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|PDFParserConfig
 parameter_list|()
@@ -291,6 +298,48 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setExtractAcroFormContent
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"extractAcroFormContent"
+argument_list|)
+argument_list|,
+name|getExtractAcroFormContent
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *       * @param b      */
+specifier|public
+name|void
+name|setExtractAcroFormContent
+parameter_list|(
+name|boolean
+name|extractAcroFormContent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractAcroFormContent
+operator|=
+name|extractAcroFormContent
+expr_stmt|;
+block|}
+comment|/** @see #setExtractAcroFormContent(boolean) */
+specifier|public
+name|boolean
+name|getExtractAcroFormContent
+parameter_list|()
+block|{
+return|return
+name|extractAcroFormContent
+return|;
 block|}
 comment|/** @see #setEnableAutoSpace. */
 specifier|public
@@ -525,6 +574,20 @@ operator|*
 name|result
 operator|+
 operator|(
+name|extractAcroFormContent
+condition|?
+literal|1231
+else|:
+literal|1237
+operator|)
+expr_stmt|;
+name|result
+operator|=
+name|prime
+operator|*
+name|result
+operator|+
+operator|(
 name|extractAnnotationText
 condition|?
 literal|1231
@@ -640,6 +703,17 @@ literal|false
 return|;
 if|if
 condition|(
+name|extractAcroFormContent
+operator|!=
+name|other
+operator|.
+name|extractAcroFormContent
+condition|)
+return|return
+literal|false
+return|;
+if|if
+condition|(
 name|extractAnnotationText
 operator|!=
 name|other
@@ -713,6 +787,10 @@ operator|+
 literal|", useNonSequentialParser="
 operator|+
 name|useNonSequentialParser
+operator|+
+literal|", extractAcroFormContent="
+operator|+
+name|extractAcroFormContent
 operator|+
 literal|"]"
 return|;
