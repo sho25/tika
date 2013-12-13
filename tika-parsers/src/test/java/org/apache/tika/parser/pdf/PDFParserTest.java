@@ -3284,211 +3284,24 @@ expr_stmt|;
 block|}
 block|}
 comment|//make sure nothing went wrong with getting the resource to test-documents
+comment|//This will require modification with each new pdf test.
+comment|//If this is too annoying, we can turn it off.
 name|assertEquals
 argument_list|(
 literal|"Number of pdf files tested"
 argument_list|,
-literal|16
+literal|14
 argument_list|,
 name|pdfs
 argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-973
-specifier|public
-name|void
-name|testAcroForm
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
-name|InputStream
-name|stream
-init|=
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPDF_acroForm1.pdf"
-argument_list|)
-decl_stmt|;
-name|String
-name|txt
-init|=
-name|getText
-argument_list|(
-name|stream
-argument_list|,
-name|p
-argument_list|,
-name|context
-argument_list|)
-decl_stmt|;
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|//simple first level form contents
-name|assertContains
-argument_list|(
-literal|"to: John Doe"
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-comment|//checkbox
-name|assertContains
-argument_list|(
-literal|"xpackaging: Yes"
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-comment|//this guarantees that the form processor
-comment|//worked recursively at least once...i.e. it didn't just
-comment|//take the first form
-name|stream
-operator|=
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPDF_acroForm2.pdf"
-argument_list|)
-expr_stmt|;
-name|txt
-operator|=
-name|getText
-argument_list|(
-name|stream
-argument_list|,
-name|p
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-name|assertContains
-argument_list|(
-literal|"123 Main St."
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-comment|//now test with nonsequential parser
-name|PDFParserConfig
-name|config
-init|=
-operator|new
-name|PDFParserConfig
-argument_list|()
-decl_stmt|;
-name|config
-operator|.
-name|setUseNonSequentialParser
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|PDFParserConfig
-operator|.
-name|class
-argument_list|,
-name|config
-argument_list|)
-expr_stmt|;
-name|stream
-operator|=
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPDF_acroForm1.pdf"
-argument_list|)
-expr_stmt|;
-name|txt
-operator|=
-name|getText
-argument_list|(
-name|stream
-argument_list|,
-name|p
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-comment|//simple first level form contents
-name|assertContains
-argument_list|(
-literal|"to: John Doe"
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-comment|//checkbox
-name|assertContains
-argument_list|(
-literal|"xpackaging: Yes"
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-comment|//this guarantees that the form processor
-comment|//worked recursively at least once...i.e. it didn't just
-comment|//take the first form
-name|stream
-operator|=
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPDF_acroForm2.pdf"
-argument_list|)
-expr_stmt|;
-name|txt
-operator|=
-name|getText
-argument_list|(
-name|stream
-argument_list|,
-name|p
-argument_list|,
-name|context
-argument_list|)
-expr_stmt|;
-name|assertContains
-argument_list|(
-literal|"123 Main St."
-argument_list|,
-name|txt
-argument_list|)
-expr_stmt|;
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
+comment|//commented out until test documents that are unambiguously
+comment|//consistent with Apache License v2.0 are contributed.
+comment|//TODO: add back test for AcroForm extraction; test document should include
+comment|//recursive forms
+comment|/*    public void testAcroForm() throws Exception{        Parser p = new AutoDetectParser();        ParseContext context = new ParseContext();        InputStream stream = getResourceAsStream("/test-documents/testPDF_acroForm1.pdf");        String txt = getText(stream, p, context);        stream.close();         //simple first level form contents        assertContains("to: John Doe", txt);        //checkbox        assertContains("xpackaging: Yes", txt);                //this guarantees that the form processor        //worked recursively at least once...i.e. it didn't just        //take the first form        stream = getResourceAsStream("/test-documents/testPDF_acroForm2.pdf");        txt = getText(stream, p, context);        stream.close();        assertContains("123 Main St.", txt);                        //now test with nonsequential parser        PDFParserConfig config = new PDFParserConfig();        config.setUseNonSequentialParser(true);        context.set(PDFParserConfig.class, config);        stream = getResourceAsStream("/test-documents/testPDF_acroForm1.pdf");        txt = getText(stream, p, context);        stream.close();                //simple first level form contents        assertContains("to: John Doe", txt);        //checkbox        assertContains("xpackaging: Yes", txt);                //this guarantees that the form processor        //worked recursively at least once...i.e. it didn't just        //take the first form        stream = getResourceAsStream("/test-documents/testPDF_acroForm2.pdf");        txt = getText(stream, p, context);        assertContains("123 Main St.", txt);        stream.close();          } */
 block|}
 end_class
 

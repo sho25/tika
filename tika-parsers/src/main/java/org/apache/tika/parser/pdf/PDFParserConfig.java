@@ -58,7 +58,7 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_comment
-comment|/**  * Config for PDFParser.  *   * This allows parameters to be set programmatically:  *<ol>  *<li>Calls to PDFParser, i.e. parser.getPDFParserConfig().setEnableAutoSpace() (as before)</li>  *<li>Constructor of PDFParser</li>  *<li>Passing to PDFParser through a ParseContext: context.set(PDFParserConfig.class, config);</li>  *</ol>  *   * Parameters can also be set by modifying the PDFParserConfig.properties file,  * which lives here in trunk:  * tika-parsers/src/main/resources/org/apache/tika/parser/pdf  *   * Or, in tika-app-x.x.jar or tika-parsers-x.x.jar:  * org/apache/tika/parser/pdf  *  */
+comment|/**  * Config for PDFParser.  *   * This allows parameters to be set programmatically:  *<ol>  *<li>Calls to PDFParser, i.e. parser.getPDFParserConfig().setEnableAutoSpace() (as before)</li>  *<li>Constructor of PDFParser</li>  *<li>Passing to PDFParser through a ParseContext: context.set(PDFParserConfig.class, config);</li>  *</ol>  *   * Parameters can also be set by modifying the PDFParserConfig.properties file,  * which lives in the expected places, in trunk:  * tika-parsers/src/main/resources/org/apache/tika/parser/pdf  *   * Or, in tika-app-x.x.jar or tika-parsers-x.x.jar:  * org/apache/tika/parser/pdf  *  */
 end_comment
 
 begin_class
