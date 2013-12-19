@@ -18,32 +18,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
 name|util
 operator|.
 name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -209,6 +201,36 @@ name|ChmBlockInfo
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests major functionality of ChmBlockInfo  *   */
 end_comment
@@ -217,8 +239,6 @@ begin_class
 specifier|public
 class|class
 name|TestChmBlockInfo
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|byte
@@ -247,6 +267,8 @@ name|chmLzxcControlData
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Before
 specifier|public
 name|void
 name|setUp
@@ -512,6 +534,8 @@ name|clrt
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testToString
@@ -526,8 +550,6 @@ condition|)
 name|testGetChmBlockInfo
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|chmBlockInfo
@@ -542,6 +564,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetChmBlockInfo
@@ -599,8 +623,6 @@ argument_list|)
 expr_stmt|;
 comment|// Assert.assertTrue(!directoryListingEntry.getName().isEmpty()&&
 comment|// chmBlockInfo.toString() != null);
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 operator|!
@@ -624,6 +646,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|After
 specifier|public
 name|void
 name|tearDown

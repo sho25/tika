@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -44,16 +68,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -145,6 +159,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -161,8 +195,6 @@ begin_class
 specifier|public
 class|class
 name|IWorkParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|IWorkPackageParser
@@ -173,13 +205,11 @@ name|ParseContext
 name|parseContext
 decl_stmt|;
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|iWorkParser
 operator|=
@@ -207,6 +237,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseKeynote
@@ -608,6 +640,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-910
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testKeynoteTextBoxes
@@ -681,6 +715,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-910
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testKeynoteBulletPoints
@@ -754,6 +790,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-923
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testKeynoteTables
@@ -831,6 +869,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-923
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testKeynoteMasterSlideTable
@@ -927,6 +967,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePages
@@ -1369,6 +1411,8 @@ expr_stmt|;
 comment|// ...
 block|}
 comment|// TIKA-904
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPagesLayoutMode
@@ -1474,6 +1518,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseNumbers
@@ -1840,6 +1886,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA- 924
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseNumbersTableNames
@@ -1905,6 +1953,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseNumbersTableHeaders
@@ -2017,6 +2067,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * We don't currently support password protected Pages files, as      *  we don't know how the encryption works (it's not regular Zip      *  Encryption). See TIKA-903 for details      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesPasswordProtected
@@ -2097,6 +2149,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get headers, footers and footnotes from Pages      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesHeadersFootersFootnotes
@@ -2227,6 +2281,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get upper-case Roman numerals within the footer for AutoPageNumber.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesHeadersFootersRomanUpper
@@ -2315,6 +2371,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get lower-case Roman numerals within the footer for AutoPageNumber.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesHeadersFootersRomanLower
@@ -2403,6 +2461,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get upper-case alpha-numeric letters within the footer for AutoPageNumber.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesHeadersAlphaUpper
@@ -2491,6 +2551,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get lower-case alpha-numeric letters within the footer for AutoPageNumber.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesHeadersAlphaLower
@@ -2579,6 +2641,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check we get annotations (eg comments) from Pages      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsePagesAnnotations
@@ -2685,6 +2749,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-918
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNumbersExtractChartNames

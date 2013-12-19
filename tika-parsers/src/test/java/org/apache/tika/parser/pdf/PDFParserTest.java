@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -269,6 +317,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -327,6 +385,8 @@ argument_list|(
 literal|"vnd.openxmlformats-officedocument.wordprocessingml.document"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPdfParsing
@@ -514,6 +574,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCustomMetadata
@@ -696,6 +758,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * PDFs can be "protected" with the default password. This means      *  they're encrypted (potentially both text and metadata),      *  but we can decrypt them easily.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testProtectedPDF
@@ -1072,6 +1136,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTwoTextBoxes
@@ -1131,6 +1197,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVarious
@@ -1509,6 +1577,8 @@ comment|// process somehow, apparently lost the gothic
 comment|// chars, so we cannot test this here:
 comment|//assertContains("\uD800\uDF32\uD800\uDF3f\uD800\uDF44\uD800\uDF39\uD800\uDF43\uD800\uDF3A", content);
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAnnotations
@@ -1744,6 +1814,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-981
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPopupAnnotation
@@ -1792,6 +1864,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPDFs
@@ -1889,6 +1963,8 @@ return|return
 name|count
 return|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPageNumber
@@ -1929,6 +2005,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test to ensure that Links are extracted from the text      *       * Note - the PDF contains the text "This is a hyperlink" which      *  a hyperlink annotation, linking to the tika site, on it. This      *  test will need updating when we're able to apply the annotation      *  to the text itself, rather than following on afterwards as now       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLinks
@@ -1955,6 +2033,8 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDisableAutoSpace
@@ -2190,6 +2270,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDuplicateOverlappingText
@@ -2357,6 +2439,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSortByPosition
@@ -2588,6 +2672,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1035
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBookmarks
@@ -2650,6 +2736,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//TIKA-1124
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPDFEmbeddingAnotherDocument
@@ -2991,6 +3079,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * tests for equality between traditional sequential parser      * and newer nonsequential parser.      *       * TODO: more testing      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSequentialParser

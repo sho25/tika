@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -161,6 +173,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -188,6 +210,8 @@ name|file
 init|=
 literal|"testWINMAIL.dat"
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBasics
@@ -243,6 +267,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetadata
@@ -324,6 +350,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check the Rtf and Attachments are returned      *  as expected      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBodyAndAttachments

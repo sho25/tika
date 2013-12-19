@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -34,16 +70,6 @@ operator|.
 name|util
 operator|.
 name|Locale
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -195,6 +221,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -207,9 +243,9 @@ begin_class
 specifier|public
 class|class
 name|ExcelParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelParser
@@ -482,6 +518,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelParserFormatting
@@ -772,6 +810,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * TIKA-214 - Ensure we extract labels etc from Charts      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelParserCharts
@@ -987,6 +1027,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJXL
@@ -1102,6 +1144,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWorksSpreadsheet70
@@ -1204,6 +1248,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * We don't currently support the .xlsb file format       *  (an OOXML container with binary blobs), but we       *  shouldn't break on these files either (TIKA-826)        */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelXLSB
@@ -1424,6 +1470,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * We don't currently support the old Excel 95 .xls file format,       *  but we shouldn't break on these files either (TIKA-976)        */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcel95
@@ -1644,6 +1692,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Ensures that custom OLE2 (HPSF) properties are extracted      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCustomProperties

@@ -20,6 +20,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -75,6 +99,26 @@ name|AbstractPOIContainerExtractionTest
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests that the various POI OOXML powered parsers are  *  able to extract their embedded contents.  */
 end_comment
@@ -91,13 +135,11 @@ name|ContainerExtractor
 name|extractor
 decl_stmt|;
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|Tika
 name|tika
@@ -124,6 +166,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * For office files which don't have anything embedded in them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWithoutEmbedded
@@ -231,6 +275,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Office files with embedded images, but no other      *  office files in them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedImages
@@ -613,6 +659,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Office files which have other office files      *  embedded into them. The embedded office files      *  will sometimes have images in them.      *        *  eg xls      *       -> word      *           -> image      *           -> image      *       -> powerpoint      *       -> excel      *           -> image      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedOfficeFiles
@@ -2092,6 +2140,8 @@ argument_list|)
 expr_stmt|;
 comment|// Icon of embedded office doc
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedOutlook
@@ -2192,6 +2242,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPDF

@@ -22,6 +22,18 @@ comment|//JDK imports
 end_comment
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -109,25 +121,21 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_comment
-comment|//Junit imports
-end_comment
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -139,9 +147,9 @@ begin_class
 specifier|public
 class|class
 name|NetCDFParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseGlobalMetadata

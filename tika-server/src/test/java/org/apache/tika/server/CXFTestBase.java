@@ -143,22 +143,10 @@ name|CachedOutputStream
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
 name|CXFTestBase
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 name|String

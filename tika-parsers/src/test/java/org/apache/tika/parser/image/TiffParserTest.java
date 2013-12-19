@@ -18,12 +18,26 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -103,6 +117,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -147,8 +171,6 @@ begin_class
 specifier|public
 class|class
 name|TiffParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -159,6 +181,8 @@ operator|new
 name|TiffParser
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTIFF

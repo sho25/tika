@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -59,6 +95,16 @@ name|MediaType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests that the various POI powered parsers are  *  able to extract their embedded contents.  */
 end_comment
@@ -71,6 +117,8 @@ extends|extends
 name|AbstractPOIContainerExtractionTest
 block|{
 comment|/**      * For office files which don't have anything embedded in them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWithoutEmbedded
@@ -189,6 +237,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Office files with embedded images, but no other      *  office files in them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedImages
@@ -458,6 +508,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Office files which have other office files      *  embedded into them. The embedded office files      *  will sometimes have images in them.      *        *  eg xls      *       -> word      *           -> image      *           -> image      *       -> powerpoint      *       -> excel      *           -> image      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedOfficeFiles
@@ -2011,6 +2063,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedOfficeFilesXML
@@ -2064,6 +2118,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerpointImages

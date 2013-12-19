@@ -14,12 +14,24 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -27,8 +39,6 @@ begin_class
 specifier|public
 class|class
 name|TikaDetectionTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -40,6 +50,8 @@ name|Tika
 argument_list|()
 decl_stmt|;
 comment|/**      * This test checks that Tika correctly detects all the file extensions      * defined in the mime.types file (revision 819245) of the Apache HTTP      * Server project. The tests were created with:      *<pre>      * cat docs/conf/mime.types | grep -v '#' | perl -lne '/\S\s+\S/ and do {      *     my ($type, @ext) = split /\s+/;      *     for my $ext (@ext) {      *         print "assertEquals(\"$type\", tika.detect(\"x.$ext\"));";      *     }      * }'      *</pre>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHttpServerFileExtensions

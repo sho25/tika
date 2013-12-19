@@ -17,9 +17,9 @@ end_package
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -29,9 +29,9 @@ end_import
 
 begin_import
 import|import static
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Assert
 operator|.
@@ -203,18 +203,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
-operator|.
-name|runner
-operator|.
-name|RunWith
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|ops4j
 operator|.
 name|pax
@@ -259,22 +247,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|ops4j
-operator|.
-name|pax
-operator|.
-name|exam
-operator|.
-name|junit
-operator|.
-name|JUnit4TestRunner
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|osgi
 operator|.
 name|framework
@@ -296,13 +268,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|RunWith
-argument_list|(
-name|JUnit4TestRunner
-operator|.
-name|class
-argument_list|)
 specifier|public
 class|class
 name|BundleIT
@@ -359,10 +324,10 @@ argument_list|,
 literal|"tika-core.jar"
 argument_list|)
 operator|.
-name|toURL
+name|toURI
 argument_list|()
 operator|.
-name|toURI
+name|toURL
 argument_list|()
 operator|.
 name|toString
@@ -379,10 +344,10 @@ argument_list|,
 literal|"tika-bundle.jar"
 argument_list|)
 operator|.
-name|toURL
+name|toURI
 argument_list|()
 operator|.
-name|toURI
+name|toURL
 argument_list|()
 operator|.
 name|toString
@@ -391,8 +356,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-annotation|@
-name|Test
+comment|//@Test
 specifier|public
 name|void
 name|testTikaBundle

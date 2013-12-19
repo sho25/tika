@@ -73,6 +73,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -80,16 +90,6 @@ operator|.
 name|helpers
 operator|.
 name|DefaultHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -109,8 +109,6 @@ begin_class
 specifier|public
 class|class
 name|PSDParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -122,6 +120,8 @@ name|PSDParser
 argument_list|()
 decl_stmt|;
 comment|/**      * Tests a very basic file, without much metadata      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPSD
@@ -219,6 +219,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests a very basic file, without much metadata,      *  where some of the data lengths are padded to be even      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOddPSD

@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -339,6 +375,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -359,36 +405,6 @@ name|SAXException
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestSuite
-import|;
-end_import
-
 begin_comment
 comment|/**  * Unit test for {@link ExternalEmbedder}s.  */
 end_comment
@@ -397,8 +413,6 @@ begin_class
 specifier|public
 class|class
 name|ExternalEmbedderTest
-extends|extends
-name|TestCase
 block|{
 specifier|protected
 specifier|static
@@ -444,37 +458,6 @@ operator|new
 name|TemporaryResources
 argument_list|()
 decl_stmt|;
-comment|/**      * Create the test case      *      * @param testName      *            name of the test case      */
-specifier|public
-name|ExternalEmbedderTest
-parameter_list|(
-name|String
-name|testName
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|testName
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * @return the suite of tests being tested      */
-specifier|public
-specifier|static
-name|Test
-name|suite
-parameter_list|()
-block|{
-return|return
-operator|new
-name|TestSuite
-argument_list|(
-name|ExternalEmbedderTest
-operator|.
-name|class
-argument_list|)
-return|;
-block|}
 comment|/**      * Gets the expected returned metadata value for the given field      *      * @param fieldName      * @return a prefix added to the field name      */
 specifier|protected
 name|String
@@ -1213,6 +1196,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tests embedding using an input stream obtained via {@link ExternalEmbedderTest#getSourceStandardInputStream()}      *       * @throws IOException      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbedStandardInputStream
@@ -1234,6 +1219,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Tests embedding using an input stream obtained via {@link ExternalEmbedderTest#getSourceTikaInputStream()}      *       * @throws IOException      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbedTikaInputStream

@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -53,6 +65,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -73,16 +105,6 @@ name|SAXException
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_comment
 comment|/**  * Unit tests for the {@link XHTMLContentHandler} class.  */
 end_comment
@@ -91,8 +113,6 @@ begin_class
 specifier|public
 class|class
 name|XHTMLContentHandlerTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|ContentHandler
@@ -102,7 +122,9 @@ specifier|private
 name|XHTMLContentHandler
 name|xhtml
 decl_stmt|;
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -127,6 +149,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that content in block elements are properly separated in text      * output.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-188">TIKA-188</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExtraWhitespace
@@ -354,6 +378,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that content in option elements are properly separated in text      * output.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-394">TIKA-394</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWhitespaceWithOptions
@@ -461,6 +487,8 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWhitespaceWithMenus

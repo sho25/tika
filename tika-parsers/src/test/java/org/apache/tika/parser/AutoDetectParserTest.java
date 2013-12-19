@@ -16,6 +16,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -62,16 +110,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -177,6 +215,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -189,8 +237,6 @@ begin_class
 specifier|public
 class|class
 name|AutoDetectParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|TikaConfig
@@ -733,6 +779,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testKeynote
@@ -750,6 +798,8 @@ literal|"A sample presentation"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPages
@@ -767,6 +817,8 @@ literal|"Sample pages document"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNumbers
@@ -784,6 +836,8 @@ literal|"Checking Account: 300545668"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEpub
@@ -801,6 +855,8 @@ literal|"The previous headings were subchapters"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcel
@@ -818,6 +874,8 @@ literal|"Sample Excel Worksheet"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHTML
@@ -835,6 +893,8 @@ literal|"Test Indexation Html"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOpenOffice
@@ -852,6 +912,8 @@ literal|"This is a sample Open Office document"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPDF
@@ -869,6 +931,8 @@ literal|"Content Analysis Toolkit"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerpoint
@@ -886,6 +950,8 @@ literal|"Sample Powerpoint Slide"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRdfXml
@@ -903,6 +969,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRTF
@@ -920,6 +988,8 @@ literal|"indexation Word"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testText
@@ -937,6 +1007,8 @@ literal|"indexation de Txt"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTextNonASCIIUTF8
@@ -954,6 +1026,8 @@ literal|"The quick brown fox jumps over the lazy dog"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWord
@@ -971,6 +1045,8 @@ literal|"Sample Word Document"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testXML
@@ -988,6 +1064,8 @@ literal|"Lius"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRss
@@ -1009,6 +1087,8 @@ literal|"Sample RSS File for Junit test"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImages
@@ -1054,6 +1134,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Make sure that zip bomb attacks are prevented.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-216">TIKA-216</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testZipBombPrevention
@@ -1136,6 +1218,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVorbisFlac
@@ -1458,6 +1542,8 @@ block|}
 block|}
 block|}
 comment|/**      * Test case for TIKA-514. Provide constructor for AutoDetectParser that has explicit      * list of supported parsers.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-514">TIKA-514</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSpecificParserList

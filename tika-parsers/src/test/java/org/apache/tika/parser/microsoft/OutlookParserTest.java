@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -117,16 +153,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -213,6 +239,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -229,9 +265,9 @@ begin_class
 specifier|public
 class|class
 name|OutlookParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutlookParsing
@@ -444,6 +480,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-197      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-197">TIKA-197</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMultipleCopies
@@ -570,6 +608,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-395, to ensure parser works for new Outlook formats.       *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-395">TIKA-395</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutlookNew
@@ -703,6 +743,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutlookHTMLVersion
@@ -908,6 +950,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutlookForwarded
@@ -1071,6 +1115,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutlookHTMLfromRTF

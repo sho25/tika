@@ -18,12 +18,26 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -38,20 +52,6 @@ operator|.
 name|extractor
 operator|.
 name|ContainerExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|extractor
-operator|.
-name|EmbeddedDocumentExtractor
 import|;
 end_import
 
@@ -107,20 +107,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|microsoft
 operator|.
 name|AbstractPOIContainerExtractionTest
@@ -138,6 +124,16 @@ operator|.
 name|sax
 operator|.
 name|BodyContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -167,9 +163,9 @@ begin_class
 specifier|public
 class|class
 name|FictionBookParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testFB2
@@ -246,6 +242,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbedded

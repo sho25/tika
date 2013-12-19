@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -37,16 +49,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -59,6 +61,16 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test cases for the {@link BodyContentHandler} class.  */
 end_comment
@@ -67,10 +79,10 @@ begin_class
 specifier|public
 class|class
 name|BodyContentHandlerTest
-extends|extends
-name|TestCase
 block|{
 comment|/**      * Test that the conversion to an {@link OutputStream} doesn't leave      * characters unflushed in an internal buffer.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-179">TIKA-179</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOutputStream

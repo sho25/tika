@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -44,16 +80,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -131,6 +157,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -145,8 +181,6 @@ begin_class
 specifier|public
 class|class
 name|JpegParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -157,6 +191,8 @@ operator|new
 name|JpegParser
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEG
@@ -616,6 +652,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for a file with Geographic information (lat, long etc) in it      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGGeo
@@ -1010,6 +1048,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for an image with the geographic information stored in a slightly      *  different way, see TIKA-915 for details      * Disabled for now, pending a fix to the underlying library      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGGeo2
@@ -1093,6 +1133,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGTitleAndDescription
@@ -1465,6 +1507,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGTitleAndDescriptionPhotoshop
@@ -1630,6 +1674,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGTitleAndDescriptionXnviewmp
@@ -1760,6 +1806,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGoddTagComponent
@@ -1870,6 +1918,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJPEGEmptyEXIFDateTime

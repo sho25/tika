@@ -21,6 +21,54 @@ begin_import
 import|import static
 name|org
 operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|mockito
 operator|.
 name|Matchers
@@ -106,16 +154,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -237,6 +275,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -275,9 +323,9 @@ begin_class
 specifier|public
 class|class
 name|RFC822ParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSimple
@@ -514,6 +562,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMultipart
@@ -822,6 +872,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testQuotedPrintable
@@ -942,6 +994,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBase64
@@ -1026,6 +1080,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testI18NHeaders
@@ -1144,6 +1200,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * The from isn't in the usual form.      * See TIKA-618      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUnusualFromAddress
@@ -1242,6 +1300,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for TIKA-640, increase header max beyond 10k bytes      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLongHeader
@@ -1432,6 +1492,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for TIKA-678 - not all headers may be present      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSomeMissingHeaders

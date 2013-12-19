@@ -16,22 +16,24 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -74,6 +76,26 @@ operator|.
 name|io
 operator|.
 name|TikaInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -125,8 +147,6 @@ begin_class
 specifier|public
 class|class
 name|SecureContentHandlerTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -144,7 +164,9 @@ specifier|private
 name|SecureContentHandler
 name|handler
 decl_stmt|;
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -175,6 +197,8 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testZeroCharactersPerByte
@@ -241,6 +265,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOneCharacterPerByte
@@ -308,6 +334,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTenCharactersPerByte
@@ -375,6 +403,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testManyCharactersPerByte
@@ -443,6 +473,8 @@ block|{
 comment|// expected
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSomeCharactersWithoutInput
@@ -505,6 +537,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testManyCharactersWithoutInput
@@ -568,6 +602,8 @@ block|{
 comment|// expected
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNestedElements
@@ -659,6 +695,8 @@ parameter_list|)
 block|{             }
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNestedEntries

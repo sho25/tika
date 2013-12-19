@@ -27,11 +27,35 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -39,9 +63,9 @@ begin_class
 specifier|public
 class|class
 name|LanguageProfileTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLanguageProfile
@@ -125,6 +149,8 @@ name|distance
 argument_list|(
 name|bar
 argument_list|)
+argument_list|,
+literal|1e-8
 argument_list|)
 expr_stmt|;
 name|bar
@@ -149,6 +175,8 @@ name|distance
 argument_list|(
 name|bar
 argument_list|)
+argument_list|,
+literal|1e-8
 argument_list|)
 expr_stmt|;
 name|bar
@@ -175,6 +203,8 @@ name|distance
 argument_list|(
 name|bar
 argument_list|)
+argument_list|,
+literal|1e-8
 argument_list|)
 expr_stmt|;
 name|LanguageProfile

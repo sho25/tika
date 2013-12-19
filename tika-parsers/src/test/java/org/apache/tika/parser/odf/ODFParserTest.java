@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -171,6 +195,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -208,6 +242,8 @@ argument_list|()
 block|}
 return|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOO3
@@ -350,6 +386,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOO2
@@ -898,6 +936,8 @@ block|}
 block|}
 block|}
 comment|/**     * Similar to {@link #testXMLParser()}, but using a different     *  OO2 file with different metadata in it     */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOO2Metadata
@@ -1355,6 +1395,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**     * Similar to {@link #testXMLParser()}, but using an OO3 file     */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOO3Metadata
@@ -1953,6 +1995,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testODPMasterFooter
@@ -2026,6 +2070,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testODTFooter
@@ -2113,6 +2159,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testODSFooter

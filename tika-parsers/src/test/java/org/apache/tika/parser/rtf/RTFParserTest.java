@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -179,6 +215,16 @@ name|WriteOutContentHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Junit test class for the Tika {@link RTFParser}  */
 end_comment
@@ -237,6 +283,8 @@ name|metadata
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBasicExtraction
@@ -329,6 +377,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUmlautSpacesExtraction2
@@ -363,6 +413,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUnicodeUCNControlWordCharacterDoublingExtraction
@@ -419,6 +471,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHexEscapeInsideWord
@@ -442,6 +496,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWindowsCodepage1250
@@ -472,6 +528,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTableCellSeparation
@@ -526,6 +584,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTableCellSeparation2
@@ -561,6 +621,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordPadCzechCharactersExtraction
@@ -607,6 +669,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWord2010CzechCharactersExtraction
@@ -653,6 +717,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMS932Extraction
@@ -715,6 +781,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUmlautSpacesExtraction
@@ -751,6 +819,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGothic
@@ -774,6 +844,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testJapaneseText
@@ -879,6 +951,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMaxLength
@@ -1025,6 +1099,8 @@ literal|100
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTextWithCurlyBraces
@@ -1048,6 +1124,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testControls
@@ -1127,6 +1205,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testInvalidUnicode
@@ -1171,6 +1251,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVarious
@@ -1530,6 +1612,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVariousStyle
@@ -1562,6 +1646,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBoldItalic
@@ -1622,6 +1708,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHyperlink
@@ -1660,6 +1748,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIgnoredControlWord
@@ -1680,6 +1770,8 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testFontAfterBufferedText
@@ -1700,6 +1792,8 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListMicrosoftWord
@@ -1746,6 +1840,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListLibreOffice
@@ -1793,6 +1889,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-782
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBinControlWord
@@ -1820,6 +1918,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-999
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetaDataCounts
@@ -1904,6 +2004,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1192
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListOverride

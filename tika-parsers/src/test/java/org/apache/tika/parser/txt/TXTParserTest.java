@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -125,6 +161,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -147,22 +193,10 @@ name|DefaultHandler
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
 name|TXTParserTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|Parser
@@ -172,6 +206,8 @@ operator|new
 name|TXTParser
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEnglishText
@@ -318,6 +354,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUTF8Text
@@ -411,6 +449,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmptyText
@@ -481,6 +521,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for the heuristics that we use to assign an eight-bit character      * encoding to mostly ASCII sequences. If a more specific match can not      * be made, a string with a CR(LF) in it is most probably windows-1252,      * otherwise ISO-8859-1, except if it contains the currency/euro symbol      * (byte 0xa4) in which case it's more likely to be ISO-8859-15.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLatinDetectionHeuristics
@@ -646,6 +688,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-240: Drop the BOM when extracting plain text      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-240">TIKA-240</a>       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDropByteOrderMark
@@ -766,6 +810,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-335: using incoming charset      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUseIncomingCharsetAsHint
@@ -911,6 +957,8 @@ expr_stmt|;
 comment|// deprecated
 block|}
 comment|/**      * Test case for TIKA-341: using charset in content-type      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUsingCharsetInContentTypeHeader
@@ -1144,6 +1192,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-339: don't override incoming language      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRetainIncomingLanguage
@@ -1216,6 +1266,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCP866
@@ -1278,6 +1330,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEBCDIC_CP500
@@ -1396,6 +1450,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-771: "Hello, World!" in UTF-8/ASCII gets detected as IBM500      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-771">TIKA-771</a>       */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCharsetDetectionWithShortSnipet

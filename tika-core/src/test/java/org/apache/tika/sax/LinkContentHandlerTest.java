@@ -16,12 +16,24 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -47,10 +59,10 @@ begin_class
 specifier|public
 class|class
 name|LinkContentHandlerTest
-extends|extends
-name|TestCase
 block|{
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/TIKA-975">TIKA-975</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWhitespaceCollapsing
@@ -172,6 +184,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @see<a href="https://issues.apache.org/jira/browse/TIKA-975">TIKA-975</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDefaultBehavior

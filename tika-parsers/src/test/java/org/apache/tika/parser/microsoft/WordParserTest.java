@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -175,6 +199,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -190,6 +224,8 @@ name|WordParserTest
 extends|extends
 name|TikaTest
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordParser
@@ -321,6 +357,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordWithWAV
@@ -397,6 +435,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test that the word converter is able to generate the      *  correct HTML for the document      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordHTML
@@ -712,6 +752,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedNames
@@ -801,6 +843,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-982
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedRTF
@@ -846,6 +890,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1019
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDocumentLink
@@ -890,6 +936,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWord6Parser
@@ -1049,6 +1097,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVarious
@@ -1455,6 +1505,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * TIKA-1044 - Handle documents where parts of the      *  text have no formatting or styles applied to them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNoFormat
@@ -1533,6 +1585,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Ensures that custom OLE2 (HPSF) properties are extracted      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCustomProperties
@@ -1893,6 +1947,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExceptions1
@@ -1975,6 +2031,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTabularSymbol

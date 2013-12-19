@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -27,11 +63,11 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -43,10 +79,10 @@ begin_class
 specifier|public
 class|class
 name|RegexUtilsTest
-extends|extends
-name|TestCase
 block|{
 comment|/**       * Test {@link RegexUtils#extractLinks(String)} with no links.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExtractLinksNone
@@ -136,6 +172,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**       * Test {@link RegexUtils#extractLinks(String)} for http.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExtractLinksHttp
@@ -214,6 +252,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**       * Test {@link RegexUtils#extractLinks(String)} for ftp.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExtractLinksFtp

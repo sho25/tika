@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -137,6 +161,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -152,6 +186,8 @@ name|PowerPointParserTest
 extends|extends
 name|TikaTest
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerPointParser
@@ -298,6 +334,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVarious
@@ -692,6 +730,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMasterFooter
@@ -798,6 +838,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TODO: once we fix TIKA-712, re-enable this
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMasterText
@@ -904,6 +946,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TODO: once we fix TIKA-712, re-enable this
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMasterText2
@@ -1010,6 +1054,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Ensures that custom OLE2 (HPSF) properties are extracted      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCustomProperties
@@ -1308,6 +1354,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1025
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPlacedholder
@@ -1343,6 +1391,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-817
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAutoDatePPT

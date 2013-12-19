@@ -18,6 +18,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -34,16 +58,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -149,6 +163,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -165,8 +189,6 @@ begin_class
 specifier|public
 class|class
 name|Mp3ParserTest
-extends|extends
-name|TestCase
 block|{
 comment|/**      * Checks the duration of an MP3 file.      * @param metadata the metadata object      * @param expected the expected duration, rounded as seconds      */
 specifier|private
@@ -211,6 +233,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that with only ID3v1 tags, we get some information out         */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingID3v1
@@ -447,6 +471,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that with only ID3v2 tags, we get the full      *  set of information out.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingID3v2
@@ -830,6 +856,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that with both id3v2 and id3v1, we prefer the      *  details from id3v2      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingID3v1v2
@@ -1066,6 +1094,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that with only ID3v2 tags, of version 2.4, we get the full      *  set of information out.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingID3v24
@@ -1302,6 +1332,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests that a file with characters not in the ISO 8859-1      *  range is correctly handled      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingID3i18n
@@ -1512,6 +1544,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests that a file with both lyrics and      *  ID3v2 tags gets both extracted correctly      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMp3ParsingLyrics
@@ -1750,6 +1784,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testID3v2Frame
@@ -1979,6 +2015,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This test will do nothing, unless you've downloaded the      *  mp3 file from TIKA-424 - the file cannot be      *  distributed with Tika.      * This test will check for the complicated set of ID3v2.4      *  tags.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTIKA424
@@ -2169,6 +2207,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This tests that we can handle without errors (but perhaps not      *  all content) a file with a very very large ID3 frame that      *  has been truncated before the end of the ID3 tags.      * In this case, it is a file with JPEG data in the ID3, which      *  is trunacted before the end of the JPEG bit of the ID3 frame.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTIKA474
@@ -2380,6 +2420,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1024
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNakedUTF16BOM

@@ -16,6 +16,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -75,11 +87,11 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
@@ -87,9 +99,9 @@ begin_class
 specifier|public
 class|class
 name|ParsingReaderTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPlainText
@@ -285,6 +297,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testXML
@@ -546,6 +560,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-203      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-203">TIKA-203</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetadata

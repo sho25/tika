@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -52,16 +88,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -123,6 +149,16 @@ name|MediaType
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Junit test class for {@link ContainerAwareDetector}  */
 end_comment
@@ -131,8 +167,6 @@ begin_class
 specifier|public
 class|class
 name|TestContainerAwareDetector
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|final
@@ -310,6 +344,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectOLE2
@@ -520,6 +556,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * There is no way to distinguish "proper" StarOffice files from templates.      * All templates have the same extension but their actual type depends on      * the magic. Our current MimeTypes class doesn't allow us to use the same      * glob pattern in more than one mimetype.      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectStarOfficeFiles
@@ -600,6 +638,8 @@ literal|"application/vnd.stardivision.writer"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOpenContainer
@@ -676,6 +716,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * EPub uses a similar mimetype entry to OpenDocument for storing      *  the mimetype within the parent zip file      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectEPub
@@ -698,6 +740,8 @@ literal|"application/x-ibooks+zip"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectLotusNotesEml
@@ -715,6 +759,8 @@ literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectODF
@@ -737,6 +783,8 @@ literal|"application/vnd.oasis.opendocument.formula"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectOOXML
@@ -865,6 +913,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Password Protected OLE2 files are fairly straightforward to detect, as they      *  have the same structure as regular OLE2 files. (Core streams may be encrypted      *  however)      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectProtectedOLE2
@@ -916,6 +966,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Password Protected OOXML files are much more tricky beasts to work with.      * They have a very different structure to regular OOXML files, and instead      *  of being ZIP based they are actually an OLE2 file which contains the      *  OOXML structure within an encrypted stream.      * This makes detecting them much harder...      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectProtectedOOXML
@@ -971,6 +1023,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Check that temporary files created by Tika are removed after      * closing TikaInputStream.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRemovalTempfiles
@@ -1104,6 +1158,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectIWork
@@ -1133,6 +1189,8 @@ literal|"application/vnd.apple.pages"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectKMZ
@@ -1148,6 +1206,8 @@ literal|"application/vnd.google-earth.kmz"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectIPA
@@ -1170,6 +1230,8 @@ literal|"application/x-itunes-ipa"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectZip
@@ -1334,6 +1396,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTruncatedFiles

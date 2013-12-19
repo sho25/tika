@@ -39,47 +39,89 @@ name|Properties
 import|;
 end_import
 
-begin_comment
-comment|//Junit imports
-end_comment
-
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|junit
 operator|.
 name|Test
 import|;
 end_import
 
+begin_comment
+comment|//Junit imports
+end_comment
+
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestSuite
+name|assertFalse
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|textui
+name|Assert
 operator|.
-name|TestRunner
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -91,8 +133,6 @@ begin_class
 specifier|public
 class|class
 name|TestMetadata
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -102,55 +142,9 @@ name|CONTENTTYPE
 init|=
 literal|"contenttype"
 decl_stmt|;
-specifier|public
-name|TestMetadata
-parameter_list|(
-name|String
-name|testName
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|testName
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-specifier|static
-name|Test
-name|suite
-parameter_list|()
-block|{
-return|return
-operator|new
-name|TestSuite
-argument_list|(
-name|TestMetadata
-operator|.
-name|class
-argument_list|)
-return|;
-block|}
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-name|TestRunner
-operator|.
-name|run
-argument_list|(
-name|suite
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 comment|/** Test for the<code>add(String, String)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAdd
@@ -374,6 +368,8 @@ parameter_list|)
 block|{         }
 block|}
 comment|/** Test for the<code>set(String, String)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSet
@@ -542,6 +538,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>setAll(Properties)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSetProperties
@@ -722,6 +720,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>get(String)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGet
@@ -788,6 +788,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>isMultiValued()</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIsMultiValued
@@ -850,6 +852,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>names</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNames
@@ -946,6 +950,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>remove(String)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRemove
@@ -1108,6 +1114,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** Test for<code>equals(Object)</code> method. */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testObject
@@ -1311,6 +1319,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests for getting and setting integer      *  based properties      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetSetInt
@@ -1545,6 +1555,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests for getting and setting date      *  based properties      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetSetDate
@@ -2082,6 +2094,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Some documents, like jpegs, might have date in unspecified time zone      * which should be handled like strings but verified to have parseable ISO 8601 format      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetSetDateUnspecifiedTimezone
@@ -2128,6 +2142,8 @@ name|SuppressWarnings
 argument_list|(
 literal|"deprecation"
 argument_list|)
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCompositeProperty

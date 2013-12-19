@@ -97,26 +97,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -129,12 +109,54 @@ name|TikaException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|LanguageProfilerBuilderTest
-extends|extends
-name|TestCase
 block|{
 comment|/* Test members */
 specifier|private
@@ -198,6 +220,8 @@ name|maxlen
 init|=
 literal|1000
 decl_stmt|;
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCreateProfile
@@ -279,8 +303,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|maxlen
@@ -295,6 +317,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNGramProfile
@@ -327,8 +351,6 @@ argument_list|(
 name|langProfile
 argument_list|)
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|LANGUAGE
@@ -339,8 +361,6 @@ name|getLanguage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|identifier
@@ -504,6 +524,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|After
 specifier|public
 name|void
 name|tearDown

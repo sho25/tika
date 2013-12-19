@@ -36,16 +36,6 @@ import|;
 end_import
 
 begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
 import|import static
 name|java
 operator|.
@@ -57,13 +47,59 @@ name|singletonMap
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|MediaTypeTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBasics
@@ -191,6 +227,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLowerCase
@@ -318,6 +356,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTrim
@@ -445,6 +485,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testQuote
@@ -516,6 +558,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since TIKA-121      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseWithParams
@@ -662,6 +706,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Per http://tools.ietf.org/html/rfc2045#section-5.1, charset can be in quotes      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseWithParamsAndQuotedCharset
@@ -782,6 +828,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since TIKA-121      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseNoParams
@@ -844,6 +892,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since TIKA-121      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseNoParamsWithSemi
@@ -906,6 +956,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * TIKA-349      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOddParameters

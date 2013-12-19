@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -129,21 +141,21 @@ begin_import
 import|import
 name|org
 operator|.
-name|xml
+name|junit
 operator|.
-name|sax
-operator|.
-name|ContentHandler
+name|Test
 import|;
 end_import
 
 begin_import
 import|import
-name|junit
+name|org
 operator|.
-name|framework
+name|xml
 operator|.
-name|TestCase
+name|sax
+operator|.
+name|ContentHandler
 import|;
 end_import
 
@@ -155,9 +167,9 @@ begin_class
 specifier|public
 class|class
 name|ProjectParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testProject2003
@@ -194,6 +206,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testProject2007

@@ -59,26 +59,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|SortedSet
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -105,6 +85,74 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
 begin_comment
 comment|/**  * These tests try to ensure that the MimeTypesReader  *  has correctly processed the mime-types.xml file.  * To do this, it tests that various aspects of the  *  mime-types.xml file have ended up correctly as  *  globs, matches, magics etc.  *    * If you make updates to mime-types.xml, then the  *  checks in this test may no longer hold true.  * As such, if tests here start failing after your  *  changes, please review the test details, and  *  update it to match the new state of the file!   */
 end_comment
@@ -113,8 +161,6 @@ begin_class
 specifier|public
 class|class
 name|MimeTypesReaderTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|MimeTypes
@@ -128,24 +174,25 @@ argument_list|>
 name|magics
 decl_stmt|;
 annotation|@
-name|Override
-annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-specifier|protected
+annotation|@
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
 throws|throws
-name|Exception
+name|NoSuchFieldException
+throws|,
+name|SecurityException
+throws|,
+name|IllegalArgumentException
+throws|,
+name|IllegalAccessException
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|this
 operator|.
 name|mimeTypes
@@ -194,6 +241,8 @@ name|mimeTypes
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHtmlMatches
@@ -321,6 +370,8 @@ name|minMatches
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelMatches
@@ -449,6 +500,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @since TIKA-515      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testReadComment
@@ -489,6 +542,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * @since TIKA-1012      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testReadExtendedMetadata
@@ -597,6 +652,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * TIKA-746 Ensures that the custom mimetype maps were also       *  loaded and used      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCustomMimeTypes
@@ -839,6 +896,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetExtensionForPowerPoint

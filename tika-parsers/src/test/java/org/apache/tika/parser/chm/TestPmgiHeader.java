@@ -18,22 +18,26 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
 name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertTrue
 import|;
 end_import
 
@@ -55,18 +59,38 @@ name|ChmPmgiHeader
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|TestPmgiHeader
-extends|extends
-name|TestCase
 block|{
 name|ChmPmgiHeader
 name|chmPmgiHeader
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Before
 specifier|public
 name|void
 name|setUp
@@ -98,13 +122,13 @@ name|chmPmgiHeader
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testToString
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 operator|(
@@ -127,13 +151,13 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testGetFreeSpace
 parameter_list|()
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|TestParameters
@@ -147,13 +171,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{     }
 block|}
 end_class
 

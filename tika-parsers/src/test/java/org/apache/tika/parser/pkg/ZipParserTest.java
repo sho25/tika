@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -147,6 +183,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -166,6 +212,8 @@ name|ZipParserTest
 extends|extends
 name|AbstractPkgTest
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testZipParsing
@@ -435,6 +483,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests that the ParseContext parser is correctly      *  fired for all the embedded entries.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbedded
@@ -671,6 +721,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test case for the ability of the ZIP parser to extract the name of      * a ZIP entry even if the content of the entry is unreadable due to an      * unsupported compression method.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-346">TIKA-346</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUnsupportedZipCompressionMethod
@@ -794,6 +846,8 @@ throw|;
 block|}
 block|}
 comment|// TIKA-1036
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPlaceholders

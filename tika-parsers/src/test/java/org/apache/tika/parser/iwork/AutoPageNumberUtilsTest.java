@@ -18,12 +18,24 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -35,10 +47,10 @@ begin_class
 specifier|public
 class|class
 name|AutoPageNumberUtilsTest
-extends|extends
-name|TestCase
 block|{
 comment|/** 	 * Check upper-case alpha-numeric numbers are generated based on the  	 * input page number. 	 */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAlphaUpper
@@ -118,6 +130,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Check lower-case alpha-numeric numbers are generated based on the  	 * input page number. 	 */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAlphaLower
@@ -197,6 +211,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Check upper-case Roman numerals numbers are generated based on the  	 * input page number. 	 */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRomanUpper
@@ -240,6 +256,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Check lower-case Roman numerals numbers are generated based on the  	 * input page number. 	 */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRomanLower

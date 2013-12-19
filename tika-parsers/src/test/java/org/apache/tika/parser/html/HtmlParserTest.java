@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -155,16 +203,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -277,6 +315,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -327,9 +385,9 @@ begin_class
 specifier|public
 class|class
 name|HtmlParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseAscii
@@ -634,6 +692,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"The file 'testXHTML_utf8.html' is not available fo testing"
+argument_list|)
 specifier|public
 name|void
 name|XtestParseUTF8
@@ -721,6 +786,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testXhtmlParsing
@@ -844,6 +911,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParseEmpty
@@ -897,6 +966,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-210      * @see<a href="https://issues.apache.org/jira/browse/TIKA-210">TIKA-210</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCharactersDirectlyUnderBodyElement
@@ -939,6 +1010,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-287      * @see<a href="https://issues.apache.org/jira/browse/TIKA-287">TIKA-287</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBaseHref
@@ -1198,6 +1271,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-268      * @see<a href="https://issues.apache.org/jira/browse/TIKA-268">TIKA-268</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWhitespaceBetweenTableCells
@@ -1263,6 +1338,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-332      * @see<a href="https://issues.apache.org/jira/browse/TIKA-332">TIKA-332</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHttpEquivCharset
@@ -1332,6 +1409,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-892      * @see<a href="https://issues.apache.org/jira/browse/TIKA-892">TIKA-892</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHtml5Charset
@@ -1399,6 +1478,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-334      * @see<a href="https://issues.apache.org/jira/browse/TIKA-334">TIKA-334</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectOfCharset
@@ -1462,6 +1543,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-341      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUsingCharsetInContentTypeHeader
@@ -1587,6 +1670,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for HTML content like      * "&gt;div&lt;foo&gt;br&lt;bar&gt;/div&gt;" that should result      * in three whitespace-separated tokens "foo", "bar" and "baz" instead      * of a single token "foobarbaz".      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-343">TIKA-343</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLineBreak
@@ -1675,6 +1760,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-339: Don't use language returned by CharsetDetector      * @see<a href="https://issues.apache.org/jira/browse/TIKA-339">TIKA-339</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIgnoreCharsetDetectorLanguage
@@ -1749,6 +1836,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-349      * @see<a href="https://issues.apache.org/jira/browse/TIKA-349">TIKA-349</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHttpEquivCharsetFunkyAttributes
@@ -1878,6 +1967,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-350      * @see<a href="https://issues.apache.org/jira/browse/TIKA-350">TIKA-350</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUsingFunkyCharsetInContentTypeHeader
@@ -2003,6 +2094,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-357      * @see<a href="https://issues.apache.org/jira/browse/TIKA-357">TIKA-357</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetaHttpEquivWithLotsOfPreambleText
@@ -2064,6 +2157,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-420      * @see<a href="https://issues.apache.org/jira/browse/TIKA-420">TIKA-420</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBoilerplateRemoval
@@ -2168,6 +2263,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-478. Don't emit<head> sub-elements inside of<body>.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-478">TIKA-478</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testElementOrdering
@@ -2313,6 +2410,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testImgUrlExtraction
@@ -2391,6 +2490,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testFrameSrcExtraction
@@ -2469,6 +2570,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIFrameSrcExtraction
@@ -2549,6 +2652,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAreaExtraction
@@ -2631,6 +2736,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testObjectExtraction
@@ -2717,6 +2824,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for change related to TIKA-463. Verify proper handling of<meta> tags.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetaTagHandling
@@ -2826,6 +2935,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-457. Better handling for broken HTML that has<frameset> inside of<body>.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-457">TIKA-457</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBrokenFrameset
@@ -3041,6 +3152,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-480: fix NPE when using BodyContentHandler or HtmlTransformer      * as delegate for BoilerpipeContentHandler      * @see<a href="https://issues.apache.org/jira/browse/TIKA-480">TIKA-480</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBoilerplateDelegation
@@ -3153,6 +3266,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-481. Verify href in<link> is resolved.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-481">TIKA-481</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLinkHrefResolution
@@ -3320,6 +3435,8 @@ name|handler
 return|;
 block|}
 comment|/**      * Test case for TIKA-564. Support returning markup from BoilerpipeContentHandler.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-564">TIKA-564</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBoilerplateWithMarkup
@@ -3472,6 +3589,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-434 - Pushback buffer overflow in TagSoup      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPushback
@@ -3511,6 +3630,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-869      * IdentityHtmlMapper needs to lower-case tag names.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-869">TIKA-869</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testIdentityMapper
@@ -3610,6 +3731,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-889      * XHTMLContentHandler wont emit newline when html element matches ENDLINE set.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-889">TIKA-889</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNewlineAndIndent
@@ -3683,6 +3806,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-961      * @see<a href="https://issues.apache.org/jira/browse/TIKA-961">TIKA-961</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testBoilerplateWhitespace
@@ -3792,6 +3917,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test case for TIKA-983:  HTML parser should add Open Graph meta tag data to Metadata returned by parser      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-983">TIKA-983</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testOpenGraphMetadata
@@ -3873,6 +4000,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1011
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUserDefinedCharset
@@ -3910,6 +4039,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//TIKA-1001
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNoisyMetaCharsetHeaders

@@ -20,6 +20,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -309,6 +345,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -358,6 +404,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcel
@@ -570,6 +618,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelFormats
@@ -853,6 +903,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * We have a number of different powerpoint files,      *  such as presentation, macro-enabled etc      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerPoint
@@ -1190,6 +1242,8 @@ block|}
 block|}
 block|}
 comment|/**      * Test that the metadata is already extracted when the body is processed.      * See TIKA-1109      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerPointMetadataEarly
@@ -1425,6 +1479,8 @@ block|}
 block|}
 block|}
 comment|/**      * For the PowerPoint formats we don't currently support, ensure that      *  we don't break either      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testUnsupportedPowerPoint
@@ -1588,6 +1644,8 @@ block|}
 block|}
 block|}
 comment|/**      * Test the plain text output of the Word converter      * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWord
@@ -1719,6 +1777,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test the plain text output of the Word converter      * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordFootnote
@@ -1808,6 +1868,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test that the word converter is able to generate the      *  correct HTML for the document      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordHTML
@@ -2146,6 +2208,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test that we can extract image from docx header      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordPicturesInHeader
@@ -2300,6 +2364,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Documents with some sheets are protected, but not all.       * See TIKA-364.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testProtectedExcelSheets
@@ -2401,6 +2467,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * An excel document which is password protected.       * See TIKA-437.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testProtectedExcelFile
@@ -2516,6 +2584,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Test docx without headers      * TIKA-633      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNullHeaders
@@ -2597,6 +2667,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVarious
@@ -3002,6 +3074,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testVariousPPTX
@@ -3407,6 +3481,8 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMasterFooter
@@ -3488,6 +3564,8 @@ comment|// TODO: once we fix TIKA-712, re-enable this
 comment|/*     public void testMasterText() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = OOXMLParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText.pptx");         try {             new AutoDetectParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
 comment|// TODO: once we fix TIKA-712, re-enable this
 comment|/*     public void testMasterText2() throws Exception {         ContentHandler handler = new BodyContentHandler();         Metadata metadata = new Metadata();          InputStream stream = OOXMLParserTest.class.getResourceAsStream(                 "/test-documents/testPPT_masterText2.pptx");         try {             new AutoDetectParser().parse(stream, handler, metadata, new ParseContext());         } finally {             stream.close();         }          String content = handler.toString();         assertContains("Text that I added to the master slide", content);     }     */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordArt
@@ -3566,6 +3644,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Ensures that custom OOXML properties are extracted      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelCustomProperties
@@ -3849,6 +3929,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordCustomProperties
@@ -4259,6 +4341,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPowerPointCustomProperties
@@ -4557,6 +4641,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-989:
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPDF
@@ -4804,6 +4890,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-997:
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedZipInPPTX
@@ -4916,6 +5004,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1006
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordNullStyle
@@ -4942,6 +5032,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * TIKA-1044 - Handle word documents where parts of the      *  text have no formatting or styles applied to them      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNoFormat
@@ -5020,6 +5112,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1005:
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTextInsideTextBox
@@ -5067,6 +5161,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1032:
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbeddedPPTXTwoSlides
@@ -5100,6 +5196,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMissingText
@@ -5202,6 +5300,8 @@ expr_stmt|;
 block|}
 block|}
 comment|//TIKA-1100:
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExcelTextBox
@@ -5268,6 +5368,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//TIKA-792; with room for future missing bean tests
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testWordMissingOOXMLBeans
@@ -5399,6 +5501,8 @@ expr_stmt|;
 block|}
 block|}
 comment|//TIKA-817
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testPPTXAutodate

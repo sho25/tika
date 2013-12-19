@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -74,16 +122,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
 import|;
 end_import
 
@@ -243,6 +281,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -271,8 +319,6 @@ begin_class
 specifier|public
 class|class
 name|ForkParserIntegrationTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|Tika
@@ -284,6 +330,8 @@ argument_list|()
 decl_stmt|;
 comment|// TODO Use TikaConfig instead, when it works
 comment|/**      * Simple text parsing      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testForkedTextParsing
@@ -704,6 +752,8 @@ throw|;
 block|}
 block|}
 comment|/**      * TIKA-831 Parsers throwing errors should be caught and      *  properly reported      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParsingErrorInForkedParserShouldBeReported
@@ -846,6 +896,8 @@ comment|//           assertEquals("Bang!", e.getCause().getMessage());
 comment|//       }
 block|}
 comment|/**      * If we supply a non serializable object on the ParseContext,      *  check we get a helpful exception back      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testParserHandlingOfNonSerializable
@@ -1004,6 +1056,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * TIKA-832      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testAttachingADebuggerOnTheForkedParserShouldWork
@@ -1135,6 +1189,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * TIKA-808 - Ensure that parsing of our test PDFs work under      * the Fork Parser, to ensure that complex parsing behaves      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testForkedPDFParsing

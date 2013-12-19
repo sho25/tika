@@ -66,12 +66,38 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -89,6 +115,26 @@ name|IOUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * JUnit based test of class {@link LanguageIdentifier}.  *  * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  */
 end_comment
@@ -97,8 +143,6 @@ begin_class
 specifier|public
 class|class
 name|LanguageIdentifierTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 specifier|static
@@ -137,6 +181,8 @@ block|,
 literal|"sv"
 block|}
 decl_stmt|;
+annotation|@
+name|Before
 specifier|public
 name|void
 name|setUp
@@ -148,6 +194,8 @@ name|initProfiles
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLanguageDetection
@@ -231,6 +279,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testClearAddAndInitProfiles
@@ -469,6 +519,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMixedLanguages
@@ -584,6 +636,8 @@ block|}
 block|}
 block|}
 comment|// TIKA-453: Fix up language identifier used for Estonian
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEstonia

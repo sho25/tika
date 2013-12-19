@@ -18,6 +18,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -87,6 +123,16 @@ begin_import
 import|import
 name|org
 operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -106,6 +152,8 @@ name|TarParserTest
 extends|extends
 name|AbstractPkgTest
 block|{
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTarParsing
@@ -375,6 +423,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests that the ParseContext parser is correctly      *  fired for all the embedded entries.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmbedded

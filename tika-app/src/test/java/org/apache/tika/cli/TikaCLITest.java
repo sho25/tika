@@ -57,26 +57,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -89,6 +69,48 @@ name|FileUtils
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests the Tika's cli  */
 end_comment
@@ -97,8 +119,6 @@ begin_class
 specifier|public
 class|class
 name|TikaCLITest
-extends|extends
-name|TestCase
 block|{
 comment|/* Test members */
 specifier|private
@@ -141,6 +161,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Before
 specifier|public
 name|void
 name|setUp
@@ -181,6 +203,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a welsh language profile      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testCreateProfile
@@ -209,8 +233,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|profile
@@ -221,6 +243,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests --list-parser-detail option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListParserDetail
@@ -243,8 +267,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -260,6 +282,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests --list-parser option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListParsers
@@ -286,6 +310,8 @@ comment|//Assert was commented temporarily for finding the problem
 comment|//		Assert.assertTrue(outContent != null&& outContent.toString().contains("org.apache.tika.parser.iwork.IWorkPackageParser"));
 block|}
 comment|/**      * Tests -x option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testXMLOutput
@@ -312,8 +338,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -329,6 +353,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests a -h option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testHTMLOutput
@@ -355,8 +381,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -370,8 +394,6 @@ literal|"html xmlns=\"http://www.w3.org/1999/xhtml"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 literal|"Expanded<title></title> element should be present"
@@ -389,6 +411,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests -t option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testTextOutput
@@ -415,8 +439,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -432,6 +454,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests -m option of the cli      * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMetadataOutput
@@ -458,8 +482,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -475,6 +497,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests -l option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testLanguageOutput
@@ -501,8 +525,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -518,6 +540,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests -d option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetectOutput
@@ -544,8 +568,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -561,6 +583,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests --list-met-models option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListMetModels
@@ -587,8 +611,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -604,6 +626,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests --list-supported-types option of the cli      *       * @throws Exception      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testListSupportedTypes
@@ -630,8 +654,6 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
-name|Assert
-operator|.
 name|assertTrue
 argument_list|(
 name|outContent
@@ -647,6 +669,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tears down the test. Returns the System.out      */
+annotation|@
+name|After
 specifier|public
 name|void
 name|tearDown
@@ -678,6 +702,8 @@ name|stdout
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testExtract
@@ -840,6 +866,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// TIKA-920
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMultiValuedMetadata
@@ -916,6 +944,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// TIKA-1031
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testZipWithSubdirs

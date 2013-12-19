@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -57,16 +81,6 @@ end_import
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -93,12 +107,30 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|MimeDetectionTest
-extends|extends
-name|TestCase
 block|{
 specifier|private
 name|MimeTypes
@@ -110,19 +142,12 @@ name|registry
 decl_stmt|;
 comment|/** @inheritDoc */
 annotation|@
-name|Override
-specifier|protected
+name|Before
+specifier|public
 name|void
 name|setUp
 parameter_list|()
-throws|throws
-name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 name|this
 operator|.
 name|mimeTypes
@@ -145,6 +170,8 @@ name|getMediaTypeRegistry
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testDetection
@@ -288,6 +315,8 @@ literal|"test-malformed-header.html.bin"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testByteOrderMark
@@ -377,6 +406,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testSuperTypes
@@ -535,6 +566,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 specifier|private
 name|void
 name|testUrlOnly
@@ -776,7 +812,22 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+specifier|private
+name|void
+name|assertNotNull
+parameter_list|(
+name|String
+name|string
+parameter_list|,
+name|InputStream
+name|in
+parameter_list|)
+block|{
+comment|// TODO Auto-generated method stub
+block|}
 comment|/**      * Test for type detection of empty documents.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-483">TIKA-483</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testEmptyDocument
@@ -896,6 +947,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test for things like javascript files whose content is enclosed in XML      * comment delimiters, but that aren't actually XML.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-426">TIKA-426</a>      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testNotXML
@@ -932,6 +985,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests that when we repeatedly test the detection of a document      *  that can be detected with Mime Magic, that we consistently      *  detect it correctly. See TIKA-391 for more details.      */
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testMimeMagicStability
