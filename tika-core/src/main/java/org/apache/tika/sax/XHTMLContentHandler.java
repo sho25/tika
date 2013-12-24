@@ -367,6 +367,13 @@ specifier|final
 name|Metadata
 name|metadata
 decl_stmt|;
+comment|/**      * Flag to indicate whether the document has been started.      */
+specifier|private
+name|boolean
+name|documentStarted
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Flags to indicate whether the document head element has been started/ended.      */
 specifier|private
 name|boolean
@@ -408,7 +415,7 @@ operator|=
 name|metadata
 expr_stmt|;
 block|}
-comment|/**      * Starts an XHTML document by setting up the namespace mappings.      * The standard XHTML prefix is generated lazily when the first      * element is started.      */
+comment|/**      * Starts an XHTML document by setting up the namespace mappings       * when called for the first time.      * The standard XHTML prefix is generated lazily when the first      * element is started.      */
 annotation|@
 name|Override
 specifier|public
@@ -418,6 +425,16 @@ parameter_list|()
 throws|throws
 name|SAXException
 block|{
+if|if
+condition|(
+operator|!
+name|documentStarted
+condition|)
+block|{
+name|documentStarted
+operator|=
+literal|true
+expr_stmt|;
 name|super
 operator|.
 name|startDocument
@@ -430,6 +447,7 @@ argument_list|,
 name|XHTML
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Generates the following XHTML prefix when called for the first time:      *<pre>      *&lt;html&gt;      *&lt;head&gt;      *&lt;title&gt;...&lt;/title&gt;      *&lt;/head&gt;      *&lt;body&gt;      *</pre>      */
 specifier|private
