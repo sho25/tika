@@ -450,8 +450,15 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|boolean
+name|continueLoop
+init|=
+literal|true
+decl_stmt|;
 while|while
 condition|(
+name|continueLoop
+operator|&&
 name|getContentLength
 argument_list|()
 operator|<
@@ -459,7 +466,6 @@ name|getBlockLength
 argument_list|()
 condition|)
 block|{
-comment|//&& tempStopLoop
 if|if
 condition|(
 name|getState
@@ -899,6 +905,12 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+name|int
+name|lastLength
+init|=
+name|getContentLength
+argument_list|()
+decl_stmt|;
 switch|switch
 condition|(
 name|getState
@@ -990,6 +1002,13 @@ literal|0
 condition|)
 name|intelE8Decoding
 argument_list|()
+expr_stmt|;
+name|continueLoop
+operator|=
+name|getContentLength
+argument_list|()
+operator|>
+name|lastLength
 expr_stmt|;
 block|}
 block|}
@@ -1480,7 +1499,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|public
+specifier|private
 name|void
 name|decompressUncompressedBlock
 parameter_list|(
@@ -1620,7 +1639,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|public
+specifier|private
 name|void
 name|decompressAlignedBlock
 parameter_list|(
