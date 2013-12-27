@@ -1687,7 +1687,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-comment|// TODO: Need a test flash file
 name|assertTypeByName
 argument_list|(
 literal|"application/x-shockwave-flash"
@@ -1700,6 +1699,27 @@ argument_list|(
 literal|"application/x-shockwave-flash"
 argument_list|,
 literal|"x.SWF"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/x-shockwave-flash"
+argument_list|,
+literal|"test1.swf"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/x-shockwave-flash"
+argument_list|,
+literal|"test2.swf"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/x-shockwave-flash"
+argument_list|,
+literal|"test3.swf"
 argument_list|)
 expr_stmt|;
 block|}
