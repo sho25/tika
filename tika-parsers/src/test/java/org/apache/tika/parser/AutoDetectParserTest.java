@@ -316,6 +316,14 @@ specifier|private
 specifier|static
 specifier|final
 name|String
+name|CHM
+init|=
+literal|"application/vnd.ms-htmlhelp"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|RTF
 init|=
 literal|"application/rtf"
@@ -833,6 +841,25 @@ argument_list|,
 name|NUMBERS
 argument_list|,
 literal|"Checking Account: 300545668"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testChm
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertAutoDetect
+argument_list|(
+literal|"testChm.chm"
+argument_list|,
+name|CHM
+argument_list|,
+literal|"If you do not specify a window type or a window name, the main window is used."
 argument_list|)
 expr_stmt|;
 block|}
