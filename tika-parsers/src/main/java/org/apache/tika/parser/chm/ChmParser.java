@@ -289,9 +289,8 @@ block|{
 name|CHMDocumentInformation
 name|chmInfo
 init|=
+operator|new
 name|CHMDocumentInformation
-operator|.
-name|load
 argument_list|(
 name|stream
 argument_list|)
@@ -306,13 +305,6 @@ operator|.
 name|CONTENT_TYPE
 argument_list|,
 literal|"application/vnd.ms-htmlhelp"
-argument_list|)
-expr_stmt|;
-name|chmInfo
-operator|.
-name|getCHMDocInformation
-argument_list|(
-name|metadata
 argument_list|)
 expr_stmt|;
 comment|// content
