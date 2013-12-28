@@ -611,6 +611,18 @@ argument_list|(
 literal|"vnd.stardivision.writer"
 argument_list|)
 decl_stmt|;
+comment|/** SolidWorks CAD file */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|SLDWORKS
+init|=
+name|application
+argument_list|(
+literal|"sldworks"
+argument_list|)
+decl_stmt|;
 comment|/** Regexp for matching the MPP Project Data stream */
 specifier|private
 specifier|static
@@ -943,6 +955,28 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"SwDocContentMgr"
+argument_list|)
+operator|&&
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"SwDocMgrTempStorage"
+argument_list|)
+condition|)
+block|{
+return|return
+name|SLDWORKS
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|names
