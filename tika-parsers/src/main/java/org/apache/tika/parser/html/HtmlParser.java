@@ -540,6 +540,21 @@ operator|.
 name|Parser
 argument_list|()
 decl_stmt|;
+comment|// Use schema from context or default
+name|Schema
+name|schema
+init|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|Schema
+operator|.
+name|class
+argument_list|,
+name|HTML_SCHEMA
+argument_list|)
+decl_stmt|;
 comment|// TIKA-528: Reuse share schema to avoid heavy instantiation
 name|parser
 operator|.
@@ -557,7 +572,7 @@ name|Parser
 operator|.
 name|schemaProperty
 argument_list|,
-name|HTML_SCHEMA
+name|schema
 argument_list|)
 expr_stmt|;
 comment|// TIKA-599: Shared schema is thread-safe only if bogons are ignored
