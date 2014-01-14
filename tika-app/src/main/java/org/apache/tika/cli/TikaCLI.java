@@ -943,6 +943,20 @@ name|Gson
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|FilenameUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Simple command line interface for Apache Tika.  */
 end_comment
@@ -4740,7 +4754,12 @@ name|File
 argument_list|(
 name|extractDir
 argument_list|,
+name|FilenameUtils
+operator|.
+name|normalize
+argument_list|(
 name|name
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|File
@@ -4911,13 +4930,40 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+comment|//
+comment|// being a CLI program messages should go to the stderr too
+comment|//
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"Ignoring unexpected exception trying to save embedded file %s (%s)"
+argument_list|,
+name|name
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|msg
+argument_list|)
+expr_stmt|;
 name|logger
 operator|.
 name|warn
 argument_list|(
-literal|"Ignoring unexpected exception trying to save embedded file "
-operator|+
-name|name
+name|msg
 argument_list|,
 name|e
 argument_list|)
