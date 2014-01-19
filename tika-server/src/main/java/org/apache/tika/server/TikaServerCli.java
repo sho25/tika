@@ -346,9 +346,14 @@ name|properties
 operator|.
 name|load
 argument_list|(
-name|ClassLoader
+name|TikaServerCli
 operator|.
-name|getSystemResourceAsStream
+name|class
+operator|.
+name|getClassLoader
+argument_list|()
+operator|.
+name|getResourceAsStream
 argument_list|(
 literal|"tikaserver-version.properties"
 argument_list|)
