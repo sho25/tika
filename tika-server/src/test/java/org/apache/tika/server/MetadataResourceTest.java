@@ -442,11 +442,6 @@ name|getEntity
 argument_list|()
 argument_list|)
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"resource"
-argument_list|)
 name|CSVReader
 name|csvReader
 init|=

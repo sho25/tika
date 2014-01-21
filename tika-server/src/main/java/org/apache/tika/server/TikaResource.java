@@ -617,7 +617,7 @@ begin_class
 annotation|@
 name|Path
 argument_list|(
-literal|"/tika{id:(/.*)?}"
+literal|"/tika"
 argument_list|)
 specifier|public
 class|class
@@ -1158,6 +1158,11 @@ name|Produces
 argument_list|(
 literal|"text/plain"
 argument_list|)
+annotation|@
+name|Path
+argument_list|(
+literal|"form"
+argument_list|)
 specifier|public
 name|StreamingOutput
 name|getTextFromMultipart
@@ -1569,6 +1574,11 @@ name|Produces
 argument_list|(
 literal|"text/html"
 argument_list|)
+annotation|@
+name|Path
+argument_list|(
+literal|"form"
+argument_list|)
 specifier|public
 name|StreamingOutput
 name|getHTMLFromMultipart
@@ -1665,6 +1675,11 @@ annotation|@
 name|Produces
 argument_list|(
 literal|"text/xml"
+argument_list|)
+annotation|@
+name|Path
+argument_list|(
+literal|"form"
 argument_list|)
 specifier|public
 name|StreamingOutput

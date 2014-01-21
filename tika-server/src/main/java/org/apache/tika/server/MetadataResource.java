@@ -311,7 +311,7 @@ begin_class
 annotation|@
 name|Path
 argument_list|(
-literal|"/meta{id:(/.*)?}"
+literal|"/meta"
 argument_list|)
 specifier|public
 class|class
@@ -343,6 +343,11 @@ annotation|@
 name|Produces
 argument_list|(
 literal|"text/csv"
+argument_list|)
+annotation|@
+name|Path
+argument_list|(
+literal|"form"
 argument_list|)
 specifier|public
 name|StreamingOutput
