@@ -2880,27 +2880,6 @@ argument_list|(
 literal|"li"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"SIG DATA: "
-operator|+
-name|e
-operator|.
-name|getKey
-argument_list|()
-operator|+
-literal|" : "
-operator|+
-name|e
-operator|.
-name|getValue
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 name|handler
 operator|.
