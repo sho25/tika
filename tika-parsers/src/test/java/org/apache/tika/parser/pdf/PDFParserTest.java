@@ -3380,7 +3380,7 @@ name|assertEquals
 argument_list|(
 literal|"Number of pdf files tested"
 argument_list|,
-literal|14
+literal|15
 argument_list|,
 name|pdfs
 argument_list|)
@@ -3392,6 +3392,45 @@ comment|//consistent with Apache License v2.0 are contributed.
 comment|//TODO: add back test for AcroForm extraction; test document should include
 comment|//recursive forms
 comment|/*    public void testAcroForm() throws Exception{        Parser p = new AutoDetectParser();        ParseContext context = new ParseContext();        InputStream stream = getResourceAsStream("/test-documents/testPDF_acroForm1.pdf");        String txt = getText(stream, p, context);        stream.close();         //simple first level form contents        assertContains("to: John Doe", txt);        //checkbox        assertContains("xpackaging: Yes", txt);                //this guarantees that the form processor        //worked recursively at least once...i.e. it didn't just        //take the first form        stream = getResourceAsStream("/test-documents/testPDF_acroForm2.pdf");        txt = getText(stream, p, context);        stream.close();        assertContains("123 Main St.", txt);                        //now test with nonsequential parser        PDFParserConfig config = new PDFParserConfig();        config.setUseNonSequentialParser(true);        context.set(PDFParserConfig.class, config);        stream = getResourceAsStream("/test-documents/testPDF_acroForm1.pdf");        txt = getText(stream, p, context);        stream.close();                //simple first level form contents        assertContains("to: John Doe", txt);        //checkbox        assertContains("xpackaging: Yes", txt);                //this guarantees that the form processor        //worked recursively at least once...i.e. it didn't just        //take the first form        stream = getResourceAsStream("/test-documents/testPDF_acroForm2.pdf");        txt = getText(stream, p, context);        assertContains("123 Main St.", txt);        stream.close();          } */
+comment|//TIKA-1226
+specifier|public
+name|void
+name|testSignatureInAcroForm
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//The current test doc does not contain any content in the signature area.
+comment|//This just tests that a RuntimeException is not thrown.
+comment|//TODO: find a better test file for this issue.
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"/testPDF_acroform3.pdf"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"found"
+argument_list|,
+operator|(
+name|xml
+operator|.
+name|indexOf
+argument_list|(
+literal|"<li>aTextField: TIKA-1226</li>"
+argument_list|)
+operator|>
+operator|-
+literal|1
+operator|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
