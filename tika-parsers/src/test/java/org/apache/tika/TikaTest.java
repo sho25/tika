@@ -519,7 +519,9 @@ name|handler
 init|=
 operator|new
 name|BodyContentHandler
-argument_list|()
+argument_list|(
+literal|1000000
+argument_list|)
 decl_stmt|;
 try|try
 block|{
