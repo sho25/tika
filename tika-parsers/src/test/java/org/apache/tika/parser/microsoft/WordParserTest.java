@@ -2060,6 +2060,83 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * TIKA-1229 Hyperlinks in Headers should be output as such,      *  not plain text with control characters      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHeaderHyperlinks
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_header_hyperlink.doc"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+name|result
+operator|.
+name|metadata
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"application/msword"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Lutz Theurer"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"example.com"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//System.out.println(xml);
+comment|// TODO
+comment|//        assertTrue(xml.contains("<h1 class=\"title\">"));
+comment|// Check we don't have the special text HYPERLINK
+comment|// Check we do have the link
+comment|// Check we do have the email
+block|}
 block|}
 end_class
 
