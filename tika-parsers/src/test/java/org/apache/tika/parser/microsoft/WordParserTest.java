@@ -42,6 +42,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -2120,22 +2132,40 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
+argument_list|(
+literal|"example.com"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// Check we don't have the special text HYPERLINK
+name|assertFalse
 argument_list|(
 name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"example.com"
+literal|"HYPERLINK"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(xml);
-comment|// TODO
-comment|//        assertTrue(xml.contains("<h1 class=\"title\">"));
-comment|// Check we don't have the special text HYPERLINK
 comment|// Check we do have the link
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tw-systemhaus.de\">http:"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 comment|// Check we do have the email
+name|assertContains
+argument_list|(
+literal|"<a href=\"mailto:ab@example.com\">ab@"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
