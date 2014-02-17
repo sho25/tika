@@ -175,28 +175,41 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|String
-index|[]
-name|files
-init|=
-operator|new
-name|String
-index|[]
-block|{
+name|assertEmbeddedFiles
+argument_list|(
+literal|0
+argument_list|,
 literal|"testEXCEL.xlsx"
-block|,
+argument_list|)
+expr_stmt|;
+name|assertEmbeddedFiles
+argument_list|(
+literal|0
+argument_list|,
 literal|"testWORD.docx"
-block|,
+argument_list|)
+expr_stmt|;
+name|assertEmbeddedFiles
+argument_list|(
+literal|1
+comment|/* thumbnail as default */
+argument_list|,
 literal|"testPPT.pptx"
-block|,        }
-decl_stmt|;
-for|for
-control|(
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|assertEmbeddedFiles
+parameter_list|(
+name|int
+name|expectedNbFiles
+parameter_list|,
 name|String
 name|file
-range|:
-name|files
-control|)
+parameter_list|)
+throws|throws
+name|Exception
 block|{
 comment|// Process it without recursing
 name|TrackingHandler
@@ -214,7 +227,7 @@ decl_stmt|;
 comment|// Won't have fired
 name|assertEquals
 argument_list|(
-literal|0
+name|expectedNbFiles
 argument_list|,
 name|handler
 operator|.
@@ -226,7 +239,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+name|expectedNbFiles
 argument_list|,
 name|handler
 operator|.
@@ -250,7 +263,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+name|expectedNbFiles
 argument_list|,
 name|handler
 operator|.
@@ -262,7 +275,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+name|expectedNbFiles
 argument_list|,
 name|handler
 operator|.
@@ -272,7 +285,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/**      * Office files with embedded images, but no other      *  office files in them      */
 annotation|@
@@ -367,6 +379,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|3
+operator|+
+literal|1
+comment|/*thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -379,6 +394,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|3
+operator|+
+literal|1
+comment|/*thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -928,6 +946,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|23
+operator|+
+literal|1
+comment|/*thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -940,6 +961,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|23
+operator|+
+literal|1
+comment|/*thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -1176,7 +1200,7 @@ expr_stmt|;
 comment|//   Icon of item inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_DOC
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -1185,6 +1209,21 @@ operator|.
 name|get
 argument_list|(
 literal|15
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded thumbnail
+name|assertEquals
+argument_list|(
+name|TYPE_DOC
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|16
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1199,7 +1238,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|16
+literal|17
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1214,7 +1253,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|17
+literal|18
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1229,7 +1268,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|18
+literal|19
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1244,26 +1283,11 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|19
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Embedded image
-name|assertEquals
-argument_list|(
-name|TYPE_EMF
-argument_list|,
-name|handler
-operator|.
-name|mediaTypes
-operator|.
-name|get
-argument_list|(
 literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Icon of embedded office doc
+comment|// Embedded image
 name|assertEquals
 argument_list|(
 name|TYPE_EMF
@@ -1290,6 +1314,21 @@ operator|.
 name|get
 argument_list|(
 literal|22
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Icon of embedded office doc
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|23
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1608,6 +1647,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|14
+operator|+
+literal|1
+comment|/* thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -1620,6 +1662,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|14
+operator|+
+literal|1
+comment|/* thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -1692,7 +1737,7 @@ expr_stmt|;
 comment|//   PNG inside .pptx
 name|assertEquals
 argument_list|(
-name|TYPE_EMF
+name|TYPE_JPG
 argument_list|,
 name|handler
 operator|.
@@ -1701,6 +1746,21 @@ operator|.
 name|get
 argument_list|(
 literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Embedded thumbnail
+name|assertEquals
+argument_list|(
+name|TYPE_EMF
+argument_list|,
+name|handler
+operator|.
+name|mediaTypes
+operator|.
+name|get
+argument_list|(
+literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1715,7 +1775,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1730,7 +1790,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|6
+literal|7
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1745,7 +1805,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|7
+literal|8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1760,7 +1820,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|8
+literal|9
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1775,7 +1835,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|9
+literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1790,7 +1850,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|10
+literal|11
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1805,7 +1865,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|11
+literal|12
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1820,7 +1880,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|12
+literal|13
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1835,7 +1895,7 @@ name|mediaTypes
 operator|.
 name|get
 argument_list|(
-literal|13
+literal|14
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1855,6 +1915,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|9
+operator|+
+literal|1
+comment|/* thumbnail */
 argument_list|,
 name|handler
 operator|.
@@ -1867,6 +1930,9 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|9
+operator|+
+literal|1
+comment|/* thumbnail */
 argument_list|,
 name|handler
 operator|.
