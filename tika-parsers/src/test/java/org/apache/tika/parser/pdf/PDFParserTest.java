@@ -3397,15 +3397,21 @@ expr_stmt|;
 block|}
 block|}
 comment|//make sure nothing went wrong with getting the resource to test-documents
-comment|//This will require modification with each new pdf test.
-comment|//If this is too annoying, we can turn it off.
-name|assertEquals
-argument_list|(
-literal|"Number of pdf files tested"
-argument_list|,
-literal|16
-argument_list|,
+comment|//must have tested>= 15 pdfs
+name|boolean
+name|ge15
+init|=
+operator|(
 name|pdfs
+operator|>=
+literal|15
+operator|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Number of pdf files tested>= 15 in non-sequential parser test"
+argument_list|,
+name|ge15
 argument_list|)
 expr_stmt|;
 block|}
