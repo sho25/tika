@@ -1084,6 +1084,21 @@ argument_list|,
 literal|"test-documents.cpio"
 argument_list|)
 expr_stmt|;
+comment|// For spanned zip files, the .zip file doesn't have the header, it's the other parts
+name|assertTypeByData
+argument_list|(
+literal|"application/octet-stream"
+argument_list|,
+literal|"test-documents-spanned.zip"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/zip"
+argument_list|,
+literal|"test-documents-spanned.z01"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
