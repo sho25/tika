@@ -581,15 +581,6 @@ name|ArchiveInputStream
 name|stream
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|stream
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|stream
