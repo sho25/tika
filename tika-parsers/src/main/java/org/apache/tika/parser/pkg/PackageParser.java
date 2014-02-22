@@ -533,6 +533,20 @@ argument_list|(
 literal|"x-tar"
 argument_list|)
 decl_stmt|;
+comment|// Enable this when COMPRESS-267 is fixed, see TIKA-1243
+specifier|private
+specifier|static
+specifier|final
+name|MediaType
+name|SEVENZ
+init|=
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"x-7z-compressed"
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -567,6 +581,15 @@ name|ArchiveInputStream
 name|stream
 parameter_list|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|stream

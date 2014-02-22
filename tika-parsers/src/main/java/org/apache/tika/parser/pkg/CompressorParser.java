@@ -478,6 +478,11 @@ name|CompressorInputStream
 name|stream
 parameter_list|)
 block|{
+comment|// TODO Add support for the remaining CompressorInputStream formats:
+comment|//   FramedSnappyCompressorInputStream
+comment|//   LZMACompressorInputStream
+comment|//   SnappyCompressorInputStream
+comment|//   ZCompressorInputStream
 if|if
 condition|(
 name|stream
