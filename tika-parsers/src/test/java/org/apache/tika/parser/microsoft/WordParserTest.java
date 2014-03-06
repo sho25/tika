@@ -37,7 +37,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertFalse
 import|;
 end_import
 
@@ -49,7 +49,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 import|;
 end_import
 
@@ -2164,6 +2164,35 @@ argument_list|(
 literal|"<a href=\"mailto:ab@example.com\">ab@"
 argument_list|,
 name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testControlCharacter
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertContains
+argument_list|(
+literal|"1. Introduzione<b></a></b></p>"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testControlCharacters.doc"
+argument_list|)
+operator|.
+name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

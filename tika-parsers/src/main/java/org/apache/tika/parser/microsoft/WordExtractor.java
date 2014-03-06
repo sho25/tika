@@ -2229,21 +2229,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Copied from POI's org/apache/poi/hwpf/converter/AbstractWordConverter.processCharacters:
-comment|// line tabulator as break line
-name|text
-operator|=
-name|text
-operator|.
-name|replace
-argument_list|(
-operator|(
-name|char
-operator|)
-literal|0x000b
-argument_list|,
-literal|'\n'
-argument_list|)
-expr_stmt|;
 comment|// Non-breaking hyphens are returned as char 30
 name|text
 operator|=
@@ -2272,6 +2257,18 @@ operator|)
 literal|31
 argument_list|,
 name|UNICODECHAR_ZERO_WIDTH_SPACE
+argument_list|)
+expr_stmt|;
+comment|// Control characters as line break
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\u0000-\u001f]"
+argument_list|,
+literal|"\n"
 argument_list|)
 expr_stmt|;
 name|xhtml
@@ -3200,7 +3197,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Given a style name, return what tag should be used, and      *  what style should be applied to it.       */
+comment|/**      * Given a style name, return what tag should be used, and      *  what style should be applied to it.      */
 specifier|public
 specifier|static
 name|TagAndStyle
@@ -3447,7 +3444,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Determines if character run should be included in the extraction.      *       * @param cr character run.      * @return true if character run should be included in extraction.      */
+comment|/**      * Determines if character run should be included in the extraction.      *      * @param cr character run.      * @return true if character run should be included in extraction.      */
 specifier|private
 name|boolean
 name|isRendered
