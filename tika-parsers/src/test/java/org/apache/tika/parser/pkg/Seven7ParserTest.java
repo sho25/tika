@@ -85,6 +85,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|mime
+operator|.
+name|MediaType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|AutoDetectParser
@@ -133,16 +147,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
-operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|xml
 operator|.
 name|sax
@@ -162,9 +166,19 @@ name|Seven7ParserTest
 extends|extends
 name|AbstractPkgTest
 block|{
-annotation|@
-name|Ignore
-comment|// Pending a fix of COMPRESS-267, see TIKA-1243
+specifier|private
+specifier|static
+specifier|final
+name|MediaType
+name|TYPE_7ZIP
+init|=
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"x-7z-compressed"
+argument_list|)
+decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -196,6 +210,25 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+comment|// Ensure 7zip is a parsable format
+name|assertTrue
+argument_list|(
+literal|"No 7zip parser found"
+argument_list|,
+name|parser
+operator|.
+name|getSupportedTypes
+argument_list|(
+name|recursingContext
+argument_list|)
+operator|.
+name|contains
+argument_list|(
+name|TYPE_7ZIP
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Parse
 name|InputStream
 name|stream
 init|=
@@ -234,7 +267,10 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"application/x-7z-compressed"
+name|TYPE_7ZIP
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|metadata
 operator|.
@@ -437,9 +473,6 @@ expr_stmt|;
 block|}
 comment|/**      * Tests that the ParseContext parser is correctly      *  fired for all the embedded entries.      */
 annotation|@
-name|Ignore
-comment|// Pending a fix of COMPRESS-267, see TIKA-1243
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -531,7 +564,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Should have names but not content types, as tar doesn't
+comment|// Should have names but not content types, as 7z doesn't
 comment|//  store the content types
 name|assertEquals
 argument_list|(
