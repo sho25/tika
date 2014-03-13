@@ -7346,18 +7346,8 @@ literal|"x.oga"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"audio/ogg"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.ogg"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - Use a dedicated mimetype of Vorbis
+comment|//assertEquals("audio/ogg", tika.detect("x.ogg"));
 comment|// Differ from httpd - Speex more commonly uses its own mimetype
 comment|//assertEquals("audio/ogg", tika.detect("x.spx"));
 name|assertEquals
