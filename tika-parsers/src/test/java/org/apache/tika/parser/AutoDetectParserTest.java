@@ -179,6 +179,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|XMPDM
 import|;
 end_import
@@ -220,6 +234,18 @@ operator|.
 name|tika
 operator|.
 name|FlacParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|gagravarr
+operator|.
+name|tika
+operator|.
+name|OpusParser
 import|;
 end_import
 
@@ -431,6 +457,14 @@ name|String
 name|OGG_VORBIS
 init|=
 literal|"audio/vorbis"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|OGG_OPUS
+init|=
+literal|"audio/opus"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -1263,7 +1297,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test to ensure that the Vorbis and FLAC parsers have been correctly      *  included, and are available      * TODO Re-enable the Ogg-FLAC check when we upgrade the Vorbis Library, TIKA-1259      */
+comment|/**      * Test to ensure that the Ogg Audio parsers (Vorbis, Opus, Flac etc)      *  have been correctly included, and are available      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1273,7 +1307,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testVorbisFlac
+name|testOggFlacAudio
 parameter_list|()
 throws|throws
 name|Exception
@@ -1291,7 +1325,9 @@ literal|"testVORBIS.ogg"
 block|,
 literal|"testFLAC.flac"
 block|,
-comment|// "testFLAC.oga"
+literal|"testFLAC.oga"
+block|,
+literal|"testOPUS.opus"
 block|}
 decl_stmt|;
 name|MediaType
@@ -1316,7 +1352,19 @@ argument_list|(
 name|FLAC_NATIVE
 argument_list|)
 block|,
-comment|// MediaType.parse(OGGC_NATIVE)
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+name|OGG_FLAC
+argument_list|)
+block|,
+name|MediaType
+operator|.
+name|parse
+argument_list|(
+name|OGG_OPUS
+argument_list|)
 block|}
 decl_stmt|;
 comment|// Check we can load the parsers, and they claim to do the right things
@@ -1372,8 +1420,51 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertNotNull("Parser not found for " + mediaTypes[2],
-comment|//              fParser.getSupportedTypes(new ParseContext()));
+name|assertNotNull
+argument_list|(
+literal|"Parser not found for "
+operator|+
+name|mediaTypes
+index|[
+literal|2
+index|]
+argument_list|,
+name|fParser
+operator|.
+name|getSupportedTypes
+argument_list|(
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|OpusParser
+name|oParser
+init|=
+operator|new
+name|OpusParser
+argument_list|()
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Parser not found for "
+operator|+
+name|mediaTypes
+index|[
+literal|3
+index|]
+argument_list|,
+name|oParser
+operator|.
+name|getSupportedTypes
+argument_list|(
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Check we found the parser
 name|CompositeParser
 name|parser
@@ -1523,6 +1614,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Check some of the common metadata
+comment|// Old style metadata
 name|assertEquals
 argument_list|(
 literal|"Test Artist"
@@ -1551,9 +1643,47 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//             assertEquals("Test Artist", metadata.get(TikaCoreProperties.AUTHOR));
-comment|//             assertEquals("Test Title", metadata.get(TikaCoreProperties.TITLE));
+comment|// New style metadata
+name|assertEquals
+argument_list|(
+literal|"Test Artist"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Test Title"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Check some of the XMPDM metadata
+if|if
+condition|(
+operator|!
+name|file
+operator|.
+name|endsWith
+argument_list|(
+literal|".opus"
+argument_list|)
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"Test Album"
@@ -1568,6 +1698,7 @@ name|ALBUM
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
 literal|"Test Artist"
