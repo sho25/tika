@@ -310,7 +310,7 @@ name|options
 operator|.
 name|addOption
 argument_list|(
-literal|"h"
+literal|"?"
 argument_list|,
 literal|"help"
 argument_list|,
