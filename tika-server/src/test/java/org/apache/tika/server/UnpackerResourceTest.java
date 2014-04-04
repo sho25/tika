@@ -123,6 +123,24 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|compress
+operator|.
+name|archivers
+operator|.
+name|tar
+operator|.
+name|TarArchiveInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|cxf
 operator|.
 name|binding
@@ -222,16 +240,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -1271,11 +1279,6 @@ argument_list|)
 expr_stmt|;
 block|}
 annotation|@
-name|Ignore
-argument_list|(
-literal|"Tar format correct, but unable reading by TarArchiveInputStream (COMPRESS-262)"
-argument_list|)
-annotation|@
 name|Test
 specifier|public
 name|void
@@ -1324,7 +1327,10 @@ name|String
 argument_list|>
 name|data
 init|=
-name|readZipArchive
+name|readArchiveFromStream
+argument_list|(
+operator|new
+name|TarArchiveInputStream
 argument_list|(
 operator|(
 name|InputStream
@@ -1333,6 +1339,7 @@ name|response
 operator|.
 name|getEntity
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|assertEquals
