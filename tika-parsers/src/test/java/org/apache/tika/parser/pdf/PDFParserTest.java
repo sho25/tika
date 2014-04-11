@@ -329,24 +329,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
-operator|.
-name|microsoft
-operator|.
-name|AbstractPOIContainerExtractionTest
-operator|.
-name|TrackingHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|sax
 operator|.
 name|BodyContentHandler
@@ -2970,7 +2952,6 @@ operator|>
 name|outerHaystack
 argument_list|)
 expr_stmt|;
-comment|//plagiarized from POIContainerExtractionTest.  Thank you!
 name|TrackingHandler
 name|tracker
 init|=
