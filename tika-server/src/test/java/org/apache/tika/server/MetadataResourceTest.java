@@ -355,6 +355,11 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+name|csvReader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 name|assertNotNull
 argument_list|(
 name|metadata

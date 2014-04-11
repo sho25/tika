@@ -277,6 +277,11 @@ return|;
 block|}
 annotation|@
 name|Override
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 specifier|public
 name|void
 name|writeTo
@@ -404,7 +409,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// don't close, just flush the stream
+comment|// Don't close, just flush the stream
 name|writer
 operator|.
 name|flush
