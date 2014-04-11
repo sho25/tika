@@ -273,6 +273,11 @@ name|void
 name|setUp
 parameter_list|()
 block|{
+name|super
+operator|.
+name|setUp
+argument_list|()
+expr_stmt|;
 name|JAXRSServerFactoryBean
 name|sf
 init|=
@@ -302,7 +307,9 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|MetadataResource
-argument_list|()
+argument_list|(
+name|tika
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -195,6 +195,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|TikaConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -258,7 +272,10 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** The parser to use */
+specifier|private
+name|TikaConfig
+name|config
+decl_stmt|;
 specifier|private
 specifier|final
 name|AutoDetectParser
@@ -288,12 +305,22 @@ name|UriInfo
 name|info
 parameter_list|)
 block|{
+comment|// TODO How to get this better?
+name|config
+operator|=
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+expr_stmt|;
 name|parser
 operator|=
 name|TikaResource
 operator|.
 name|createParser
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 expr_stmt|;
 name|TikaResource
 operator|.
