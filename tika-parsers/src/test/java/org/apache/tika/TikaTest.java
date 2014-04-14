@@ -476,6 +476,7 @@ name|stream
 return|;
 block|}
 specifier|public
+specifier|static
 name|void
 name|assertContains
 parameter_list|(
