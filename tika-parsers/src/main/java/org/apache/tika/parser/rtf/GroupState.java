@@ -74,6 +74,36 @@ specifier|public
 name|Charset
 name|fontCharset
 decl_stmt|;
+comment|//in objdata
+specifier|public
+name|boolean
+name|objdata
+decl_stmt|;
+comment|//depth in pict, 1 = at pict level
+specifier|public
+name|int
+name|pictDepth
+decl_stmt|;
+comment|//in picprop key/value pair
+specifier|public
+name|boolean
+name|sp
+decl_stmt|;
+comment|//in picprop's name
+specifier|public
+name|boolean
+name|sn
+decl_stmt|;
+comment|//in picprop's value
+specifier|public
+name|boolean
+name|sv
+decl_stmt|;
+comment|//in embedded object or not
+specifier|public
+name|boolean
+name|object
+decl_stmt|;
 comment|// Create default (root) GroupState
 specifier|public
 name|GroupState
@@ -137,6 +167,23 @@ name|other
 operator|.
 name|depth
 expr_stmt|;
+name|pictDepth
+operator|=
+name|other
+operator|.
+name|pictDepth
+operator|>
+literal|0
+condition|?
+name|other
+operator|.
+name|pictDepth
+operator|+
+literal|1
+else|:
+literal|0
+expr_stmt|;
+comment|//do not inherit object, sn, sv or sp
 block|}
 block|}
 end_class
