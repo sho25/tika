@@ -515,7 +515,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/octet-stream"
+literal|"application/x-iso9660-image"
 argument_list|,
 name|tika
 operator|.
@@ -527,7 +527,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"application/octet-stream"
+literal|"application/x-apple-diskimage"
 argument_list|,
 name|tika
 operator|.
