@@ -653,8 +653,10 @@ name|line
 operator|+
 name|System
 operator|.
-name|lineSeparator
-argument_list|()
+name|getProperty
+argument_list|(
+literal|"line.separator"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
