@@ -282,7 +282,7 @@ name|getXML
 argument_list|(
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testJava.java"
+literal|"/test-documents/testJAVA.java"
 argument_list|)
 argument_list|,
 name|sourceCodeParser
@@ -348,7 +348,7 @@ name|getXML
 argument_list|(
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testJava.java"
+literal|"/test-documents/testJAVA.java"
 argument_list|)
 argument_list|,
 name|sourceCodeParser
@@ -476,7 +476,7 @@ name|getXML
 argument_list|(
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/testJava.java"
+literal|"/test-documents/testJAVA.java"
 argument_list|)
 argument_list|,
 operator|new
