@@ -209,7 +209,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 name|metadata
 operator|.
@@ -621,7 +621,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 name|metadata
 operator|.

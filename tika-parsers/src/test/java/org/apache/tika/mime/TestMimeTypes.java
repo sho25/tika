@@ -1025,7 +1025,7 @@ argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"test.tgz"
 argument_list|)
@@ -1071,7 +1071,7 @@ expr_stmt|;
 comment|// GNU TAR
 name|assertTypeByData
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"test-documents.tgz"
 argument_list|)
@@ -1680,14 +1680,14 @@ expr_stmt|;
 comment|// Should *.svgz be svg or gzip
 name|assertType
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"testSVG.svgz"
 argument_list|)
 expr_stmt|;
 name|assertTypeByData
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"testSVG.svgz"
 argument_list|)
@@ -2008,14 +2008,14 @@ expr_stmt|;
 comment|// TODO: Need a test emz file
 name|assertTypeByName
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"x.emz"
 argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/x-gzip"
+literal|"application/gzip"
 argument_list|,
 literal|"x.EMZ"
 argument_list|)
