@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * TODO Provide better support for the HTML based outputs  */
+comment|/**  *<p>Provides details of all the mimetypes known to Apache Tika,  *  similar to<em>--list-supported-types</em> with the Tika CLI.  *    *<p>TODO Provide better support for the HTML based outputs  */
 end_comment
 
 begin_class
