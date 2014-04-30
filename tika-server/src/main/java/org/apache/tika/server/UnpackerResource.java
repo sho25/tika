@@ -554,11 +554,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|Path
-argument_list|(
-literal|"/"
-argument_list|)
 specifier|public
 class|class
 name|UnpackerResource
@@ -615,7 +610,7 @@ block|}
 annotation|@
 name|Path
 argument_list|(
-literal|"unpacker{id:(/.*)?}"
+literal|"/unpacker{id:(/.*)?}"
 argument_list|)
 annotation|@
 name|PUT
@@ -670,7 +665,7 @@ block|}
 annotation|@
 name|Path
 argument_list|(
-literal|"all{id:(/.*)?}"
+literal|"/all{id:(/.*)?}"
 argument_list|)
 annotation|@
 name|PUT

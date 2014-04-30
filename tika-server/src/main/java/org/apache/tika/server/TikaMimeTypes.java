@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Provides details of all the mimetypes known to Apache Tika,  *  similar to<em>--list-supported-types</em> with the Tika CLI.  *    *<p>TODO Provide better support for the HTML based outputs  */
+comment|/**  *<p>Provides details of all the mimetypes known to Apache Tika,  *  similar to<em>--list-supported-types</em> with the Tika CLI.  */
 end_comment
 
 begin_class
@@ -215,6 +215,10 @@ specifier|private
 name|TikaConfig
 name|tika
 decl_stmt|;
+specifier|private
+name|HTMLHelper
+name|html
+decl_stmt|;
 specifier|public
 name|TikaMimeTypes
 parameter_list|(
@@ -227,6 +231,14 @@ operator|.
 name|tika
 operator|=
 name|tika
+expr_stmt|;
+name|this
+operator|.
+name|html
+operator|=
+operator|new
+name|HTMLHelper
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -242,7 +254,7 @@ name|getMimeTypesHTML
 parameter_list|()
 block|{
 name|StringBuffer
-name|html
+name|h
 init|=
 operator|new
 name|StringBuffer
@@ -250,16 +262,11 @@ argument_list|()
 decl_stmt|;
 name|html
 operator|.
-name|append
+name|generateHeader
 argument_list|(
-literal|"<html><head><title>Tika Supported Mime Types</title></head>\n"
-argument_list|)
-expr_stmt|;
-name|html
-operator|.
-name|append
-argument_list|(
-literal|"<body><h1>Tika Supported Mime Types</h1>\n"
+name|h
+argument_list|,
+literal|"Apache Tika Supported Mime Types"
 argument_list|)
 expr_stmt|;
 comment|// Get our types
@@ -335,7 +342,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -353,7 +360,7 @@ name|keySet
 argument_list|()
 control|)
 block|{
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -374,7 +381,7 @@ literal|"</a></li>\n"
 argument_list|)
 expr_stmt|;
 block|}
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -390,7 +397,7 @@ range|:
 name|types
 control|)
 block|{
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -403,7 +410,7 @@ operator|+
 literal|"\"></a>\n"
 argument_list|)
 expr_stmt|;
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -426,7 +433,7 @@ operator|.
 name|aliases
 control|)
 block|{
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -447,7 +454,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -476,7 +483,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|html
+name|h
 operator|.
 name|append
 argument_list|(
@@ -493,13 +500,13 @@ block|}
 block|}
 name|html
 operator|.
-name|append
+name|generateFooter
 argument_list|(
-literal|"</body></html>\n"
+name|h
 argument_list|)
 expr_stmt|;
 return|return
-name|html
+name|h
 operator|.
 name|toString
 argument_list|()

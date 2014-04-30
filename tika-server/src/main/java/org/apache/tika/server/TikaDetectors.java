@@ -150,7 +150,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Provides details of all the {@link Detector}s registered with  *  Apache Tika, similar to<em>--list-detectors</em> with the Tika CLI.  *    *<p>TODO Provide better support for the HTML based outputs  */
+comment|/**  *<p>Provides details of all the {@link Detector}s registered with  *  Apache Tika, similar to<em>--list-detectors</em> with the Tika CLI.  */
 end_comment
 
 begin_class
@@ -167,6 +167,10 @@ specifier|private
 name|TikaConfig
 name|tika
 decl_stmt|;
+specifier|private
+name|HTMLHelper
+name|html
+decl_stmt|;
 specifier|public
 name|TikaDetectors
 parameter_list|(
@@ -179,6 +183,14 @@ operator|.
 name|tika
 operator|=
 name|tika
+expr_stmt|;
+name|this
+operator|.
+name|html
+operator|=
+operator|new
+name|HTMLHelper
+argument_list|()
 expr_stmt|;
 block|}
 annotation|@
@@ -194,7 +206,7 @@ name|getDectorsHTML
 parameter_list|()
 block|{
 name|StringBuffer
-name|html
+name|h
 init|=
 operator|new
 name|StringBuffer
@@ -202,16 +214,11 @@ argument_list|()
 decl_stmt|;
 name|html
 operator|.
-name|append
+name|generateHeader
 argument_list|(
-literal|"<html><head><title>Apache Tika Available Detectors</title></head>\n"
-argument_list|)
-expr_stmt|;
-name|html
-operator|.
-name|append
-argument_list|(
-literal|"<body><h1>Detectors available to Apache Tika</h1>\n"
+name|h
+argument_list|,
+literal|"Detectors available to Apache Tika"
 argument_list|)
 expr_stmt|;
 name|detectorAsHTML
@@ -221,20 +228,20 @@ operator|.
 name|getDetector
 argument_list|()
 argument_list|,
-name|html
+name|h
 argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
 name|html
 operator|.
-name|append
+name|generateFooter
 argument_list|(
-literal|"</body></html>\n"
+name|h
 argument_list|)
 expr_stmt|;
 return|return
-name|html
+name|h
 operator|.
 name|toString
 argument_list|()
