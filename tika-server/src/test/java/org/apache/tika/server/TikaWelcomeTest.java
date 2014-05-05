@@ -156,6 +156,8 @@ operator|new
 name|TikaWelcome
 argument_list|(
 name|tika
+argument_list|,
+name|sf
 argument_list|)
 argument_list|)
 argument_list|)

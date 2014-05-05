@@ -602,6 +602,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|sf
+operator|.
+name|setResourceClasses
+argument_list|(
+name|TikaWelcome
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 name|List
 argument_list|<
 name|Object
