@@ -565,6 +565,8 @@ operator|new
 name|JAXRSServerFactoryBean
 argument_list|()
 decl_stmt|;
+comment|// Note - at least one of these stops TikaWelcome matching on /
+comment|// This prevents TikaWelcome acting as a partial solution to TIKA-1269
 name|sf
 operator|.
 name|setResourceClasses
@@ -597,15 +599,6 @@ name|TikaVersion
 operator|.
 name|class
 argument_list|,
-name|TikaWelcome
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|sf
-operator|.
-name|setResourceClasses
-argument_list|(
 name|TikaWelcome
 operator|.
 name|class
