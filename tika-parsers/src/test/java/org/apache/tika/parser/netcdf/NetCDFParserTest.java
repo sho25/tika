@@ -34,6 +34,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -315,6 +327,64 @@ name|EXPERIMENT_ID
 argument_list|)
 argument_list|,
 literal|"720 ppm stabilization experiment (SRESA1B)"
+argument_list|)
+expr_stmt|;
+name|String
+name|content
+init|=
+name|handler
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|":long_name = \"Surface area\";"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"float area(lat=128, lon=256);"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"float lat(lat=128);"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"double lat_bnds(lat=128, bnds=2);"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"double lon_bnds(lon=256, bnds=2);"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
