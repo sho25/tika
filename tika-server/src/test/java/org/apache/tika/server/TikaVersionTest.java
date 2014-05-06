@@ -126,7 +126,7 @@ name|TikaVersionTest
 extends|extends
 name|CXFTestBase
 block|{
-specifier|private
+specifier|protected
 specifier|static
 specifier|final
 name|String
