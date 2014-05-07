@@ -591,6 +591,10 @@ name|TikaDetectors
 operator|.
 name|class
 argument_list|,
+name|TikaParsers
+operator|.
+name|class
+argument_list|,
 name|TikaMimeTypes
 operator|.
 name|class
@@ -604,6 +608,8 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+comment|// Use this one instead for the Welcome page to work
+comment|/*             sf.setResourceClasses( //              MetadataEP.class,                MetadataResource.class,                TikaResource.class,  //              UnpackerResource.class,                TikaDetectors.class,                TikaMimeTypes.class,                TikaParsers.class,                TikaVersion.class,                TikaWelcome.class       );  */
 name|List
 argument_list|<
 name|Object
@@ -751,6 +757,21 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|TikaDetectors
+argument_list|(
+name|tika
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|rProviders
+operator|.
+name|add
+argument_list|(
+operator|new
+name|SingletonResourceProvider
+argument_list|(
+operator|new
+name|TikaParsers
 argument_list|(
 name|tika
 argument_list|)
