@@ -842,6 +842,13 @@ argument_list|,
 literal|"application/vnd.ms-word.template.macroEnabled.12"
 argument_list|)
 expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testPPT.xps"
+argument_list|,
+literal|"application/vnd.ms-xpsdocument"
+argument_list|)
+expr_stmt|;
 comment|// .xlsb is an OOXML file containing the binary parts, and not
 comment|//  an OLE2 file as you might initially expect!
 name|assertTypeByData

@@ -1171,6 +1171,23 @@ condition|)
 return|return
 name|type
 return|;
+comment|// Is it XPS format?
+name|type
+operator|=
+name|detectXPSOPC
+argument_list|(
+name|pkg
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+condition|)
+return|return
+name|type
+return|;
 comment|// Is it an AutoCAD format?
 name|type
 operator|=
@@ -1371,6 +1388,53 @@ argument_list|(
 name|docType
 argument_list|)
 return|;
+block|}
+comment|/**      * Detects Open XML Paper Specification (XPS)      */
+specifier|private
+specifier|static
+name|MediaType
+name|detectXPSOPC
+parameter_list|(
+name|OPCPackage
+name|pkg
+parameter_list|)
+block|{
+name|PackageRelationshipCollection
+name|xps
+init|=
+name|pkg
+operator|.
+name|getRelationshipsByType
+argument_list|(
+literal|"http://schemas.microsoft.com/xps/2005/06/fixedrepresentation"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|xps
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"vnd.ms-xpsdocument"
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// Non-XPS Package received
+return|return
+literal|null
+return|;
+block|}
 block|}
 comment|/**      * Detects AutoCAD formats that live in OPC packaging      */
 specifier|private
