@@ -1186,15 +1186,6 @@ parameter_list|)
 block|{
 comment|// Invalid date format, just ignore
 block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|e
-parameter_list|)
-block|{
-comment|//remove after PDFBOX-1803 is fixed (TIKA-1233)
-comment|// Invalid date format, just ignore
-block|}
 try|try
 block|{
 name|Calendar
@@ -1234,15 +1225,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// Invalid date format, just ignore
-block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|e
-parameter_list|)
-block|{
-comment|//remove after PDFBOX-1803 is fixed (TIKA-1233)
 comment|// Invalid date format, just ignore
 block|}
 comment|// All remaining metadata is custom
