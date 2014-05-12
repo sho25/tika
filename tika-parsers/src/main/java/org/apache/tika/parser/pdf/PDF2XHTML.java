@@ -2391,6 +2391,16 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|spec
+operator|==
+literal|null
+condition|)
+block|{
+comment|//skip silently
+continue|continue;
+block|}
 name|PDEmbeddedFile
 name|file
 init|=
@@ -2399,6 +2409,16 @@ operator|.
 name|getEmbeddedFile
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|file
+operator|==
+literal|null
+condition|)
+block|{
+comment|//skip silently
+continue|continue;
+block|}
 name|Metadata
 name|metadata
 init|=
