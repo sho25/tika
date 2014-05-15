@@ -1720,7 +1720,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Try to extract all multilingual items from the XMPSchema      *<p>      * This relies on the property having a valid xmp getName()      * @param metadata      * @param property      * @param pdfBoxBaseline      * @param schema      */
+comment|/**      * Try to extract all multilingual items from the XMPSchema      *<p>      * This relies on the property having a valid xmp getName()      *<p>      * For now, this only extracts the first language if the property does not allow multiple values (see TIKA-1295)      * @param metadata      * @param property      * @param pdfBoxBaseline      * @param schema      */
 specifier|private
 name|void
 name|extractMultilingualItems
@@ -1738,6 +1738,7 @@ name|XMPSchema
 name|schema
 parameter_list|)
 block|{
+comment|//if schema is null, just go with pdfBoxBaseline
 if|if
 condition|(
 name|schema
@@ -1761,7 +1762,7 @@ condition|)
 block|{
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|property
 argument_list|,
@@ -1808,18 +1809,6 @@ name|value
 operator|!=
 literal|null
 operator|&&
-name|pdfBoxBaseline
-operator|!=
-literal|null
-operator|&&
-operator|!
-name|value
-operator|.
-name|equals
-argument_list|(
-name|pdfBoxBaseline
-argument_list|)
-operator|&&
 name|value
 operator|.
 name|length
@@ -1828,6 +1817,23 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|//if you're going to add it below in the baseline addition, don't add it now
+if|if
+condition|(
+name|pdfBoxBaseline
+operator|!=
+literal|null
+operator|&&
+name|value
+operator|.
+name|equals
+argument_list|(
+name|pdfBoxBaseline
+argument_list|)
+condition|)
+block|{
+continue|continue;
+block|}
 name|metadata
 operator|.
 name|add
@@ -1837,6 +1843,17 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|property
+operator|.
+name|isMultiValuePermitted
+argument_list|()
+condition|)
+block|{
+return|return;
+block|}
 block|}
 block|}
 if|if
@@ -1853,6 +1870,32 @@ operator|>
 literal|0
 condition|)
 block|{
+comment|//if we've already added something above and multivalue is not permitted
+comment|//return.
+if|if
+condition|(
+operator|!
+name|property
+operator|.
+name|isMultiValuePermitted
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|property
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+block|}
 name|metadata
 operator|.
 name|add
