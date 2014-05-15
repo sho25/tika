@@ -18,6 +18,16 @@ package|;
 end_package
 
 begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
 import|import static
 name|org
 operator|.
@@ -2781,6 +2791,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//TIKA-1124
+comment|//IGNORE until TIKA-1298/PDFBOX 2079 is fixed or we all
+comment|//move to Java 1.7
+annotation|@
+name|Ignore
 annotation|@
 name|Test
 specifier|public
