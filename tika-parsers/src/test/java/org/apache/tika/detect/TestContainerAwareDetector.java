@@ -1400,9 +1400,17 @@ literal|"application/vnd.android.package-archive"
 argument_list|)
 expr_stmt|;
 comment|// JAR with HTML files in it
-comment|// TODO Fix TIKA-1292 and enable this test
-comment|//        assertTypeByNameAndData("testJAR_with_HTML.jar", "testJAR_with_HTML.jar",
-comment|//                                "application/java-archive", "application/java-archive");
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testJAR_with_HTML.jar"
+argument_list|,
+literal|"testJAR_with_HTML.jar"
+argument_list|,
+literal|"application/java-archive"
+argument_list|,
+literal|"application/java-archive"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|TikaInputStream
