@@ -1019,10 +1019,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Tests that when two magic matches both apply, and both      *  have the same priority, we use the name to pick the      *  right one based on the glob, or the first one we      *  come across if not. See TIKA-1292 for more details.      */
-comment|//  @Test
+annotation|@
+name|Test
 specifier|public
 name|void
-name|DISABLEDtestMimeMagicClashSamePriority
+name|testMimeMagicClashSamePriority
 parameter_list|()
 throws|throws
 name|IOException
@@ -1132,7 +1133,7 @@ name|metadata
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Without, goes for the first defined
+comment|// Without, goes for the one that sorts last
 name|metadata
 operator|=
 operator|new
@@ -1152,7 +1153,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|helloType
+name|helloXType
 argument_list|,
 name|mimeTypes
 operator|.
