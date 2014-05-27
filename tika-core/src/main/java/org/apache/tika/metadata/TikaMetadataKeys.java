@@ -39,6 +39,11 @@ name|EMBEDDED_RELATIONSHIP_ID
 init|=
 literal|"embeddedRelationshipId"
 decl_stmt|;
+name|String
+name|EMBEDDED_RESOURCE_TYPE
+init|=
+literal|"embeddedResourceType"
+decl_stmt|;
 block|}
 end_interface
 

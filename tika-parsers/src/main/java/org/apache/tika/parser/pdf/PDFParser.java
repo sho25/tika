@@ -478,7 +478,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PDF parser.  *<p>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs. If  * the PDF contains any embedded documents (for example as part of a PDF  * package) then this parser will use the {@link EmbeddedDocumentExtractor}  * to handle them.  */
+comment|/**  * PDF parser.  *<p>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs. If  * the PDF contains any embedded documents (for example as part of a PDF  * package) then this parser will use the {@link EmbeddedDocumentExtractor}  * to handle them.  *<p>  * As of Tika 1.6, it is possible to extract inline images with  * the {@link EmbeddedDocumentExtractor} as if they were regular  * attachments.  By default, this feature is turned off because of  * the potentially enormous number and size of inline images.  To  * turn this feature on, see  * {@link PDFParserConfig#setExtractInlineImages(boolean)}.  */
 end_comment
 
 begin_class

@@ -1174,6 +1174,17 @@ return|return
 name|metadatas
 return|;
 block|}
+specifier|public
+name|void
+name|clear
+parameter_list|()
+block|{
+name|metadatas
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
