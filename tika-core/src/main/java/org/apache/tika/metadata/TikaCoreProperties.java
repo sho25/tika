@@ -29,14 +29,14 @@ specifier|public
 interface|interface
 name|TikaCoreProperties
 block|{
-comment|/**      * A file might contain different types of embedded documents.      * The most common is the attachment.      * An "inline" embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * Not all parsers have yet implemented this       *      */
+comment|/**      * A file might contain different types of embedded documents.      * The most common is the ATTACHEMENT.      * An INLINE embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * Not all parsers have yet implemented this.       *      */
 specifier|public
 enum|enum
 name|EmbeddedResourceType
 block|{
-name|inline
+name|INLINE
 block|,
-name|attachment
+name|ATTACHMENT
 block|}
 empty_stmt|;
 comment|/**      * @see DublinCore#FORMAT      */
@@ -877,14 +877,14 @@ index|[]
 block|{
 name|EmbeddedResourceType
 operator|.
-name|attachment
+name|ATTACHMENT
 operator|.
 name|toString
 argument_list|()
 block|,
 name|EmbeddedResourceType
 operator|.
-name|inline
+name|INLINE
 operator|.
 name|toString
 argument_list|()

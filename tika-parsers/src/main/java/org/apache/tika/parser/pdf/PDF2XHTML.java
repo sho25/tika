@@ -1924,7 +1924,7 @@ name|TikaCoreProperties
 operator|.
 name|EmbeddedResourceType
 operator|.
-name|inline
+name|INLINE
 operator|.
 name|toString
 argument_list|()
@@ -2615,7 +2615,7 @@ name|TikaCoreProperties
 operator|.
 name|EmbeddedResourceType
 operator|.
-name|attachment
+name|ATTACHMENT
 operator|.
 name|toString
 argument_list|()
