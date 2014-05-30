@@ -4765,6 +4765,23 @@ literal|"levelnfcn"
 argument_list|)
 condition|)
 block|{
+comment|//sanity check to make sure list information isn't corrupt
+if|if
+condition|(
+name|listTableLevel
+operator|>
+operator|-
+literal|1
+operator|&&
+name|listTableLevel
+operator|<
+name|currentList
+operator|.
+name|numberType
+operator|.
+name|length
+condition|)
+block|{
 name|currentList
 operator|.
 name|numberType
@@ -4774,6 +4791,7 @@ index|]
 operator|=
 name|param
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
