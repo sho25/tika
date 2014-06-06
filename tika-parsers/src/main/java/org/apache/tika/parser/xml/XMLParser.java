@@ -470,6 +470,8 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
 name|xhtml
 operator|.
 name|endElement
@@ -482,6 +484,7 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 specifier|protected
 name|ContentHandler
