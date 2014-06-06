@@ -161,14 +161,32 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|font
+operator|.
+name|AdobeFontMetricParser
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test case for parsing afm files.  */
+comment|/**  * Test case for parsing various different font files.  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|AdobeFontMetricParserTest
+name|FontParsersTest
 block|{
 annotation|@
 name|Test
@@ -215,7 +233,7 @@ name|TikaInputStream
 operator|.
 name|get
 argument_list|(
-name|AdobeFontMetricParserTest
+name|FontParsersTest
 operator|.
 name|class
 operator|.
@@ -299,7 +317,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"FontName"
+name|MET_FONT_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -311,7 +329,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"FontFullName"
+name|MET_FONT_FULL_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -323,7 +341,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"FontFamilyName"
+name|MET_FONT_FAMILY_NAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -335,7 +353,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"FontWeight"
+name|MET_FONT_WEIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -347,7 +365,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"FontVersion"
+name|MET_FONT_VERSION
 argument_list|)
 argument_list|)
 expr_stmt|;
