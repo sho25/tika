@@ -299,6 +299,13 @@ decl_stmt|;
 specifier|static
 specifier|final
 name|String
+name|MET_PS_NAME
+init|=
+literal|"PSName"
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
 name|MET_FONT_NAME
 init|=
 literal|"FontName"
@@ -316,6 +323,13 @@ name|String
 name|MET_FONT_FAMILY_NAME
 init|=
 literal|"FontFamilyName"
+decl_stmt|;
+specifier|static
+specifier|final
+name|String
+name|MET_FONT_SUB_FAMILY_NAME
+init|=
+literal|"FontSubFamilyName"
 decl_stmt|;
 specifier|static
 specifier|final
