@@ -6542,18 +6542,8 @@ literal|"x.bat"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/x-msdownload"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.msi"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - MSI is different from normal windows executables
+comment|//assertEquals("application/x-msdownload", tika.detect("x.msi"));
 name|assertEquals
 argument_list|(
 literal|"application/x-msmediaview"
