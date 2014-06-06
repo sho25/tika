@@ -1450,6 +1450,16 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|pdfaxmp
+operator|.
+name|getConformance
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|metadata
 operator|.
 name|set
@@ -1512,6 +1522,7 @@ operator|+
 literal|"\""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// TODO WARN if this XMP version is inconsistent with document header version?
 block|}
