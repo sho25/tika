@@ -291,6 +291,12 @@ init|=
 literal|0
 decl_stmt|;
 specifier|private
+name|boolean
+name|isTitleSetToMetadata
+init|=
+literal|false
+decl_stmt|;
+specifier|private
 specifier|final
 name|StringBuilder
 name|title
@@ -1401,6 +1407,9 @@ condition|(
 name|titleLevel
 operator|==
 literal|0
+operator|&&
+operator|!
+name|isTitleSetToMetadata
 condition|)
 block|{
 name|metadata
@@ -1419,6 +1428,10 @@ operator|.
 name|trim
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|isTitleSetToMetadata
+operator|=
+literal|true
 expr_stmt|;
 block|}
 block|}
