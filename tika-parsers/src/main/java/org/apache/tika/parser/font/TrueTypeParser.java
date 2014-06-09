@@ -424,9 +424,6 @@ argument_list|()
 operator|.
 name|getCreated
 argument_list|()
-operator|.
-name|getTime
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|metadata
@@ -443,9 +440,6 @@ name|getHeader
 argument_list|()
 operator|.
 name|getModified
-argument_list|()
-operator|.
-name|getTime
 argument_list|()
 argument_list|)
 expr_stmt|;
