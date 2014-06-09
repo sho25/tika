@@ -43,6 +43,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -464,6 +474,31 @@ literal|"/test-documents/testTrueType.ttf"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//Pending PDFBOX-2122's integration (PDFBox 1.8.6)
+comment|//we must set the default timezone to something
+comment|//standard for this test.
+comment|//TODO: once we upgrade to PDFBox 1.8.6, remove
+comment|//this timezone code.
+name|TimeZone
+name|defaultTimeZone
+init|=
+name|TimeZone
+operator|.
+name|getDefault
+argument_list|()
+decl_stmt|;
+name|TimeZone
+operator|.
+name|setDefault
+argument_list|(
+name|TimeZone
+operator|.
+name|getTimeZone
+argument_list|(
+literal|"UTC"
+argument_list|)
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|parser
@@ -482,6 +517,14 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+comment|//make sure to reset default timezone
+name|TimeZone
+operator|.
+name|setDefault
+argument_list|(
+name|defaultTimeZone
+argument_list|)
+expr_stmt|;
 name|stream
 operator|.
 name|close
@@ -516,11 +559,48 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Disabled pending a fix for PDFBOX-2122
-comment|// FontBox returns dates in local timezone
-comment|//        assertEquals("1904-01-01T00:00:00Z",   metadata.get(Metadata.CREATION_DATE));
-comment|//        assertEquals("1904-01-01T00:00:00Z",   metadata.get(TikaCoreProperties.CREATED));
-comment|//        assertEquals("1904-01-01T00:00:00Z",   metadata.get(TikaCoreProperties.MODIFIED));
+name|assertEquals
+argument_list|(
+literal|"1904-01-01T00:00:00Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CREATION_DATE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1904-01-01T00:00:00Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CREATED
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1904-01-01T00:00:00Z"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|MODIFIED
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"NewBaskervilleEF-Roman"
