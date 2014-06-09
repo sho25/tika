@@ -201,7 +201,7 @@ name|formatted
 init|=
 name|formatDate
 argument_list|(
-name|date
+name|calendar
 argument_list|)
 decl_stmt|;
 comment|// Strip the timezone details before returning
