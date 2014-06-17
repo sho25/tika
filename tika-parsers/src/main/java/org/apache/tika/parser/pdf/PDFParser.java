@@ -905,11 +905,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-name|handler
-operator|.
-name|endDocument
-argument_list|()
-expr_stmt|;
 block|}
 specifier|private
 name|void
