@@ -852,7 +852,7 @@ name|MAX_ACROFORM_RECURSIONS
 init|=
 literal|10
 decl_stmt|;
-comment|// TODO: remove once PDFBOX-1130 is fixed:
+comment|// TODO: remove once PDFBOX-2160 is fixed:
 specifier|private
 name|boolean
 name|inParagraph
@@ -2045,7 +2045,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// TODO: remove once PDFBOX-1130 is fixed
+comment|// TODO: remove once PDFBOX-2160 is fixed
 if|if
 condition|(
 name|inParagraph
@@ -2100,7 +2100,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// TODO: remove once PDFBOX-1130 is fixed
+comment|// TODO: remove once PDFBOX-2160 is fixed
 if|if
 condition|(
 operator|!
@@ -2848,7 +2848,7 @@ name|handler
 parameter_list|,
 specifier|final
 name|int
-name|recurseDepth
+name|currentRecursiveDepth
 parameter_list|)
 throws|throws
 name|SAXException
@@ -2857,7 +2857,7 @@ name|IOException
 block|{
 if|if
 condition|(
-name|recurseDepth
+name|currentRecursiveDepth
 operator|>=
 name|MAX_ACROFORM_RECURSIONS
 condition|)
@@ -2871,12 +2871,10 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
 name|List
+argument_list|<
+name|COSObjectable
+argument_list|>
 name|kids
 init|=
 name|field
@@ -2891,32 +2889,10 @@ operator|!=
 literal|null
 condition|)
 block|{
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"rawtypes"
-argument_list|)
-name|Iterator
-name|kidsIter
-init|=
-name|kids
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|kidsIter
-operator|==
-literal|null
-condition|)
-block|{
-return|return;
-block|}
 name|int
 name|r
 init|=
-name|recurseDepth
+name|currentRecursiveDepth
 operator|+
 literal|1
 decl_stmt|;
@@ -2928,22 +2904,14 @@ literal|"ol"
 argument_list|)
 expr_stmt|;
 comment|//TODO: can generate<ol/>. Rework to avoid that.
-while|while
-condition|(
-name|kidsIter
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
-name|Object
+for|for
+control|(
+name|COSObjectable
 name|pdfObj
-init|=
-name|kidsIter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|kids
+control|)
+block|{
 if|if
 condition|(
 name|pdfObj
@@ -3136,6 +3104,14 @@ name|e
 parameter_list|)
 block|{
 comment|//swallow
+block|}
+catch|catch
+parameter_list|(
+name|NullPointerException
+name|e
+parameter_list|)
+block|{
+comment|//TODO: remove once PDFBOX-2161 is fixed
 block|}
 if|if
 condition|(
