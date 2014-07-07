@@ -219,22 +219,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"STREAM IS NULL WTF: ["
-operator|+
-name|PROPERTIES_FILE
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
