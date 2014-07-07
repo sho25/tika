@@ -102,7 +102,7 @@ specifier|final
 name|String
 name|PROPERTIES_FILE
 init|=
-literal|"translator.microsoft.properties"
+literal|"org/apache/tika/language/translate/translator.microsoft.properties"
 decl_stmt|;
 specifier|public
 specifier|static
