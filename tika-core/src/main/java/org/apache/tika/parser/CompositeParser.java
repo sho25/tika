@@ -926,11 +926,17 @@ decl_stmt|;
 name|TaggedContentHandler
 name|taggedHandler
 init|=
+name|handler
+operator|!=
+literal|null
+condition|?
 operator|new
 name|TaggedContentHandler
 argument_list|(
 name|handler
 argument_list|)
+else|:
+literal|null
 decl_stmt|;
 try|try
 block|{

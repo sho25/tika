@@ -432,6 +432,10 @@ comment|// TIKA-216: Zip bomb prevention
 name|SecureContentHandler
 name|sch
 init|=
+name|handler
+operator|!=
+literal|null
+condition|?
 operator|new
 name|SecureContentHandler
 argument_list|(
@@ -439,6 +443,8 @@ name|handler
 argument_list|,
 name|tis
 argument_list|)
+else|:
+literal|null
 decl_stmt|;
 try|try
 block|{

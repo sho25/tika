@@ -868,6 +868,13 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|handler
+operator|!=
+literal|null
+condition|)
+block|{
 name|PDF2XHTML
 operator|.
 name|process
@@ -883,6 +890,7 @@ argument_list|,
 name|localConfig
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{
