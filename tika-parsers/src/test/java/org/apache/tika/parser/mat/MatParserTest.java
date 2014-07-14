@@ -157,6 +157,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|ToXMLContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -176,7 +190,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases to exercise the {@link MatParser}.  *   */
+comment|/**  * Test cases to exercise the {@link MatParser}.  *  */
 end_comment
 
 begin_class
@@ -200,11 +214,11 @@ operator|new
 name|MatParser
 argument_list|()
 decl_stmt|;
-name|ContentHandler
+name|ToXMLContentHandler
 name|handler
 init|=
 operator|new
-name|BodyContentHandler
+name|ToXMLContentHandler
 argument_list|()
 decl_stmt|;
 name|Metadata
@@ -321,7 +335,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"a1:[1x1  struct array]"
+literal|"<li>[1x909  double array]</li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -331,7 +345,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"[1024x1261  double array]"
+literal|"<p>c1:[1x1  struct array]</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -341,7 +355,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"a2:[1x1  struct array]"
+literal|"<li>[1024x1  double array]</li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -351,7 +365,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"[1024x1283  double array]"
+literal|"<p>b1:[1x1  struct array]</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -361,7 +375,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"b1:[1x1  struct array]"
+literal|"<p>a1:[1x1  struct array]</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -371,7 +385,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"[1024x1311  double array]"
+literal|"<li>[1024x1261  double array]</li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -381,7 +395,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"c1:[1x1  struct array]"
+literal|"<li>[1x1  double array]</li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -391,8 +405,110 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"[1024x909  double array]"
+literal|"</body></html>"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testParserForText
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Parser
+name|parser
+init|=
+operator|new
+name|MatParser
+argument_list|()
+decl_stmt|;
+name|ToXMLContentHandler
+name|handler
+init|=
+operator|new
+name|ToXMLContentHandler
+argument_list|()
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|String
+name|path
+init|=
+literal|"/test-documents/test_mat_text.mat"
+decl_stmt|;
+name|InputStream
+name|stream
+init|=
+name|MatParser
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+name|path
+argument_list|)
+decl_stmt|;
+try|try
+block|{
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+comment|//Check Content
+name|String
+name|content
+init|=
+name|handler
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"<p>double:[2x2  double array]</p>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|content
 argument_list|)
 expr_stmt|;
 block|}

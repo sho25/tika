@@ -404,7 +404,7 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-comment|//Set MIME type as metadata
+comment|//Set MIME type as Matlab
 name|metadata
 operator|.
 name|set
@@ -418,7 +418,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-comment|//Input file stream
+comment|// Use TIS so we can spool a temp file for parsing.
 name|TikaInputStream
 name|tis
 init|=
@@ -452,27 +452,22 @@ name|getMatFileHeader
 argument_list|()
 decl_stmt|;
 comment|//.mat header information
+comment|// Example header: "MATLAB 5.0 MAT-file, Platform: MACI64, Created on: Sun Mar  2 23:41:57 2014"
 name|String
-name|stringToSplit
+index|[]
+name|parts
 init|=
 name|hdr
 operator|.
 name|getDescription
 argument_list|()
-decl_stmt|;
-comment|//break header information into its parts
-name|String
-index|[]
-name|parts
-init|=
-name|stringToSplit
 operator|.
 name|split
 argument_list|(
 literal|","
 argument_list|)
 decl_stmt|;
-comment|// Ex .mat header "MATLAB 5.0 MAT-file, Platform: MACI64, Created on: Sun Mar  2 23:41:57 2014"
+comment|// Break header information into its parts
 if|if
 condition|(
 name|parts
@@ -511,7 +506,10 @@ name|substring
 argument_list|(
 name|lastIndex1
 operator|+
-literal|11
+literal|"Created on:"
+operator|.
+name|length
+argument_list|()
 argument_list|)
 operator|.
 name|trim
@@ -565,7 +563,10 @@ name|substring
 argument_list|(
 name|lastIndex2
 operator|+
-literal|9
+literal|"Platform:"
+operator|.
+name|length
+argument_list|()
 argument_list|)
 operator|.
 name|trim
@@ -607,7 +608,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Get endian indicator from header file
+comment|// Get endian indicator from header file
 name|String
 name|endianBytes
 init|=
@@ -620,7 +621,7 @@ name|getEndianIndicator
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//retrieve endian bytes and convert to string
+comment|// Retrieve endian bytes and convert to string
 name|String
 name|endianCode
 init|=
@@ -634,7 +635,7 @@ name|toCharArray
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//convert bytes to characters to string
+comment|// Convert bytes to characters to string
 name|metadata
 operator|.
 name|set
@@ -661,88 +662,59 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
-comment|//Get array names, size, and data types
+name|xhtml
+operator|.
+name|newline
+argument_list|()
+expr_stmt|;
+comment|//Loop through each variable
+for|for
+control|(
 name|Map
+operator|.
+name|Entry
 argument_list|<
 name|String
 argument_list|,
 name|MLArray
 argument_list|>
-name|data
-init|=
+name|entry
+range|:
 name|mfr
 operator|.
 name|getContent
 argument_list|()
-decl_stmt|;
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|vars
-init|=
-name|data
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
-decl_stmt|;
-comment|//Loop through each variable
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|var
-init|=
-name|vars
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|var
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|String
 name|varName
 init|=
-name|var
+name|entry
 operator|.
-name|next
+name|getKey
 argument_list|()
 decl_stmt|;
 name|MLArray
 name|varData
 init|=
-name|data
+name|entry
 operator|.
-name|get
-argument_list|(
-name|varName
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|xhtml
 operator|.
-name|characters
+name|element
 argument_list|(
+literal|"p"
+argument_list|,
 name|varName
-argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|characters
-argument_list|(
+operator|+
 literal|":"
-argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|characters
-argument_list|(
+operator|+
 name|String
 operator|.
 name|valueOf
@@ -751,12 +723,7 @@ name|varData
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|xhtml
-operator|.
-name|newline
-argument_list|()
-expr_stmt|;
-comment|//if the variable is a structure, extract variable info from structure
+comment|// If the variable is a structure, extract variable info from structure
 if|if
 condition|(
 name|varData
@@ -778,30 +745,34 @@ argument_list|(
 name|varName
 argument_list|)
 decl_stmt|;
-name|Collection
-argument_list|<
-name|MLArray
-argument_list|>
-name|list
-init|=
-name|mlStructure
+name|xhtml
 operator|.
-name|getAllFields
+name|startElement
+argument_list|(
+literal|"ul"
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|newline
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|MLArray
 name|element
 range|:
-name|list
+name|mlStructure
+operator|.
+name|getAllFields
+argument_list|()
 control|)
 block|{
 name|xhtml
 operator|.
-name|characters
+name|startElement
 argument_list|(
-literal|"  "
+literal|"li"
 argument_list|)
 expr_stmt|;
 name|xhtml
@@ -816,12 +787,7 @@ name|element
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|xhtml
-operator|.
-name|newline
-argument_list|()
-expr_stmt|;
-comment|//if there is an imbedded structure, extract variable info.
+comment|// If there is an embedded structure, extract variable info.
 if|if
 condition|(
 name|element
@@ -830,35 +796,49 @@ name|isStruct
 argument_list|()
 condition|)
 block|{
-name|String
-name|nest
-init|=
+name|xhtml
+operator|.
+name|startElement
+argument_list|(
+literal|"ul"
+argument_list|)
+expr_stmt|;
+comment|// Should this actually be a recursive call?
+name|xhtml
+operator|.
+name|element
+argument_list|(
+literal|"li"
+argument_list|,
 name|element
 operator|.
 name|contentToString
 argument_list|()
-decl_stmt|;
-name|xhtml
-operator|.
-name|characters
-argument_list|(
-literal|"      "
 argument_list|)
 expr_stmt|;
 name|xhtml
 operator|.
-name|characters
+name|endElement
 argument_list|(
-name|nest
+literal|"ul"
 argument_list|)
 expr_stmt|;
+block|}
 name|xhtml
 operator|.
-name|newline
-argument_list|()
+name|endElement
+argument_list|(
+literal|"li"
+argument_list|)
 expr_stmt|;
 block|}
-block|}
+name|xhtml
+operator|.
+name|endElement
+argument_list|(
+literal|"ul"
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|xhtml
@@ -877,7 +857,7 @@ throw|throw
 operator|new
 name|TikaException
 argument_list|(
-literal|"matparser error"
+literal|"Error parsing Matlab file with MatParser"
 argument_list|,
 name|e
 argument_list|)
