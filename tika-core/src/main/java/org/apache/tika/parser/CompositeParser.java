@@ -1005,6 +1005,12 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|taggedHandler
+operator|!=
+literal|null
+condition|)
 name|taggedHandler
 operator|.
 name|throwIfCauseOf
