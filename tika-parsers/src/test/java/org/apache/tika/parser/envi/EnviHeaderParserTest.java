@@ -49,6 +49,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|ToXMLContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -175,11 +189,11 @@ operator|new
 name|EnviHeaderParser
 argument_list|()
 decl_stmt|;
-name|ContentHandler
+name|ToXMLContentHandler
 name|handler
 init|=
 operator|new
-name|BodyContentHandler
+name|ToXMLContentHandler
 argument_list|()
 decl_stmt|;
 name|Metadata
@@ -243,13 +257,22 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|content
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|content
 operator|.
 name|contains
 argument_list|(
-literal|"ENVI"
+literal|"<body><p>ENVI</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -259,7 +282,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"samples = 2400"
+literal|"<p>samples = 2400</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -269,7 +292,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"lines   = 2400"
+literal|"<p>lines   = 2400</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -279,7 +302,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"bands   = 7"
+literal|"<p>map info = {Sinusoidal, 1.5000, 1.5000, -10007091.3643, 5559289.2856, 4.6331271653e+02, 4.6331271653e+02, , units=Meters}</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -289,17 +312,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"header offset = 0"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
-argument_list|(
-literal|"file type = ENVI Standard"
+literal|"content=\"application/envi.hdr\""
 argument_list|)
 argument_list|)
 expr_stmt|;
