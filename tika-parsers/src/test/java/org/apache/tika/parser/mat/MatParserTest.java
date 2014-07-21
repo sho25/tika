@@ -516,15 +516,6 @@ literal|"<p>double:[2x2  double array]</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-name|content
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
