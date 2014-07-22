@@ -1563,13 +1563,10 @@ if|if
 condition|(
 name|flash
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Flash fired"
 argument_list|)
-operator|>
-operator|-
-literal|1
 condition|)
 block|{
 name|metadata
@@ -1594,13 +1591,10 @@ if|if
 condition|(
 name|flash
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Flash did not fire"
 argument_list|)
-operator|>
-operator|-
-literal|1
 condition|)
 block|{
 name|metadata

@@ -216,13 +216,10 @@ operator|.
 name|toString
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"cannot parse detached pkcs7 signature"
 argument_list|)
-operator|!=
-operator|-
-literal|1
 argument_list|)
 expr_stmt|;
 block|}

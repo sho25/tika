@@ -7360,13 +7360,10 @@ name|isLocalLink
 init|=
 name|s
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"\\l "
 argument_list|)
-operator|!=
-operator|-
-literal|1
 decl_stmt|;
 name|int
 name|idx

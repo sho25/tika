@@ -3635,13 +3635,10 @@ argument_list|,
 operator|(
 name|xml
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"<li>aTextField: TIKA-1226</li>"
 argument_list|)
-operator|>
-operator|-
-literal|1
 operator|)
 argument_list|)
 expr_stmt|;
