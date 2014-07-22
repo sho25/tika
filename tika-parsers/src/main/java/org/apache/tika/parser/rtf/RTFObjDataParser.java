@@ -772,9 +772,6 @@ name|Ole10Native
 operator|.
 name|createFromEmbeddedOleObject
 argument_list|(
-operator|(
-name|DirectoryNode
-operator|)
 name|root
 argument_list|)
 decl_stmt|;

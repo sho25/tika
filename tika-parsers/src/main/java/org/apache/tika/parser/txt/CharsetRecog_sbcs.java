@@ -23451,10 +23451,6 @@ parameter_list|)
 block|{
 name|prev_fInputBytes
 operator|=
-operator|(
-name|byte
-index|[]
-operator|)
 name|det
 operator|.
 name|fInputBytes

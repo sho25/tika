@@ -5055,9 +5055,6 @@ name|groupState
 operator|.
 name|ucSkip
 operator|=
-operator|(
-name|int
-operator|)
 name|param
 expr_stmt|;
 block|}

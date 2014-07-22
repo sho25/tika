@@ -602,7 +602,7 @@ name|Metadata
 name|metadata
 parameter_list|,
 name|Property
-name|tikaMetadata
+name|tikaProperty
 parameter_list|,
 name|String
 name|localPart
@@ -618,10 +618,7 @@ name|localPart
 argument_list|,
 name|metadata
 argument_list|,
-operator|(
-name|Property
-operator|)
-name|tikaMetadata
+name|tikaProperty
 argument_list|)
 return|;
 block|}
@@ -697,7 +694,7 @@ name|Metadata
 name|metadata
 parameter_list|,
 name|Property
-name|tikaMetadata
+name|tikaProperty
 parameter_list|,
 name|String
 name|localPart
@@ -713,10 +710,7 @@ name|localPart
 argument_list|,
 name|metadata
 argument_list|,
-operator|(
-name|Property
-operator|)
-name|tikaMetadata
+name|tikaProperty
 argument_list|,
 literal|true
 argument_list|,

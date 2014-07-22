@@ -1273,12 +1273,7 @@ name|set
 argument_list|(
 name|prop
 argument_list|,
-operator|(
-operator|(
-name|Boolean
-operator|)
 name|value
-operator|)
 operator|.
 name|toString
 argument_list|()

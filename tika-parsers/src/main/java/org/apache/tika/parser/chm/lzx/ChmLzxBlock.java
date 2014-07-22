@@ -2180,9 +2180,6 @@ block|{
 name|int
 name|g
 init|=
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -2734,9 +2731,6 @@ block|{
 name|int
 name|f
 init|=
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -2893,9 +2887,6 @@ operator|.
 name|getLengthTreeTable
 argument_list|()
 index|[
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -3539,9 +3530,6 @@ name|z
 operator|=
 name|pretreetable
 index|[
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -3680,9 +3668,6 @@ condition|)
 block|{
 name|y
 operator|=
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -3744,9 +3729,6 @@ condition|)
 block|{
 name|y
 operator|=
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.
@@ -3824,9 +3806,6 @@ name|z
 operator|=
 name|pretreetable
 index|[
-operator|(
-name|int
-operator|)
 name|getChmSection
 argument_list|()
 operator|.

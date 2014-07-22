@@ -301,15 +301,10 @@ name|unmarshalUByte
 parameter_list|()
 block|{
 return|return
-call|(
-name|int
-call|)
-argument_list|(
 name|getByte
 argument_list|()
 operator|&
 literal|255
-argument_list|)
 return|;
 block|}
 specifier|public
