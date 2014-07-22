@@ -426,12 +426,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|ID3Comment
-index|[]
-block|{
 name|comment
-block|}
 argument_list|)
 return|;
 block|}
