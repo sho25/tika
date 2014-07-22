@@ -1341,14 +1341,9 @@ argument_list|(
 name|prop
 argument_list|,
 operator|(
-operator|(
 name|Double
 operator|)
 name|value
-operator|)
-operator|.
-name|doubleValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

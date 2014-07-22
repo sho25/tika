@@ -723,15 +723,10 @@ block|}
 name|Integer
 name|id
 init|=
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|notes
 operator|.
 name|_getSheetNumber
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
