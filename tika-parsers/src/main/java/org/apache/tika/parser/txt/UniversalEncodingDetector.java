@@ -236,16 +236,6 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|e
-throw|;
-block|}
-catch|catch
-parameter_list|(
 name|LinkageError
 name|e
 parameter_list|)
