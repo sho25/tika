@@ -2430,7 +2430,7 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setEnableAutoSpace.       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**       * @see #setEnableAutoSpace(boolean)       * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
 name|getEnableAutoSpace
@@ -2490,7 +2490,7 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setSuppressDuplicateOverlappingText.       *       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**       * @see #setSuppressDuplicateOverlappingText(boolean)       *       * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
 name|getSuppressDuplicateOverlappingText
@@ -2520,7 +2520,7 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setSortByPosition.       *       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**       * @see #setSortByPosition(boolean)       *       * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
 name|getSortByPosition

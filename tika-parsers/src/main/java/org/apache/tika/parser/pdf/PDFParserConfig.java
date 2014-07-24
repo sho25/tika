@@ -477,7 +477,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *       * @param b      */
+comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *       * @param extractAcroFormContent      */
 specifier|public
 name|void
 name|setExtractAcroFormContent
@@ -555,7 +555,7 @@ return|return
 name|extractUniqueInlineImagesOnly
 return|;
 block|}
-comment|/** @see #setEnableAutoSpace. */
+comment|/** @see #setEnableAutoSpace(boolean) */
 specifier|public
 name|boolean
 name|getEnableAutoSpace
