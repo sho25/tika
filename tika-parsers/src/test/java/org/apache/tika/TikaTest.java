@@ -329,6 +329,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
+import|;
+end_import
+
 begin_comment
 comment|/**  * Parent class of Tika tests  */
 end_comment
@@ -1032,7 +1046,7 @@ comment|//swallow
 block|}
 block|}
 block|}
-comment|/**      * Stores metadata and (optionally) content.      * Many thanks to Jukka's example:      * http://wiki.apache.org/tika/RecursiveMetadata      *      */
+comment|/**      * Stores metadata and (optionally) content.      * Many thanks to Jukka's example:      * http://wiki.apache.org/tika/RecursiveMetadata      * This ignores the incoming handler and applies a       * new BodyContentHandler(-1) for each file.      */
 specifier|public
 specifier|static
 class|class
@@ -1108,7 +1122,7 @@ name|InputStream
 name|stream
 parameter_list|,
 name|ContentHandler
-name|contentHandler
+name|ignoredHandler
 parameter_list|,
 name|Metadata
 name|metadata
@@ -1123,6 +1137,35 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|ContentHandler
+name|contentHandler
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|storeContent
+condition|)
+block|{
+name|contentHandler
+operator|=
+operator|new
+name|BodyContentHandler
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|contentHandler
+operator|=
+operator|new
+name|DefaultHandler
+argument_list|()
+expr_stmt|;
+block|}
 name|super
 operator|.
 name|parse
