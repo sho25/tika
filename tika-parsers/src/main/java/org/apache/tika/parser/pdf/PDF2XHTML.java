@@ -1703,6 +1703,11 @@ name|e
 argument_list|)
 throw|;
 block|}
+name|page
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 specifier|private
 name|void
@@ -1971,6 +1976,11 @@ argument_list|(
 name|buffer
 argument_list|)
 expr_stmt|;
+name|image
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|extractor
 operator|.
 name|parseEmbedded
@@ -2007,6 +2017,11 @@ block|}
 block|}
 block|}
 block|}
+name|resources
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 block|}
 specifier|protected
 name|EmbeddedDocumentExtractor
