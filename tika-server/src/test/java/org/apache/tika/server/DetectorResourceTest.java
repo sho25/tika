@@ -284,8 +284,6 @@ name|void
 name|testDetectCsvWithExt
 parameter_list|()
 throws|throws
-name|IllegalStateException
-throws|,
 name|Exception
 block|{
 name|String
@@ -370,8 +368,6 @@ name|void
 name|testDetectCsvNoExt
 parameter_list|()
 throws|throws
-name|IllegalStateException
-throws|,
 name|Exception
 block|{
 name|String
