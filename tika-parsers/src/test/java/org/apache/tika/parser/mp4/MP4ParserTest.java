@@ -618,7 +618,20 @@ name|AUDIO_SAMPLE_RATE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//assertEquals("Stereo", metadata.get(XMPDM.AUDIO_CHANNEL_TYPE)); // TODO Extract
+name|assertEquals
+argument_list|(
+literal|"Stereo"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|XMPDM
+operator|.
+name|AUDIO_CHANNEL_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"M4A"
