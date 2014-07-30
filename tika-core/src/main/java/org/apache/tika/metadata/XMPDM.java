@@ -83,6 +83,17 @@ argument_list|(
 literal|"xmpDM:artist"
 argument_list|)
 decl_stmt|;
+comment|/**      * "The name of the album artist or group for compilation albums."      */
+name|Property
+name|ALBUM_ARTIST
+init|=
+name|Property
+operator|.
+name|externalText
+argument_list|(
+literal|"xmpDM:albumArtist"
+argument_list|)
+decl_stmt|;
 comment|/**      * "The date and time when the audio was last modified."      */
 name|Property
 name|AUDIO_MOD_DATE
@@ -346,6 +357,17 @@ comment|//    /**
 comment|//     * "Additional parameters for Beat Splice stretch mode."
 comment|//     */
 comment|//    Property BEAT_SPLICE_PARAMS = "xmpDM:beatSpliceParams";
+comment|/**      * "An album created by various artists."      */
+name|Property
+name|COMPILATION
+init|=
+name|Property
+operator|.
+name|externalInteger
+argument_list|(
+literal|"xmpDM:compilation"
+argument_list|)
+decl_stmt|;
 comment|/**      * "The composer's name."      */
 name|Property
 name|COMPOSER
@@ -370,6 +392,17 @@ operator|.
 name|externalText
 argument_list|(
 literal|"xmpDM:copyright"
+argument_list|)
+decl_stmt|;
+comment|/**      * "The disc number for part of an album set."      */
+name|Property
+name|DISC_NUMBER
+init|=
+name|Property
+operator|.
+name|externalInteger
+argument_list|(
+literal|"xmpDM:discNumber"
 argument_list|)
 decl_stmt|;
 comment|/**      * "The duration of the media file."      */

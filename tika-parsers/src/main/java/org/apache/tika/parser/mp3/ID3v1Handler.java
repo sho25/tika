@@ -458,6 +458,36 @@ return|return
 literal|null
 return|;
 block|}
+comment|/**      * ID3v1 doesn't have album-wide artists,      *  so returns null;      */
+specifier|public
+name|String
+name|getAlbumArtist
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**      * ID3v1 doesn't have disc numbers,      *  so returns null;      */
+specifier|public
+name|String
+name|getDisc
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+comment|/**      * ID3v1 doesn't have compilations,      *  so returns null;      */
+specifier|public
+name|String
+name|getCompilation
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/**      * Returns the identified ISO-8859-1 substring from the given byte buffer.      * The return value is the zero-terminated substring retrieved from      * between the given start and end positions in the given byte buffer.      * Extra whitespace (and control characters) from the beginning and the      * end of the substring is removed.      *      * @param buffer byte buffer      * @param start start index of the substring      * @param end end index of the substring      * @return the identified substring      * @throws TikaException if the ISO-8859-1 encoding is not available      */
 specifier|private
 specifier|static
