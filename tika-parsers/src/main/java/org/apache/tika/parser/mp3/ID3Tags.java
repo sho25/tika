@@ -436,8 +436,14 @@ name|String
 name|getTitle
 parameter_list|()
 function_decl|;
+comment|/**      * The Artist for the track      */
 name|String
 name|getArtist
+parameter_list|()
+function_decl|;
+comment|/**      * The Artist for the overall album / compilation of albums      */
+name|String
+name|getAlbumArtist
 parameter_list|()
 function_decl|;
 name|String
@@ -446,6 +452,10 @@ parameter_list|()
 function_decl|;
 name|String
 name|getComposer
+parameter_list|()
+function_decl|;
+name|String
+name|getCompilation
 parameter_list|()
 function_decl|;
 comment|/**      * Retrieves the comments, if any.      * Files may have more than one comment, but normally only       *  one with any language/description pair.      */
@@ -464,8 +474,14 @@ name|String
 name|getYear
 parameter_list|()
 function_decl|;
+comment|/**      * The number of the track within the album / recording      */
 name|String
 name|getTrackNumber
+parameter_list|()
+function_decl|;
+comment|/**      * The number of the disc this belongs to, within the set      */
+name|String
+name|getDisc
 parameter_list|()
 function_decl|;
 comment|/**      * Represents a comments in ID3 (especially ID3 v2), where are       *  made up of several parts      */
