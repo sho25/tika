@@ -39,6 +39,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -50,18 +60,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|channels
-operator|.
-name|FileChannel
 import|;
 end_import
 
@@ -1754,12 +1752,12 @@ name|IOException
 block|{
 comment|// Force the document stream to a (possibly temporary) file
 comment|// so we don't modify the current position of the stream
-name|FileChannel
-name|channel
+name|File
+name|file
 init|=
 name|stream
 operator|.
-name|getFileChannel
+name|getFile
 argument_list|()
 decl_stmt|;
 try|try
@@ -1770,7 +1768,9 @@ init|=
 operator|new
 name|NPOIFSFileSystem
 argument_list|(
-name|channel
+name|file
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 comment|// Optimize a possible later parsing process by keeping

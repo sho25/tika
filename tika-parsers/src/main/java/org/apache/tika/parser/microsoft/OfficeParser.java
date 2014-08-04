@@ -1100,8 +1100,10 @@ name|NPOIFSFileSystem
 argument_list|(
 name|tstream
 operator|.
-name|getFileChannel
+name|getFile
 argument_list|()
+argument_list|,
+literal|true
 argument_list|)
 operator|.
 name|getRoot

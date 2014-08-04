@@ -201,6 +201,22 @@ name|xwpf
 operator|.
 name|usermodel
 operator|.
+name|ISDTContent
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|xwpf
+operator|.
+name|usermodel
+operator|.
 name|XWPFDocument
 import|;
 end_import
@@ -345,22 +361,6 @@ name|xwpf
 operator|.
 name|usermodel
 operator|.
-name|XWPFSDTContent
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
-name|xwpf
-operator|.
-name|usermodel
-operator|.
 name|XWPFStyle
 import|;
 end_import
@@ -456,8 +456,6 @@ operator|.
 name|microsoft
 operator|.
 name|WordExtractor
-operator|.
-name|TagAndStyle
 import|;
 end_import
 
@@ -474,6 +472,8 @@ operator|.
 name|microsoft
 operator|.
 name|WordExtractor
+operator|.
+name|TagAndStyle
 import|;
 end_import
 
@@ -577,7 +577,7 @@ name|x2006
 operator|.
 name|main
 operator|.
-name|CTSectPr
+name|CTP
 import|;
 end_import
 
@@ -595,7 +595,7 @@ name|x2006
 operator|.
 name|main
 operator|.
-name|CTP
+name|CTSectPr
 import|;
 end_import
 
@@ -852,7 +852,7 @@ name|XmlException
 throws|,
 name|IOException
 block|{
-name|XWPFSDTContent
+name|ISDTContent
 name|content
 init|=
 name|element

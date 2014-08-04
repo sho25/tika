@@ -924,12 +924,15 @@ operator|new
 name|SheetTextAsHTML
 argument_list|(
 name|xhtml
-argument_list|,
+argument_list|)
+decl_stmt|;
+name|CommentsTable
+name|comments
+init|=
 name|iter
 operator|.
 name|getSheetComments
 argument_list|()
-argument_list|)
 decl_stmt|;
 comment|// Start, and output the sheet name
 name|xhtml
@@ -969,6 +972,8 @@ expr_stmt|;
 name|processSheet
 argument_list|(
 name|sheetExtractor
+argument_list|,
+name|comments
 argument_list|,
 name|styles
 argument_list|,
@@ -1185,6 +1190,9 @@ parameter_list|(
 name|SheetContentsHandler
 name|sheetContentsExtractor
 parameter_list|,
+name|CommentsTable
+name|comments
+parameter_list|,
 name|StylesTable
 name|styles
 parameter_list|,
@@ -1244,6 +1252,8 @@ operator|new
 name|XSSFSheetXMLHandler
 argument_list|(
 name|styles
+argument_list|,
+name|comments
 argument_list|,
 name|strings
 argument_list|,
@@ -1327,10 +1337,6 @@ name|XHTMLContentHandler
 name|xhtml
 decl_stmt|;
 specifier|private
-name|CommentsTable
-name|comments
-decl_stmt|;
-specifier|private
 name|List
 argument_list|<
 name|String
@@ -1349,9 +1355,6 @@ name|SheetTextAsHTML
 parameter_list|(
 name|XHTMLContentHandler
 name|xhtml
-parameter_list|,
-name|CommentsTable
-name|comments
 parameter_list|)
 block|{
 name|this
@@ -1359,12 +1362,6 @@ operator|.
 name|xhtml
 operator|=
 name|xhtml
-expr_stmt|;
-name|this
-operator|.
-name|comments
-operator|=
-name|comments
 expr_stmt|;
 name|headers
 operator|=
@@ -1413,7 +1410,10 @@ block|}
 specifier|public
 name|void
 name|endRow
-parameter_list|()
+parameter_list|(
+name|int
+name|rowNum
+parameter_list|)
 block|{
 try|try
 block|{
@@ -1441,6 +1441,9 @@ name|cellRef
 parameter_list|,
 name|String
 name|formattedValue
+parameter_list|,
+name|XSSFComment
+name|comment
 parameter_list|)
 block|{
 try|try
@@ -1453,6 +1456,13 @@ literal|"td"
 argument_list|)
 expr_stmt|;
 comment|// Main cell contents
+if|if
+condition|(
+name|formattedValue
+operator|!=
+literal|null
+condition|)
+block|{
 name|xhtml
 operator|.
 name|characters
@@ -1460,24 +1470,8 @@ argument_list|(
 name|formattedValue
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Comments
-if|if
-condition|(
-name|comments
-operator|!=
-literal|null
-condition|)
-block|{
-name|XSSFComment
-name|comment
-init|=
-name|comments
-operator|.
-name|findCellComment
-argument_list|(
-name|cellRef
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|comment
@@ -1529,7 +1523,6 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|xhtml
 operator|.
