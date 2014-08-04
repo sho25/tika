@@ -556,6 +556,7 @@ control|)
 block|{
 comment|//assertContains("·\tBullet " + row, content);
 comment|//assertContains("\u00b7\tBullet " + row, content);
+comment|// TODO OfficeParser fails to extract the bullet symbol
 name|assertContains
 argument_list|(
 literal|"Bullet "
@@ -590,7 +591,7 @@ control|)
 block|{
 comment|//assertContains(row + ")\tNumber bullet " + row, content);
 comment|//assertContains(row + ") Number bullet " + row, content);
-comment|// TODO: OOXMLExtractor fails to number the bullets:
+comment|// TODO: OfficeParser fails to number the bullets:
 name|assertContains
 argument_list|(
 literal|"Number bullet "
@@ -631,8 +632,19 @@ name|col
 operator|++
 control|)
 block|{
-comment|// TODO Work out why the upgrade to POI 3.9 broke this test (table text)
-comment|//                assertContains("Row " + row + " Col " + col, content);
+name|assertContains
+argument_list|(
+literal|"Row "
+operator|+
+name|row
+operator|+
+literal|" Col "
+operator|+
+name|col
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|assertContains
@@ -837,7 +849,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: once we fix TIKA-712, re-enable this
+comment|/**      * TIKA-712 Master Slide Text from PPT and PPTX files      *  should be extracted too      */
 annotation|@
 name|Test
 specifier|public
@@ -945,7 +957,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO: once we fix TIKA-712, re-enable this
 annotation|@
 name|Test
 specifier|public

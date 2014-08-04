@@ -1345,7 +1345,20 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-comment|//assertEquals(2, content.split("<\\/body>").length); // TODO Fix
+name|assertEquals
+argument_list|(
+literal|2
+argument_list|,
+name|content
+operator|.
+name|split
+argument_list|(
+literal|"<\\/body>"
+argument_list|)
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
