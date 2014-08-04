@@ -21,6 +21,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertTrue
 import|;
 end_import
@@ -506,6 +518,35 @@ argument_list|(
 name|needle
 operator|+
 literal|" not found in:\n"
+operator|+
+name|haystack
+argument_list|,
+name|haystack
+operator|.
+name|contains
+argument_list|(
+name|needle
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+specifier|static
+name|void
+name|assertNotContained
+parameter_list|(
+name|String
+name|needle
+parameter_list|,
+name|String
+name|haystack
+parameter_list|)
+block|{
+name|assertFalse
+argument_list|(
+name|needle
+operator|+
+literal|" unexpectedly found in:\n"
 operator|+
 name|haystack
 argument_list|,
