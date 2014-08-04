@@ -754,10 +754,18 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+comment|// Fraction (2.5): # ?/?
+name|assertContains
+argument_list|(
+literal|"2 1/2"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
 comment|// Below assertions represent outstanding formatting issues to be addressed
 comment|// they are included to allow the issues to be progressed with the Apache POI
 comment|// team - See TIKA-103.
-comment|/*************************************************************************             // Custom Number (0 "dollars and" .00 "cents")             assertContains("19 dollars and .99 cents", content);              // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)             assertContains("At 4:20 AM on Thursday May 17, 2007", content);              // Fraction (2.5): # ?/?  (TODO Coming in POI 3.8 beta 6)             assertContains("2 1 / 2", content);             **************************************************************************/
+comment|/*************************************************************************             // Custom Number (0 "dollars and" .00 "cents")             assertContains("19 dollars and .99 cents", content);              // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)             assertContains("At 4:20 AM on Thursday May 17, 2007", content);             **************************************************************************/
 block|}
 finally|finally
 block|{
