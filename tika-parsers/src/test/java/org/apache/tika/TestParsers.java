@@ -617,6 +617,10 @@ literal|"doc"
 block|,
 literal|"docx"
 block|,
+literal|"xls"
+block|,
+literal|"xlsx"
+block|,
 literal|"pdf"
 block|,
 literal|"rtf"
