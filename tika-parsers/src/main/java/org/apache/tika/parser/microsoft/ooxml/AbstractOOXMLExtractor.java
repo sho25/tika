@@ -1236,11 +1236,28 @@ throws|,
 name|SAXException
 block|{
 comment|// A POIFSFileSystem needs to be at least 3 blocks big to be valid
-comment|// TODO: TIKA-1118 Upgrade to POI 4.0 then enable this block of code
-comment|//        if (part.getSize()>= 0&& part.getSize()< 512*3) {
-comment|//           // Too small, skip
-comment|//           return;
-comment|//        }
+if|if
+condition|(
+name|part
+operator|.
+name|getSize
+argument_list|()
+operator|>=
+literal|0
+operator|&&
+name|part
+operator|.
+name|getSize
+argument_list|()
+operator|<
+literal|512
+operator|*
+literal|3
+condition|)
+block|{
+comment|// Too small, skip
+return|return;
+block|}
 comment|// Open the POIFS (OLE2) structure and process
 name|POIFSFileSystem
 name|fs
