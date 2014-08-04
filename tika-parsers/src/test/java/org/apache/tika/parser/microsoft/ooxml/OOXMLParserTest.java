@@ -5195,7 +5195,7 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      */
+comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      * and TIKA-1317      */
 annotation|@
 name|Test
 specifier|public
@@ -5286,6 +5286,19 @@ operator|.
 name|contains
 argument_list|(
 literal|"Seasoned"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|handler
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Rich_text_in_cell"
 argument_list|)
 argument_list|)
 expr_stmt|;
