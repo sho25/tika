@@ -916,6 +916,16 @@ operator|)
 name|dir
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ole
+operator|.
+name|getLabel
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|metadata
 operator|.
 name|set
@@ -937,6 +947,7 @@ name|getLabel
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|byte
 index|[]
 name|data

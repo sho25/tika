@@ -92,6 +92,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -952,7 +964,7 @@ name|File
 argument_list|(
 name|tempFile
 argument_list|,
-literal|"MBD002B0FA6"
+literal|"MBD002B0FA6_file5.bin"
 argument_list|)
 decl_stmt|;
 comment|// Something that really isnt a text file... Not sure what it is???
@@ -1069,6 +1081,23 @@ argument_list|,
 name|f
 operator|.
 name|exists
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertFalse
+argument_list|(
+literal|"File "
+operator|+
+name|f
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" is a directory!"
+argument_list|,
+name|f
+operator|.
+name|isDirectory
 argument_list|()
 argument_list|)
 expr_stmt|;
