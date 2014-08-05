@@ -496,7 +496,7 @@ name|List
 argument_list|<
 name|ResourceProvider
 argument_list|>
-name|rProviders
+name|rCoreProviders
 init|=
 operator|new
 name|ArrayList
@@ -505,7 +505,7 @@ name|ResourceProvider
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -520,7 +520,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -535,7 +535,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -550,7 +550,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -565,7 +565,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -580,7 +580,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -595,7 +595,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -610,7 +610,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|rCoreProviders
 operator|.
 name|add
 argument_list|(
@@ -625,7 +625,22 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|rProviders
+name|List
+argument_list|<
+name|ResourceProvider
+argument_list|>
+name|rAllProviders
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|ResourceProvider
+argument_list|>
+argument_list|(
+name|rCoreProviders
+argument_list|)
+decl_stmt|;
+name|rAllProviders
 operator|.
 name|add
 argument_list|(
@@ -637,7 +652,7 @@ name|TikaWelcome
 argument_list|(
 name|tika
 argument_list|,
-name|sf
+name|rCoreProviders
 argument_list|)
 argument_list|)
 argument_list|)
@@ -646,7 +661,7 @@ name|sf
 operator|.
 name|setResourceProviders
 argument_list|(
-name|rProviders
+name|rAllProviders
 argument_list|)
 expr_stmt|;
 name|List
