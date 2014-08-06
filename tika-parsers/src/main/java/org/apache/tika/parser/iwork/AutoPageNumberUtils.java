@@ -17,6 +17,16 @@ name|iwork
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Utility class to allow for conversion from an integer to Roman numerals  * or alpha-numeric symbols in line with Pages auto numbering formats.  */
 end_comment
@@ -190,7 +200,12 @@ name|i
 argument_list|)
 operator|.
 name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|getDefault
 argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/* 	 * Code copied from jena.apache.org. 	 * @see com.hp.hpl.jena.sparql.util.RomanNumeral 	 */
@@ -361,7 +376,12 @@ name|i
 argument_list|)
 operator|.
 name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|getDefault
 argument_list|()
+argument_list|)
 return|;
 block|}
 specifier|private

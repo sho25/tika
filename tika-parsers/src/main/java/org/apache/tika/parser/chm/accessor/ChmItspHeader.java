@@ -105,6 +105,16 @@ name|ChmParsingException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Directory header The directory starts with a header; its format is as  * follows: 0000: char[4] 'ITSP' 0004: DWORD Version number 1 0008: DWORD Length  * of the directory header 000C: DWORD $0a (unknown) 0010: DWORD $1000 Directory  * chunk size 0014: DWORD "Density" of quickref section, usually 2 0018: DWORD  * Depth of the index tree - 1 there is no index, 2 if there is one level of  * PMGI chunks 001C: DWORD Chunk number of root index chunk, -1 if there is none  * (though at least one file has 0 despite there being no index chunk, probably  * a bug) 0020: DWORD Chunk number of first PMGL (listing) chunk 0024: DWORD  * Chunk number of last PMGL (listing) chunk 0028: DWORD -1 (unknown) 002C:  * DWORD Number of directory chunks (total) 0030: DWORD Windows language ID  * 0034: GUID {5D02926A-212E-11D0-9DF9-00A0C922E6EC} 0044: DWORD $54 (This is  * the length again) 0048: DWORD -1 (unknown) 004C: DWORD -1 (unknown) 0050:  * DWORD -1 (unknown)  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?show-translation-form=1}  *   */
 end_comment
@@ -132,19 +142,7 @@ specifier|private
 name|byte
 index|[]
 name|signature
-init|=
-operator|new
-name|String
-argument_list|(
-name|ChmConstants
-operator|.
-name|ITSP
-argument_list|)
-operator|.
-name|getBytes
-argument_list|()
 decl_stmt|;
-comment|/*                                                                           * 0                                                                           * (ITSP                                                                           * )                                                                           */
 specifier|private
 name|int
 name|version
@@ -245,6 +243,40 @@ init|=
 literal|0
 decl_stmt|;
 specifier|public
+name|ChmItspHeader
+parameter_list|()
+block|{
+try|try
+block|{
+name|signature
+operator|=
+name|ChmConstants
+operator|.
+name|ITSP
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+comment|/*                                                                           * 0                                                                           * (ITSP                                                                           * )                                                                           */
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
+block|}
+specifier|public
 name|String
 name|toString
 parameter_list|()
@@ -256,6 +288,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|sb
 operator|.
 name|append
@@ -267,6 +301,8 @@ name|String
 argument_list|(
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|+
 name|System
@@ -277,6 +313,21 @@ literal|"line.separator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1731,6 +1782,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* Checks validity of the itsp header */
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -1741,6 +1794,8 @@ name|chmItspHeader
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|.
 name|equals
@@ -1757,6 +1812,21 @@ argument_list|(
 literal|"seems not valid signature"
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|chmItspHeader

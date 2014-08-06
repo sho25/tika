@@ -1648,7 +1648,9 @@ literal|" for Apache Tika Language Identification\n"
 operator|)
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// And then each ngram

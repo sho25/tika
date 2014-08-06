@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -116,7 +126,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Description Note: not always exists An index chunk has the following format:  * 0000: char[4] 'PMGI' 0004: DWORD Length of quickref/free area at end of  * directory chunk 0008: Directory index entries (to quickref/free area) The  * quickref area in an PMGI is the same as in an PMGL The format of a directory  * index entry is as follows: BYTE: length of name BYTEs: name (UTF-8 encoded)  * ENCINT: directory listing chunk which starts with name Encoded Integers aka  * ENCINT An ENCINT is a variable-length integer. The high bit of each byte  * indicates "continued to the next byte". Bytes are stored most significant to  * least significant. So, for example, $EA $15 is (((0xEA&0x7F)<<7)|0x15) =  * 0x3515.  *   *<p>  * Note: This class is not in use  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?show-translation-form=1 }  *   *   */
+comment|/**  * Description Note: not always exists An index chunk has the following format:  * 0000: char[4] 'PMGI' 0004: DWORD Length of quickref/free area at end of  * directory chunk 0008: Directory index entries (to quickref/free area) The  * quickref area in an PMGI is the same as in an PMGL The format of a directory  * index entry is as follows: BYTE: length of name BYTEs: name (UTF-8 encoded)  * ENCINT: directory listing chunk which starts with name Encoded Integers aka  * ENCINT An ENCINT is a variable-length integer. The high bit of each byte  * indicates "continued to the next byte". Bytes are stored most significant to  * least significant. So, for example, $EA $15 is (((0xEA&0x7F)<<7)|0x15) =  * 0x3515.  *   *<p>  * Note: This class is not in use  *   * {@link http://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original/?show-translation-form=1 }  *   *   */
 end_comment
 
 begin_class
@@ -142,19 +152,7 @@ specifier|private
 name|byte
 index|[]
 name|signature
-init|=
-operator|new
-name|String
-argument_list|(
-name|ChmConstants
-operator|.
-name|CHM_PMGI_MARKER
-argument_list|)
-operator|.
-name|getBytes
-argument_list|()
 decl_stmt|;
-comment|/* 0 (PMGI) */
 specifier|private
 name|long
 name|free_space
@@ -171,6 +169,40 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
+specifier|public
+name|ChmPmgiHeader
+parameter_list|()
+block|{
+try|try
+block|{
+name|signature
+operator|=
+name|ChmConstants
+operator|.
+name|CHM_PMGI_MARKER
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+comment|/* 0 (PMGI) */
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|private
 name|int
 name|getDataRemained
@@ -272,6 +304,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|index
 operator|=
 name|ChmCommons
@@ -285,9 +319,26 @@ operator|.
 name|CHM_PMGI_MARKER
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|index
@@ -516,6 +567,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|sb
 operator|.
 name|append
@@ -527,11 +580,28 @@ name|String
 argument_list|(
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 name|sb
 operator|.
 name|append
@@ -621,6 +691,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* check structure */
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -638,7 +710,9 @@ operator|.
 name|CHM_PMGI_MARKER
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 condition|)
 throw|throw
@@ -648,6 +722,21 @@ argument_list|(
 literal|"it does not seem to be valid a PMGI signature, check ChmItsp index_root if it was -1, means no PMGI, use PMGL insted"
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * @param args      */
 specifier|public

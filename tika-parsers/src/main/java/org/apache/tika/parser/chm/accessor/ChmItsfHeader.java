@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|math
 operator|.
 name|BigInteger
@@ -127,17 +137,7 @@ specifier|private
 name|byte
 index|[]
 name|signature
-init|=
-operator|new
-name|String
-argument_list|(
-literal|"ITSF"
-argument_list|)
-operator|.
-name|getBytes
-argument_list|()
 decl_stmt|;
-comment|/* 0 (ITSF) */
 specifier|private
 name|int
 name|version
@@ -227,6 +227,40 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
+specifier|public
+name|ChmItsfHeader
+parameter_list|()
+block|{
+try|try
+block|{
+name|signature
+operator|=
+name|ChmConstants
+operator|.
+name|ITSF
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+comment|/* 0 (ITSF) */
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Prints the values of ChmfHeader      */
 specifier|public
 name|String
@@ -240,6 +274,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|sb
 operator|.
 name|append
@@ -249,11 +285,28 @@ name|String
 argument_list|(
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|+
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1511,6 +1564,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -1521,6 +1576,8 @@ name|chmItsfHeader
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|.
 name|equals
@@ -1537,6 +1594,21 @@ argument_list|(
 literal|"seems not valid file"
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 if|if
 condition|(
 name|chmItsfHeader

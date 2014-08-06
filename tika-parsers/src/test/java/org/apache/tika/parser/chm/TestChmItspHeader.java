@@ -143,6 +143,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests all public methods of the ChmItspHeader  *   */
 end_comment
@@ -519,6 +529,8 @@ specifier|public
 name|void
 name|testGetSignature
 parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
 block|{
 name|assertEquals
 argument_list|(
@@ -533,6 +545,8 @@ name|chmItspHeader
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;

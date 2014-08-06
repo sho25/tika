@@ -5527,6 +5527,10 @@ operator|new
 name|PrintStream
 argument_list|(
 name|errContent
+argument_list|,
+literal|true
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5557,7 +5561,9 @@ init|=
 name|errContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(

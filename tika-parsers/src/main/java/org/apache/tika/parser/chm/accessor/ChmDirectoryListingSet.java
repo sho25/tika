@@ -711,7 +711,9 @@ argument_list|,
 literal|"::"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|int
@@ -726,7 +728,9 @@ argument_list|,
 literal|"/"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -827,6 +831,8 @@ name|getNameLength
 argument_list|()
 operator|)
 argument_list|)
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;

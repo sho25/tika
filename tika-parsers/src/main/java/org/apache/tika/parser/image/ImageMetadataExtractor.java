@@ -1322,6 +1322,11 @@ operator|new
 name|SimpleDateFormat
 argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss"
+argument_list|,
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|public

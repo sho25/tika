@@ -413,7 +413,9 @@ argument_list|(
 literal|"public class HelloWorld {}"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 argument_list|,
 name|sourceCodeParser

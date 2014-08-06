@@ -533,6 +533,8 @@ name|hdr
 operator|.
 name|getEndianIndicator
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 decl_stmt|;
 comment|// Retrieve endian bytes and convert to string

@@ -542,6 +542,8 @@ name|response
 operator|.
 name|getEntity
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -707,6 +709,8 @@ name|response
 operator|.
 name|getEntity
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 decl_stmt|;
 name|Metadata
@@ -916,6 +920,8 @@ name|response
 operator|.
 name|getEntity
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 decl_stmt|;
 name|Metadata

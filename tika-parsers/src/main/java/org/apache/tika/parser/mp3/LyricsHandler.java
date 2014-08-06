@@ -334,6 +334,8 @@ operator|-
 literal|6
 argument_list|,
 literal|6
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 decl_stmt|;

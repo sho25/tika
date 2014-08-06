@@ -608,6 +608,8 @@ operator|new
 name|String
 argument_list|(
 name|chars
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 return|;
 block|}

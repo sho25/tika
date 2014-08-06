@@ -87,6 +87,16 @@ name|ChmParsingException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * ::DataSpace/Storage/<SectionName>/ControlData This file contains $20 bytes of  * information on the compression. The information is partially known: 0000:  * DWORD 6 (unknown) 0004: ASCII 'LZXC' Compression type identifier 0008: DWORD  * 2 (Possibly numeric code for LZX) 000C: DWORD The Huffman reset interval in  * $8000-byte blocks 0010: DWORD The window size in $8000-byte blocks 0014:  * DWORD unknown (sometimes 2, sometimes 1, sometimes 0) 0018: DWORD 0 (unknown)  * 001C: DWORD 0 (unknown)  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?page=2 }  *   */
 end_comment
@@ -120,19 +130,7 @@ specifier|private
 name|byte
 index|[]
 name|signature
-init|=
-operator|new
-name|String
-argument_list|(
-name|ChmConstants
-operator|.
-name|LZXC
-argument_list|)
-operator|.
-name|getBytes
-argument_list|()
 decl_stmt|;
-comment|/*                                                                           * 4                                                                           * (LZXC                                                                           * )                                                                           */
 specifier|private
 name|long
 name|version
@@ -169,6 +167,40 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
+specifier|public
+name|ChmLzxcControlData
+parameter_list|()
+block|{
+try|try
+block|{
+name|signature
+operator|=
+name|ChmConstants
+operator|.
+name|LZXC
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+comment|/*                                                               * 4                                                               * (LZXC                                                               * )                                                               */
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Returns a remained data      *       * @return dataRemained      */
 specifier|private
 name|int
@@ -626,6 +658,8 @@ operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|sb
 operator|.
 name|append
@@ -639,11 +673,28 @@ name|this
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 name|sb
 operator|.
 name|append
@@ -962,6 +1013,8 @@ literal|"window size / resetInterval should be more than 1"
 argument_list|)
 throw|;
 comment|/* checks a signature */
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -972,6 +1025,8 @@ name|chmLzxcControlData
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|.
 name|equals
@@ -988,6 +1043,21 @@ argument_list|(
 literal|"the signature does not seem to be correct"
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * @param args      */
 specifier|public

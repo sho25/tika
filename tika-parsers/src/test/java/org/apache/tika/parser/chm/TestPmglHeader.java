@@ -115,6 +115,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -210,6 +220,8 @@ specifier|public
 name|void
 name|testChmPmglHeaderGet
 parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
 block|{
 name|assertEquals
 argument_list|(
@@ -224,6 +236,8 @@ name|chmPmglHeader
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -181,6 +181,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Tests all public methods of ChmLzxcControlData block  */
 end_comment
@@ -327,7 +337,9 @@ operator|.
 name|LZXC
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|byte
@@ -553,6 +565,8 @@ specifier|public
 name|void
 name|testGetSignature
 parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
 block|{
 name|assertEquals
 argument_list|(
@@ -561,7 +575,9 @@ operator|.
 name|VP_CONTROL_DATA_SIGNATURE
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|length
 argument_list|,
@@ -580,6 +596,8 @@ specifier|public
 name|void
 name|testGetSignaure
 parameter_list|()
+throws|throws
+name|UnsupportedEncodingException
 block|{
 name|assertEquals
 argument_list|(
@@ -588,7 +606,9 @@ operator|.
 name|VP_CONTROL_DATA_SIGNATURE
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|length
 argument_list|,

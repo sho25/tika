@@ -25,6 +25,16 @@ name|HashSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -249,7 +259,12 @@ name|c
 argument_list|)
 operator|.
 name|toUpperCase
+argument_list|(
+name|Locale
+operator|.
+name|getDefault
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -87,6 +87,26 @@ name|ChmParsingException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|UnknownFormatConversionException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Description There are two types of directory chunks -- index chunks, and  * listing chunks. The index chunk will be omitted if there is only one listing  * chunk. A listing chunk has the following format: 0000: char[4] 'PMGL' 0004:  * DWORD Length of free space and/or quickref area at end of directory chunk  * 0008: DWORD Always 0 000C: DWORD Chunk number of previous listing chunk when  * reading directory in sequence (-1 if this is the first listing chunk) 0010:  * DWORD Chunk number of next listing chunk when reading directory in sequence  * (-1 if this is the last listing chunk) 0014: Directory listing entries (to  * quickref area) Sorted by filename; the sort is case-insensitive The quickref  * area is written backwards from the end of the chunk. One quickref entry  * exists for every n entries in the file, where n is calculated as 1 + (1<<  * quickref density). So for density = 2, n = 5 Chunklen-0002: WORD Number of  * entries in the chunk Chunklen-0004: WORD Offset of entry n from entry 0  * Chunklen-0008: WORD Offset of entry 2n from entry 0 Chunklen-000C: WORD  * Offset of entry 3n from entry 0 ... The format of a directory listing entry  * is as follows BYTE: length of name BYTEs: name (UTF-8 encoded) ENCINT:  * content section ENCINT: offset ENCINT: length The offset is from the  * beginning of the content section the file is in, after the section has been  * decompressed (if appropriate). The length also refers to length of the file  * in the section after decompression. There are two kinds of file represented  * in the directory: user data and format related files. The files which are  * format-related have names which begin with '::', the user data files have  * names which begin with "/".  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?show-translation-form=1 }  *   * @author olegt  *   */
 end_comment
@@ -114,19 +134,7 @@ specifier|private
 name|byte
 index|[]
 name|signature
-init|=
-operator|new
-name|String
-argument_list|(
-name|ChmConstants
-operator|.
-name|PMGL
-argument_list|)
-operator|.
-name|getBytes
-argument_list|()
 decl_stmt|;
-comment|/*                                                                           * 0                                                                           * (PMGL                                                                           * )                                                                           */
 specifier|private
 name|long
 name|free_space
@@ -158,6 +166,40 @@ name|currentPlace
 init|=
 literal|0
 decl_stmt|;
+specifier|public
+name|ChmPmglHeader
+parameter_list|()
+block|{
+try|try
+block|{
+name|signature
+operator|=
+name|ChmConstants
+operator|.
+name|PMGL
+operator|.
+name|getBytes
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+comment|/*                                                                           * 0                                                                           * (PMGL                                                                           * )                                                                           */
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
+block|}
 specifier|private
 name|int
 name|getDataRemained
@@ -242,6 +284,8 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|sb
 operator|.
 name|append
@@ -253,11 +297,28 @@ name|String
 argument_list|(
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 name|sb
 operator|.
 name|append
@@ -733,6 +794,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* check structure */
+try|try
+block|{
 if|if
 condition|(
 operator|!
@@ -743,6 +806,8 @@ name|chmPmglHeader
 operator|.
 name|getSignature
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 operator|.
 name|equals
@@ -766,6 +831,21 @@ operator|+
 literal|" pmgl != pmgl.signature"
 argument_list|)
 throw|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|AssertionError
+argument_list|(
+literal|"UTF-8 not supported."
+argument_list|)
+throw|;
+block|}
 block|}
 specifier|public
 name|byte

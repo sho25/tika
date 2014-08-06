@@ -183,6 +183,11 @@ name|GregorianCalendar
 operator|.
 name|getInstance
 argument_list|(
+name|TimeZone
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 name|Locale
 operator|.
 name|US
@@ -235,6 +240,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%04d-%02d-%02dT%02d:%02d:%02dZ"
 argument_list|,
 name|calendar

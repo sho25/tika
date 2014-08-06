@@ -77,6 +77,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|xml
@@ -147,6 +159,11 @@ operator|new
 name|OutputStreamWriter
 argument_list|(
 name|stream
+argument_list|,
+name|Charset
+operator|.
+name|defaultCharset
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

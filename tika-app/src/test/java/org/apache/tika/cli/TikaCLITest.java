@@ -57,6 +57,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -167,11 +177,6 @@ decl_stmt|;
 specifier|private
 name|String
 name|resourcePrefix
-init|=
-name|testDataURI
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 annotation|@
 name|Before
@@ -196,6 +201,13 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 expr_stmt|;
+name|resourcePrefix
+operator|=
+name|testDataURI
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 name|stdout
 operator|=
 name|System
@@ -210,6 +222,10 @@ operator|new
 name|PrintStream
 argument_list|(
 name|outContent
+argument_list|,
+literal|true
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -284,7 +300,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -319,7 +337,7 @@ name|params
 argument_list|)
 expr_stmt|;
 comment|//Assert was commented temporarily for finding the problem
-comment|//		Assert.assertTrue(outContent != null&& outContent.toString().contains("org.apache.tika.parser.iwork.IWorkPackageParser"));
+comment|//		Assert.assertTrue(outContent != null&& outContent.toString("UTF-8").contains("org.apache.tika.parser.iwork.IWorkPackageParser"));
 block|}
 comment|/**      * Tests -x option of the cli      *       * @throws Exception      */
 annotation|@
@@ -355,7 +373,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -398,7 +418,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -413,7 +435,9 @@ argument_list|,
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -456,7 +480,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -499,7 +525,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -543,7 +571,9 @@ init|=
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 decl_stmt|;
 comment|//TIKA-1310
 name|assertTrue
@@ -656,7 +686,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -699,7 +731,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -742,7 +776,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -785,7 +821,9 @@ argument_list|(
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|contains
 argument_list|(
@@ -1156,7 +1194,9 @@ init|=
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(
@@ -1254,7 +1294,9 @@ init|=
 name|outContent
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 decl_stmt|;
 name|assertTrue
 argument_list|(

@@ -613,7 +613,9 @@ argument_list|(
 literal|"This is a test"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ByteArrayInputStream

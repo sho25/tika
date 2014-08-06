@@ -55,6 +55,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -270,6 +280,11 @@ name|out
 operator|.
 name|printf
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%6dns per Tika.detect(%s) = %s%n"
 argument_list|,
 name|System

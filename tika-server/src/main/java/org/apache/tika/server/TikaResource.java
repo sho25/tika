@@ -71,6 +71,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -1430,6 +1440,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s: Encrypted document"
 argument_list|,
 name|info
@@ -1473,6 +1488,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s: Text extraction failed"
 argument_list|,
 name|info
@@ -2046,6 +2066,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s: Encrypted document"
 argument_list|,
 name|info
@@ -2089,6 +2114,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s: Text extraction failed"
 argument_list|,
 name|info
@@ -2256,6 +2286,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s (autodetecting type)"
 argument_list|,
 name|info
@@ -2276,6 +2311,11 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|getDefault
+argument_list|()
+argument_list|,
 literal|"%s (%s)"
 argument_list|,
 name|info
