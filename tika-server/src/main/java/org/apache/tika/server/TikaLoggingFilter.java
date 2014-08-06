@@ -130,7 +130,7 @@ name|LogFactory
 operator|.
 name|getLog
 argument_list|(
-name|TikaServerCli
+name|TikaLoggingFilter
 operator|.
 name|class
 argument_list|)
