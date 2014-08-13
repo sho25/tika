@@ -567,7 +567,6 @@ argument_list|(
 literal|"x-tar"
 argument_list|)
 decl_stmt|;
-comment|// Enable this when COMPRESS-267 is fixed, see TIKA-1243
 specifier|private
 specifier|static
 specifier|final
@@ -872,7 +871,7 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
-comment|// Pending a fix for COMPRESS_269, this bit is a little nasty
+comment|// Pending a fix for COMPRESS-269, this bit is a little nasty
 name|ais
 operator|=
 operator|new
