@@ -95,6 +95,28 @@ name|Reader
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
 begin_comment
 comment|/**  * Abstract class used to interact with command line/external Translators.  *  * @see org.apache.tika.language.translate.MosesTranslator for an example of extending this class.  *  * @since Tika 1.7  */
 end_comment
@@ -153,6 +175,11 @@ argument_list|(
 name|process
 operator|.
 name|getInputStream
+argument_list|()
+argument_list|,
+name|Charset
+operator|.
+name|defaultCharset
 argument_list|()
 argument_list|)
 decl_stmt|;
