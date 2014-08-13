@@ -845,7 +845,7 @@ name|PDF2XHTML
 extends|extends
 name|PDFTextStripper
 block|{
-comment|/**      * format used for signature dates      */
+comment|/**      * Format used for signature dates      * TODO Make this thread-safe      */
 specifier|private
 specifier|final
 name|SimpleDateFormat
