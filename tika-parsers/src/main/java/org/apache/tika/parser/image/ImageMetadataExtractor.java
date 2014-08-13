@@ -1314,7 +1314,6 @@ name|DirectoryHandler
 block|{
 comment|// There's a new ExifHandler for each file processed, so this is thread safe
 specifier|private
-specifier|static
 specifier|final
 name|SimpleDateFormat
 name|DATE_UNSPECIFIED_TZ
