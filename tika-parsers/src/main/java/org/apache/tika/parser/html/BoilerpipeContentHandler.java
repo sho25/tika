@@ -466,8 +466,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"<%s> of type %s"
 argument_list|,

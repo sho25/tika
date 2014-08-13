@@ -4644,8 +4644,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|startsWith
@@ -5176,8 +5175,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"Ignoring unexpected exception trying to save embedded file %s (%s)"
 argument_list|,

@@ -490,8 +490,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 argument_list|,
 name|type

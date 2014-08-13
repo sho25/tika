@@ -282,8 +282,7 @@ name|printf
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%6dns per Tika.detect(%s) = %s%n"
 argument_list|,

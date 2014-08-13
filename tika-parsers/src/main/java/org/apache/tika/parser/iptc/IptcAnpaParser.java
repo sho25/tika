@@ -941,8 +941,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 decl_stmt|;
 comment|// these are not if-then-else, because we want to go from most common
@@ -3183,8 +3182,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|startsWith
@@ -3398,8 +3396,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|contains
@@ -3529,8 +3526,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|indexOf
@@ -3589,8 +3585,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|startsWith
@@ -3628,8 +3623,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|trim
@@ -3646,8 +3640,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|trim
@@ -3689,8 +3682,7 @@ name|toLowerCase
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 operator|.
 name|startsWith
@@ -4353,8 +4345,7 @@ name|format_in
 argument_list|,
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 decl_stmt|;
 name|dfi
@@ -4397,8 +4388,7 @@ name|format_out
 argument_list|,
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 decl_stmt|;
 name|dfo
