@@ -1442,8 +1442,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s: Encrypted document"
 argument_list|,
@@ -1490,8 +1489,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s: Text extraction failed"
 argument_list|,
@@ -2068,8 +2066,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s: Encrypted document"
 argument_list|,
@@ -2116,8 +2113,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s: Text extraction failed"
 argument_list|,
@@ -2288,8 +2284,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s (autodetecting type)"
 argument_list|,
@@ -2313,8 +2308,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|,
 literal|"%s (%s)"
 argument_list|,

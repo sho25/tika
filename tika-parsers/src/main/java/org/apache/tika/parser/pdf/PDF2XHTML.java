@@ -858,8 +858,7 @@ literal|"yyyy-MM-dd'T'HH:mm:ssZ"
 argument_list|,
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 decl_stmt|;
 comment|/**      * Maximum recursive depth during AcroForm processing.      * Prevents theoretical AcroForm recursion bomb.       */

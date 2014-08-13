@@ -437,8 +437,7 @@ literal|"yyyy-MM-dd'T'HH:mm:ss"
 argument_list|,
 name|Locale
 operator|.
-name|getDefault
-argument_list|()
+name|ROOT
 argument_list|)
 decl_stmt|;
 specifier|protected
