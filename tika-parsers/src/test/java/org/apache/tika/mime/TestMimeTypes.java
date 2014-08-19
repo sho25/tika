@@ -3165,6 +3165,24 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|testAxCrypt
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// test-TXT.txt encrypted with a key of "tika"
+name|assertTypeDetection
+argument_list|(
+literal|"testTXT-tika.axx"
+argument_list|,
+literal|"application/x-axcrypt"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|testMatroskaDetection
 parameter_list|()
 throws|throws
