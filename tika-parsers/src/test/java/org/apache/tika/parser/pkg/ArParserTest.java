@@ -333,7 +333,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests that the ParseContext parser is correctly fired for all the 	 * embedded entries. 	 */
+comment|/**      * Tests that the ParseContext parser is correctly fired for all the      * embedded entries.      */
 annotation|@
 name|Test
 specifier|public
@@ -559,6 +559,18 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|1
+argument_list|,
+name|tracker
+operator|.
+name|modifiedAts
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"testAU.au"
 argument_list|,
 name|tracker
@@ -568,6 +580,31 @@ operator|.
 name|get
 argument_list|(
 literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|modifiedAt
+operator|=
+name|tracker
+operator|.
+name|modifiedAts
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Modified at "
+operator|+
+name|modifiedAt
+argument_list|,
+name|modifiedAt
+operator|.
+name|startsWith
+argument_list|(
+literal|"201"
 argument_list|)
 argument_list|)
 expr_stmt|;
