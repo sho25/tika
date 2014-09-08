@@ -784,17 +784,6 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-comment|// At the end we want to close the archive stream to release
-comment|// any associated resources, but the underlying document stream
-comment|// should not be closed
-name|stream
-operator|=
-operator|new
-name|CloseShieldInputStream
-argument_list|(
-name|stream
-argument_list|)
-expr_stmt|;
 comment|// Ensure that the stream supports the mark feature
 if|if
 condition|(
@@ -806,7 +795,6 @@ argument_list|(
 name|stream
 argument_list|)
 condition|)
-block|{
 name|stream
 operator|=
 operator|new
@@ -815,9 +803,17 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
-block|}
+name|TemporaryResources
+name|tmp
+init|=
+operator|new
+name|TemporaryResources
+argument_list|()
+decl_stmt|;
 name|ArchiveInputStream
 name|ais
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
@@ -837,13 +833,20 @@ name|ArchiveStreamFactory
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|// At the end we want to close the archive stream to release
+comment|// any associated resources, but the underlying document stream
+comment|// should not be closed
 name|ais
 operator|=
 name|factory
 operator|.
 name|createArchiveInputStream
 argument_list|(
+operator|new
+name|CloseShieldInputStream
+argument_list|(
 name|stream
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -883,6 +886,8 @@ operator|.
 name|get
 argument_list|(
 name|stream
+argument_list|,
+name|tmp
 argument_list|)
 decl_stmt|;
 comment|// Pending a fix for COMPRESS-269, this bit is a little nasty
@@ -904,6 +909,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|tmp
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|TikaException
@@ -926,6 +936,11 @@ name|ArchiveException
 name|e
 parameter_list|)
 block|{
+name|tmp
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|TikaException
@@ -1059,6 +1074,11 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|tmp
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 name|xhtml
 operator|.
@@ -1127,6 +1147,25 @@ name|entry
 operator|.
 name|getLastModifiedDate
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|entrydata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_LENGTH
+argument_list|,
+name|Long
+operator|.
+name|toString
+argument_list|(
+name|entry
+operator|.
+name|getSize
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1413,6 +1452,21 @@ operator|.
 name|getNextEntry
 argument_list|()
 return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|close
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|file
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
