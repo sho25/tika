@@ -765,6 +765,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|zipStream
+operator|=
+operator|new
+name|ZipInputStream
+argument_list|(
+name|stream
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
