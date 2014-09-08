@@ -1233,12 +1233,9 @@ block|{
 case|case
 name|SOLIDWORKS_PART
 case|:
-comment|//        	new SolidworksExtractor(context).parse(root, xhtml);
-break|break;
 case|case
 name|SOLIDWORKS_ASSEMBLY
 case|:
-break|break;
 case|case
 name|SOLIDWORKS_DRAWING
 case|:
@@ -1548,6 +1545,10 @@ name|ex
 argument_list|)
 throw|;
 block|}
+default|default:
+comment|// For unsupported / unhandled types, just the metadata
+comment|//  is extracted, which happened above
+break|break;
 block|}
 block|}
 specifier|private
