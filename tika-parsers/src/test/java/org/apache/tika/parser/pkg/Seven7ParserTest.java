@@ -37,6 +37,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertNull
 import|;
 end_import
@@ -564,6 +576,18 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|9
+argument_list|,
+name|tracker
+operator|.
+name|modifiedAts
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Should have names but not content types, as 7z doesn't
 comment|//  store the content types
 name|assertEquals
@@ -705,6 +729,36 @@ block|{
 name|assertNull
 argument_list|(
 name|type
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|String
+name|mod
+range|:
+name|tracker
+operator|.
+name|modifiedAts
+control|)
+block|{
+name|assertNotNull
+argument_list|(
+name|mod
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Modified at "
+operator|+
+name|mod
+argument_list|,
+name|mod
+operator|.
+name|startsWith
+argument_list|(
+literal|"20"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
