@@ -5614,7 +5614,6 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TIKA-1223
 annotation|@
 name|Test
 specifier|public
@@ -5651,17 +5650,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"thumbnail_0.emf\" />"
-argument_list|)
-decl_stmt|;
-name|int
-name|c
-init|=
-name|xml
-operator|.
-name|indexOf
-argument_list|(
-literal|"<div class=\"package-entry\"><h1>thumbnail_0.emf</h1></div>"
+literal|"<div class=\"embedded\" id=\"/docProps/thumbnail.emf\" />"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5682,24 +5671,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|c
-operator|!=
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
 name|a
 operator|<
 name|b
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|b
-operator|<
-name|c
 argument_list|)
 expr_stmt|;
 block|}
@@ -5739,17 +5713,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"thumbnail_0.wmf\" />"
-argument_list|)
-decl_stmt|;
-name|int
-name|c
-init|=
-name|xml
-operator|.
-name|indexOf
-argument_list|(
-literal|"<div class=\"package-entry\"><h1>thumbnail_0.wmf</h1></div>"
+literal|"<div class=\"embedded\" id=\"/docProps/thumbnail.wmf\" />"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5770,24 +5734,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|c
-operator|!=
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
 name|a
 operator|<
 name|b
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|b
-operator|<
-name|c
 argument_list|)
 expr_stmt|;
 block|}
@@ -5827,17 +5776,7 @@ name|xml
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"embedded\" id=\"thumbnail_0.jpeg\" />"
-argument_list|)
-decl_stmt|;
-name|int
-name|c
-init|=
-name|xml
-operator|.
-name|indexOf
-argument_list|(
-literal|"<div class=\"package-entry\"><h1>thumbnail_0.jpeg</h1></div>"
+literal|"<div class=\"embedded\" id=\"/docProps/thumbnail.jpeg\" />"
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -5858,24 +5797,9 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|c
-operator|!=
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
 name|a
 operator|<
 name|b
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
-name|b
-operator|<
-name|c
 argument_list|)
 expr_stmt|;
 block|}

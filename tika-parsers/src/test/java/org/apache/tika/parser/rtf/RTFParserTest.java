@@ -2532,7 +2532,7 @@ name|trueNames
 operator|.
 name|add
 argument_list|(
-literal|"thumbnail_0.jpeg"
+literal|"thumbnail.jpeg"
 argument_list|)
 expr_stmt|;
 name|trueNames
