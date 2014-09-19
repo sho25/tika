@@ -256,7 +256,7 @@ name|detector
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates an auto-detecting parser instance using the specified set of parser.      * This allows one to create a Tika configuration where only a subset of the      * available parsers have their 3rd party jars included, as otherwise the      * use of the default TikaConfig will throw various "ClassNotFound" exceptions.      *       * @param detector Detector to use      * @param parsers      */
+comment|/**      * Creates an auto-detecting parser instance using the specified set of parser.      * This allows one to create a Tika configuration where only a subset of the      * available parsers have their 3rd party jars included, as otherwise the      * use of the default TikaConfig will throw various "ClassNotFound" exceptions.      *       * @param parsers      */
 specifier|public
 name|AutoDetectParser
 parameter_list|(
