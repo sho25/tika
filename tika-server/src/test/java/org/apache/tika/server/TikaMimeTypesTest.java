@@ -596,7 +596,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"org.apache.tika.parser.image.ImageParser"
+literal|"org.apache.tika.parser.ocr.TesseractOCRParser"
 argument_list|,
 name|bmp
 operator|.
