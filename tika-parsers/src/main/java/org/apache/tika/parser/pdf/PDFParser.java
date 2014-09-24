@@ -263,6 +263,22 @@ name|pdfbox
 operator|.
 name|pdmodel
 operator|.
+name|font
+operator|.
+name|PDFont
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdmodel
+operator|.
 name|PDDocument
 import|;
 end_import
@@ -920,6 +936,12 @@ block|}
 name|tmp
 operator|.
 name|dispose
+argument_list|()
+expr_stmt|;
+comment|//TODO: once we migrate to PDFBox 2.0, remove this (PDFBOX-2200)
+name|PDFont
+operator|.
+name|clearResources
 argument_list|()
 expr_stmt|;
 block|}
