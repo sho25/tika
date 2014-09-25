@@ -151,7 +151,7 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-comment|// The PhoneExtractingContentHandler will examine any characters for phone numbers, before passing them
+comment|// The PhoneExtractingContentHandler will examine any characters for phone numbers before passing them
 comment|// to the underlying Handler.
 name|PhoneExtractingContentHandler
 name|handler
@@ -242,6 +242,46 @@ argument_list|,
 name|phoneNumbers
 index|[
 literal|2
+index|]
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"9495555555"
+argument_list|,
+name|phoneNumbers
+index|[
+literal|3
+index|]
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"4193404645"
+argument_list|,
+name|phoneNumbers
+index|[
+literal|4
+index|]
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"9044687081"
+argument_list|,
+name|phoneNumbers
+index|[
+literal|5
+index|]
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"2604094811"
+argument_list|,
+name|phoneNumbers
+index|[
+literal|6
 index|]
 argument_list|)
 expr_stmt|;
