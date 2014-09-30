@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|example
+name|sax
 package|;
 end_package
 

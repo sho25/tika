@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|example
+name|sax
 package|;
 end_package
 
@@ -75,20 +75,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|BodyContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
@@ -109,18 +95,16 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
+name|junit
 operator|.
-name|tika
+name|Assert
 operator|.
-name|TikaTest
-operator|.
-name|assertContains
+name|assertTrue
 import|;
 end_import
 
 begin_comment
-comment|/**  * Test class for the {@link org.apache.tika.example.PhoneExtractingContentHandler}  * class. This demonstrates how to parse a document and retrieve any phone numbers  * found within.  *  * The phone numbers are added to a multivalued Metadata object under the key, "phonenumbers".  * You can get an array of phone numbers by calling metadata.getValues("phonenumber").  */
+comment|/**  * Test class for the {@link org.apache.tika.sax.PhoneExtractingContentHandler}  * class. This demonstrates how to parse a document and retrieve any phone numbers  * found within.  *  * The phone numbers are added to a multivalued Metadata object under the key, "phonenumbers".  * You can get an array of phone numbers by calling metadata.getValues("phonenumber").  */
 end_comment
 
 begin_class
@@ -175,7 +159,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"testPhoneNumberExtractor.odt"
+literal|"/test-documents/testPhoneNumberExtractor.odt"
 argument_list|)
 decl_stmt|;
 try|try
@@ -283,6 +267,38 @@ name|phoneNumbers
 index|[
 literal|6
 index|]
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|assertContains
+parameter_list|(
+name|String
+name|needle
+parameter_list|,
+name|String
+name|haystack
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"'"
+operator|+
+name|haystack
+operator|+
+literal|"' should contain '"
+operator|+
+name|needle
+operator|+
+literal|"'"
+argument_list|,
+name|haystack
+operator|.
+name|contains
+argument_list|(
+name|needle
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

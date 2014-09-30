@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|example
+name|sax
 package|;
 end_package
 
@@ -26,6 +26,20 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|CleanPhoneText
 import|;
 end_import
 
