@@ -95,11 +95,13 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertTrue
+name|TikaTest
+operator|.
+name|assertContains
 import|;
 end_import
 
@@ -267,38 +269,6 @@ name|phoneNumbers
 index|[
 literal|6
 index|]
-argument_list|)
-expr_stmt|;
-block|}
-specifier|private
-name|void
-name|assertContains
-parameter_list|(
-name|String
-name|needle
-parameter_list|,
-name|String
-name|haystack
-parameter_list|)
-block|{
-name|assertTrue
-argument_list|(
-literal|"'"
-operator|+
-name|haystack
-operator|+
-literal|"' should contain '"
-operator|+
-name|needle
-operator|+
-literal|"'"
-argument_list|,
-name|haystack
-operator|.
-name|contains
-argument_list|(
-name|needle
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
