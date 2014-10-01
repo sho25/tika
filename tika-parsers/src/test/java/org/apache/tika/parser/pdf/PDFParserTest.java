@@ -3938,8 +3938,10 @@ name|RESOURCE_NAME_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNull
+name|assertEquals
 argument_list|(
+literal|"image0.jpg"
+argument_list|,
 name|metadatas
 operator|.
 name|get
@@ -6535,7 +6537,7 @@ expr_stmt|;
 comment|//inline image
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"0\" inline_image=\"true\" />"
+literal|"<img src=\"embedded:image1.tif\" alt=\"image1.tif\" />"
 argument_list|,
 name|xml
 argument_list|)
