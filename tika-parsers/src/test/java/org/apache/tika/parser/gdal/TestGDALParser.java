@@ -504,6 +504,12 @@ name|void
 name|testParseMetadata
 parameter_list|()
 block|{
+name|assumeTrue
+argument_list|(
+name|canRun
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|String
 name|expectedNcInst
 init|=
@@ -745,6 +751,12 @@ name|void
 name|testParseFITS
 parameter_list|()
 block|{
+name|assumeTrue
+argument_list|(
+name|canRun
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|String
 name|expectedAllgMin
 init|=
