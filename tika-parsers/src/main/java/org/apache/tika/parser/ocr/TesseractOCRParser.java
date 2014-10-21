@@ -125,7 +125,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -146,26 +166,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
 import|;
 end_import
 
@@ -333,20 +333,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|Parser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|AbstractParser
 import|;
 end_import
@@ -375,9 +361,87 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|Parser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|external
 operator|.
 name|ExternalParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|image
+operator|.
+name|ImageParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|image
+operator|.
+name|PSDParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|image
+operator|.
+name|TiffParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|jpeg
+operator|.
+name|JpegParser
 import|;
 end_import
 
@@ -420,7 +484,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * TesseractOCRParser powered by tesseract-ocr engine.  * To enable this parser, create a {@link TesseractOCRConfig}  * object and pass it through a ParseContext.  * Tesseract-ocr must be installed and on system path or  * the path to its root folder must be provided:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * //Needed if tesseract is not on system path<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *   *   */
+comment|/**  * TesseractOCRParser powered by tesseract-ocr engine. To enable this parser,  * create a {@link TesseractOCRConfig} object and pass it through a  * ParseContext. Tesseract-ocr must be installed and on system path or the path  * to its root folder must be provided:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * //Needed if tesseract is not on system path<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *   *   */
 end_comment
 
 begin_class
@@ -949,7 +1013,7 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-comment|//Tesseract appends .txt to output file name
+comment|// Tesseract appends .txt to output file name
 name|output
 operator|=
 operator|new
@@ -1003,7 +1067,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Run external tesseract-ocr process. 	 * @param input File to be ocred      * @param output File to collect ocr result      * @param config Configuration of tesseract-ocr engine      * @throws TikaException if the extraction timed out      * @throws IOException if an input error occurred 	 */
+comment|/**    * Run external tesseract-ocr process.    *     * @param input    *          File to be ocred    * @param output    *          File to collect ocr result    * @param config    *          Configuration of tesseract-ocr engine    * @throws TikaException    *           if the extraction timed out    * @throws IOException    *           if an input error occurred    */
 specifier|private
 name|void
 name|doOCR
@@ -1233,7 +1297,7 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
-comment|//should not be thrown
+comment|// should not be thrown
 block|}
 catch|catch
 parameter_list|(
@@ -1262,7 +1326,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Reads the contents of the given stream and write it to the       * given XHTML content handler.      * The stream is closed once fully processed.      *      * @param stream Stream where is the result of ocr      * @param xhtml XHTML content handler      * @throws SAXException if the XHTML SAX events could not be handled      * @throws IOException if an input error occurred      */
+comment|/**    * Reads the contents of the given stream and write it to the given XHTML    * content handler. The stream is closed once fully processed.    *     * @param stream    *          Stream where is the result of ocr    * @param xhtml    *          XHTML content handler    * @throws SAXException    *           if the XHTML SAX events could not be handled    * @throws IOException    *           if an input error occurred    */
 specifier|private
 name|void
 name|extractOutput
@@ -1380,7 +1444,7 @@ name|endDocument
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Starts a thread that reads the contents of the standard output      * or error stream of the given process to not block the process.      * The stream is closed once fully processed.      */
+comment|/**    * Starts a thread that reads the contents of the standard output or error    * stream of the given process to not block the process. The stream is closed    * once fully processed.    */
 specifier|private
 name|void
 name|logStream
@@ -1478,7 +1542,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 					 				}
+block|{          }
 finally|finally
 block|{
 name|IOUtils
@@ -1497,13 +1561,74 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|//log or discard message?
+comment|// log or discard message?
 block|}
 block|}
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
+block|}
+specifier|private
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|getImageParsers
+parameter_list|()
+block|{
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|parsers
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|Parser
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|parsers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ImageParser
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|parsers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PSDParser
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|parsers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TiffParser
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|parsers
+operator|.
+name|add
+argument_list|(
+operator|new
+name|JpegParser
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return
+name|parsers
+return|;
 block|}
 block|}
 end_class
