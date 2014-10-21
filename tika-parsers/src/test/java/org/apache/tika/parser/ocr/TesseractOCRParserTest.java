@@ -178,7 +178,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 extends|extends
 name|TikaTest
 block|{
@@ -195,11 +195,11 @@ operator|new
 name|TesseractOCRConfig
 argument_list|()
 decl_stmt|;
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 name|tesseractOCRTest
 init|=
 operator|new
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 argument_list|()
 decl_stmt|;
 return|return
@@ -346,7 +346,7 @@ expr_stmt|;
 name|InputStream
 name|stream
 init|=
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 operator|.
 name|class
 operator|.
@@ -472,7 +472,7 @@ expr_stmt|;
 name|InputStream
 name|stream
 init|=
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 operator|.
 name|class
 operator|.
@@ -624,7 +624,7 @@ expr_stmt|;
 name|InputStream
 name|stream
 init|=
-name|TesseractOCRTest
+name|TesseractOCRParserTest
 operator|.
 name|class
 operator|.
