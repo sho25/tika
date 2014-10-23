@@ -351,7 +351,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|""
+literal|"null"
 argument_list|,
 name|writer
 operator|.
