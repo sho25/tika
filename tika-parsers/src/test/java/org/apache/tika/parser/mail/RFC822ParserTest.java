@@ -651,32 +651,25 @@ name|multipackExpectedTimes
 init|=
 literal|5
 decl_stmt|;
-empty_stmt|;
-name|int
-name|invokingTimes
-init|=
-name|bodyExpectedTimes
-decl_stmt|;
+comment|// TIKA-1422. TesseractOCRParser interferes with the number of times the handler is invoked.
+comment|// But, different versions of Tesseract lead to a different number of invocations. So, we
+comment|// only verify the handler if Tesseract cannot run.
 if|if
 condition|(
+operator|!
 name|TesseractOCRParserTest
 operator|.
 name|canRun
 argument_list|()
 condition|)
 block|{
-name|invokingTimes
-operator|=
-name|multipackExpectedTimes
-expr_stmt|;
-block|}
 name|verify
 argument_list|(
 name|handler
 argument_list|,
 name|times
 argument_list|(
-name|invokingTimes
+name|bodyExpectedTimes
 argument_list|)
 argument_list|)
 operator|.
@@ -713,7 +706,7 @@ name|handler
 argument_list|,
 name|times
 argument_list|(
-name|invokingTimes
+name|bodyExpectedTimes
 argument_list|)
 argument_list|)
 operator|.
@@ -728,6 +721,7 @@ argument_list|,
 literal|"div"
 argument_list|)
 expr_stmt|;
+block|}
 name|verify
 argument_list|(
 name|handler
