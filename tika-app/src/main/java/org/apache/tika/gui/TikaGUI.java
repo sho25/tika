@@ -937,7 +937,11 @@ specifier|final
 name|int
 name|MAX_MARK
 init|=
-literal|20971520
+literal|20
+operator|*
+literal|1024
+operator|*
+literal|1024
 decl_stmt|;
 comment|//20MB
 comment|/**      * Parsing context.      */
