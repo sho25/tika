@@ -18,6 +18,58 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|ocr
+operator|.
+name|TesseractOCRParser
+operator|.
+name|getTesseractProg
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -141,40 +193,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assume
-operator|.
-name|assumeTrue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -229,7 +247,8 @@ operator|.
 name|getTesseractPath
 argument_list|()
 operator|+
-literal|"tesseract"
+name|getTesseractProg
+argument_list|()
 block|}
 decl_stmt|;
 comment|// If Tesseract is not on the path, do not run the test.
