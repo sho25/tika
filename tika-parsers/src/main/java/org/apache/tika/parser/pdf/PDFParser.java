@@ -774,6 +774,23 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|metadata
+operator|.
+name|set
+argument_list|(
+literal|"pdf:encrypted"
+argument_list|,
+name|Boolean
+operator|.
+name|toString
+argument_list|(
+name|pdfDocument
+operator|.
+name|isEncrypted
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|pdfDocument
@@ -1339,23 +1356,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|metadata
-operator|.
-name|set
-argument_list|(
-literal|"pdf:encrypted"
-argument_list|,
-name|Boolean
-operator|.
-name|toString
-argument_list|(
-name|document
-operator|.
-name|isEncrypted
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|//try to get the various versions
 comment|//Caveats:
 comment|//    there is currently a fair amount of redundancy

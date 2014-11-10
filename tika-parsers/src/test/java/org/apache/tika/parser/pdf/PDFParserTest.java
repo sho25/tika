@@ -1096,6 +1096,18 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
+literal|"true"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"pdf:encrypted"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"application/pdf"
 argument_list|,
 name|metadata
@@ -1297,6 +1309,18 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|assertEquals
+argument_list|(
+literal|"true"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"pdf:encrypted"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"application/pdf"
@@ -3479,6 +3503,14 @@ operator|.
 name|add
 argument_list|(
 literal|"testOCR.pdf"
+argument_list|)
+expr_stmt|;
+comment|//PDFBox-2490/TIKA-1467; should be ok with version>= PDFBox 1.8.8
+name|knownMetadataDiffs
+operator|.
+name|add
+argument_list|(
+literal|"testPDF_protected.pdf"
 argument_list|)
 expr_stmt|;
 comment|//empty for now
