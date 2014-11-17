@@ -1070,6 +1070,7 @@ argument_list|)
 throw|;
 name|dest
 operator|=
+operator|(
 name|data
 index|[
 name|this
@@ -1077,7 +1078,11 @@ operator|.
 name|getCurrentPlace
 argument_list|()
 index|]
+operator|&
+literal|0xff
+operator|)
 operator||
+operator|(
 name|data
 index|[
 name|this
@@ -1087,9 +1092,13 @@ argument_list|()
 operator|+
 literal|1
 index|]
+operator|&
+literal|0xff
+operator|)
 operator|<<
 literal|8
 operator||
+operator|(
 name|data
 index|[
 name|this
@@ -1099,9 +1108,13 @@ argument_list|()
 operator|+
 literal|2
 index|]
+operator|&
+literal|0xff
+operator|)
 operator|<<
 literal|16
 operator||
+operator|(
 name|data
 index|[
 name|this
@@ -1111,6 +1124,9 @@ argument_list|()
 operator|+
 literal|3
 index|]
+operator|&
+literal|0xff
+operator|)
 operator|<<
 literal|24
 expr_stmt|;

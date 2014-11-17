@@ -457,8 +457,9 @@ specifier|final
 name|int
 name|VP_CHM_ENTITIES_NUMBER
 init|=
-literal|101
+literal|100
 decl_stmt|;
+comment|//updated  by Hawking
 specifier|static
 specifier|final
 name|int

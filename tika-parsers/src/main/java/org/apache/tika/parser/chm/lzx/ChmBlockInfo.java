@@ -236,7 +236,6 @@ name|chmBlockInfo
 operator|.
 name|setIniBlock
 argument_list|(
-operator|(
 name|chmBlockInfo
 operator|.
 name|startBlock
@@ -244,7 +243,6 @@ operator|-
 name|chmBlockInfo
 operator|.
 name|startBlock
-operator|)
 operator|%
 operator|(
 name|int
@@ -255,6 +253,8 @@ name|getResetInterval
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//                .setIniBlock((chmBlockInfo.startBlock - chmBlockInfo.startBlock)
+comment|//                        % (int) clcd.getResetInterval());
 return|return
 name|chmBlockInfo
 return|;
@@ -353,7 +353,6 @@ argument_list|()
 operator|.
 name|setIniBlock
 argument_list|(
-operator|(
 name|getChmBlockInfo
 argument_list|()
 operator|.
@@ -363,7 +362,6 @@ name|getChmBlockInfo
 argument_list|()
 operator|.
 name|startBlock
-operator|)
 operator|%
 operator|(
 name|int
@@ -374,6 +372,8 @@ name|getResetInterval
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//                (getChmBlockInfo().startBlock - getChmBlockInfo().startBlock)
+comment|//                        % (int) clcd.getResetInterval());
 return|return
 name|getChmBlockInfo
 argument_list|()

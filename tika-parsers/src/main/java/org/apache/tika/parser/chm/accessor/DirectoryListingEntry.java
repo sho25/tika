@@ -400,16 +400,6 @@ operator|=
 name|length
 expr_stmt|;
 block|}
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{     }
 block|}
 end_class
 

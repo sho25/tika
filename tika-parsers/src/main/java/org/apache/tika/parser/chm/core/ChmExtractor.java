@@ -65,16 +65,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -432,7 +422,7 @@ operator|=
 name|chmLzxcResetTable
 expr_stmt|;
 block|}
-comment|/**      * Returns lzxc block length      *       * @return lzxBlockLength      */
+comment|/**      * Returns lzxc hit_cache length      *       * @return lzxBlockLength      */
 specifier|private
 name|long
 name|getLzxBlockLength
@@ -442,7 +432,7 @@ return|return
 name|lzxBlockLength
 return|;
 block|}
-comment|/**      * Sets lzxc block length      *       * @param lzxBlockLength      */
+comment|/**      * Sets lzxc hit_cache length      *       * @param lzxBlockLength      */
 specifier|private
 name|void
 name|setLzxBlockLength
@@ -458,7 +448,7 @@ operator|=
 name|lzxBlockLength
 expr_stmt|;
 block|}
-comment|/**      * Returns lzxc block offset      *       * @return lzxBlockOffset      */
+comment|/**      * Returns lzxc hit_cache offset      *       * @return lzxBlockOffset      */
 specifier|private
 name|long
 name|getLzxBlockOffset
@@ -468,7 +458,7 @@ return|return
 name|lzxBlockOffset
 return|;
 block|}
-comment|/**      * Sets lzxc block offset      */
+comment|/**      * Sets lzxc hit_cache offset      */
 specifier|private
 name|void
 name|setLzxBlockOffset
@@ -935,7 +925,11 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// ignore
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Enumerates chm entities      *       * @return list of chm entities      */
@@ -1106,7 +1100,7 @@ name|directoryListingEntry
 argument_list|)
 condition|)
 block|{
-comment|/* Gets a chm block info */
+comment|/* Gets a chm hit_cache info */
 name|ChmBlockInfo
 name|bb
 init|=
@@ -1138,7 +1132,7 @@ name|start
 init|=
 literal|0
 decl_stmt|,
-name|block
+name|hit_cache
 init|=
 literal|0
 decl_stmt|;
@@ -1165,15 +1159,19 @@ condition|)
 block|{
 comment|// TODO: Improve the caching
 comment|// caching ... = O(n^2) - depends on startBlock and endBlock
+name|start
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 if|if
 condition|(
+operator|!
 name|getLzxBlocksCache
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|!=
-literal|0
 condition|)
 block|{
 for|for
@@ -1194,8 +1192,10 @@ name|i
 operator|++
 control|)
 block|{
-name|lzxBlock
-operator|=
+comment|//lzxBlock = getLzxBlocksCache().get(i);
+name|int
+name|bn
+init|=
 name|getLzxBlocksCache
 argument_list|()
 operator|.
@@ -1203,7 +1203,10 @@ name|get
 argument_list|(
 name|i
 argument_list|)
-expr_stmt|;
+operator|.
+name|getBlockNumber
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1227,13 +1230,11 @@ control|)
 block|{
 if|if
 condition|(
-name|lzxBlock
-operator|.
-name|getBlockNumber
-argument_list|()
+name|bn
 operator|==
 name|j
 condition|)
+block|{
 if|if
 condition|(
 name|j
@@ -1245,10 +1246,12 @@ name|start
 operator|=
 name|j
 expr_stmt|;
-name|block
+name|hit_cache
 operator|=
 name|i
 expr_stmt|;
+block|}
+block|}
 block|}
 if|if
 condition|(
@@ -1262,19 +1265,11 @@ condition|)
 break|break;
 block|}
 block|}
-block|}
+comment|//                    if (i == getLzxBlocksCache().size()&& i == 0) {
 if|if
 condition|(
-name|i
-operator|==
-name|getLzxBlocksCache
-argument_list|()
-operator|.
-name|size
-argument_list|()
-operator|&&
-name|i
-operator|==
+name|start
+operator|<
 literal|0
 condition|)
 block|{
@@ -1350,7 +1345,7 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-name|block
+name|hit_cache
 argument_list|)
 expr_stmt|;
 block|}
@@ -1625,7 +1620,30 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|//end of if
+if|if
+condition|(
+name|buffer
+operator|.
+name|size
+argument_list|()
+operator|!=
+name|directoryListingEntry
+operator|.
+name|getLength
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"CHM file extract error: extracted Length is wrong."
+argument_list|)
+throw|;
 block|}
+block|}
+comment|//end of if compressed
 block|}
 catch|catch
 parameter_list|(

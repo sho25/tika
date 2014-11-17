@@ -23,6 +23,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|math
 operator|.
 name|BigInteger
@@ -96,6 +106,24 @@ operator|.
 name|core
 operator|.
 name|ChmConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|chm
+operator|.
+name|exception
+operator|.
+name|ChmParsingException
 import|;
 end_import
 
@@ -311,16 +339,6 @@ operator|=
 name|resetTableIndex
 expr_stmt|;
 block|}
-comment|/**      * Gets place holder      *       * @return place holder      */
-specifier|private
-name|int
-name|getPlaceHolder
-parameter_list|()
-block|{
-return|return
-name|placeHolder
-return|;
-block|}
 comment|/**      * Sets place holder      *       * @param placeHolder      */
 specifier|private
 name|void
@@ -337,7 +355,11 @@ operator|=
 name|placeHolder
 expr_stmt|;
 block|}
-comment|/**      * Enumerates chm directory listing entries      *       * @param chmItsHeader      *            chm itsf header      * @param chmItspHeader      *            chm itsp header      */
+specifier|private
+name|ChmPmglHeader
+name|PMGLheader
+decl_stmt|;
+comment|/**      * Enumerates chm directory listing entries      *       * @param chmItsHeader      *            chm itsf PMGLheader      * @param chmItspHeader      *            chm itsp PMGLheader      */
 specifier|private
 name|void
 name|enumerateChmDirectoryListingList
@@ -394,11 +416,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|/* loops over all pmgls */
-name|int
-name|previous_index
-init|=
-literal|0
-decl_stmt|;
 name|byte
 index|[]
 name|dir_chunk
@@ -413,22 +430,29 @@ init|=
 name|startPmgl
 init|;
 name|i
-operator|<=
-name|stopPmgl
+operator|>=
+literal|0
 condition|;
-name|i
-operator|++
 control|)
 block|{
+name|dir_chunk
+operator|=
+operator|new
+name|byte
+index|[
+operator|(
 name|int
-name|data_copied
-init|=
-operator|(
-operator|(
-literal|1
-operator|+
-name|i
 operator|)
+name|chmItspHeader
+operator|.
+name|getBlock_len
+argument_list|()
+index|]
+expr_stmt|;
+name|int
+name|start
+init|=
+name|i
 operator|*
 operator|(
 name|int
@@ -437,34 +461,9 @@ name|chmItspHeader
 operator|.
 name|getBlock_len
 argument_list|()
-operator|)
 operator|+
 name|dir_offset
 decl_stmt|;
-if|if
-condition|(
-name|i
-operator|==
-literal|0
-condition|)
-block|{
-name|dir_chunk
-operator|=
-operator|new
-name|byte
-index|[
-operator|(
-name|int
-operator|)
-name|chmItspHeader
-operator|.
-name|getBlock_len
-argument_list|()
-index|]
-expr_stmt|;
-comment|// dir_chunk = Arrays.copyOfRange(getData(), dir_offset,
-comment|// (((1+i) * (int)chmItspHeader.getBlock_len()) +
-comment|// dir_offset));
 name|dir_chunk
 operator|=
 name|ChmCommons
@@ -474,16 +473,10 @@ argument_list|(
 name|getData
 argument_list|()
 argument_list|,
-name|dir_offset
+name|start
 argument_list|,
-operator|(
-operator|(
-operator|(
-literal|1
+name|start
 operator|+
-name|i
-operator|)
-operator|*
 operator|(
 name|int
 operator|)
@@ -491,77 +484,34 @@ name|chmItspHeader
 operator|.
 name|getBlock_len
 argument_list|()
-operator|)
-operator|+
-name|dir_offset
-operator|)
 argument_list|)
 expr_stmt|;
-name|previous_index
-operator|=
-name|data_copied
-expr_stmt|;
-block|}
-else|else
-block|{
-name|dir_chunk
+name|PMGLheader
 operator|=
 operator|new
-name|byte
-index|[
-operator|(
-name|int
-operator|)
-name|chmItspHeader
-operator|.
-name|getBlock_len
+name|ChmPmglHeader
 argument_list|()
-index|]
 expr_stmt|;
-comment|// dir_chunk = Arrays.copyOfRange(getData(), previous_index,
-comment|// (((1+i) * (int)chmItspHeader.getBlock_len()) +
-comment|// dir_offset));
-name|dir_chunk
-operator|=
-name|ChmCommons
+name|PMGLheader
 operator|.
-name|copyOfRange
+name|parse
 argument_list|(
-name|getData
-argument_list|()
+name|dir_chunk
 argument_list|,
-name|previous_index
-argument_list|,
-operator|(
-operator|(
-operator|(
-literal|1
-operator|+
-name|i
-operator|)
-operator|*
-operator|(
-name|int
-operator|)
-name|chmItspHeader
-operator|.
-name|getBlock_len
-argument_list|()
-operator|)
-operator|+
-name|dir_offset
-operator|)
+name|PMGLheader
 argument_list|)
 expr_stmt|;
-name|previous_index
-operator|=
-name|data_copied
-expr_stmt|;
-block|}
 name|enumerateOneSegment
 argument_list|(
 name|dir_chunk
 argument_list|)
+expr_stmt|;
+name|i
+operator|=
+name|PMGLheader
+operator|.
+name|getBlockNext
+argument_list|()
 expr_stmt|;
 name|dir_chunk
 operator|=
@@ -680,6 +630,62 @@ expr_stmt|;
 block|}
 block|}
 block|}
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|startsWith
+parameter_list|(
+name|byte
+index|[]
+name|data
+parameter_list|,
+name|String
+name|prefix
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|prefix
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|data
+index|[
+name|i
+index|]
+operator|!=
+name|prefix
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * Enumerates chm directory listing entries in single chm segment      *       * @param dir_chunk      */
 specifier|private
 name|void
@@ -689,9 +695,10 @@ name|byte
 index|[]
 name|dir_chunk
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
-try|try
-block|{
+comment|//        try {
 if|if
 condition|(
 name|dir_chunk
@@ -700,90 +707,148 @@ literal|null
 condition|)
 block|{
 name|int
-name|indexWorkData
-init|=
-name|ChmCommons
-operator|.
-name|indexOf
-argument_list|(
-name|dir_chunk
-argument_list|,
-literal|"::"
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|int
-name|indexUserData
-init|=
-name|ChmCommons
-operator|.
-name|indexOf
-argument_list|(
-name|dir_chunk
-argument_list|,
-literal|"/"
-operator|.
-name|getBytes
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-argument_list|)
+name|header_len
 decl_stmt|;
 if|if
 condition|(
-name|indexUserData
-operator|<
-name|indexWorkData
+name|startsWith
+argument_list|(
+name|dir_chunk
+argument_list|,
+name|ChmConstants
+operator|.
+name|CHM_PMGI_MARKER
+argument_list|)
 condition|)
-name|setPlaceHolder
-argument_list|(
-name|indexUserData
-argument_list|)
+block|{
+name|header_len
+operator|=
+name|ChmConstants
+operator|.
+name|CHM_PMGI_LEN
 expr_stmt|;
-else|else
-name|setPlaceHolder
-argument_list|(
-name|indexWorkData
-argument_list|)
-expr_stmt|;
+return|return;
+comment|//skip PMGI
+block|}
+elseif|else
 if|if
 condition|(
-name|getPlaceHolder
-argument_list|()
+name|startsWith
+argument_list|(
+name|dir_chunk
+argument_list|,
+name|ChmConstants
+operator|.
+name|PMGL
+argument_list|)
+condition|)
+block|{
+name|header_len
+operator|=
+name|ChmConstants
+operator|.
+name|CHM_PMGL_LEN
+expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|ChmParsingException
+argument_list|(
+literal|"Bad dir entry block."
+argument_list|)
+throw|;
+block|}
+name|placeHolder
+operator|=
+name|header_len
+expr_stmt|;
+comment|//setPlaceHolder(header_len);
+while|while
+condition|(
+name|placeHolder
 operator|>
 literal|0
 operator|&&
+name|placeHolder
+operator|<
 name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
+operator|.
+name|length
 operator|-
-literal|1
-index|]
-operator|!=
-literal|115
+name|PMGLheader
+operator|.
+name|getFreeSpace
+argument_list|()
+comment|/*&& dir_chunk[placeHolder - 1] != 115*/
 condition|)
 block|{
-comment|// #{
-do|do
+comment|//get entry name length
+name|int
+name|strlen
+init|=
+literal|0
+decl_stmt|;
+comment|// = getEncint(data);
+name|byte
+name|temp
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|temp
+operator|=
+name|dir_chunk
+index|[
+name|placeHolder
+operator|++
+index|]
+operator|)
+operator|>=
+literal|0x80
+condition|)
 block|{
+name|strlen
+operator|<<=
+literal|7
+expr_stmt|;
+name|strlen
+operator|+=
+name|temp
+operator|&
+literal|0x7f
+expr_stmt|;
+block|}
+name|strlen
+operator|=
+operator|(
+name|strlen
+operator|<<
+literal|7
+operator|)
+operator|+
+name|temp
+operator|&
+literal|0x7f
+expr_stmt|;
 if|if
 condition|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|-
-literal|1
-index|]
+name|strlen
 operator|>
-literal|0
+name|dir_chunk
+operator|.
+name|length
 condition|)
 block|{
+throw|throw
+operator|new
+name|ChmParsingException
+argument_list|(
+literal|"Bad data of a string length."
+argument_list|)
+throw|;
+block|}
 name|DirectoryListingEntry
 name|dle
 init|=
@@ -791,20 +856,15 @@ operator|new
 name|DirectoryListingEntry
 argument_list|()
 decl_stmt|;
-comment|// two cases: 1. when dir_chunk[getPlaceHolder() -
-comment|// 1] == 0x73
-comment|// 2. when dir_chunk[getPlaceHolder() + 1] == 0x2f
-name|doNameCheck
-argument_list|(
-name|dir_chunk
-argument_list|,
 name|dle
+operator|.
+name|setNameLength
+argument_list|(
+name|strlen
 argument_list|)
 expr_stmt|;
-comment|// dle.setName(new
-comment|// String(Arrays.copyOfRange(dir_chunk,
-comment|// getPlaceHolder(), (getPlaceHolder() +
-comment|// dle.getNameLength()))));
+try|try
+block|{
 name|dle
 operator|.
 name|setName
@@ -818,12 +878,10 @@ name|copyOfRange
 argument_list|(
 name|dir_chunk
 argument_list|,
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 argument_list|,
 operator|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|+
 name|dle
 operator|.
@@ -836,6 +894,34 @@ literal|"UTF-8"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|ex
+parameter_list|)
+block|{
+name|dle
+operator|.
+name|setName
+argument_list|(
+operator|new
+name|String
+argument_list|(
+name|dir_chunk
+argument_list|,
+name|placeHolder
+argument_list|,
+name|placeHolder
+operator|+
+name|dle
+operator|.
+name|getNameLength
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|checkControlData
 argument_list|(
 name|dle
@@ -848,8 +934,7 @@ argument_list|)
 expr_stmt|;
 name|setPlaceHolder
 argument_list|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|+
 name|dle
 operator|.
@@ -860,8 +945,7 @@ expr_stmt|;
 comment|/* Sets entry type */
 if|if
 condition|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|<
 name|dir_chunk
 operator|.
@@ -869,8 +953,7 @@ name|length
 operator|&&
 name|dir_chunk
 index|[
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 index|]
 operator|==
 literal|0
@@ -900,8 +983,7 @@ argument_list|)
 expr_stmt|;
 name|setPlaceHolder
 argument_list|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|+
 literal|1
 argument_list|)
@@ -935,229 +1017,63 @@ name|dle
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-name|setPlaceHolder
-argument_list|(
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//                int indexWorkData = ChmCommons.indexOf(dir_chunk,
+comment|//                        "::".getBytes("UTF-8"));
+comment|//                int indexUserData = ChmCommons.indexOf(dir_chunk,
+comment|//                        "/".getBytes("UTF-8"));
+comment|//
+comment|//                if (indexUserData>=0&& indexUserData< indexWorkData)
+comment|//                    setPlaceHolder(indexUserData);
+comment|//                else if (indexWorkData>=0) {
+comment|//                    setPlaceHolder(indexWorkData);
+comment|//                }
+comment|//                else {
+comment|//                    setPlaceHolder(indexUserData);
+comment|//                }
+comment|//
+comment|//                if (placeHolder> 0&& placeHolder< dir_chunk.length - PMGLheader.getFreeSpace()
+comment|//&& dir_chunk[placeHolder - 1] != 115) {// #{
+comment|//                    do {
+comment|//                        if (dir_chunk[placeHolder - 1]> 0) {
+comment|//                            DirectoryListingEntry dle = new DirectoryListingEntry();
+comment|//
+comment|//                            // two cases: 1. when dir_chunk[placeHolder -
+comment|//                            // 1] == 0x73
+comment|//                            // 2. when dir_chunk[placeHolder + 1] == 0x2f
+comment|//                            doNameCheck(dir_chunk, dle);
+comment|//
+comment|//                            // dle.setName(new
+comment|//                            // String(Arrays.copyOfRange(dir_chunk,
+comment|//                            // placeHolder, (placeHolder +
+comment|//                            // dle.getNameLength()))));
+comment|//                            dle.setName(new String(ChmCommons.copyOfRange(
+comment|//                                    dir_chunk, placeHolder,
+comment|//                                    (placeHolder + dle.getNameLength())), "UTF-8"));
+comment|//                            checkControlData(dle);
+comment|//                            checkResetTable(dle);
+comment|//                            setPlaceHolder(placeHolder
+comment|//                                    + dle.getNameLength());
+comment|//
+comment|//                            /* Sets entry type */
+comment|//                            if (placeHolder< dir_chunk.length
+comment|//&& dir_chunk[placeHolder] == 0)
+comment|//                                dle.setEntryType(ChmCommons.EntryType.UNCOMPRESSED);
+comment|//                            else
+comment|//                                dle.setEntryType(ChmCommons.EntryType.COMPRESSED);
+comment|//
+comment|//                            setPlaceHolder(placeHolder + 1);
+comment|//                            dle.setOffset(getEncint(dir_chunk));
+comment|//                            dle.setLength(getEncint(dir_chunk));
+comment|//                            getDirectoryListingEntryList().add(dle);
+comment|//                        } else
+comment|//                            setPlaceHolder(placeHolder + 1);
+comment|//
+comment|//                    } while (nextEntry(dir_chunk));
+comment|//                }
 block|}
-do|while
-condition|(
-name|hasNext
-argument_list|(
-name|dir_chunk
-argument_list|)
-condition|)
-do|;
-block|}
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Checks if a name and name length are correct. If not then handles it as      * follows: 1. when dir_chunk[getPlaceHolder() - 1] == 0x73 ('/') 2. when      * dir_chunk[getPlaceHolder() + 1] == 0x2f ('s')      *       * @param dir_chunk      * @param dle      */
-specifier|private
-name|void
-name|doNameCheck
-parameter_list|(
-name|byte
-index|[]
-name|dir_chunk
-parameter_list|,
-name|DirectoryListingEntry
-name|dle
-parameter_list|)
-block|{
-if|if
-condition|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|-
-literal|1
-index|]
-operator|==
-literal|0x73
-condition|)
-block|{
-name|dle
-operator|.
-name|setNameLength
-argument_list|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|-
-literal|1
-index|]
-operator|&
-literal|0x21
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-index|]
-operator|==
-literal|0x2f
-condition|)
-block|{
-name|dle
-operator|.
-name|setNameLength
-argument_list|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-index|]
-argument_list|)
-expr_stmt|;
-name|setPlaceHolder
-argument_list|(
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|dle
-operator|.
-name|setNameLength
-argument_list|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|-
-literal|1
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Checks if it's possible move further on byte[]      *       * @param dir_chunk      *       * @return boolean      */
-specifier|private
-name|boolean
-name|hasNext
-parameter_list|(
-name|byte
-index|[]
-name|dir_chunk
-parameter_list|)
-block|{
-while|while
-condition|(
-name|getPlaceHolder
-argument_list|()
-operator|<
-name|dir_chunk
-operator|.
-name|length
-condition|)
-block|{
-if|if
-condition|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-index|]
-operator|==
-literal|47
-operator|&&
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-index|]
-operator|!=
-literal|':'
-condition|)
-block|{
-name|setPlaceHolder
-argument_list|(
-name|getPlaceHolder
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-index|]
-operator|==
-literal|':'
-operator|&&
-name|dir_chunk
-index|[
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-index|]
-operator|==
-literal|':'
-condition|)
-block|{
-name|setPlaceHolder
-argument_list|(
-name|getPlaceHolder
-argument_list|()
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-else|else
-name|setPlaceHolder
-argument_list|(
-name|getPlaceHolder
-argument_list|()
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-literal|false
-return|;
+comment|//        } catch (Exception e) {
+comment|//            e.printStackTrace();
+comment|//        }
 block|}
 comment|/**      * Returns encrypted integer      *       * @param data_chunk      *       * @return      */
 specifier|private
@@ -1191,8 +1107,7 @@ index|]
 decl_stmt|;
 if|if
 condition|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|<
 name|data_chunk
 operator|.
@@ -1206,8 +1121,7 @@ name|ob
 operator|=
 name|data_chunk
 index|[
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 index|]
 operator|)
 operator|<
@@ -1250,8 +1164,7 @@ argument_list|)
 expr_stmt|;
 name|setPlaceHolder
 argument_list|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|+
 literal|1
 argument_list|)
@@ -1293,8 +1206,7 @@ argument_list|)
 expr_stmt|;
 name|setPlaceHolder
 argument_list|(
-name|getPlaceHolder
-argument_list|()
+name|placeHolder
 operator|+
 literal|1
 argument_list|)
@@ -1307,17 +1219,6 @@ name|intValue
 argument_list|()
 return|;
 block|}
-comment|/**      * @param args      */
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{     }
 comment|/**      * Sets chm directory listing entry list      *       * @param dlel      *            chm directory listing entry list      */
 specifier|public
 name|void

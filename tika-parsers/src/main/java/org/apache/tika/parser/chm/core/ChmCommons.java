@@ -55,16 +55,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -1409,17 +1399,6 @@ operator|==
 literal|0
 return|;
 block|}
-comment|/**      * @param args      */
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{     }
 block|}
 end_class
 

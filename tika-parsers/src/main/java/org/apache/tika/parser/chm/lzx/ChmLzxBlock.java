@@ -201,6 +201,8 @@ parameter_list|,
 name|ChmLzxBlock
 name|prevBlock
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 try|try
 block|{
@@ -248,6 +250,8 @@ argument_list|(
 operator|new
 name|ChmSection
 argument_list|(
+name|dataSegment
+argument_list|,
 name|prevBlock
 operator|.
 name|getContent
@@ -278,24 +282,13 @@ argument_list|(
 name|prevBlock
 argument_list|)
 expr_stmt|;
-name|setContent
-argument_list|(
-operator|(
-name|int
-operator|)
-name|blockLength
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|prevBlock
 operator|==
 literal|null
 operator|||
-name|getContent
-argument_list|()
-operator|.
-name|length
+name|blockLength
 operator|<
 operator|(
 name|int
@@ -311,6 +304,17 @@ name|int
 operator|)
 name|getBlockLength
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|setContent
+argument_list|(
+operator|(
+name|int
+operator|)
+name|blockLength
 argument_list|)
 expr_stmt|;
 block|}
@@ -352,11 +356,13 @@ throw|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|TikaException
 name|e
 parameter_list|)
 block|{
-comment|// TODO: handle exception
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 specifier|protected
@@ -668,6 +674,7 @@ case|:
 name|createAlignedTreeTable
 argument_list|()
 expr_stmt|;
+comment|//fall through
 case|case
 name|ChmCommons
 operator|.
@@ -835,6 +842,7 @@ default|default:
 break|break;
 block|}
 block|}
+comment|//end of if BlockRemaining == 0
 name|int
 name|tempLen
 decl_stmt|;
@@ -933,7 +941,21 @@ argument_list|,
 name|getChmSection
 argument_list|()
 operator|.
+name|getPrevContent
+argument_list|()
+operator|==
+literal|null
+condition|?
+name|getChmSection
+argument_list|()
+operator|.
 name|getData
+argument_list|()
+else|:
+name|getChmSection
+argument_list|()
+operator|.
+name|getPrevContent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -951,7 +973,21 @@ argument_list|,
 name|getChmSection
 argument_list|()
 operator|.
+name|getPrevContent
+argument_list|()
+operator|==
+literal|null
+condition|?
+name|getChmSection
+argument_list|()
+operator|.
 name|getData
+argument_list|()
+else|:
+name|getChmSection
+argument_list|()
+operator|.
+name|getPrevContent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -968,7 +1004,21 @@ argument_list|,
 name|getChmSection
 argument_list|()
 operator|.
+name|getPrevContent
+argument_list|()
+operator|==
+literal|null
+condition|?
+name|getChmSection
+argument_list|()
+operator|.
 name|getData
+argument_list|()
+else|:
+name|getChmSection
+argument_list|()
+operator|.
+name|getPrevContent
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1376,6 +1426,7 @@ parameter_list|()
 throws|throws
 name|TikaException
 block|{
+comment|//Read Pre Tree Table
 name|short
 index|[]
 name|prelentable
@@ -1446,6 +1497,7 @@ literal|"pretreetable is null"
 argument_list|)
 throw|;
 block|}
+comment|//Build Length Tree
 name|createLengthTreeLenTable
 argument_list|(
 literal|0
@@ -1477,7 +1529,7 @@ literal|1
 operator|<<
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_LENGTH_TABLEBITS
 operator|)
 operator|+
 operator|(
@@ -1490,7 +1542,7 @@ operator|)
 argument_list|,
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_LENGTH_TABLEBITS
 argument_list|,
 name|ChmConstants
 operator|.
@@ -1732,18 +1784,17 @@ operator|++
 control|)
 block|{
 comment|/* new code */
+comment|//read huffman tree from main tree
 name|border
 operator|=
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_MAINTREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 if|if
@@ -1757,7 +1808,14 @@ name|mainTreeTable
 operator|.
 name|length
 condition|)
-break|break;
+throw|throw
+operator|new
+name|ChmParsingException
+argument_list|(
+literal|"error decompressing aligned block."
+argument_list|)
+throw|;
+comment|//break;
 comment|/* end new code */
 name|s
 operator|=
@@ -1769,13 +1827,11 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_MAINTREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 index|]
 expr_stmt|;
@@ -1838,6 +1894,8 @@ argument_list|()
 condition|)
 do|;
 block|}
+comment|//System.out.printf("%d,", s);
+comment|//?getChmSection().getSyncBits(getState().mainTreeTable[s]);
 name|getChmSection
 argument_list|()
 operator|.
@@ -1846,7 +1904,8 @@ argument_list|(
 name|getState
 argument_list|()
 operator|.
-name|mainTreeTable
+name|getMainTreeLengtsTable
+argument_list|()
 index|[
 name|s
 index|]
@@ -1907,30 +1966,30 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
-argument_list|,
-literal|0
+name|LZX_LENGTH_TABLEBITS
 argument_list|)
 index|]
 expr_stmt|;
+comment|//.LZX_MAINTREE_TABLEBITS)];
 if|if
 condition|(
 name|matchfooter
 operator|>=
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_LENGTH_MAXSYMBOLS
+comment|/*?LZX_LENGTH_TABLEBITS*/
 condition|)
 block|{
 name|x
 operator|=
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_LENGTH_TABLEBITS
 expr_stmt|;
 do|do
 block|{
@@ -2044,7 +2103,7 @@ operator|-=
 literal|3
 expr_stmt|;
 name|long
-name|l
+name|verbatim_bits
 init|=
 name|getChmSection
 argument_list|()
@@ -2057,24 +2116,23 @@ decl_stmt|;
 name|matchoffset
 operator|+=
 operator|(
-name|l
+name|verbatim_bits
 operator|<<
 literal|3
 operator|)
 expr_stmt|;
+comment|//READ HUFF SYM in Aligned Tree
 name|int
-name|g
+name|aligned_bits
 init|=
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_NUM_PRIMARY_LENGTHS
-argument_list|,
-literal|0
 argument_list|)
 decl_stmt|;
 name|int
@@ -2086,7 +2144,7 @@ operator|.
 name|getAlignedTreeTable
 argument_list|()
 index|[
-name|g
+name|aligned_bits
 index|]
 decl_stmt|;
 if|if
@@ -2104,8 +2162,9 @@ name|x
 operator|=
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_ALIGNED_TABLEBITS
 expr_stmt|;
+comment|//?LZX_MAINTREE_TABLEBITS; //?LZX_ALIGNED_TABLEBITS
 do|do
 block|{
 name|x
@@ -2157,7 +2216,7 @@ argument_list|(
 name|getState
 argument_list|()
 operator|.
-name|getAlignedTreeTable
+name|getAlignedLenTable
 argument_list|()
 index|[
 name|t
@@ -2183,13 +2242,11 @@ init|=
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_NUM_PRIMARY_LENGTHS
-argument_list|,
-literal|0
 argument_list|)
 decl_stmt|;
 name|int
@@ -2219,8 +2276,9 @@ name|x
 operator|=
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_ALIGNED_TABLEBITS
 expr_stmt|;
+comment|//?LZX_MAINTREE_TABLEBITS;
 do|do
 block|{
 name|x
@@ -2272,7 +2330,7 @@ argument_list|(
 name|getState
 argument_list|()
 operator|.
-name|getAlignedTreeTable
+name|getAlignedLenTable
 argument_list|()
 index|[
 name|t
@@ -2734,13 +2792,11 @@ init|=
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_MAINTREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 decl_stmt|;
 name|assertShortArrayNotNull
@@ -2890,13 +2946,11 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_LENGTH_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 index|]
 expr_stmt|;
@@ -3526,6 +3580,7 @@ operator|<
 name|tablelen
 condition|)
 block|{
+comment|//Read HUFF sym to z
 name|z
 operator|=
 name|pretreetable
@@ -3533,13 +3588,11 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_PRETREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 index|]
 expr_stmt|;
@@ -3755,18 +3808,7 @@ condition|;
 name|j
 operator|++
 control|)
-if|if
-condition|(
-name|i
-operator|<
-name|getState
-argument_list|()
-operator|.
-name|getLengthTreeLengtsTable
-argument_list|()
-operator|.
-name|length
-condition|)
+comment|//no tolerate //if (i< getState().getLengthTreeLengtsTable().length)
 name|getState
 argument_list|()
 operator|.
@@ -3809,13 +3851,11 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_PRETREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 index|]
 expr_stmt|;
@@ -3869,9 +3909,10 @@ operator|)
 operator|>=
 name|ChmConstants
 operator|.
-name|LZX_MAINTREE_TABLEBITS
+name|LZX_PRETREE_NUM_ELEMENTS
 condition|)
 do|;
+comment|//LZX_MAINTREE_TABLEBITS);
 block|}
 name|getChmSection
 argument_list|()
@@ -3948,6 +3989,7 @@ parameter_list|()
 throws|throws
 name|TikaException
 block|{
+comment|//Read Pre Tree Table
 name|short
 index|[]
 name|prelentable
@@ -4001,6 +4043,7 @@ argument_list|,
 name|prelentable
 argument_list|)
 expr_stmt|;
+comment|//Read Pre Tree Table
 name|prelentable
 operator|=
 name|createPreLenTable
@@ -4155,13 +4198,11 @@ init|=
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_PRETREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 decl_stmt|;
 name|z
@@ -4434,13 +4475,11 @@ index|[
 name|getChmSection
 argument_list|()
 operator|.
-name|getDesyncBits
+name|peekBits
 argument_list|(
 name|ChmConstants
 operator|.
 name|LZX_PRETREE_TABLEBITS
-argument_list|,
-literal|0
 argument_list|)
 index|]
 expr_stmt|;
@@ -4621,8 +4660,9 @@ name|tablelen
 init|=
 name|ChmConstants
 operator|.
-name|LZX_BLOCKTYPE_UNCOMPRESSED
+name|LZX_ALIGNED_NUM_ELEMENTS
 decl_stmt|;
+comment|//LZX_BLOCKTYPE_UNCOMPRESSED;//
 name|int
 name|bits
 init|=
@@ -4680,6 +4720,8 @@ specifier|private
 name|void
 name|createAlignedTreeTable
 parameter_list|()
+throws|throws
+name|ChmParsingException
 block|{
 name|getState
 argument_list|()
@@ -4693,8 +4735,9 @@ expr_stmt|;
 name|getState
 argument_list|()
 operator|.
-name|setAlignedLenTable
+name|setAlignedTreeTable
 argument_list|(
+comment|//setAlignedLenTable(
 name|createTreeTable2
 argument_list|(
 name|getState
@@ -4748,6 +4791,8 @@ parameter_list|,
 name|int
 name|maxsymbol
 parameter_list|)
+throws|throws
+name|ChmParsingException
 block|{
 name|short
 index|[]
@@ -4844,7 +4889,6 @@ name|leaf
 operator|=
 name|pos
 expr_stmt|;
-comment|// pos=0
 if|if
 condition|(
 operator|(
@@ -4855,9 +4899,16 @@ operator|)
 operator|>
 name|table_mask
 condition|)
-return|return
-literal|null
-return|;
+block|{
+comment|/* table overflow */
+throw|throw
+operator|new
+name|ChmParsingException
+argument_list|(
+literal|"Table overflow"
+argument_list|)
+throw|;
+block|}
 name|fill
 operator|=
 name|bit_mask
@@ -5114,14 +5165,16 @@ operator|)
 operator|>
 name|table_mask
 condition|)
-return|return
-literal|null
-return|;
-comment|/* table overflow */
-block|}
-else|else
 block|{
-comment|// return null;
+comment|/* table overflow */
+throw|throw
+operator|new
+name|ChmParsingException
+argument_list|(
+literal|"Table overflow"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 name|bit_mask
@@ -5169,15 +5222,6 @@ name|int
 name|endOffset
 parameter_list|)
 block|{
-name|int
-name|length
-init|=
-name|endOffset
-operator|-
-name|startOffset
-decl_stmt|;
-comment|// return (getContent() != null) ? Arrays.copyOfRange(getContent(),
-comment|// startOffset, (startOffset + length)) : new byte[1];
 return|return
 operator|(
 name|getContent
@@ -5195,11 +5239,7 @@ argument_list|()
 argument_list|,
 name|startOffset
 argument_list|,
-operator|(
-name|startOffset
-operator|+
-name|length
-operator|)
+name|endOffset
 argument_list|)
 else|:
 operator|new
@@ -5218,8 +5258,6 @@ name|int
 name|start
 parameter_list|)
 block|{
-comment|// return (getContent() != null) ? Arrays.copyOfRange(getContent(),
-comment|// start, (getContent().length + start)) : new byte[1];
 return|return
 operator|(
 name|getContent
@@ -5237,14 +5275,10 @@ argument_list|()
 argument_list|,
 name|start
 argument_list|,
-operator|(
 name|getContent
 argument_list|()
 operator|.
 name|length
-operator|+
-name|start
-operator|)
 argument_list|)
 else|:
 operator|new
@@ -5310,11 +5344,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
+comment|//use clone to avoid changing a cached or to be cached block
 name|setState
 argument_list|(
 name|chmPrevLzxBlock
 operator|.
 name|getState
+argument_list|()
+operator|.
+name|clone
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -5477,19 +5515,6 @@ name|state
 operator|=
 name|state
 expr_stmt|;
-block|}
-comment|/**      * @param args      */
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
 block|}
 block|}
 end_class
