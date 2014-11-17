@@ -45,6 +45,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
 import|;
 end_import
@@ -298,7 +308,11 @@ name|assertEquals
 argument_list|(
 literal|"Invalid overridden tesseractPath value"
 argument_list|,
-literal|"/opt/tesseract/"
+literal|"/opt/tesseract"
+operator|+
+name|File
+operator|.
+name|separator
 argument_list|,
 name|config
 operator|.
