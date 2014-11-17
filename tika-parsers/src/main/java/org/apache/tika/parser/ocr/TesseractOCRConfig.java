@@ -68,7 +68,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for TesseractOCRParser.  *   * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *  * Parameters can also be set by creating the TesseractOCRConfig.properties file  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  An  * example file can be found in the test resources folder:  *<code>tika-parsers/src/test/resources/test-properties/TesseractOCRConfig-full.properties</code>.  *   */
+comment|/**  * Configuration for TesseractOCRParser.  *   * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *  * Parameters can also be set by either editing the existing TesseractOCRConfig.properties file in,  * tika-parser/src/main/resources/org/apache/tika/parser/ocr, or overriding it by creating your own  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  *   */
 end_comment
 
 begin_class
@@ -556,7 +556,7 @@ name|String
 operator|.
 name|format
 argument_list|(
-literal|"Cannot parse TesseractOCRConfig variable $s, invalid integer value"
+literal|"Cannot parse TesseractOCRConfig variable %s, invalid integer value"
 argument_list|,
 name|property
 argument_list|)
