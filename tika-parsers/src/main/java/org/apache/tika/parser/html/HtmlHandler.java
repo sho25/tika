@@ -983,7 +983,7 @@ else|else
 block|{
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|name
 argument_list|,
