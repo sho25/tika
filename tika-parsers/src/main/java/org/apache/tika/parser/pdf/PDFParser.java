@@ -1565,6 +1565,10 @@ name|metadata
 operator|.
 name|set
 argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TIKA_META_PREFIX
+operator|+
 literal|"pdf:metadata-xmp-parse-failed"
 argument_list|,
 literal|""

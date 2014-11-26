@@ -1653,13 +1653,9 @@ name|assertTrue
 argument_list|(
 name|content
 operator|.
-name|endsWith
+name|contains
 argument_list|(
-literal|"    \"tika:embedded_resource_path\": \"test_recursive_embedded.docx/embed1.zip\"\n"
-operator|+
-literal|"  }\n"
-operator|+
-literal|"]"
+literal|"\"X-TIKA:embedded_resource_path\": \"test_recursive_embedded.docx/embed1.zip\""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1669,7 +1665,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"tika:content"
+literal|"X-TIKA:content"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1723,7 +1719,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"\"tika:content\": \"\\u003chtml xmlns\\u003d\\\"http://www.w3.org/1999/xhtml"
+literal|"\"X-TIKA:content\": \"\\u003chtml xmlns\\u003d\\\"http://www.w3.org/1999/xhtml"
 argument_list|)
 argument_list|)
 expr_stmt|;
