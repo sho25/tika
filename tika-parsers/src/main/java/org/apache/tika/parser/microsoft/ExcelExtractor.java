@@ -767,6 +767,14 @@ name|WORKBOOK_ENTRY
 init|=
 literal|"Workbook"
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|BOOK_ENTRY
+init|=
+literal|"Book"
+decl_stmt|;
 specifier|public
 name|ExcelExtractor
 parameter_list|(
@@ -871,8 +879,26 @@ name|WORKBOOK_ENTRY
 argument_list|)
 condition|)
 block|{
-comment|// Corrupt file / very old file, just skip
+if|if
+condition|(
+name|root
+operator|.
+name|hasEntry
+argument_list|(
+name|BOOK_ENTRY
+argument_list|)
+condition|)
+block|{
+comment|// Excel 5 / Excel 95 file
+comment|// Records are in a different structure so needs a
+comment|//  different parser to process them
+comment|// TODO Call one, see TIKA-1490
+block|}
+else|else
+block|{
+comment|// Corrupt file / very old file, just skip text extraction
 return|return;
+block|}
 block|}
 name|TikaHSSFListener
 name|listener
