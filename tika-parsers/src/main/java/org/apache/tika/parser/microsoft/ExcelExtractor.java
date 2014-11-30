@@ -893,6 +893,7 @@ comment|// Excel 5 / Excel 95 file
 comment|// Records are in a different structure so needs a
 comment|//  different parser to process them
 comment|// TODO Call one, see TIKA-1490
+return|return;
 block|}
 else|else
 block|{
