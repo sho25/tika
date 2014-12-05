@@ -2000,6 +2000,12 @@ name|size
 operator|=
 name|Math
 operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|Math
+operator|.
 name|min
 argument_list|(
 name|size
@@ -2010,7 +2016,9 @@ name|length
 operator|-
 name|copyFrom
 argument_list|)
+argument_list|)
 expr_stmt|;
+comment|// TIKA-1218, prevent negative size for malformed files.
 name|data
 operator|=
 operator|new
