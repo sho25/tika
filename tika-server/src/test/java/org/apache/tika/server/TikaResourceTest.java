@@ -168,6 +168,14 @@ name|TEST_XLSX
 init|=
 literal|"16637.xlsx"
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|TEST_PASSWORD_PROTECTED
+init|=
+literal|"password.xls"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
