@@ -153,6 +153,20 @@ name|tika
 operator|.
 name|metadata
 operator|.
+name|Photoshop
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
 name|TIFF
 import|;
 end_import
@@ -549,8 +563,7 @@ name|depth
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Colour mode
-comment|// Bitmap = 0; Grayscale = 1; Indexed = 2; RGB = 3; CMYK = 4; Multichannel = 7; Duotone = 8; Lab = 9.
+comment|// Colour mode, eg Bitmap or RGB
 name|int
 name|colorMode
 init|=
@@ -561,7 +574,22 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
-comment|// TODO Identify a suitable metadata key for this
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|Photoshop
+operator|.
+name|COLOR_MODE
+argument_list|,
+name|Photoshop
+operator|.
+name|_COLOR_MODE_CHOICES_INDEXED
+index|[
+name|colorMode
+index|]
+argument_list|)
+expr_stmt|;
 comment|// Next is the Color Mode section
 comment|// We don't care about this bit
 name|long

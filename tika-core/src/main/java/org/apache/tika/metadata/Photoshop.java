@@ -50,6 +50,57 @@ operator|+
 literal|"AuthorsPosition"
 argument_list|)
 decl_stmt|;
+comment|// TODO Replace this with proper indexed choices support
+name|String
+index|[]
+name|_COLOR_MODE_CHOICES_INDEXED
+init|=
+block|{
+literal|"Bitmap"
+block|,
+literal|"Greyscale"
+block|,
+literal|"Indexed Colour"
+block|,
+literal|"RGB Color"
+block|,
+literal|"CMYK Colour"
+block|,
+literal|"Multi-Channel"
+block|,
+literal|"Duotone"
+block|,
+literal|"LAB Colour"
+block|,
+literal|"reserved"
+block|,
+literal|"reserved"
+block|,
+literal|"YCbCr Colour"
+block|,
+literal|"YCgCo Colour"
+block|,
+literal|"YCbCrK Colour"
+block|}
+decl_stmt|;
+name|Property
+name|COLOR_MODE
+init|=
+name|Property
+operator|.
+name|internalClosedChoise
+argument_list|(
+name|PREFIX_PHOTOSHOP
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+operator|+
+literal|"ColorMode"
+argument_list|,
+name|_COLOR_MODE_CHOICES_INDEXED
+argument_list|)
+decl_stmt|;
 name|Property
 name|CAPTION_WRITER
 init|=
