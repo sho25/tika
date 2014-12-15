@@ -233,6 +233,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|ParseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -291,6 +305,15 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|final
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 specifier|public
 name|MetadataEP
 parameter_list|(
@@ -329,6 +352,8 @@ argument_list|(
 name|parser
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|,
 name|httpHeaders
 operator|.
@@ -372,6 +397,8 @@ name|DefaultHandler
 argument_list|()
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 return|return
@@ -441,6 +468,8 @@ name|DefaultHandler
 argument_list|()
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 comment|// once we've parsed the document successfully, we should use NOT_FOUND
@@ -570,6 +599,8 @@ name|DefaultHandler
 argument_list|()
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 comment|// once we've parsed the document successfully, we should use NOT_FOUND

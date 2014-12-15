@@ -768,6 +768,13 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|pc
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 name|AutoDetectParser
 name|parser
 init|=
@@ -785,6 +792,8 @@ argument_list|(
 name|parser
 argument_list|,
 name|metadata
+argument_list|,
+name|pc
 argument_list|,
 name|httpHeaders
 operator|.
@@ -846,13 +855,6 @@ name|DefaultHandler
 argument_list|()
 expr_stmt|;
 block|}
-name|ParseContext
-name|pc
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
 name|Map
 argument_list|<
 name|String

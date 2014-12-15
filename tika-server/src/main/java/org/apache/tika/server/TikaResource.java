@@ -1351,6 +1351,9 @@ parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|,
+name|ParseContext
+name|context
+parameter_list|,
 name|MultivaluedMap
 argument_list|<
 name|String
@@ -1595,6 +1598,25 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+name|String
+name|password
+init|=
+name|httpHeaders
+operator|.
+name|getFirst
+argument_list|(
+literal|"Password"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|password
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// TODO
+block|}
 block|}
 annotation|@
 name|PUT
@@ -1745,6 +1767,8 @@ argument_list|(
 name|parser
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|,
 name|httpHeaders
 argument_list|)
@@ -2299,6 +2323,8 @@ argument_list|(
 name|parser
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|,
 name|httpHeaders
 argument_list|)
