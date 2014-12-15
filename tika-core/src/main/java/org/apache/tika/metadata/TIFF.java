@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * XMP Exif TIFF schema. This is a collection of  * {@link Property property definition} constants for the Exif TIFF  * properties defined in the XMP standard.  *  * @since Apache Tika 0.8  * @see<a href="http://www.adobe.com/devnet/xmp/pdfs/XMPSpecificationPart2.pdf"  *>XMP Specification, Part 2: Standard Schemas</a>  */
+comment|/**  * XMP Exif TIFF schema. This is a collection of  * {@link Property property definition} constants for the Exif TIFF  * properties defined in the XMP standard.  *  * @since Apache Tika 0.8  * @see<a href="http://wwwimages.adobe.com/content/dam/Adobe/en/devnet/xmp/pdfs/cc-201306/XMPSpecificationPart2.pdf"  *>XMP Specification, Part 2: Standard Schemas</a>  */
 end_comment
 
 begin_interface
