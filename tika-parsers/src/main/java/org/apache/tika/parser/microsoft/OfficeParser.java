@@ -1326,6 +1326,8 @@ operator|new
 name|ExcelExtractor
 argument_list|(
 name|context
+argument_list|,
+name|metadata
 argument_list|)
 operator|.
 name|parse
