@@ -3505,14 +3505,6 @@ argument_list|(
 literal|"testOCR.pdf"
 argument_list|)
 expr_stmt|;
-comment|//PDFBox-2490/TIKA-1467; should be ok with version>= PDFBox 1.8.8
-name|knownMetadataDiffs
-operator|.
-name|add
-argument_list|(
-literal|"testPDF_protected.pdf"
-argument_list|)
-expr_stmt|;
 comment|//empty for now
 name|Set
 argument_list|<
