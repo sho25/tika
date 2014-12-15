@@ -472,7 +472,7 @@ name|COLOR_MODE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// TODO Check comment data
+comment|// TODO Check geographic data
 block|}
 block|}
 end_class

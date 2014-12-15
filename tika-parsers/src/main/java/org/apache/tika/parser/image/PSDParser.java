@@ -687,7 +687,7 @@ operator|.
 name|ID_EXIF_1
 condition|)
 block|{
-comment|// TODO Parse the EXIF info
+comment|// TODO Parse the EXIF info via ImageMetadataExtractor
 block|}
 elseif|else
 if|if
@@ -701,7 +701,7 @@ operator|.
 name|ID_EXIF_3
 condition|)
 block|{
-comment|// TODO Parse the EXIF info
+comment|// TODO Parse the EXIF info via ImageMetadataExtractor
 block|}
 elseif|else
 if|if
@@ -715,7 +715,7 @@ operator|.
 name|ID_XMP
 condition|)
 block|{
-comment|// TODO Parse the XMP info
+comment|// TODO Parse the XMP info via ImageMetadataExtractor
 block|}
 block|}
 comment|// Next is the Layer and Mask Info
