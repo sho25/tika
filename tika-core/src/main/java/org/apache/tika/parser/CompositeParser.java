@@ -603,6 +603,24 @@ operator|=
 name|registry
 expr_stmt|;
 block|}
+comment|/**      * Returns all parsers registered with the Composite Parser,      *  including ones which may not currently be active.      * This won't include the Fallback Parser, if defined      */
+specifier|public
+name|List
+argument_list|<
+name|Parser
+argument_list|>
+name|getAllComponentParsers
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableList
+argument_list|(
+name|parsers
+argument_list|)
+return|;
+block|}
 comment|/**      * Returns the component parsers.      *      * @return component parsers, keyed by media type      */
 specifier|public
 name|Map
