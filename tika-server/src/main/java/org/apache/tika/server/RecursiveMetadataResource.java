@@ -536,6 +536,15 @@ argument_list|)
 expr_stmt|;
 name|TikaResource
 operator|.
+name|fillParseContext
+argument_list|(
+name|context
+argument_list|,
+name|httpHeaders
+argument_list|)
+expr_stmt|;
+name|TikaResource
+operator|.
 name|logRequest
 argument_list|(
 name|logger
