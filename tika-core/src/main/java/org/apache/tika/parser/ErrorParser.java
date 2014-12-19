@@ -110,6 +110,14 @@ name|ErrorParser
 extends|extends
 name|AbstractParser
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|7727423956957641824L
+decl_stmt|;
 comment|/**      * Singleton instance of this class.      */
 specifier|public
 specifier|static

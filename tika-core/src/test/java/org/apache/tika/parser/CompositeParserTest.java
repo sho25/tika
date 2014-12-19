@@ -218,6 +218,11 @@ name|CompositeParserTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 specifier|public
 name|void
 name|testFindDuplicateParsers
