@@ -391,6 +391,7 @@ expr_stmt|;
 block|}
 block|}
 specifier|protected
+specifier|static
 name|TikaInputStream
 name|getTestFile
 parameter_list|(
