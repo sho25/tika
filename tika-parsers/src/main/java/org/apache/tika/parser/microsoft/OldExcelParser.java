@@ -355,13 +355,22 @@ comment|//  didn't have any stored with them
 comment|// Set the content type
 comment|// TODO Get the version and type, to set as the Content Type
 comment|// Have the text extracted and given to our Content Handler
+name|XHTMLContentHandler
+name|xhtml
+init|=
+operator|new
+name|XHTMLContentHandler
+argument_list|(
+name|handler
+argument_list|,
+name|metadata
+argument_list|)
+decl_stmt|;
 name|parse
 argument_list|(
 name|extractor
 argument_list|,
-name|handler
-argument_list|,
-name|metadata
+name|xhtml
 argument_list|)
 expr_stmt|;
 block|}
@@ -373,11 +382,8 @@ parameter_list|(
 name|OldExcelExtractor
 name|extractor
 parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
+name|XHTMLContentHandler
+name|xhtml
 parameter_list|)
 throws|throws
 name|TikaException
@@ -396,17 +402,6 @@ name|getText
 argument_list|()
 decl_stmt|;
 comment|// Split and output
-name|XHTMLContentHandler
-name|xhtml
-init|=
-operator|new
-name|XHTMLContentHandler
-argument_list|(
-name|handler
-argument_list|,
-name|metadata
-argument_list|)
-decl_stmt|;
 name|xhtml
 operator|.
 name|startDocument

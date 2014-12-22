@@ -233,6 +233,22 @@ name|poi
 operator|.
 name|hssf
 operator|.
+name|extractor
+operator|.
+name|OldExcelExtractor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|hssf
+operator|.
 name|record
 operator|.
 name|BOFRecord
@@ -929,7 +945,24 @@ block|{
 comment|// Excel 5 / Excel 95 file
 comment|// Records are in a different structure so needs a
 comment|//  different parser to process them
-comment|// TODO Call one, see TIKA-1490
+name|OldExcelExtractor
+name|extractor
+init|=
+operator|new
+name|OldExcelExtractor
+argument_list|(
+name|root
+argument_list|)
+decl_stmt|;
+name|OldExcelParser
+operator|.
+name|parse
+argument_list|(
+name|extractor
+argument_list|,
+name|xhtml
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
 else|else
