@@ -466,7 +466,7 @@ decl_stmt|;
 comment|// TODO Identify a suitable metadata key for this
 comment|// Is there an alpha plane as well as a colour plane?
 name|boolean
-name|hasAlphaPlane
+name|hasAlphaPlane1
 init|=
 operator|(
 name|pdf
@@ -476,7 +476,7 @@ operator|)
 operator|==
 literal|0x8
 decl_stmt|;
-comment|// TODO Identify a suitable metadata key for this
+comment|// TODO Identify a suitable metadata key for this+hasAlphaPlane2
 comment|// Bit depth minus 8
 name|int
 name|bitDepth
@@ -520,7 +520,7 @@ name|colourSpace
 init|=
 name|cer
 operator|&
-literal|0x7
+literal|0x15
 decl_stmt|;
 switch|switch
 condition|(
@@ -610,11 +610,24 @@ init|=
 operator|(
 name|cer
 operator|&
-literal|0x8
+literal|16
 operator|)
 operator|==
-literal|0x8
+literal|16
 decl_stmt|;
+comment|// Is the Alpha Plane 2 flag set?
+name|boolean
+name|hasAlphaPlane2
+init|=
+operator|(
+name|cer
+operator|&
+literal|32
+operator|)
+operator|==
+literal|32
+decl_stmt|;
+comment|// cer then holds 2 more booleans - limited range, reserved
 comment|// Width and height next
 name|int
 name|width
@@ -699,7 +712,9 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
-name|hasAlphaPlane
+name|hasAlphaPlane1
+operator|||
+name|hasAlphaPlane2
 condition|)
 name|alphaDataLength
 operator|=
