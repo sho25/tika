@@ -3619,6 +3619,73 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testBerkeleyDB
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=btree; version=2"
+argument_list|,
+literal|"testBDB_btree_2.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=btree; version=3"
+argument_list|,
+literal|"testBDB_btree_3.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=btree; version=4"
+argument_list|,
+literal|"testBDB_btree_4.db"
+argument_list|)
+expr_stmt|;
+comment|// V4 and V5 share the same btree format
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=btree; version=4"
+argument_list|,
+literal|"testBDB_btree_5.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=hash; version=2"
+argument_list|,
+literal|"testBDB_hash_2.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=hash; version=3"
+argument_list|,
+literal|"testBDB_hash_3.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=hash; version=4"
+argument_list|,
+literal|"testBDB_hash_4.db"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-berkeley-db; format=hash; version=5"
+argument_list|,
+literal|"testBDB_hash_5.db"
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|void
 name|assertText
