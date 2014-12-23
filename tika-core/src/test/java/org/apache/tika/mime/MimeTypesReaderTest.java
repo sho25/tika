@@ -101,16 +101,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -661,14 +651,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO Get this to work - currently jumps two levels!
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
-name|testReadParameterHeirarchy
+name|testReadParameterHierarchy
 parameter_list|()
 throws|throws
 name|Exception

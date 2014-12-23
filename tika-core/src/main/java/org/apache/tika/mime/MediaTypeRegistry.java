@@ -467,7 +467,7 @@ name|b
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the supertype of the given type. If the given type has any      * parameters, then the respective base type is returned. Otherwise      * built-in heuristics like text/... -&gt; text/plain and      * .../...+xml -&gt; application/xml are used in addition to explicit      * type inheritance rules read from the media type database. Finally      * application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @since Apache Tika 0.8      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
+comment|/**      * Returns the supertype of the given type. If the media type database      * has an explicit inheritance rule for the type, then that is used.       * Next, if the given type has any parameters, then the respective base       * type (parameter-less) is returned. Otherwise built-in heuristics like       * text/... -&gt; text/plain and .../...+xml -&gt; application/xml are used.       * Finally application/octet-stream is returned for all types for which no other      * supertype is known, and the return value for application/octet-stream      * is<code>null</code>.      *      * @since Apache Tika 0.8      * @param type media type      * @return supertype, or<code>null</code> for application/octet-stream      */
 specifier|public
 name|MediaType
 name|getSupertype
@@ -490,22 +490,6 @@ block|}
 elseif|else
 if|if
 condition|(
-name|type
-operator|.
-name|hasParameters
-argument_list|()
-condition|)
-block|{
-return|return
-name|type
-operator|.
-name|getBaseType
-argument_list|()
-return|;
-block|}
-elseif|else
-if|if
-condition|(
 name|inheritance
 operator|.
 name|containsKey
@@ -521,6 +505,22 @@ name|get
 argument_list|(
 name|type
 argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|type
+operator|.
+name|hasParameters
+argument_list|()
+condition|)
+block|{
+return|return
+name|type
+operator|.
+name|getBaseType
+argument_list|()
 return|;
 block|}
 elseif|else

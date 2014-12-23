@@ -2401,9 +2401,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Concept inherits from topic
 name|assertEquals
 argument_list|(
-literal|"application/dita+xml"
+literal|"application/dita+xml; format=topic"
 argument_list|,
 name|repo
 operator|.
