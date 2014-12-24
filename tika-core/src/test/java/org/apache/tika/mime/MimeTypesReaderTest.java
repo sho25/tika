@@ -753,6 +753,43 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// If we use one with parameters not known in the media registry,
+comment|//  getting the parent will return the non-parameter version
+name|MediaType
+name|mtAlt
+init|=
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"x-berkeley-db; format=unknown; version=42"
+argument_list|)
+decl_stmt|;
+name|MediaType
+name|mtAltP
+init|=
+name|this
+operator|.
+name|mimeTypes
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+operator|.
+name|getSupertype
+argument_list|(
+name|mtAlt
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"application/x-berkeley-db"
+argument_list|,
+name|mtAltP
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * TIKA-746 Ensures that the custom mimetype maps were also       *  loaded and used      */
 annotation|@
