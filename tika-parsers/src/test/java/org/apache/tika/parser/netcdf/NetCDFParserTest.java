@@ -169,23 +169,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"java.version"
-argument_list|)
-operator|.
-name|startsWith
-argument_list|(
-literal|"1.5"
-argument_list|)
-condition|)
-block|{
-return|return;
-block|}
 name|Parser
 name|parser
 init|=
@@ -343,7 +326,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|":long_name = \"Surface area\";"
+literal|"long_name = \"Surface area\""
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -353,7 +336,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"float area(lat=128, lon=256);"
+literal|"float area(lat=128, lon=256)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -363,7 +346,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"float lat(lat=128);"
+literal|"float lat(lat=128)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -373,7 +356,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"double lat_bnds(lat=128, bnds=2);"
+literal|"double lat_bnds(lat=128, bnds=2)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -383,7 +366,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"double lon_bnds(lon=256, bnds=2);"
+literal|"double lon_bnds(lon=256, bnds=2)"
 argument_list|)
 argument_list|)
 expr_stmt|;
