@@ -3284,11 +3284,12 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testEmlx
+name|testEmail
 parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// EMLX
 name|assertTypeDetection
 argument_list|(
 literal|"testEMLX.emlx"
@@ -3296,21 +3297,28 @@ argument_list|,
 literal|"message/x-emlx"
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testGroupWiseEml
-parameter_list|()
-throws|throws
-name|Exception
-block|{
+comment|// Groupwise
 name|assertTypeDetection
 argument_list|(
 literal|"testGroupWiseEml.eml"
 argument_list|,
 literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+comment|// Lotus
+name|assertTypeDetection
+argument_list|(
+literal|"testLotusEml.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+comment|// Thunderbird - doesn't currently work by name
+name|assertTypeByNameAndData
+argument_list|(
+literal|"message/rfc822"
+argument_list|,
+literal|"testThunderbirdEml.eml"
 argument_list|)
 expr_stmt|;
 block|}
