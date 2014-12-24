@@ -605,10 +605,10 @@ name|xhtml
 operator|.
 name|characters
 argument_list|(
+name|stripTags
+argument_list|(
 name|content
-operator|.
-name|getValue
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
