@@ -324,7 +324,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Wraps execution of the<a href="http//gdal.org/">Geospatial Data Abstraction  * Library (GDAL)</a><code>gdalinfo</code> tool used to extract geospatial  * information out of hundreds of geo file formats.  *   * The parser requires the installation of GDAL and for<code>gdalinfo</code> to  * be located on the path.  *   * Basic information (Size, Coordinate System, Bounding Box, Driver, and  * resource info) are extracted as metadata, and the remaining metadata patterns  * are extracted and added.  *   * The output of the command is available from the provided  * {@link ContentHandler} in the  * {@link #parse(InputStream, ContentHandler, Metadata, ParseContext)} method.  *   */
+comment|/**  * Wraps execution of the<a href="http//gdal.org/">Geospatial Data Abstraction  * Library (GDAL)</a><code>gdalinfo</code> tool used to extract geospatial  * information out of hundreds of geo file formats.  *<p/>  * The parser requires the installation of GDAL and for<code>gdalinfo</code> to  * be located on the path.  *<p/>  * Basic information (Size, Coordinate System, Bounding Box, Driver, and  * resource info) are extracted as metadata, and the remaining metadata patterns  * are extracted and added.  *<p/>  * The output of the command is available from the provided  * {@link ContentHandler} in the  * {@link #parse(InputStream, ContentHandler, Metadata, ParseContext)} method.  */
 end_comment
 
 begin_class
@@ -2754,7 +2754,7 @@ parameter_list|(
 name|InterruptedException
 name|ignore
 parameter_list|)
-block|{ 			}
+block|{             }
 return|return
 name|output
 return|;

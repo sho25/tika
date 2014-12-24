@@ -180,7 +180,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * Test harness for the GDAL parser.  *   */
+comment|/**  * Test harness for the GDAL parser.  */
 end_comment
 
 begin_class
