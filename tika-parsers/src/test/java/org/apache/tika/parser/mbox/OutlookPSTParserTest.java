@@ -321,11 +321,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|OutlookPSTParser
+name|Parser
 name|pstParser
 init|=
 operator|new
-name|OutlookPSTParser
+name|AutoDetectParser
 argument_list|()
 decl_stmt|;
 name|Metadata
