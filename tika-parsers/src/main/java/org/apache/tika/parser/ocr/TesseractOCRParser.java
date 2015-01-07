@@ -1176,6 +1176,15 @@ name|CompositeParser
 block|{
 specifier|private
 specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+operator|-
+literal|2398203346206381382L
+decl_stmt|;
+specifier|private
+specifier|static
 name|List
 argument_list|<
 name|Parser
