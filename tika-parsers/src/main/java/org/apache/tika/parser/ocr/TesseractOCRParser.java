@@ -1218,9 +1218,8 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
+operator|new
 name|MediaTypeRegistry
-operator|.
-name|getDefaultRegistry
 argument_list|()
 argument_list|,
 name|imageParsers
