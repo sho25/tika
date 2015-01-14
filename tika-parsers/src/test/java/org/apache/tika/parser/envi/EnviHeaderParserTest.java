@@ -17,9 +17,19 @@ name|envi
 package|;
 end_package
 
-begin_comment
-comment|//Junit imports
-end_comment
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
+operator|.
+name|assertContains
+import|;
+end_import
 
 begin_import
 import|import static
@@ -34,38 +44,12 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
-name|org
+name|java
 operator|.
-name|apache
+name|io
 operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|ToXMLContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Test
+name|InputStream
 import|;
 end_import
 
@@ -113,16 +97,30 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|InputStream
+name|tika
+operator|.
+name|sax
+operator|.
+name|ToXMLContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
 begin_comment
-comment|/*  * Test cases to exercise the {@link EnviHeaderParser}.  *   */
+comment|/**  * Test cases to exercise the {@link EnviHeaderParser}.  */
 end_comment
 
 begin_class
@@ -231,64 +229,46 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<body><p>ENVI</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>samples = 2400</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>lines   = 2400</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>map info = {Sinusoidal, 1.5000, 1.5000, -10007091.3643, 5559289.2856, 4.6331271653e+02, 4.6331271653e+02, , units=Meters}</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"content=\"application/envi.hdr\""
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"projection info = {16, 6371007.2, 0.000000, 0.0, 0.0, Sinusoidal, units=Meters}"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
