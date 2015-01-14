@@ -17,9 +17,19 @@ name|mat
 package|;
 end_package
 
-begin_comment
-comment|//JDK imports
-end_comment
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
+operator|.
+name|assertContains
+import|;
+end_import
 
 begin_import
 import|import static
@@ -34,18 +44,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -54,10 +52,6 @@ operator|.
 name|InputStream
 import|;
 end_import
-
-begin_comment
-comment|//TIKA imports
-end_comment
 
 begin_import
 import|import
@@ -140,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases to exercise the {@link MatParser}.  *  */
+comment|/**  * Test cases to exercise the {@link MatParser}.  */
 end_comment
 
 begin_class
@@ -221,7 +215,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Check Metadata
+comment|// Check Metadata
 name|assertEquals
 argument_list|(
 literal|"PCWIN64"
@@ -270,7 +264,7 @@ literal|"createdOn"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Check Content
+comment|// Check Content
 name|String
 name|content
 init|=
@@ -279,84 +273,60 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<li>[1x909  double array]</li>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>c1:[1x1  struct array]</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<li>[1024x1  double array]</li>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>b1:[1x1  struct array]</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>a1:[1x1  struct array]</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<li>[1024x1261  double array]</li>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<li>[1x1  double array]</li>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"</body></html>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
@@ -433,7 +403,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Check Content
+comment|// Check Content
 name|String
 name|content
 init|=
@@ -442,14 +412,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<p>double:[2x2  double array]</p>"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
