@@ -33,11 +33,13 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertTrue
+name|TikaTest
+operator|.
+name|assertContains
 import|;
 end_import
 
@@ -252,44 +254,32 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Plus a simple div"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"First item"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"The previous headings were subchapters"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Table data"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}

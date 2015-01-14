@@ -579,14 +579,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Tika test document"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 name|assertEquals

@@ -346,17 +346,14 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"Sample Word Document"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"Sample Word Document"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -423,17 +420,14 @@ name|ParseContext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"MSj00974840000[1].wav"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"MSj00974840000[1].wav"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1074,17 +1068,14 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"The quick brown fox jumps over the lazy dog"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"The quick brown fox jumps over the lazy dog"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

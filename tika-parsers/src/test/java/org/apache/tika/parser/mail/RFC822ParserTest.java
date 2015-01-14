@@ -21,6 +21,20 @@ begin_import
 import|import static
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
+operator|.
+name|assertContains
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
 name|Assert
@@ -1084,17 +1098,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//tests correct decoding of base64 text, including ISO-8859-1 bytes into Unicode
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"Here is some text, with international characters, voil\u00E0!"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"Here is some text, with international characters, voil\u00E0!"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1753,17 +1764,14 @@ name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"bar biz bat"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"bar biz bat"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

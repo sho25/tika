@@ -304,24 +304,18 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Sample Powerpoint Slide"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Powerpoint X for Mac"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}

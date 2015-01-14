@@ -21,11 +21,13 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertEquals
+name|TikaTest
+operator|.
+name|assertContains
 import|;
 end_import
 
@@ -37,7 +39,17 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -119,6 +131,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|parser
+operator|.
+name|ParseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|BodyContentHandler
@@ -144,16 +170,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -210,6 +226,10 @@ argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|String
@@ -220,14 +240,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"1812"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}

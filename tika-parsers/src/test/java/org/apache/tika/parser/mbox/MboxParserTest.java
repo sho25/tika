@@ -33,11 +33,13 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertTrue
+name|TikaTest
+operator|.
+name|assertContains
 import|;
 end_import
 
@@ -329,24 +331,18 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Test content 1"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Test content 2"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -516,17 +512,14 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"Test content"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"Test content"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -803,30 +796,24 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-name|assertTrue
-argument_list|(
-name|handler
-operator|.
-name|toString
-argument_list|()
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Test content"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertTrue
-argument_list|(
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
+argument_list|)
+expr_stmt|;
+name|assertContains
 argument_list|(
 literal|"> quoted stuff"
-argument_list|)
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -983,17 +970,14 @@ name|MESSAGE_RECIPIENT_ADDRESS
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assertContains
 argument_list|(
+literal|"When a Mapper completes"
+argument_list|,
 name|handler
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"When a Mapper completes"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

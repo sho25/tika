@@ -21,11 +21,23 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertTrue
+name|TikaTest
+operator|.
+name|assertContains
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -90,16 +102,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
 import|;
 end_import
 
@@ -168,14 +170,11 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Office"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}

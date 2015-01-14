@@ -792,14 +792,11 @@ argument_list|,
 literal|" "
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"a b c d \u00E4 \u00EB \u00F6 \u00FC"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 name|assertContains

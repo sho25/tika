@@ -33,11 +33,13 @@ begin_import
 import|import static
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Assert
+name|tika
 operator|.
-name|assertTrue
+name|TikaTest
+operator|.
+name|assertContains
 import|;
 end_import
 
@@ -496,34 +498,25 @@ name|toString
 argument_list|()
 decl_stmt|;
 comment|// Test that the comments got extracted
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"Comments"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"This is a comment in a sample file"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
-name|content
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"UniqueID 12345"
-argument_list|)
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
