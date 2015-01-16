@@ -333,6 +333,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|PasswordProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ocr
 operator|.
 name|TesseractOCRParserTest
@@ -1867,6 +1881,13 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
 name|InputStream
 name|stream
 init|=
@@ -1892,9 +1913,7 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|context
 argument_list|)
 expr_stmt|;
 comment|// Check we go the metadata
@@ -1914,7 +1933,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Testing indexing of encrypted files containing useful information"
+literal|"Test mail for Tika"
 argument_list|,
 name|metadata
 operator|.
@@ -1926,10 +1945,40 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Check we got the message text
+comment|// Check we got the message text, for both Plain Text and HTML
 name|assertContains
 argument_list|(
-literal|"Please take a look at the file"
+literal|"Includes encrypted zip file"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"password is \"test\"."
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the Plain Text part"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the HTML part"
 argument_list|,
 name|handler
 operator|.
@@ -1938,10 +1987,158 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// But not the contents of the zip file
-comment|// TODO
+comment|// TODO Should the filename of the encrypted file in the zip show up or not?
+comment|//assertNotContained("text.txt", handler.toString());
+name|assertNotContained
+argument_list|(
+literal|"ENCRYPTED ZIP FILES"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Try again, this time with the password supplied
 comment|// Check that we also get the zip's contents as well
-comment|// TODO
+name|context
+operator|.
+name|set
+argument_list|(
+name|PasswordProvider
+operator|.
+name|class
+argument_list|,
+operator|new
+name|PasswordProvider
+argument_list|()
+block|{
+specifier|public
+name|String
+name|getPassword
+parameter_list|(
+name|Metadata
+name|metadata
+parameter_list|)
+block|{
+return|return
+literal|"test"
+return|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|stream
+operator|=
+name|getStream
+argument_list|(
+literal|"test-documents/testRFC822_encrypted_zip"
+argument_list|)
+expr_stmt|;
+name|handler
+operator|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+expr_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Includes encrypted zip file"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"password is \"test\"."
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the Plain Text part"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the HTML part"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// We do get the name of the file in the encrypted zip file
+name|assertContains
+argument_list|(
+literal|"text.txt"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// But because the RFC822 parser only recurses once, we don't
+comment|//  get the contents of the text file inside the zip file
+comment|// TODO Is this correct? Should we see the contents of the encrypted
+comment|//  zip when a password is given, or not?
+name|assertNotContained
+argument_list|(
+literal|"TEST DATA FOR TIKA."
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertNotContained
+argument_list|(
+literal|"ENCRYPTED ZIP FILES"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertNotContained
+argument_list|(
+literal|"TIKA-1028"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * TIKA-1222 When requested, ensure that the various attachments of      *  the mail come through properly as embedded resources      */
 annotation|@
