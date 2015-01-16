@@ -333,6 +333,20 @@ name|tika
 operator|.
 name|exception
 operator|.
+name|EncryptedDocumentException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
 name|TikaException
 import|;
 end_import
@@ -705,6 +719,14 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|EncryptedDocumentException
+name|ede
+parameter_list|)
+block|{
+comment|// Skip this encrypted attachment and continue
 block|}
 catch|catch
 parameter_list|(
