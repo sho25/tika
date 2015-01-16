@@ -359,6 +359,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|extractor
+operator|.
+name|EmbeddedDocumentExtractor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -570,12 +584,38 @@ name|MimeException
 throws|,
 name|IOException
 block|{
-comment|// Work out the best underlying parser for the part
-comment|// Check first for a specified AutoDetectParser (which may have a
-comment|//  specific Config), then a recursing parser, and finally the default
+comment|// Was an EmbeddedDocumentExtractor given to explicitly handle/process
+comment|//  the attachments in the file?
+name|EmbeddedDocumentExtractor
+name|ex
+init|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|EmbeddedDocumentExtractor
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+comment|// If there's no EmbeddedDocumentExtractor, then try using a normal parser
+comment|// This will ensure that the contents are made available to the user, so
+comment|//  the see the text, but without fine-grained control/extraction
 name|Parser
 name|parser
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|ex
+operator|==
+literal|null
+condition|)
+block|{
+comment|// If the user gave a parser, use that, if not the default
+name|parser
+operator|=
 name|context
 operator|.
 name|get
@@ -584,7 +624,7 @@ name|AutoDetectParser
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|parser
@@ -653,6 +693,7 @@ name|getParser
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|// use a different metadata object
 comment|// in order to specify the mime type of the
 comment|// sub part without damaging the main metadata
@@ -702,6 +743,38 @@ argument_list|(
 name|handler
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|ex
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|ex
+operator|.
+name|shouldParseEmbedded
+argument_list|(
+name|submd
+argument_list|)
+condition|)
+name|ex
+operator|.
+name|parseEmbedded
+argument_list|(
+name|is
+argument_list|,
+name|bch
+argument_list|,
+name|submd
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|parser
 operator|.
 name|parse
@@ -719,6 +792,7 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

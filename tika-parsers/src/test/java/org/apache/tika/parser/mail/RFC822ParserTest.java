@@ -1887,6 +1887,18 @@ comment|// Try again, this time with the password supplied
 comment|// Check that we also get the zip's contents as well
 comment|// TODO
 block|}
+comment|/**      * TIKA-1222 When requested, ensure that the various attachments of      *  the mail come through properly as embedded resources      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testGetAttachmentsAsEmbeddedResources
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// TODO
+block|}
 specifier|private
 specifier|static
 name|InputStream
