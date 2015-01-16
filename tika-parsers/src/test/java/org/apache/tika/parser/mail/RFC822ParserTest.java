@@ -75,6 +75,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|fail
 import|;
 end_import
@@ -1775,6 +1787,106 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Test TIKA-1028 - If the mail contains an encrypted attachment (or      *  an attachment that others triggers an error), parsing should carry      *  on for the remainder regardless      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testEncryptedZipAttachment
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Parser
+name|parser
+init|=
+operator|new
+name|RFC822Parser
+argument_list|()
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|InputStream
+name|stream
+init|=
+name|getStream
+argument_list|(
+literal|"test-documents/testRFC822_encrypted_zip"
+argument_list|)
+decl_stmt|;
+name|ContentHandler
+name|handler
+init|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Check we go the metadata
+name|assertEquals
+argument_list|(
+literal|"Juha Haaga<juha.haaga@gmail.com>"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|MESSAGE_FROM
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Testing indexing of encrypted files containing useful information"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Check we got the message text
+name|assertContains
+argument_list|(
+literal|"Please take a look at the file"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// But not the contents of the zip file
+comment|// TODO
+comment|// Try again, this time with the password supplied
+comment|// Check that we also get the zip's contents as well
+comment|// TODO
+block|}
 specifier|private
 specifier|static
 name|InputStream
@@ -1784,7 +1896,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-return|return
+name|InputStream
+name|stream
+init|=
 name|Thread
 operator|.
 name|currentThread
@@ -1797,6 +1911,18 @@ name|getResourceAsStream
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Test file not found "
+operator|+
+name|name
+argument_list|,
+name|stream
+argument_list|)
+expr_stmt|;
+return|return
+name|stream
 return|;
 block|}
 block|}
