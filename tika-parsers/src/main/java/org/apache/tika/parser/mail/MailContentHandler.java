@@ -468,18 +468,12 @@ name|XHTMLContentHandler
 name|handler
 decl_stmt|;
 specifier|private
-name|ParseContext
-name|context
-decl_stmt|;
-specifier|private
 name|Metadata
 name|metadata
 decl_stmt|;
 specifier|private
-name|TikaConfig
-name|tikaConfig
-init|=
-literal|null
+name|EmbeddedDocumentExtractor
+name|extractor
 decl_stmt|;
 specifier|private
 name|boolean
@@ -510,12 +504,6 @@ name|xhtml
 expr_stmt|;
 name|this
 operator|.
-name|context
-operator|=
-name|context
-expr_stmt|;
-name|this
-operator|.
 name|metadata
 operator|=
 name|metadata
@@ -526,27 +514,13 @@ name|strictParsing
 operator|=
 name|strictParsing
 expr_stmt|;
-block|}
-specifier|public
-name|void
-name|body
-parameter_list|(
-name|BodyDescriptor
-name|body
-parameter_list|,
-name|InputStream
-name|is
-parameter_list|)
-throws|throws
-name|MimeException
-throws|,
-name|IOException
-block|{
-comment|// Was an EmbeddedDocumentExtractor given to explicitly handle/process
-comment|//  the attachments in the file?
-name|EmbeddedDocumentExtractor
-name|ex
-init|=
+comment|// Fetch / Build an EmbeddedDocumentExtractor with which
+comment|//  to handle/process the parts/attachments
+comment|// Was an EmbeddedDocumentExtractor explicitly supplied?
+name|this
+operator|.
+name|extractor
+operator|=
 name|context
 operator|.
 name|get
@@ -555,14 +529,16 @@ name|EmbeddedDocumentExtractor
 operator|.
 name|class
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// If there's no EmbeddedDocumentExtractor, then try using a normal parser
 comment|// This will ensure that the contents are made available to the user, so
 comment|//  the see the text, but without fine-grained control/extraction
 comment|// (This also maintains backward compatibility with older versions!)
 if|if
 condition|(
-name|ex
+name|this
+operator|.
+name|extractor
 operator|==
 literal|null
 condition|)
@@ -606,15 +582,9 @@ operator|==
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+name|TikaConfig
 name|tikaConfig
-operator|==
-literal|null
-condition|)
-block|{
-name|tikaConfig
-operator|=
+init|=
 name|context
 operator|.
 name|get
@@ -623,7 +593,7 @@ name|TikaConfig
 operator|.
 name|class
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|tikaConfig
@@ -639,13 +609,16 @@ name|getDefaultConfig
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 name|parser
 operator|=
+operator|new
+name|AutoDetectParser
+argument_list|(
 name|tikaConfig
 operator|.
 name|getParser
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 name|ParseContext
@@ -666,7 +639,7 @@ argument_list|,
 name|parser
 argument_list|)
 expr_stmt|;
-name|ex
+name|extractor
 operator|=
 operator|new
 name|ParsingEmbeddedDocumentExtractor
@@ -675,6 +648,22 @@ name|ctx
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|void
+name|body
+parameter_list|(
+name|BodyDescriptor
+name|body
+parameter_list|,
+name|InputStream
+name|is
+parameter_list|)
+throws|throws
+name|MimeException
+throws|,
+name|IOException
+block|{
 comment|// use a different metadata object
 comment|// in order to specify the mime type of the
 comment|// sub part without damaging the main metadata
@@ -717,7 +706,7 @@ try|try
 block|{
 if|if
 condition|(
-name|ex
+name|extractor
 operator|.
 name|shouldParseEmbedded
 argument_list|(
@@ -725,7 +714,7 @@ name|submd
 argument_list|)
 condition|)
 block|{
-name|ex
+name|extractor
 operator|.
 name|parseEmbedded
 argument_list|(

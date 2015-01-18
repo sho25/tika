@@ -81,6 +81,18 @@ begin_import
 import|import static
 name|org
 operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
 name|mockito
 operator|.
 name|Matchers
@@ -1986,9 +1998,17 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// But not the contents of the zip file
-comment|// TODO Should the filename of the encrypted file in the zip show up or not?
-comment|//assertNotContained("text.txt", handler.toString());
+comment|// We won't get the contents of the zip file, but we will get the name
+name|assertContains
+argument_list|(
+literal|"text.txt"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|assertNotContained
 argument_list|(
 literal|"ENCRYPTED ZIP FILES"
@@ -2105,11 +2125,16 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// But because the RFC822 parser only recurses once, we don't
-comment|//  get the contents of the text file inside the zip file
-comment|// TODO Is this correct? Should we see the contents of the encrypted
-comment|//  zip when a password is given, or not?
-name|assertNotContained
+comment|// TODO Upgrade to a version of Commons Compress with Encryption
+comment|//  support, then verify we get the contents of the text file
+comment|//  held within the encrypted zip
+name|assumeTrue
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// No Zip Encryption support yet
+name|assertContains
 argument_list|(
 literal|"TEST DATA FOR TIKA."
 argument_list|,
@@ -2119,7 +2144,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotContained
+name|assertContains
 argument_list|(
 literal|"ENCRYPTED ZIP FILES"
 argument_list|,
@@ -2129,7 +2154,168 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertNotContained
+name|assertContains
+argument_list|(
+literal|"TIKA-1028"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test TIKA-1028 - Ensure we can get the contents of an      *  un-encrypted zip file      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testNormalZipAttachment
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Parser
+name|parser
+init|=
+operator|new
+name|RFC822Parser
+argument_list|()
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|ParseContext
+name|context
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
+name|InputStream
+name|stream
+init|=
+name|getStream
+argument_list|(
+literal|"test-documents/testRFC822_normal_zip"
+argument_list|)
+decl_stmt|;
+name|ContentHandler
+name|handler
+init|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+comment|// Check we go the metadata
+name|assertEquals
+argument_list|(
+literal|"Juha Haaga<juha.haaga@gmail.com>"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|MESSAGE_FROM
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Test mail for Tika"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Check we got the message text, for both Plain Text and HTML
+name|assertContains
+argument_list|(
+literal|"Includes a normal, unencrypted zip file"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the Plain Text part"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is the HTML part"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// We get both name and contents of the zip file's contents
+name|assertContains
+argument_list|(
+literal|"text.txt"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"TEST DATA FOR TIKA."
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is text inside an unencrypted zip file"
+argument_list|,
+name|handler
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertContains
 argument_list|(
 literal|"TIKA-1028"
 argument_list|,
