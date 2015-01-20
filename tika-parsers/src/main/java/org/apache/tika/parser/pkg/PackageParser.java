@@ -1044,7 +1044,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Pending a fix for COMPRESS-269, this bit is a little nasty
+comment|// Pending a fix for COMPRESS-269 / TIKA-1525, this bit is a little nasty
 name|ais
 operator|=
 operator|new
@@ -1250,7 +1250,7 @@ name|ie
 parameter_list|)
 block|{
 comment|// Is this a password protection error?
-comment|// (COMPRESS-298 should give a nicer way when implemented)
+comment|// (COMPRESS-298 should give a nicer way when implemented, see TIKA-1525)
 if|if
 condition|(
 literal|"Cannot read encrypted files without a password"
