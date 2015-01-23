@@ -1708,6 +1708,10 @@ operator|new
 name|SimpleDateFormat
 argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss"
+argument_list|,
+name|Locale
+operator|.
+name|US
 argument_list|)
 return|;
 block|}

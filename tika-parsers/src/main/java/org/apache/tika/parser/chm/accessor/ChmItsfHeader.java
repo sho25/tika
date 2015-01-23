@@ -23,16 +23,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|math
 operator|.
 name|BigInteger
@@ -50,6 +40,20 @@ operator|.
 name|exception
 operator|.
 name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
 import|;
 end_import
 
@@ -231,8 +235,6 @@ specifier|public
 name|ChmItsfHeader
 parameter_list|()
 block|{
-try|try
-block|{
 name|signature
 operator|=
 name|ChmConstants
@@ -241,25 +243,12 @@ name|ITSF
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 expr_stmt|;
 comment|/* 0 (ITSF) */
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Prints the values of ChmfHeader      */
 specifier|public
@@ -274,8 +263,6 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
-try|try
-block|{
 name|sb
 operator|.
 name|append
@@ -286,27 +273,14 @@ argument_list|(
 name|getSignature
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 operator|+
 literal|" "
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 name|sb
 operator|.
 name|append
@@ -1580,8 +1554,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 if|if
 condition|(
 operator|!
@@ -1593,7 +1565,9 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 operator|.
 name|equals
@@ -1610,21 +1584,6 @@ argument_list|(
 literal|"seems not valid file"
 argument_list|)
 throw|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 if|if
 condition|(
 name|chmItsfHeader

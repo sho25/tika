@@ -49,6 +49,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|chm
@@ -112,16 +126,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -220,8 +224,6 @@ specifier|public
 name|void
 name|testChmPmglHeaderGet
 parameter_list|()
-throws|throws
-name|UnsupportedEncodingException
 block|{
 name|assertEquals
 argument_list|(
@@ -237,7 +239,9 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;

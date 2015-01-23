@@ -16,6 +16,42 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -129,42 +165,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertFalse
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -272,7 +272,9 @@ literal|"Hello, World!"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -398,7 +400,9 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -483,7 +487,12 @@ name|buffer
 operator|.
 name|toString
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 return|;
 block|}

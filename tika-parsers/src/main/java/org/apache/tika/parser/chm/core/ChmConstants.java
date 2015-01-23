@@ -19,6 +19,20 @@ name|core
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -35,7 +49,12 @@ specifier|final
 name|String
 name|DEFAULT_CHARSET
 init|=
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 decl_stmt|;
 specifier|public
 specifier|static

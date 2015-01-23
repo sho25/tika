@@ -16,6 +16,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -113,6 +137,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|After
@@ -126,30 +164,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -191,13 +205,6 @@ name|String
 name|corpusName
 init|=
 literal|"langbuilder/welsh_corpus.txt"
-decl_stmt|;
-specifier|private
-specifier|final
-name|String
-name|encoding
-init|=
-literal|"UTF-8"
 decl_stmt|;
 specifier|private
 specifier|final
@@ -257,7 +264,12 @@ name|profileName
 argument_list|,
 name|is
 argument_list|,
-name|encoding
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -427,7 +439,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-name|encoding
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;

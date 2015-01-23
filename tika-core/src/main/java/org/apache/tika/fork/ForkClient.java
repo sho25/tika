@@ -1199,7 +1199,9 @@ name|manifest
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -95,6 +95,20 @@ name|tika
 operator|.
 name|io
 operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -534,7 +548,9 @@ operator|.
 name|getEndianIndicator
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|// Retrieve endian bytes and convert to string

@@ -133,7 +133,12 @@ name|toString
 argument_list|(
 name|htmlStr
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|int

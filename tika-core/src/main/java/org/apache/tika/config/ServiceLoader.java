@@ -147,6 +147,20 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Internal utility class that Tika uses to look up service providers.  *  * @since Apache Tika 0.9  */
 end_comment
@@ -1194,7 +1208,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;

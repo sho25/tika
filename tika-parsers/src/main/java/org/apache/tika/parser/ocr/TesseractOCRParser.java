@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|imageio
+operator|.
+name|ImageIO
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -236,16 +246,6 @@ operator|.
 name|concurrent
 operator|.
 name|TimeoutException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|imageio
-operator|.
-name|ImageIO
 import|;
 end_import
 
@@ -1534,7 +1534,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|xhtml
@@ -1662,6 +1664,10 @@ operator|new
 name|InputStreamReader
 argument_list|(
 name|stream
+argument_list|,
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|StringBuilder

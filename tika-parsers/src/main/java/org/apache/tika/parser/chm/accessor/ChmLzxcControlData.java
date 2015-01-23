@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -30,6 +40,20 @@ operator|.
 name|exception
 operator|.
 name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
 import|;
 end_import
 
@@ -84,16 +108,6 @@ operator|.
 name|exception
 operator|.
 name|ChmParsingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -171,8 +185,6 @@ specifier|public
 name|ChmLzxcControlData
 parameter_list|()
 block|{
-try|try
-block|{
 name|signature
 operator|=
 name|ChmConstants
@@ -181,25 +193,12 @@ name|LZXC
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 expr_stmt|;
 comment|/*                                                               * 4                                                               * (LZXC                                                               * )                                                               */
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Returns a remained data      *       * @return dataRemained      */
 specifier|private
@@ -658,8 +657,6 @@ operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|sb
 operator|.
 name|append
@@ -674,27 +671,14 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 operator|+
 literal|", "
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 name|sb
 operator|.
 name|append
@@ -1013,8 +997,6 @@ literal|"window size / resetInterval should be more than 1"
 argument_list|)
 throw|;
 comment|/* checks a signature */
-try|try
-block|{
 if|if
 condition|(
 operator|!
@@ -1026,7 +1008,9 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 operator|.
 name|equals
@@ -1043,21 +1027,6 @@ argument_list|(
 literal|"the signature does not seem to be correct"
 argument_list|)
 throw|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * @param args      */
 specifier|public

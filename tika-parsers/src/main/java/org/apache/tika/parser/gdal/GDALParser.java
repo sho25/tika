@@ -145,10 +145,6 @@ name|Pattern
 import|;
 end_import
 
-begin_comment
-comment|//Tika imports
-end_comment
-
 begin_import
 import|import
 name|org
@@ -160,6 +156,20 @@ operator|.
 name|exception
 operator|.
 name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
 import|;
 end_import
 
@@ -278,28 +288,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|external
-operator|.
-name|ExternalParser
-operator|.
-name|INPUT_FILE_TOKEN
-import|;
-end_import
-
-begin_comment
-comment|//SAX imports
-end_comment
-
-begin_import
 import|import
 name|org
 operator|.
@@ -322,6 +310,32 @@ operator|.
 name|SAXException
 import|;
 end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|external
+operator|.
+name|ExternalParser
+operator|.
+name|INPUT_FILE_TOKEN
+import|;
+end_import
+
+begin_comment
+comment|//Tika imports
+end_comment
+
+begin_comment
+comment|//SAX imports
+end_comment
 
 begin_comment
 comment|/**  * Wraps execution of the<a href="http//gdal.org/">Geospatial Data Abstraction  * Library (GDAL)</a><code>gdalinfo</code> tool used to extract geospatial  * information out of hundreds of geo file formats.  *<p/>  * The parser requires the installation of GDAL and for<code>gdalinfo</code> to  * be located on the path.  *<p/>  * Basic information (Size, Coordinate System, Bounding Box, Driver, and  * resource info) are extracted as metadata, and the remaining metadata patterns  * are extracted and added.  *<p/>  * The output of the command is available from the provided  * {@link ContentHandler} in the  * {@link #parse(InputStream, ContentHandler, Metadata, ParseContext)} method.  */
@@ -2787,7 +2801,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 try|try
@@ -2896,7 +2912,9 @@ name|output
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2908,7 +2926,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 try|try

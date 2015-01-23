@@ -141,16 +141,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|Writer
 import|;
 end_import
@@ -164,6 +154,18 @@ operator|.
 name|channels
 operator|.
 name|Channel
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -196,6 +198,20 @@ specifier|public
 class|class
 name|IOUtils
 block|{
+comment|//TODO: switch to StandardCharsets when we move to Java 1.7
+specifier|public
+specifier|static
+specifier|final
+name|Charset
+name|UTF_8
+init|=
+name|Charset
+operator|.
+name|forName
+argument_list|(
+literal|"UTF-8"
+argument_list|)
+decl_stmt|;
 comment|/**      * The default buffer size to use.      */
 specifier|private
 specifier|static
@@ -521,7 +537,9 @@ name|input
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 return|;
 block|}
@@ -761,7 +779,9 @@ name|String
 argument_list|(
 name|input
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 return|;
 block|}
@@ -797,7 +817,9 @@ name|String
 argument_list|(
 name|input
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 return|;
 block|}
@@ -839,7 +861,9 @@ name|InputStreamReader
 argument_list|(
 name|input
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 return|return
@@ -1032,8 +1056,6 @@ name|String
 name|input
 parameter_list|)
 block|{
-try|try
-block|{
 name|byte
 index|[]
 name|bytes
@@ -1042,7 +1064,9 @@ name|input
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 return|return
@@ -1052,21 +1076,6 @@ argument_list|(
 name|bytes
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|AssertionError
-argument_list|(
-literal|"UTF-8 not supported."
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Convert the specified string to an input stream, encoded as bytes      * using the specified character encoding.      *<p>      * Character encoding names can be found at      *<a href="http://www.iana.org/assignments/character-sets">IANA</a>.      *      * @param input the string to convert      * @param encoding the encoding to use, null means platform default      * @throws IOException if the encoding is invalid      * @return an input stream      * @since Commons IO 1.1      */
 specifier|public
@@ -1102,7 +1111,9 @@ name|input
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 return|return
@@ -1179,7 +1190,9 @@ name|String
 argument_list|(
 name|data
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1313,7 +1326,9 @@ argument_list|)
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1553,7 +1568,9 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1689,7 +1706,9 @@ argument_list|()
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1900,7 +1919,9 @@ name|InputStreamReader
 argument_list|(
 name|input
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|copy
@@ -2109,7 +2130,9 @@ name|OutputStreamWriter
 argument_list|(
 name|output
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|copy

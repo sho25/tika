@@ -193,6 +193,20 @@ name|TikaException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class runs a ngram analysis over submitted text, results might be used  * for automatic language identification.  *   * The similarity calculation is at experimental level. You have been warned.  *   * Methods are provided to build new NGramProfiles profiles.  *   * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  */
 end_comment
@@ -1356,7 +1370,9 @@ name|InputStreamReader
 argument_list|(
 name|is
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1649,7 +1665,9 @@ operator|)
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1859,7 +1877,9 @@ name|line
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;

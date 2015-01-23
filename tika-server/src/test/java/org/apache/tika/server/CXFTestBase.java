@@ -23,7 +23,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertFalse
 import|;
 end_import
 
@@ -35,7 +35,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 import|;
 end_import
 
@@ -758,7 +758,12 @@ name|bos
 operator|.
 name|toString
 argument_list|(
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 return|;
 block|}

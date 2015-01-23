@@ -95,6 +95,20 @@ name|Set
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
 begin_comment
 comment|/**  * Identifier of the language that best matches a given content profile.  * The content profile is compared to generic language profiles based on  * material from various sources.  *  * @since Apache Tika 0.5  * @see<a href="http://www.iccs.inf.ed.ac.uk/~pkoehn/publications/europarl/">  *      Europarl: A Parallel Corpus for Statistical Machine Translation</a>  * @see<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php">  *      ISO 639 Language Codes</a>  */
 end_comment
@@ -132,14 +146,6 @@ name|String
 name|PROFILE_SUFFIX
 init|=
 literal|".ngp"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|PROFILE_ENCODING
-init|=
-literal|"UTF-8"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -254,7 +260,9 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-name|PROFILE_ENCODING
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;

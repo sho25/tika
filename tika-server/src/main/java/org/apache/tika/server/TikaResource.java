@@ -507,6 +507,20 @@ name|tika
 operator|.
 name|io
 operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -1339,6 +1353,10 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|,
 literal|"%s is an invalid %s header"
 argument_list|,
 name|key
@@ -1857,7 +1875,9 @@ name|OutputStreamWriter
 argument_list|(
 name|outputStream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|BodyContentHandler
@@ -2413,7 +2433,9 @@ name|OutputStreamWriter
 argument_list|(
 name|outputStream
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|ContentHandler
@@ -2479,7 +2501,12 @@ name|OutputKeys
 operator|.
 name|ENCODING
 argument_list|,
-literal|"UTF-8"
+name|IOUtils
+operator|.
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|handler
