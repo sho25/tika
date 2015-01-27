@@ -630,6 +630,28 @@ name|AUDIO_COMPRESSOR
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Only compare two decimals to avoid floating point comparison error.
+name|assertEquals
+argument_list|(
+literal|"0.06"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|XMPDM
+operator|.
+name|DURATION
+argument_list|)
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"iTunes 10.5.3.3"

@@ -1256,6 +1256,17 @@ operator|.
 name|getTimescale
 argument_list|()
 decl_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|XMPDM
+operator|.
+name|DURATION
+argument_list|,
+name|durationSeconds
+argument_list|)
+expr_stmt|;
 comment|// TODO Use this
 comment|// The timescale is normally the sampling rate
 name|metadata
