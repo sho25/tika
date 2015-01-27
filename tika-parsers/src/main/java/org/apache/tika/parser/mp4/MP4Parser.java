@@ -41,6 +41,26 @@ begin_import
 import|import
 name|java
 operator|.
+name|text
+operator|.
+name|DecimalFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|text
+operator|.
+name|NumberFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Arrays
@@ -74,6 +94,16 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
 import|;
 end_import
 
@@ -715,6 +745,35 @@ name|serialVersionUID
 init|=
 literal|84011216792285L
 decl_stmt|;
+comment|/** TODO Replace this with a 2dp Duration Property Converter */
+specifier|private
+specifier|static
+specifier|final
+name|DecimalFormat
+name|DURATION_FORMAT
+init|=
+operator|(
+name|DecimalFormat
+operator|)
+name|NumberFormat
+operator|.
+name|getNumberInstance
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
+decl_stmt|;
+static|static
+block|{
+name|DURATION_FORMAT
+operator|.
+name|applyPattern
+argument_list|(
+literal|"0.0#"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Ensure this stays in Sync with the entries in tika-mimetypes.xml
 specifier|private
 specifier|static
@@ -1264,10 +1323,14 @@ name|XMPDM
 operator|.
 name|DURATION
 argument_list|,
+name|DURATION_FORMAT
+operator|.
+name|format
+argument_list|(
 name|durationSeconds
 argument_list|)
+argument_list|)
 expr_stmt|;
-comment|// TODO Use this
 comment|// The timescale is normally the sampling rate
 name|metadata
 operator|.
