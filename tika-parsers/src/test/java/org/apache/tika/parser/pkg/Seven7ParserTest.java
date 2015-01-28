@@ -79,11 +79,31 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|crypto
+operator|.
+name|Cipher
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|NoSuchAlgorithmException
 import|;
 end_import
 
@@ -98,6 +118,20 @@ operator|.
 name|exception
 operator|.
 name|EncryptedDocumentException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
 import|;
 end_import
 
@@ -792,6 +826,11 @@ argument_list|(
 literal|"/test-documents/test7Z_protected_passTika.7z"
 argument_list|)
 decl_stmt|;
+name|boolean
+name|ex
+init|=
+literal|false
+decl_stmt|;
 try|try
 block|{
 name|parser
@@ -820,6 +859,10 @@ name|e
 parameter_list|)
 block|{
 comment|// Good
+name|ex
+operator|=
+literal|true
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -829,6 +872,17 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"test no password"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+name|ex
+operator|=
+literal|false
+expr_stmt|;
 comment|// Wrong password currently silently gives no content
 comment|// Ideally we'd like Commons Compress to give an error, but it doesn't...
 name|recursingContext
@@ -892,8 +946,25 @@ argument_list|,
 name|recursingContext
 argument_list|)
 expr_stmt|;
-comment|//            fail("Shouldn't be able to read a password protected 7z with wrong password");
-comment|//        } catch (EncryptedDocumentException e) {
+name|fail
+argument_list|(
+literal|"Shouldn't be able to read a password protected 7z with wrong password"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TikaException
+name|e
+parameter_list|)
+block|{
+comment|//if JCE is installed, the cause will be: Caused by: org.tukaani.xz.CorruptedInputException: Compressed data is corrupt
+comment|//if JCE is not installed, the message will include
+comment|// "(do you have the JCE  Unlimited Strength Jurisdiction Policy Files installed?")
+name|ex
+operator|=
+literal|true
+expr_stmt|;
 block|}
 finally|finally
 block|{
@@ -903,6 +974,13 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|assertTrue
+argument_list|(
+literal|"TikaException for bad password"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
 comment|// Will be empty
 name|assertEquals
 argument_list|(
@@ -914,7 +992,17 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Right password works fine
+name|ex
+operator|=
+literal|false
+expr_stmt|;
+comment|// Right password works fine if JCE Unlimited Strength has been installed!!!
+if|if
+condition|(
+name|isStrongCryptoAvailable
+argument_list|()
+condition|)
+block|{
 name|recursingContext
 operator|.
 name|set
@@ -1047,6 +1135,123 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|//if jce is not installed, test for IOException wrapped in TikaException
+name|boolean
+name|ioe
+init|=
+literal|false
+decl_stmt|;
+name|recursingContext
+operator|.
+name|set
+argument_list|(
+name|PasswordProvider
+operator|.
+name|class
+argument_list|,
+operator|new
+name|PasswordProvider
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getPassword
+parameter_list|(
+name|Metadata
+name|metadata
+parameter_list|)
+block|{
+return|return
+literal|"Tika"
+return|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|handler
+operator|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+expr_stmt|;
+name|stream
+operator|=
+name|Seven7ParserTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/test-documents/test7Z_protected_passTika.7z"
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+name|metadata
+argument_list|,
+name|recursingContext
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TikaException
+name|e
+parameter_list|)
+block|{
+name|ioe
+operator|=
+literal|true
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+name|assertTrue
+argument_list|(
+literal|"IOException because JCE was not installed"
+argument_list|,
+name|ioe
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+specifier|static
+name|boolean
+name|isStrongCryptoAvailable
+parameter_list|()
+throws|throws
+name|NoSuchAlgorithmException
+block|{
+return|return
+name|Cipher
+operator|.
+name|getMaxAllowedKeyLength
+argument_list|(
+literal|"AES/ECB/PKCS5Padding"
+argument_list|)
+operator|>=
+literal|256
+return|;
 block|}
 block|}
 end_class

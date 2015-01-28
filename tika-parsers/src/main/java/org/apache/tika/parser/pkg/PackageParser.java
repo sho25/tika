@@ -18,6 +18,22 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|HttpHeaders
+operator|.
+name|CONTENT_TYPE
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -545,24 +561,8 @@ name|AttributesImpl
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|HttpHeaders
-operator|.
-name|CONTENT_TYPE
-import|;
-end_import
-
 begin_comment
-comment|/**  * Parser for various packaging formats. Package entries will be written to  * the XHTML event stream as&lt;div class="package-entry"&gt; elements that  * contain the (optional) entry name as a&lt;h1&gt; element and the full  * structured body content of the parsed entry.  */
+comment|/**  * Parser for various packaging formats. Package entries will be written to  * the XHTML event stream as&lt;div class="package-entry"&gt; elements that  * contain the (optional) entry name as a&lt;h1&gt; element and the full  * structured body content of the parsed entry.  *<p>  * User must have JCE Unlimited Strength jars installed for encryption to  * work with 7Z files (see: COMPRESS-299 and TIKA-1521).  If the jars  * are not installed, an IOException will be thrown, and potentially  * wrapped in a TikaException.  */
 end_comment
 
 begin_class
@@ -1271,6 +1271,9 @@ argument_list|()
 throw|;
 block|}
 comment|// Otherwise fall through to raise the exception as normal
+throw|throw
+name|ie
+throw|;
 block|}
 finally|finally
 block|{
