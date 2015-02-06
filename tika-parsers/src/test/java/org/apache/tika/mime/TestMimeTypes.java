@@ -3103,7 +3103,7 @@ name|assertType
 argument_list|(
 literal|"application/x-font-ttf"
 argument_list|,
-literal|"testTrueType2.ttf"
+literal|"testTrueType3.ttf"
 argument_list|)
 expr_stmt|;
 block|}

@@ -548,6 +548,9 @@ operator|new
 name|ParseContext
 argument_list|()
 decl_stmt|;
+comment|//Open Sans font is ASL 2.0 according to
+comment|//http://www.google.com/fonts/specimen/Open+Sans
+comment|//...despite the copyright in the file's metadata.
 name|TikaInputStream
 name|stream
 init|=
@@ -561,7 +564,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/test-documents/testTrueType2.ttf"
+literal|"/test-documents/testTrueType3.ttf"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -605,7 +608,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Aclonica"
+literal|"Open Sans Bold"
 argument_list|,
 name|metadata
 operator|.
@@ -619,7 +622,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2011-04-21T07:59:00Z"
+literal|"2010-12-30T11:04:00Z"
 argument_list|,
 name|metadata
 operator|.
@@ -633,7 +636,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2011-04-21T07:59:00Z"
+literal|"2010-12-30T11:04:00Z"
 argument_list|,
 name|metadata
 operator|.
@@ -647,7 +650,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2011-04-22T19:56:14Z"
+literal|"2011-05-05T12:37:53Z"
 argument_list|,
 name|metadata
 operator|.
@@ -661,7 +664,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Aclonica"
+literal|"Open Sans Bold"
 argument_list|,
 name|metadata
 operator|.
@@ -673,7 +676,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Aclonica"
+literal|"Open Sans"
 argument_list|,
 name|metadata
 operator|.
@@ -685,7 +688,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Regular"
+literal|"Bold"
 argument_list|,
 name|metadata
 operator|.
@@ -697,7 +700,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Aclonica-Regular"
+literal|"OpenSans-Bold"
 argument_list|,
 name|metadata
 operator|.
@@ -709,7 +712,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Copyright"
+literal|"Digitized"
 argument_list|,
 name|metadata
 operator|.
@@ -726,21 +729,9 @@ literal|9
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertContains
-argument_list|(
-literal|"http://www.apache.org/licenses/LICENSE-2.0.html"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-literal|"Copyright"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Aclonica is a trade"
+literal|"Open Sans"
 argument_list|,
 name|metadata
 operator|.
@@ -753,7 +744,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-literal|19
+literal|9
 argument_list|)
 argument_list|)
 expr_stmt|;
