@@ -71,6 +71,18 @@ name|ws
 operator|.
 name|rs
 operator|.
+name|POST
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
 name|PUT
 import|;
 end_import
@@ -1680,7 +1692,7 @@ expr_stmt|;
 block|}
 block|}
 annotation|@
-name|PUT
+name|POST
 annotation|@
 name|Consumes
 argument_list|(
@@ -2127,7 +2139,7 @@ block|}
 return|;
 block|}
 annotation|@
-name|PUT
+name|POST
 annotation|@
 name|Consumes
 argument_list|(
@@ -2229,7 +2241,7 @@ argument_list|)
 return|;
 block|}
 annotation|@
-name|PUT
+name|POST
 annotation|@
 name|Consumes
 argument_list|(
