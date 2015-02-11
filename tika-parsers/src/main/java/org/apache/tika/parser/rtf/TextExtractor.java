@@ -3683,6 +3683,17 @@ block|{
 name|pushText
 argument_list|()
 expr_stmt|;
+comment|//maintain consecutive new lines
+if|if
+condition|(
+operator|!
+name|inParagraph
+condition|)
+block|{
+name|lazyStartParagraph
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|inParagraph
