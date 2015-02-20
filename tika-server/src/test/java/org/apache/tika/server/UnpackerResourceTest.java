@@ -495,8 +495,10 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|TikaExceptionMapper
-argument_list|()
+name|TikaServerParseExceptionMapper
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sf
