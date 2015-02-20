@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Helps produce user facing HTML output.  *   * TODO Decide if this would be better done as a MessageBodyWriter  */
+comment|/**  * Helps produce user facing HTML output.  *<p/>  * TODO Decide if this would be better done as a MessageBodyWriter  */
 end_comment
 
 begin_class
@@ -192,7 +192,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Generates the HTML Header for the user facing page, adding      *  in the given title as required      */
+comment|/**      * Generates the HTML Header for the user facing page, adding      * in the given title as required      */
 specifier|public
 name|void
 name|generateHeader

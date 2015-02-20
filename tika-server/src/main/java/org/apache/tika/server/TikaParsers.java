@@ -17,6 +17,42 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
+name|GET
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
+name|Path
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
+name|Produces
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -92,42 +128,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|ws
-operator|.
-name|rs
-operator|.
-name|GET
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|ws
-operator|.
-name|rs
-operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|ws
-operator|.
-name|rs
-operator|.
-name|Produces
 import|;
 end_import
 
@@ -232,7 +232,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Provides details of all the {@link Parser}s registered with  *  Apache Tika, similar to<em>--list-parsers</em> and  *<em>--list-parser-details</em> within the Tika CLI.  */
+comment|/**  *<p>Provides details of all the {@link Parser}s registered with  * Apache Tika, similar to<em>--list-parsers</em> and  *<em>--list-parser-details</em> within the Tika CLI.  */
 end_comment
 
 begin_class

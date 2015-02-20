@@ -29,16 +29,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|ws
@@ -48,6 +38,16 @@ operator|.
 name|core
 operator|.
 name|Response
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -182,7 +182,7 @@ parameter_list|(
 name|JAXRSServerFactoryBean
 name|sf
 parameter_list|)
-block|{}
+block|{     }
 annotation|@
 name|Test
 specifier|public

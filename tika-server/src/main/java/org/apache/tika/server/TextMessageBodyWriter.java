@@ -188,7 +188,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Returns simple text string for a particular metadata value.  * This assumes that the metadata object only has one key;  * if there is more than one key or no keys, this will throw a webapp exception.  *<p>  * This will choose the first value returned for the one key.  */
+comment|/**  * Returns simple text string for a particular metadata value.  * This assumes that the metadata object only has one key;  * if there is more than one key or no keys, this will throw a webapp exception.  *<p/>  * This will choose the first value returned for the one key.  */
 end_comment
 
 begin_class
