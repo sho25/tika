@@ -71,6 +71,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -247,6 +257,18 @@ block|,
 literal|"LISTDATE"
 block|}
 decl_stmt|;
+name|String
+index|[]
+name|met_attributes
+init|=
+block|{
+literal|"min-len"
+block|,
+literal|"encoding"
+block|,
+literal|"strings:file_output"
+block|}
+decl_stmt|;
 name|StringsConfig
 name|stringsConfig
 init|=
@@ -273,6 +295,13 @@ name|handler
 init|=
 operator|new
 name|BodyContentHandler
+argument_list|()
+decl_stmt|;
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
 argument_list|()
 decl_stmt|;
 name|ParseContext
@@ -326,9 +355,7 @@ name|stream
 argument_list|,
 name|handler
 argument_list|,
-operator|new
-name|Metadata
-argument_list|()
+name|metadata
 argument_list|,
 name|context
 argument_list|)
@@ -354,6 +381,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|// Content
 for|for
 control|(
 name|String
@@ -376,6 +404,19 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Metadata
+name|Arrays
+operator|.
+name|equals
+argument_list|(
+name|met_attributes
+argument_list|,
+name|metadata
+operator|.
+name|names
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

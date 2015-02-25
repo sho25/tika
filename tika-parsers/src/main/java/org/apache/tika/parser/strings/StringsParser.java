@@ -387,7 +387,7 @@ operator|new
 name|FileConfig
 argument_list|()
 decl_stmt|;
-comment|// String -> Boolean[2] (0 -> is_present. 1 -> supports_encoding)
+comment|/* 	 * This map is organized as follows: 	 * command's pathname (String) -> is it present? (Boolean), does it support -e option? (Boolean) 	 * It stores check results for command and, if present, -e (encoding) option. 	 */
 specifier|private
 specifier|static
 name|Map
@@ -652,6 +652,8 @@ block|,
 literal|"--version"
 block|}
 decl_stmt|;
+try|try
+block|{
 name|boolean
 name|hasStrings
 init|=
@@ -716,7 +718,7 @@ block|,
 literal|2
 block|}
 decl_stmt|;
-comment|// 1: General error. 2: Incorrect usage.
+comment|// Exit status code: 1 = general error; 2 = incorrect usage.
 name|encodingOpt
 operator|=
 name|ExternalParser
@@ -751,6 +753,39 @@ expr_stmt|;
 return|return
 name|hasStrings
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|NoClassDefFoundError
+name|ncdfe
+parameter_list|)
+block|{
+comment|// This happens under OSGi + Fork Parser - see TIKA-1507
+comment|// As a workaround for now, just say we can't use strings
+comment|// TODO Resolve it so we don't need this try/catch block
+name|Boolean
+index|[]
+name|values
+init|=
+block|{
+literal|false
+block|,
+literal|false
+block|}
+decl_stmt|;
+name|STRINGS_PRESENT
+operator|.
+name|put
+argument_list|(
+name|stringsProg
+argument_list|,
+name|values
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/** 	 * Checks if the "file" command is supported. 	 *  	 * @param config 	 * @return 	 */
 specifier|private
@@ -871,7 +906,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 empty_stmt|;
-comment|// encoding option is not supported by windows version
+comment|// Currently, encoding option is not supported by Windows (and other) versions
 if|if
 condition|(
 name|STRINGS_PRESENT
@@ -1418,20 +1453,10 @@ name|IOException
 name|ioe
 parameter_list|)
 block|{
-comment|// TODO
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"An error occurred in reading output of the file command: "
-operator|+
-name|ioe
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
+comment|// file output not available!
+name|fileOutput
+operator|=
+literal|""
 expr_stmt|;
 block|}
 finally|finally

@@ -33,6 +33,7 @@ argument_list|,
 literal|"single-7-bit-byte"
 argument_list|)
 block|,
+comment|// default
 name|SINGLE_8_BIT
 argument_list|(
 literal|'S'
