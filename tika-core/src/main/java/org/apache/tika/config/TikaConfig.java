@@ -1639,6 +1639,11 @@ argument_list|(
 literal|"class"
 argument_list|)
 decl_stmt|;
+name|Parser
+name|parser
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|Class
@@ -1685,14 +1690,52 @@ name|name
 argument_list|)
 throw|;
 block|}
-name|Parser
+comment|// Is this a composite parser? If so, support recursion
+if|if
+condition|(
+name|CompositeParser
+operator|.
+name|class
+operator|.
+name|isAssignableFrom
+argument_list|(
+name|parserClass
+argument_list|)
+condition|)
+block|{
+comment|// TODO Implement
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"WARNING: Not building "
+operator|+
+name|parserClass
+operator|+
+literal|" as composite!"
+argument_list|)
+expr_stmt|;
 name|parser
-init|=
+operator|=
 name|parserClass
 operator|.
 name|newInstance
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// Regular parser, create as-is
+name|parser
+operator|=
+name|parserClass
+operator|.
+name|newInstance
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Is there an explicit list of mime types for this to handle?
 name|Set
 argument_list|<
