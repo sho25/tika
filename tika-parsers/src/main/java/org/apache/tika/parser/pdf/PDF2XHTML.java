@@ -896,13 +896,6 @@ name|MAX_ACROFORM_RECURSIONS
 init|=
 literal|10
 decl_stmt|;
-comment|// TODO: remove once PDFBOX-2160 is fixed:
-specifier|private
-name|boolean
-name|inParagraph
-init|=
-literal|false
-decl_stmt|;
 comment|/**      * This keeps track of the pdf object ids for inline      * images that have been processed.  If {@link PDFParserConfig#getExtractUniqueInlineImagesOnly()      * is true, this will be checked before extracting an embedded image.      * The integer keeps track of the inlineImageCounter for that image.      * This integer is used to identify images in the markup.      */
 specifier|private
 name|Map
@@ -2331,25 +2324,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// TODO: remove once PDFBOX-2160 is fixed
-if|if
-condition|(
-name|inParagraph
-condition|)
-block|{
-comment|// Close last paragraph
-name|writeParagraphEnd
-argument_list|()
-expr_stmt|;
-block|}
-assert|assert
-operator|!
-name|inParagraph
-assert|;
-name|inParagraph
-operator|=
-literal|true
-expr_stmt|;
 try|try
 block|{
 name|handler
@@ -2386,24 +2360,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|// TODO: remove once PDFBOX-2160 is fixed
-if|if
-condition|(
-operator|!
-name|inParagraph
-condition|)
-block|{
-name|writeParagraphStart
-argument_list|()
-expr_stmt|;
-block|}
-assert|assert
-name|inParagraph
-assert|;
-name|inParagraph
-operator|=
-literal|false
-expr_stmt|;
 try|try
 block|{
 name|handler
@@ -3575,14 +3531,6 @@ name|e
 parameter_list|)
 block|{
 comment|//swallow
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|e
-parameter_list|)
-block|{
-comment|//TODO: remove once PDFBOX-2161 is fixed
 block|}
 if|if
 condition|(
