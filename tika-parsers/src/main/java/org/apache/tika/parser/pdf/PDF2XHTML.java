@@ -2324,6 +2324,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|super
+operator|.
+name|writeParagraphStart
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|handler
@@ -2360,6 +2365,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|super
+operator|.
+name|writeParagraphEnd
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|handler
