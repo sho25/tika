@@ -220,8 +220,6 @@ literal|"html"
 argument_list|,
 literal|"head"
 argument_list|,
-literal|"body"
-argument_list|,
 literal|"frameset"
 argument_list|)
 decl_stmt|;
