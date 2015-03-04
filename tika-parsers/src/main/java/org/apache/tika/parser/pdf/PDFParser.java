@@ -2704,12 +2704,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Avoid calling COSDictionary#toString, since it can lead to infinite
+comment|// recursion. See TIKA-1038 and PDFBOX-1835.
 elseif|else
 if|if
 condition|(
 name|value
 operator|!=
 literal|null
+operator|&&
+operator|!
+operator|(
+name|value
+operator|instanceof
+name|COSDictionary
+operator|)
 condition|)
 block|{
 name|addMetadata
