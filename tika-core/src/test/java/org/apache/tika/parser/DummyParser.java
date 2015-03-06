@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A Dummy Parser for use with unit tests.  */
+comment|/**  * A Dummy Parser for use with unit tests.  *<p>  * See also {@link org.apache.tika.parser.mock.MockParser}.  */
 end_comment
 
 begin_class

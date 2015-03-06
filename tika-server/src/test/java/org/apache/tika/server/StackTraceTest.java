@@ -192,7 +192,7 @@ specifier|final
 name|String
 name|TEST_NULL
 init|=
-literal|"evil/null_pointer.evil"
+literal|"mock/null_pointer.xml"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -545,13 +545,6 @@ operator|.
 name|accept
 argument_list|(
 literal|"*/*"
-argument_list|)
-operator|.
-name|header
-argument_list|(
-literal|"Content-Disposition"
-argument_list|,
-literal|"attachment; filename=null_pointer.evil"
 argument_list|)
 operator|.
 name|put
