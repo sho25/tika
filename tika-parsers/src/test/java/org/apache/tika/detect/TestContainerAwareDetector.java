@@ -959,6 +959,8 @@ argument_list|,
 literal|"application/vnd.ms-xpsdocument"
 argument_list|)
 expr_stmt|;
+comment|// TODO Support detecting the Visio OOXML files
+comment|/*         assertTypeByData("testVISIO.vsdm", "application/vnd.ms-visio.drawing.macroenabled.main+xml");         assertTypeByData("testVISIO.vsdx", "application/vnd.ms-visio.drawing.main+xml");         assertTypeByData("testVISIO.vssm", "application/vnd.ms-visio.stencil.macroenabled.main+xml");         assertTypeByData("testVISIO.vssx", "application/vnd.ms-visio.stencil.main+xml");         assertTypeByData("testVISIO.vstm", "application/vnd.ms-visio.template.macroenabled.main+xml");         assertTypeByData("testVISIO.vstx", "application/vnd.ms-visio.template.main+xml"); */
 comment|// .xlsb is an OOXML file containing the binary parts, and not
 comment|//  an OLE2 file as you might initially expect!
 name|assertTypeByData
