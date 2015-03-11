@@ -959,8 +959,48 @@ argument_list|,
 literal|"application/vnd.ms-xpsdocument"
 argument_list|)
 expr_stmt|;
-comment|// TODO Support detecting the Visio OOXML files
-comment|/*         assertTypeByData("testVISIO.vsdm", "application/vnd.ms-visio.drawing.macroenabled.main+xml");         assertTypeByData("testVISIO.vsdx", "application/vnd.ms-visio.drawing.main+xml");         assertTypeByData("testVISIO.vssm", "application/vnd.ms-visio.stencil.macroenabled.main+xml");         assertTypeByData("testVISIO.vssx", "application/vnd.ms-visio.stencil.main+xml");         assertTypeByData("testVISIO.vstm", "application/vnd.ms-visio.template.macroenabled.main+xml");         assertTypeByData("testVISIO.vstx", "application/vnd.ms-visio.template.main+xml"); */
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vsdm"
+argument_list|,
+literal|"application/vnd.ms-visio.drawing.macroenabled.12"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vsdx"
+argument_list|,
+literal|"application/vnd.ms-visio.drawing"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vssm"
+argument_list|,
+literal|"application/vnd.ms-visio.stencil.macroenabled.12"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vssx"
+argument_list|,
+literal|"application/vnd.ms-visio.stencil"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vstm"
+argument_list|,
+literal|"application/vnd.ms-visio.template.macroenabled.12"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testVISIO.vstx"
+argument_list|,
+literal|"application/vnd.ms-visio.template"
+argument_list|)
+expr_stmt|;
 comment|// .xlsb is an OOXML file containing the binary parts, and not
 comment|//  an OLE2 file as you might initially expect!
 name|assertTypeByData

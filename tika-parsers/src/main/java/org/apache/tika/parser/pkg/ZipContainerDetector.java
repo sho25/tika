@@ -513,6 +513,15 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
+comment|// TODO Remove this constant once we upgrade to POI 3.12 beta 2, it is defined in ExtractorFactory there
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|VISIO_DOCUMENT_REL
+init|=
+literal|"http://schemas.microsoft.com/visio/2010/relationships/document"
+decl_stmt|;
 comment|/** Serial version UID */
 specifier|private
 specifier|static
@@ -1273,6 +1282,7 @@ name|OPCPackage
 name|pkg
 parameter_list|)
 block|{
+comment|// Check for the normal Office core document
 name|PackageRelationshipCollection
 name|core
 init|=
@@ -1285,6 +1295,28 @@ operator|.
 name|CORE_DOCUMENT_REL
 argument_list|)
 decl_stmt|;
+comment|// Otherwise check for some other Office core document types
+if|if
+condition|(
+name|core
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|core
+operator|=
+name|pkg
+operator|.
+name|getRelationshipsByType
+argument_list|(
+name|VISIO_DOCUMENT_REL
+argument_list|)
+expr_stmt|;
+block|}
+comment|// If we didn't find a single core document of any type, skip detection
 if|if
 condition|(
 name|core
