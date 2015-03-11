@@ -480,7 +480,7 @@ name|add
 argument_list|(
 name|attribute
 operator|.
-name|getName
+name|getFullName
 argument_list|()
 argument_list|,
 name|attribute
@@ -499,7 +499,7 @@ name|add
 argument_list|(
 name|attribute
 operator|.
-name|getName
+name|getFullName
 argument_list|()
 argument_list|,
 name|String

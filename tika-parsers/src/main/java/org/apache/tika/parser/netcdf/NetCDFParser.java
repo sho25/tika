@@ -27,16 +27,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -92,20 +82,6 @@ operator|.
 name|exception
 operator|.
 name|TikaException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -445,7 +421,7 @@ name|resolveMetadataKey
 argument_list|(
 name|attr
 operator|.
-name|getName
+name|getFullName
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -573,7 +549,7 @@ literal|"li"
 argument_list|,
 name|dim
 operator|.
-name|getName
+name|getFullName
 argument_list|()
 operator|+
 literal|" = "
