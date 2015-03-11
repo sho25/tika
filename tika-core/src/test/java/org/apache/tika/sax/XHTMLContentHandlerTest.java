@@ -722,20 +722,6 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Content: "
-operator|+
-name|toHTMLContentHandler
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|toHTMLContentHandler
