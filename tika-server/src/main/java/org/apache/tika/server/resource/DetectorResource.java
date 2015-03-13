@@ -12,6 +12,8 @@ operator|.
 name|tika
 operator|.
 name|server
+operator|.
+name|resource
 package|;
 end_package
 

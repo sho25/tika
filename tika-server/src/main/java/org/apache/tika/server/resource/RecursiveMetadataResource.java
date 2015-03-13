@@ -12,6 +12,8 @@ operator|.
 name|tika
 operator|.
 name|server
+operator|.
+name|resource
 package|;
 end_package
 
@@ -282,6 +284,20 @@ operator|.
 name|sax
 operator|.
 name|BasicContentHandlerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|server
+operator|.
+name|MetadataList
 import|;
 end_import
 

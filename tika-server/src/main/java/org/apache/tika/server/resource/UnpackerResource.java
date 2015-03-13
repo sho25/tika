@@ -12,6 +12,8 @@ operator|.
 name|tika
 operator|.
 name|server
+operator|.
+name|resource
 package|;
 end_package
 
@@ -542,6 +544,20 @@ operator|.
 name|sax
 operator|.
 name|BodyContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|server
+operator|.
+name|RichTextContentHandler
 import|;
 end_import
 

@@ -12,6 +12,8 @@ operator|.
 name|tika
 operator|.
 name|server
+operator|.
+name|resource
 package|;
 end_package
 
@@ -212,6 +214,20 @@ operator|.
 name|parser
 operator|.
 name|ParserDecorator
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|server
+operator|.
+name|HTMLHelper
 import|;
 end_import
 
