@@ -267,20 +267,6 @@ name|apache
 operator|.
 name|poi
 operator|.
-name|extractor
-operator|.
-name|ExtractorFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
 name|openxml4j
 operator|.
 name|exceptions
@@ -350,6 +336,22 @@ operator|.
 name|opc
 operator|.
 name|PackageRelationshipCollection
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|openxml4j
+operator|.
+name|opc
+operator|.
+name|PackageRelationshipTypes
 import|;
 end_import
 
@@ -513,14 +515,23 @@ operator|.
 name|CASE_INSENSITIVE
 argument_list|)
 decl_stmt|;
-comment|// TODO Remove this constant once we upgrade to POI 3.12 beta 2, it is defined in ExtractorFactory there
+comment|// TODO Remove this constant once we upgrade to POI 3.12 beta 2, then use PackageRelationshipTypes
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|VISIO_DOCUMENT_REL
+name|VISIO_DOCUMENT
 init|=
 literal|"http://schemas.microsoft.com/visio/2010/relationships/document"
+decl_stmt|;
+comment|// TODO Remove this constant once we upgrade to POI 3.12 beta 2, then use PackageRelationshipTypes
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|STRICT_CORE_DOCUMENT
+init|=
+literal|"http://purl.oclc.org/ooxml/officeDocument/relationships/officeDocument"
 decl_stmt|;
 comment|/** Serial version UID */
 specifier|private
@@ -1290,9 +1301,9 @@ name|pkg
 operator|.
 name|getRelationshipsByType
 argument_list|(
-name|ExtractorFactory
+name|PackageRelationshipTypes
 operator|.
-name|CORE_DOCUMENT_REL
+name|CORE_DOCUMENT
 argument_list|)
 decl_stmt|;
 comment|// Otherwise check for some other Office core document types
@@ -1312,7 +1323,27 @@ name|pkg
 operator|.
 name|getRelationshipsByType
 argument_list|(
-name|VISIO_DOCUMENT_REL
+name|STRICT_CORE_DOCUMENT
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|core
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+name|core
+operator|=
+name|pkg
+operator|.
+name|getRelationshipsByType
+argument_list|(
+name|VISIO_DOCUMENT
 argument_list|)
 expr_stmt|;
 block|}

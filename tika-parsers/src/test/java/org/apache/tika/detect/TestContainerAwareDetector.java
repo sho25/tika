@@ -954,6 +954,13 @@ argument_list|)
 expr_stmt|;
 name|assertTypeByData
 argument_list|(
+literal|"testEXCEL.strict.xlsx"
+argument_list|,
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
 literal|"testPPT.xps"
 argument_list|,
 literal|"application/vnd.ms-xpsdocument"
