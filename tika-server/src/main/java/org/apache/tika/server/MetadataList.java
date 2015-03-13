@@ -44,6 +44,7 @@ comment|/**  * wrapper class to make isWriteable in MetadataListMBW simpler  */
 end_comment
 
 begin_class
+specifier|public
 class|class
 name|MetadataList
 block|{
@@ -55,6 +56,7 @@ name|Metadata
 argument_list|>
 name|metadata
 decl_stmt|;
+specifier|public
 name|MetadataList
 parameter_list|(
 name|List
@@ -71,6 +73,7 @@ operator|=
 name|metadata
 expr_stmt|;
 block|}
+specifier|public
 name|List
 argument_list|<
 name|Metadata
