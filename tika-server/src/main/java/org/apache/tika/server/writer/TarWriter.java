@@ -13,7 +13,7 @@ name|tika
 operator|.
 name|server
 operator|.
-name|resource
+name|writer
 package|;
 end_package
 

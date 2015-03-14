@@ -191,7 +191,7 @@ name|tika
 operator|.
 name|server
 operator|.
-name|resource
+name|writer
 operator|.
 name|TarWriter
 import|;
