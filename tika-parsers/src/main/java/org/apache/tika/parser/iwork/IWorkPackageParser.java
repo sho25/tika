@@ -1054,11 +1054,7 @@ name|getNextZipEntry
 argument_list|()
 expr_stmt|;
 block|}
-name|zip
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+comment|// Don't close the zip InputStream (TIKA-1117).
 block|}
 block|}
 end_class
