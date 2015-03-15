@@ -133,34 +133,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|drew
-operator|.
-name|imaging
-operator|.
-name|jpeg
-operator|.
-name|JpegSegmentType
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|drew
-operator|.
-name|imaging
-operator|.
-name|tiff
-operator|.
-name|TiffProcessingException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -291,6 +263,20 @@ name|drew
 operator|.
 name|imaging
 operator|.
+name|jpeg
+operator|.
+name|JpegSegmentType
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|drew
+operator|.
+name|imaging
+operator|.
 name|tiff
 operator|.
 name|TiffMetadataReader
@@ -303,9 +289,11 @@ name|com
 operator|.
 name|drew
 operator|.
-name|lang
+name|imaging
 operator|.
-name|ByteArrayReader
+name|tiff
+operator|.
+name|TiffProcessingException
 import|;
 end_import
 
@@ -496,7 +484,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses the<a href="http://www.drewnoakes.com/code/exif/">Metadata Extractor</a> library  * to read EXIF and IPTC image metadata and map to Tika fields.  *   * As of 2.4.0 the library supports jpeg and tiff.  */
+comment|/**  * Uses the<a href="http://www.drewnoakes.com/code/exif/">Metadata Extractor</a> library  * to read EXIF and IPTC image metadata and map to Tika fields.  *<p/>  * As of 2.4.0 the library supports jpeg and tiff.  */
 end_comment
 
 begin_class
@@ -1005,7 +993,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Copies extracted tags to tika metadata using registered handlers.      * @param metadataExtractor Tag directories from a Metadata Extractor "reader"      * @throws MetadataException This method does not handle exceptions from Metadata Extractor      */
+comment|/**      * Copies extracted tags to tika metadata using registered handlers.      *      * @param metadataExtractor Tag directories from a Metadata Extractor "reader"      * @throws MetadataException This method does not handle exceptions from Metadata Extractor      */
 specifier|protected
 name|void
 name|handle
@@ -1034,7 +1022,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Copies extracted tags to tika metadata using registered handlers.      * @param directories Metadata Extractor {@link com.drew.metadata.Directory} instances.      * @throws MetadataException This method does not handle exceptions from Metadata Extractor      */
+comment|/**      * Copies extracted tags to tika metadata using registered handlers.      *      * @param directories Metadata Extractor {@link com.drew.metadata.Directory} instances.      * @throws MetadataException This method does not handle exceptions from Metadata Extractor      */
 specifier|protected
 name|void
 name|handle
@@ -1116,7 +1104,7 @@ argument_list|>
 name|directoryType
 parameter_list|)
 function_decl|;
-comment|/**          * @param directory extracted tags          * @param metadata current tika metadata          * @throws MetadataException typically field extraction error, aborts all further extraction          */
+comment|/**          * @param directory extracted tags          * @param metadata  current tika metadata          * @throws MetadataException typically field extraction error, aborts all further extraction          */
 name|void
 name|handle
 parameter_list|(
@@ -1861,7 +1849,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Maps common TIFF and EXIF tags onto the Tika          *  TIFF image metadata namespace.          */
+comment|/**          * Maps common TIFF and EXIF tags onto the Tika          * TIFF image metadata namespace.          */
 specifier|public
 name|void
 name|handlePhotoTags
