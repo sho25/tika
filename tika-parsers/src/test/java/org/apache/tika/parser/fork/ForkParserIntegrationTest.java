@@ -609,6 +609,7 @@ name|found
 operator|=
 literal|true
 expr_stmt|;
+break|break;
 block|}
 block|}
 if|if
