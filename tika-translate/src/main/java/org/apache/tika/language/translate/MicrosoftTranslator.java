@@ -47,6 +47,20 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -238,7 +252,9 @@ name|String
 name|targetLanguage
 parameter_list|)
 throws|throws
-name|Exception
+name|TikaException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -282,6 +298,8 @@ argument_list|(
 name|clientSecret
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 return|return
 name|Translate
 operator|.
@@ -295,6 +313,26 @@ name|target
 argument_list|)
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Error with Microsoft Translation: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
+block|}
 comment|/**      * Use the Microsoft service to translate the given text to the given target language. The source language      * is automatically detected by Microsoft. You must set the client keys in translator.microsoft.properties.      * @param text The text to translate.      * @param targetLanguage The desired language to translate to (for example, "hi").      * @return The translated text. If translation is unavailable, returns the unchanged text.      * @throws Exception      * @see org.apache.tika.language.translate.Translator      * @since Tika 1.6      */
 specifier|public
 name|String
@@ -307,7 +345,9 @@ name|String
 name|targetLanguage
 parameter_list|)
 throws|throws
-name|Exception
+name|TikaException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
@@ -341,6 +381,8 @@ argument_list|(
 name|clientSecret
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 return|return
 name|Translate
 operator|.
@@ -351,6 +393,26 @@ argument_list|,
 name|target
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Error with Microsoft Translation: "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * Check whether this instance has a working property file and its keys are not the defaults.      * This is not guaranteed to work, since keys may be incorrect or the webservice may be down.      * @return whether translation will probably work.      */
 specifier|public

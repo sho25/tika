@@ -17,6 +17,30 @@ name|translate
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface for Translator services.  * @since Tika 1.6  */
 end_comment
@@ -26,7 +50,7 @@ specifier|public
 interface|interface
 name|Translator
 block|{
-comment|/**      * Translate text between given languages. The following languages are supported:      * Arabic("ar"), Bulgarian("bg"), Catalan("ca"), Chinese-Simplified("zh-CHS"), Chinese-Traditional("zh-CHT"),      * Czech("cs"), Danish("da"), Dutch("nl"), English("en"), Estonian("et"),  Innish("fi"), French("fr"), German("de"),      * Greek("el"), Haitian-Creole("ht"), Hebrew("he"), Hindi("hi"), Hmong-Daw("mww"), Hungarian("hu"),      * Indonesian("id"), Italian("it"), Japanese("ja"), Korean("ko"), Latvian("lv"), Lithuanian("lt"), Malay("ms"),      * Norwegian("no"), Persian("fa"), Polish("pl"), Portuguese("pt"), Romanian("ro"), Russian("ru"), Slovak("sk"),      * Slovenian("sl"), Spanish("es"), Swedish("sv"), Thai("th"), Turkish("tr"), Ukranian("uk"), Urdu("ur"),      * Vietnemese("vi").      * @param text The text to translate.      * @param sourceLanguage The input text language (for example, "en").      * @param targetLanguage The desired language to translate to (for example, "fr").      * @return The translation result. If translation is unavailable, returns the same text back.      * @throws Exception When there is an error with the API call.      * @since Tika 1.6      */
+comment|/**      * Translate text between given languages. The following languages are supported:      * Arabic("ar"), Bulgarian("bg"), Catalan("ca"), Chinese-Simplified("zh-CHS"), Chinese-Traditional("zh-CHT"),      * Czech("cs"), Danish("da"), Dutch("nl"), English("en"), Estonian("et"),  Innish("fi"), French("fr"), German("de"),      * Greek("el"), Haitian-Creole("ht"), Hebrew("he"), Hindi("hi"), Hmong-Daw("mww"), Hungarian("hu"),      * Indonesian("id"), Italian("it"), Japanese("ja"), Korean("ko"), Latvian("lv"), Lithuanian("lt"), Malay("ms"),      * Norwegian("no"), Persian("fa"), Polish("pl"), Portuguese("pt"), Romanian("ro"), Russian("ru"), Slovak("sk"),      * Slovenian("sl"), Spanish("es"), Swedish("sv"), Thai("th"), Turkish("tr"), Ukranian("uk"), Urdu("ur"),      * Vietnemese("vi").      * @param text The text to translate.      * @param sourceLanguage The input text language (for example, "en").      * @param targetLanguage The desired language to translate to (for example, "fr").      * @return The translation result. If translation is unavailable, returns the same text back.      * @throws TikaException When there is an error translating.      * @throws java.io.IOException      * @since Tika 1.6      */
 specifier|public
 name|String
 name|translate
@@ -41,9 +65,11 @@ name|String
 name|targetLanguage
 parameter_list|)
 throws|throws
-name|Exception
+name|TikaException
+throws|,
+name|IOException
 function_decl|;
-comment|/**      * Translate text to the given language. This method attempts to auto-detect the source language of the text.      * The following languages are supported:      * Arabic("ar"), Bulgarian("bg"), Catalan("ca"), Chinese-Simplified("zh-CHS"), Chinese-Traditional("zh-CHT"),      * Czech("cs"), Danish("da"), Dutch("nl"), English("en"), Estonian("et"),  Innish("fi"), French("fr"), German("de"),      * Greek("el"), Haitian-Creole("ht"), Hebrew("he"), Hindi("hi"), Hmong-Daw("mww"), Hungarian("hu"),      * Indonesian("id"), Italian("it"), Japanese("ja"), Korean("ko"), Latvian("lv"), Lithuanian("lt"), Malay("ms"),      * Norwegian("no"), Persian("fa"), Polish("pl"), Portuguese("pt"), Romanian("ro"), Russian("ru"), Slovak("sk"),      * Slovenian("sl"), Spanish("es"), Swedish("sv"), Thai("th"), Turkish("tr"), Ukranian("uk"), Urdu("ur"),      * Vietnemese("vi").      * @param text The text to translate.      * @param targetLanguage The desired language to translate to (for example, "hi").      * @return The translation result. If translation is unavailable, returns the same text back.      * @throws Exception When there is an error with the API call.      * @since Tika 1.6      */
+comment|/**      * Translate text to the given language. This method attempts to auto-detect the source language of the text.      * The following languages are supported:      * Arabic("ar"), Bulgarian("bg"), Catalan("ca"), Chinese-Simplified("zh-CHS"), Chinese-Traditional("zh-CHT"),      * Czech("cs"), Danish("da"), Dutch("nl"), English("en"), Estonian("et"),  Innish("fi"), French("fr"), German("de"),      * Greek("el"), Haitian-Creole("ht"), Hebrew("he"), Hindi("hi"), Hmong-Daw("mww"), Hungarian("hu"),      * Indonesian("id"), Italian("it"), Japanese("ja"), Korean("ko"), Latvian("lv"), Lithuanian("lt"), Malay("ms"),      * Norwegian("no"), Persian("fa"), Polish("pl"), Portuguese("pt"), Romanian("ro"), Russian("ru"), Slovak("sk"),      * Slovenian("sl"), Spanish("es"), Swedish("sv"), Thai("th"), Turkish("tr"), Ukranian("uk"), Urdu("ur"),      * Vietnemese("vi").      * @param text The text to translate.      * @param targetLanguage The desired language to translate to (for example, "hi").      * @return The translation result. If translation is unavailable, returns the same text back.      * @throws TikaException When there is an error translating.      * @throws java.io.IOException      * @since Tika 1.6      */
 specifier|public
 name|String
 name|translate
@@ -55,7 +81,9 @@ name|String
 name|targetLanguage
 parameter_list|)
 throws|throws
-name|Exception
+name|TikaException
+throws|,
+name|IOException
 function_decl|;
 comment|/**      * @return true if this Translator is probably able to translate right now.      * @since Tika 1.6      */
 specifier|public

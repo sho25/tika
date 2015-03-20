@@ -19,6 +19,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -297,7 +311,9 @@ name|String
 name|targetLanguage
 parameter_list|)
 throws|throws
-name|Exception
+name|TikaException
+throws|,
+name|IOException
 block|{
 if|if
 condition|(
