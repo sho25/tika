@@ -428,13 +428,10 @@ name|this
 operator|.
 name|command
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|INPUT_FILE_TOKEN
 argument_list|)
-operator|!=
-operator|-
-literal|1
 condition|)
 block|{
 name|pCommand
@@ -2769,10 +2766,10 @@ name|InterruptedException
 name|ignore
 parameter_list|)
 block|{             }
+block|}
 return|return
 name|output
 return|;
-block|}
 block|}
 specifier|private
 name|String
@@ -2786,11 +2783,11 @@ name|SAXException
 throws|,
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|Reader
@@ -2865,13 +2862,13 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
-block|}
 block|}
 specifier|private
 name|void
