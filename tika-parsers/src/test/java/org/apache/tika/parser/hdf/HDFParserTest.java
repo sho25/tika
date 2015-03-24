@@ -381,6 +381,18 @@ literal|"Pass"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Hierarchical Data Format, version 4"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"File-Type-Description"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

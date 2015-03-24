@@ -454,6 +454,19 @@ name|getRootGroup
 argument_list|()
 expr_stmt|;
 block|}
+comment|// get file type
+name|met
+operator|.
+name|set
+argument_list|(
+literal|"File-Type-Description"
+argument_list|,
+name|ncFile
+operator|.
+name|getFileTypeDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// unravel its string attrs
 for|for
 control|(
