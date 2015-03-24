@@ -402,6 +402,18 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+literal|"File-Type-Description"
+argument_list|,
+name|ncFile
+operator|.
+name|getFileTypeDescription
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// first parse out the set of global attributes
 for|for
 control|(

@@ -314,6 +314,18 @@ argument_list|,
 literal|"720 ppm stabilization experiment (SRESA1B)"
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"File-Type-Description"
+argument_list|)
+argument_list|,
+literal|"NetCDF-3/CDM"
+argument_list|)
+expr_stmt|;
 name|String
 name|content
 init|=
