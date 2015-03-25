@@ -231,18 +231,6 @@ name|apache
 operator|.
 name|log4j
 operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
 name|PatternLayout
 import|;
 end_import
@@ -349,6 +337,36 @@ name|TikaInputStream
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|MarkerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -366,7 +384,7 @@ specifier|static
 name|Logger
 name|logger
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -874,6 +892,7 @@ name|Exception
 block|{
 comment|//if no log4j config file has been set via
 comment|//sysprops, use BasicConfigurator
+comment|//TODO: figure out if this can cleanly be moved to pure slf4j?
 name|String
 name|log4jFile
 init|=
@@ -946,6 +965,12 @@ argument_list|(
 name|appender
 argument_list|)
 expr_stmt|;
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
 name|Logger
 operator|.
 name|getRootLogger
@@ -991,8 +1016,15 @@ argument_list|()
 expr_stmt|;
 name|logger
 operator|.
-name|fatal
+name|error
 argument_list|(
+name|MarkerFactory
+operator|.
+name|getMarker
+argument_list|(
+literal|"FATAL"
+argument_list|)
+argument_list|,
 literal|"Fatal exception from FSBatchProcessCLI: "
 operator|+
 name|t

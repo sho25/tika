@@ -318,7 +318,7 @@ name|logWithResourceId
 argument_list|(
 name|Level
 operator|.
-name|ERROR
+name|FATAL
 argument_list|,
 literal|"ioe_opening_is"
 argument_list|,
@@ -446,7 +446,7 @@ name|logWithResourceId
 argument_list|(
 name|Level
 operator|.
-name|ERROR
+name|WARN
 argument_list|,
 literal|"parse_ex"
 argument_list|,
