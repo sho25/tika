@@ -380,7 +380,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Generic Source code parser for Java, Groovy, C++  *  * @author Hong-Thai.Nguyen  * @since 1.6  */
+comment|/**  * Generic Source code parser for Java, Groovy, C++.  * Aware: This parser uses JHightlight library (https://github.com/codelibs/jhighlight) under CDDL/LGPL dual license  *  * @author Hong-Thai.Nguyen  * @since 1.6  */
 end_comment
 
 begin_class
