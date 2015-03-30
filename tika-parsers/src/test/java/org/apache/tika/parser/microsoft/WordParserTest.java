@@ -213,6 +213,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -2224,6 +2234,99 @@ name|assertContains
 argument_list|(
 literal|"<p>1. Organisering av vakten:</p>"
 argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHyperlinkStringIOOBESmartQuote
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1512, one cause: closing double quote is a smart quote
+comment|//test file contributed by user
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_closingSmartQInHyperLink.doc"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"href=\"https://issues.apache.org/jira/browse/TIKA-1512"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+comment|//until we determine whether we can include test docs or not
+specifier|public
+name|void
+name|testHyperlinkStringLongNoCloseQuote
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1512, one cause: no closing quote on really long string
+comment|//test file derived from govdocs1 012152.doc
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_longHyperLinkNoCloseQuote.doc"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"href=\"http://www.lexis.com"
+argument_list|,
+name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+comment|//until we determine whether we can include test docs or not
+specifier|public
+name|void
+name|testHyperlinkStringLongCarriageReturn
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1512, one cause: no closing quote, but carriage return
+comment|//test file derived from govdocs1 040044.doc
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_hyperLinkCarriageReturn.doc"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"href=\"http://www.nib.org"
+argument_list|,
+name|result
+operator|.
 name|xml
 argument_list|)
 expr_stmt|;
