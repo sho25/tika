@@ -522,6 +522,10 @@ condition|(
 name|consumersManagerMaxMillis
 operator|==
 literal|null
+operator|&&
+name|consumersManagerMaxMillisNode
+operator|!=
+literal|null
 condition|)
 block|{
 name|consumersManagerMaxMillis
