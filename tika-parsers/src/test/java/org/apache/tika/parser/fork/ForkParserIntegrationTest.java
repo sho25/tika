@@ -1078,9 +1078,18 @@ name|parser
 operator|.
 name|setJavaCommand
 argument_list|(
-literal|"java -Xmx32m -Xdebug -Xrunjdwp:"
-operator|+
-literal|"transport=dt_socket,address=54321,server=y,suspend=n"
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"java"
+argument_list|,
+literal|"-Xmx32m"
+argument_list|,
+literal|"-Xdebug"
+argument_list|,
+literal|"-Xrunjdwp:transport=dt_socket,address=54321,server=y,suspend=n"
+argument_list|)
 argument_list|)
 expr_stmt|;
 try|try

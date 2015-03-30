@@ -41,7 +41,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -230,10 +250,20 @@ name|parser
 decl_stmt|;
 comment|/** Java command line */
 specifier|private
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|java
 init|=
-literal|"java -Xmx32m"
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"java"
+argument_list|,
+literal|"-Xmx32m"
+argument_list|)
 decl_stmt|;
 comment|/** Process pool size */
 specifier|private
@@ -364,7 +394,10 @@ expr_stmt|;
 block|}
 comment|/**      * Returns the command used to start the forked server process.      *      * @return java command line      */
 specifier|public
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|getJavaCommand
 parameter_list|()
 block|{
@@ -372,12 +405,15 @@ return|return
 name|java
 return|;
 block|}
-comment|/**      * Sets the command used to start the forked server process.      * The given command line is split on whitespace and the arguments      * "-jar" and "/path/to/bootstrap.jar" are appended to it when starting      * the process. The default setting is "java -Xmx32m".      *      * @param java java command line      */
+comment|/**      * Sets the command used to start the forked server process.      * The arguments "-jar" and "/path/to/bootstrap.jar" are      * appended to the given command when starting the process.      * The default setting is {"java", "-Xmx32m"}.      *      * @param java java command line      */
 specifier|public
 name|void
 name|setJavaCommand
 parameter_list|(
+name|List
+argument_list|<
 name|String
+argument_list|>
 name|java
 parameter_list|)
 block|{
