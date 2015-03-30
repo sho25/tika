@@ -711,6 +711,7 @@ argument_list|,
 name|httpHeaders
 argument_list|)
 expr_stmt|;
+comment|//no need to pass parser for embedded document parsing
 name|TikaResource
 operator|.
 name|fillParseContext
@@ -718,6 +719,8 @@ argument_list|(
 name|context
 argument_list|,
 name|httpHeaders
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|TikaResource

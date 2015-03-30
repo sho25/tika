@@ -1047,6 +1047,9 @@ argument_list|,
 name|String
 argument_list|>
 name|httpHeaders
+parameter_list|,
+name|Parser
+name|embeddedParser
 parameter_list|)
 block|{
 name|TesseractOCRConfig
@@ -1146,6 +1149,25 @@ argument_list|,
 name|pdfParserConfig
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|embeddedParser
+operator|!=
+literal|null
+condition|)
+block|{
+name|parseContext
+operator|.
+name|set
+argument_list|(
+name|Parser
+operator|.
+name|class
+argument_list|,
+name|embeddedParser
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Utility method to set a property on a class via reflection.      *      * @param httpHeaders the HTTP headers set.      * @param object      the<code>Object</code> to set the property on.      * @param key         the key of the HTTP Header.      * @param prefix      the name of the HTTP Header prefix used to find property.      * @throws WebApplicationException thrown when field cannot be found.      */
 specifier|private
@@ -2082,6 +2104,8 @@ argument_list|(
 name|context
 argument_list|,
 name|httpHeaders
+argument_list|,
+name|parser
 argument_list|)
 expr_stmt|;
 name|logRequest
@@ -2452,6 +2476,8 @@ argument_list|(
 name|context
 argument_list|,
 name|httpHeaders
+argument_list|,
+name|parser
 argument_list|)
 expr_stmt|;
 name|logRequest

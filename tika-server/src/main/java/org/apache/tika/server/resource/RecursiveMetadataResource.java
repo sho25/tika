@@ -562,6 +562,7 @@ argument_list|,
 name|httpHeaders
 argument_list|)
 expr_stmt|;
+comment|//no need to add parser to parse recursively
 name|TikaResource
 operator|.
 name|fillParseContext
@@ -569,6 +570,8 @@ argument_list|(
 name|context
 argument_list|,
 name|httpHeaders
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|TikaResource
