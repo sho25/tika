@@ -890,7 +890,7 @@ argument_list|,
 name|hasXML
 argument_list|)
 expr_stmt|;
-comment|// This custom TikaConfig should exclude all AbstractParsers.
+comment|// This custom TikaConfig should exclude XMLParser and all of its subclasses.
 name|config
 operator|=
 name|getConfig
@@ -931,7 +931,14 @@ name|XMLParser
 condition|)
 name|fail
 argument_list|(
-literal|"Custom config should not include an XMLParser."
+literal|"Custom config should not include an XMLParser ("
+operator|+
+name|p
+operator|.
+name|getClass
+argument_list|()
+operator|+
+literal|")."
 argument_list|)
 expr_stmt|;
 block|}
