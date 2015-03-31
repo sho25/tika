@@ -1234,13 +1234,7 @@ operator|.
 name|execute
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
+return|return;
 block|}
 name|BasicConfigurator
 operator|.

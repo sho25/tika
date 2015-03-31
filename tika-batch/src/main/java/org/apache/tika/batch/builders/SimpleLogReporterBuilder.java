@@ -168,7 +168,7 @@ name|attributes
 operator|.
 name|get
 argument_list|(
-literal|"sleepMillis"
+literal|"reporterSleepMillis"
 argument_list|)
 argument_list|,
 literal|1000L
