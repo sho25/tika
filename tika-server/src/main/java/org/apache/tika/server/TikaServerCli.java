@@ -631,7 +631,7 @@ name|options
 operator|.
 name|addOption
 argument_list|(
-literal|"c"
+literal|"C"
 argument_list|,
 literal|"cors"
 argument_list|,
