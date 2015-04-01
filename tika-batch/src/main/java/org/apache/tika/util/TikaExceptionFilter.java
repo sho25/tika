@@ -138,6 +138,11 @@ argument_list|(
 name|w
 argument_list|)
 expr_stmt|;
+name|w
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|stringWriter
 operator|.
 name|flush

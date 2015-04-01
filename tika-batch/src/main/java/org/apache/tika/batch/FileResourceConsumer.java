@@ -1053,6 +1053,16 @@ argument_list|(
 name|printWriter
 argument_list|)
 expr_stmt|;
+name|printWriter
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+name|stackWriter
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|xml
 operator|.
 name|writeCharacters
