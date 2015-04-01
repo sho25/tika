@@ -518,9 +518,9 @@ argument_list|()
 expr_stmt|;
 name|logger
 operator|.
-name|trace
+name|info
 argument_list|(
-literal|"about to start"
+literal|"about to start driver"
 argument_list|)
 expr_stmt|;
 name|start
@@ -560,9 +560,9 @@ argument_list|()
 expr_stmt|;
 name|logger
 operator|.
-name|trace
+name|info
 argument_list|(
-literal|"exit value:"
+literal|"The child process has finished with an exit value of: "
 operator|+
 name|exit
 argument_list|)
@@ -660,7 +660,7 @@ operator|++
 expr_stmt|;
 name|logger
 operator|.
-name|trace
+name|warn
 argument_list|(
 literal|"Must restart, still not exited; loops after restart: "
 operator|+
@@ -757,10 +757,6 @@ expr_stmt|;
 if|if
 condition|(
 name|exit
-operator|!=
-literal|null
-operator|&&
-name|exit
 operator|==
 name|BatchProcessDriverCLI
 operator|.
@@ -848,6 +844,13 @@ expr_stmt|;
 name|shutdownDriverNow
 argument_list|()
 expr_stmt|;
+name|logger
+operator|.
+name|info
+argument_list|(
+literal|"Process driver has completed"
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void
@@ -870,7 +873,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|10
+literal|60
 condition|;
 name|i
 operator|++
@@ -945,7 +948,7 @@ name|logger
 operator|.
 name|error
 argument_list|(
-literal|"Process didn't stop after 10 seconds after shutdown. "
+literal|"Process didn't stop after 60 seconds after shutdown. "
 operator|+
 literal|"I am forcefully killing it."
 argument_list|)
@@ -1210,6 +1213,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Typically only used for testing.  This determines whether or not      * to redirect child process's stdOut to driver's stdout      * @param redirectChildProcessToStdOut should the driver redirect the child's stdout      */
 specifier|public
 name|void
 name|setRedirectChildProcessToStdOut

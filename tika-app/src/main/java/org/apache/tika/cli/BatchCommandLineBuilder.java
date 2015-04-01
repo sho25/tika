@@ -166,7 +166,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|//take the args, and divide them into process args and options for
-comment|//the parent jvm process (i.e. log files, etc)
+comment|//the child jvm process (i.e. log files, etc)
 name|mapifyArgs
 argument_list|(
 name|args
@@ -242,6 +242,56 @@ argument_list|(
 literal|"-cp"
 argument_list|,
 name|cp
+argument_list|)
+expr_stmt|;
+block|}
+name|boolean
+name|hasLog4j
+init|=
+literal|false
+decl_stmt|;
+for|for
+control|(
+name|String
+name|k
+range|:
+name|jvmOpts
+operator|.
+name|keySet
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|k
+operator|.
+name|startsWith
+argument_list|(
+literal|"-Dlog4j.configuration="
+argument_list|)
+condition|)
+block|{
+name|hasLog4j
+operator|=
+literal|true
+expr_stmt|;
+break|break;
+block|}
+block|}
+comment|//use the log4j config file inside the app /resources/log4j_batch_process.properties
+if|if
+condition|(
+operator|!
+name|hasLog4j
+condition|)
+block|{
+name|jvmOpts
+operator|.
+name|put
+argument_list|(
+literal|"-Dlog4j.configuration=\"log4j_batch_process.properties\""
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -396,7 +446,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Take the input args and separate them into args that belong on the commandline      * and those that belong as jvm args for the parent process.      * @param args -- literal args from TikaCLI commandline      * @param commandLine args that should be part of the batch commandline      * @param jvmArgs args that belong as jvm arguments for the parent process      */
+comment|/**      * Take the input args and separate them into args that belong on the commandline      * and those that belong as jvm args for the child process.      * @param args -- literal args from TikaCLI commandline      * @param commandLine args that should be part of the batch commandline      * @param jvmArgs args that belong as jvm arguments for the child process      */
 specifier|private
 specifier|static
 name|void

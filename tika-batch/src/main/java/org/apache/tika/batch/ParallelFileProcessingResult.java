@@ -37,6 +37,11 @@ name|consumed
 decl_stmt|;
 specifier|private
 specifier|final
+name|int
+name|numberHandledExceptions
+decl_stmt|;
+specifier|private
+specifier|final
 name|double
 name|secondsElapsed
 decl_stmt|;
@@ -61,6 +66,9 @@ name|added
 parameter_list|,
 name|int
 name|consumed
+parameter_list|,
+name|int
+name|numberHandledExceptions
 parameter_list|,
 name|double
 name|secondsElapsed
@@ -89,6 +97,12 @@ operator|.
 name|consumed
 operator|=
 name|consumed
+expr_stmt|;
+name|this
+operator|.
+name|numberHandledExceptions
+operator|=
+name|numberHandledExceptions
 expr_stmt|;
 name|this
 operator|.
@@ -159,6 +173,15 @@ return|return
 name|secondsElapsed
 return|;
 block|}
+specifier|public
+name|int
+name|getNumberHandledExceptions
+parameter_list|()
+block|{
+return|return
+name|numberHandledExceptions
+return|;
+block|}
 comment|/**      *      * @return intendedExitStatus      */
 specifier|public
 name|int
@@ -190,6 +213,10 @@ operator|+
 literal|", consumed="
 operator|+
 name|consumed
+operator|+
+literal|", numberHandledExceptions="
+operator|+
+name|numberHandledExceptions
 operator|+
 literal|", secondsElapsed="
 operator|+
