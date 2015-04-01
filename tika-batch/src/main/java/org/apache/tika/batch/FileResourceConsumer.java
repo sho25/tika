@@ -1441,7 +1441,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Utility method to handle logging equivalently among all      * implementing classes.  Use, override or avoid as desired.      *<p>      * This will throw Errors, but it will catch all Exceptions and log them      * @param resourceId resourceId      * @param parser parser to use      * @param is inputStream (will be closed by this method!)      * @param handler handler for the content      * @param m metadata      * @param parseContext parse context      * @throws Throwable      */
+comment|/**      * Utility method to handle logging equivalently among all      * implementing classes.  Use, override or avoid as desired.      *      * @param resourceId resourceId      * @param parser parser to use      * @param is inputStream (will be closed by this method!)      * @param handler handler for the content      * @param m metadata      * @param parseContext parse context      * @throws Throwable (logs and then throws whatever was thrown (if anything)      */
 specifier|protected
 name|void
 name|parse
@@ -1515,9 +1515,6 @@ name|t
 argument_list|)
 argument_list|)
 expr_stmt|;
-throw|throw
-name|t
-throw|;
 block|}
 elseif|else
 if|if
@@ -1541,13 +1538,9 @@ name|t
 argument_list|)
 argument_list|)
 expr_stmt|;
-throw|throw
-name|t
-throw|;
 block|}
 else|else
 block|{
-comment|//warn, but do not rethrow
 name|logger
 operator|.
 name|warn
@@ -1566,6 +1559,9 @@ name|incrementHandledExceptions
 argument_list|()
 expr_stmt|;
 block|}
+throw|throw
+name|t
+throw|;
 block|}
 finally|finally
 block|{
