@@ -65,6 +65,24 @@ name|Metadata
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
+comment|/**      * This is currently used to identify Content-Type that may be      * included within a document, such as in html documents      * (e.g.<meta http-equiv="content-type" content="text/html; charset=UTF-8">)      , or the value might come from outside the document.  This information      * may be faulty and should be treated only as a hint.      */
+specifier|public
+specifier|static
+specifier|final
+name|Property
+name|CONTENT_TYPE_HINT
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|HttpHeaders
+operator|.
+name|CONTENT_TYPE
+operator|+
+literal|"_Hint"
+argument_list|)
+decl_stmt|;
 comment|/**      * @see DublinCore#FORMAT      */
 specifier|public
 specifier|static
