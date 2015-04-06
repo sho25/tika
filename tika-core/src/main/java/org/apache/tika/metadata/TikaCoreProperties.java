@@ -80,7 +80,7 @@ name|HttpHeaders
 operator|.
 name|CONTENT_TYPE
 operator|+
-literal|"_Hint"
+literal|"-Hint"
 argument_list|)
 decl_stmt|;
 comment|/**      * @see DublinCore#FORMAT      */
