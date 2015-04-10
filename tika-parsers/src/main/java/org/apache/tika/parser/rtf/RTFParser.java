@@ -190,7 +190,7 @@ name|RTFParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -236,7 +236,7 @@ return|return
 name|SUPPORTED_TYPES
 return|;
 block|}
-comment|/** maximum number of bytes per embedded object/pict (default: 20MB)*/
+comment|/**      * maximum number of bytes per embedded object/pict (default: 20MB)      */
 specifier|private
 specifier|static
 name|int
@@ -249,7 +249,7 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|//20MB
-comment|/**      * Bytes for embedded objects are currently cached in memory.        * If something goes wrong during the parsing of an embedded object,       * it is possible that a read length may be crazily too long       * and cause a heap crash.      *        * @param max maximum number of bytes to allow for embedded objects.  If       * the embedded object has more than this number of bytes, skip it.      */
+comment|/**      * Bytes for embedded objects are currently cached in memory.      * If something goes wrong during the parsing of an embedded object,      * it is possible that a read length may be crazily too long      * and cause a heap crash.      *      * @param max maximum number of bytes to allow for embedded objects.  If      *            the embedded object has more than this number of bytes, skip it.      */
 specifier|public
 specifier|static
 name|void
@@ -264,7 +264,7 @@ operator|=
 name|max
 expr_stmt|;
 block|}
-comment|/**      * See {@link #setMaxBytesForEmbeddedObject(int)}.      *       * @return maximum number of bytes allowed for an embedded object.      *       */
+comment|/**      * See {@link #setMaxBytesForEmbeddedObject(int)}.      *      * @return maximum number of bytes allowed for an embedded object.      */
 specifier|public
 specifier|static
 name|int
