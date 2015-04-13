@@ -996,6 +996,15 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|style
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 comment|// End tags that refer to no longer valid styles
 if|if
 condition|(
@@ -1303,7 +1312,7 @@ throws|throws
 name|SAXException
 block|{
 comment|// keep track of current node type. If it is a text node,
-comment|// a bit at the current depth ist set in textNodeStack.
+comment|// a bit at the current depth its set in textNodeStack.
 comment|// characters() checks the top bit to determine, if the
 comment|// actual node is a text node to print out nodeDepth contains
 comment|// the depth of the current node and also marks top of stack.
