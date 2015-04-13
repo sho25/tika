@@ -402,7 +402,7 @@ argument_list|,
 name|META_NS
 argument_list|)
 decl_stmt|;
-comment|/**       * @see OfficeOpenXMLCore#SUBJECT       * @deprecated use OfficeOpenXMLCore#SUBJECT      */
+comment|/**      * @see OfficeOpenXMLCore#SUBJECT      * @deprecated use OfficeOpenXMLCore#SUBJECT      */
 annotation|@
 name|Deprecated
 specifier|private
