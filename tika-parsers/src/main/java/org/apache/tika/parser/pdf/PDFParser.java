@@ -1791,6 +1791,16 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|pdfaxmp
+operator|.
+name|getPart
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
 name|metadata
 operator|.
 name|set
@@ -1808,6 +1818,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pdfaxmp
