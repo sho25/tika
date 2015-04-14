@@ -131,6 +131,13 @@ name|x
 operator|.
 name|getMessage
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|x
+operator|.
+name|getMessage
+argument_list|()
 operator|.
 name|contains
 argument_list|(
@@ -140,6 +147,13 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
+name|x
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+operator|&&
 name|x
 operator|.
 name|getMessage

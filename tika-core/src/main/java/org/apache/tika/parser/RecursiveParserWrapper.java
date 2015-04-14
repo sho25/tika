@@ -668,6 +668,13 @@ name|t
 operator|.
 name|getMessage
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|t
+operator|.
+name|getMessage
+argument_list|()
 operator|.
 name|indexOf
 argument_list|(
