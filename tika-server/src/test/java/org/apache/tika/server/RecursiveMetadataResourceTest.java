@@ -407,7 +407,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|11
+literal|12
 argument_list|,
 name|metadataList
 operator|.
@@ -440,7 +440,7 @@ name|metadataList
 operator|.
 name|get
 argument_list|(
-literal|5
+literal|6
 argument_list|)
 operator|.
 name|get

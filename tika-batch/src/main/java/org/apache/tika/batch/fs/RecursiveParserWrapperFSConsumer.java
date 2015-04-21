@@ -267,9 +267,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|util
+name|utils
 operator|.
-name|TikaExceptionFilter
+name|ExceptionUtils
 import|;
 end_import
 
@@ -323,15 +323,6 @@ name|String
 name|outputEncoding
 init|=
 literal|"UTF-8"
-decl_stmt|;
-comment|//TODO: parameterize this
-specifier|private
-name|TikaExceptionFilter
-name|exceptionFilter
-init|=
-operator|new
-name|TikaExceptionFilter
-argument_list|()
 decl_stmt|;
 specifier|public
 name|RecursiveParserWrapperFSConsumer
@@ -628,9 +619,9 @@ block|}
 name|String
 name|stackTrace
 init|=
-name|exceptionFilter
+name|ExceptionUtils
 operator|.
-name|getStackTrace
+name|getFilteredStackTrace
 argument_list|(
 name|t
 argument_list|)
