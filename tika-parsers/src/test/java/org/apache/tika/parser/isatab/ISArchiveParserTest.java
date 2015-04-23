@@ -165,6 +165,9 @@ argument_list|(
 literal|"/test-documents/testISATab_BII-I-1/"
 argument_list|)
 operator|.
+name|toURI
+argument_list|()
+operator|.
 name|getPath
 argument_list|()
 argument_list|)
