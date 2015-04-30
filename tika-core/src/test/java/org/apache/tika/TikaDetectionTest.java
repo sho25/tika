@@ -9565,7 +9565,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/dif+xml"
+literal|"application/dif+xml"
 argument_list|,
 name|tika
 operator|.

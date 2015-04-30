@@ -331,7 +331,7 @@ expr_stmt|;
 comment|//test GCMD Directory Interchange Format (.dif) TIKA-1561
 name|testFile
 argument_list|(
-literal|"text/dif+xml"
+literal|"application/dif+xml"
 argument_list|,
 literal|"brwNIMS_2014.dif"
 argument_list|)
