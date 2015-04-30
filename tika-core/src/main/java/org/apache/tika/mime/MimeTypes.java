@@ -532,7 +532,6 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns the MIME type that best matches the given first few bytes      * of a document stream. Returns application/octet-stream if no better      * match is found.       *<p>      * If multiple matches are found, the best (highest priority) matching      * type is returned. If multiple matches are found with the same priority,      * then all of these are returned.      *<p>      * The given byte array is expected to be at least {@link #getMinLength()}      * long, or shorter only if the document stream itself is shorter.      *      * @param data first few bytes of a document stream      * @return matching MIME type      */
-specifier|private
 name|List
 argument_list|<
 name|MimeType
@@ -870,7 +869,6 @@ return|;
 block|}
 block|}
 comment|/**      * Reads the first {@link #getMinLength()} bytes from the given stream.      * If the stream is shorter, then the entire content of the stream is      * returned.      *<p>      * The given stream is never {@link InputStream#close() closed},      * {@link InputStream#mark(int) marked}, or      * {@link InputStream#reset() reset} by this method.      *      * @param stream stream to be read      * @return first {@link #getMinLength()} (or fewer) bytes of the stream      * @throws IOException if the stream can not be read      */
-specifier|private
 name|byte
 index|[]
 name|readMagicHeader
