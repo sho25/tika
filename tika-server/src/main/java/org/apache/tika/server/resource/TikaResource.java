@@ -772,6 +772,7 @@ init|=
 literal|"X-Tika-PDF"
 decl_stmt|;
 specifier|private
+specifier|static
 specifier|final
 name|Log
 name|logger
@@ -1020,6 +1021,34 @@ name|e
 parameter_list|)
 block|{
 comment|// not a valid content-disposition field
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|logger
+operator|.
+name|warn
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|,
+literal|"Parse exception %s determining content disposition"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// this really should not be used, since it's not an official field
