@@ -512,8 +512,7 @@ name|loader
 argument_list|)
 return|;
 block|}
-specifier|private
-specifier|static
+specifier|protected
 name|Detector
 name|getDefaultDetector
 parameter_list|(
@@ -2624,7 +2623,8 @@ argument_list|()
 condition|)
 block|{
 return|return
-name|getDefaultDetector
+operator|new
+name|DefaultDetector
 argument_list|(
 name|mimeTypes
 argument_list|,
