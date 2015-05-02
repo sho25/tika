@@ -163,6 +163,10 @@ name|MimeTypes
 import|;
 end_import
 
+begin_comment
+comment|/**  * Selector for combining different mime detection results  *  based on probability  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -170,14 +174,13 @@ name|ProbabilisticMimeDetectionSelector
 implements|implements
 name|Detector
 block|{
-comment|/** 	 *  	 */
 specifier|private
 specifier|static
 specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|1L
+literal|224589862960269260L
 decl_stmt|;
 specifier|private
 name|MimeTypes
