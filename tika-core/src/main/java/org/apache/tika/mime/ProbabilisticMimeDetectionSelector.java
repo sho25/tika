@@ -240,12 +240,12 @@ name|extension_neg
 decl_stmt|,
 name|meta_neg
 decl_stmt|;
-comment|/* 	 * any posterior probability lower than the threshold, will be considered as 	 * an oct-stream type, the default value is 0.5 	 */
+comment|/*      * any posterior probability lower than the threshold, will be considered as      * an oct-stream type, the default value is 0.5      */
 specifier|private
 name|float
 name|threshold
 decl_stmt|;
-comment|/* 	 * this change rate is used when there are multiple types predicted by 	 * magic-bytes. the first predicted type has the highest probability, and 	 * the probability for the next type predicted by magic-bytes will decay 	 * with this change rate. The idea is to have the first one to take 	 * precedence among the multiple possible types predicted by MAGIC-bytes. 	 */
+comment|/*      * this change rate is used when there are multiple types predicted by      * magic-bytes. the first predicted type has the highest probability, and      * the probability for the next type predicted by magic-bytes will decay      * with this change rate. The idea is to have the first one to take      * precedence among the multiple possible types predicted by MAGIC-bytes.      */
 specifier|private
 name|float
 name|changeRate
@@ -485,7 +485,7 @@ name|threshold
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Initilize probability parameters with default values; 	 */
+comment|/**      * Initilize probability parameters with default values;      */
 specifier|private
 name|void
 name|initializeDefaultProbabilityParameters
@@ -789,7 +789,7 @@ block|{
 comment|// Malformed type name, ignore
 block|}
 block|}
-comment|/* 		 * the following calls the probability selection. 		 */
+comment|/*          * the following calls the probability selection.          */
 return|return
 name|applyProbilities
 argument_list|(
@@ -906,7 +906,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|/* 			 * this is a root type, that means the extension method fails to 			 * identify any type. 			 */
+comment|/*              * this is a root type, that means the extension method fails to              * identify any type.              */
 name|ext_trust
 operator|=
 literal|1
@@ -1142,7 +1142,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/* 				 * prepare the conditional probability for file type prediction. 				 */
+comment|/*                  * prepare the conditional probability for file type prediction.                  */
 name|float
 index|[]
 name|results
@@ -1192,7 +1192,7 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|/* 					 * decay as our trust goes down with next type predicted by 					 * magic 					 */
+comment|/*                      * decay as our trust goes down with next type predicted by                      * magic                      */
 name|mag_trust
 operator|=
 name|mag_trust
@@ -1203,7 +1203,7 @@ operator|-
 name|changeRate
 operator|)
 expr_stmt|;
-comment|/* 					 * grow as our trust goes down 					 */
+comment|/*                      * grow as our trust goes down                      */
 name|mag_neg
 operator|=
 name|mag_neg
@@ -1813,7 +1813,7 @@ operator|=
 literal|0.1f
 expr_stmt|;
 block|}
-comment|/* 				 * compute the posterior probability for each predicted file 				 * type and store them into the "results" array. 				 */
+comment|/*                  * compute the posterior probability for each predicted file                  * type and store them into the "results" array.                  */
 name|float
 name|pPrime
 init|=
@@ -2119,7 +2119,7 @@ operator|=
 name|extensionMediaType_
 expr_stmt|;
 block|}
-comment|/* 				for (float r : results) { 					System.out.print(r + "; "); 				} 				System.out.println(); */
+comment|/* 				for (float r : results) { 					System.out.print(r + "; "); 				} 				System.out.println();                  */
 block|}
 block|}
 return|return
@@ -2148,13 +2148,13 @@ name|getMediaTypeRegistry
 argument_list|()
 return|;
 block|}
-comment|/** 	 * build class for probability parameters setting 	 *  	 *  	 */
+comment|/**      * build class for probability parameters setting      *       *       */
 specifier|public
 specifier|static
 class|class
 name|Builder
 block|{
-comment|/* 		 * the following are the prior probabilities for the file type 		 * identified by each method. 		 */
+comment|/*          * the following are the prior probabilities for the file type          * identified by each method.          */
 specifier|private
 name|float
 name|priorMagicFileType
@@ -2163,7 +2163,7 @@ name|priorExtensionFileType
 decl_stmt|,
 name|priorMetaFileType
 decl_stmt|;
-comment|/* 		 * the following are the conditional probability for each method with 		 * positive conditions 		 */
+comment|/*          * the following are the conditional probability for each method with          * positive conditions          */
 specifier|private
 name|float
 name|magic_trust
@@ -2172,7 +2172,7 @@ name|extension_trust
 decl_stmt|,
 name|meta_trust
 decl_stmt|;
-comment|/* 		 * the following *_neg are the conditional probabilities with negative 		 * conditions 		 */
+comment|/*          * the following *_neg are the conditional probabilities with negative          * conditions          */
 specifier|private
 name|float
 name|magic_neg
@@ -2385,7 +2385,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 		 * initialize the MimeTypes with this builder instance 		 *  		 * @return 		 */
+comment|/**          * initialize the MimeTypes with this builder instance          *           * @return          */
 specifier|public
 name|ProbabilisticMimeDetectionSelector
 name|build2

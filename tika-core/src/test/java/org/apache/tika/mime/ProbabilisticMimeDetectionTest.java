@@ -831,7 +831,7 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-comment|/** 	 * Test for type detection of empty documents. 	 *  	 * @see<a 	 *      href="https://issues.apache.org/jira/browse/TIKA-483">TIKA-483</a> 	 */
+comment|/**      * Test for type detection of empty documents.      *       * @see<a      *      href="https://issues.apache.org/jira/browse/TIKA-483">TIKA-483</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -952,7 +952,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test for things like javascript files whose content is enclosed in XML 	 * comment delimiters, but that aren't actually XML. 	 *  	 * @see<a 	 *      href="https://issues.apache.org/jira/browse/TIKA-426">TIKA-426</a> 	 */
+comment|/**      * Test for things like javascript files whose content is enclosed in XML      * comment delimiters, but that aren't actually XML.      *       * @see<a      *      href="https://issues.apache.org/jira/browse/TIKA-426">TIKA-426</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -990,7 +990,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests that when we repeatedly test the detection of a document that can 	 * be detected with Mime Magic, that we consistently detect it correctly. 	 * See TIKA-391 for more details. 	 */
+comment|/**      * Tests that when we repeatedly test the detection of a document that can      * be detected with Mime Magic, that we consistently detect it correctly.      * See TIKA-391 for more details.      */
 annotation|@
 name|Test
 specifier|public
@@ -1024,7 +1024,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Tests that when two magic matches both apply, and both have the same 	 * priority, we use the name to pick the right one based on the glob, or the 	 * first one we come across if not. See TIKA-1292 for more details. 	 */
+comment|/**      * Tests that when two magic matches both apply, and both have the same      * priority, we use the name to pick the right one based on the glob, or the      * first one we come across if not. See TIKA-1292 for more details.      */
 annotation|@
 name|Test
 specifier|public
