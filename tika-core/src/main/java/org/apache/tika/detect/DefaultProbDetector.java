@@ -87,6 +87,10 @@ name|ProbabilisticMimeDetectionSelector
 import|;
 end_import
 
+begin_comment
+comment|/**  * A version of {@link DefaultDetector} for probabilistic mime  *  detectors, which use statistical techniques to blend the  *  results of differing underlying detectors when attempting  *  to detect the type of a given file.  * TODO Link to documentation on configuring these probabilities  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -94,14 +98,14 @@ name|DefaultProbDetector
 extends|extends
 name|CompositeDetector
 block|{
-comment|/** 	 *  	 */
 specifier|private
 specifier|static
 specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|1L
+operator|-
+literal|8836240060532323352L
 decl_stmt|;
 specifier|private
 specifier|static
