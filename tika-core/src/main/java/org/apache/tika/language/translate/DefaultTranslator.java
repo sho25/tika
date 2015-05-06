@@ -112,7 +112,7 @@ operator|=
 name|loader
 expr_stmt|;
 block|}
-comment|/**      * Finds all statically loadable translators and sort the list by name,      * rather than discovery order.      *      * @param loader service loader      * @return ordered list of statically loadable parsers      */
+comment|/**      * Finds all statically loadable translators and sort the list by name,      * rather than discovery order.      *      * @param loader service loader      * @return ordered list of statically loadable translators      */
 specifier|private
 specifier|static
 name|List
