@@ -307,7 +307,7 @@ argument_list|()
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"org/apache/tika/language/translate/translator.google.properties"
+literal|"translator.google.properties"
 argument_list|)
 argument_list|)
 expr_stmt|;
