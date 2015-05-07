@@ -302,9 +302,6 @@ name|GoogleTranslator
 operator|.
 name|class
 operator|.
-name|getClassLoader
-argument_list|()
-operator|.
 name|getResourceAsStream
 argument_list|(
 literal|"translator.google.properties"
