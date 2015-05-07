@@ -41,6 +41,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|ServiceLoader
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -143,6 +157,17 @@ argument_list|>
 argument_list|>
 name|cache
 decl_stmt|;
+comment|/**      * Create a new CachedTranslator (must set the {@link Translator} with {@link #setTranslator(Translator)} before use!)      */
+specifier|public
+name|CachedTranslator
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Create a new CachedTranslator.      *      * @param translator The translator that should be used for the underlying translation service. The properties      *                   for that service must be set properly!      */
 specifier|public
 name|CachedTranslator
@@ -174,6 +199,32 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** 	 * @return the translator 	 */
+specifier|public
+name|Translator
+name|getTranslator
+parameter_list|()
+block|{
+return|return
+name|translator
+return|;
+block|}
+comment|/** 	 * @param translator the translator to set 	 */
+specifier|public
+name|void
+name|setTranslator
+parameter_list|(
+name|Translator
+name|translator
+parameter_list|)
+block|{
+name|this
+operator|.
+name|translator
+operator|=
+name|translator
+expr_stmt|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -194,6 +245,15 @@ name|TikaException
 throws|,
 name|IOException
 block|{
+if|if
+condition|(
+name|translator
+operator|==
+literal|null
+condition|)
+return|return
+name|text
+return|;
 name|HashMap
 argument_list|<
 name|String
