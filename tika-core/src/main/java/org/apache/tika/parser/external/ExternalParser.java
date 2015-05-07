@@ -764,6 +764,26 @@ name|outputFromStdOut
 operator|=
 literal|false
 expr_stmt|;
+name|cmd
+index|[
+name|i
+index|]
+operator|=
+name|cmd
+index|[
+name|i
+index|]
+operator|.
+name|replace
+argument_list|(
+name|OUTPUT_FILE_TOKEN
+argument_list|,
+name|output
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// Execute
