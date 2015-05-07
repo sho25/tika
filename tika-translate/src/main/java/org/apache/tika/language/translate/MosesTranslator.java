@@ -214,9 +214,6 @@ name|MosesTranslator
 operator|.
 name|class
 operator|.
-name|getClassLoader
-argument_list|()
-operator|.
 name|getResourceAsStream
 argument_list|(
 literal|"translator.moses.properties"
