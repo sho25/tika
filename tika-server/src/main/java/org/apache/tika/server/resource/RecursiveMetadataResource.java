@@ -225,6 +225,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|language
+operator|.
+name|ProfilingHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -519,7 +533,7 @@ argument_list|(
 name|tikaConfig
 argument_list|)
 decl_stmt|;
-comment|//TODO: parameterize choice of handler and max chars?
+comment|// TODO: parameterize choice of handler and max chars?
 name|BasicContentHandlerFactory
 operator|.
 name|HANDLER_TYPE
@@ -562,7 +576,7 @@ argument_list|,
 name|httpHeaders
 argument_list|)
 expr_stmt|;
-comment|//no need to add parser to parse recursively
+comment|// no need to add parser to parse recursively
 name|TikaResource
 operator|.
 name|fillParseContext
@@ -601,8 +615,29 @@ argument_list|,
 name|is
 argument_list|,
 operator|new
-name|DefaultHandler
+name|ProfilingHandler
 argument_list|()
+block|{
+specifier|public
+name|void
+name|endDocument
+parameter_list|()
+block|{
+name|metadata
+operator|.
+name|set
+argument_list|(
+literal|"language"
+argument_list|,
+name|getLanguage
+argument_list|()
+operator|.
+name|getLanguage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|,
 name|metadata
 argument_list|,
