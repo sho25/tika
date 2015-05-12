@@ -1523,6 +1523,17 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|SecurityException
+name|se
+parameter_list|)
+block|{
+comment|// External process execution is banned by the security manager
+return|return
+literal|false
+return|;
+block|}
+catch|catch
+parameter_list|(
 name|Error
 name|err
 parameter_list|)
