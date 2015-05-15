@@ -236,7 +236,7 @@ specifier|final
 name|String
 name|FRENCH_STRING
 init|=
-literal|"comme çi comme ça"
+literal|"c’est comme ci comme ça"
 decl_stmt|;
 annotation|@
 name|Override
