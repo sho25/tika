@@ -2029,6 +2029,22 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// PDF extension by name is enough
+name|assertTypeByName
+argument_list|(
+literal|"application/pdf"
+argument_list|,
+literal|"x.pdf"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/pdf"
+argument_list|,
+literal|"x.PDF"
+argument_list|)
+expr_stmt|;
+comment|// For normal PDFs, can get by name or data or both
 name|assertType
 argument_list|(
 literal|"application/pdf"
@@ -2043,18 +2059,19 @@ argument_list|,
 literal|"testPDF.pdf"
 argument_list|)
 expr_stmt|;
-name|assertTypeByName
+comment|// PDF with a BoM works both ways too
+name|assertType
 argument_list|(
 literal|"application/pdf"
 argument_list|,
-literal|"x.pdf"
+literal|"testPDF_bom.pdf"
 argument_list|)
 expr_stmt|;
-name|assertTypeByName
+name|assertTypeByData
 argument_list|(
 literal|"application/pdf"
 argument_list|,
-literal|"x.PDF"
+literal|"testPDF_bom.pdf"
 argument_list|)
 expr_stmt|;
 block|}

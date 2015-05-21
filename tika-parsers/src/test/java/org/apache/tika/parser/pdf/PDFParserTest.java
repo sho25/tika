@@ -3956,6 +3956,14 @@ argument_list|(
 literal|"testOCR.pdf"
 argument_list|)
 expr_stmt|;
+comment|// Added for TIKA-1085
+name|knownMetadataDiffs
+operator|.
+name|add
+argument_list|(
+literal|"testPDF_bom.pdf"
+argument_list|)
+expr_stmt|;
 comment|//empty for now
 name|Set
 argument_list|<
