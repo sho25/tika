@@ -1135,6 +1135,8 @@ operator|new
 name|StringTokenizer
 argument_list|(
 name|errs
+argument_list|,
+literal|","
 argument_list|)
 decl_stmt|;
 while|while
@@ -1185,6 +1187,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+index|[]
+name|theCommand
+init|=
+name|command
+operator|.
+name|split
+argument_list|(
+literal|" "
+argument_list|)
+decl_stmt|;
 name|int
 index|[]
 name|errVals
@@ -1233,7 +1246,7 @@ name|ExternalParser
 operator|.
 name|check
 argument_list|(
-name|command
+name|theCommand
 argument_list|,
 name|errVals
 argument_list|)
