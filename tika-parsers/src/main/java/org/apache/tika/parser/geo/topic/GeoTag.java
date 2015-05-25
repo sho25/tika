@@ -109,7 +109,7 @@ name|geotag
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * Store resolved geoName entities in a GeoTag 	  *  	   * @param resolvedGeonames resolved entities 	    *  	     * @param bestNER best name entity among all the extracted entities for the 	      * input stream 	       */
+comment|/* 	 * Store resolved geoName entities in a GeoTag 	 *  	 * @param resolvedGeonames resolved entities 	 *  	 * @param bestNER best name entity among all the extracted entities for the 	 * input stream 	 */
 specifier|public
 name|void
 name|toGeoTag

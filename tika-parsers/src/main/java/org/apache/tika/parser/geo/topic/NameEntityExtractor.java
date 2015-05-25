@@ -248,7 +248,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/* 	 * Use OpenNLP to extract location names that's appearing in the steam. 	  * OpenNLP's default Name Finder accuracy is not very good, please refer to 	   * its documentation. 	    *  	     * @param stream stream that passed from this.parse() 	      */
+comment|/* 	 * Use OpenNLP to extract location names that's appearing in the steam. 	 * OpenNLP's default Name Finder accuracy is not very good, please refer to 	 * its documentation. 	 *  	 * @param stream stream that passed from this.parse() 	 */
 specifier|public
 name|void
 name|getAllNameEntitiesfromInput
@@ -392,7 +392,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Get the best location entity extracted from the input stream. Simply 	  * return the most frequent entity, If there several highest frequent 	   * entity, pick one randomly. May not be the optimal solution, but works. 	    *  	     * @param locationNameEntities OpenNLP name finder's results, stored in 	      * ArrayList 	       */
+comment|/* 	 * Get the best location entity extracted from the input stream. Simply 	 * return the most frequent entity, If there several highest frequent 	 * entity, pick one randomly. May not be the optimal solution, but works. 	 *  	 * @param locationNameEntities OpenNLP name finder's results, stored in 	 * ArrayList 	 */
 specifier|public
 name|void
 name|getBestNameEntity
