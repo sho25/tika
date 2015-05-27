@@ -1134,13 +1134,18 @@ operator|>
 literal|20
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertTrue
 argument_list|(
-literal|1
-argument_list|,
 name|composite
+operator|==
+literal|0
+operator|||
+name|composite
+operator|==
+literal|1
 argument_list|)
 expr_stmt|;
+comment|// if CompositeExternalParser is available it will be 1
 block|}
 block|}
 block|}
