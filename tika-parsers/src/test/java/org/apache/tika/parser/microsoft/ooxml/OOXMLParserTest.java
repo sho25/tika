@@ -6375,6 +6375,347 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testDOCXParagraphNumbering
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_numbered_list.docx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"1) This"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"a) Is"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"i) A multi"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) Level"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1. Within cell 1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"b. Cell b"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"iii) List"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"2) foo"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) baz"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) foo"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"II. bar"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"6. six"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"7. seven"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"a. seven a"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"e. seven e"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"2. A ii 2"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"3. page break list 3"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Some-1-CrazyFormat Greek numbering with crazy format - alpha"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1.1.1. 1.1.1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1.1. 1.2-&gt;1.1  //set the value"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//TODO: comment is not being extracted!
+comment|//assertContains("add a list here", xml);
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testDOCXOverrideParagraphNumbering
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_override_list_numbering.docx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+comment|//Test 1
+name|assertContains
+argument_list|(
+literal|"<p>1.1.1.1...1 1.1.1.1...1</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1st.2.3someText 1st.2.3someText"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1st.2.2someOtherText.1 1st.2.2someOtherText.1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"5th 5th"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//Test 2
+name|assertContains
+argument_list|(
+literal|"1.a.I 1.a.I"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//test no reset because level 2 is not sufficient to reset
+name|assertContains
+argument_list|(
+literal|"<p>1.b.III 1.b.III</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//test restarted because of level 0's increment to 2
+name|assertContains
+argument_list|(
+literal|"2.a.I 2.a.I"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//test handling of skipped level
+name|assertContains
+argument_list|(
+literal|"<p>2.b 2.b</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//Test 3
+name|assertContains
+argument_list|(
+literal|"(1)) (1))"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//tests start level 1 at 17 and
+name|assertContains
+argument_list|(
+literal|"2.17 2.17"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//tests that isLegal turns everything into decimal
+name|assertContains
+argument_list|(
+literal|"2.18.2.1 2.18.2.1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>2 2</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//Test4
+name|assertContains
+argument_list|(
+literal|"<p>1 1</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>A A</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>B B</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//TODO: add this back in once overrides are available via CTNumLvl
+comment|//assertContains("<p>C C</p>", xml);
+name|assertContains
+argument_list|(
+literal|"<p>4 4</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//Test5
+name|assertContains
+argument_list|(
+literal|">00 00"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|">01 01"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|">01. 01."
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|">01..1 01..1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|">02 02"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

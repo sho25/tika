@@ -664,6 +664,15 @@ name|XWPFWordExtractorDecorator
 extends|extends
 name|AbstractOOXMLExtractor
 block|{
+comment|// could be improved by using the real delimiter in xchFollow [MS-DOC], v20140721, 2.4.6.3, Part 3, Step 3
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|LIST_DELIMITER
+init|=
+literal|" "
+decl_stmt|;
 specifier|private
 name|XWPFDocument
 name|document
@@ -732,6 +741,15 @@ operator|.
 name|getHeaderFooterPolicy
 argument_list|()
 decl_stmt|;
+name|XWPFListManager
+name|listManager
+init|=
+operator|new
+name|XWPFListManager
+argument_list|(
+name|document
+argument_list|)
+decl_stmt|;
 comment|// headers
 if|if
 condition|(
@@ -745,6 +763,8 @@ argument_list|(
 name|xhtml
 argument_list|,
 name|hfPolicy
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -752,6 +772,8 @@ comment|// process text in the order that it occurs in
 name|extractIBodyText
 argument_list|(
 name|document
+argument_list|,
+name|listManager
 argument_list|,
 name|xhtml
 argument_list|)
@@ -769,6 +791,8 @@ argument_list|(
 name|xhtml
 argument_list|,
 name|hfPolicy
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -779,6 +803,9 @@ name|extractIBodyText
 parameter_list|(
 name|IBody
 name|bodyElement
+parameter_list|,
+name|XWPFListManager
+name|listManager
 parameter_list|,
 name|XHTMLContentHandler
 name|xhtml
@@ -820,6 +847,8 @@ name|extractParagraph
 argument_list|(
 name|paragraph
 argument_list|,
+name|listManager
+argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
@@ -842,6 +871,8 @@ decl_stmt|;
 name|extractTable
 argument_list|(
 name|table
+argument_list|,
+name|listManager
 argument_list|,
 name|xhtml
 argument_list|)
@@ -929,6 +960,9 @@ parameter_list|(
 name|XWPFParagraph
 name|paragraph
 parameter_list|,
+name|XWPFListManager
+name|listManager
+parameter_list|,
 name|XHTMLContentHandler
 name|xhtml
 parameter_list|)
@@ -996,6 +1030,8 @@ argument_list|(
 name|xhtml
 argument_list|,
 name|headerFooterPolicy
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -1115,6 +1151,15 @@ name|styleClass
 argument_list|)
 expr_stmt|;
 block|}
+name|writeParagraphNumber
+argument_list|(
+name|paragraph
+argument_list|,
+name|listManager
+argument_list|,
+name|xhtml
+argument_list|)
+expr_stmt|;
 comment|// Output placeholder for any embedded docs:
 comment|// TODO: replace w/ XPath/XQuery:
 for|for
@@ -1604,6 +1649,8 @@ name|getBody
 argument_list|()
 argument_list|)
 argument_list|,
+name|listManager
+argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
@@ -1628,6 +1675,62 @@ argument_list|(
 name|xhtml
 argument_list|,
 name|headerFooterPolicy
+argument_list|,
+name|listManager
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+specifier|private
+name|void
+name|writeParagraphNumber
+parameter_list|(
+name|XWPFParagraph
+name|paragraph
+parameter_list|,
+name|XWPFListManager
+name|listManager
+parameter_list|,
+name|XHTMLContentHandler
+name|xhtml
+parameter_list|)
+throws|throws
+name|SAXException
+block|{
+if|if
+condition|(
+name|paragraph
+operator|.
+name|getNumIlvl
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
+name|String
+name|number
+init|=
+name|listManager
+operator|.
+name|getFormattedNumber
+argument_list|(
+name|paragraph
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|number
+operator|!=
+literal|null
+condition|)
+block|{
+name|xhtml
+operator|.
+name|characters
+argument_list|(
+name|number
 argument_list|)
 expr_stmt|;
 block|}
@@ -2115,6 +2218,9 @@ parameter_list|(
 name|XWPFTable
 name|table
 parameter_list|,
+name|XWPFListManager
+name|listManager
+parameter_list|,
 name|XHTMLContentHandler
 name|xhtml
 parameter_list|)
@@ -2189,6 +2295,8 @@ name|XWPFTableCell
 operator|)
 name|cell
 argument_list|,
+name|listManager
+argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
@@ -2260,6 +2368,9 @@ name|xhtml
 parameter_list|,
 name|XWPFHeaderFooterPolicy
 name|hfPolicy
+parameter_list|,
+name|XWPFListManager
+name|listManager
 parameter_list|)
 throws|throws
 name|SAXException
@@ -2287,6 +2398,8 @@ name|hfPolicy
 operator|.
 name|getFirstPageFooter
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2308,6 +2421,8 @@ name|hfPolicy
 operator|.
 name|getEvenPageFooter
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2329,6 +2444,8 @@ name|hfPolicy
 operator|.
 name|getDefaultFooter
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2342,6 +2459,9 @@ name|xhtml
 parameter_list|,
 name|XWPFHeaderFooterPolicy
 name|hfPolicy
+parameter_list|,
+name|XWPFListManager
+name|listManager
 parameter_list|)
 throws|throws
 name|SAXException
@@ -2375,6 +2495,8 @@ name|hfPolicy
 operator|.
 name|getFirstPageHeader
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2396,6 +2518,8 @@ name|hfPolicy
 operator|.
 name|getEvenPageHeader
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2417,6 +2541,8 @@ name|hfPolicy
 operator|.
 name|getDefaultHeader
 argument_list|()
+argument_list|,
+name|listManager
 argument_list|)
 expr_stmt|;
 block|}
@@ -2430,6 +2556,9 @@ name|xhtml
 parameter_list|,
 name|XWPFHeaderFooter
 name|header
+parameter_list|,
+name|XWPFListManager
+name|listManager
 parameter_list|)
 throws|throws
 name|SAXException
@@ -2463,6 +2592,8 @@ name|XWPFParagraph
 operator|)
 name|e
 argument_list|,
+name|listManager
+argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
@@ -2481,6 +2612,8 @@ operator|(
 name|XWPFTable
 operator|)
 name|e
+argument_list|,
+name|listManager
 argument_list|,
 name|xhtml
 argument_list|)
