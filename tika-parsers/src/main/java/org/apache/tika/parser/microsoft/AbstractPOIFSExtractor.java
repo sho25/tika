@@ -425,6 +425,21 @@ class|class
 name|AbstractPOIFSExtractor
 block|{
 specifier|private
+specifier|static
+specifier|final
+name|Log
+name|logger
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|AbstractPOIFSExtractor
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+specifier|private
 specifier|final
 name|EmbeddedDocumentExtractor
 name|extractor
@@ -448,21 +463,6 @@ decl_stmt|;
 specifier|private
 name|Metadata
 name|metadata
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|Log
-name|logger
-init|=
-name|LogFactory
-operator|.
-name|getLog
-argument_list|(
-name|AbstractPOIFSExtractor
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 specifier|protected
 name|AbstractPOIFSExtractor
@@ -664,7 +664,7 @@ return|return
 name|mimeTypes
 return|;
 block|}
-comment|/**      * Returns the password to be used for this file, or null      *  if no / default password should be used      */
+comment|/**      * Returns the password to be used for this file, or null      * if no / default password should be used      */
 specifier|protected
 name|String
 name|getPassword

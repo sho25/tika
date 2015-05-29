@@ -1056,7 +1056,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-210      * @see<a href="https://issues.apache.org/jira/browse/TIKA-210">TIKA-210</a>      */
+comment|/**      * Test case for TIKA-210      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-210">TIKA-210</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1102,7 +1102,7 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-287      * @see<a href="https://issues.apache.org/jira/browse/TIKA-287">TIKA-287</a>      */
+comment|/**      * Test case for TIKA-287      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-287">TIKA-287</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1365,7 +1365,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-268      * @see<a href="https://issues.apache.org/jira/browse/TIKA-268">TIKA-268</a>      */
+comment|/**      * Test case for TIKA-268      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-268">TIKA-268</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1428,7 +1428,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-332      * @see<a href="https://issues.apache.org/jira/browse/TIKA-332">TIKA-332</a>      */
+comment|/**      * Test case for TIKA-332      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-332">TIKA-332</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1499,7 +1499,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-892      * @see<a href="https://issues.apache.org/jira/browse/TIKA-892">TIKA-892</a>      */
+comment|/**      * Test case for TIKA-892      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-892">TIKA-892</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1568,7 +1568,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-334      * @see<a href="https://issues.apache.org/jira/browse/TIKA-334">TIKA-334</a>      */
+comment|/**      * Test case for TIKA-334      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-334">TIKA-334</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1635,7 +1635,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-341      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>      */
+comment|/**      * Test case for TIKA-341      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1854,7 +1854,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-339: Don't use language returned by CharsetDetector      * @see<a href="https://issues.apache.org/jira/browse/TIKA-339">TIKA-339</a>      */
+comment|/**      * Test case for TIKA-339: Don't use language returned by CharsetDetector      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-339">TIKA-339</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1932,7 +1932,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-349      * @see<a href="https://issues.apache.org/jira/browse/TIKA-349">TIKA-349</a>      */
+comment|/**      * Test case for TIKA-349      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-349">TIKA-349</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2063,7 +2063,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-350      * @see<a href="https://issues.apache.org/jira/browse/TIKA-350">TIKA-350</a>      */
+comment|/**      * Test case for TIKA-350      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-350">TIKA-350</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2192,7 +2192,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-357      * @see<a href="https://issues.apache.org/jira/browse/TIKA-357">TIKA-357</a>      */
+comment|/**      * Test case for TIKA-357      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-357">TIKA-357</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2255,7 +2255,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-420      * @see<a href="https://issues.apache.org/jira/browse/TIKA-420">TIKA-420</a>      */
+comment|/**      * Test case for TIKA-420      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-420">TIKA-420</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2361,7 +2361,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-478. Don't emit<head> sub-elements inside of<body>.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-478">TIKA-478</a>      */
+comment|/**      * Test case for TIKA-478. Don't emit<head> sub-elements inside of<body>.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-478">TIKA-478</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2510,7 +2510,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2592,7 +2592,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2674,7 +2674,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2758,7 +2758,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2844,7 +2844,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for TIKA-463. Don't skip elements that have URLs.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -2934,7 +2934,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for change related to TIKA-463. Verify proper handling of<meta> tags.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
+comment|/**      * Test case for change related to TIKA-463. Verify proper handling of<meta> tags.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-463">TIKA-463</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -3047,7 +3047,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-457. Better handling for broken HTML that has<frameset> inside of<body>.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-457">TIKA-457</a>      */
+comment|/**      * Test case for TIKA-457. Better handling for broken HTML that has<frameset> inside of<body>.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-457">TIKA-457</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -3268,7 +3268,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-480: fix NPE when using BodyContentHandler or HtmlTransformer      * as delegate for BoilerpipeContentHandler      * @see<a href="https://issues.apache.org/jira/browse/TIKA-480">TIKA-480</a>      */
+comment|/**      * Test case for TIKA-480: fix NPE when using BodyContentHandler or HtmlTransformer      * as delegate for BoilerpipeContentHandler      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-480">TIKA-480</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -3382,7 +3382,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-481. Verify href in<link> is resolved.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-481">TIKA-481</a>      */
+comment|/**      * Test case for TIKA-481. Verify href in<link> is resolved.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-481">TIKA-481</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -3553,7 +3553,7 @@ return|return
 name|handler
 return|;
 block|}
-comment|/**      * Test case for TIKA-564. Support returning markup from BoilerpipeContentHandler.      * @see<a href="https://issues.apache.org/jira/browse/TIKA-564">TIKA-564</a>      */
+comment|/**      * Test case for TIKA-564. Support returning markup from BoilerpipeContentHandler.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-564">TIKA-564</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -3928,7 +3928,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-961      * @see<a href="https://issues.apache.org/jira/browse/TIKA-961">TIKA-961</a>      */
+comment|/**      * Test case for TIKA-961      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-961">TIKA-961</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -4476,14 +4476,14 @@ name|startDocument
 parameter_list|()
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|endDocument
 parameter_list|()
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|startPrefixMapping
@@ -4496,7 +4496,7 @@ name|uri
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|endPrefixMapping
@@ -4506,7 +4506,7 @@ name|prefix
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|startElement
@@ -4525,7 +4525,7 @@ name|atts
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|endElement
@@ -4541,7 +4541,7 @@ name|qName
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|characters
@@ -4624,7 +4624,7 @@ name|length
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|processingInstruction
@@ -4637,7 +4637,7 @@ name|data
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 specifier|public
 name|void
 name|skippedEntity
@@ -4647,7 +4647,7 @@ name|name
 parameter_list|)
 throws|throws
 name|SAXException
-block|{                 }
+block|{                     }
 block|}
 argument_list|,
 operator|new
@@ -4689,7 +4689,7 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-1303: HTML parse should use the first title tag to set value in meta data       * and ignore any subsequent title tags found in HTML.      *       * @see<a href="https://issues.apache.org/jira/browse/TIKA-1303">TIKA-1303</a>      */
+comment|/**      * Test case for TIKA-1303: HTML parse should use the first title tag to set value in meta data      * and ignore any subsequent title tags found in HTML.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-1303">TIKA-1303</a>      */
 annotation|@
 name|Test
 specifier|public

@@ -174,7 +174,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Concrete class for SQLLite table parsing.  This overrides  * column type handling from JDBCRowHandler.  *<p>  * This class is not designed to be thread safe (because of DateFormat)!  * Need to call a new instance for each parse, as AbstractDBParser does.  *<p>  * For now, this silently skips cells of type CLOB, because xerial's jdbc connector  * does not currently support them.  */
+comment|/**  * Concrete class for SQLLite table parsing.  This overrides  * column type handling from JDBCRowHandler.  *<p/>  * This class is not designed to be thread safe (because of DateFormat)!  * Need to call a new instance for each parse, as AbstractDBParser does.  *<p/>  * For now, this silently skips cells of type CLOB, because xerial's jdbc connector  * does not currently support them.  */
 end_comment
 
 begin_class

@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Alternative HTML mapping rules that pass the input HTML as-is without any  * modifications.  *   * @since Apache Tika 0.8  */
+comment|/**  * Alternative HTML mapping rules that pass the input HTML as-is without any  * modifications.  *  * @since Apache Tika 0.8  */
 end_comment
 
 begin_class

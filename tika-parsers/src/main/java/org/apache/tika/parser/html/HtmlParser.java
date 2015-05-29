@@ -264,7 +264,7 @@ name|HtmlParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -736,7 +736,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Maps "safe" HTML element names to semantic XHTML equivalents. If the      * given element is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the element      * will be ignored but the content inside it is still processed. See      * the {@link #isDiscardElement(String)} method for a way to discard      * the entire contents of an element.      *<p>      * Subclasses can override this method to customize the default mapping.      *      * @deprecated Use the {@link HtmlMapper} mechanism to customize      *             the HTML mapping. This method will be removed in Tika 1.0.      * @since Apache Tika 0.5      * @param name HTML element name (upper case)      * @return XHTML element name (lower case), or      *<code>null</code> if the element is unsafe       */
+comment|/**      * Maps "safe" HTML element names to semantic XHTML equivalents. If the      * given element is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the element      * will be ignored but the content inside it is still processed. See      * the {@link #isDiscardElement(String)} method for a way to discard      * the entire contents of an element.      *<p/>      * Subclasses can override this method to customize the default mapping.      *      * @param name HTML element name (upper case)      * @return XHTML element name (lower case), or      *<code>null</code> if the element is unsafe      * @since Apache Tika 0.5      * @deprecated Use the {@link HtmlMapper} mechanism to customize      * the HTML mapping. This method will be removed in Tika 1.0.      */
 specifier|protected
 name|String
 name|mapSafeElement
@@ -756,7 +756,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Checks whether all content within the given HTML element should be      * discarded instead of including it in the parse output. Subclasses      * can override this method to customize the set of discarded elements.      *      * @deprecated Use the {@link HtmlMapper} mechanism to customize      *             the HTML mapping. This method will be removed in Tika 1.0.      * @since Apache Tika 0.5      * @param name HTML element name (upper case)      * @return<code>true</code> if content inside the named element      *         should be ignored,<code>false</code> otherwise      */
+comment|/**      * Checks whether all content within the given HTML element should be      * discarded instead of including it in the parse output. Subclasses      * can override this method to customize the set of discarded elements.      *      * @param name HTML element name (upper case)      * @return<code>true</code> if content inside the named element      * should be ignored,<code>false</code> otherwise      * @since Apache Tika 0.5      * @deprecated Use the {@link HtmlMapper} mechanism to customize      * the HTML mapping. This method will be removed in Tika 1.0.      */
 specifier|protected
 name|boolean
 name|isDiscardElement
@@ -776,7 +776,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**     * @deprecated Use the {@link HtmlMapper} mechanism to customize     *             the HTML mapping. This method will be removed in Tika 1.0.     **/
+comment|/**      * @deprecated Use the {@link HtmlMapper} mechanism to customize      * the HTML mapping. This method will be removed in Tika 1.0.      */
 specifier|public
 name|String
 name|mapSafeAttribute
@@ -801,7 +801,7 @@ name|attributeName
 argument_list|)
 return|;
 block|}
-comment|/**      * Adapter class that maintains backwards compatibility with the      * protected HtmlParser methods. Making HtmlParser implement HtmlMapper      * directly would require those methods to be public, which would break      * backwards compatibility with subclasses.      *      * @deprecated Use the {@link HtmlMapper} mechanism to customize      *             the HTML mapping. This class will be removed in Tika 1.0.      */
+comment|/**      * Adapter class that maintains backwards compatibility with the      * protected HtmlParser methods. Making HtmlParser implement HtmlMapper      * directly would require those methods to be public, which would break      * backwards compatibility with subclasses.      *      * @deprecated Use the {@link HtmlMapper} mechanism to customize      * the HTML mapping. This class will be removed in Tika 1.0.      */
 specifier|private
 class|class
 name|HtmlParserMapper

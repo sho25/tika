@@ -562,7 +562,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * PDF parser.  *<p>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs. If  * the PDF contains any embedded documents (for example as part of a PDF  * package) then this parser will use the {@link EmbeddedDocumentExtractor}  * to handle them.  *<p>  * As of Tika 1.6, it is possible to extract inline images with  * the {@link EmbeddedDocumentExtractor} as if they were regular  * attachments.  By default, this feature is turned off because of  * the potentially enormous number and size of inline images.  To  * turn this feature on, see  * {@link PDFParserConfig#setExtractInlineImages(boolean)}.  */
+comment|/**  * PDF parser.  *<p/>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs. If  * the PDF contains any embedded documents (for example as part of a PDF  * package) then this parser will use the {@link EmbeddedDocumentExtractor}  * to handle them.  *<p/>  * As of Tika 1.6, it is possible to extract inline images with  * the {@link EmbeddedDocumentExtractor} as if they were regular  * attachments.  By default, this feature is turned off because of  * the potentially enormous number and size of inline images.  To  * turn this feature on, see  * {@link PDFParserConfig#setExtractInlineImages(boolean)}.  */
 end_comment
 
 begin_class
@@ -572,6 +572,15 @@ name|PDFParser
 extends|extends
 name|AbstractParser
 block|{
+comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      * @deprecated Supply a {@link PasswordProvider} on the {@link ParseContext} instead      */
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|PASSWORD
+init|=
+literal|"org.apache.tika.parser.pdf.password"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -585,7 +594,7 @@ argument_list|(
 literal|"pdf"
 argument_list|)
 decl_stmt|;
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -594,23 +603,6 @@ name|serialVersionUID
 init|=
 operator|-
 literal|752276948656079347L
-decl_stmt|;
-specifier|private
-name|PDFParserConfig
-name|defaultConfig
-init|=
-operator|new
-name|PDFParserConfig
-argument_list|()
-decl_stmt|;
-comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      * @deprecated Supply a {@link PasswordProvider} on the {@link ParseContext} instead      */
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|PASSWORD
-init|=
-literal|"org.apache.tika.parser.pdf.password"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -627,6 +619,14 @@ name|singleton
 argument_list|(
 name|MEDIA_TYPE
 argument_list|)
+decl_stmt|;
+specifier|private
+name|PDFParserConfig
+name|defaultConfig
+init|=
+operator|new
+name|PDFParserConfig
+argument_list|()
 decl_stmt|;
 specifier|public
 name|Set
@@ -2108,7 +2108,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * Try to extract all multilingual items from the XMPSchema      *<p>      * This relies on the property having a valid xmp getName()      *<p>      * For now, this only extracts the first language if the property does not allow multiple values (see TIKA-1295)      * @param metadata      * @param property      * @param pdfBoxBaseline      * @param schema      */
+comment|/**      * Try to extract all multilingual items from the XMPSchema      *<p/>      * This relies on the property having a valid xmp getName()      *<p/>      * For now, this only extracts the first language if the property does not allow multiple values (see TIKA-1295)      *      * @param metadata      * @param property      * @param pdfBoxBaseline      * @param schema      */
 specifier|private
 name|void
 name|extractMultilingualItems
@@ -2295,7 +2295,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This tries to read a list from a particular property in      * XMPSchemaDublinCore.      * If it can't find the information, it falls back to the       * pdfboxBaseline.  The pdfboxBaseline should be the value      * that pdfbox returns from its PDDocumentInformation object      * (e.g. getAuthor()) This method is designed include the pdfboxBaseline,      * and it should not duplicate the pdfboxBaseline.      *<p>      * Until PDFBOX-1803/TIKA-1233 are fixed, do not call this      * on dates!      *<p>      * This relies on the property having a DublinCore compliant getName()      *       * @param property      * @param pdfBoxBaseline      * @param dc      * @param metadata      */
+comment|/**      * This tries to read a list from a particular property in      * XMPSchemaDublinCore.      * If it can't find the information, it falls back to the      * pdfboxBaseline.  The pdfboxBaseline should be the value      * that pdfbox returns from its PDDocumentInformation object      * (e.g. getAuthor()) This method is designed include the pdfboxBaseline,      * and it should not duplicate the pdfboxBaseline.      *<p/>      * Until PDFBOX-1803/TIKA-1233 are fixed, do not call this      * on dates!      *<p/>      * This relies on the property having a DublinCore compliant getName()      *      * @param property      * @param pdfBoxBaseline      * @param dc      * @param metadata      */
 specifier|private
 name|void
 name|extractDublinCoreListItems
@@ -2456,7 +2456,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * As of this writing, XMPSchema can contain bags or sequence lists      * for some attributes...despite standards documentation.        * JempBox expects one or the other for specific attributes.      * Until more flexibility is added to JempBox, Tika will have to handle both.      *       * @param schema      * @param name      * @return list of values or null      */
+comment|/**      * As of this writing, XMPSchema can contain bags or sequence lists      * for some attributes...despite standards documentation.      * JempBox expects one or the other for specific attributes.      * Until more flexibility is added to JempBox, Tika will have to handle both.      *      * @param schema      * @param name      * @return list of values or null      */
 specifier|private
 name|List
 argument_list|<
@@ -2642,7 +2642,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Used when processing custom metadata entries, as PDFBox won't do      *  the conversion for us in the way it does for the standard ones      */
+comment|/**      * Used when processing custom metadata entries, as PDFBox won't do      * the conversion for us in the way it does for the standard ones      */
 specifier|private
 name|void
 name|addMetadata
@@ -2754,6 +2754,15 @@ expr_stmt|;
 block|}
 block|}
 specifier|public
+name|PDFParserConfig
+name|getPDFParserConfig
+parameter_list|()
+block|{
+return|return
+name|defaultConfig
+return|;
+block|}
+specifier|public
 name|void
 name|setPDFParserConfig
 parameter_list|(
@@ -2768,16 +2777,20 @@ operator|=
 name|config
 expr_stmt|;
 block|}
+comment|/**      * @see #setUseNonSequentialParser(boolean)      * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
-name|PDFParserConfig
-name|getPDFParserConfig
+name|boolean
+name|getUseNonSequentialParser
 parameter_list|()
 block|{
 return|return
 name|defaultConfig
+operator|.
+name|getUseNonSequentialParser
+argument_list|()
 return|;
 block|}
-comment|/**      * If true, the parser will use the NonSequentialParser.  This may      * be faster than the full doc parser.      * If false (default), this will use the full doc parser.      *       * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+comment|/**      * If true, the parser will use the NonSequentialParser.  This may      * be faster than the full doc parser.      * If false (default), this will use the full doc parser.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
 specifier|public
 name|void
 name|setUseNonSequentialParser
@@ -2794,20 +2807,20 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setUseNonSequentialParser(boolean)       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**      * @see #setEnableAutoSpace(boolean)      * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
-name|getUseNonSequentialParser
+name|getEnableAutoSpace
 parameter_list|()
 block|{
 return|return
 name|defaultConfig
 operator|.
-name|getUseNonSequentialParser
+name|getEnableAutoSpace
 argument_list|()
 return|;
 block|}
-comment|/**      *  If true (the default), the parser should estimate      *  where spaces should be inserted between words.  For      *  many PDFs this is necessary as they do not include      *  explicit whitespace characters.      *      *  @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+comment|/**      * If true (the default), the parser should estimate      * where spaces should be inserted between words.  For      * many PDFs this is necessary as they do not include      * explicit whitespace characters.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
 specifier|public
 name|void
 name|setEnableAutoSpace
@@ -2824,20 +2837,20 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setEnableAutoSpace(boolean)       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**      * If true, text in annotations will be extracted.      *      * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
-name|getEnableAutoSpace
+name|getExtractAnnotationText
 parameter_list|()
 block|{
 return|return
 name|defaultConfig
 operator|.
-name|getEnableAutoSpace
+name|getExtractAnnotationText
 argument_list|()
 return|;
 block|}
-comment|/**      * If true (the default), text in annotations will be      * extracted.      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+comment|/**      * If true (the default), text in annotations will be      * extracted.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
 specifier|public
 name|void
 name|setExtractAnnotationText
@@ -2854,20 +2867,20 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * If true, text in annotations will be extracted.      *       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**      * @see #setSuppressDuplicateOverlappingText(boolean)      * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
-name|getExtractAnnotationText
+name|getSuppressDuplicateOverlappingText
 parameter_list|()
 block|{
 return|return
 name|defaultConfig
 operator|.
-name|getExtractAnnotationText
+name|getSuppressDuplicateOverlappingText
 argument_list|()
 return|;
 block|}
-comment|/**      *  If true, the parser should try to remove duplicated      *  text over the same region.  This is needed for some      *  PDFs that achieve bolding by re-writing the same      *  text in the same area.  Note that this can      *  slow down extraction substantially (PDFBOX-956) and      *  sometimes remove characters that were not in fact      *  duplicated (PDFBOX-1155).  By default this is disabled.      *        *  @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+comment|/**      * If true, the parser should try to remove duplicated      * text over the same region.  This is needed for some      * PDFs that achieve bolding by re-writing the same      * text in the same area.  Note that this can      * slow down extraction substantially (PDFBOX-956) and      * sometimes remove characters that were not in fact      * duplicated (PDFBOX-1155).  By default this is disabled.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
 specifier|public
 name|void
 name|setSuppressDuplicateOverlappingText
@@ -2884,20 +2897,20 @@ name|v
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * @see #setSuppressDuplicateOverlappingText(boolean)       *       * @deprecated use {@link #getPDFParserConfig()}      */
+comment|/**      * @see #setSortByPosition(boolean)      * @deprecated use {@link #getPDFParserConfig()}      */
 specifier|public
 name|boolean
-name|getSuppressDuplicateOverlappingText
+name|getSortByPosition
 parameter_list|()
 block|{
 return|return
 name|defaultConfig
 operator|.
-name|getSuppressDuplicateOverlappingText
+name|getSortByPosition
 argument_list|()
 return|;
 block|}
-comment|/**      *  If true, sort text tokens by their x/y position      *  before extracting text.  This may be necessary for      *  some PDFs (if the text tokens are not rendered "in      *  order"), while for other PDFs it can produce the      *  wrong result (for example if there are 2 columns,      *  the text will be interleaved).  Default is false.      *        *  @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+comment|/**      * If true, sort text tokens by their x/y position      * before extracting text.  This may be necessary for      * some PDFs (if the text tokens are not rendered "in      * order"), while for other PDFs it can produce the      * wrong result (for example if there are 2 columns,      * the text will be interleaved).  Default is false.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
 specifier|public
 name|void
 name|setSortByPosition
@@ -2913,19 +2926,6 @@ argument_list|(
 name|v
 argument_list|)
 expr_stmt|;
-block|}
-comment|/**       * @see #setSortByPosition(boolean)       *       * @deprecated use {@link #getPDFParserConfig()}      */
-specifier|public
-name|boolean
-name|getSortByPosition
-parameter_list|()
-block|{
-return|return
-name|defaultConfig
-operator|.
-name|getSortByPosition
-argument_list|()
-return|;
 block|}
 block|}
 end_class

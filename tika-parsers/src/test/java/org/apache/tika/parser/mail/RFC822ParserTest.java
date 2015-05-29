@@ -448,6 +448,44 @@ name|RFC822ParserTest
 extends|extends
 name|TikaTest
 block|{
+specifier|private
+specifier|static
+name|InputStream
+name|getStream
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|InputStream
+name|stream
+init|=
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|getContextClassLoader
+argument_list|()
+operator|.
+name|getResourceAsStream
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Test file not found "
+operator|+
+name|name
+argument_list|,
+name|stream
+argument_list|)
+expr_stmt|;
+return|return
+name|stream
+return|;
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -1869,7 +1907,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test TIKA-1028 - If the mail contains an encrypted attachment (or      *  an attachment that others triggers an error), parsing should carry      *  on for the remainder regardless      */
+comment|/**      * Test TIKA-1028 - If the mail contains an encrypted attachment (or      * an attachment that others triggers an error), parsing should carry      * on for the remainder regardless      */
 annotation|@
 name|Test
 specifier|public
@@ -2165,7 +2203,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test TIKA-1028 - Ensure we can get the contents of an      *  un-encrypted zip file      */
+comment|/**      * Test TIKA-1028 - Ensure we can get the contents of an      * un-encrypted zip file      */
 annotation|@
 name|Test
 specifier|public
@@ -2326,7 +2364,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * TIKA-1222 When requested, ensure that the various attachments of      *  the mail come through properly as embedded resources      */
+comment|/**      * TIKA-1222 When requested, ensure that the various attachments of      * the mail come through properly as embedded resources      */
 annotation|@
 name|Test
 specifier|public
@@ -2527,44 +2565,6 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-specifier|private
-specifier|static
-name|InputStream
-name|getStream
-parameter_list|(
-name|String
-name|name
-parameter_list|)
-block|{
-name|InputStream
-name|stream
-init|=
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|getContextClassLoader
-argument_list|()
-operator|.
-name|getResourceAsStream
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"Test file not found "
-operator|+
-name|name
-argument_list|,
-name|stream
-argument_list|)
-expr_stmt|;
-return|return
-name|stream
-return|;
 block|}
 block|}
 end_class

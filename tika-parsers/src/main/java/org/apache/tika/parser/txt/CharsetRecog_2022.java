@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  *  class CharsetRecog_2022  part of the ICU charset detection imlementation.  *                           This is a superclass for the individual detectors for  *                           each of the detectable members of the ISO 2022 family  *                           of encodings.  *   *                           The separate classes are nested within this class.  *   * @internal  */
+comment|/**  * class CharsetRecog_2022  part of the ICU charset detection imlementation.  * This is a superclass for the individual detectors for  * each of the detectable members of the ISO 2022 family  * of encodings.  *<p/>  * The separate classes are nested within this class.  *  * @internal  */
 end_comment
 
 begin_class
@@ -28,7 +28,7 @@ name|CharsetRecog_2022
 extends|extends
 name|CharsetRecognizer
 block|{
-comment|/**      * Matching function shared among the 2022 detectors JP, CN and KR      * Counts up the number of legal an unrecognized escape sequences in      * the sample of text, and computes a score based on the total number&      * the proportion that fit the encoding.      *       *       * @param text the byte buffer containing text to analyse      * @param textLen  the size of the text in the byte.      * @param escapeSequences the byte escape sequences to test for.      * @return match quality, in the range of 0-100.      */
+comment|/**      * Matching function shared among the 2022 detectors JP, CN and KR      * Counts up the number of legal an unrecognized escape sequences in      * the sample of text, and computes a score based on the total number&      * the proportion that fit the encoding.      *      * @param text            the byte buffer containing text to analyse      * @param textLen         the size of the text in the byte.      * @param escapeSequences the byte escape sequences to test for.      * @return match quality, in the range of 0-100.      */
 name|int
 name|match
 parameter_list|(

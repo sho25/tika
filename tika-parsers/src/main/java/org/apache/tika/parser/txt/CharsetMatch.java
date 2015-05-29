@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/** ******************************************************************************* * Copyright (C) 2005-2007, International Business Machines Corporation and    * * others. All Rights Reserved.                                                * ******************************************************************************* */
+comment|/**  * ******************************************************************************  * Copyright (C) 2005-2007, International Business Machines Corporation and    *  * others. All Rights Reserved.                                                *  * ******************************************************************************  */
 end_comment
 
 begin_package
@@ -81,7 +81,130 @@ argument_list|<
 name|CharsetMatch
 argument_list|>
 block|{
-comment|/**      * Create a java.io.Reader for reading the Unicode character data corresponding      * to the original byte data supplied to the Charset detect operation.      *<p/>      * CAUTION:  if the source of the byte data was an InputStream, a Reader      * can be created for only one matching char set using this method.  If more       * than one charset needs to be tried, the caller will need to reset      * the InputStream and create InputStreamReaders itself, based on the charset name.      *      * @return the Reader for the Unicode character data.      *      * @stable ICU 3.4      */
+comment|/**      * Bit flag indicating the match is based on the the encoding scheme.      *      * @see #getMatchType      * @stable ICU 3.4      */
+specifier|static
+specifier|public
+specifier|final
+name|int
+name|ENCODING_SCHEME
+init|=
+literal|1
+decl_stmt|;
+comment|/**      * Bit flag indicating the match is based on the presence of a BOM.      *      * @see #getMatchType      * @stable ICU 3.4      */
+specifier|static
+specifier|public
+specifier|final
+name|int
+name|BOM
+init|=
+literal|2
+decl_stmt|;
+comment|/**      * Bit flag indicating he match is based on the declared encoding.      *      * @see #getMatchType      * @stable ICU 3.4      */
+specifier|static
+specifier|public
+specifier|final
+name|int
+name|DECLARED_ENCODING
+init|=
+literal|4
+decl_stmt|;
+comment|/**      * Bit flag indicating the match is based on language statistics.      *      * @see #getMatchType      * @stable ICU 3.4      */
+specifier|static
+specifier|public
+specifier|final
+name|int
+name|LANG_STATISTICS
+init|=
+literal|8
+decl_stmt|;
+comment|//
+comment|//   Private Data
+comment|//
+specifier|private
+name|int
+name|fConfidence
+decl_stmt|;
+specifier|private
+name|CharsetRecognizer
+name|fRecognizer
+decl_stmt|;
+specifier|private
+name|byte
+index|[]
+name|fRawInput
+init|=
+literal|null
+decl_stmt|;
+comment|// Original, untouched input bytes.
+comment|//  If user gave us a byte array, this is it.
+specifier|private
+name|int
+name|fRawLength
+decl_stmt|;
+comment|// Length of data in fRawInput array.
+specifier|private
+name|InputStream
+name|fInputStream
+init|=
+literal|null
+decl_stmt|;
+comment|// User's input stream, or null if the user
+comment|/*      *  Constructor.  Implementation internal      */
+name|CharsetMatch
+parameter_list|(
+name|CharsetDetector
+name|det
+parameter_list|,
+name|CharsetRecognizer
+name|rec
+parameter_list|,
+name|int
+name|conf
+parameter_list|)
+block|{
+name|fRecognizer
+operator|=
+name|rec
+expr_stmt|;
+name|fConfidence
+operator|=
+name|conf
+expr_stmt|;
+comment|// The references to the original aplication input data must be copied out
+comment|//   of the charset recognizer to here, in case the application resets the
+comment|//   recognizer before using this CharsetMatch.
+if|if
+condition|(
+name|det
+operator|.
+name|fInputStream
+operator|==
+literal|null
+condition|)
+block|{
+comment|// We only want the existing input byte data if it came straight from the user,
+comment|//   not if is just the head of a stream.
+name|fRawInput
+operator|=
+name|det
+operator|.
+name|fRawInput
+expr_stmt|;
+name|fRawLength
+operator|=
+name|det
+operator|.
+name|fRawLength
+expr_stmt|;
+block|}
+name|fInputStream
+operator|=
+name|det
+operator|.
+name|fInputStream
+expr_stmt|;
+block|}
+comment|/**      * Create a java.io.Reader for reading the Unicode character data corresponding      * to the original byte data supplied to the Charset detect operation.      *<p/>      * CAUTION:  if the source of the byte data was an InputStream, a Reader      * can be created for only one matching char set using this method.  If more      * than one charset needs to be tried, the caller will need to reset      * the InputStream and create InputStreamReaders itself, based on the charset name.      *      * @return the Reader for the Unicode character data.      *      * @stable ICU 3.4      */
 specifier|public
 name|Reader
 name|getReader
@@ -312,43 +435,7 @@ return|return
 name|fConfidence
 return|;
 block|}
-comment|/**      * Bit flag indicating the match is based on the the encoding scheme.      *      * @see #getMatchType      * @stable ICU 3.4      */
-specifier|static
-specifier|public
-specifier|final
-name|int
-name|ENCODING_SCHEME
-init|=
-literal|1
-decl_stmt|;
-comment|/**      * Bit flag indicating the match is based on the presence of a BOM.      *       * @see #getMatchType      * @stable ICU 3.4      */
-specifier|static
-specifier|public
-specifier|final
-name|int
-name|BOM
-init|=
-literal|2
-decl_stmt|;
-comment|/**      * Bit flag indicating he match is based on the declared encoding.      *       * @see #getMatchType      * @stable ICU 3.4      */
-specifier|static
-specifier|public
-specifier|final
-name|int
-name|DECLARED_ENCODING
-init|=
-literal|4
-decl_stmt|;
-comment|/**      * Bit flag indicating the match is based on language statistics.      *      * @see #getMatchType      * @stable ICU 3.4      */
-specifier|static
-specifier|public
-specifier|final
-name|int
-name|LANG_STATISTICS
-init|=
-literal|8
-decl_stmt|;
-comment|/**      * Return flags indicating what it was about the input data       * that caused this charset to be considered as a possible match.      * The result is a bitfield containing zero or more of the flags      * ENCODING_SCHEME, BOM, DECLARED_ENCODING, and LANG_STATISTICS.      * A result of zero means no information is available.      *<p>      * Note: currently, this method always returns zero.      *<p>      *      * @return the type of match found for this charset.      *      * @draft ICU 3.4      * @provisional This API might change or be removed in a future release.      */
+comment|/**      * Return flags indicating what it was about the input data      * that caused this charset to be considered as a possible match.      * The result is a bitfield containing zero or more of the flags      * ENCODING_SCHEME, BOM, DECLARED_ENCODING, and LANG_STATISTICS.      * A result of zero means no information is available.      *<p>      * Note: currently, this method always returns zero.      *<p>      *      * @return the type of match found for this charset.      *      * @draft ICU 3.4      * @provisional This API might change or be removed in a future release.      */
 specifier|public
 name|int
 name|getMatchType
@@ -359,7 +446,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/**      * Get the name of the detected charset.        * The name will be one that can be used with other APIs on the      * platform that accept charset names.  It is the "Canonical name"      * as defined by the class java.nio.charset.Charset; for      * charsets that are registered with the IANA charset registry,      * this is the MIME-preferred registerd name.      *      * @see java.nio.charset.Charset      * @see java.io.InputStreamReader      *      * @return The name of the charset.      *      * @stable ICU 3.4      */
+comment|/**      * Get the name of the detected charset.      * The name will be one that can be used with other APIs on the      * platform that accept charset names.  It is the "Canonical name"      * as defined by the class java.nio.charset.Charset; for      * charsets that are registered with the IANA charset registry,      * this is the MIME-preferred registerd name.      *      * @see java.nio.charset.Charset      * @see java.io.InputStreamReader      *      * @return The name of the charset.      *      * @stable ICU 3.4      */
 specifier|public
 name|String
 name|getName
@@ -372,7 +459,7 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/**      * Get the ISO code for the language of the detected charset.        *      * @return The ISO code for the language or<code>null</code> if the language cannot be determined.      *      * @stable ICU 3.4      */
+comment|/**      * Get the ISO code for the language of the detected charset.      *      * @return The ISO code for the language or<code>null</code> if the language cannot be determined.      *      * @stable ICU 3.4      */
 specifier|public
 name|String
 name|getLanguage
@@ -385,7 +472,7 @@ name|getLanguage
 argument_list|()
 return|;
 block|}
-comment|/**      * Compare to other CharsetMatch objects.      * Comparison is based on the match confidence value, which       *   allows CharsetDetector.detectAll() to order its results.       *      * @param o the CharsetMatch object to compare against.      * @return  a negative integer, zero, or a positive integer as the       *          confidence level of this CharsetMatch      *          is less than, equal to, or greater than that of      *          the argument.      * @throws ClassCastException if the argument is not a CharsetMatch.      * @stable ICU 3.4      */
+comment|/**      * Compare to other CharsetMatch objects.      * Comparison is based on the match confidence value, which      *   allows CharsetDetector.detectAll() to order its results.      *      * @param o the CharsetMatch object to compare against.      * @return a negative integer, zero, or a positive integer as the      *          confidence level of this CharsetMatch      *          is less than, equal to, or greater than that of      *          the argument.      * @throws ClassCastException if the argument is not a CharsetMatch.      * @stable ICU 3.4      */
 specifier|public
 name|int
 name|compareTo
@@ -487,93 +574,6 @@ return|return
 name|fConfidence
 return|;
 block|}
-comment|/*      *  Constructor.  Implementation internal      */
-name|CharsetMatch
-parameter_list|(
-name|CharsetDetector
-name|det
-parameter_list|,
-name|CharsetRecognizer
-name|rec
-parameter_list|,
-name|int
-name|conf
-parameter_list|)
-block|{
-name|fRecognizer
-operator|=
-name|rec
-expr_stmt|;
-name|fConfidence
-operator|=
-name|conf
-expr_stmt|;
-comment|// The references to the original aplication input data must be copied out
-comment|//   of the charset recognizer to here, in case the application resets the
-comment|//   recognizer before using this CharsetMatch.
-if|if
-condition|(
-name|det
-operator|.
-name|fInputStream
-operator|==
-literal|null
-condition|)
-block|{
-comment|// We only want the existing input byte data if it came straight from the user,
-comment|//   not if is just the head of a stream.
-name|fRawInput
-operator|=
-name|det
-operator|.
-name|fRawInput
-expr_stmt|;
-name|fRawLength
-operator|=
-name|det
-operator|.
-name|fRawLength
-expr_stmt|;
-block|}
-name|fInputStream
-operator|=
-name|det
-operator|.
-name|fInputStream
-expr_stmt|;
-block|}
-comment|//
-comment|//   Private Data
-comment|//
-specifier|private
-name|int
-name|fConfidence
-decl_stmt|;
-specifier|private
-name|CharsetRecognizer
-name|fRecognizer
-decl_stmt|;
-specifier|private
-name|byte
-index|[]
-name|fRawInput
-init|=
-literal|null
-decl_stmt|;
-comment|// Original, untouched input bytes.
-comment|//  If user gave us a byte array, this is it.
-specifier|private
-name|int
-name|fRawLength
-decl_stmt|;
-comment|// Length of data in fRawInput array.
-specifier|private
-name|InputStream
-name|fInputStream
-init|=
-literal|null
-decl_stmt|;
-comment|// User's input stream, or null if the user
 comment|//   gave us a byte array.
 specifier|public
 name|String

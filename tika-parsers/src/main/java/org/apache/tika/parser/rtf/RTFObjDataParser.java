@@ -302,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Many thanks to Simon Mourier for:  * http://stackoverflow.com/questions/14779647/extract-embedded-image-object-in-rtf   * and for granting permission to use his code in Tika.  *   */
+comment|/**  * Many thanks to Simon Mourier for:  * http://stackoverflow.com/questions/14779647/extract-embedded-image-object-in-rtf  * and for granting permission to use his code in Tika.  */
 end_comment
 
 begin_class
@@ -337,8 +337,8 @@ name|WIN_ASCII
 init|=
 literal|"WINDOWS-1252"
 decl_stmt|;
-comment|/**      * Parses the embedded object/pict string      *       * @param bytes actual bytes (already converted from the       *  hex pair string stored in the embedded object data into actual bytes or read      *  as raw binary bytes)      * @return a SimpleRTFEmbObj or null      * @throws IOException if there are any surprise surprises during parsing      */
-comment|/**      *       * @param bytes      * @param metadata incoming metadata      * @param unknownFilenameCount       * @return byte[] for contents of obj data      * @throws IOException      */
+comment|/**      * Parses the embedded object/pict string      *      * @param bytes actual bytes (already converted from the       *  hex pair string stored in the embedded object data into actual bytes or read      *  as raw binary bytes)      * @return a SimpleRTFEmbObj or null      * @throws IOException if there are any surprise surprises during parsing      */
+comment|/**      * @param bytes      * @param metadata             incoming metadata      * @param unknownFilenameCount      * @return byte[] for contents of obj data      * @throws IOException      */
 specifier|protected
 name|byte
 index|[]
@@ -1001,7 +1001,7 @@ return|return
 name|ret
 return|;
 block|}
-comment|/**      * can return null if there is a linked object       * instead of an embedded file      */
+comment|/**      * can return null if there is a linked object      * instead of an embedded file      */
 specifier|private
 name|byte
 index|[]

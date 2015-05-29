@@ -198,7 +198,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is the implementation of the db parser for SQLite.  *<p>  * This parser is internal only; it should not be registered in the services  * file or configured in the TikaConfig xml file.  */
+comment|/**  * This is the implementation of the db parser for SQLite.  *<p/>  * This parser is internal only; it should not be registered in the services  * file or configured in the TikaConfig xml file.  */
 end_comment
 
 begin_class
@@ -215,7 +215,7 @@ name|SQLITE_CLASS_NAME
 init|=
 literal|"org.sqlite.JDBC"
 decl_stmt|;
-comment|/**      *      * @param context context      * @return null (always)      */
+comment|/**      * @param context context      * @return null (always)      */
 annotation|@
 name|Override
 specifier|public

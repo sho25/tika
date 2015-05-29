@@ -221,21 +221,6 @@ literal|"rtf"
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|public
-name|Set
-argument_list|<
-name|MediaType
-argument_list|>
-name|getSupportedTypes
-parameter_list|(
-name|ParseContext
-name|context
-parameter_list|)
-block|{
-return|return
-name|SUPPORTED_TYPES
-return|;
-block|}
 comment|/**      * maximum number of bytes per embedded object/pict (default: 20MB)      */
 specifier|private
 specifier|static
@@ -249,6 +234,17 @@ operator|*
 literal|1024
 decl_stmt|;
 comment|//20MB
+comment|/**      * See {@link #setMaxBytesForEmbeddedObject(int)}.      *      * @return maximum number of bytes allowed for an embedded object.      */
+specifier|public
+specifier|static
+name|int
+name|getMaxBytesForEmbeddedObject
+parameter_list|()
+block|{
+return|return
+name|EMB_OBJ_MAX_BYTES
+return|;
+block|}
 comment|/**      * Bytes for embedded objects are currently cached in memory.      * If something goes wrong during the parsing of an embedded object,      * it is possible that a read length may be crazily too long      * and cause a heap crash.      *      * @param max maximum number of bytes to allow for embedded objects.  If      *            the embedded object has more than this number of bytes, skip it.      */
 specifier|public
 specifier|static
@@ -264,15 +260,19 @@ operator|=
 name|max
 expr_stmt|;
 block|}
-comment|/**      * See {@link #setMaxBytesForEmbeddedObject(int)}.      *      * @return maximum number of bytes allowed for an embedded object.      */
 specifier|public
-specifier|static
-name|int
-name|getMaxBytesForEmbeddedObject
-parameter_list|()
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|getSupportedTypes
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
 block|{
 return|return
-name|EMB_OBJ_MAX_BYTES
+name|SUPPORTED_TYPES
 return|;
 block|}
 specifier|public

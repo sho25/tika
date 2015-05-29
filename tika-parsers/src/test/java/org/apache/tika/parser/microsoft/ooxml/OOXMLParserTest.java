@@ -20,6 +20,30 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -396,30 +420,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -905,7 +905,7 @@ expr_stmt|;
 comment|// Below assertions represent outstanding formatting issues to be addressed
 comment|// they are included to allow the issues to be progressed with the Apache POI
 comment|// team - See TIKA-103.
-comment|/*************************************************************************             // Date Format: m/d/yy             assertContains("03/10/2009", content);              // Date/Time Format             assertContains("19/01/2008 04:35", content);              // Custom Number (0 "dollars and" .00 "cents")             assertContains("19 dollars and .99 cents", content);              // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)             assertContains("At 4:20 AM on Thursday May 17, 2007", content);             **************************************************************************/
+comment|/*************************************************************************              // Date Format: m/d/yy              assertContains("03/10/2009", content);               // Date/Time Format              assertContains("19/01/2008 04:35", content);               // Custom Number (0 "dollars and" .00 "cents")              assertContains("19 dollars and .99 cents", content);               // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)              assertContains("At 4:20 AM on Thursday May 17, 2007", content);              **************************************************************************/
 block|}
 finally|finally
 block|{
@@ -1117,7 +1117,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * We have a number of different powerpoint files,      *  such as presentation, macro-enabled etc      */
+comment|/**      * We have a number of different powerpoint files,      * such as presentation, macro-enabled etc      */
 annotation|@
 name|Test
 specifier|public
@@ -1669,7 +1669,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * For the PowerPoint formats we don't currently support, ensure that      *  we don't break either      */
+comment|/**      * For the PowerPoint formats we don't currently support, ensure that      * we don't break either      */
 annotation|@
 name|Test
 specifier|public
@@ -1834,7 +1834,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Test the plain text output of the Word converter      * @throws Exception      */
+comment|/**      * Test the plain text output of the Word converter      *      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -1967,7 +1967,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test the plain text output of the Word converter      * @throws Exception      */
+comment|/**      * Test the plain text output of the Word converter      *      * @throws Exception      */
 annotation|@
 name|Test
 specifier|public
@@ -2058,7 +2058,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Test that the word converter is able to generate the      *  correct HTML for the document      */
+comment|/**      * Test that the word converter is able to generate the      * correct HTML for the document      */
 annotation|@
 name|Test
 specifier|public
@@ -2554,7 +2554,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Documents with some sheets are protected, but not all.       * See TIKA-364.      */
+comment|/**      * Documents with some sheets are protected, but not all.      * See TIKA-364.      */
 annotation|@
 name|Test
 specifier|public
@@ -2657,7 +2657,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * An excel document which is password protected.       * See TIKA-437.      */
+comment|/**      * An excel document which is password protected.      * See TIKA-437.      */
 annotation|@
 name|Test
 specifier|public
@@ -3750,7 +3750,7 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * TIKA-712 Master Slide Text from PPT and PPTX files      *  should be extracted too      */
+comment|/**      * TIKA-712 Master Slide Text from PPT and PPTX files      * should be extracted too      */
 annotation|@
 name|Test
 specifier|public
@@ -5376,7 +5376,7 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * TIKA-1044 - Handle word documents where parts of the      *  text have no formatting or styles applied to them      */
+comment|/**      * TIKA-1044 - Handle word documents where parts of the      * text have no formatting or styles applied to them      */
 annotation|@
 name|Test
 specifier|public
@@ -5540,7 +5540,7 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for missing text described in       *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      * and TIKA-1317      */
+comment|/**      * Test for missing text described in      *<a href="https://issues.apache.org/jira/browse/TIKA-1130">TIKA-1130</a>.      * and TIKA-1317      */
 annotation|@
 name|Test
 specifier|public

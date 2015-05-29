@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A POI-powered Tika Parser for very old versions of Excel, from  *  pre-OLE2 days, such as Excel 4.  */
+comment|/**  * A POI-powered Tika Parser for very old versions of Excel, from  * pre-OLE2 days, such as Excel 4.  */
 end_comment
 
 begin_class
@@ -301,79 +301,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|public
-name|Set
-argument_list|<
-name|MediaType
-argument_list|>
-name|getSupportedTypes
-parameter_list|(
-name|ParseContext
-name|context
-parameter_list|)
-block|{
-return|return
-name|SUPPORTED_TYPES
-return|;
-block|}
-comment|/**      * Extracts properties and text from an MS Document input stream      */
-specifier|public
-name|void
-name|parse
-parameter_list|(
-name|InputStream
-name|stream
-parameter_list|,
-name|ContentHandler
-name|handler
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|,
-name|ParseContext
-name|context
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|SAXException
-throws|,
-name|TikaException
-block|{
-comment|// Open the POI provided extractor
-name|OldExcelExtractor
-name|extractor
-init|=
-operator|new
-name|OldExcelExtractor
-argument_list|(
-name|stream
-argument_list|)
-decl_stmt|;
-comment|// We can't do anything about metadata, as these old formats
-comment|//  didn't have any stored with them
-comment|// Set the content type
-comment|// TODO Get the version and type, to set as the Content Type
-comment|// Have the text extracted and given to our Content Handler
-name|XHTMLContentHandler
-name|xhtml
-init|=
-operator|new
-name|XHTMLContentHandler
-argument_list|(
-name|handler
-argument_list|,
-name|metadata
-argument_list|)
-decl_stmt|;
-name|parse
-argument_list|(
-name|extractor
-argument_list|,
-name|xhtml
-argument_list|)
-expr_stmt|;
-block|}
 specifier|protected
 specifier|static
 name|void
@@ -463,6 +390,79 @@ name|xhtml
 operator|.
 name|endDocument
 argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|Set
+argument_list|<
+name|MediaType
+argument_list|>
+name|getSupportedTypes
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+block|{
+return|return
+name|SUPPORTED_TYPES
+return|;
+block|}
+comment|/**      * Extracts properties and text from an MS Document input stream      */
+specifier|public
+name|void
+name|parse
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|,
+name|ContentHandler
+name|handler
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|,
+name|ParseContext
+name|context
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|SAXException
+throws|,
+name|TikaException
+block|{
+comment|// Open the POI provided extractor
+name|OldExcelExtractor
+name|extractor
+init|=
+operator|new
+name|OldExcelExtractor
+argument_list|(
+name|stream
+argument_list|)
+decl_stmt|;
+comment|// We can't do anything about metadata, as these old formats
+comment|//  didn't have any stored with them
+comment|// Set the content type
+comment|// TODO Get the version and type, to set as the Content Type
+comment|// Have the text extracted and given to our Content Handler
+name|XHTMLContentHandler
+name|xhtml
+init|=
+operator|new
+name|XHTMLContentHandler
+argument_list|(
+name|handler
+argument_list|,
+name|metadata
+argument_list|)
+decl_stmt|;
+name|parse
+argument_list|(
+name|extractor
+argument_list|,
+name|xhtml
+argument_list|)
 expr_stmt|;
 block|}
 block|}

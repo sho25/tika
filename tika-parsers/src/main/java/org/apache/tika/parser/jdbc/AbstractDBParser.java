@@ -279,6 +279,32 @@ specifier|private
 name|Connection
 name|connection
 decl_stmt|;
+specifier|protected
+specifier|static
+name|EmbeddedDocumentExtractor
+name|getEmbeddedDocumentExtractor
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+block|{
+return|return
+name|context
+operator|.
+name|get
+argument_list|(
+name|EmbeddedDocumentExtractor
+operator|.
+name|class
+argument_list|,
+operator|new
+name|ParsingEmbeddedDocumentExtractor
+argument_list|(
+name|context
+argument_list|)
+argument_list|)
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public
@@ -574,32 +600,6 @@ comment|//swallow
 block|}
 block|}
 block|}
-specifier|protected
-specifier|static
-name|EmbeddedDocumentExtractor
-name|getEmbeddedDocumentExtractor
-parameter_list|(
-name|ParseContext
-name|context
-parameter_list|)
-block|{
-return|return
-name|context
-operator|.
-name|get
-argument_list|(
-name|EmbeddedDocumentExtractor
-operator|.
-name|class
-argument_list|,
-operator|new
-name|ParsingEmbeddedDocumentExtractor
-argument_list|(
-name|context
-argument_list|)
-argument_list|)
-return|;
-block|}
 comment|/**      * Override this for any special handling of closing the connection.      *      * @throws java.sql.SQLException      * @throws java.io.IOException      */
 specifier|protected
 name|void
@@ -616,7 +616,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Override this for special configuration of the connection, such as limiting      * the number of rows to be held in memory.      *      * @param stream stream to use      * @param metadata metadata that could be used in parameterizing the connection      * @param context parsecontext that could be used in parameterizing the connection      * @return connection      * @throws java.io.IOException      * @throws org.apache.tika.exception.TikaException      */
+comment|/**      * Override this for special configuration of the connection, such as limiting      * the number of rows to be held in memory.      *      * @param stream   stream to use      * @param metadata metadata that could be used in parameterizing the connection      * @param context  parsecontext that could be used in parameterizing the connection      * @return connection      * @throws java.io.IOException      * @throws org.apache.tika.exception.TikaException      */
 specifier|protected
 name|Connection
 name|getConnection
@@ -710,7 +710,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Implement for db specific connection information, e.g. "jdbc:sqlite:/docs/mydb.db"      *<p>      * Include any optimization settings, user name, password, etc.      *<p>      * @param stream stream for processing      * @param metadata metadata might be useful in determining connection info      * @param parseContext context to use to help create connectionString      * @return connection string to be used by {@link #getConnection}.      * @throws java.io.IOException     */
+comment|/**      * Implement for db specific connection information, e.g. "jdbc:sqlite:/docs/mydb.db"      *<p/>      * Include any optimization settings, user name, password, etc.      *<p/>      *      * @param stream       stream for processing      * @param metadata     metadata might be useful in determining connection info      * @param parseContext context to use to help create connectionString      * @return connection string to be used by {@link #getConnection}.      * @throws java.io.IOException      */
 specifier|abstract
 specifier|protected
 name|String
@@ -728,14 +728,14 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * JDBC class name, e.g. org.sqlite.JDBC      * @return jdbc class name      */
+comment|/**      * JDBC class name, e.g. org.sqlite.JDBC      *      * @return jdbc class name      */
 specifier|abstract
 specifier|protected
 name|String
 name|getJDBCClassName
 parameter_list|()
 function_decl|;
-comment|/**      *      * Returns the names of the tables to process      *      * @param connection Connection to use to make the sql call(s) to get the names of the tables      * @param metadata Metadata to use (potentially) in decision about which tables to extract      * @param context ParseContext to use (potentially) in decision about which tables to extract      * @return      * @throws java.sql.SQLException      */
+comment|/**      * Returns the names of the tables to process      *      * @param connection Connection to use to make the sql call(s) to get the names of the tables      * @param metadata   Metadata to use (potentially) in decision about which tables to extract      * @param context    ParseContext to use (potentially) in decision about which tables to extract      * @return      * @throws java.sql.SQLException      */
 specifier|abstract
 specifier|protected
 name|List

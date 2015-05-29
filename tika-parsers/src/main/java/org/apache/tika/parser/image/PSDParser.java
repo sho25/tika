@@ -266,7 +266,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser for the Adobe Photoshop PSD File Format.  *   * Documentation on the file format is available from  * http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/PhotoshopFileFormats.htm  */
+comment|/**  * Parser for the Adobe Photoshop PSD File Format.  *<p/>  * Documentation on the file format is available from  * http://www.adobe.com/devnet-apps/photoshop/fileformatashtml/PhotoshopFileFormats.htm  */
 end_comment
 
 begin_class
@@ -276,7 +276,7 @@ name|PSDParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final

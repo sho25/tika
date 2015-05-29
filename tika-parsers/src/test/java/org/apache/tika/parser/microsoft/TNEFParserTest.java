@@ -363,7 +363,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Check the Rtf and Attachments are returned      *  as expected      */
+comment|/**      * Check the Rtf and Attachments are returned      * as expected      */
 annotation|@
 name|Test
 specifier|public

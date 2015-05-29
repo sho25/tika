@@ -1152,7 +1152,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Attempt to parse custom document properties and add to the collection of metadata      * @param customProperties      */
+comment|/**      * Attempt to parse custom document properties and add to the collection of metadata      *      * @param customProperties      */
 specifier|private
 name|void
 name|parse

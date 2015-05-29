@@ -184,15 +184,6 @@ name|OOXMLParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
-specifier|private
-specifier|static
-specifier|final
-name|long
-name|serialVersionUID
-init|=
-literal|6535995710857776481L
-decl_stmt|;
 specifier|protected
 specifier|static
 specifier|final
@@ -331,7 +322,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * We claim to support all OOXML files, but we actually don't support a small      *  number of them.      * This list is used to decline certain formats that are not yet supported      *  by Tika and/or POI.      */
+comment|/**      * We claim to support all OOXML files, but we actually don't support a small      * number of them.      * This list is used to decline certain formats that are not yet supported      * by Tika and/or POI.      */
 specifier|protected
 specifier|static
 specifier|final
@@ -371,6 +362,15 @@ argument_list|)
 argument_list|)
 argument_list|)
 argument_list|)
+decl_stmt|;
+comment|/**      * Serial version UID      */
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|6535995710857776481L
 decl_stmt|;
 specifier|public
 name|Set

@@ -296,7 +296,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class buffers data from embedded objects and pictures.  *  *<p/>  *  * When the parser has finished an object or picture and called  * {@link #handleCompletedObject()}, this will write the object  * to the {@link #handler}.  *  *<p/>  *  * This (in combination with TextExtractor) expects basically a flat parse.  It will pull out  * all pict whether they are tied to objdata or are intended  * to be standalone.  *  *<p/>  * This tries to pull metadata around a pict that is encoded  * with {sp {sn} {sv}} types of data.  This information  * sometimes contains the name and even full file path of the original file.  *  */
+comment|/**  * This class buffers data from embedded objects and pictures.  *<p/>  *<p/>  *<p/>  * When the parser has finished an object or picture and called  * {@link #handleCompletedObject()}, this will write the object  * to the {@link #handler}.  *<p/>  *<p/>  *<p/>  * This (in combination with TextExtractor) expects basically a flat parse.  It will pull out  * all pict whether they are tied to objdata or are intended  * to be standalone.  *<p/>  *<p/>  * This tries to pull metadata around a pict that is encoded  * with {sp {sn} {sv}} types of data.  This information  * sometimes contains the name and even full file path of the original file.  */
 end_comment
 
 begin_class
@@ -312,18 +312,20 @@ init|=
 literal|""
 decl_stmt|;
 specifier|private
-enum|enum
-name|EMB_STATE
-block|{
-name|PICT
-block|,
-comment|//recording pict data
-name|OBJDATA
-block|,
-comment|//recording objdata
-name|NADA
-block|}
-empty_stmt|;
+specifier|final
+name|ContentHandler
+name|handler
+decl_stmt|;
+specifier|private
+specifier|final
+name|ParseContext
+name|context
+decl_stmt|;
+specifier|private
+specifier|final
+name|ByteArrayOutputStream
+name|os
+decl_stmt|;
 comment|//high hex cached for writing hexpair chars (data)
 specifier|private
 name|int
@@ -374,23 +376,8 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 specifier|private
-specifier|final
-name|ContentHandler
-name|handler
-decl_stmt|;
-specifier|private
 name|Metadata
 name|metadata
-decl_stmt|;
-specifier|private
-specifier|final
-name|ParseContext
-name|context
-decl_stmt|;
-specifier|private
-specifier|final
-name|ByteArrayOutputStream
-name|os
 decl_stmt|;
 specifier|private
 name|EMB_STATE
@@ -546,6 +533,15 @@ argument_list|)
 expr_stmt|;
 block|}
 specifier|protected
+name|boolean
+name|getInObject
+parameter_list|()
+block|{
+return|return
+name|inObject
+return|;
+block|}
+specifier|protected
 name|void
 name|setInObject
 parameter_list|(
@@ -557,15 +553,6 @@ name|inObject
 operator|=
 name|v
 expr_stmt|;
-block|}
-specifier|protected
-name|boolean
-name|getInObject
-parameter_list|()
-block|{
-return|return
-name|inObject
-return|;
 block|}
 specifier|protected
 name|void
@@ -789,7 +776,7 @@ name|bytes
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Call this when the objdata/pict has completed      * @throws IOException      * @throws SAXException      * @throws TikaException      */
+comment|/**      * Call this when the objdata/pict has completed      *      * @throws IOException      * @throws SAXException      * @throws TikaException      */
 specifier|protected
 name|void
 name|handleCompletedObject
@@ -1306,7 +1293,7 @@ parameter_list|(
 name|MimeTypeException
 name|e
 parameter_list|)
-block|{                              }
+block|{              }
 block|}
 return|return
 literal|".bin"
@@ -1391,6 +1378,18 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
+specifier|private
+enum|enum
+name|EMB_STATE
+block|{
+name|PICT
+block|,
+comment|//recording pict data
+name|OBJDATA
+block|,
+comment|//recording objdata
+name|NADA
 block|}
 block|}
 end_class

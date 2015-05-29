@@ -234,7 +234,7 @@ name|JpegParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final

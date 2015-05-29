@@ -2640,7 +2640,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Word documents are simple, they only have the one      *  main part      */
+comment|/**      * Word documents are simple, they only have the one      * main part      */
 annotation|@
 name|Override
 specifier|protected

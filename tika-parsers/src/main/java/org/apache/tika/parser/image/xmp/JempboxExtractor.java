@@ -190,18 +190,6 @@ specifier|public
 class|class
 name|JempboxExtractor
 block|{
-specifier|private
-name|XMPPacketScanner
-name|scanner
-init|=
-operator|new
-name|XMPPacketScanner
-argument_list|()
-decl_stmt|;
-specifier|private
-name|Metadata
-name|metadata
-decl_stmt|;
 comment|// The XMP spec says it must be unicode, but for most file formats it specifies "must be encoded in UTF-8"
 specifier|private
 specifier|static
@@ -215,6 +203,18 @@ name|UTF_8
 operator|.
 name|name
 argument_list|()
+decl_stmt|;
+specifier|private
+name|XMPPacketScanner
+name|scanner
+init|=
+operator|new
+name|XMPPacketScanner
+argument_list|()
+decl_stmt|;
+specifier|private
+name|Metadata
+name|metadata
 decl_stmt|;
 specifier|public
 name|JempboxExtractor

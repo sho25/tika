@@ -201,27 +201,6 @@ literal|61623
 argument_list|)
 decl_stmt|;
 comment|//if this shows up as the lvlText, don't show a number
-specifier|private
-specifier|final
-name|XWPFNumbering
-name|numbering
-decl_stmt|;
-comment|//map of numId (which paragraph series is this a member of?), levelcounts
-specifier|public
-name|XWPFListManager
-parameter_list|(
-name|XWPFDocument
-name|document
-parameter_list|)
-block|{
-name|numbering
-operator|=
-name|document
-operator|.
-name|getNumbering
-argument_list|()
-expr_stmt|;
-block|}
 static|static
 block|{
 name|boolean
@@ -254,6 +233,27 @@ operator|=
 name|OVERRIDE_AVAILABLE
 operator|=
 literal|false
+expr_stmt|;
+block|}
+specifier|private
+specifier|final
+name|XWPFNumbering
+name|numbering
+decl_stmt|;
+comment|//map of numId (which paragraph series is this a member of?), levelcounts
+specifier|public
+name|XWPFListManager
+parameter_list|(
+name|XWPFDocument
+name|document
+parameter_list|)
+block|{
+name|numbering
+operator|=
+name|document
+operator|.
+name|getNumbering
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -407,7 +407,7 @@ return|return
 name|formattedString
 return|;
 block|}
-comment|/**      * WARNING: currently always returns null.      * TODO: Once CTNumLvl is available to Tika,      * we can turn this back on.      * @param ctNum number on which to build the overrides      * @param length length of intended array      * @return null or an array of override tuples of length {@param length}      */
+comment|/**      * WARNING: currently always returns null.      * TODO: Once CTNumLvl is available to Tika,      * we can turn this back on.      *      * @param ctNum  number on which to build the overrides      * @param length length of intended array      * @return null or an array of override tuples of length {@param length}      */
 specifier|private
 name|LevelTuple
 index|[]

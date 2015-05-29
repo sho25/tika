@@ -152,7 +152,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is the main class for parsing SQLite3 files.  When {@link #parse} is called,  * this creates a new {@link org.apache.tika.parser.jdbc.SQLite3DBParser}.  *<p>  * Given potential conflicts of native libraries in web servers, users will  * need to add org.xerial's sqlite-jdbc jar to the class path for this parser  * to work.  For development and testing, this jar is specified in tika-parsers'  * pom.xml, but it is currently set to "provided."  *<p>  * Note that this family of jdbc parsers is designed to treat each CLOB and each BLOB  * as embedded documents.  *  */
+comment|/**  * This is the main class for parsing SQLite3 files.  When {@link #parse} is called,  * this creates a new {@link org.apache.tika.parser.jdbc.SQLite3DBParser}.  *<p/>  * Given potential conflicts of native libraries in web servers, users will  * need to add org.xerial's sqlite-jdbc jar to the class path for this parser  * to work.  For development and testing, this jar is specified in tika-parsers'  * pom.xml, but it is currently set to "provided."  *<p/>  * Note that this family of jdbc parsers is designed to treat each CLOB and each BLOB  * as embedded documents.  */
 end_comment
 
 begin_class
@@ -162,7 +162,7 @@ name|SQLite3Parser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -193,7 +193,7 @@ name|MediaType
 argument_list|>
 name|SUPPORTED_TYPES
 decl_stmt|;
-comment|/**      * Checks to see if class is available for org.sqlite.JDBC.      *<p>      * If not, this class will return an EMPTY_SET for  getSupportedTypes()      */
+comment|/**      * Checks to see if class is available for org.sqlite.JDBC.      *<p/>      * If not, this class will return an EMPTY_SET for  getSupportedTypes()      */
 specifier|public
 name|SQLite3Parser
 parameter_list|()

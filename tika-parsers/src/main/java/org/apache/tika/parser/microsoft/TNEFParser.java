@@ -318,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A POI-powered Tika Parser for TNEF (Transport Neutral  *  Encoding Format) messages, aka winmail.dat  */
+comment|/**  * A POI-powered Tika Parser for TNEF (Transport Neutral  * Encoding Format) messages, aka winmail.dat  */
 end_comment
 
 begin_class

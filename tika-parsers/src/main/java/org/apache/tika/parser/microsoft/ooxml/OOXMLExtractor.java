@@ -132,7 +132,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface implemented by all Tika OOXML extractors.  *   * @see org.apache.poi.POIXMLTextExtractor  */
+comment|/**  * Interface implemented by all Tika OOXML extractors.  *  * @see org.apache.poi.POIXMLTextExtractor  */
 end_comment
 
 begin_interface
@@ -140,7 +140,7 @@ specifier|public
 interface|interface
 name|OOXMLExtractor
 block|{
-comment|/**      * Returns the opened document.      *       * @see POIXMLTextExtractor#getDocument()      */
+comment|/**      * Returns the opened document.      *      * @see POIXMLTextExtractor#getDocument()      */
 name|POIXMLDocument
 name|getDocument
 parameter_list|()

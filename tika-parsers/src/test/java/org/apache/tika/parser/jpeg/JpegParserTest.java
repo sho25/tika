@@ -1047,7 +1047,7 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for an image with the geographic information stored in a slightly      *  different way, see TIKA-915 for details      * Disabled for now, pending a fix to the underlying library      */
+comment|/**      * Test for an image with the geographic information stored in a slightly      * different way, see TIKA-915 for details      * Disabled for now, pending a fix to the underlying library      */
 annotation|@
 name|Test
 specifier|public

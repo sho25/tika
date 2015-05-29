@@ -18,7 +18,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * This class matches UTF-16 and UTF-32, both big- and little-endian. The  * BOM will be used if it is present.  *   * @internal  */
+comment|/**  * This class matches UTF-16 and UTF-32, both big- and little-endian. The  * BOM will be used if it is present.  *  * @internal  */
 end_comment
 
 begin_class

@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *<p>  * A {@link MimeEntityConfig} object can be passed in the parsing context  * to better control the parsing process.  *  * @author jnioche@digitalpebble.com  */
+comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *<p/>  * A {@link MimeEntityConfig} object can be passed in the parsing context  * to better control the parsing process.  *  * @author jnioche@digitalpebble.com  */
 end_comment
 
 begin_class
@@ -236,7 +236,7 @@ name|RFC822Parser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final

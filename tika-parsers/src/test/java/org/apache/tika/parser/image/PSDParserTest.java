@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -90,18 +102,6 @@ operator|.
 name|helpers
 operator|.
 name|DefaultHandler
-import|;
-end_import
-
-begin_import
-import|import static
-name|junit
-operator|.
-name|framework
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -218,7 +218,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests a very basic file, without much metadata,      *  where some of the data lengths are padded to be even      */
+comment|/**      * Tests a very basic file, without much metadata,      * where some of the data lengths are padded to be even      */
 annotation|@
 name|Test
 specifier|public

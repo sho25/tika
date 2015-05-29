@@ -690,7 +690,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-240: Drop the BOM when extracting plain text      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-240">TIKA-240</a>       */
+comment|/**      * Test case for TIKA-240: Drop the BOM when extracting plain text      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-240">TIKA-240</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -812,7 +812,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-335: using incoming charset      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>       */
+comment|/**      * Test case for TIKA-335: using incoming charset      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -959,7 +959,7 @@ argument_list|)
 expr_stmt|;
 comment|// deprecated
 block|}
-comment|/**      * Test case for TIKA-341: using charset in content-type      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>       */
+comment|/**      * Test case for TIKA-341: using charset in content-type      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-341">TIKA-341</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1194,7 +1194,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-339: don't override incoming language      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>       */
+comment|/**      * Test case for TIKA-339: don't override incoming language      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-335">TIKA-335</a>      */
 annotation|@
 name|Test
 specifier|public
@@ -1454,7 +1454,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test case for TIKA-771: "Hello, World!" in UTF-8/ASCII gets detected as IBM500      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-771">TIKA-771</a>       */
+comment|/**      * Test case for TIKA-771: "Hello, World!" in UTF-8/ASCII gets detected as IBM500      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-771">TIKA-771</a>      */
 annotation|@
 name|Test
 specifier|public

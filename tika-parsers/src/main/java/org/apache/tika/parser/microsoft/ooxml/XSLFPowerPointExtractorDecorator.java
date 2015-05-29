@@ -1334,7 +1334,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**      * In PowerPoint files, slides have things embedded in them,      *  and slide drawings which have the images      */
+comment|/**      * In PowerPoint files, slides have things embedded in them,      * and slide drawings which have the images      */
 annotation|@
 name|Override
 specifier|protected

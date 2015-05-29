@@ -134,7 +134,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tests that the various POI OOXML powered parsers are  *  able to extract their embedded contents.  */
+comment|/**  * Tests that the various POI OOXML powered parsers are  * able to extract their embedded contents.  */
 end_comment
 
 begin_class
@@ -300,7 +300,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Office files with embedded images, but no other      *  office files in them      */
+comment|/**      * Office files with embedded images, but no other      * office files in them      */
 annotation|@
 name|Test
 specifier|public
@@ -690,7 +690,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Office files which have other office files      *  embedded into them. The embedded office files      *  will sometimes have images in them.      *        *  eg xls      *       -> word      *           -> image      *           -> image      *       -> powerpoint      *       -> excel      *           -> image      */
+comment|/**      * Office files which have other office files      * embedded into them. The embedded office files      * will sometimes have images in them.      *<p/>      * eg xls      * -> word      * -> image      * -> image      * -> powerpoint      * -> excel      * -> image      */
 annotation|@
 name|Test
 specifier|public

@@ -154,16 +154,6 @@ specifier|protected
 class|class
 name|ParagraphLevelCounter
 block|{
-name|Pattern
-name|LEVEL_INTERPOLATOR
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"%(\\d+)"
-argument_list|)
-decl_stmt|;
 comment|//counts can == 0 if the format is decimal, make sure
 comment|//that flag values are< 0
 specifier|private
@@ -183,6 +173,22 @@ operator|-
 literal|2
 decl_stmt|;
 specifier|private
+specifier|final
+name|LevelTuple
+index|[]
+name|levelTuples
+decl_stmt|;
+name|Pattern
+name|LEVEL_INTERPOLATOR
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%(\\d+)"
+argument_list|)
+decl_stmt|;
+specifier|private
 name|List
 argument_list|<
 name|Integer
@@ -195,12 +201,6 @@ argument_list|<
 name|Integer
 argument_list|>
 argument_list|()
-decl_stmt|;
-specifier|private
-specifier|final
-name|LevelTuple
-index|[]
-name|levelTuples
 decl_stmt|;
 specifier|private
 name|int
@@ -235,7 +235,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/**          * Apply this to every numbered paragraph in order.          *          * @param levelNumber     level number that is being incremented          * @return the new formatted number string for this level          */
+comment|/**          * Apply this to every numbered paragraph in order.          *          * @param levelNumber level number that is being incremented          * @return the new formatted number string for this level          */
 specifier|public
 name|String
 name|incrementLevel

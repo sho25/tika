@@ -798,7 +798,7 @@ parameter_list|(
 name|ChunkNotFoundException
 name|he
 parameter_list|)
-block|{}
+block|{             }
 comment|// Will be fixed in POI 3.7 Final
 comment|// Date - try two ways to find it
 comment|// First try via the proper chunk
@@ -1090,7 +1090,7 @@ parameter_list|(
 name|ChunkNotFoundException
 name|e
 parameter_list|)
-block|{}
+block|{             }
 name|xhtml
 operator|.
 name|endElement

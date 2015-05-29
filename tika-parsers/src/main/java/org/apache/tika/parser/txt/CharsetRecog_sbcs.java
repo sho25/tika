@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class recognizes single-byte encodings. Because the encoding scheme is so  * simple, language statistics are used to do the matching.  *   * The Recognizer works by first mapping from bytes in the encoding under test  *  into that Recognizer's ngram space. Normally this means performing a  *  lowercase, and excluding codepoints that don't correspond to numbers of  *  letters. (Accented letters may or may not be ignored or normalised, depending   *  on the needs of the ngrams)  * Then, ngram analysis is run against the transformed text, and a confidence  *  is calculated.  *   * For many of our Recognizers, we have one ngram set per language in each  *  encoding, and do a simultanious language+charset detection.  *    * When adding new Recognizers, the easiest way is to byte map to an existing  *  encoding for which we have ngrams, excluding non text, and re-use the ngrams.  *   * @internal  */
+comment|/**  * This class recognizes single-byte encodings. Because the encoding scheme is so  * simple, language statistics are used to do the matching.  *<p/>  * The Recognizer works by first mapping from bytes in the encoding under test  * into that Recognizer's ngram space. Normally this means performing a  * lowercase, and excluding codepoints that don't correspond to numbers of  * letters. (Accented letters may or may not be ignored or normalised, depending  * on the needs of the ngrams)  * Then, ngram analysis is run against the transformed text, and a confidence  * is calculated.  *<p/>  * For many of our Recognizers, we have one ngram set per language in each  * encoding, and do a simultanious language+charset detection.  *<p/>  * When adding new Recognizers, the easiest way is to byte map to an existing  * encoding for which we have ngrams, excluding non text, and re-use the ngrams.  *  * @internal  */
 end_comment
 
 begin_class
@@ -38,6 +38,12 @@ name|CharsetRecog_sbcs
 extends|extends
 name|CharsetRecognizer
 block|{
+specifier|protected
+name|boolean
+name|haveC1Bytes
+init|=
+literal|false
+decl_stmt|;
 comment|/* (non-Javadoc)      * @see com.ibm.icu.text.CharsetRecognizer#getName()      */
 specifier|abstract
 name|String
@@ -53,6 +59,83 @@ name|CharsetDetector
 name|det
 parameter_list|)
 function_decl|;
+name|int
+name|match
+parameter_list|(
+name|CharsetDetector
+name|det
+parameter_list|,
+name|int
+index|[]
+name|ngrams
+parameter_list|,
+name|byte
+index|[]
+name|byteMap
+parameter_list|)
+block|{
+return|return
+name|match
+argument_list|(
+name|det
+argument_list|,
+name|ngrams
+argument_list|,
+name|byteMap
+argument_list|,
+operator|(
+name|byte
+operator|)
+literal|0x20
+argument_list|)
+return|;
+block|}
+name|int
+name|match
+parameter_list|(
+name|CharsetDetector
+name|det
+parameter_list|,
+name|int
+index|[]
+name|ngrams
+parameter_list|,
+name|byte
+index|[]
+name|byteMap
+parameter_list|,
+name|byte
+name|spaceChar
+parameter_list|)
+block|{
+name|NGramParser
+name|parser
+init|=
+operator|new
+name|NGramParser
+argument_list|(
+name|ngrams
+argument_list|,
+name|byteMap
+argument_list|)
+decl_stmt|;
+name|haveC1Bytes
+operator|=
+name|det
+operator|.
+name|fC1Bytes
+expr_stmt|;
+return|return
+name|parser
+operator|.
+name|parse
+argument_list|(
+name|det
+argument_list|,
+name|spaceChar
+argument_list|)
+return|;
+block|}
 specifier|static
 class|class
 name|NGramParser
@@ -554,89 +637,6 @@ literal|300.0
 argument_list|)
 return|;
 block|}
-block|}
-specifier|protected
-name|boolean
-name|haveC1Bytes
-init|=
-literal|false
-decl_stmt|;
-name|int
-name|match
-parameter_list|(
-name|CharsetDetector
-name|det
-parameter_list|,
-name|int
-index|[]
-name|ngrams
-parameter_list|,
-name|byte
-index|[]
-name|byteMap
-parameter_list|)
-block|{
-return|return
-name|match
-argument_list|(
-name|det
-argument_list|,
-name|ngrams
-argument_list|,
-name|byteMap
-argument_list|,
-operator|(
-name|byte
-operator|)
-literal|0x20
-argument_list|)
-return|;
-block|}
-name|int
-name|match
-parameter_list|(
-name|CharsetDetector
-name|det
-parameter_list|,
-name|int
-index|[]
-name|ngrams
-parameter_list|,
-name|byte
-index|[]
-name|byteMap
-parameter_list|,
-name|byte
-name|spaceChar
-parameter_list|)
-block|{
-name|NGramParser
-name|parser
-init|=
-operator|new
-name|NGramParser
-argument_list|(
-name|ngrams
-argument_list|,
-name|byteMap
-argument_list|)
-decl_stmt|;
-name|haveC1Bytes
-operator|=
-name|det
-operator|.
-name|fC1Bytes
-expr_stmt|;
-return|return
-name|parser
-operator|.
-name|parse
-argument_list|(
-name|det
-argument_list|,
-name|spaceChar
-argument_list|)
-return|;
 block|}
 specifier|abstract
 specifier|static
@@ -1963,7 +1963,7 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2119,7 +2119,7 @@ block|,
 literal|0x74696C
 block|,
 literal|0x766572
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2290,7 +2290,7 @@ block|,
 literal|0x756E67
 block|,
 literal|0x766572
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2461,7 +2461,7 @@ block|,
 literal|0x746F20
 block|,
 literal|0x747320
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2632,7 +2632,7 @@ block|,
 literal|0x756520
 block|,
 literal|0xF36E20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2803,7 +2803,7 @@ block|,
 literal|0x756520
 block|,
 literal|0x757220
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -2974,7 +2974,7 @@ block|,
 literal|0x746F20
 block|,
 literal|0x7A696F
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -3145,7 +3145,7 @@ block|,
 literal|0x766572
 block|,
 literal|0x766F6F
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -3316,7 +3316,7 @@ block|,
 literal|0x747465
 block|,
 literal|0x766572
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -3487,7 +3487,7 @@ block|,
 literal|0xE36F20
 block|,
 literal|0xE7E36F
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -3658,7 +3658,7 @@ block|,
 literal|0xE47220
 block|,
 literal|0xF67220
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -4982,7 +4982,7 @@ operator|(
 name|byte
 operator|)
 literal|0x20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -5138,7 +5138,7 @@ block|,
 literal|0xED6D20
 block|,
 literal|0xF86564
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -5309,7 +5309,7 @@ block|,
 literal|0xE16E20
 block|,
 literal|0xE97320
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -5480,7 +5480,7 @@ block|,
 literal|0x7A7920
 block|,
 literal|0xF37720
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -5651,7 +5651,7 @@ block|,
 literal|0xBA6920
 block|,
 literal|0xEE6E20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -6975,7 +6975,7 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -7127,7 +7127,7 @@ block|,
 literal|0xE7E2DE
 block|,
 literal|0xEBE520
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -8451,7 +8451,7 @@ operator|(
 name|byte
 operator|)
 literal|0x20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -8603,7 +8603,7 @@ block|,
 literal|0xEAD120
 block|,
 literal|0xEAE620
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -9927,7 +9927,7 @@ operator|(
 name|byte
 operator|)
 literal|0x20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -10083,7 +10083,7 @@ block|,
 literal|0xF9ED20
 block|,
 literal|0xFEED20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -11407,7 +11407,7 @@ operator|(
 name|byte
 operator|)
 literal|0x20
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -11563,7 +11563,7 @@ block|,
 literal|0xFA20EE
 block|,
 literal|0xFA20F9
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -11748,7 +11748,7 @@ block|,
 literal|0xFAE420
 block|,
 literal|0xFAE5E9
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -13072,7 +13072,7 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -13228,7 +13228,7 @@ block|,
 literal|0xFD6EFD
 block|,
 literal|0xFDF0FD
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -13399,7 +13399,7 @@ block|,
 literal|0xF7F2EE
 block|,
 literal|0xFBF520
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|private
 specifier|static
@@ -14687,7 +14687,7 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -16336,7 +16336,7 @@ block|,
 literal|0xEDD120
 block|,
 literal|0xEDE420
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|private
 specifier|static
@@ -17624,7 +17624,7 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -17804,7 +17804,7 @@ block|,
 literal|0xD9C820
 block|,
 literal|0xDED4CF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|private
 specifier|static
@@ -19092,7 +19092,7 @@ operator|(
 name|byte
 operator|)
 literal|0xDF
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -20442,7 +20442,7 @@ operator|(
 name|byte
 operator|)
 literal|0x40
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|public
 name|String
@@ -20460,15 +20460,6 @@ name|CharsetRecog_IBM424_he_rtl
 extends|extends
 name|CharsetRecog_IBM424_he
 block|{
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-literal|"IBM424_rtl"
-return|;
-block|}
 specifier|private
 specifier|static
 name|int
@@ -20603,8 +20594,17 @@ block|,
 literal|0x714056
 block|,
 literal|0x714069
-block|,          }
+block|,         }
 decl_stmt|;
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"IBM424_rtl"
+return|;
+block|}
 specifier|public
 name|int
 name|match
@@ -20636,15 +20636,6 @@ name|CharsetRecog_IBM424_he_ltr
 extends|extends
 name|CharsetRecog_IBM424_he
 block|{
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-literal|"IBM424_ltr"
-return|;
-block|}
 specifier|private
 specifier|static
 name|int
@@ -20782,6 +20773,15 @@ literal|0x714651
 block|}
 decl_stmt|;
 specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"IBM424_ltr"
+return|;
+block|}
+specifier|public
 name|int
 name|match
 parameter_list|(
@@ -20813,15 +20813,6 @@ name|CharsetRecog_IBM420_ar
 extends|extends
 name|CharsetRecog_sbcs
 block|{
-comment|//arabic shaping class, method shape/unshape
-comment|//protected static ArabicShaping as = new ArabicShaping(ArabicShaping.LETTERS_UNSHAPE);
-specifier|protected
-name|byte
-index|[]
-name|prev_fInputBytes
-init|=
-literal|null
-decl_stmt|;
 specifier|protected
 specifier|static
 name|byte
@@ -22125,7 +22116,7 @@ operator|(
 name|byte
 operator|)
 literal|0x40
-block|,          }
+block|,         }
 decl_stmt|;
 specifier|protected
 specifier|static
@@ -23430,7 +23421,16 @@ operator|(
 name|byte
 operator|)
 literal|0xFF
-block|,          }
+block|,         }
+decl_stmt|;
+comment|//arabic shaping class, method shape/unshape
+comment|//protected static ArabicShaping as = new ArabicShaping(ArabicShaping.LETTERS_UNSHAPE);
+specifier|protected
+name|byte
+index|[]
+name|prev_fInputBytes
+init|=
+literal|null
 decl_stmt|;
 specifier|public
 name|String

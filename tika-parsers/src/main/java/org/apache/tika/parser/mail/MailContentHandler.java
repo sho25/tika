@@ -874,7 +874,7 @@ name|MimeException
 throws|,
 name|IOException
 block|{     }
-comment|/**      * Header for the whole message or its parts      *       * @see http://james.apache.org/mime4j/apidocs/org/apache/james/mime4j/parser/      *      Field.html      **/
+comment|/**      * Header for the whole message or its parts      *      * @see http://james.apache.org/mime4j/apidocs/org/apache/james/mime4j/parser/      * Field.html      */
 specifier|public
 name|void
 name|field

@@ -220,7 +220,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream and the given document metadata, most  * notably the<code>charset</code> parameter of a  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE} value.  *<p>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain; charset=...</code></dd>  *</dl>  */
+comment|/**  * Plain text parser. The text encoding of the document stream is  * automatically detected based on the byte patterns found at the  * beginning of the stream and the given document metadata, most  * notably the<code>charset</code> parameter of a  * {@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE} value.  *<p/>  * This parser sets the following output metadata entries:  *<dl>  *<dt>{@link org.apache.tika.metadata.HttpHeaders#CONTENT_TYPE}</dt>  *<dd><code>text/plain; charset=...</code></dd>  *</dl>  */
 end_comment
 
 begin_class
@@ -230,7 +230,7 @@ name|TXTParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/** Serial version UID */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final

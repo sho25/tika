@@ -73,6 +73,17 @@ name|DefaultHtmlMapper
 implements|implements
 name|HtmlMapper
 block|{
+comment|/**      * @since Apache Tika 0.8      */
+specifier|public
+specifier|static
+specifier|final
+name|HtmlMapper
+name|INSTANCE
+init|=
+operator|new
+name|DefaultHtmlMapper
+argument_list|()
+decl_stmt|;
 comment|// Based on http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd
 specifier|private
 specifier|static
@@ -717,17 +728,6 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @since Apache Tika 0.8      */
-specifier|public
-specifier|static
-specifier|final
-name|HtmlMapper
-name|INSTANCE
-init|=
-operator|new
-name|DefaultHtmlMapper
-argument_list|()
-decl_stmt|;
 specifier|public
 name|String
 name|mapSafeElement
@@ -745,7 +745,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/** Normalizes an attribute name. Assumes that the element name       * is valid and normalized       */
+comment|/**      * Normalizes an attribute name. Assumes that the element name      * is valid and normalized      */
 specifier|public
 name|String
 name|mapSafeAttribute

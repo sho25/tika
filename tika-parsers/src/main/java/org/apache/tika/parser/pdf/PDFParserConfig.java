@@ -19,20 +19,6 @@ end_comment
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|pdfbox
-operator|.
-name|util
-operator|.
-name|PDFTextStripper
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -81,8 +67,22 @@ name|Properties
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|util
+operator|.
+name|PDFTextStripper
+import|;
+end_import
+
 begin_comment
-comment|/**  * Config for PDFParser.  *   * This allows parameters to be set programmatically:  *<ol>  *<li>Calls to PDFParser, i.e. parser.getPDFParserConfig().setEnableAutoSpace() (as before)</li>  *<li>Constructor of PDFParser</li>  *<li>Passing to PDFParser through a ParseContext: context.set(PDFParserConfig.class, config);</li>  *</ol>  *   * Parameters can also be set by modifying the PDFParserConfig.properties file,  * which lives in the expected places, in trunk:  * tika-parsers/src/main/resources/org/apache/tika/parser/pdf  *   * Or, in tika-app-x.x.jar or tika-parsers-x.x.jar:  * org/apache/tika/parser/pdf  *  */
+comment|/**  * Config for PDFParser.  *<p/>  * This allows parameters to be set programmatically:  *<ol>  *<li>Calls to PDFParser, i.e. parser.getPDFParserConfig().setEnableAutoSpace() (as before)</li>  *<li>Constructor of PDFParser</li>  *<li>Passing to PDFParser through a ParseContext: context.set(PDFParserConfig.class, config);</li>  *</ol>  *<p/>  * Parameters can also be set by modifying the PDFParserConfig.properties file,  * which lives in the expected places, in trunk:  * tika-parsers/src/main/resources/org/apache/tika/parser/pdf  *<p/>  * Or, in tika-app-x.x.jar or tika-parsers-x.x.jar:  * org/apache/tika/parser/pdf  */
 end_comment
 
 begin_class
@@ -189,7 +189,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * If there is an IOException, this silently swallows the exception      * and goes back to the default.      *       * @param is      */
+comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * If there is an IOException, this silently swallows the exception      * and goes back to the default.      *      * @param is      */
 specifier|public
 name|PDFParserConfig
 parameter_list|(
@@ -457,7 +457,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Configures the given pdf2XHTML.      *       * @param pdf2XHTML      */
+comment|/**      * Configures the given pdf2XHTML.      *      * @param pdf2XHTML      */
 specifier|public
 name|void
 name|configure
@@ -548,7 +548,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *       * @param extractAcroFormContent      */
+comment|/**      * @see #setExtractAcroFormContent(boolean)      */
+specifier|public
+name|boolean
+name|getExtractAcroFormContent
+parameter_list|()
+block|{
+return|return
+name|extractAcroFormContent
+return|;
+block|}
+comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *      * @param extractAcroFormContent      */
 specifier|public
 name|void
 name|setExtractAcroFormContent
@@ -564,17 +574,17 @@ operator|=
 name|extractAcroFormContent
 expr_stmt|;
 block|}
-comment|/** @see #setExtractAcroFormContent(boolean) */
+comment|/**      * @see #setExtractInlineImages(boolean)      */
 specifier|public
 name|boolean
-name|getExtractAcroFormContent
+name|getExtractInlineImages
 parameter_list|()
 block|{
 return|return
-name|extractAcroFormContent
+name|extractInlineImages
 return|;
 block|}
-comment|/**      * If true, extract inline embedded OBXImages.      *<b>Beware:</b> some PDF documents of modest size (~4MB) can contain      * thousands of embedded images totaling> 2.5 GB.  Also, at least as of PDFBox 1.8.5,       * there can be surprisingly large memory consumption and/or out of memory errors.      * Set to<code>true</code> with caution.      *<p>      * The default is<code>false</code>.      *<p>      * See also: {@see #setExtractUniqueInlineImagesOnly(boolean)};      *       * @param extractInlineImages      */
+comment|/**      * If true, extract inline embedded OBXImages.      *<b>Beware:</b> some PDF documents of modest size (~4MB) can contain      * thousands of embedded images totaling> 2.5 GB.  Also, at least as of PDFBox 1.8.5,      * there can be surprisingly large memory consumption and/or out of memory errors.      * Set to<code>true</code> with caution.      *<p/>      * The default is<code>false</code>.      *<p/>      * See also: {@see #setExtractUniqueInlineImagesOnly(boolean)};      *      * @param extractInlineImages      */
 specifier|public
 name|void
 name|setExtractInlineImages
@@ -590,17 +600,17 @@ operator|=
 name|extractInlineImages
 expr_stmt|;
 block|}
-comment|/** @see #setExtractInlineImages(boolean) */
+comment|/**      * @see #setExtractUniqueInlineImagesOnly(boolean)      */
 specifier|public
 name|boolean
-name|getExtractInlineImages
+name|getExtractUniqueInlineImagesOnly
 parameter_list|()
 block|{
 return|return
-name|extractInlineImages
+name|extractUniqueInlineImagesOnly
 return|;
 block|}
-comment|/**      * Multiple pages within a PDF file might refer to the same underlying image.      * If {@link #extractUniqueInlineImagesOnly} is set to<code>false</code>, the      * parser will call the EmbeddedExtractor each time the image appears on a page.      * This might be desired for some use cases.  However, to avoid duplication of       * extracted images, set this to<code>true</code>.  The default is<code>true</code>.      *<p>      * Note that uniqueness is determined only by the underlying PDF COSObject id, not by       * file hash or similar equality metric.      * If the PDF actually contains multiple copies of the same image       * -- all with different object ids -- then all images will be extracted.      *<p>      * For this parameter to have any effect, {@link #extractInlineImages} must be       * set to<code>true</code>.      *       * @param extractUniqueInlineImagesOnly      */
+comment|/**      * Multiple pages within a PDF file might refer to the same underlying image.      * If {@link #extractUniqueInlineImagesOnly} is set to<code>false</code>, the      * parser will call the EmbeddedExtractor each time the image appears on a page.      * This might be desired for some use cases.  However, to avoid duplication of      * extracted images, set this to<code>true</code>.  The default is<code>true</code>.      *<p/>      * Note that uniqueness is determined only by the underlying PDF COSObject id, not by      * file hash or similar equality metric.      * If the PDF actually contains multiple copies of the same image      * -- all with different object ids -- then all images will be extracted.      *<p/>      * For this parameter to have any effect, {@link #extractInlineImages} must be      * set to<code>true</code>.      *      * @param extractUniqueInlineImagesOnly      */
 specifier|public
 name|void
 name|setExtractUniqueInlineImagesOnly
@@ -616,17 +626,7 @@ operator|=
 name|extractUniqueInlineImagesOnly
 expr_stmt|;
 block|}
-comment|/** @see #setExtractUniqueInlineImagesOnly(boolean) */
-specifier|public
-name|boolean
-name|getExtractUniqueInlineImagesOnly
-parameter_list|()
-block|{
-return|return
-name|extractUniqueInlineImagesOnly
-return|;
-block|}
-comment|/** @see #setEnableAutoSpace(boolean) */
+comment|/**      * @see #setEnableAutoSpace(boolean)      */
 specifier|public
 name|boolean
 name|getEnableAutoSpace
@@ -636,7 +636,7 @@ return|return
 name|enableAutoSpace
 return|;
 block|}
-comment|/**      *  If true (the default), the parser should estimate      *  where spaces should be inserted between words.  For      *  many PDFs this is necessary as they do not include      *  explicit whitespace characters.      */
+comment|/**      * If true (the default), the parser should estimate      * where spaces should be inserted between words.  For      * many PDFs this is necessary as they do not include      * explicit whitespace characters.      */
 specifier|public
 name|void
 name|setEnableAutoSpace
@@ -652,7 +652,7 @@ operator|=
 name|enableAutoSpace
 expr_stmt|;
 block|}
-comment|/** @see #setSuppressDuplicateOverlappingText(boolean)*/
+comment|/**      * @see #setSuppressDuplicateOverlappingText(boolean)      */
 specifier|public
 name|boolean
 name|getSuppressDuplicateOverlappingText
@@ -662,7 +662,7 @@ return|return
 name|suppressDuplicateOverlappingText
 return|;
 block|}
-comment|/**      *  If true, the parser should try to remove duplicated      *  text over the same region.  This is needed for some      *  PDFs that achieve bolding by re-writing the same      *  text in the same area.  Note that this can      *  slow down extraction substantially (PDFBOX-956) and      *  sometimes remove characters that were not in fact      *  duplicated (PDFBOX-1155).  By default this is disabled.      */
+comment|/**      * If true, the parser should try to remove duplicated      * text over the same region.  This is needed for some      * PDFs that achieve bolding by re-writing the same      * text in the same area.  Note that this can      * slow down extraction substantially (PDFBOX-956) and      * sometimes remove characters that were not in fact      * duplicated (PDFBOX-1155).  By default this is disabled.      */
 specifier|public
 name|void
 name|setSuppressDuplicateOverlappingText
@@ -678,7 +678,7 @@ operator|=
 name|suppressDuplicateOverlappingText
 expr_stmt|;
 block|}
-comment|/** @see #setExtractAnnotationText(boolean)*/
+comment|/**      * @see #setExtractAnnotationText(boolean)      */
 specifier|public
 name|boolean
 name|getExtractAnnotationText
@@ -704,7 +704,7 @@ operator|=
 name|extractAnnotationText
 expr_stmt|;
 block|}
-comment|/** @see #setSortByPosition(boolean)*/
+comment|/**      * @see #setSortByPosition(boolean)      */
 specifier|public
 name|boolean
 name|getSortByPosition
@@ -714,7 +714,7 @@ return|return
 name|sortByPosition
 return|;
 block|}
-comment|/**      *  If true, sort text tokens by their x/y position      *  before extracting text.  This may be necessary for      *  some PDFs (if the text tokens are not rendered "in      *  order"), while for other PDFs it can produce the      *  wrong result (for example if there are 2 columns,      *  the text will be interleaved).  Default is false.      */
+comment|/**      * If true, sort text tokens by their x/y position      * before extracting text.  This may be necessary for      * some PDFs (if the text tokens are not rendered "in      * order"), while for other PDFs it can produce the      * wrong result (for example if there are 2 columns,      * the text will be interleaved).  Default is false.      */
 specifier|public
 name|void
 name|setSortByPosition
@@ -730,7 +730,7 @@ operator|=
 name|sortByPosition
 expr_stmt|;
 block|}
-comment|/** @see #setUseNonSequentialParser(boolean)*/
+comment|/**      * @see #setUseNonSequentialParser(boolean)      */
 specifier|public
 name|boolean
 name|getUseNonSequentialParser
@@ -740,7 +740,7 @@ return|return
 name|useNonSequentialParser
 return|;
 block|}
-comment|/**      * If true, uses PDFBox's non-sequential parser.      * The non-sequential parser should be much faster than the traditional      * full doc parser.  However, until PDFBOX-XXX is fixed,       * the non-sequential parser fails      * to extract some document metadata.      *<p>      * Default is false (use the traditional parser)      * @param useNonSequentialParser      */
+comment|/**      * If true, uses PDFBox's non-sequential parser.      * The non-sequential parser should be much faster than the traditional      * full doc parser.  However, until PDFBOX-XXX is fixed,      * the non-sequential parser fails      * to extract some document metadata.      *<p/>      * Default is false (use the traditional parser)      *      * @param useNonSequentialParser      */
 specifier|public
 name|void
 name|setUseNonSequentialParser
@@ -756,7 +756,7 @@ operator|=
 name|useNonSequentialParser
 expr_stmt|;
 block|}
-comment|/** @see #setAverageCharTolerance(Float)*/
+comment|/**      * @see #setAverageCharTolerance(Float)      */
 specifier|public
 name|Float
 name|getAverageCharTolerance
@@ -782,7 +782,7 @@ operator|=
 name|averageCharTolerance
 expr_stmt|;
 block|}
-comment|/** @see #setSpacingTolerance(Float)*/
+comment|/**      * @see #setSpacingTolerance(Float)      */
 specifier|public
 name|Float
 name|getSpacingTolerance
@@ -809,6 +809,15 @@ name|spacingTolerance
 expr_stmt|;
 block|}
 specifier|public
+name|AccessChecker
+name|getAccessChecker
+parameter_list|()
+block|{
+return|return
+name|accessChecker
+return|;
+block|}
+specifier|public
 name|void
 name|setAccessChecker
 parameter_list|(
@@ -822,15 +831,6 @@ name|accessChecker
 operator|=
 name|accessChecker
 expr_stmt|;
-block|}
-specifier|public
-name|AccessChecker
-name|getAccessChecker
-parameter_list|()
-block|{
-return|return
-name|accessChecker
-return|;
 block|}
 specifier|private
 name|boolean

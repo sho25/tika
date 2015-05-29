@@ -26,7 +26,7 @@ specifier|public
 interface|interface
 name|HtmlMapper
 block|{
-comment|/**      * Maps "safe" HTML element names to semantic XHTML equivalents. If the      * given element is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the element      * will be ignored but the content inside it is still processed. See      * the {@link #isDiscardElement(String)} method for a way to discard      * the entire contents of an element.      *      * @param name HTML element name (upper case)      * @return XHTML element name (lower case), or      *<code>null</code> if the element is unsafe       */
+comment|/**      * Maps "safe" HTML element names to semantic XHTML equivalents. If the      * given element is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the element      * will be ignored but the content inside it is still processed. See      * the {@link #isDiscardElement(String)} method for a way to discard      * the entire contents of an element.      *      * @param name HTML element name (upper case)      * @return XHTML element name (lower case), or      *<code>null</code> if the element is unsafe      */
 name|String
 name|mapSafeElement
 parameter_list|(
@@ -34,7 +34,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Checks whether all content within the given HTML element should be      * discarded instead of including it in the parse output.      *      * @param name HTML element name (upper case)      * @return<code>true</code> if content inside the named element      *         should be ignored,<code>false</code> otherwise      */
+comment|/**      * Checks whether all content within the given HTML element should be      * discarded instead of including it in the parse output.      *      * @param name HTML element name (upper case)      * @return<code>true</code> if content inside the named element      * should be ignored,<code>false</code> otherwise      */
 name|boolean
 name|isDiscardElement
 parameter_list|(
@@ -42,7 +42,7 @@ name|String
 name|name
 parameter_list|)
 function_decl|;
-comment|/**      * Maps "safe" HTML attribute names to semantic XHTML equivalents. If the      * given attribute is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the attribute      * will be ignored. This method assumes that the element name       * is valid and normalised.      *      * @param elementName HTML element name (lower case)      * @param attributeName HTML attribute name (lower case)      * @return XHTML attribute name (lower case), or      *<code>null</code> if the element is unsafe       */
+comment|/**      * Maps "safe" HTML attribute names to semantic XHTML equivalents. If the      * given attribute is unknown or deemed unsafe for inclusion in the parse      * output, then this method returns<code>null</code> and the attribute      * will be ignored. This method assumes that the element name      * is valid and normalised.      *      * @param elementName   HTML element name (lower case)      * @param attributeName HTML attribute name (lower case)      * @return XHTML attribute name (lower case), or      *<code>null</code> if the element is unsafe      */
 name|String
 name|mapSafeAttribute
 parameter_list|(

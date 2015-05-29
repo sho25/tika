@@ -23,7 +23,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Point
+name|*
 import|;
 end_import
 
@@ -790,7 +790,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Excel parser implementation which uses POI's Event API  * to handle the contents of a Workbook.  *<p>  * The Event API uses a much smaller memory footprint than  *<code>HSSFWorkbook</code> when processing excel files  * but at the cost of more complexity.  *<p>  * With the Event API a<i>listener</i> is registered for  * specific record types and those records are created,  * fired off to the listener and then discarded as the stream  * is being processed.  *  * @see org.apache.poi.hssf.eventusermodel.HSSFListener  * @see<a href="http://poi.apache.org/hssf/how-to.html#event_api">  * POI Event API How To</a>  */
+comment|/**  * Excel parser implementation which uses POI's Event API  * to handle the contents of a Workbook.  *<p/>  * The Event API uses a much smaller memory footprint than  *<code>HSSFWorkbook</code> when processing excel files  * but at the cost of more complexity.  *<p/>  * With the Event API a<i>listener</i> is registered for  * specific record types and those records are created,  * fired off to the listener and then discarded as the stream  * is being processed.  *  * @see org.apache.poi.hssf.eventusermodel.HSSFListener  * @see<a href="http://poi.apache.org/hssf/how-to.html#event_api">  * POI Event API How To</a>  */
 end_comment
 
 begin_class
@@ -800,13 +800,6 @@ name|ExcelExtractor
 extends|extends
 name|AbstractPOIFSExtractor
 block|{
-comment|/**      *<code>true</code> if the HSSFListener should be registered      * to listen for all records or<code>false</code> (the default)      * if the listener should be configured to only receive specified      * records.      */
-specifier|private
-name|boolean
-name|listenForAllRecords
-init|=
-literal|false
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -822,6 +815,13 @@ name|String
 name|BOOK_ENTRY
 init|=
 literal|"Book"
+decl_stmt|;
+comment|/**      *<code>true</code> if the HSSFListener should be registered      * to listen for all records or<code>false</code> (the default)      * if the listener should be configured to only receive specified      * records.      */
+specifier|private
+name|boolean
+name|listenForAllRecords
+init|=
+literal|false
 decl_stmt|;
 specifier|public
 name|ExcelExtractor
@@ -851,7 +851,7 @@ return|return
 name|listenForAllRecords
 return|;
 block|}
-comment|/**      * Specifies whether this parser should to listen for all      * records or just for the specified few.      *<p>      *<strong>Note:</strong> Under normal operation this setting should      * be<code>false</code> (the default), but you can experiment with      * this setting for testing and debugging purposes.      *      * @param listenForAllRecords<code>true</code> if the HSSFListener      * should be registered to listen for all records or<code>false</code>      * if the listener should be configured to only receive specified records.      */
+comment|/**      * Specifies whether this parser should to listen for all      * records or just for the specified few.      *<p/>      *<strong>Note:</strong> Under normal operation this setting should      * be<code>false</code> (the default), but you can experiment with      * this setting for testing and debugging purposes.      *      * @param listenForAllRecords<code>true</code> if the HSSFListener      *                            should be registered to listen for all records or<code>false</code>      *                            if the listener should be configured to only receive specified records.      */
 specifier|public
 name|void
 name|setListenForAllRecords
@@ -867,7 +867,7 @@ operator|=
 name|listenForAllRecords
 expr_stmt|;
 block|}
-comment|/**      * Extracts text from an Excel Workbook writing the extracted content      * to the specified {@link Appendable}.      *      * @param filesystem POI file system      * @throws IOException if an error occurs processing the workbook      * or writing the extracted content      */
+comment|/**      * Extracts text from an Excel Workbook writing the extracted content      * to the specified {@link Appendable}.      *      * @param filesystem POI file system      * @throws IOException if an error occurs processing the workbook      *                     or writing the extracted content      */
 specifier|protected
 name|void
 name|parse
@@ -1079,6 +1079,12 @@ specifier|final
 name|AbstractPOIFSExtractor
 name|extractor
 decl_stmt|;
+comment|/**          * Format for rendering numbers in the worksheet. Currently we just          * use the platform default formatting.          *          * @see<a href="https://issues.apache.org/jira/browse/TIKA-103">TIKA-103</a>          */
+specifier|private
+specifier|final
+name|NumberFormat
+name|format
+decl_stmt|;
 comment|/**          * Potential exception thrown by the content handler. When set to          * non-<code>null</code>, causes all subsequent HSSF records to be          * ignored and the stored exception to be thrown when          * {@link #throwStoredException()} is invoked.          */
 specifier|private
 name|Exception
@@ -1135,7 +1141,7 @@ name|currentSheet
 init|=
 literal|null
 decl_stmt|;
-comment|/**          * Extra text or cells that crops up, typically as part of a          *  worksheet but not always.          */
+comment|/**          * Extra text or cells that crops up, typically as part of a          * worksheet but not always.          */
 specifier|private
 name|List
 argument_list|<
@@ -1150,13 +1156,7 @@ name|Cell
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/**          * Format for rendering numbers in the worksheet. Currently we just          * use the platform default formatting.          *          * @see<a href="https://issues.apache.org/jira/browse/TIKA-103">TIKA-103</a>          */
-specifier|private
-specifier|final
-name|NumberFormat
-name|format
-decl_stmt|;
-comment|/**          * These aren't complete when we first see them, as the          *  depend on continue records that aren't always          *  contiguous. Collect them for later processing.          */
+comment|/**          * These aren't complete when we first see them, as the          * depend on continue records that aren't always          * contiguous. Collect them for later processing.          */
 specifier|private
 name|List
 argument_list|<
@@ -1221,7 +1221,7 @@ name|locale
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Entry point to listener to start the processing of a file.          *          * @param filesystem POI file system.          * @param listenForAllRecords sets whether the listener is configured to listen          * for all records types or not.          * @throws IOException on any IO errors.          * @throws SAXException on any SAX parsing errors.          */
+comment|/**          * Entry point to listener to start the processing of a file.          *          * @param filesystem          POI file system.          * @param listenForAllRecords sets whether the listener is configured to listen          *                            for all records types or not.          * @throws IOException  on any IO errors.          * @throws SAXException on any SAX parsing errors.          */
 specifier|public
 name|void
 name|processFile
@@ -2327,7 +2327,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Adds the given cell (unless<code>null</code>) to the current          * worksheet (if any) at the position (if any) of the given record.          *          * @param record record that holds the cell value          * @param cell cell value (or<code>null</code>)          */
+comment|/**          * Adds the given cell (unless<code>null</code>) to the current          * worksheet (if any) at the position (if any) of the given record.          *          * @param record record that holds the cell value          * @param cell   cell value (or<code>null</code>)          */
 specifier|private
 name|void
 name|addCell
@@ -2410,7 +2410,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Adds a text cell with the given text comment. The given text          * is trimmed, and ignored if<code>null</code> or empty.          *          * @param record record that holds the text value          * @param text text content, may be<code>null</code>          * @throws SAXException          */
+comment|/**          * Adds a text cell with the given text comment. The given text          * is trimmed, and ignored if<code>null</code> or empty.          *          * @param record record that holds the text value          * @param text   text content, may be<code>null</code>          * @throws SAXException          */
 specifier|private
 name|void
 name|addTextCell

@@ -464,7 +464,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Base class for all Tika OOXML extractors.  *   * Tika extractors decorate POI extractors so that the parsed content of  * documents is returned as a sequence of XHTML SAX events. Subclasses must  * implement the buildXHTML method {@link #buildXHTML(XHTMLContentHandler)} that  * populates the {@link XHTMLContentHandler} object received as parameter.  */
+comment|/**  * Base class for all Tika OOXML extractors.  *<p/>  * Tika extractors decorate POI extractors so that the parsed content of  * documents is returned as a sequence of XHTML SAX events. Subclasses must  * implement the buildXHTML method {@link #buildXHTML(XHTMLContentHandler)} that  * populates the {@link XHTMLContentHandler} object received as parameter.  */
 end_comment
 
 begin_class
@@ -511,14 +511,14 @@ name|TYPE_OLE_OBJECT
 init|=
 literal|"application/vnd.openxmlformats-officedocument.oleObject"
 decl_stmt|;
-specifier|protected
-name|POIXMLTextExtractor
-name|extractor
-decl_stmt|;
 specifier|private
 specifier|final
 name|EmbeddedDocumentExtractor
 name|embeddedExtractor
+decl_stmt|;
+specifier|protected
+name|POIXMLTextExtractor
+name|extractor
 decl_stmt|;
 specifier|public
 name|AbstractOOXMLExtractor
@@ -599,7 +599,7 @@ name|extractor
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getXHTML(org.xml.sax.ContentHandler,      *      org.apache.tika.metadata.Metadata)      */
+comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getXHTML(org.xml.sax.ContentHandler,      * org.apache.tika.metadata.Metadata)      */
 specifier|public
 name|void
 name|getXHTML
@@ -960,7 +960,7 @@ parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
-block|{                        }
+block|{          }
 block|}
 specifier|private
 name|void
@@ -1651,7 +1651,7 @@ name|XmlException
 throws|,
 name|IOException
 function_decl|;
-comment|/**      * Return a list of the main parts of the document, used      *  when searching for embedded resources.      * This should be all the parts of the document that end      *  up with things embedded into them.      */
+comment|/**      * Return a list of the main parts of the document, used      * when searching for embedded resources.      * This should be all the parts of the document that end      * up with things embedded into them.      */
 specifier|protected
 specifier|abstract
 name|List

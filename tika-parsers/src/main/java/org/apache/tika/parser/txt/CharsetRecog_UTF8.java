@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/** ******************************************************************************* * Copyright (C) 2005 - 2007, International Business Machines Corporation and  * * others. All Rights Reserved.                                                * ******************************************************************************* */
+comment|/**  * ******************************************************************************  * Copyright (C) 2005 - 2007, International Business Machines Corporation and  *  * others. All Rights Reserved.                                                *  * ******************************************************************************  */
 end_comment
 
 begin_package

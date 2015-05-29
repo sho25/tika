@@ -860,7 +860,7 @@ case|:
 return|return
 literal|"none"
 return|;
-default|default :
+default|default:
 comment|//do we really want to silently swallow these uncovered cases?
 throw|throw
 operator|new

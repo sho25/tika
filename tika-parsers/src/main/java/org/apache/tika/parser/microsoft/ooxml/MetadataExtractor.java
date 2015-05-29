@@ -47,18 +47,6 @@ name|apache
 operator|.
 name|poi
 operator|.
-name|POIXMLTextExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
 name|POIXMLProperties
 operator|.
 name|CoreProperties
@@ -90,6 +78,18 @@ operator|.
 name|POIXMLProperties
 operator|.
 name|ExtendedProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|POIXMLTextExtractor
 import|;
 end_import
 
@@ -306,7 +306,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * OOXML metadata extractor.  *   * Currently POI doesn't support metadata extraction for OOXML.  *   * @see OOXMLExtractor#getMetadataExtractor()  */
+comment|/**  * OOXML metadata extractor.  *<p/>  * Currently POI doesn't support metadata extraction for OOXML.  *  * @see OOXMLExtractor#getMetadataExtractor()  */
 end_comment
 
 begin_class
