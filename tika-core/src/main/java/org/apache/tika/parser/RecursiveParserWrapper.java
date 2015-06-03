@@ -612,6 +612,8 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+finally|finally
+block|{
 name|long
 name|elapsedMillis
 init|=
@@ -672,6 +674,7 @@ name|metadata
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      *       * The first element in the returned list represents the       * data from the outer container file.  There is no guarantee      * about the ordering of the list after that.      *       * @return list of Metadata objects that were gathered during the parse      */
 specifier|public
