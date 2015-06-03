@@ -1729,23 +1729,6 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"CON: "
-operator|+
-name|con
-operator|+
-literal|" :: "
-operator|+
-name|msg
-operator|+
-literal|"<<"
-argument_list|)
-expr_stmt|;
 name|t
 operator|=
 operator|(
