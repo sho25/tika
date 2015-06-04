@@ -705,7 +705,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|//actual level number
+comment|//actual level number; can return empty string if numberformatter fails
 specifier|private
 name|String
 name|formatNum
@@ -910,6 +910,8 @@ return|return
 literal|""
 return|;
 block|}
+try|try
+block|{
 return|return
 name|NumberFormatter
 operator|.
@@ -920,6 +922,17 @@ argument_list|,
 name|numFmtStyle
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 block|}
 specifier|private
 name|String

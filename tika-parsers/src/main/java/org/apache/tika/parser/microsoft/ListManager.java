@@ -19,6 +19,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|NoSuchElementException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -189,7 +199,7 @@ name|getListTables
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Get the formatted number for a given paragraph      *<p/>      *<p><em>Note:</em> This only works correctly if called subsequently for<em>all</em> paragraphs in a valid selection (main document, text field, ...) which are part of a list.</p>      *      * @param paragraph list paragraph to process      * @return String which represents the numbering of this list paragraph; never {@code null}      * @throws IllegalArgumentException If the given paragraph is {@code null} or is not part of a list      * @throws IllegalStateException    If problems with the document are encountered      */
+comment|/**      * Get the formatted number for a given paragraph      *<p/>      *<p><em>Note:</em> This only works correctly if called subsequently for<em>all</em> paragraphs in a valid selection (main document, text field, ...) which are part of a list.</p>      *      * @param paragraph list paragraph to process      * @return String which represents the numbering of this list paragraph; never {@code null}, can be empty string, though,       *        if something goes wrong in getList()      * @throws IllegalArgumentException If the given paragraph is {@code null} or is not part of a list      */
 specifier|public
 name|String
 name|getFormattedNumber
@@ -232,6 +242,13 @@ comment|//ilfo is equivalent to docx's num
 name|int
 name|currAbNumId
 init|=
+operator|-
+literal|1
+decl_stmt|;
+try|try
+block|{
+name|currAbNumId
+operator|=
 name|paragraph
 operator|.
 name|getList
@@ -239,7 +256,39 @@ argument_list|()
 operator|.
 name|getLsid
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoSuchElementException
+name|e
+parameter_list|)
+block|{
+comment|//somewhat frequent exception when initializing HWPFList
+return|return
+literal|""
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|""
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|NullPointerException
+name|e
+parameter_list|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 name|int
 name|currNumId
 init|=
@@ -862,15 +911,10 @@ literal|"none"
 return|;
 default|default:
 comment|//do we really want to silently swallow these uncovered cases?
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"NOT COVERED: "
-operator|+
-name|numberFormat
-argument_list|)
-throw|;
+comment|//throw new RuntimeException("NOT COVERED: " + numberFormat);
+return|return
+literal|"decimal"
+return|;
 block|}
 block|}
 block|}

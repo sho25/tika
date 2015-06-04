@@ -21,6 +21,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|math
+operator|.
+name|BigInteger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -48,6 +58,22 @@ operator|.
 name|usermodel
 operator|.
 name|XWPFDocument
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|xwpf
+operator|.
+name|usermodel
+operator|.
+name|XWPFNum
 import|;
 end_import
 
@@ -256,6 +282,7 @@ name|getNumbering
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      *      * @param paragraph paragraph      * @return the formatted number or an empty string if something went wrong      */
 specifier|public
 name|String
 name|getFormattedNumber
@@ -276,8 +303,8 @@ operator|.
 name|intValue
 argument_list|()
 decl_stmt|;
-name|CTNum
-name|ctNum
+name|XWPFNum
+name|xwpfNum
 init|=
 name|numbering
 operator|.
@@ -288,6 +315,22 @@ operator|.
 name|getNumID
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|xwpfNum
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
+name|CTNum
+name|ctNum
+init|=
+name|xwpfNum
 operator|.
 name|getCTNum
 argument_list|()
