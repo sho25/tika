@@ -45,6 +45,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|TikaConfig
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -103,6 +117,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|Parser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ParserDecorator
 import|;
 end_import
@@ -132,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CTAKESParser decorates {@see AutoDetectParser} and leverages on {@see  * CTAKESContentHandler} to extract biomedical information from clinical text using Apache cTAKES.  *   */
+comment|/**  * CTAKESParser decorates a {@see Parser} and leverages on   * {@see CTAKESContentHandler} to extract biomedical information from   * clinical text using Apache cTAKES.  *<p>It is normally called by supplying an instance to   *  {@link AutoDetectParser}, such as:  *<code>AutoDetectParser parser = new AutoDetectParser(new CTakesParser());</code>  *<p>It can also be used by giving a Tika Config file similar to:  *<code>  *&gt;properties>  *&gt;parsers>  *&gt;parser class="org.apache.tika.parser.ctakes.CTAKESParser">  *&gt;parser class="org.apache.tika.parser.DefaultParser"/>  *&gt;/parser>  *&gt;/parsers>  *&gt;/properties>  *</code>  *<p>Because this is a Parser Decorator, and not a normal Parser in  *  it's own right, it isn't normally selected via the Parser Service Loader.  */
 end_comment
 
 begin_class
@@ -152,16 +180,48 @@ init|=
 operator|-
 literal|2313482748027097961L
 decl_stmt|;
-comment|/**      * Default constructor.      */
+comment|/**      * Wraps the default Parser      */
 specifier|public
 name|CTAKESParser
 parameter_list|()
 block|{
+name|this
+argument_list|(
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Wraps the default Parser for this Config      */
+specifier|public
+name|CTAKESParser
+parameter_list|(
+name|TikaConfig
+name|config
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|config
+operator|.
+name|getParser
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Wraps the specified Parser      */
+specifier|public
+name|CTAKESParser
+parameter_list|(
+name|Parser
+name|parser
+parameter_list|)
+block|{
 name|super
 argument_list|(
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|parser
 argument_list|)
 expr_stmt|;
 block|}
@@ -232,6 +292,17 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDecorationName
+parameter_list|()
+block|{
+return|return
+literal|"CTakes"
+return|;
 block|}
 block|}
 end_class
