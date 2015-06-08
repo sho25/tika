@@ -554,6 +554,13 @@ argument_list|(
 literal|"<p>Composite Parser</p>"
 argument_list|)
 expr_stmt|;
+name|html
+operator|.
+name|append
+argument_list|(
+literal|"<div style=\"margin-left: 1em\">\n"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Parser
@@ -582,6 +589,13 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|html
+operator|.
+name|append
+argument_list|(
+literal|"</div>\n"
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -653,6 +667,13 @@ literal|"</p>"
 argument_list|)
 expr_stmt|;
 block|}
+name|html
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|GET
