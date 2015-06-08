@@ -82,7 +82,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * Configuration for {@see CTAKESContentHandler}.  *   * This class allows to enable cTAKES and set its parameters.  *   */
+comment|/**  * Configuration for {@see CTAKESContentHandler}.  *   * This class allows to enable cTAKES and set its parameters.  */
 end_comment
 
 begin_class
@@ -92,7 +92,7 @@ name|CTAKESConfig
 implements|implements
 name|Serializable
 block|{
-comment|/** 	 * Serial version UID 	 */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -185,7 +185,7 @@ name|separatorChar
 init|=
 literal|':'
 decl_stmt|;
-comment|/** 	 * Default constructor. 	 */
+comment|/**      * Default constructor.      */
 specifier|public
 name|CTAKESConfig
 parameter_list|()
@@ -204,7 +204,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Loads properties from InputStream and then tries to close InputStream. 	 * @param stream {@see InputStream} object used to read properties. 	 */
+comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * @param stream {@see InputStream} object used to read properties.      */
 specifier|public
 name|CTAKESConfig
 parameter_list|(
@@ -409,7 +409,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the path to XML descriptor for AnalysisEngine. 	 * @return the path to XML descriptor for AnalysisEngine. 	 */
+comment|/**      * Returns the path to XML descriptor for AnalysisEngine.      * @return the path to XML descriptor for AnalysisEngine.      */
 specifier|public
 name|String
 name|getAeDescriptorPath
@@ -419,7 +419,7 @@ return|return
 name|aeDescriptorPath
 return|;
 block|}
-comment|/** 	 * Returns the UMLS username. 	 * @return the UMLS username. 	 */
+comment|/**      * Returns the UMLS username.      * @return the UMLS username.      */
 specifier|public
 name|String
 name|getUMLSUser
@@ -429,7 +429,7 @@ return|return
 name|UMLSUser
 return|;
 block|}
-comment|/** 	 * Returns the UMLS password. 	 * @return the UMLS password. 	 */
+comment|/**      * Returns the UMLS password.      * @return the UMLS password.      */
 specifier|public
 name|String
 name|getUMLSPass
@@ -439,7 +439,7 @@ return|return
 name|UMLSPass
 return|;
 block|}
-comment|/** 	 * Returns {@code true} if formatted output is enabled, {@code false} otherwise. 	 * @return {@code true} if formatted output is enabled, {@code false} otherwise. 	 */
+comment|/**      * Returns {@code true} if formatted output is enabled, {@code false} otherwise.      * @return {@code true} if formatted output is enabled, {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|isPrettyPrint
@@ -449,7 +449,7 @@ return|return
 name|prettyPrint
 return|;
 block|}
-comment|/** 	 * Returns the type of cTAKES (UIMA) serializer used to write the CAS. 	 * @return the type of cTAKES serializer. 	 */
+comment|/**      * Returns the type of cTAKES (UIMA) serializer used to write the CAS.      * @return the type of cTAKES serializer.      */
 specifier|public
 name|CTAKESSerializer
 name|getSerializerType
@@ -459,7 +459,7 @@ return|return
 name|serializerType
 return|;
 block|}
-comment|/** 	 * Returns an {@see OutputStream} object used write the CAS. 	 * @return {@see OutputStream} object used write the CAS. 	 */
+comment|/**      * Returns an {@see OutputStream} object used write the CAS.      * @return {@see OutputStream} object used write the CAS.      */
 specifier|public
 name|OutputStream
 name|getOutputStream
@@ -469,7 +469,7 @@ return|return
 name|stream
 return|;
 block|}
-comment|/** 	 * Returns {@code true} if CAS serialization is enabled, {@code false} otherwise. 	 * @return {@code true} if CAS serialization output is enabled, {@code false} otherwise. 	 */
+comment|/**      * Returns {@code true} if CAS serialization is enabled, {@code false} otherwise.      * @return {@code true} if CAS serialization output is enabled, {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|isSerialize
@@ -479,7 +479,7 @@ return|return
 name|serialize
 return|;
 block|}
-comment|/** 	 * Returns {@code true} if content text analysis is enabled {@code false} otherwise. 	 * @return {@code true} if content text analysis is enabled {@code false} otherwise. 	 */
+comment|/**      * Returns {@code true} if content text analysis is enabled {@code false} otherwise.      * @return {@code true} if content text analysis is enabled {@code false} otherwise.      */
 specifier|public
 name|boolean
 name|isText
@@ -489,7 +489,7 @@ return|return
 name|text
 return|;
 block|}
-comment|/** 	 * Returns an array of metadata whose values will be analyzed using cTAKES. 	 * @return an array of metadata whose values will be analyzed using cTAKES. 	 */
+comment|/**      * Returns an array of metadata whose values will be analyzed using cTAKES.      * @return an array of metadata whose values will be analyzed using cTAKES.      */
 specifier|public
 name|String
 index|[]
@@ -500,7 +500,7 @@ return|return
 name|metadata
 return|;
 block|}
-comment|/** 	 * Returns a string containing a comma-separated list of metadata whose values will be analyzed using cTAKES. 	 * @return a string containing a comma-separated list of metadata whose values will be analyzed using cTAKES. 	 */
+comment|/**      * Returns a string containing a comma-separated list of metadata whose values will be analyzed using cTAKES.      * @return a string containing a comma-separated list of metadata whose values will be analyzed using cTAKES.      */
 specifier|public
 name|String
 name|getMetadataAsString
@@ -578,7 +578,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 * @return an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 */
+comment|/**      * Returns an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @return an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|CTAKESAnnotationProperty
 index|[]
@@ -589,7 +589,7 @@ return|return
 name|annotationProps
 return|;
 block|}
-comment|/** 	 * Returns a string containing a comma-separated list of {@see CTAKESAnnotationProperty} names that will be included into cTAKES metadata. 	 * @return 	 */
+comment|/**      * Returns a string containing a comma-separated list of {@see CTAKESAnnotationProperty} names that will be included into cTAKES metadata.      * @return      */
 specifier|public
 name|String
 name|getAnnotationPropsAsString
@@ -650,7 +650,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns the separator character used for annotation properties. 	 * @return the separator character used for annotation properties. 	 */
+comment|/**      * Returns the separator character used for annotation properties.      * @return the separator character used for annotation properties.      */
 specifier|public
 name|char
 name|getSeparatorChar
@@ -660,7 +660,7 @@ return|return
 name|separatorChar
 return|;
 block|}
-comment|/** 	 * Sets the path to XML descriptor for AnalysisEngine. 	 * @param aeDescriptorPath the path to XML descriptor for AnalysisEngine. 	 */
+comment|/**      * Sets the path to XML descriptor for AnalysisEngine.      * @param aeDescriptorPath the path to XML descriptor for AnalysisEngine.      */
 specifier|public
 name|void
 name|setAeDescriptorPath
@@ -676,7 +676,7 @@ operator|=
 name|aeDescriptorPath
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the UMLS username. 	 * @param uMLSUser the UMLS username. 	 */
+comment|/**      * Sets the UMLS username.      * @param uMLSUser the UMLS username.      */
 specifier|public
 name|void
 name|setUMLSUser
@@ -692,7 +692,7 @@ operator|=
 name|uMLSUser
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the UMLS password. 	 * @param uMLSPass the UMLS password. 	 */
+comment|/**      * Sets the UMLS password.      * @param uMLSPass the UMLS password.      */
 specifier|public
 name|void
 name|setUMLSPass
@@ -708,7 +708,7 @@ operator|=
 name|uMLSPass
 expr_stmt|;
 block|}
-comment|/** 	 * Enables the formatted output for serializer. 	 * @param prettyPrint {@true} to enable formatted output, {@code false} otherwise. 	 */
+comment|/**      * Enables the formatted output for serializer.      * @param prettyPrint {@true} to enable formatted output, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setPrettyPrint
@@ -724,7 +724,7 @@ operator|=
 name|prettyPrint
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the type of cTAKES (UIMA) serializer used to write CAS.  	 * @param serializerType the type of cTAKES serializer. 	 */
+comment|/**      * Sets the type of cTAKES (UIMA) serializer used to write CAS.       * @param serializerType the type of cTAKES serializer.      */
 specifier|public
 name|void
 name|setSerializerType
@@ -740,7 +740,7 @@ operator|=
 name|serializerType
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the {@see OutputStream} object used to write the CAS. 	 * @param stream the {@see OutputStream} object used to write the CAS. 	 */
+comment|/**      * Sets the {@see OutputStream} object used to write the CAS.      * @param stream the {@see OutputStream} object used to write the CAS.      */
 specifier|public
 name|void
 name|setOutputStream
@@ -756,7 +756,7 @@ operator|=
 name|stream
 expr_stmt|;
 block|}
-comment|/** 	 * Enables CAS serialization. 	 * @param serialize {@true} to enable CAS serialization, {@code false} otherwise. 	 */
+comment|/**      * Enables CAS serialization.      * @param serialize {@true} to enable CAS serialization, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setSerialize
@@ -772,7 +772,7 @@ operator|=
 name|serialize
 expr_stmt|;
 block|}
-comment|/** 	 * Enables content text analysis using cTAKES. 	 * @param text {@true} to enable content text analysis, {@code false} otherwise. 	 */
+comment|/**      * Enables content text analysis using cTAKES.      * @param text {@true} to enable content text analysis, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setText
@@ -788,7 +788,7 @@ operator|=
 name|text
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the metadata whose values will be analyzed using cTAKES. 	 * @param metadata the metadata whose values will be analyzed using cTAKES. 	 */
+comment|/**      * Sets the metadata whose values will be analyzed using cTAKES.      * @param metadata the metadata whose values will be analyzed using cTAKES.      */
 specifier|public
 name|void
 name|setMetadata
@@ -805,7 +805,7 @@ operator|=
 name|metadata
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 */
+comment|/**      * Sets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|void
 name|setAnnotationProps
@@ -822,7 +822,7 @@ operator|=
 name|annotationProps
 expr_stmt|;
 block|}
-comment|/** 	 * ets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata. 	 */
+comment|/**      * ets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|void
 name|setAnnotationProps
@@ -883,7 +883,7 @@ name|properties
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the separator character used for annotation properties. 	 * @param separatorChar the separator character used for annotation properties. 	 */
+comment|/**      * Sets the separator character used for annotation properties.      * @param separatorChar the separator character used for annotation properties.      */
 specifier|public
 name|void
 name|setSeparatorChar

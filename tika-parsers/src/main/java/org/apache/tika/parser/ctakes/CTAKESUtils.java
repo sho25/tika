@@ -270,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class provides methods to extract biomedical information from plain text  * using {@see CTAKESContentHandler} that relies on Apache cTAKES.  *   *<p>  * Apache cTAKES is built on top of<a href="https://uima.apache.org/">Apache  * UIMA</a> framework and<a href="https://opennlp.apache.org/">OpenNLP</a>  * toolkit.  *</p>  *  */
+comment|/**  * This class provides methods to extract biomedical information from plain text  * using {@see CTAKESContentHandler} that relies on Apache cTAKES.  *   *<p>  * Apache cTAKES is built on top of<a href="https://uima.apache.org/">Apache  * UIMA</a> framework and<a href="https://opennlp.apache.org/">OpenNLP</a>  * toolkit.  *</p>  */
 end_comment
 
 begin_class
@@ -312,7 +312,7 @@ name|CTAKES_UMLS_PASS
 init|=
 literal|"ctakes.umlspw"
 decl_stmt|;
-comment|/** 	 * Returns a new UIMA Analysis Engine (AE). This method ensures that only 	 * one instance of an AE is created. 	 *  	 *<p> 	 * An Analysis Engine is a component responsible for analyzing unstructured 	 * information, discovering and representing semantic content. Unstructured 	 * information includes, but is not restricted to, text documents. 	 *</p> 	 *  	 * @param aeDescriptor 	 *            pathname for XML file including an AnalysisEngineDescription 	 *            that contains all of the information needed to instantiate and 	 *            use an AnalysisEngine. 	 * @param umlsUser 	 *            UMLS username for NLM database 	 * @param umlsPass 	 *            UMLS password for NLM database 	 * @return an Analysis Engine for analyzing unstructured information. 	 * @throws IOException 	 *             if any I/O error occurs. 	 * @throws InvalidXMLException 	 *             if the input XML is not valid or does not specify a valid 	 *             ResourceSpecifier. 	 * @throws ResourceInitializationException 	 *             if a failure occurred during production of the resource. 	 * @throws URISyntaxException 	 *             if URL of the resource is not formatted strictly according to 	 *             to RFC2396 and cannot be converted to a URI. 	 */
+comment|/**      * Returns a new UIMA Analysis Engine (AE). This method ensures that only      * one instance of an AE is created.      *       *<p>      * An Analysis Engine is a component responsible for analyzing unstructured      * information, discovering and representing semantic content. Unstructured      * information includes, but is not restricted to, text documents.      *</p>      *       * @param aeDescriptor      *            pathname for XML file including an AnalysisEngineDescription      *            that contains all of the information needed to instantiate and      *            use an AnalysisEngine.      * @param umlsUser      *            UMLS username for NLM database      * @param umlsPass      *            UMLS password for NLM database      * @return an Analysis Engine for analyzing unstructured information.      * @throws IOException      *             if any I/O error occurs.      * @throws InvalidXMLException      *             if the input XML is not valid or does not specify a valid      *             ResourceSpecifier.      * @throws ResourceInitializationException      *             if a failure occurred during production of the resource.      * @throws URISyntaxException      *             if URL of the resource is not formatted strictly according to      *             to RFC2396 and cannot be converted to a URI.      */
 specifier|public
 specifier|static
 name|AnalysisEngine
@@ -417,7 +417,7 @@ argument_list|()
 operator|)
 condition|)
 block|{
-comment|/* 				 * It is highly recommended that you change UMLS credentials in 				 * the XML configuration file instead of giving user and 				 * password using CTAKESConfig. 				 */
+comment|/*                  * It is highly recommended that you change UMLS credentials in                  * the XML configuration file instead of giving user and                  * password using CTAKESConfig.                  */
 name|System
 operator|.
 name|setProperty
@@ -452,7 +452,7 @@ return|return
 name|ae
 return|;
 block|}
-comment|/** 	 * Returns a new JCas () appropriate for the given Analysis Engine. This 	 * method ensures that only one instance of a JCas is created. A Jcas is a 	 * Java Cover Classes based Object-oriented CAS (Common Analysis System) 	 * API. 	 *  	 *<p> 	 * Important: It is highly recommended that you reuse CAS objects rather 	 * than creating new CAS objects prior to each analysis. This is because CAS 	 * objects may be expensive to create and may consume a significant amount 	 * of memory. 	 *</p> 	 *  	 * @param ae 	 *            AnalysisEngine used to create an appropriate JCas object. 	 * @return a JCas object appropriate for the given AnalysisEngine. 	 * @throws ResourceInitializationException 	 *             if a CAS could not be created because this AnalysisEngine's 	 *             CAS metadata (type system, type priorities, or FS indexes) 	 *             are invalid. 	 */
+comment|/**      * Returns a new JCas () appropriate for the given Analysis Engine. This      * method ensures that only one instance of a JCas is created. A Jcas is a      * Java Cover Classes based Object-oriented CAS (Common Analysis System)      * API.      *       *<p>      * Important: It is highly recommended that you reuse CAS objects rather      * than creating new CAS objects prior to each analysis. This is because CAS      * objects may be expensive to create and may consume a significant amount      * of memory.      *</p>      *       * @param ae      *            AnalysisEngine used to create an appropriate JCas object.      * @return a JCas object appropriate for the given AnalysisEngine.      * @throws ResourceInitializationException      *             if a CAS could not be created because this AnalysisEngine's      *             CAS metadata (type system, type priorities, or FS indexes)      *             are invalid.      */
 specifier|public
 specifier|static
 name|JCas
@@ -483,7 +483,7 @@ return|return
 name|jcas
 return|;
 block|}
-comment|/** 	 * Serializes a CAS in the given format. 	 *  	 * @param type 	 *            type of cTAKES (UIMA) serializer used to write CAS. 	 * @param prettyPrint 	 *            {@code true} to do pretty printing of output. 	 * @param stream 	 *            {@see OutputStream} object used to print out information 	 *            extracted by using cTAKES. 	 * @throws SAXException 	 *             if there was a SAX exception. 	 * @throws IOException 	 *             if any I/O error occurs. 	 */
+comment|/**      * Serializes a CAS in the given format.      *       * @param type      *            type of cTAKES (UIMA) serializer used to write CAS.      * @param prettyPrint      *            {@code true} to do pretty printing of output.      * @param stream      *            {@see OutputStream} object used to print out information      *            extracted by using cTAKES.      * @throws SAXException      *             if there was a SAX exception.      * @throws IOException      *             if any I/O error occurs.      */
 specifier|public
 specifier|static
 name|void
@@ -582,7 +582,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns the annotation value based on the given annotation type.  	 * @param annotation {@see IdentifiedAnnotation} object.  	 * @param property {@see CTAKESAnnotationProperty} enum used to identify the annotation type. 	 * @return the annotation value. 	 */
+comment|/**      * Returns the annotation value based on the given annotation type.       * @param annotation {@see IdentifiedAnnotation} object.       * @param property {@see CTAKESAnnotationProperty} enum used to identify the annotation type.      * @return the annotation value.      */
 specifier|public
 specifier|static
 name|String
@@ -926,7 +926,7 @@ return|return
 name|value
 return|;
 block|}
-comment|/** 	 * Resets cTAKES objects, if created. This method ensures that new cTAKES 	 * objects (a.k.a., Analysis Engine and JCas) will be created if getters of 	 * this class are called. 	 */
+comment|/**      * Resets cTAKES objects, if created. This method ensures that new cTAKES      * objects (a.k.a., Analysis Engine and JCas) will be created if getters of      * this class are called.      */
 specifier|public
 specifier|static
 name|void

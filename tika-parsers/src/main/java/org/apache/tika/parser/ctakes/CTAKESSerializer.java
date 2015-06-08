@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Enumeration for types of cTAKES (UIMA) CAS serializer supported by cTAKES.  *   * A CAS serializer writes a CAS in the given format.  *  */
+comment|/**  * Enumeration for types of cTAKES (UIMA) CAS serializer supported by cTAKES.  *   * A CAS serializer writes a CAS in the given format.  */
 end_comment
 
 begin_enum

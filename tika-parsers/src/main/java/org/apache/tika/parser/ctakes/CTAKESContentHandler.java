@@ -166,7 +166,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class used to extract biomedical information while parsing.   *  *<p>  * This class relies on<a href="http://ctakes.apache.org/">Apache cTAKES</a>   * that is a natural language processing system for extraction of information   * from electronic medical record clinical free-text.  *</p>  *  */
+comment|/**  * Class used to extract biomedical information while parsing.   *  *<p>  * This class relies on<a href="http://ctakes.apache.org/">Apache cTAKES</a>   * that is a natural language processing system for extraction of information   * from electronic medical record clinical free-text.  *</p>  */
 end_comment
 
 begin_class
@@ -205,7 +205,7 @@ name|metadata
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * Creates a new {@see CTAKESContentHandler} for the given {@see ContentHandler} and Metadata objects.  	 * @param handler the {@see ContentHandler} object to be decorated. 	 * @param metadata the {@see Metadata} object that will be populated using biomedical information extracted by cTAKES. 	 * @param config the {@see CTAKESConfig} object used to configure the handler. 	 */
+comment|/**      * Creates a new {@see CTAKESContentHandler} for the given {@see ContentHandler} and Metadata objects.       * @param handler the {@see ContentHandler} object to be decorated.      * @param metadata the {@see Metadata} object that will be populated using biomedical information extracted by cTAKES.      * @param config the {@see CTAKESConfig} object used to configure the handler.      */
 specifier|public
 name|CTAKESContentHandler
 parameter_list|(
@@ -245,7 +245,7 @@ name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a new {@see CTAKESContentHandler} for the given {@see ContentHandler} and Metadata objects. 	 * @param handler the {@see ContentHandler} object to be decorated. 	 * @param metadata the {@see Metadata} object that will be populated using biomedical information extracted by cTAKES. 	 */
+comment|/**      * Creates a new {@see CTAKESContentHandler} for the given {@see ContentHandler} and Metadata objects.      * @param handler the {@see ContentHandler} object to be decorated.      * @param metadata the {@see Metadata} object that will be populated using biomedical information extracted by cTAKES.      */
 specifier|public
 name|CTAKESContentHandler
 parameter_list|(
@@ -268,7 +268,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Default constructor. 	 */
+comment|/**      * Default constructor.      */
 specifier|public
 name|CTAKESContentHandler
 parameter_list|()
@@ -656,7 +656,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * Returns metadata that includes cTAKES annotations. 	 * @return {@Metadata} object that includes cTAKES annotations. 	 */
+comment|/**      * Returns metadata that includes cTAKES annotations.      * @return {@Metadata} object that includes cTAKES annotations.      */
 specifier|public
 name|Metadata
 name|getMetadata

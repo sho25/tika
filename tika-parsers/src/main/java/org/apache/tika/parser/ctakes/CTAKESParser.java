@@ -142,7 +142,7 @@ name|CTAKESParser
 extends|extends
 name|ParserDecorator
 block|{
-comment|/** 	 * Serial version UID 	 */
+comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
 specifier|final
@@ -152,7 +152,7 @@ init|=
 operator|-
 literal|2313482748027097961L
 decl_stmt|;
-comment|/** 	 * Default constructor. 	 */
+comment|/**      * Default constructor.      */
 specifier|public
 name|CTAKESParser
 parameter_list|()
