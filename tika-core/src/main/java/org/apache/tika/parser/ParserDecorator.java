@@ -217,6 +217,17 @@ return|return
 name|types
 return|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDecorationName
+parameter_list|()
+block|{
+return|return
+literal|"With Types"
+return|;
+block|}
 block|}
 return|;
 block|}
@@ -298,6 +309,17 @@ expr_stmt|;
 comment|// Return whatever is left
 return|return
 name|parserTypes
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDecorationName
+parameter_list|()
+block|{
+return|return
+literal|"Without Types"
 return|;
 block|}
 block|}
@@ -475,6 +497,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getDecorationName
+parameter_list|()
+block|{
+return|return
+literal|"With Fallback"
+return|;
+block|}
 block|}
 return|;
 block|}
@@ -557,6 +590,16 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * @return A name/description of the decoration, or null if none available      */
+specifier|public
+name|String
+name|getDecorationName
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
 block|}
 comment|/**      * Gets the parser wrapped by this ParserDecorator      * @return      */
 specifier|public
