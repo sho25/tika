@@ -507,7 +507,36 @@ name|html
 operator|.
 name|append
 argument_list|(
-literal|"<p>Decorated Parser</p>"
+literal|"<p>Decorated Parser"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|p
+operator|.
+name|decoratedBy
+operator|!=
+literal|null
+condition|)
+name|html
+operator|.
+name|append
+argument_list|(
+literal|" - "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|p
+operator|.
+name|decoratedBy
+argument_list|)
+expr_stmt|;
+name|html
+operator|.
+name|append
+argument_list|(
+literal|"</p>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1070,7 +1099,38 @@ name|text
 operator|.
 name|append
 argument_list|(
-literal|" (Decorated Parser)"
+literal|" (Decorated Parser"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|p
+operator|.
+name|decoratedBy
+operator|!=
+literal|null
+condition|)
+block|{
+name|text
+operator|.
+name|append
+argument_list|(
+literal|" "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|p
+operator|.
+name|decoratedBy
+argument_list|)
+expr_stmt|;
+block|}
+name|text
+operator|.
+name|append
+argument_list|(
+literal|")"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1196,6 +1256,10 @@ name|boolean
 name|isDecorated
 decl_stmt|;
 specifier|private
+name|String
+name|decoratedBy
+decl_stmt|;
+specifier|private
 name|Set
 argument_list|<
 name|MediaType
@@ -1226,6 +1290,18 @@ block|{
 name|isDecorated
 operator|=
 literal|true
+expr_stmt|;
+name|decoratedBy
+operator|=
+operator|(
+operator|(
+name|ParserDecorator
+operator|)
+name|p
+operator|)
+operator|.
+name|getDecorationName
+argument_list|()
 expr_stmt|;
 name|p
 operator|=
