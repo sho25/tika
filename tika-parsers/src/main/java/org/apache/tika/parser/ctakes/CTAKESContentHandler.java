@@ -382,6 +382,7 @@ argument_list|(
 name|ae
 argument_list|)
 decl_stmt|;
+comment|// get metadata to process
 name|StringBuilder
 name|metaText
 init|=
@@ -389,6 +390,22 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|String
+index|[]
+name|metadataToProcess
+init|=
+name|config
+operator|.
+name|getMetadata
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|metadataToProcess
+operator|!=
+literal|null
+condition|)
+block|{
 for|for
 control|(
 name|String
@@ -430,6 +447,7 @@ name|lineSeparator
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// analyze text
@@ -639,11 +657,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 throw|throw
 operator|new
 name|SAXException
@@ -654,6 +667,14 @@ name|getMessage
 argument_list|()
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+name|CTAKESUtils
+operator|.
+name|resetCAS
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|/**      * Returns metadata that includes cTAKES annotations.      * @return {@Metadata} object that includes cTAKES annotations.      */
