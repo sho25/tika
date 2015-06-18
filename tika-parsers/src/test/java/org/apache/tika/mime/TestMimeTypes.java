@@ -4080,6 +4080,20 @@ argument_list|,
 literal|"testH.h"
 argument_list|)
 expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"text/x-java-source"
+argument_list|,
+literal|"testJAVA.java"
+argument_list|)
+expr_stmt|;
+name|assertType
+argument_list|(
+literal|"text/x-java-properties"
+argument_list|,
+literal|"testJAVAPROPS.properties"
+argument_list|)
+expr_stmt|;
 name|assertType
 argument_list|(
 literal|"text/x-matlab"
@@ -4236,6 +4250,15 @@ operator|+
 name|filename
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"Test file not found: "
+operator|+
+name|filename
+argument_list|,
+name|stream
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|Metadata
