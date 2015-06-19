@@ -293,8 +293,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Override
+comment|//@Override
 specifier|public
 name|String
 name|getDecorationName
