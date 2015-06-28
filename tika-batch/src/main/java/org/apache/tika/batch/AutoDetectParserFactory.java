@@ -65,7 +65,7 @@ begin_class
 specifier|public
 class|class
 name|AutoDetectParserFactory
-implements|implements
+extends|extends
 name|ParserFactory
 block|{
 annotation|@

@@ -63,7 +63,7 @@ begin_class
 specifier|public
 class|class
 name|MockParserFactory
-implements|implements
+extends|extends
 name|ParserFactory
 block|{
 annotation|@

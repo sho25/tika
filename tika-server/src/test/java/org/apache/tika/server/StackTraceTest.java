@@ -406,9 +406,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|MetadataResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -421,9 +419,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|RecursiveMetadataResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -436,9 +432,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|DetectorResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -451,9 +445,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|TikaResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -466,9 +458,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|UnpackerResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

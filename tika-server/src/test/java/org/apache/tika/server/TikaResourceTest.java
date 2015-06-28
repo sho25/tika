@@ -260,9 +260,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|TikaResource
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -601,6 +599,13 @@ literal|"test"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"X-TIKA:digest:MD5\" content=\"f8be45c34e8919eedba48cc8d207fbf0\"/>"
+argument_list|,
+name|responseMsg
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -864,6 +869,13 @@ literal|"test"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"X-TIKA:digest:MD5\" content=\"f8be45c34e8919eedba48cc8d207fbf0\"/>"
+argument_list|,
+name|responseMsg
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -974,6 +986,13 @@ name|contains
 argument_list|(
 literal|"Course of human events"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"X-TIKA:digest:MD5\" content=\"59f626e09a8c16ab6dbc2800c685f772\"/>"
+argument_list|,
+name|responseMsg
 argument_list|)
 expr_stmt|;
 block|}

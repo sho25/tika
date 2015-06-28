@@ -43,12 +43,20 @@ name|Parser
 import|;
 end_import
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+specifier|abstract
+class|class
 name|ParserFactory
 block|{
+specifier|private
+name|boolean
+name|parseRecursively
+init|=
+literal|true
+decl_stmt|;
 specifier|public
+specifier|abstract
 name|Parser
 name|getParser
 parameter_list|(
@@ -56,8 +64,32 @@ name|TikaConfig
 name|config
 parameter_list|)
 function_decl|;
+specifier|public
+name|boolean
+name|getParseRecursively
+parameter_list|()
+block|{
+return|return
+name|parseRecursively
+return|;
 block|}
-end_interface
+specifier|public
+name|void
+name|setParseRecursively
+parameter_list|(
+name|boolean
+name|parseRecursively
+parameter_list|)
+block|{
+name|this
+operator|.
+name|parseRecursively
+operator|=
+name|parseRecursively
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

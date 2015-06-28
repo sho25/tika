@@ -65,20 +65,6 @@ name|Tika
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|TikaConfig
-import|;
-end_import
-
 begin_class
 annotation|@
 name|Path
@@ -95,10 +81,7 @@ name|tika
 decl_stmt|;
 specifier|public
 name|TikaVersion
-parameter_list|(
-name|TikaConfig
-name|tika
-parameter_list|)
+parameter_list|()
 block|{
 name|this
 operator|.
@@ -107,7 +90,10 @@ operator|=
 operator|new
 name|Tika
 argument_list|(
-name|tika
+name|TikaResource
+operator|.
+name|getConfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

@@ -182,9 +182,7 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|TikaVersion
-argument_list|(
-name|tika
-argument_list|)
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
