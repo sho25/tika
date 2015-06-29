@@ -38,7 +38,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser for a very simple XPath subset. Only the following XPath constructs  * (with namespaces) are supported:  *<ul>  *<li><code>.../node()</code></li>  *<li><code>.../text()</code></li>  *<li><code>.../@*</code></li>  *<li><code>.../@name</code></li>  *<li><code>.../*...</code></li>  *<li><code>.../name...</code></li>  *<li><code>...//*...</code></li>  *<li><code>...//name...</code></li>  *</ul>  *<p>  * In addition the non-abbreviated<code>.../descendant::node()</code>  * construct can be used for cases where the descendant-or-self axis  * used by the<code>...//node()</code> construct is not appropriate.  */
+comment|/**  * Parser for a very simple XPath subset. Only the following XPath constructs  * (with namespaces) are supported:  *<ul>  *<li><code>.../node()</code></li>  *<li><code>.../text()</code></li>  *<li><code>.../@*</code></li>  *<li><code>.../@name</code></li>  *<li><code>.../*...</code></li>  *<li><code>.../name...</code></li>  *<li><code>...//*...</code></li>  *<li><code>...//name...</code></li>  *</ul>  *<p>  * In addition the non-abbreviated<code>.../descendant::node()</code> construct  * can be used for cases where the descendant-or-self axis used by the  *<code>...//node()</code> construct is not appropriate.  */
 end_comment
 
 begin_class
@@ -68,7 +68,7 @@ decl_stmt|;
 specifier|public
 name|XPathParser
 parameter_list|()
-block|{     }
+block|{ 	}
 specifier|public
 name|XPathParser
 parameter_list|(
@@ -108,7 +108,7 @@ name|namespace
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Parses the given simple XPath expression to an evaluation state      * initialized at the document node. Invalid expressions are not flagged      * as errors, they just result in a failing evaluation state.      *      * @param xpath simple XPath expression      * @return XPath evaluation state      */
+comment|/** 	 * Parses the given simple XPath expression to an evaluation state 	 * initialized at the document node. Invalid expressions are not flagged as 	 * errors, they just result in a failing evaluation state. 	 * 	 * @param xpath 	 *            simple XPath expression 	 * @return XPath evaluation state 	 */
 specifier|public
 name|Matcher
 name|parse
@@ -145,9 +145,21 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|NodeMatcher
+operator|new
+name|CompositeMatcher
+argument_list|(
+name|TextMatcher
 operator|.
 name|INSTANCE
+argument_list|,
+operator|new
+name|ChildMatcher
+argument_list|(
+name|ElementMatcher
+operator|.
+name|INSTANCE
+argument_list|)
+argument_list|)
 return|;
 block|}
 elseif|else
@@ -187,6 +199,36 @@ name|NodeMatcher
 operator|.
 name|INSTANCE
 argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|xpath
+operator|.
+name|equals
+argument_list|(
+literal|"/descendant-or-self::node()"
+argument_list|)
+condition|)
+block|{
+comment|// equiv. to "//node()"
+return|return
+operator|new
+name|SubtreeMatcher
+argument_list|(
+operator|new
+name|CompositeMatcher
+argument_list|(
+name|TextMatcher
+operator|.
+name|INSTANCE
+argument_list|,
+name|ElementMatcher
+operator|.
+name|INSTANCE
 argument_list|)
 argument_list|)
 return|;
@@ -392,6 +434,33 @@ operator|.
 name|substring
 argument_list|(
 literal|1
+argument_list|)
+argument_list|)
+argument_list|)
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|xpath
+operator|.
+name|startsWith
+argument_list|(
+literal|"/descendant-or-self::node()/"
+argument_list|)
+condition|)
+block|{
+return|return
+operator|new
+name|SubtreeMatcher
+argument_list|(
+name|parse
+argument_list|(
+name|xpath
+operator|.
+name|substring
+argument_list|(
+literal|27
 argument_list|)
 argument_list|)
 argument_list|)
