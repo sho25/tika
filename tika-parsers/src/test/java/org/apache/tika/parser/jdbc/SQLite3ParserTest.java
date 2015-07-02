@@ -1052,7 +1052,7 @@ expr_stmt|;
 comment|//confirm .doc was added to blob
 name|assertEquals
 argument_list|(
-literal|"testSqlite3b.db/BYTES_COL_0.doc/image1.png"
+literal|"/BYTES_COL_0.doc/image1.png"
 argument_list|,
 name|metadataList
 operator|.

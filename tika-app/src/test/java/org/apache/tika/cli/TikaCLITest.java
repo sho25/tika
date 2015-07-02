@@ -859,7 +859,7 @@ name|json
 operator|.
 name|contains
 argument_list|(
-literal|"\"X-TIKA:digest:MD2\":\"470481522c33aa7f6558dfc5cc0c8135\""
+literal|"\"X-TIKA:digest:MD2\":"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1902,7 +1902,7 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"\"X-TIKA:embedded_resource_path\": \"test_recursive_embedded.docx/embed1.zip\""
+literal|"\"X-TIKA:embedded_resource_path\": \"/embed1.zip\""
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -404,7 +404,7 @@ decl_stmt|;
 comment|//this is the location the embed3.txt text file within the outer .docx
 name|assertEquals
 argument_list|(
-literal|"test_recursive_embedded.docx/embed1.zip/embed2.zip/embed3.zip/embed3.txt"
+literal|"/embed1.zip/embed2.zip/embed3.zip/embed3.txt"
 argument_list|,
 name|m
 operator|.
