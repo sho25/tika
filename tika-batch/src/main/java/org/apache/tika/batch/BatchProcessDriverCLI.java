@@ -238,6 +238,11 @@ name|waitNumLoopsAfterRestartmessage
 init|=
 literal|60
 decl_stmt|;
+name|int
+name|loopsAfterRestartMessageReceived
+init|=
+literal|0
+decl_stmt|;
 specifier|private
 specifier|volatile
 name|boolean
@@ -526,11 +531,6 @@ expr_stmt|;
 name|start
 argument_list|()
 expr_stmt|;
-name|int
-name|loopsAfterRestartMessageReceived
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 operator|!
@@ -653,6 +653,10 @@ operator|&&
 name|exit
 operator|==
 literal|null
+operator|&&
+name|loopsAfterRestartMessageReceived
+operator|<=
+name|waitNumLoopsAfterRestartmessage
 condition|)
 block|{
 name|loopsAfterRestartMessageReceived
@@ -1045,6 +1049,10 @@ argument_list|()
 expr_stmt|;
 name|numRestarts
 operator|++
+expr_stmt|;
+name|loopsAfterRestartMessageReceived
+operator|=
+literal|0
 expr_stmt|;
 return|return
 literal|true
