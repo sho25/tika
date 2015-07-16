@@ -16,12 +16,14 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
 name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -54,8 +56,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"application/xml"

@@ -17,13 +17,13 @@ end_package
 
 begin_import
 import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
-operator|.
-name|assertTrue
+name|assertEquals
 import|;
 end_import
 
@@ -35,7 +35,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertEquals
+name|assertTrue
 import|;
 end_import
 

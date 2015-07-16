@@ -19,11 +19,11 @@ end_comment
 
 begin_import
 import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Assert
 operator|.
 name|assertEquals
 import|;
@@ -31,11 +31,11 @@ end_import
 
 begin_import
 import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Assert
 operator|.
 name|assertTrue
 import|;

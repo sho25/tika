@@ -176,9 +176,9 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
 name|JsonNull
-argument_list|()
+operator|.
+name|INSTANCE
 return|;
 block|}
 name|String
@@ -198,9 +198,9 @@ literal|null
 condition|)
 block|{
 return|return
-operator|new
 name|JsonNull
-argument_list|()
+operator|.
+name|INSTANCE
 return|;
 block|}
 name|JsonObject
