@@ -431,7 +431,12 @@ name|db
 operator|=
 operator|new
 name|DatabaseBuilder
+argument_list|(
+name|tis
+operator|.
+name|getFile
 argument_list|()
+argument_list|)
 operator|.
 name|setReadOnly
 argument_list|(
@@ -439,12 +444,7 @@ literal|true
 argument_list|)
 operator|.
 name|open
-argument_list|(
-name|tis
-operator|.
-name|getFile
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|db
 operator|.

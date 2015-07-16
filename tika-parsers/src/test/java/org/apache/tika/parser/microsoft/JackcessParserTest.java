@@ -408,6 +408,34 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testReadOnly
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1681: just make sure an exception is not thrown
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testAccess_V1997.mdb"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"hijklmnop"
+argument_list|,
+name|r
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
