@@ -259,6 +259,10 @@ name|String
 name|SUMMARY_PROPERTY_PREFIX
 init|=
 literal|"MDB_SUMMARY_PROP"
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
 specifier|public
 specifier|static
