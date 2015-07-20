@@ -21,20 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -173,6 +159,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -279,6 +277,8 @@ begin_class
 specifier|public
 class|class
 name|OutlookParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -918,6 +918,28 @@ literal|"<\\/body>"
 argument_list|)
 operator|.
 name|length
+argument_list|)
+expr_stmt|;
+comment|// Make sure that the Chinese actually came through
+name|assertContains
+argument_list|(
+literal|"\u5F35\u6BD3\u502B"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"\u9673\u60E0\u73CD"
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
