@@ -2385,7 +2385,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**          * initialize the MimeTypes with this builder instance          *           * @return          */
+comment|/**          * Initialize the MimeTypes with this builder instance          */
 specifier|public
 name|ProbabilisticMimeDetectionSelector
 name|build2

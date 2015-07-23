@@ -271,7 +271,7 @@ name|PLAIN_TEXT
 init|=
 literal|"text/plain"
 decl_stmt|;
-comment|/**      * Name of the {@link #xml xml} type, application/xml.      */
+comment|/**      * Name of the {@link #xmlMimeType xml} type, application/xml.      */
 specifier|public
 specifier|static
 specifier|final
@@ -1892,7 +1892,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/**      * Get the default MimeTypes. This includes all the built-in      * media types, and any custom override ones present.      *       * @param ClassLoader to use, if not the default      * @return MimeTypes default type registry      */
+comment|/**      * Get the default MimeTypes. This includes all the built-in      * media types, and any custom override ones present.      *       * @param classLoader to use, if not the default      * @return MimeTypes default type registry      */
 specifier|public
 specifier|static
 specifier|synchronized

@@ -51,16 +51,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collections
 import|;
 end_import
@@ -478,7 +468,7 @@ operator|=
 name|v
 expr_stmt|;
 block|}
-comment|/**      * Get the UTI for this mime type.      *       * @see http://en.wikipedia.org/wiki/Uniform_Type_Identifier      *       * @return The Uniform Type Identifier      */
+comment|/**      * Get the UTI for this mime type.      *       * @see<a href="http://en.wikipedia.org/wiki/Uniform_Type_Identifier">http://en.wikipedia.org/wiki/Uniform_Type_Identifier</a>      *       * @return The Uniform Type Identifier      */
 specifier|public
 name|String
 name|getUniformTypeIdentifier
