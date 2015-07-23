@@ -6670,8 +6670,14 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-comment|//TODO: add this back in once overrides are available via CTNumLvl
-comment|//assertContains("<p>C C</p>", xml);
+comment|//this tests overrides
+name|assertContains
+argument_list|(
+literal|"<p>C C</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"<p>4 4</p>"
