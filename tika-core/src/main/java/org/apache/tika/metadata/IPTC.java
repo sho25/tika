@@ -268,7 +268,7 @@ name|Photoshop
 operator|.
 name|AUTHORS_POSITION
 decl_stmt|;
-comment|/**     * The credit to person(s) and/or organisation(s) required by the supplier     * of the item to be used when published. This is a free-text field.     *<p>     * Note 1: For more formal identifications of the creator or the owner of     * the copyrights of this image other rights properties may be used.     * Note 2:     * This property was named "Credit" by the IIM metadata, then it was renamed     * to "Provider" in IPTC Core 1.0. In IPTC Core 1.1. it has been renamed to     * "Credit Line" as the field is used for this purpose by many users.     *<p>     * Maps to this IIM property: 2:110 Credit     *      * @see Photoshop#CREDIT_LINE     */
+comment|/**     * The credit to person(s) and/or organisation(s) required by the supplier     * of the item to be used when published. This is a free-text field.     *<p>     * Note 1: For more formal identifications of the creator or the owner of     * the copyrights of this image other rights properties may be used.     * Note 2:     * This property was named "Credit" by the IIM metadata, then it was renamed     * to "Provider" in IPTC Core 1.0. In IPTC Core 1.1. it has been renamed to     * "Credit Line" as the field is used for this purpose by many users.     *<p>     * Maps to this IIM property: 2:110 Credit     *      * @see Photoshop#CREDIT     */
 name|Property
 name|CREDIT_LINE
 init|=

@@ -129,7 +129,7 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-comment|/**      * Creates and returns a temporary file that will automatically be      * deleted when the {@link #close()} method is called.      *      * @return      * @throws IOException      */
+comment|/**      * Creates and returns a temporary file that will automatically be      * deleted when the {@link #close()} method is called.      *      * @return Created temporary file that'll be deleted after closing      * @throws IOException      */
 specifier|public
 name|File
 name|createTemporaryFile

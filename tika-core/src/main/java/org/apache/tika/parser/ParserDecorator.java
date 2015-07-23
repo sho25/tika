@@ -231,7 +231,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/**      * Decorates the given parser so that it never claims to support      * parsing of the given media types, but will work for all others.      *      * @param parser the parser to be decorated      * @param types excluded/ignored media types      * @return the decorated parser      */
+comment|/**      * Decorates the given parser so that it never claims to support      * parsing of the given media types, but will work for all others.      *      * @param parser the parser to be decorated      * @param excludeTypes excluded/ignored media types      * @return the decorated parser      */
 specifier|public
 specifier|static
 specifier|final
@@ -601,7 +601,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Gets the parser wrapped by this ParserDecorator      * @return      */
+comment|/**      * Gets the parser wrapped by this ParserDecorator      * @return the parser wrapped by this ParserDecorator      */
 specifier|public
 name|Parser
 name|getWrappedParser

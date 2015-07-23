@@ -91,7 +91,7 @@ name|proxy
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Casts or wraps the given stream to a TaggedInputStream instance.      *      * @param stream normal input stream      * @return a TaggedInputStream instance      */
+comment|/**      * Casts or wraps the given stream to a TaggedInputStream instance.      *      * @param proxy normal input stream      * @return a TaggedInputStream instance      */
 specifier|public
 specifier|static
 name|TaggedInputStream
