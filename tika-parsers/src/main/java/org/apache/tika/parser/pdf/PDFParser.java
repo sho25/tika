@@ -1580,14 +1580,6 @@ parameter_list|)
 block|{
 comment|// Invalid date format, just ignore
 block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|e
-parameter_list|)
-block|{
-comment|//ditto
-block|}
 try|try
 block|{
 name|Calendar
@@ -1628,14 +1620,6 @@ name|e
 parameter_list|)
 block|{
 comment|// Invalid date format, just ignore
-block|}
-catch|catch
-parameter_list|(
-name|StringIndexOutOfBoundsException
-name|e
-parameter_list|)
-block|{
-comment|//ditto
 block|}
 comment|// All remaining metadata is custom
 comment|// Copy this over as-is
