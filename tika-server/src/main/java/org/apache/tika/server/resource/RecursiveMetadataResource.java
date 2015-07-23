@@ -418,17 +418,6 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|is
-operator|=
-name|TikaUtils
-operator|.
-name|getInputSteam
-argument_list|(
-name|is
-argument_list|,
-name|httpHeaders
-argument_list|)
-expr_stmt|;
 return|return
 name|Response
 operator|.

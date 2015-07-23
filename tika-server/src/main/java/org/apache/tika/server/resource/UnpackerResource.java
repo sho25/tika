@@ -1063,17 +1063,6 @@ name|files
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|is
-operator|=
-name|TikaUtils
-operator|.
-name|getInputSteam
-argument_list|(
-name|is
-argument_list|,
-name|httpHeaders
-argument_list|)
-expr_stmt|;
 name|TikaResource
 operator|.
 name|parse
