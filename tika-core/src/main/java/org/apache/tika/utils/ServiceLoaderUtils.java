@@ -159,13 +159,13 @@ name|t1
 condition|)
 block|{
 return|return
+operator|-
 literal|1
 return|;
 block|}
 else|else
 block|{
 return|return
-operator|-
 literal|1
 return|;
 block|}
