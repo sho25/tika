@@ -9,9 +9,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|pdfbox
+name|tika
 operator|.
-name|pdfparser
+name|parser
+operator|.
+name|pdf
 package|;
 end_package
 
@@ -59,14 +61,27 @@ name|COSString
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdfparser
+operator|.
+name|BaseParser
+import|;
+end_import
+
 begin_comment
-comment|/**  * In fairly rare cases, a PDF's XMP will contain a string that  * has incorrectly been encoded with PDFEncoding: an octal for non-ascii and  * ascii for ascii, e.g. "\376\377\000M\000i\000c\000r\000o\000s\000o\000f\000t\000"  *<p>  * This class can be used to decode those strings.  *<p>  * See TIKA-1678.  Many thanks to Andrew Jackson for raising this issue  * and Tilman Hausherr for the solution.  *<p>  * Unfortunately because {@link BaseParser#parseCOSString()} is protected, we  * had to put this in o.a.pdfbox.pdfparser and not in o.a.t.parser.pdf  */
+comment|/**  * In fairly rare cases, a PDF's XMP will contain a string that  * has incorrectly been encoded with PDFEncoding: an octal for non-ascii and  * ascii for ascii, e.g. "\376\377\000M\000i\000c\000r\000o\000s\000o\000f\000t\000"  *<p>  * This class can be used to decode those strings.  *<p>  * See TIKA-1678.  Many thanks to Andrew Jackson for raising this issue  * and Tilman Hausherr for the solution.  *<p>  * As of this writing, we are only handling strings that start with  * an encoded BOM.  Andrew Jackson found a handful of other examples (e.g.  * this ISO-8859-7 string:  * "Microsoft Word - \\323\\365\\354\\354\\345\\364\\357\\367\\336  * \\364\\347\\362 PRAKSIS \\363\\364\\357")  * that we aren't currently handling.  */
 end_comment
 
 begin_class
-specifier|public
 class|class
-name|PDFOctalUnicodeDecoder
+name|PDFEncodedStringDecoder
 block|{
 specifier|private
 specifier|static
@@ -87,7 +102,6 @@ comment|//UTF-8
 block|}
 decl_stmt|;
 comment|/**      * Does this string contain an octal-encoded UTF BOM?      * Call this statically to determine if you should bother creating a new parser to parse it.      * @param s      * @return      */
-specifier|public
 specifier|static
 name|boolean
 name|shouldDecode
@@ -142,7 +156,6 @@ literal|false
 return|;
 block|}
 comment|/**      * This assumes that {@link #shouldDecode(String)} has been called      * and has returned true.  If you run this on a non-octal encoded string,      * disaster will happen!      *      * @param value      * @return      */
-specifier|public
 name|String
 name|decode
 parameter_list|(
@@ -189,11 +202,68 @@ argument_list|(
 name|is
 argument_list|)
 decl_stmt|;
-name|COSString
-name|cosString
+name|String
+name|parsed
 init|=
 name|p
 operator|.
+name|myParseCOSString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|parsed
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|parsed
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|//oh well, we tried.
+block|}
+comment|//just return value if something went wrong
+return|return
+name|value
+return|;
+block|}
+class|class
+name|COSStringParser
+extends|extends
+name|BaseParser
+block|{
+name|COSStringParser
+parameter_list|(
+name|InputStream
+name|buffer
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|super
+argument_list|(
+name|buffer
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**          *          * @return parsed string or null if something went wrong.          */
+name|String
+name|myParseCOSString
+parameter_list|()
+block|{
+try|try
+block|{
+name|COSString
+name|cosString
+init|=
 name|parseCOSString
 argument_list|()
 decl_stmt|;
@@ -217,34 +287,10 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{
-comment|//oh well, we tried.
-block|}
-comment|//just return value if something went wrong
+block|{             }
 return|return
-name|value
+literal|null
 return|;
-block|}
-specifier|private
-class|class
-name|COSStringParser
-extends|extends
-name|BaseParser
-block|{
-specifier|private
-name|COSStringParser
-parameter_list|(
-name|InputStream
-name|buffer
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|super
-argument_list|(
-name|buffer
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 block|}
