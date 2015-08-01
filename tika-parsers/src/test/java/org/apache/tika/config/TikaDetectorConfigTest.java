@@ -162,7 +162,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Junit test class for {@link TikaConfig}, which cover things  *  that {@link AbstractTikaConfigTest} can't do due to a need for the  *  full set of detectors  */
+comment|/**  * Junit test class for {@link TikaConfig}, which cover things  *  that {@link TikaConfigTest} can't do due to a need for the  *  full set of detectors  */
 end_comment
 
 begin_class

@@ -116,6 +116,18 @@ operator|=
 name|loader
 expr_stmt|;
 block|}
+specifier|public
+name|DefaultTranslator
+parameter_list|()
+block|{
+name|this
+argument_list|(
+operator|new
+name|ServiceLoader
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Finds all statically loadable translators and sort the list by name,      * rather than discovery order.      *      * @param loader service loader      * @return ordered list of statically loadable translators      */
 specifier|private
 specifier|static
