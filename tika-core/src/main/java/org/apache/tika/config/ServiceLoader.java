@@ -526,6 +526,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns if the service loader is static or dynamic      *       * @return dynamic or static loading      * @since Apache Tika 1.10      */
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+name|dynamic
+return|;
+block|}
 comment|/**      * Returns the load error handler used by this loader.      *      * @return load error handler      * @since Apache Tika 1.3      */
 specifier|public
 name|LoadErrorHandler
