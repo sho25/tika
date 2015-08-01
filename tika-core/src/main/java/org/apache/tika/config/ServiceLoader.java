@@ -568,7 +568,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Loads and returns the named service class that's expected to implement      * the given interface.      *      * @param iface service interface      * @param name service class name      * @return service class      * @throws ClassNotFoundException if the service class can not be found      *                                or does not implement the given interface      * @see Class#forName(String, boolean, ClassLoader)      * @since Apache Tika 1.1      */
+comment|/**      * Loads and returns the named service class that's expected to implement      * the given interface.      *       * Note that this class does not use the {@link LoadErrorHandler}, a      *  {@link ClassNotFoundException} is always returned for unknown      *  classes or classes of the wrong type      *      * @param iface service interface      * @param name service class name      * @return service class      * @throws ClassNotFoundException if the service class can not be found      *                                or does not implement the given interface      * @see Class#forName(String, boolean, ClassLoader)      * @since Apache Tika 1.1      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
