@@ -157,16 +157,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -184,9 +174,6 @@ name|AbstractTikaConfigTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// TODO Work on TIKA-1702 in progress
 specifier|public
 name|void
 name|testDetectorExcludeFromDefault
