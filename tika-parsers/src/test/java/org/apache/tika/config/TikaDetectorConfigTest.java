@@ -186,7 +186,7 @@ annotation|@
 name|Test
 annotation|@
 name|Ignore
-comment|// TODO Finish support
+comment|// TODO Work on TIKA-1702 in progress
 specifier|public
 name|void
 name|testDetectorExcludeFromDefault
