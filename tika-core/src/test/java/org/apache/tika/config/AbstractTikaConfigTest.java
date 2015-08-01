@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parent of Junit test classes for {@link TikaConfig}, which cover   *  things that {@link TikaConfigTest} can't do due to a need for the  *  full set of "real" classes of parsers / detectors  */
+comment|/**  * Parent of Junit test classes for {@link TikaConfig}, including  *  Tika Core based ones, and ones in Tika Parsers that do things   *  that {@link TikaConfigTest} can't, do due to a need for the  *  full set of "real" classes of parsers / detectors  */
 end_comment
 
 begin_class
