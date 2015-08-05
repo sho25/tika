@@ -132,6 +132,18 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"Invalid default tessdataPath value"
+argument_list|,
+literal|""
+argument_list|,
+name|config
+operator|.
+name|getTessdataPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"Invalid default language value"
 argument_list|,
 literal|"eng"
@@ -232,6 +244,18 @@ argument_list|,
 name|config
 operator|.
 name|getTesseractPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid default tessdataPath value"
+argument_list|,
+literal|""
+argument_list|,
+name|config
+operator|.
+name|getTessdataPath
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -341,6 +365,22 @@ argument_list|,
 name|config
 operator|.
 name|getTesseractPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid overridden tesseractPath value"
+argument_list|,
+literal|"/usr/local/share"
+operator|+
+name|File
+operator|.
+name|separator
+argument_list|,
+name|config
+operator|.
+name|getTessdataPath
 argument_list|()
 argument_list|)
 expr_stmt|;

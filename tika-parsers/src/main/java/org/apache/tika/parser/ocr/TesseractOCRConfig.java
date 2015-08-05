@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for TesseractOCRParser.  *   * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *  * Parameters can also be set by either editing the existing TesseractOCRConfig.properties file in,  * tika-parser/src/main/resources/org/apache/tika/parser/ocr, or overriding it by creating your own  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  *   */
+comment|/**  * Configuration for TesseractOCRParser.  *  * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *  * Parameters can also be set by either editing the existing TesseractOCRConfig.properties file in,  * tika-parser/src/main/resources/org/apache/tika/parser/ocr, or overriding it by creating your own  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  *  */
 end_comment
 
 begin_class
@@ -101,6 +101,13 @@ comment|// Path to tesseract installation folder, if not on system path.
 specifier|private
 name|String
 name|tesseractPath
+init|=
+literal|""
+decl_stmt|;
+comment|// Path to the 'tessdata' folder, which contains language files and config files.
+specifier|private
+name|String
+name|tessdataPath
 init|=
 literal|""
 decl_stmt|;
@@ -254,6 +261,19 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setTessdataPath
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+argument_list|,
+literal|"tessdataPath"
+argument_list|,
+name|getTessdataPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|setLanguage
 argument_list|(
 name|getProp
@@ -330,7 +350,7 @@ return|return
 name|tesseractPath
 return|;
 block|}
-comment|/** 	 * Set tesseract installation folder, needed if it is not on system path. 	 */
+comment|/** 	 * Set the path to the Tesseract executable, needed if it is not on system path.      *<p>      * Note that if you set this value, it is highly recommended that you also      * set the path to the 'tessdata' folder using {@link #setTessdataPath}.      *</p> 	 */
 specifier|public
 name|void
 name|setTesseractPath
@@ -368,6 +388,56 @@ operator|.
 name|tesseractPath
 operator|=
 name|tesseractPath
+expr_stmt|;
+block|}
+comment|/** @see #setTessdataPath(String tessdataPath) */
+specifier|public
+name|String
+name|getTessdataPath
+parameter_list|()
+block|{
+return|return
+name|tessdataPath
+return|;
+block|}
+comment|/**      * Set the path to the 'tessdata' folder, which contains language files and config files. In some cases (such      * as on Windows), this folder is found in the Tesseract installation, but in other cases      * (such as when Tesseract is built from source), it may be located elsewhere.      */
+specifier|public
+name|void
+name|setTessdataPath
+parameter_list|(
+name|String
+name|tessdataPath
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|tessdataPath
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|!
+name|tessdataPath
+operator|.
+name|endsWith
+argument_list|(
+name|File
+operator|.
+name|separator
+argument_list|)
+condition|)
+name|tessdataPath
+operator|+=
+name|File
+operator|.
+name|separator
+expr_stmt|;
+name|this
+operator|.
+name|tessdataPath
+operator|=
+name|tessdataPath
 expr_stmt|;
 block|}
 comment|/** @see #setLanguage(String language)*/
