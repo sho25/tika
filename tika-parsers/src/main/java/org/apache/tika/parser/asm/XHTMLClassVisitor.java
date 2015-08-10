@@ -255,7 +255,7 @@ name|super
 argument_list|(
 name|Opcodes
 operator|.
-name|ASM4
+name|ASM5
 argument_list|)
 expr_stmt|;
 name|this
