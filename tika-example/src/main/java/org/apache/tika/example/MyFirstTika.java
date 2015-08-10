@@ -442,6 +442,8 @@ name|File
 argument_list|(
 name|filename
 argument_list|)
+argument_list|,
+name|metadata
 argument_list|)
 decl_stmt|;
 name|parser
