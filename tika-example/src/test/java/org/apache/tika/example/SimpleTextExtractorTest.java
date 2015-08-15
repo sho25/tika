@@ -96,11 +96,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|public
 class|class
 name|SimpleTextExtractorTest
@@ -175,6 +170,8 @@ argument_list|(
 name|file
 argument_list|,
 name|message
+argument_list|,
+literal|"utf-8"
 argument_list|)
 expr_stmt|;
 name|SimpleTextExtractor

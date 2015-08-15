@@ -270,11 +270,6 @@ comment|/**  * Demonstrates Tika and its ability to sense symlinks.  */
 end_comment
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|public
 class|class
 name|RollbackSoftware
@@ -360,6 +355,8 @@ name|deployArea
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|,
+literal|"utf-8"
 argument_list|)
 argument_list|,
 name|handler
@@ -598,6 +595,8 @@ operator|.
 name|toString
 argument_list|(
 name|is
+argument_list|,
+literal|"utf-8"
 argument_list|)
 argument_list|)
 decl_stmt|;

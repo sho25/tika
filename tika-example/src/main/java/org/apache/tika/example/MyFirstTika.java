@@ -630,6 +630,8 @@ name|File
 argument_list|(
 name|filename
 argument_list|)
+argument_list|,
+literal|"utf-8"
 argument_list|)
 argument_list|)
 argument_list|)

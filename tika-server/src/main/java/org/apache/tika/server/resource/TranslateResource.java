@@ -383,6 +383,8 @@ operator|.
 name|toString
 argument_list|(
 name|is
+argument_list|,
+literal|"utf-8"
 argument_list|)
 argument_list|,
 name|translator
@@ -450,6 +452,8 @@ operator|.
 name|toString
 argument_list|(
 name|is
+argument_list|,
+literal|"utf-8"
 argument_list|)
 decl_stmt|;
 name|LanguageIdentifier
