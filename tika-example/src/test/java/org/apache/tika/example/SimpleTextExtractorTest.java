@@ -112,17 +112,27 @@ block|{
 name|String
 name|message
 init|=
-literal|"Hello, World! This is simple UTF-8 text content written"
+literal|"This is Tika - Hello, World! This is simple UTF-8 text"
 operator|+
-literal|" in English to test autodetection of the character"
+literal|" content written in English to test autodetection of"
 operator|+
-literal|" encoding of the input stream."
+literal|" the character encoding of the input stream."
 decl_stmt|;
 name|ByteArrayOutputStream
 name|buffer
 init|=
 operator|new
 name|ByteArrayOutputStream
+argument_list|()
+decl_stmt|;
+name|String
+name|UTF8
+init|=
+name|Charsets
+operator|.
+name|UTF_8
+operator|.
+name|name
 argument_list|()
 decl_stmt|;
 name|PrintStream
@@ -143,12 +153,7 @@ name|buffer
 argument_list|,
 literal|true
 argument_list|,
-name|Charsets
-operator|.
-name|UTF_8
-operator|.
-name|name
-argument_list|()
+name|UTF8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -171,7 +176,7 @@ name|file
 argument_list|,
 name|message
 argument_list|,
-literal|"utf-8"
+name|UTF8
 argument_list|)
 expr_stmt|;
 name|SimpleTextExtractor
@@ -209,12 +214,7 @@ name|buffer
 operator|.
 name|toString
 argument_list|(
-name|Charsets
-operator|.
-name|UTF_8
-operator|.
-name|name
-argument_list|()
+name|UTF8
 argument_list|)
 operator|.
 name|trim
