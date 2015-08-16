@@ -379,9 +379,6 @@ block|}
 comment|/**      * TIKA-1708 - If the Zip detector is disabled, either explicitly,      *  or via giving a list of detectors that it isn't part of, ensure      *  that detection of PST files still works      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-comment|// Currently broken as per bug report
 specifier|public
 name|void
 name|testPSTDetectionWithoutZipDetector
@@ -391,7 +388,7 @@ name|Exception
 block|{
 comment|// Check the one with an exclude
 name|TikaConfig
-name|config
+name|configWX
 init|=
 name|getConfig
 argument_list|(
@@ -400,7 +397,7 @@ argument_list|)
 decl_stmt|;
 name|assertNotNull
 argument_list|(
-name|config
+name|configWX
 operator|.
 name|getParser
 argument_list|()
@@ -408,7 +405,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-name|config
+name|configWX
 operator|.
 name|getDetector
 argument_list|()
@@ -420,7 +417,7 @@ init|=
 operator|(
 name|CompositeDetector
 operator|)
-name|config
+name|configWX
 operator|.
 name|getDetector
 argument_list|()
@@ -436,16 +433,17 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Check the one with an explicit list
-name|config
-operator|=
+name|TikaConfig
+name|configCL
+init|=
 name|getConfig
 argument_list|(
 literal|"TIKA-1708-detector-composite.xml"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|assertNotNull
 argument_list|(
-name|config
+name|configCL
 operator|.
 name|getParser
 argument_list|()
@@ -453,7 +451,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-name|config
+name|configCL
 operator|.
 name|getDetector
 argument_list|()
@@ -465,7 +463,7 @@ init|=
 operator|(
 name|CompositeDetector
 operator|)
-name|config
+name|configCL
 operator|.
 name|getDetector
 argument_list|()
@@ -493,6 +491,65 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Check that both detectors have a mimetypes with entries
+name|assertTrue
+argument_list|(
+literal|"Not enough mime types: "
+operator|+
+name|configWX
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+operator|.
+name|getTypes
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|configWX
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+operator|.
+name|getTypes
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|100
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Not enough mime types: "
+operator|+
+name|configCL
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+operator|.
+name|getTypes
+argument_list|()
+operator|.
+name|size
+argument_list|()
+argument_list|,
+name|configCL
+operator|.
+name|getMediaTypeRegistry
+argument_list|()
+operator|.
+name|getTypes
+argument_list|()
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|100
+argument_list|)
+expr_stmt|;
 comment|// Now check they detect PST files correctly
 name|TikaInputStream
 name|stream
@@ -512,9 +569,6 @@ argument_list|(
 name|OutlookPSTParser
 operator|.
 name|MS_OUTLOOK_PST_MIMETYPE
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|detectorWX
 operator|.
@@ -533,9 +587,6 @@ argument_list|(
 name|OutlookPSTParser
 operator|.
 name|MS_OUTLOOK_PST_MIMETYPE
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|detectorCL
 operator|.
