@@ -338,7 +338,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Tran Nam Quang  * @author hong-thai.nguyen  */
+comment|/**  * Parser for MS Outlook PST email storage files  */
 end_comment
 
 begin_class
@@ -356,7 +356,7 @@ name|serialVersionUID
 init|=
 literal|620998217748364063L
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|MediaType

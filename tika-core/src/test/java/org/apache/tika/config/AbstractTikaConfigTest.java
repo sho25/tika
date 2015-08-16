@@ -45,6 +45,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|ParseContext
@@ -70,6 +82,8 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractTikaConfigTest
+extends|extends
+name|TikaTest
 block|{
 specifier|protected
 specifier|static
