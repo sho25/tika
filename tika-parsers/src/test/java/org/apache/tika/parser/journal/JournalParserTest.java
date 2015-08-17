@@ -160,7 +160,7 @@ block|{
 name|String
 name|path
 init|=
-literal|"/test-documents/testJournalParser2.pdf"
+literal|"/test-documents/testJournalParser.pdf"
 decl_stmt|;
 name|ContentHandler
 name|handler
