@@ -728,7 +728,7 @@ literal|"host name (default = "
 operator|+
 name|DEFAULT_HOST
 operator|+
-literal|')'
+literal|", use * for all)"
 argument_list|)
 expr_stmt|;
 name|options
@@ -942,6 +942,21 @@ argument_list|(
 literal|"host"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+literal|"*"
+operator|.
+name|equals
+argument_list|(
+name|host
+argument_list|)
+condition|)
+block|{
+name|host
+operator|=
+literal|"0.0.0.0"
+expr_stmt|;
+block|}
 block|}
 name|int
 name|port
