@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -36,16 +50,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|apache
+name|nio
 operator|.
-name|tika
+name|charset
 operator|.
-name|io
+name|StandardCharsets
 operator|.
-name|IOUtils
+name|UTF_8
 import|;
 end_import
 
@@ -133,12 +147,7 @@ name|toString
 argument_list|(
 name|htmlStr
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|name
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|int

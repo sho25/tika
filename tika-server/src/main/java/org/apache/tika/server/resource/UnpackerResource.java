@@ -599,6 +599,20 @@ name|DefaultHandler
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_class
 annotation|@
 name|Path
@@ -665,16 +679,6 @@ name|OutputStreamWriter
 argument_list|(
 name|outputStream
 argument_list|,
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -995,16 +999,6 @@ name|OutputStreamWriter
 argument_list|(
 name|text
 argument_list|,
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

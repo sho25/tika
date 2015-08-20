@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -219,6 +233,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|cxf
 operator|.
 name|binding
@@ -280,20 +308,6 @@ operator|.
 name|config
 operator|.
 name|TikaConfig
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -713,6 +727,8 @@ operator|.
 name|toString
 argument_list|(
 name|in
+argument_list|,
+name|UTF_8
 argument_list|)
 return|;
 block|}
@@ -931,8 +947,6 @@ name|bos
 operator|.
 name|toString
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name

@@ -193,23 +193,23 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|metadata
 operator|.
-name|IOUtils
+name|Metadata
 import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|apache
+name|nio
 operator|.
-name|tika
+name|charset
 operator|.
-name|metadata
+name|StandardCharsets
 operator|.
-name|Metadata
+name|UTF_8
 import|;
 end_import
 
@@ -348,8 +348,6 @@ name|OutputStreamWriter
 argument_list|(
 name|entityStream
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
