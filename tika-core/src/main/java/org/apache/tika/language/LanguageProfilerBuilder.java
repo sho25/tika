@@ -194,16 +194,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|apache
+name|nio
 operator|.
-name|tika
+name|charset
 operator|.
-name|io
+name|StandardCharsets
 operator|.
-name|IOUtils
+name|UTF_8
 import|;
 end_import
 
@@ -1370,8 +1370,6 @@ name|InputStreamReader
 argument_list|(
 name|is
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -1665,8 +1663,6 @@ operator|)
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -1877,8 +1873,6 @@ name|line
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

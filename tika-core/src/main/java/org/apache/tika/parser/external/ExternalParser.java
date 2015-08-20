@@ -325,6 +325,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Parser that uses an external program (like catdoc or pdf2txt) to extract  *  text content and metadata from a given document.  */
 end_comment
@@ -1001,8 +1015,6 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
@@ -1279,8 +1291,6 @@ name|InputStreamReader
 argument_list|(
 name|stream
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
