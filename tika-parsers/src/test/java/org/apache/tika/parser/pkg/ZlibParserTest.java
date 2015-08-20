@@ -101,16 +101,6 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
 name|Test
 import|;
 end_import
@@ -128,7 +118,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for parsing zlib compressed  *   * Note - currently disabled, pending a fix for COMPRESS-316  */
+comment|/**  * Test case for parsing zlib compressed  */
 end_comment
 
 begin_class
@@ -140,8 +130,6 @@ name|AbstractPkgTest
 block|{
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|testZlibParsing
@@ -247,8 +235,6 @@ block|}
 comment|/**      * Tests that the ParseContext parser is correctly      *  fired for all the embedded entries.      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 specifier|public
 name|void
 name|testEmbedded

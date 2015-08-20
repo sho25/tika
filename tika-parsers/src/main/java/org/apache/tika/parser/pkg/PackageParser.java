@@ -93,6 +93,20 @@ name|commons
 operator|.
 name|compress
 operator|.
+name|PasswordRequiredException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|compress
+operator|.
 name|archivers
 operator|.
 name|ArchiveEntry
@@ -1247,34 +1261,16 @@ comment|// Otherwise fall through to raise the exception as normal
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-name|ie
+name|PasswordRequiredException
+name|pre
 parameter_list|)
-block|{
-comment|// Is this a password protection error?
-comment|// (COMPRESS-298 should give a nicer way when implemented, see TIKA-1525)
-if|if
-condition|(
-literal|"Cannot read encrypted files without a password"
-operator|.
-name|equals
-argument_list|(
-name|ie
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-condition|)
 block|{
 throw|throw
 operator|new
 name|EncryptedDocumentException
-argument_list|()
-throw|;
-block|}
-comment|// Otherwise fall through to raise the exception as normal
-throw|throw
-name|ie
+argument_list|(
+name|pre
+argument_list|)
 throw|;
 block|}
 finally|finally

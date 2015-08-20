@@ -479,7 +479,6 @@ argument_list|(
 literal|"application/x-java-pack200"
 argument_list|)
 decl_stmt|;
-comment|// TODO Not yet supported by CompressorStreamFactory, see COMPRESS-316
 specifier|private
 specifier|static
 specifier|final
@@ -517,6 +516,8 @@ argument_list|,
 name|XZ
 argument_list|,
 name|PACK
+argument_list|,
+name|ZLIB
 argument_list|)
 decl_stmt|;
 specifier|static
@@ -663,13 +664,6 @@ name|cis
 decl_stmt|;
 try|try
 block|{
-name|CompressorStreamFactory
-name|factory
-init|=
-operator|new
-name|CompressorStreamFactory
-argument_list|()
-decl_stmt|;
 name|CompressorParserOptions
 name|options
 init|=
@@ -700,9 +694,11 @@ block|}
 block|}
 argument_list|)
 decl_stmt|;
+name|CompressorStreamFactory
 name|factory
-operator|.
-name|setDecompressConcatenated
+init|=
+operator|new
+name|CompressorStreamFactory
 argument_list|(
 name|options
 operator|.
@@ -711,7 +707,7 @@ argument_list|(
 name|metadata
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|cis
 operator|=
 name|factory
