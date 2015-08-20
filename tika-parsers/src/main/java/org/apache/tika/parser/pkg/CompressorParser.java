@@ -612,6 +612,7 @@ parameter_list|)
 block|{
 comment|// TODO Add support for the remaining CompressorInputStream formats:
 comment|//   LZMACompressorInputStream
+comment|//   LZWInputStream -> UnshrinkingInputStream
 if|if
 condition|(
 name|stream
