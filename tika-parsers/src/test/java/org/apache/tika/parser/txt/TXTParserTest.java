@@ -19,6 +19,34 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|apache
@@ -72,20 +100,6 @@ operator|.
 name|io
 operator|.
 name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -265,7 +279,7 @@ name|text
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -397,8 +411,6 @@ name|text
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -848,7 +860,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -914,7 +926,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -995,7 +1007,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1067,7 +1079,7 @@ name|test2
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1239,8 +1251,6 @@ name|test
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -1422,7 +1432,7 @@ literal|"<html><body>hello world</body></html>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1488,8 +1498,6 @@ name|text
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -1543,8 +1551,6 @@ name|text
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

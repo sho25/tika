@@ -19,6 +19,48 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -169,7 +211,7 @@ name|testStr
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 decl_stmt|;
 name|byte
@@ -180,7 +222,7 @@ name|testStr
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|byte
@@ -191,7 +233,7 @@ name|testStr
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16"
+name|UTF_16
 argument_list|)
 decl_stmt|;
 name|byte
@@ -212,7 +254,7 @@ name|smallStr
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 decl_stmt|;
 name|byte

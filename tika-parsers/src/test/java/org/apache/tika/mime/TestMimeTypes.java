@@ -21,6 +21,48 @@ end_comment
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16BE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16LE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -2300,7 +2342,7 @@ literal|"<?xml version=\"1.0\" encoding=\"UTF-8\"?><records><record/></records>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2312,7 +2354,7 @@ literal|"\uFEFF<?xml version=\"1.0\" encoding=\"UTF-16\"?><records><record/></re
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16LE"
+name|UTF_16LE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2324,7 +2366,7 @@ literal|"\uFEFF<?xml version=\"1.0\" encoding=\"UTF-16\"?><records><record/></re
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16BE"
+name|UTF_16BE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2336,7 +2378,7 @@ literal|"<!-- XML without processing instructions --><records><record/></records
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2348,7 +2390,7 @@ literal|"<html><body>HTML</body></html>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2360,7 +2402,7 @@ literal|"<!-- HTML comment --><html><body>HTML</body></html>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -19,6 +19,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -854,7 +868,7 @@ name|String
 argument_list|(
 name|data
 argument_list|,
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 decl_stmt|;
 if|if

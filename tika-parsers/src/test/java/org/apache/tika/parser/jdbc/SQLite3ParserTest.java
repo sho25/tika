@@ -19,6 +19,20 @@ end_comment
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -95,6 +109,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|TikaTest
@@ -126,20 +154,6 @@ operator|.
 name|extractor
 operator|.
 name|ParserContainerExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -344,7 +358,6 @@ literal|"/test-documents/"
 operator|+
 name|TEST_FILE_NAME
 decl_stmt|;
-empty_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -1215,7 +1228,7 @@ argument_list|,
 literal|1000
 argument_list|)
 argument_list|,
-literal|"UTF-8"
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|strings
