@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -1180,7 +1194,7 @@ literal|"Hello, World!"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 decl_stmt|;

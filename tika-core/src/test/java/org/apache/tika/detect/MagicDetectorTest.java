@@ -85,6 +85,48 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16BE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16LE
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -148,7 +190,7 @@ literal|"<html"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -203,7 +245,7 @@ literal|"<html"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -302,7 +344,7 @@ literal|"<html"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|,
 literal|null
@@ -635,7 +677,7 @@ literal|"(?s)\\A.{0,144}%PDF-"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|,
 literal|null
@@ -739,7 +781,7 @@ name|pattern
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|,
 literal|null
@@ -837,7 +879,7 @@ name|pattern
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|,
 literal|null
@@ -896,7 +938,7 @@ literal|"abcdefghijklmnopqrstuvwxyz0123456789"
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 decl_stmt|;
 name|MediaType
@@ -1013,7 +1055,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1044,7 +1086,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1076,7 +1118,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16LE"
+name|UTF_16LE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1107,7 +1149,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16BE"
+name|UTF_16BE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1139,7 +1181,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1158,8 +1200,6 @@ name|String
 name|data
 parameter_list|)
 block|{
-try|try
-block|{
 name|byte
 index|[]
 name|bytes
@@ -1168,7 +1208,7 @@ name|data
 operator|.
 name|getBytes
 argument_list|(
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 decl_stmt|;
 name|assertDetect
@@ -1180,19 +1220,6 @@ argument_list|,
 name|bytes
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|fail
-argument_list|(
-literal|"Unexpected exception from MagicDetector"
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 specifier|private
 name|void

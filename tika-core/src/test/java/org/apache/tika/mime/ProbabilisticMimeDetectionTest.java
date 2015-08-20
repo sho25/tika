@@ -17,6 +17,48 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16BE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16LE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -81,18 +123,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -130,19 +160,6 @@ specifier|public
 class|class
 name|ProbabilisticMimeDetectionTest
 block|{
-specifier|private
-specifier|static
-specifier|final
-name|Charset
-name|UTF8
-init|=
-name|Charset
-operator|.
-name|forName
-argument_list|(
-literal|"UTF-8"
-argument_list|)
-decl_stmt|;
 specifier|private
 name|ProbabilisticMimeDetectionSelector
 name|proDetector
@@ -347,7 +364,7 @@ literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16LE"
+name|UTF_16LE
 argument_list|)
 argument_list|)
 argument_list|,
@@ -374,7 +391,7 @@ literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(
-literal|"UTF-16BE"
+name|UTF_16BE
 argument_list|)
 argument_list|)
 argument_list|,
@@ -401,7 +418,7 @@ literal|"\ufefftest"
 operator|.
 name|getBytes
 argument_list|(
-name|UTF8
+name|UTF_8
 argument_list|)
 argument_list|)
 argument_list|,
@@ -979,7 +996,7 @@ literal|"<!-- test -->"
 operator|.
 name|getBytes
 argument_list|(
-name|UTF8
+name|UTF_8
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1042,7 +1059,7 @@ literal|"Hello, World!"
 operator|.
 name|getBytes
 argument_list|(
-name|UTF8
+name|UTF_8
 argument_list|)
 decl_stmt|;
 name|MediaType
