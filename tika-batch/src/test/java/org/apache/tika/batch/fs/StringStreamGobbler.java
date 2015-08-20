@@ -19,6 +19,20 @@ end_comment
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -68,16 +82,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|apache
+name|nio
 operator|.
-name|tika
+name|charset
 operator|.
-name|io
+name|StandardCharsets
 operator|.
-name|IOUtils
+name|UTF_8
 import|;
 end_import
 
@@ -133,8 +147,6 @@ argument_list|(
 name|is
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

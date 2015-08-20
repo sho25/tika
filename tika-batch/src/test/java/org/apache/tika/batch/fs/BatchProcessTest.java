@@ -19,6 +19,20 @@ end_comment
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -134,20 +148,6 @@ operator|.
 name|batch
 operator|.
 name|BatchProcessDriverCLI
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -551,12 +551,7 @@ argument_list|,
 literal|"test6_ok.xml.xml"
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -860,12 +855,7 @@ argument_list|,
 literal|"test2_ok.xml.xml"
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1164,12 +1154,7 @@ argument_list|,
 literal|"test0_sleep.xml.xml"
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

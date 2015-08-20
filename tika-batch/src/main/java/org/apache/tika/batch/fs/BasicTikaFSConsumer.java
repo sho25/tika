@@ -65,6 +65,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|io
+operator|.
+name|IOUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|batch
@@ -123,20 +137,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|parser
 operator|.
 name|ParseContext
@@ -183,6 +183,20 @@ name|ContentHandler
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Basic FileResourceConsumer that reads files from an input  * directory and writes content to the output directory.  *<p>  * This catches all exceptions and errors and then logs them.  * This will re-throw errors.  *  */
 end_comment
@@ -224,8 +238,6 @@ specifier|private
 name|String
 name|outputEncoding
 init|=
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|toString

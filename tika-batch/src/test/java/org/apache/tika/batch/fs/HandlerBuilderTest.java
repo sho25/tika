@@ -19,6 +19,20 @@ end_comment
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -100,20 +114,6 @@ operator|.
 name|batch
 operator|.
 name|ParallelFileProcessingResult
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -222,12 +222,7 @@ name|readFileToString
 argument_list|(
 name|outputFile
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -349,12 +344,7 @@ name|readFileToString
 argument_list|(
 name|outputFile
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -476,12 +466,7 @@ name|readFileToString
 argument_list|(
 name|outputFile
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertFalse
@@ -594,12 +579,7 @@ name|readFileToString
 argument_list|(
 name|outputFile
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|//this is not ideal. How can we change handlers to writeout whatever
@@ -712,12 +692,7 @@ name|readFileToString
 argument_list|(
 name|outputFile
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertTrue
