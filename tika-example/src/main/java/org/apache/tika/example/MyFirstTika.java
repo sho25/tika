@@ -229,6 +229,20 @@ name|ContentHandler
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Demonstrates how to call the different components within Tika: its  * {@link Detector} framework (aka MIME identification and repository), its  * {@link Parser} interface, its {@link LanguageIdentifier} and other goodies.  *   * It also shows the "easy way" via {@link AutoDetectParser}  */
 end_comment
@@ -631,7 +645,7 @@ argument_list|(
 name|filename
 argument_list|)
 argument_list|,
-literal|"utf-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 argument_list|)

@@ -211,6 +211,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Parses the output of /bin/ls and counts the number of files and the number of  * executables using Tika.  */
 end_comment
@@ -351,7 +365,7 @@ operator|.
 name|getFile
 argument_list|()
 argument_list|,
-literal|"utf-8"
+name|UTF_8
 argument_list|)
 decl_stmt|;
 for|for

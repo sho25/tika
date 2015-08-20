@@ -17,6 +17,34 @@ end_comment
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_16LE
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -86,6 +114,18 @@ operator|.
 name|io
 operator|.
 name|Writer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -303,16 +343,16 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|String
-name|encoding
+name|Charset
+name|charset
 range|:
 operator|new
-name|String
+name|Charset
 index|[]
 block|{
-literal|"UTF-8"
+name|UTF_8
 block|,
-literal|"UTF-16LE"
+name|UTF_16LE
 block|}
 control|)
 block|{
@@ -328,7 +368,7 @@ argument_list|(
 name|configFile
 argument_list|)
 argument_list|,
-name|encoding
+name|charset
 argument_list|)
 decl_stmt|;
 name|ex
@@ -342,7 +382,10 @@ argument_list|()
 argument_list|,
 name|writer
 argument_list|,
-name|encoding
+name|charset
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|writer

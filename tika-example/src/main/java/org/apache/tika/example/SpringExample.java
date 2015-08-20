@@ -108,16 +108,16 @@ import|;
 end_import
 
 begin_import
-import|import
-name|com
+import|import static
+name|java
 operator|.
-name|google
+name|nio
 operator|.
-name|common
+name|charset
 operator|.
-name|base
+name|StandardCharsets
 operator|.
-name|Charsets
+name|UTF_8
 import|;
 end_import
 
@@ -177,8 +177,6 @@ literal|"Hello, World!"
 operator|.
 name|getBytes
 argument_list|(
-name|Charsets
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

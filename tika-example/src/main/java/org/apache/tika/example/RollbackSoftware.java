@@ -265,6 +265,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Demonstrates Tika and its ability to sense symlinks.  */
 end_comment
@@ -356,7 +370,7 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|,
-literal|"utf-8"
+name|UTF_8
 argument_list|)
 argument_list|,
 name|handler
@@ -596,7 +610,7 @@ name|toString
 argument_list|(
 name|is
 argument_list|,
-literal|"utf-8"
+name|UTF_8
 argument_list|)
 argument_list|)
 decl_stmt|;

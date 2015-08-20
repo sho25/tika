@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -44,20 +58,6 @@ operator|.
 name|io
 operator|.
 name|PrintStream
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
 import|;
 end_import
 
@@ -115,8 +115,6 @@ name|buffer
 argument_list|,
 literal|true
 argument_list|,
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -151,8 +149,6 @@ name|buffer
 operator|.
 name|toString
 argument_list|(
-name|Charsets
-operator|.
 name|UTF_8
 operator|.
 name|name

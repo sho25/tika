@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -81,20 +95,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|com
-operator|.
-name|google
-operator|.
-name|common
-operator|.
-name|base
-operator|.
-name|Charsets
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -125,16 +125,6 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
-name|String
-name|UTF8
-init|=
-name|Charsets
-operator|.
-name|UTF_8
-operator|.
-name|name
-argument_list|()
-decl_stmt|;
 name|PrintStream
 name|out
 init|=
@@ -153,7 +143,10 @@ name|buffer
 argument_list|,
 literal|true
 argument_list|,
-name|UTF8
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -176,7 +169,7 @@ name|file
 argument_list|,
 name|message
 argument_list|,
-name|UTF8
+name|UTF_8
 argument_list|)
 expr_stmt|;
 name|SimpleTextExtractor
@@ -214,7 +207,10 @@ name|buffer
 operator|.
 name|toString
 argument_list|(
-name|UTF8
+name|UTF_8
+operator|.
+name|name
+argument_list|()
 argument_list|)
 operator|.
 name|trim
