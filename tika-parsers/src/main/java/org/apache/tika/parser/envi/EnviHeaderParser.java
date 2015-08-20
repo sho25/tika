@@ -75,11 +75,13 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|detect
+name|io
 operator|.
-name|AutoDetectReader
+name|input
+operator|.
+name|CloseShieldInputStream
 import|;
 end_import
 
@@ -91,9 +93,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|detect
 operator|.
-name|CloseShieldInputStream
+name|AutoDetectReader
 import|;
 end_import
 

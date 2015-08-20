@@ -55,20 +55,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|xml
 operator|.
 name|sax
@@ -86,6 +72,34 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -349,8 +363,6 @@ literal|6
 argument_list|,
 literal|6
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -373,7 +385,7 @@ name|length
 operator|-
 literal|11
 argument_list|,
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 decl_stmt|;
 comment|// Tags are a 3 letter code, 5 digit length, then data

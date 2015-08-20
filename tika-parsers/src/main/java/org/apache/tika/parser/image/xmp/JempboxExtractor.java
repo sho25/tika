@@ -139,20 +139,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -185,6 +171,20 @@ name|InputSource
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -197,8 +197,6 @@ specifier|final
 name|String
 name|DEFAULT_XMP_CHARSET
 init|=
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name

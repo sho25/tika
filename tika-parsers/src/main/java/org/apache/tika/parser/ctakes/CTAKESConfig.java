@@ -68,16 +68,20 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
 name|io
 operator|.
+name|output
+operator|.
 name|NullOutputStream
+operator|.
+name|NULL_OUTPUT_STREAM
 import|;
 end_import
 
@@ -144,8 +148,6 @@ specifier|private
 name|OutputStream
 name|stream
 init|=
-name|NullOutputStream
-operator|.
 name|NULL_OUTPUT_STREAM
 decl_stmt|;
 comment|// Enables CAS serialization

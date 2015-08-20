@@ -279,6 +279,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -697,7 +711,7 @@ operator|.
 name|getData
 argument_list|()
 argument_list|,
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 argument_list|)
 expr_stmt|;

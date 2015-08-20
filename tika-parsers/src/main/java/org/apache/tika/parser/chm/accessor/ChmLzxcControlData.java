@@ -21,16 +21,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -40,20 +30,6 @@ operator|.
 name|exception
 operator|.
 name|TikaException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|IOUtils
 import|;
 end_import
 
@@ -108,6 +84,20 @@ operator|.
 name|exception
 operator|.
 name|ChmParsingException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -193,12 +183,10 @@ name|LZXC
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
-comment|/*                                                               * 4                                                               * (LZXC                                                               * )                                                               */
+comment|/*                                                         * 4                                                         * (LZXC                                                         * )                                                         */
 block|}
 comment|/**      * Returns a remained data      *       * @return dataRemained      */
 specifier|private
@@ -671,8 +659,6 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 operator|+
@@ -1008,8 +994,6 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 operator|.

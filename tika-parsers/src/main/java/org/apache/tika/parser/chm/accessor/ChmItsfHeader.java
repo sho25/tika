@@ -51,20 +51,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|parser
 operator|.
 name|chm
@@ -108,6 +94,20 @@ operator|.
 name|exception
 operator|.
 name|ChmParsingException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -243,8 +243,6 @@ name|ITSF
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
@@ -273,8 +271,6 @@ argument_list|(
 name|getSignature
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 operator|+
@@ -1565,8 +1561,6 @@ operator|.
 name|getSignature
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 operator|.

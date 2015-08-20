@@ -217,6 +217,20 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
+import|;
+end_import
+
 begin_comment
 comment|/**  * A basic text extracting parser for the CADKey PRT (CAD Drawing)  *  format. It outputs text from note entries.  */
 end_comment
@@ -382,7 +396,7 @@ name|String
 argument_list|(
 name|date
 argument_list|,
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 decl_stmt|;
 if|if

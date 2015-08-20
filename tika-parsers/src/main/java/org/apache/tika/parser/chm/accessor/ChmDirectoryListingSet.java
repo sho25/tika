@@ -71,20 +71,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|parser
 operator|.
 name|chm
@@ -128,6 +114,20 @@ operator|.
 name|exception
 operator|.
 name|ChmParsingException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -892,8 +892,6 @@ argument_list|()
 operator|)
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -994,9 +992,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//                int indexWorkData = ChmCommons.indexOf(dir_chunk,
-comment|//                        "::".getBytes("UTF-8"));
+comment|//                        "::".getBytes(UTF_8));
 comment|//                int indexUserData = ChmCommons.indexOf(dir_chunk,
-comment|//                        "/".getBytes("UTF-8"));
+comment|//                        "/".getBytes(UTF_8));
 comment|//
 comment|//                if (indexUserData>=0&& indexUserData< indexWorkData)
 comment|//                    setPlaceHolder(indexUserData);
@@ -1024,7 +1022,7 @@ comment|//                            // placeHolder, (placeHolder +
 comment|//                            // dle.getNameLength()))));
 comment|//                            dle.setName(new String(ChmCommons.copyOfRange(
 comment|//                                    dir_chunk, placeHolder,
-comment|//                                    (placeHolder + dle.getNameLength())), "UTF-8"));
+comment|//                                    (placeHolder + dle.getNameLength())), UTF_8));
 comment|//                            checkControlData(dle);
 comment|//                            checkResetTable(dle);
 comment|//                            setPlaceHolder(placeHolder

@@ -83,11 +83,13 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|input
+operator|.
+name|CloseShieldInputStream
 import|;
 end_import
 
@@ -99,9 +101,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|exception
 operator|.
-name|CloseShieldInputStream
+name|TikaException
 import|;
 end_import
 
@@ -158,22 +160,6 @@ operator|.
 name|parser
 operator|.
 name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|dif
-operator|.
-name|DIFContentHandler
 import|;
 end_import
 

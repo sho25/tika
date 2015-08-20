@@ -75,6 +75,20 @@ name|BaseParser
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
 begin_comment
 comment|/**  * In fairly rare cases, a PDF's XMP will contain a string that  * has incorrectly been encoded with PDFEncoding: an octal for non-ascii and  * ascii for ascii, e.g. "\376\377\000M\000i\000c\000r\000o\000s\000o\000f\000t\000"  *<p>  * This class can be used to decode those strings.  *<p>  * See TIKA-1678.  Many thanks to Andrew Jackson for raising this issue  * and Tilman Hausherr for the solution.  *<p>  * As of this writing, we are only handling strings that start with  * an encoded BOM.  Andrew Jackson found a handful of other examples (e.g.  * this ISO-8859-7 string:  * "Microsoft Word - \\323\\365\\354\\354\\345\\364\\357\\367\\336  * \\364\\347\\362 PRAKSIS \\363\\364\\357")  * that we aren't currently handling.  */
 end_comment
@@ -181,7 +195,7 @@ argument_list|)
 operator|.
 name|getBytes
 argument_list|(
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 decl_stmt|;
 name|InputStream

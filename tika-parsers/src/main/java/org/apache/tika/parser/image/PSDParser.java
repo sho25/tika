@@ -41,16 +41,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|UnsupportedEncodingException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Arrays
@@ -262,6 +252,20 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
 import|;
 end_import
 
@@ -1017,8 +1021,6 @@ name|getDataAsString
 parameter_list|()
 block|{
 comment|// Will be null padded
-try|try
-block|{
 return|return
 operator|new
 name|String
@@ -1033,24 +1035,9 @@ name|length
 operator|-
 literal|1
 argument_list|,
-literal|"ASCII"
+name|US_ASCII
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Something is very broken in your JVM!"
-argument_list|)
-throw|;
-block|}
 block|}
 block|}
 block|}

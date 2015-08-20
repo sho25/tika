@@ -401,20 +401,6 @@ name|tika
 operator|.
 name|io
 operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -608,6 +594,20 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -2069,8 +2069,6 @@ name|html
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

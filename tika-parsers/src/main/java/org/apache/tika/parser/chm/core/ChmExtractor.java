@@ -75,11 +75,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|IOUtils
 import|;
 end_import
 
@@ -91,9 +91,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|exception
 operator|.
-name|IOUtils
+name|TikaException
 import|;
 end_import
 
@@ -276,6 +276,20 @@ operator|.
 name|lzx
 operator|.
 name|ChmLzxBlock
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -682,8 +696,6 @@ name|LZXC
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

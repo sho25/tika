@@ -129,11 +129,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|IOUtils
 import|;
 end_import
 
@@ -145,9 +145,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|exception
 operator|.
-name|IOUtils
+name|TikaException
 import|;
 end_import
 
@@ -298,6 +298,20 @@ operator|.
 name|helpers
 operator|.
 name|DefaultHandler
+import|;
+end_import
+
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
 import|;
 end_import
 
@@ -1030,12 +1044,7 @@ name|toString
 argument_list|(
 name|zip
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
-operator|.
-name|name
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|metadata

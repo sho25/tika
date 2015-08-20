@@ -51,20 +51,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|IOUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|parser
 operator|.
 name|chm
@@ -129,6 +115,20 @@ name|ChmParsingException
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
 begin_comment
 comment|/**  * Description Note: not always exists An index chunk has the following format:  * 0000: char[4] 'PMGI' 0004: DWORD Length of quickref/free area at end of  * directory chunk 0008: Directory index entries (to quickref/free area) The  * quickref area in an PMGI is the same as in an PMGL The format of a directory  * index entry is as follows: BYTE: length of name BYTEs: name (UTF-8 encoded)  * ENCINT: directory listing chunk which starts with name Encoded Integers aka  * ENCINT An ENCINT is a variable-length integer. The high bit of each byte  * indicates "continued to the next byte". Bytes are stored most significant to  * least significant. So, for example, $EA $15 is (((0xEA&0x7F)<<7)|0x15) =  * 0x3515.  *   *<p>  * Note: This class is not in use  *   * {@link http://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original/?show-translation-form=1 }  *   *   */
 end_comment
@@ -185,8 +185,6 @@ name|CHM_PMGI_MARKER
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
@@ -307,8 +305,6 @@ name|CHM_PMGI_MARKER
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)
@@ -569,8 +565,6 @@ argument_list|(
 name|getSignature
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 operator|+
@@ -684,8 +678,6 @@ name|CHM_PMGI_MARKER
 operator|.
 name|getBytes
 argument_list|(
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 argument_list|)

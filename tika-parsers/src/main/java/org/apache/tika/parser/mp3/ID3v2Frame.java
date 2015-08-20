@@ -85,6 +85,20 @@ name|ID3Comment
 import|;
 end_import
 
+begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
 begin_comment
 comment|/**  * A frame of ID3v2 data, which is then passed to a handler to   * be turned into useful data.  */
 end_comment
@@ -1660,8 +1674,6 @@ name|int
 name|length
 parameter_list|)
 block|{
-try|try
-block|{
 return|return
 operator|new
 name|String
@@ -1672,26 +1684,9 @@ name|offset
 argument_list|,
 name|length
 argument_list|,
-literal|"ISO-8859-1"
+name|ISO_8859_1
 argument_list|)
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Core encoding ISO-8859-1 encoding is not available"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
 block|}
 comment|/**      * Iterates over id3v2 raw tags.      * Create an instance of this that configures the      *  various length and multipliers.      */
 specifier|protected

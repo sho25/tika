@@ -77,11 +77,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
-name|exception
+name|io
 operator|.
-name|TikaException
+name|IOUtils
 import|;
 end_import
 
@@ -93,9 +93,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
+name|exception
 operator|.
-name|IOUtils
+name|TikaException
 import|;
 end_import
 

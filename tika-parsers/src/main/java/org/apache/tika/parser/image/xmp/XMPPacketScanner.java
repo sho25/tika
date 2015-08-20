@@ -54,12 +54,16 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|UnsupportedEncodingException
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|US_ASCII
 import|;
 end_import
 
@@ -95,15 +99,13 @@ name|PACKET_TRAILER
 decl_stmt|;
 static|static
 block|{
-try|try
-block|{
 name|PACKET_HEADER
 operator|=
 literal|"<?xpacket begin="
 operator|.
 name|getBytes
 argument_list|(
-literal|"US-ASCII"
+name|US_ASCII
 argument_list|)
 expr_stmt|;
 name|PACKET_HEADER_END
@@ -112,7 +114,7 @@ literal|"?>"
 operator|.
 name|getBytes
 argument_list|(
-literal|"US-ASCII"
+name|US_ASCII
 argument_list|)
 expr_stmt|;
 name|PACKET_TRAILER
@@ -121,24 +123,9 @@ literal|"<?xpacket"
 operator|.
 name|getBytes
 argument_list|(
-literal|"US-ASCII"
+name|US_ASCII
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|UnsupportedEncodingException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-literal|"Incompatible JVM! US-ASCII encoding not supported."
-argument_list|)
-throw|;
-block|}
 block|}
 specifier|private
 specifier|static

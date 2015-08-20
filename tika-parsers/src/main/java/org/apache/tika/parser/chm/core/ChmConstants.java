@@ -20,16 +20,16 @@ package|;
 end_package
 
 begin_import
-import|import
-name|org
+import|import static
+name|java
 operator|.
-name|apache
+name|nio
 operator|.
-name|tika
+name|charset
 operator|.
-name|io
+name|StandardCharsets
 operator|.
-name|IOUtils
+name|UTF_8
 import|;
 end_import
 
@@ -49,8 +49,6 @@ specifier|final
 name|String
 name|DEFAULT_CHARSET
 init|=
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name
