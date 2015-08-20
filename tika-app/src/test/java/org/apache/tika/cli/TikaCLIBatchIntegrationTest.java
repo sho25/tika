@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -151,7 +165,7 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|commons
 operator|.
 name|io
 operator|.
@@ -316,8 +330,6 @@ name|outBuffer
 argument_list|,
 literal|true
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -341,8 +353,6 @@ name|errBuffer
 argument_list|,
 literal|true
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -396,8 +406,6 @@ name|out
 argument_list|,
 literal|true
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -416,8 +424,6 @@ name|err
 argument_list|,
 literal|true
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 operator|.
 name|name
@@ -659,8 +665,6 @@ literal|"test_recursive_embedded.docx.json"
 argument_list|)
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
@@ -812,8 +816,6 @@ operator|.
 name|toByteArray
 argument_list|()
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
@@ -842,7 +844,7 @@ name|reader
 init|=
 literal|null
 decl_stmt|;
-comment|/*        try {             String[] params = {"-i", escape(testDataFile.getAbsolutePath()),                     "-o", escape(tempDir.getAbsolutePath()),                     "-numConsumers", "10",                     "-J", //recursive Json                     "-t" //plain text in content             };             TikaCLI.main(params);             reader = new InputStreamReader(                     new FileInputStream(new File(tempDir, "test_recursive_embedded.docx.json")), IOUtils.UTF_8);             List<Metadata> metadataList = JsonMetadataList.fromJson(reader);             assertEquals(12, metadataList.size());             assertEquals("59f626e09a8c16ab6dbc2800c685f772", metadataList.get(0).get("X-TIKA:digest:MD5"));             assertEquals("22e6e91f408d018417cd452d6de3dede", metadataList.get(5).get("X-TIKA:digest:MD5"));         } finally {             IOUtils.closeQuietly(reader);         } */
+comment|/*        try {             String[] params = {"-i", escape(testDataFile.getAbsolutePath()),                     "-o", escape(tempDir.getAbsolutePath()),                     "-numConsumers", "10",                     "-J", //recursive Json                     "-t" //plain text in content             };             TikaCLI.main(params);             reader = new InputStreamReader(                     new FileInputStream(new File(tempDir, "test_recursive_embedded.docx.json")), UTF_8);             List<Metadata> metadataList = JsonMetadataList.fromJson(reader);             assertEquals(12, metadataList.size());             assertEquals("59f626e09a8c16ab6dbc2800c685f772", metadataList.get(0).get("X-TIKA:digest:MD5"));             assertEquals("22e6e91f408d018417cd452d6de3dede", metadataList.get(5).get("X-TIKA:digest:MD5"));         } finally {             IOUtils.closeQuietly(reader);         } */
 name|reader
 operator|=
 literal|null
@@ -913,8 +915,6 @@ literal|"test_recursive_embedded.docx.json"
 argument_list|)
 argument_list|)
 argument_list|,
-name|IOUtils
-operator|.
 name|UTF_8
 argument_list|)
 expr_stmt|;
