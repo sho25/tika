@@ -165,20 +165,6 @@ name|tika
 operator|.
 name|io
 operator|.
-name|IOExceptionWithCause
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
 name|IOUtils
 import|;
 end_import
@@ -995,7 +981,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to deserialize an exception"
 argument_list|,
