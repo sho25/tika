@@ -73,6 +73,18 @@ name|ws
 operator|.
 name|rs
 operator|.
+name|PathParam
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|ws
+operator|.
+name|rs
+operator|.
 name|Produces
 import|;
 end_import
@@ -314,6 +326,28 @@ block|{
 specifier|private
 specifier|static
 specifier|final
+name|String
+name|HANDLER_TYPE_PARAM
+init|=
+literal|"handler"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|BasicContentHandlerFactory
+operator|.
+name|HANDLER_TYPE
+name|DEFAULT_HANDLER_TYPE
+init|=
+name|BasicContentHandlerFactory
+operator|.
+name|HANDLER_TYPE
+operator|.
+name|XML
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|Log
 name|logger
 init|=
@@ -326,6 +360,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Returns an InputStream that can be deserialized as a list of      * {@link Metadata} objects.      * The first in the list represents the main document, and the      * rest represent metadata for the embedded objects.  This works      * recursively through all descendants of the main document, not      * just the immediate children.      *<p>      * The extracted text content is stored with the key      * {@link RecursiveParserWrapper#TIKA_CONTENT}.      *<p>      * Specify the handler for the content (xml, html, text, ignore)      * in the path:<br/>      * /rmeta/form (default: xml)<br/>      * /rmeta/form/xml    (store the content as xml)<br/>      * /rmeta/form/text   (store the content as text)<br/>      * /rmeta/form/ignore (don't record any content)<br/>      *      * @param att attachment      * @param info uri info      * @param handlerTypeName which type of handler to use      * @return InputStream that can be deserialized as a list of {@link Metadata} objects      * @throws Exception      */
 annotation|@
 name|POST
 annotation|@
@@ -337,15 +372,17 @@ annotation|@
 name|Produces
 argument_list|(
 block|{
-literal|"text/csv"
-block|,
 literal|"application/json"
 block|}
 argument_list|)
 annotation|@
 name|Path
 argument_list|(
-literal|"form"
+literal|"form{"
+operator|+
+name|HANDLER_TYPE_PARAM
+operator|+
+literal|" : (\\w+)?}"
 argument_list|)
 specifier|public
 name|Response
@@ -358,6 +395,14 @@ annotation|@
 name|Context
 name|UriInfo
 name|info
+parameter_list|,
+annotation|@
+name|PathParam
+argument_list|(
+name|HANDLER_TYPE_PARAM
+argument_list|)
+name|String
+name|handlerTypeName
 parameter_list|)
 throws|throws
 name|Exception
@@ -384,6 +429,8 @@ name|getHeaders
 argument_list|()
 argument_list|,
 name|info
+argument_list|,
+name|handlerTypeName
 argument_list|)
 argument_list|)
 operator|.
@@ -391,12 +438,22 @@ name|build
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns an InputStream that can be deserialized as a list of      * {@link Metadata} objects.      * The first in the list represents the main document, and the      * rest represent metadata for the embedded objects.  This works      * recursively through all descendants of the main document, not      * just the immediate children.      *<p>      * The extracted text content is stored with the key      * {@link RecursiveParserWrapper#TIKA_CONTENT}.      *<p>      * Specify the handler for the content (xml, html, text, ignore)      * in the path:<br/>      * /rmeta (default: xml)<br/>      * /rmeta/xml    (store the content as xml)<br/>      * /rmeta/text   (store the content as text)<br/>      * /rmeta/ignore (don't record any content)<br/>      *      * @param info uri info      * @param handlerTypeName which type of handler to use      * @return InputStream that can be deserialized as a list of {@link Metadata} objects      * @throws Exception      */
 annotation|@
 name|PUT
 annotation|@
 name|Produces
 argument_list|(
 literal|"application/json"
+argument_list|)
+annotation|@
+name|Path
+argument_list|(
+literal|"{"
+operator|+
+name|HANDLER_TYPE_PARAM
+operator|+
+literal|" : (\\w+)?}"
 argument_list|)
 specifier|public
 name|Response
@@ -414,6 +471,14 @@ annotation|@
 name|Context
 name|UriInfo
 name|info
+parameter_list|,
+annotation|@
+name|PathParam
+argument_list|(
+name|HANDLER_TYPE_PARAM
+argument_list|)
+name|String
+name|handlerTypeName
 parameter_list|)
 throws|throws
 name|Exception
@@ -433,6 +498,8 @@ name|getRequestHeaders
 argument_list|()
 argument_list|,
 name|info
+argument_list|,
+name|handlerTypeName
 argument_list|)
 argument_list|)
 operator|.
@@ -457,6 +524,9 @@ name|httpHeaders
 parameter_list|,
 name|UriInfo
 name|info
+parameter_list|,
+name|String
+name|handlerTypeName
 parameter_list|)
 throws|throws
 name|Exception
@@ -485,7 +555,7 @@ operator|.
 name|createParser
 argument_list|()
 decl_stmt|;
-comment|// TODO: parameterize choice of handler and max chars?
+comment|// TODO: parameterize choice of max chars/max embedded attachments
 name|BasicContentHandlerFactory
 operator|.
 name|HANDLER_TYPE
@@ -493,9 +563,12 @@ name|type
 init|=
 name|BasicContentHandlerFactory
 operator|.
-name|HANDLER_TYPE
-operator|.
-name|TEXT
+name|parseHandlerType
+argument_list|(
+name|handlerTypeName
+argument_list|,
+name|DEFAULT_HANDLER_TYPE
+argument_list|)
 decl_stmt|;
 name|RecursiveParserWrapper
 name|wrapper
