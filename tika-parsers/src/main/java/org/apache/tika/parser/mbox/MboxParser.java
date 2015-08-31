@@ -629,6 +629,8 @@ argument_list|,
 name|charsetName
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|BufferedReader
 name|reader
 init|=
@@ -637,8 +639,7 @@ name|BufferedReader
 argument_list|(
 name|isr
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|String
 name|curLine
@@ -933,14 +934,6 @@ name|isInterrupted
 argument_list|()
 condition|)
 do|;
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 name|xhtml
 operator|.

@@ -266,6 +266,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -277,8 +279,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3id3v1.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -294,14 +295,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -486,6 +479,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -497,8 +492,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3id3v2.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -514,14 +508,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check core properties
@@ -909,6 +895,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -920,8 +908,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3id3v1_v2.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -937,14 +924,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -1129,6 +1108,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1140,8 +1121,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3id3v24.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1157,14 +1137,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -1483,6 +1455,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1494,8 +1468,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3i18n.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1511,14 +1484,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -1698,6 +1663,8 @@ decl_stmt|;
 comment|// Note - our test file has a lyrics tag, but lacks any
 comment|//  lyrics in the tags, so we can't test that bit
 comment|// TODO Find a better sample file
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1709,8 +1676,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3lyrics.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1726,14 +1692,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -2147,6 +2105,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -2158,8 +2118,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3noid3.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -2175,14 +2134,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -2232,6 +2183,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -2243,7 +2196,8 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test2.mp3"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|stream
@@ -2255,8 +2209,6 @@ comment|// You haven't downloaded the file
 comment|// Skip the test
 return|return;
 block|}
-try|try
-block|{
 name|parser
 operator|.
 name|parse
@@ -2271,14 +2223,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -2421,6 +2365,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -2432,8 +2378,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMP3truncated.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -2449,14 +2394,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check we could get the headers from the start
@@ -2622,6 +2559,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -2633,8 +2572,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testNakedUTF16BOM.mp3"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -2650,14 +2588,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals

@@ -177,6 +177,8 @@ name|path
 init|=
 literal|"/test-documents/breidamerkurjokull_radar_profiles_2009.mat"
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -188,8 +190,7 @@ name|getResourceAsStream
 argument_list|(
 name|path
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -205,14 +206,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check Metadata
@@ -365,6 +358,8 @@ name|path
 init|=
 literal|"/test-documents/test_mat_text.mat"
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -376,8 +371,7 @@ name|getResourceAsStream
 argument_list|(
 name|path
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -393,14 +387,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check Content

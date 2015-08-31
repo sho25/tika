@@ -333,6 +333,8 @@ argument_list|,
 name|fileConfig
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -344,8 +346,7 @@ name|getResourceAsStream
 argument_list|(
 name|resource
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -370,14 +371,6 @@ block|{
 name|e
 operator|.
 name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

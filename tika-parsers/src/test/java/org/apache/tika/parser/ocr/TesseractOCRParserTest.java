@@ -766,6 +766,8 @@ argument_list|,
 name|pdfConfig
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -777,8 +779,7 @@ name|getResourceAsStream
 argument_list|(
 name|resource
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -796,14 +797,6 @@ argument_list|()
 argument_list|,
 name|parseContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|List

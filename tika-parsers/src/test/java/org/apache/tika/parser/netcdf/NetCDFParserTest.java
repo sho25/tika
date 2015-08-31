@@ -192,6 +192,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -203,8 +205,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/sresa1b_ncar_ccsm3_0_run1_200001.nc"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -220,14 +221,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals

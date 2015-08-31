@@ -304,6 +304,8 @@ argument_list|)
 expr_stmt|;
 comment|// The following code was taken from the TXTParser
 comment|// Automatically detect the character encoding
+try|try
+init|(
 name|AutoDetectReader
 name|reader
 init|=
@@ -318,8 +320,7 @@ argument_list|)
 argument_list|,
 name|metadata
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Charset
 name|charset
@@ -416,14 +417,6 @@ block|}
 name|xhtml
 operator|.
 name|endDocument
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

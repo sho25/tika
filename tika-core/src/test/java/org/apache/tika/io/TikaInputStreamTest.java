@@ -393,6 +393,8 @@ argument_list|,
 literal|".tmp"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|OutputStream
 name|stream
 init|=
@@ -401,8 +403,7 @@ name|FileOutputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|stream
 operator|.
@@ -415,14 +416,6 @@ argument_list|(
 name|UTF_8
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 return|return
@@ -439,6 +432,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -447,8 +442,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|readStream
@@ -456,14 +450,6 @@ argument_list|(
 name|stream
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 specifier|private

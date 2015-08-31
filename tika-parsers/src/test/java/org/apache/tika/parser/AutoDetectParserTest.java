@@ -549,6 +549,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -562,7 +564,8 @@ name|tp
 operator|.
 name|resourceRealName
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|input
@@ -580,8 +583,6 @@ name|resourceRealName
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|Metadata
 name|metadata
 init|=
@@ -686,14 +687,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Convenience method -- its sole purpose of existence is to make the      * call to it more readable than it would be if a TestParams instance      * would need to be instantiated there.      *      * @param resourceRealName real name of resource      * @param resourceStatedName stated name -- will a bad name fool us?      * @param realType - the real MIME type      * @param statedType - stated MIME type - will a wrong one fool us?      * @param expectedContentFragment - something expected in the text      * @throws Exception      */
@@ -1276,6 +1269,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|tgz
 init|=
@@ -1287,8 +1282,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/TIKA-216.tgz"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -1335,14 +1329,6 @@ name|e
 parameter_list|)
 block|{
 comment|// expected
-block|}
-finally|finally
-block|{
-name|tgz
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Make sure XML parse errors don't trigger ZIP bomb detection.      *      * @see<a href="https://issues.apache.org/jira/browse/TIKA-1322">TIKA-1322</a>      */
@@ -1678,6 +1664,8 @@ index|[
 name|i
 index|]
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1691,7 +1679,8 @@ literal|"/test-documents/"
 operator|+
 name|file
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 if|if
 condition|(
 name|input
@@ -1707,8 +1696,6 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|Metadata
 name|metadata
 init|=
@@ -1918,14 +1905,6 @@ argument_list|(
 literal|"Test Artist"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

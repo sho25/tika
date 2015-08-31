@@ -236,6 +236,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|IndexWriter
 name|writer
 init|=
@@ -267,8 +269,7 @@ name|MaxFieldLength
 operator|.
 name|UNLIMITED
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|LuceneIndexer
 name|indexer
@@ -316,14 +317,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-finally|finally
-block|{
-name|writer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 specifier|public
 name|void
@@ -335,6 +328,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|Reader
 name|fulltext
 init|=
@@ -344,8 +339,7 @@ name|parse
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Document
 name|document
@@ -397,14 +391,6 @@ name|addDocument
 argument_list|(
 name|document
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|fulltext
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

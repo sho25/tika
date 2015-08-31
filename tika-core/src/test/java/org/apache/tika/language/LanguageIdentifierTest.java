@@ -957,6 +957,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -970,8 +972,7 @@ name|language
 operator|+
 literal|".test"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|IOUtils
 operator|.
@@ -987,14 +988,6 @@ argument_list|)
 argument_list|,
 name|writer
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

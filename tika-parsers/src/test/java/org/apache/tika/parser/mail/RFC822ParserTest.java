@@ -2395,11 +2395,6 @@ operator|new
 name|TrackingHandler
 argument_list|()
 decl_stmt|;
-name|TikaInputStream
-name|tis
-init|=
-literal|null
-decl_stmt|;
 name|ContainerExtractor
 name|ex
 init|=
@@ -2408,9 +2403,10 @@ name|ParserContainerExtractor
 argument_list|()
 decl_stmt|;
 try|try
-block|{
+init|(
+name|TikaInputStream
 name|tis
-operator|=
+init|=
 name|TikaInputStream
 operator|.
 name|get
@@ -2420,7 +2416,8 @@ argument_list|(
 literal|"test-documents/testRFC822-multipart"
 argument_list|)
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|assertEquals
 argument_list|(
 literal|true
@@ -2443,20 +2440,6 @@ name|ex
 argument_list|,
 name|tracker
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-if|if
-condition|(
-name|tis
-operator|!=
-literal|null
-condition|)
-name|tis
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check we found all 3 parts

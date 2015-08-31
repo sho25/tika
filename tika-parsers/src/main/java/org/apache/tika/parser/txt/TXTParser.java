@@ -316,6 +316,8 @@ throws|,
 name|TikaException
 block|{
 comment|// Automatically detect the character encoding
+try|try
+init|(
 name|AutoDetectReader
 name|reader
 init|=
@@ -341,8 +343,7 @@ argument_list|,
 name|LOADER
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Charset
 name|charset
@@ -476,14 +477,6 @@ expr_stmt|;
 name|xhtml
 operator|.
 name|endDocument
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

@@ -408,6 +408,8 @@ literal|"cannot parse detached pkcs7 signature (no signed data to parse)"
 argument_list|)
 throw|;
 block|}
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -415,8 +417,7 @@ name|content
 operator|.
 name|getContentStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Parser
 name|delegate
@@ -446,14 +447,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

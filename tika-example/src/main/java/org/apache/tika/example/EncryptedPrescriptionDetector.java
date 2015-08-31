@@ -201,6 +201,8 @@ name|MediaType
 operator|.
 name|OCTET_STREAM
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|lookahead
 init|=
@@ -211,8 +213,7 @@ name|stream
 argument_list|,
 literal|1024
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Cipher
 name|cipher
@@ -303,14 +304,6 @@ name|e
 parameter_list|)
 block|{
 comment|// unable to decrypt, fall through
-block|}
-finally|finally
-block|{
-name|lookahead
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 return|return
 name|type

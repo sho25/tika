@@ -147,6 +147,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -158,8 +160,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testiBooks.ibooks"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -249,14 +250,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* TODO For some reason, the xhtml files in iBooks-style ePub are not parsed properly, and the content comes back empty.git che             String content = handler.toString();             System.out.println("content="+content);             assertContains("Plus a simple div", content);             assertContains("First item", content);             assertContains("The previous headings were subchapters", content);             assertContains("Table data", content);             assertContains("Lorem ipsum dolor rutur amet", content);             */
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

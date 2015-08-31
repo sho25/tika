@@ -599,6 +599,8 @@ parameter_list|()
 block|{
 try|try
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -606,8 +608,7 @@ name|value
 operator|.
 name|getStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -621,14 +622,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

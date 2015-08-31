@@ -245,6 +245,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -253,8 +255,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|tika
 operator|.
@@ -332,14 +333,6 @@ name|document
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 specifier|public
@@ -483,6 +476,8 @@ argument_list|,
 literal|"public"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -491,8 +486,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|tika
 operator|.
@@ -570,14 +564,6 @@ name|document
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|is
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

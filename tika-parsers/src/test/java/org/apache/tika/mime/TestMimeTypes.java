@@ -4278,6 +4278,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -4291,7 +4293,8 @@ literal|"/test-documents/"
 operator|+
 name|filename
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|assertNotNull
 argument_list|(
 literal|"Test file not found: "
@@ -4301,8 +4304,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|Metadata
 name|metadata
 init|=
@@ -4337,14 +4338,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4410,6 +4403,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -4423,7 +4418,8 @@ literal|"/test-documents/"
 operator|+
 name|filename
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|assertNotNull
 argument_list|(
 literal|"Test file not found: "
@@ -4433,8 +4429,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|Metadata
 name|metadata
 init|=
@@ -4458,14 +4452,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4483,6 +4469,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -4491,8 +4479,7 @@ name|ByteArrayInputStream
 argument_list|(
 name|data
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -4517,14 +4504,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -4631,6 +4610,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -4644,7 +4625,8 @@ literal|"/test-documents/"
 operator|+
 name|filename
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|assertNotNull
 argument_list|(
 literal|"Test document not found: "
@@ -4654,8 +4636,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|Metadata
 name|metadata
 init|=
@@ -4684,14 +4664,6 @@ argument_list|,
 name|metadata
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

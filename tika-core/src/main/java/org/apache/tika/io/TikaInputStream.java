@@ -228,7 +228,7 @@ operator|instanceof
 name|TikaInputStream
 return|;
 block|}
-comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * The given temporary file provider is used for any temporary files,      * and should be disposed when the returned stream is no longer used.      *<p>      * Use this method instead of the {@link #get(InputStream)} alternative      * when you<em>don't</em> explicitly close the returned stream. The      * recommended access pattern is:      *<pre>      * TemporaryResources tmp = new TemporaryResources();      * try {      *     TikaInputStream stream = TikaInputStream.get(..., tmp);      *     // process stream but don't close it      * } finally {      *     tmp.close();      * }      *</pre>      *<p>      * The given stream instance will<em>not</em> be closed when the      * {@link TemporaryResources#close()} method is called. The caller      * is expected to explicitly close the original stream when it's no      * longer used.      *      * @since Apache Tika 0.10      * @param stream normal input stream      * @return a TikaInputStream instance      */
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * The given temporary file provider is used for any temporary files,      * and should be disposed when the returned stream is no longer used.      *<p>      * Use this method instead of the {@link #get(InputStream)} alternative      * when you<em>don't</em> explicitly close the returned stream. The      * recommended access pattern is:      *<pre>      * try (TemporaryResources tmp = new TemporaryResources()) {      *     TikaInputStream stream = TikaInputStream.get(..., tmp);      *     // process stream but don't close it      * }      *</pre>      *<p>      * The given stream instance will<em>not</em> be closed when the      * {@link TemporaryResources#close()} method is called by the      * try-with-resources statement. The caller is expected to explicitly      * close the original stream when it's no longer used.      *      * @since Apache Tika 0.10      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -314,7 +314,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * Use this method instead of the      * {@link #get(InputStream, TemporaryResources)} alternative when you      *<em>do</em> explicitly close the returned stream. The recommended      * access pattern is:      *<pre>      * TikaInputStream stream = TikaInputStream.get(...);      * try {      *     // process stream      * } finally {      *     stream.close();      * }      *</pre>      *<p>      * The given stream instance will be closed along with any other resources      * associated with the returned TikaInputStream instance when the      * {@link #close()} method is called.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
+comment|/**      * Casts or wraps the given stream to a TikaInputStream instance.      * This method can be used to access the functionality of this class      * even when given just a normal input stream instance.      *<p>      * Use this method instead of the      * {@link #get(InputStream, TemporaryResources)} alternative when you      *<em>do</em> explicitly close the returned stream. The recommended      * access pattern is:      *<pre>      * try (TikaInputStream stream = TikaInputStream.get(...)) {      *     // process stream      * }      *</pre>      *<p>      * The given stream instance will be closed along with any other resources      * associated with the returned TikaInputStream instance when the      * {@link #close()} method is called by the try-with-resources statement.      *      * @param stream normal input stream      * @return a TikaInputStream instance      */
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -1310,6 +1310,8 @@ operator|.
 name|createTemporaryFile
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|OutputStream
 name|out
 init|=
@@ -1318,8 +1320,7 @@ name|FileOutputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|IOUtils
 operator|.
@@ -1329,14 +1330,6 @@ name|in
 argument_list|,
 name|out
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|out
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Create a new input stream and make sure it'll get closed

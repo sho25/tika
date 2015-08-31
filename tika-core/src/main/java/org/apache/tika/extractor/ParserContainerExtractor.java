@@ -632,6 +632,8 @@ name|getFile
 argument_list|()
 decl_stmt|;
 comment|// Let the handler process the embedded resource
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -641,8 +643,7 @@ name|get
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|handler
 operator|.
@@ -654,14 +655,6 @@ name|type
 argument_list|,
 name|input
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Recurse

@@ -1704,6 +1704,8 @@ block|}
 else|else
 block|{
 comment|// Copy entry
+try|try
+init|(
 name|InputStream
 name|contents
 init|=
@@ -1715,8 +1717,7 @@ name|DocumentEntry
 operator|)
 name|entry
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|destDir
 operator|.
@@ -1729,14 +1730,6 @@ argument_list|()
 argument_list|,
 name|contents
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|contents
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

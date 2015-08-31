@@ -164,6 +164,8 @@ parameter_list|)
 block|{
 try|try
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -175,8 +177,7 @@ name|getResourceAsStream
 argument_list|(
 name|name
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|IOUtils
@@ -186,14 +187,6 @@ argument_list|(
 name|stream
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch

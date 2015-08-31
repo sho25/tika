@@ -280,7 +280,7 @@ name|Exception
 block|{
 comment|// Check that standard parsing works
 name|InputStream
-name|input
+name|testInput
 init|=
 name|DWGParserTest
 operator|.
@@ -293,12 +293,15 @@ argument_list|)
 decl_stmt|;
 name|testParser
 argument_list|(
-name|input
+name|testInput
 argument_list|)
 expr_stmt|;
 comment|// Check that custom properties with alternate padding work
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|DWGParserTest
 operator|.
 name|class
@@ -307,8 +310,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testDWG2010_custom_props.dwg"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -362,14 +364,6 @@ argument_list|(
 literal|"customprop2"
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

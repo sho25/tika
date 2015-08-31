@@ -311,6 +311,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -322,8 +324,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-outlook.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -339,14 +340,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -502,6 +495,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -513,8 +508,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMSG.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -530,14 +524,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -630,6 +616,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -641,8 +629,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-outlook2003.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -658,14 +645,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -815,6 +794,8 @@ name|sw
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -826,8 +807,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMSG_chinese.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -843,14 +823,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// As the HTML version should have been processed, ensure
@@ -1032,6 +1004,8 @@ name|sw
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1043,8 +1017,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testMSG_forwarded.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1060,14 +1033,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Make sure we don't have nested docs
@@ -1197,6 +1162,8 @@ name|sw
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1208,8 +1175,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-outlook2003.msg"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1225,14 +1191,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// As the HTML version should have been processed, ensure

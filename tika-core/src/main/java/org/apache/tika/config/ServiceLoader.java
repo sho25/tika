@@ -1219,6 +1219,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1226,8 +1228,7 @@ name|resource
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|BufferedReader
 name|reader
@@ -1313,14 +1314,6 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

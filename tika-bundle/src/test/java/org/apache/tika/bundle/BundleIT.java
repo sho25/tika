@@ -1617,6 +1617,8 @@ argument_list|,
 name|parser
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1625,8 +1627,7 @@ name|FileInputStream
 argument_list|(
 literal|"src/test/resources/test-documents.zip"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1642,14 +1643,6 @@ argument_list|()
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|String

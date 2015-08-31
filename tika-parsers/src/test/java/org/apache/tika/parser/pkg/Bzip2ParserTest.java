@@ -173,6 +173,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -184,8 +186,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-documents.tbz2"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -199,14 +200,6 @@ name|metadata
 argument_list|,
 name|recursingContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -390,6 +383,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -401,8 +396,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-documents.tbz2"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -416,14 +410,6 @@ name|metadata
 argument_list|,
 name|trackingContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Should find a single entry, for the (compressed) tar file

@@ -194,15 +194,11 @@ operator|new
 name|ParseContext
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|stream
-operator|=
 name|ISArchiveParserTest
 operator|.
 name|class
@@ -211,7 +207,8 @@ name|getResourceAsStream
 argument_list|(
 name|path
 argument_list|)
-expr_stmt|;
+init|)
+block|{
 name|parser
 operator|.
 name|parse
@@ -224,14 +221,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// INVESTIGATION

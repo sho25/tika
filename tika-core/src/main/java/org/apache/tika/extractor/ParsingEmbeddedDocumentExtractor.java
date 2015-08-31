@@ -545,14 +545,15 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Use the delegate parser to parse this entry
+try|try
+init|(
 name|TemporaryResources
 name|tmp
 init|=
 operator|new
 name|TemporaryResources
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 specifier|final
 name|TikaInputStream
@@ -647,14 +648,6 @@ parameter_list|)
 block|{
 comment|// TODO: can we log a warning somehow?
 comment|// Could not parse the entry, just skip the content
-block|}
-finally|finally
-block|{
-name|tmp
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 if|if
 condition|(

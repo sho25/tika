@@ -162,6 +162,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -173,8 +175,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testsolidworksPart2013SP2.SLDPRT"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -350,14 +351,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Test the parsing of an solidWorks part in version 2014SP0      */
 annotation|@
@@ -369,6 +362,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -380,8 +375,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testsolidworksPart2014SP0.SLDPRT"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -557,14 +551,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Test the parsing of an solidWorks assembly in version 2013SP2      */
 annotation|@
@@ -576,6 +562,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -587,8 +575,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testsolidworksAssembly2013SP2.SLDASM"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -762,14 +749,6 @@ operator|.
 name|KEYWORDS
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -990,6 +969,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1001,8 +982,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testsolidworksDrawing2013SP2.SLDDRW"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -1178,14 +1158,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Test the parsing of an solidWorks drawing in version 2014SP0      */
 annotation|@
@@ -1197,6 +1169,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1208,8 +1182,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testsolidworksDrawing2014SP0.SLDDRW"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -1383,14 +1356,6 @@ operator|.
 name|KEYWORDS
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

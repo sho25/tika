@@ -315,6 +315,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -326,8 +328,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-documents.zip"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -341,14 +342,6 @@ name|metadata
 argument_list|,
 name|recursingContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -532,6 +525,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -543,8 +538,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test-documents.zip"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -558,14 +552,6 @@ name|metadata
 argument_list|,
 name|trackingContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Should have found all 9 documents
@@ -997,6 +983,8 @@ argument_list|,
 name|relIDs
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1004,8 +992,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEmbedded.zip"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -1023,14 +1010,6 @@ argument_list|()
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertTrue
@@ -1093,6 +1072,8 @@ argument_list|,
 name|factory
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1113,8 +1094,7 @@ operator|+
 literal|"AJP6lnuM6oOBg4IudHh0UEsFBgAAAAABAAEAPAAAAE4AAAAAAA=="
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|autoDetectParser
 operator|.
@@ -1132,14 +1112,6 @@ argument_list|()
 argument_list|,
 name|trackingContext
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals

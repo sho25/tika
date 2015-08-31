@@ -145,6 +145,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -156,8 +158,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testPUBLISHER.pub"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -267,14 +268,6 @@ literal|"abcdef"
 argument_list|,
 name|content
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

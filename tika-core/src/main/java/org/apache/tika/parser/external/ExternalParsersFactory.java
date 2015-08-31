@@ -369,6 +369,8 @@ range|:
 name|urls
 control|)
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -376,8 +378,7 @@ name|url
 operator|.
 name|openStream
 argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parsers
 operator|.
@@ -390,14 +391,6 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

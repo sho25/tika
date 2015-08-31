@@ -143,6 +143,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -154,8 +156,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/rsstest.rss"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -238,14 +239,6 @@ argument_list|)
 expr_stmt|;
 comment|// TODO find a way of testing the paragraphs and anchors
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -256,6 +249,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -267,8 +262,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testATOM.atom"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -350,14 +344,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// TODO Check some more
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

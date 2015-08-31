@@ -556,6 +556,8 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+try|try
+init|(
 name|AutoDetectReader
 name|reader
 init|=
@@ -581,8 +583,7 @@ argument_list|,
 name|LOADER
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Charset
 name|charset
@@ -865,14 +866,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 specifier|private

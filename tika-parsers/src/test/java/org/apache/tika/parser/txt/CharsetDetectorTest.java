@@ -95,6 +95,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -106,8 +108,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/resume.html"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|CharsetDetector
 name|detector
@@ -193,14 +194,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/* https://issues.apache.org/jira/browse/TIKA-1248    * Verify empty or null declaredEncoding doesn't cause an exception    *     */
 annotation|@
@@ -212,6 +205,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|InputStream
 name|in
 init|=
@@ -223,8 +218,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/resume.html"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|CharsetDetector
 name|detector
@@ -271,14 +265,6 @@ operator|.
 name|ready
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|in
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

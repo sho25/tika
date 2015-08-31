@@ -240,6 +240,8 @@ name|IOException
 throws|,
 name|URISyntaxException
 block|{
+try|try
+init|(
 name|InputStream
 name|is
 init|=
@@ -251,8 +253,7 @@ name|getResourceAsStream
 argument_list|(
 name|corpusName
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ngramProfile
 operator|=
@@ -269,14 +270,6 @@ operator|.
 name|name
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|is
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|File
@@ -407,6 +400,8 @@ operator|new
 name|LanguageProfile
 argument_list|()
 expr_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -423,8 +418,7 @@ operator|+
 name|FILE_EXTENSION
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|BufferedReader
 name|reader
@@ -524,14 +518,6 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 annotation|@

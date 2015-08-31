@@ -336,6 +336,8 @@ operator|new
 name|ParseContext
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|TikaInputStream
 name|stream
 init|=
@@ -352,8 +354,7 @@ argument_list|(
 literal|"/test-documents/testAFM.afm"
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -367,14 +368,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -551,6 +544,8 @@ decl_stmt|;
 comment|//Open Sans font is ASL 2.0 according to
 comment|//http://www.google.com/fonts/specimen/Open+Sans
 comment|//...despite the copyright in the file's metadata.
+try|try
+init|(
 name|TikaInputStream
 name|stream
 init|=
@@ -567,8 +562,7 @@ argument_list|(
 literal|"/test-documents/testTrueType3.ttf"
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -582,14 +576,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals

@@ -18,28 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -129,6 +107,28 @@ name|ContentHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -166,6 +166,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -177,8 +179,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/Zamora2010.dif"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -194,14 +195,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals

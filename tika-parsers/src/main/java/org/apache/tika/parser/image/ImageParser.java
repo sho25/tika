@@ -1028,6 +1028,8 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+try|try
+init|(
 name|ImageInputStream
 name|imageStream
 init|=
@@ -1041,8 +1043,7 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|reader
 operator|.
@@ -1142,14 +1143,6 @@ argument_list|)
 argument_list|,
 name|metadata
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|imageStream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

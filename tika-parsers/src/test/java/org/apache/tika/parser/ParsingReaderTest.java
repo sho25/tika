@@ -602,6 +602,8 @@ argument_list|(
 literal|"/test-documents/testEXCEL.xls"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|Reader
 name|reader
 init|=
@@ -620,8 +622,7 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 comment|// Metadata should already be available
 name|assertEquals
@@ -716,14 +717,6 @@ operator|.
 name|read
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

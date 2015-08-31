@@ -1079,6 +1079,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -1088,8 +1090,7 @@ name|getInputStream
 argument_list|(
 name|mimetype
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 return|return
 name|MediaType
@@ -1106,14 +1107,6 @@ name|UTF_8
 argument_list|)
 argument_list|)
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 else|else

@@ -1007,6 +1007,8 @@ name|SAXException
 throws|,
 name|IOException
 block|{
+try|try
+init|(
 name|Reader
 name|reader
 init|=
@@ -1017,8 +1019,7 @@ name|stream
 argument_list|,
 name|UTF_8
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|xhtml
 operator|.
@@ -1091,14 +1092,6 @@ expr_stmt|;
 name|xhtml
 operator|.
 name|endDocument
-argument_list|()
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|reader
-operator|.
-name|close
 argument_list|()
 expr_stmt|;
 block|}

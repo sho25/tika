@@ -193,6 +193,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -204,8 +206,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testXML3.xml"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -359,14 +360,6 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -377,6 +370,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -388,8 +383,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testXML3.xml"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -569,14 +563,6 @@ index|[
 literal|3
 index|]
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

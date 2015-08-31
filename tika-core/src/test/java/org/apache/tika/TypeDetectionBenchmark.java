@@ -203,6 +203,8 @@ name|isFile
 argument_list|()
 condition|)
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -211,8 +213,7 @@ name|FileInputStream
 argument_list|(
 name|file
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|byte
 index|[]
@@ -297,14 +298,6 @@ name|file
 argument_list|,
 name|type
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

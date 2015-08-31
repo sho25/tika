@@ -233,6 +233,8 @@ operator|new
 name|LanguageProfile
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -246,8 +248,7 @@ name|language
 operator|+
 name|PROFILE_SUFFIX
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|BufferedReader
 name|reader
@@ -344,14 +345,6 @@ name|readLine
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 name|addProfile
 argument_list|(

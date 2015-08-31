@@ -175,6 +175,8 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -186,7 +188,8 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/envi_test_header.hdr"
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|assertNotNull
 argument_list|(
 literal|"Test ENVI file not found"
@@ -194,8 +197,6 @@ argument_list|,
 name|stream
 argument_list|)
 expr_stmt|;
-try|try
-block|{
 name|parser
 operator|.
 name|parse
@@ -210,14 +211,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Check content of test file

@@ -329,6 +329,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -340,8 +342,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -564,14 +565,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -582,6 +575,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -593,8 +588,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL-formats.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -827,14 +821,6 @@ comment|// they are included to allow the issues to be progressed with the Apach
 comment|// team - See TIKA-103.
 comment|/*************************************************************************              // Custom Number (0 "dollars and" .00 "cents")              assertContains("19 dollars and .99 cents", content);               // Custom Number ("At" h:mm AM/PM "on" dddd mmmm d"," yyyy)              assertContains("At 4:20 AM on Thursday May 17, 2007", content);              **************************************************************************/
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -845,6 +831,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -856,8 +844,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_protected_passtika.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -922,17 +909,12 @@ parameter_list|)
 block|{
 comment|// Good
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Try again, this time with the password
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -941,8 +923,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_protected_passtika.xls"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -1101,14 +1082,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * TIKA-214 - Ensure we extract labels etc from Charts      */
 annotation|@
@@ -1120,6 +1093,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1131,8 +1106,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL-charts.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -1286,14 +1260,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1304,6 +1270,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1315,8 +1283,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/jxl.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -1400,14 +1367,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
@@ -1418,6 +1377,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -1429,8 +1390,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testWORKSSpreadsheet7.0.xlr"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -1500,14 +1460,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * We don't currently support the .xlsb file format       *  (an OOXML container with binary blobs), but we       *  shouldn't break on these files either (TIKA-826)        */
 annotation|@
@@ -1533,18 +1485,6 @@ operator|new
 name|AutoDetectParser
 argument_list|()
 decl_stmt|;
-name|InputStream
-name|input
-init|=
-name|ExcelParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testEXCEL.xlsb"
-argument_list|)
-decl_stmt|;
 name|Metadata
 name|m
 init|=
@@ -1566,10 +1506,21 @@ expr_stmt|;
 comment|// Should be detected correctly
 name|MediaType
 name|type
-init|=
-literal|null
 decl_stmt|;
 try|try
+init|(
+name|InputStream
+name|input
+init|=
+name|ExcelParserTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"/test-documents/testEXCEL.xlsb"
+argument_list|)
+init|)
 block|{
 name|type
 operator|=
@@ -1591,14 +1542,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// OfficeParser won't handle it
@@ -1650,8 +1593,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// AutoDetectParser doesn't break on it
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -1660,8 +1606,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL.xlsb"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -1722,14 +1667,6 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Excel 5 and 95 are older formats, and only get basic support      */
 annotation|@
@@ -1755,9 +1692,6 @@ operator|new
 name|AutoDetectParser
 argument_list|()
 decl_stmt|;
-name|InputStream
-name|input
-decl_stmt|;
 name|MediaType
 name|type
 decl_stmt|;
@@ -1782,8 +1716,11 @@ argument_list|,
 literal|"excel_5.xls"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -1792,8 +1729,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_5.xls"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|type
 operator|=
@@ -1815,14 +1751,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// Now Excel 95
@@ -1843,8 +1771,11 @@ argument_list|,
 literal|"excel_95.xls"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -1853,8 +1784,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_95.xls"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|type
 operator|=
@@ -1876,14 +1806,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 comment|// OfficeParser can handle it
@@ -1941,8 +1863,11 @@ operator|new
 name|Metadata
 argument_list|()
 expr_stmt|;
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -1951,8 +1876,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_5.xls"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -2080,14 +2004,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 comment|// Parse the Excel 95 file
 name|m
 operator|=
@@ -2095,8 +2011,11 @@ operator|new
 name|Metadata
 argument_list|()
 expr_stmt|;
+try|try
+init|(
+name|InputStream
 name|input
-operator|=
+init|=
 name|ExcelParserTest
 operator|.
 name|class
@@ -2105,8 +2024,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_95.xls"
 argument_list|)
-expr_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -2198,14 +2116,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 comment|/**      * Ensures that custom OLE2 (HPSF) properties are extracted      */
 annotation|@
@@ -2217,6 +2127,15 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -2228,15 +2147,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_custom_props.xls"
 argument_list|)
-decl_stmt|;
-name|Metadata
-name|metadata
-init|=
-operator|new
-name|Metadata
-argument_list|()
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ContentHandler
 name|handler
@@ -2282,14 +2193,6 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertEquals
@@ -2446,6 +2349,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|InputStream
 name|input
 init|=
@@ -2457,8 +2362,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/testEXCEL_headers_footers.xls"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|Metadata
 name|metadata
@@ -2635,14 +2539,6 @@ literal|"Footer - Author: John Smith"
 argument_list|,
 name|content
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|input
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}

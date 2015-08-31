@@ -358,6 +358,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+try|try
+init|(
 name|TikaInputStream
 name|stream
 init|=
@@ -365,8 +367,7 @@ name|getTestFile
 argument_list|(
 name|filename
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|assertEquals
 argument_list|(
@@ -423,14 +424,6 @@ comment|// So they can check what happened
 return|return
 name|handler
 return|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 block|}

@@ -870,6 +870,8 @@ argument_list|(
 literal|"Package"
 argument_list|)
 decl_stmt|;
+try|try
+init|(
 name|TikaInputStream
 name|stream
 init|=
@@ -886,8 +888,7 @@ operator|)
 name|ooxml
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|ZipContainerDetector
 name|detector
@@ -932,14 +933,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|// It's regular OLE2:

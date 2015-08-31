@@ -210,6 +210,8 @@ name|Metadata
 argument_list|()
 decl_stmt|;
 comment|/*          * this is a publicly available HDF5 file from the MLS mission:          *           *           * ftp://acdisc.gsfc.nasa.gov/data/s4pa///Aura_MLS_Level2/ML2O3.002//2009          * /MLS-Aura_L2GP-O3_v02-23-c01_2009d122.he5          */
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -221,8 +223,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test.he5"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -238,14 +239,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertNotNull
@@ -314,6 +307,8 @@ name|Metadata
 argument_list|()
 decl_stmt|;
 comment|/*        * this is a publicly available HDF4 file from the HD4 examples:        *         * http://www.hdfgroup.org/training/hdf4_chunking/Chunkit/bin/input54kmdata.hdf        */
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -325,8 +320,7 @@ name|getResourceAsStream
 argument_list|(
 literal|"/test-documents/test.hdf"
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|parser
 operator|.
@@ -342,14 +336,6 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 name|assertNotNull

@@ -1664,6 +1664,8 @@ argument_list|(
 literal|"div"
 argument_list|)
 expr_stmt|;
+try|try
+init|(
 name|TikaInputStream
 name|stream
 init|=
@@ -1676,8 +1678,7 @@ operator|.
 name|getData
 argument_list|()
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|String
 name|mediaType
@@ -1716,14 +1717,6 @@ name|xhtml
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|stream
-operator|.
-name|close
-argument_list|()
 expr_stmt|;
 block|}
 block|}
