@@ -520,6 +520,18 @@ argument_list|(
 literal|"sldworks"
 argument_list|)
 decl_stmt|;
+comment|/**      * Hangul Word Processor (Korean)      */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|HWP
+init|=
+name|application
+argument_list|(
+literal|"x-hwp-v5"
+argument_list|)
+decl_stmt|;
 comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
@@ -764,6 +776,22 @@ name|root
 argument_list|)
 return|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"\u0005HwpSummaryInformation"
+argument_list|)
+condition|)
+block|{
+comment|// Hangul Word Processor v5+ (previous aren't OLE2-based)
+return|return
+name|HWP
+return|;
 block|}
 elseif|else
 if|if

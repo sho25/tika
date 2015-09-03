@@ -588,6 +588,13 @@ argument_list|,
 literal|"application/x-quattro-pro"
 argument_list|)
 expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"testHWP_5.0.hwp"
+argument_list|,
+literal|"application/x-hwp-v5"
+argument_list|)
+expr_stmt|;
 comment|// With the filename and data
 name|assertTypeByNameAndData
 argument_list|(
