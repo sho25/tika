@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -240,7 +240,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * Builds on top of the LuceneIndexer and the Metadata discussions in Chapter 6  * to output an RSS (or RDF) feed of files crawled by the LuceneIndexer within  * the last N minutes.  */
+comment|/**  * Builds on top of the LuceneIndexer and the Metadata discussions in Chapter 6  * to output an RSS (or RDF) feed of files crawled by the LuceneIndexer within  * the last N minutes.  */
 end_comment
 
 begin_class
@@ -539,11 +539,11 @@ name|Document
 name|doc
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|output
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|output
@@ -761,11 +761,11 @@ name|String
 name|getRSSHeaders
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|output
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|output
@@ -793,9 +793,7 @@ name|output
 operator|.
 name|append
 argument_list|(
-literal|"<title>Tika in Action: Recent Files Feed."
-operator|+
-literal|"</title>"
+literal|"<title>Tika in Action: Recent Files Feed.</title>"
 argument_list|)
 expr_stmt|;
 name|output
@@ -819,7 +817,12 @@ operator|.
 name|append
 argument_list|(
 literal|"<lastBuildDate>"
-operator|+
+argument_list|)
+expr_stmt|;
+name|output
+operator|.
+name|append
+argument_list|(
 name|rssDateFormat
 operator|.
 name|format
@@ -828,7 +831,12 @@ operator|new
 name|Date
 argument_list|()
 argument_list|)
-operator|+
+argument_list|)
+expr_stmt|;
+name|output
+operator|.
+name|append
+argument_list|(
 literal|"</lastBuildDate>"
 argument_list|)
 expr_stmt|;
@@ -836,9 +844,7 @@ name|output
 operator|.
 name|append
 argument_list|(
-literal|"<generator>Manning Publications: Tika in Action"
-operator|+
-literal|"</generator>"
+literal|"<generator>Manning Publications: Tika in Action</generator>"
 argument_list|)
 expr_stmt|;
 name|output
@@ -860,25 +866,8 @@ name|String
 name|getRSSFooters
 parameter_list|()
 block|{
-name|StringBuffer
-name|output
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|output
-operator|.
-name|append
-argument_list|(
-literal|"</channel>"
-argument_list|)
-expr_stmt|;
 return|return
-name|output
-operator|.
-name|toString
-argument_list|()
+literal|"</channel>"
 return|;
 block|}
 specifier|private
@@ -898,11 +887,11 @@ name|String
 name|attributeValue
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|output
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|output

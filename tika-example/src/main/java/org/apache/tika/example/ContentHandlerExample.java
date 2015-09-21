@@ -226,7 +226,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Examples of using different Content Handlers to  *  get different parts of the file's contents   */
+comment|/**  * Examples of using different Content Handlers to  * get different parts of the file's contents  */
 end_comment
 
 begin_class
@@ -368,7 +368,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Example of extracting just the body as HTML, without the      *  head part, as a string      */
+comment|/**      * Example of extracting just the body as HTML, without the      * head part, as a string      */
 specifier|public
 name|String
 name|parseBodyToHTML
@@ -439,7 +439,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Example of extracting just one part of the document's body,      *  as HTML as a string, excluding the rest      */
+comment|/**      * Example of extracting just one part of the document's body,      * as HTML as a string, excluding the rest      */
 specifier|public
 name|String
 name|parseOnePartToHTML
@@ -543,7 +543,7 @@ name|MAXIMUM_TEXT_CHUNK_SIZE
 init|=
 literal|40
 decl_stmt|;
-comment|/**      * Example of extracting the plain text in chunks, with each chunk      *  of no more than a certain maximum size      */
+comment|/**      * Example of extracting the plain text in chunks, with each chunk      * of no more than a certain maximum size      */
 specifier|public
 name|List
 argument_list|<
@@ -567,9 +567,7 @@ name|chunks
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|chunks

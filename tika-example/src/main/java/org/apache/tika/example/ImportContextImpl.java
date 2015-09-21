@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -290,7 +290,7 @@ specifier|final
 name|MediaType
 name|type
 decl_stmt|;
-comment|/** 	 * Creates a new item import context. The specified InputStream is written 	 * to a temporary file in order to avoid problems with multiple IOHandlers 	 * that try to run the import but fail. The temporary file is deleted as 	 * soon as this context is informed that the import has been completed and 	 * it will not be used any more. 	 * 	 * @param importRoot 	 * @param systemId 	 * @param ctx 	 *            input context, or<code>null</code> 	 * @param stream 	 *            document input stream, or<code>null</code> 	 * @param ioListener 	 * @param detector 	 *            content type detector 	 * @throws IOException 	 * @see ImportContext#informCompleted(boolean) 	 */
+comment|/**      * Creates a new item import context. The specified InputStream is written      * to a temporary file in order to avoid problems with multiple IOHandlers      * that try to run the import but fail. The temporary file is deleted as      * soon as this context is informed that the import has been completed and      * it will not be used any more.      *      * @param importRoot      * @param systemId      * @param ctx        input context, or<code>null</code>      * @param stream     document input stream, or<code>null</code>      * @param ioListener      * @param detector   content type detector      * @throws IOException      * @see ImportContext#informCompleted(boolean)      */
 specifier|public
 name|ImportContextImpl
 parameter_list|(
@@ -457,7 +457,7 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @see ImportContext#getIOListener() 	 */
+comment|/**      * @see ImportContext#getIOListener()      */
 specifier|public
 name|IOListener
 name|getIOListener
@@ -467,7 +467,7 @@ return|return
 name|ioListener
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getImportRoot() 	 */
+comment|/**      * @see ImportContext#getImportRoot()      */
 specifier|public
 name|Item
 name|getImportRoot
@@ -477,7 +477,7 @@ return|return
 name|importRoot
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getDetector() 	 */
+comment|/**      * @see ImportContext#getDetector()      */
 specifier|public
 name|Detector
 name|getDetector
@@ -487,7 +487,7 @@ return|return
 name|detector
 return|;
 block|}
-comment|/** 	 * @see ImportContext#hasStream() 	 */
+comment|/**      * @see ImportContext#hasStream()      */
 specifier|public
 name|boolean
 name|hasStream
@@ -499,7 +499,7 @@ operator|!=
 literal|null
 return|;
 block|}
-comment|/** 	 * Returns a new<code>InputStream</code> to the temporary file created 	 * during instanciation or<code>null</code>, if this context does not 	 * provide a stream. 	 * 	 * @see ImportContext#getInputStream() 	 * @see #hasStream() 	 */
+comment|/**      * Returns a new<code>InputStream</code> to the temporary file created      * during instanciation or<code>null</code>, if this context does not      * provide a stream.      *      * @see ImportContext#getInputStream()      * @see #hasStream()      */
 specifier|public
 name|InputStream
 name|getInputStream
@@ -544,7 +544,7 @@ return|return
 name|in
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getSystemId() 	 */
+comment|/**      * @see ImportContext#getSystemId()      */
 specifier|public
 name|String
 name|getSystemId
@@ -554,7 +554,7 @@ return|return
 name|systemId
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getModificationTime() 	 */
+comment|/**      * @see ImportContext#getModificationTime()      */
 specifier|public
 name|long
 name|getModificationTime
@@ -580,7 +580,7 @@ name|getTime
 argument_list|()
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getContentLanguage() 	 */
+comment|/**      * @see ImportContext#getContentLanguage()      */
 specifier|public
 name|String
 name|getContentLanguage
@@ -601,7 +601,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getContentLength() 	 */
+comment|/**      * @see ImportContext#getContentLength()      */
 specifier|public
 name|long
 name|getContentLength
@@ -671,7 +671,7 @@ return|return
 name|length
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getMimeType() 	 */
+comment|/**      * @see ImportContext#getMimeType()      */
 specifier|public
 name|String
 name|getMimeType
@@ -689,7 +689,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getEncoding() 	 */
+comment|/**      * @see ImportContext#getEncoding()      */
 specifier|public
 name|String
 name|getEncoding
@@ -707,7 +707,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @see ImportContext#getProperty(Object) 	 */
+comment|/**      * @see ImportContext#getProperty(Object)      */
 specifier|public
 name|Object
 name|getProperty
@@ -736,7 +736,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/** 	 * @see ImportContext#informCompleted(boolean) 	 */
+comment|/**      * @see ImportContext#informCompleted(boolean)      */
 specifier|public
 name|void
 name|informCompleted
@@ -766,7 +766,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @see ImportContext#isCompleted() 	 */
+comment|/**      * @see ImportContext#isCompleted()      */
 specifier|public
 name|boolean
 name|isCompleted
@@ -776,7 +776,7 @@ return|return
 name|completed
 return|;
 block|}
-comment|/** 	 * @throws IllegalStateException 	 *             if the context is already completed. 	 * @see #isCompleted() 	 * @see #informCompleted(boolean) 	 */
+comment|/**      * @throws IllegalStateException if the context is already completed.      * @see #isCompleted()      * @see #informCompleted(boolean)      */
 specifier|private
 name|void
 name|checkCompleted

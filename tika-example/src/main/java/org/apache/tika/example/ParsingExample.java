@@ -286,7 +286,7 @@ specifier|public
 class|class
 name|ParsingExample
 block|{
-comment|/**      * Example of how to use Tika's parseToString method to parse the content of a file,      * and return any text found.      *      * Note: Tika.parseToString() will extract content from the outer container      * document and any embedded/attached documents.      *      * @return The content of a file.      */
+comment|/**      * Example of how to use Tika's parseToString method to parse the content of a file,      * and return any text found.      *<p>      * Note: Tika.parseToString() will extract content from the outer container      * document and any embedded/attached documents.      *      * @return The content of a file.      */
 specifier|public
 name|String
 name|parseToStringExample
@@ -330,7 +330,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Example of how to use Tika to parse a file when you do not know its file type      * ahead of time.      *      * AutoDetectParser attempts to discover the file's type automatically, then call      * the exact Parser built for that file type.      *      * The stream to be parsed by the Parser. In this case, we get a file from the      * resources folder of this project.      *      * Handlers are used to get the exact information you want out of the host of      * information gathered by Parsers. The body content handler, intuitively, extracts      * everything that would go between HTML body tags.      *      * The Metadata object will be filled by the Parser with Metadata discovered about      * the file being parsed.      *      * Note: This example will extract content from the outer document and all      * embedded documents.  However, if you choose to use a {@link ParseContext},      * make sure to set a {@link Parser} or else embedded content will not be      * parsed.      *      * @return The content of a file.      */
+comment|/**      * Example of how to use Tika to parse a file when you do not know its file type      * ahead of time.      *<p>      * AutoDetectParser attempts to discover the file's type automatically, then call      * the exact Parser built for that file type.      *<p>      * The stream to be parsed by the Parser. In this case, we get a file from the      * resources folder of this project.      *<p>      * Handlers are used to get the exact information you want out of the host of      * information gathered by Parsers. The body content handler, intuitively, extracts      * everything that would go between HTML body tags.      *<p>      * The Metadata object will be filled by the Parser with Metadata discovered about      * the file being parsed.      *<p>      * Note: This example will extract content from the outer document and all      * embedded documents.  However, if you choose to use a {@link ParseContext},      * make sure to set a {@link Parser} or else embedded content will not be      * parsed.      *      * @return The content of a file.      */
 specifier|public
 name|String
 name|parseExample
@@ -680,6 +680,9 @@ throws|,
 name|TikaException
 block|{
 name|List
+argument_list|<
+name|Metadata
+argument_list|>
 name|metadataList
 init|=
 name|recursiveParserWrapperExample
@@ -708,7 +711,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      *      * @param outputPath -- output directory to place files      * @return list of files created      * @throws IOException      * @throws SAXException      * @throws TikaException      */
+comment|/**      * @param outputPath -- output directory to place files      * @return list of files created      * @throws IOException      * @throws SAXException      * @throws TikaException      */
 specifier|public
 name|List
 argument_list|<
@@ -762,9 +765,7 @@ name|ret
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Path
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 try|try

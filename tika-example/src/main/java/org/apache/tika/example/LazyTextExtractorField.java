@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  * http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -271,7 +271,7 @@ name|LazyTextExtractorField
 extends|extends
 name|AbstractField
 block|{
-comment|/** 	 * The logger instance for this class. 	 */
+comment|/**      * The logger instance for this class.      */
 specifier|private
 specifier|static
 specifier|final
@@ -287,7 +287,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The exception used to forcibly terminate the extraction process when the 	 * maximum field length is reached. 	 */
+comment|/**      * The exception used to forcibly terminate the extraction process when the      * maximum field length is reached.      *<p>      * Such exceptions shouldn't be used in logging since its stack trace is meaningless.      */
 specifier|private
 specifier|static
 specifier|final
@@ -300,7 +300,7 @@ argument_list|(
 literal|"max field length reached"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * The extracted text content of the given binary value. Set to non-null 	 * when the text extraction task finishes. 	 */
+comment|/**      * The extracted text content of the given binary value. Set to non-null      * when the text extraction task finishes.      */
 specifier|private
 specifier|volatile
 name|String
@@ -308,7 +308,7 @@ name|extract
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * Creates a new<code>LazyTextExtractorField</code> with the given 	 *<code>name</code>. 	 * 	 * @param name 	 *            the name of the field. 	 * @param reader 	 *            the reader where to obtain the string from. 	 * @param highlighting 	 *            set to<code>true</code> to enable result highlighting support 	 */
+comment|/**      * Creates a new<code>LazyTextExtractorField</code> with the given      *<code>name</code>.      *      * @param name         the name of the field.      * @param reader       the reader where to obtain the string from.      * @param highlighting set to<code>true</code> to enable result highlighting support      */
 specifier|public
 name|LazyTextExtractorField
 parameter_list|(
@@ -382,7 +382,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the extracted text. This method blocks until the text extraction 	 * task has been completed. 	 * 	 * @return the string value of this field 	 */
+comment|/**      * Returns the extracted text. This method blocks until the text extraction      * task has been completed.      *      * @return the string value of this field      */
 specifier|public
 specifier|synchronized
 name|String
@@ -426,7 +426,7 @@ literal|""
 return|;
 block|}
 block|}
-comment|/** 	 * @return always<code>null</code> 	 */
+comment|/**      * @return always<code>null</code>      */
 specifier|public
 name|Reader
 name|readerValue
@@ -436,7 +436,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * @return always<code>null</code> 	 */
+comment|/**      * @return always<code>null</code>      */
 specifier|public
 name|byte
 index|[]
@@ -447,7 +447,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * @return always<code>null</code> 	 */
+comment|/**      * @return always<code>null</code>      */
 specifier|public
 name|TokenStream
 name|tokenStreamValue
@@ -457,7 +457,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Checks whether the text extraction task has finished. 	 * 	 * @return<code>true</code> if the extracted text is available 	 */
+comment|/**      * Checks whether the text extraction task has finished.      *      * @return<code>true</code> if the extracted text is available      */
 specifier|public
 name|boolean
 name|isExtractorFinished
@@ -486,7 +486,7 @@ name|notify
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Releases all resources associated with this field. 	 */
+comment|/**      * Releases all resources associated with this field.      */
 specifier|public
 name|void
 name|dispose
@@ -494,7 +494,7 @@ parameter_list|()
 block|{
 comment|// TODO: Cause the ContentHandler below to throw an exception
 block|}
-comment|/** 	 * The background task for extracting text from a binary value. 	 */
+comment|/**      * The background task for extracting text from a binary value.      */
 specifier|private
 class|class
 name|ParsingTask
