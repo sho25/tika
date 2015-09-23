@@ -404,6 +404,35 @@ literal|"No translators currently available"
 argument_list|)
 throw|;
 block|}
+comment|/**      * Returns all available translators      */
+specifier|public
+name|List
+argument_list|<
+name|Translator
+argument_list|>
+name|getTranslators
+parameter_list|()
+block|{
+return|return
+name|getDefaultTranslators
+argument_list|(
+name|loader
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the current translator      */
+specifier|public
+name|Translator
+name|getTranslator
+parameter_list|()
+block|{
+return|return
+name|getFirstAvailable
+argument_list|(
+name|loader
+argument_list|)
+return|;
+block|}
 specifier|public
 name|boolean
 name|isAvailable
