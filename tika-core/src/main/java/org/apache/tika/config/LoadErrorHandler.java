@@ -78,6 +78,17 @@ name|Throwable
 name|throwable
 parameter_list|)
 block|{         }
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"IGNORE"
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Strategy that logs warnings of all problems using a {@link Logger}      * created using the given class name.      */
@@ -120,6 +131,17 @@ name|throwable
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"WARN"
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * Strategy that throws a {@link RuntimeException} with the given      * throwable as the root cause, thus interrupting the entire service      * loading operation.      */
@@ -152,6 +174,17 @@ argument_list|,
 name|throwable
 argument_list|)
 throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"THROW"
+return|;
 block|}
 block|}
 decl_stmt|;
