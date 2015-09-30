@@ -1362,17 +1362,6 @@ argument_list|(
 literal|"testPPT_autodate.ppt"
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|result
-operator|.
-name|xml
-argument_list|)
-expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"<div class=\"slide-content\"><p>Now</p>"
