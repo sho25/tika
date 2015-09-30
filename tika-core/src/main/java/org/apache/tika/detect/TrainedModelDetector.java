@@ -151,6 +151,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|io
+operator|.
+name|TemporaryResources
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -168,20 +182,6 @@ operator|.
 name|mime
 operator|.
 name|MediaType
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
-name|TemporaryResources
 import|;
 end_import
 
@@ -219,11 +219,7 @@ name|MODEL_MAP
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|MediaType
-argument_list|,
-name|TrainedModel
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -298,7 +294,7 @@ name|input
 argument_list|)
 decl_stmt|;
 comment|// writeHisto(histogram); //on testing purpose
-comment|/* 			 * iterate the map to find out the one that gives the higher 			 * prediction value. 			 */
+comment|/*              * iterate the map to find out the one that gives the higher              * prediction value.              */
 name|Iterator
 argument_list|<
 name|MediaType
@@ -399,7 +395,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * read the inputstream and build a byte frequence histogram 	 * 	 * @param input 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Read the {@code inputstream} and build a byte frequency histogram      *      * @param input stream to read from      * @return byte frequencies array      * @throws IOException      */
 specifier|protected
 name|float
 index|[]
@@ -415,6 +411,7 @@ block|{
 name|ReadableByteChannel
 name|inputChannel
 decl_stmt|;
+comment|// TODO: any reason to avoid closing of input& inputChannel?
 try|try
 block|{
 name|inputChannel
@@ -628,7 +625,7 @@ block|{
 comment|// inputChannel.close();
 block|}
 block|}
-comment|/** 	 * for testing purposes; this method write the histogram vector to a file. 	 * 	 * @param histogram 	 * @throws IOException 	 */
+comment|/**      * for testing purposes; this method write the histogram vector to a file.      *      * @param histogram      * @throws IOException      */
 specifier|private
 name|void
 name|writeHisto

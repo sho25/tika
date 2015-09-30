@@ -89,6 +89,40 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Objects
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Level
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -137,6 +171,24 @@ name|long
 name|serialVersionUID
 init|=
 literal|1L
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|log
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|NNExampleModelDetector
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
 decl_stmt|;
 specifier|public
 name|NNExampleModelDetector
@@ -295,7 +347,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * this method gets overwritten to register load neural network models 	 */
+comment|/**      * this method gets overwritten to register load neural network models      */
 annotation|@
 name|Override
 specifier|public
@@ -360,6 +412,21 @@ operator|+
 name|EXAMPLE_NNMODEL_FILE
 argument_list|)
 decl_stmt|;
+name|Objects
+operator|.
+name|requireNonNull
+argument_list|(
+name|modelURL
+argument_list|,
+literal|"required resource "
+operator|+
+name|classPrefix
+operator|+
+name|EXAMPLE_NNMODEL_FILE
+operator|+
+literal|" not found"
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|InputStream
@@ -394,7 +461,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * read the comments where the model configuration is written, e.g the 	 * number of inputs, hiddens and output please ensure the first char in the 	 * given string is # In this example grb model file, there are 4 elements 1) 	 * type 2) number of input units 3) number of hidden units. 4) number of 	 * output units. 	 *  	 */
+comment|/**      * read the comments where the model configuration is written, e.g the      * number of inputs, hiddens and output please ensure the first char in the      * given string is # In this example grb model file, there are 4 elements 1)      * type 2) number of input units 3) number of hidden units. 4) number of      * output units.      */
 specifier|private
 name|void
 name|readDescription
@@ -514,11 +581,32 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+if|if
+condition|(
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|isLoggable
+argument_list|(
+name|Level
+operator|.
+name|WARNING
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|WARNING
+argument_list|,
+literal|"Unable to parse the model configuration"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|RuntimeException
@@ -530,7 +618,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * Read the next line for the model parameters and populate the build which 	 * later will be used to instantiate the instance of TrainedModel 	 *  	 * @param builder 	 * @param line 	 */
+comment|/**      * Read the next line for the model parameters and populate the build which      * later will be used to instantiate the instance of TrainedModel      *      * @param builder      * @param line      */
 specifier|private
 name|void
 name|readNNParams
@@ -617,11 +705,32 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+if|if
+condition|(
+name|log
 operator|.
-name|printStackTrace
-argument_list|()
+name|isLoggable
+argument_list|(
+name|Level
+operator|.
+name|WARNING
+argument_list|)
+condition|)
+block|{
+name|log
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|WARNING
+argument_list|,
+literal|"Unable to parse the model configuration"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|RuntimeException
