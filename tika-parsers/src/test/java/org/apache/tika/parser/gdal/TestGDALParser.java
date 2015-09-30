@@ -345,7 +345,7 @@ literal|"Driver"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertNotNull
+name|assumeTrue
 argument_list|(
 name|met
 operator|.
@@ -353,6 +353,8 @@ name|get
 argument_list|(
 literal|"Files"
 argument_list|)
+operator|!=
+literal|null
 argument_list|)
 expr_stmt|;
 name|assertNotNull
