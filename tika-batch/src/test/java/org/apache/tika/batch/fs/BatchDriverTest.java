@@ -63,18 +63,6 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
 name|assertTrue
 import|;
 end_import
@@ -83,9 +71,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|File
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -116,20 +118,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|FileUtils
 import|;
 end_import
 
@@ -181,7 +169,7 @@ throws|throws
 name|Exception
 block|{
 comment|//batch runner hits one heavy hang file, keep going
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -189,12 +177,14 @@ argument_list|(
 literal|"daemon-"
 argument_list|)
 decl_stmt|;
-name|assertNotNull
+name|assertTrue
+argument_list|(
+name|Files
+operator|.
+name|isDirectory
 argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//make sure output directory is empty!
@@ -202,12 +192,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -260,27 +248,22 @@ name|assertEquals
 argument_list|(
 literal|5
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"first test file"
 argument_list|,
-name|FileUtils
-operator|.
 name|readFileToString
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|outputDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"test2_ok.xml.xml"
 argument_list|)
 argument_list|,
@@ -304,7 +287,7 @@ throws|throws
 name|Exception
 block|{
 comment|//batch runner hits more heavy hangs than threads; needs to restart
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -317,12 +300,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -376,15 +357,12 @@ name|assertContains
 argument_list|(
 literal|"first test file"
 argument_list|,
-name|FileUtils
-operator|.
 name|readFileToString
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|outputDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"test6_ok.xml.xml"
 argument_list|)
 argument_list|,
@@ -407,7 +385,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -420,12 +398,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -511,32 +487,23 @@ name|getUserInterrupted
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|File
-index|[]
-name|files
-init|=
-name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|2
 argument_list|,
-name|files
-operator|.
-name|length
-argument_list|)
-expr_stmt|;
-name|File
-name|test2
-init|=
-operator|new
-name|File
+name|countChildren
 argument_list|(
 name|outputDir
-argument_list|,
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Path
+name|test2
+init|=
+name|outputDir
+operator|.
+name|resolve
+argument_list|(
 literal|"test2_norestart.xml.xml"
 argument_list|)
 decl_stmt|;
@@ -544,20 +511,21 @@ name|assertTrue
 argument_list|(
 literal|"test2_norestart.xml"
 argument_list|,
-name|test2
+name|Files
 operator|.
 name|exists
-argument_list|()
+argument_list|(
+name|test2
+argument_list|)
 argument_list|)
 expr_stmt|;
-name|File
+name|Path
 name|test3
 init|=
-operator|new
-name|File
-argument_list|(
 name|outputDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"test3_ok.xml.xml"
 argument_list|)
 decl_stmt|;
@@ -565,20 +533,12 @@ name|assertFalse
 argument_list|(
 literal|"test3_ok.xml"
 argument_list|,
-name|test3
+name|Files
 operator|.
 name|exists
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
 argument_list|(
-literal|0
-argument_list|,
 name|test3
-operator|.
-name|length
-argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -597,7 +557,7 @@ throws|throws
 name|Exception
 block|{
 comment|//batch runner hits more heavy hangs than threads; needs to restart
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -610,12 +570,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|String
@@ -668,15 +626,12 @@ name|assertContains
 argument_list|(
 literal|"first test file"
 argument_list|,
-name|FileUtils
-operator|.
 name|readFileToString
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|outputDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"test2_ok.xml.xml"
 argument_list|)
 argument_list|,
@@ -702,7 +657,7 @@ block|{
 comment|//this tests that if all consumers are hung and the crawler is
 comment|//waiting to add to the queue, there isn't deadlock.  The BatchProcess should
 comment|//just shutdown, and the driver should restart
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -720,11 +675,7 @@ name|args
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|args
@@ -795,15 +746,12 @@ name|assertContains
 argument_list|(
 literal|"first test file"
 argument_list|,
-name|FileUtils
-operator|.
 name|readFileToString
 argument_list|(
-operator|new
-name|File
-argument_list|(
 name|outputDir
-argument_list|,
+operator|.
+name|resolve
+argument_list|(
 literal|"test6_ok.xml.xml"
 argument_list|)
 argument_list|,
@@ -829,7 +777,7 @@ block|{
 comment|//tests that maxRestarts works
 comment|//if -maxRestarts is not correctly removed from the commandline,
 comment|//FSBatchProcessCLI's cli parser will throw an Unrecognized option exception
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -847,11 +795,7 @@ name|args
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|args
@@ -931,12 +875,10 @@ name|assertEquals
 argument_list|(
 literal|3
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -955,7 +897,7 @@ throws|throws
 name|Exception
 block|{
 comment|//tests that maxRestarts must be followed by an Integer
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -973,11 +915,7 @@ name|args
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|args
@@ -1079,7 +1017,7 @@ block|{
 comment|//tests that if something goes horribly wrong with FSBatchProcessCLI
 comment|//the driver will not restart it again and again
 comment|//this calls a bad xml file which should trigger a no restart exit.
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -1097,11 +1035,7 @@ name|args
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|args
@@ -1154,12 +1088,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1187,7 +1119,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|File
+name|Path
 name|outputDir
 init|=
 name|getNewOutputDir
@@ -1205,11 +1137,7 @@ name|args
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|args
@@ -1271,12 +1199,10 @@ name|assertEquals
 argument_list|(
 literal|0
 argument_list|,
+name|countChildren
+argument_list|(
 name|outputDir
-operator|.
-name|listFiles
-argument_list|()
-operator|.
-name|length
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
