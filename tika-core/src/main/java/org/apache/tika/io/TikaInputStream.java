@@ -554,7 +554,9 @@ name|path
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given file.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      * @deprecated use #get(Path). In Tika 2.0, this will be removed      * or modified to throw an IOException.      */
+comment|/**      * Creates a TikaInputStream from the given file.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      * @deprecated use {@link #get(Path)}. In Tika 2.0, this will be removed      * or modified to throw an IOException.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -577,7 +579,9 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a TikaInputStream from the given file. The file name and      * length are stored as input metadata in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      * or cannot be opened for reading      * @deprecated use #get(Path, Metadata). In Tika 2.0,      * this will be removed or modified to throw an IOException.      */
+comment|/**      * Creates a TikaInputStream from the given file. The file name and      * length are stored as input metadata in the given metadata instance.      *<p>      * Note that you must always explicitly close the returned stream to      * prevent leaking open file handles.      *      * @param file input file      * @param metadata metadata instance      * @return a TikaInputStream instance      * @throws FileNotFoundException if the file does not exist      * or cannot be opened for reading      * @deprecated use {@link #get(Path, Metadata)}. In Tika 2.0,      * this will be removed or modified to throw an IOException.      */
+annotation|@
+name|Deprecated
 specifier|public
 specifier|static
 name|TikaInputStream
@@ -1218,7 +1222,9 @@ name|path
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param file the file that contains the stream      * @throws FileNotFoundException if the file does not exist      * @deprecated use #TikaInputStream(Path)      */
+comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param file the file that contains the stream      * @throws FileNotFoundException if the file does not exist      * @deprecated use {@link #TikaInputStream(Path)}      */
+annotation|@
+name|Deprecated
 specifier|private
 name|TikaInputStream
 parameter_list|(
