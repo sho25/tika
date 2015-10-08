@@ -18,6 +18,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -383,20 +397,6 @@ name|SAXException
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
 begin_comment
 comment|/**  * Internal class.  Needs to be instantiated for each parse because of  * the lack of thread safety with the dateTimeFormatter  */
 end_comment
@@ -754,16 +754,18 @@ condition|(
 name|author
 operator|!=
 literal|null
+operator|&&
+name|author
+operator|.
+name|getValue
+argument_list|()
+operator|!=
+literal|null
 condition|)
 block|{
-name|metadata
-operator|.
-name|set
-argument_list|(
-name|TikaCoreProperties
-operator|.
-name|CREATOR
-argument_list|,
+name|String
+name|authorString
+init|=
 name|toString
 argument_list|(
 name|author
@@ -776,6 +778,18 @@ operator|.
 name|getType
 argument_list|()
 argument_list|)
+decl_stmt|;
+name|SummaryExtractor
+operator|.
+name|addMulti
+argument_list|(
+name|metadata
+argument_list|,
+name|TikaCoreProperties
+operator|.
+name|CREATOR
+argument_list|,
+name|authorString
 argument_list|)
 expr_stmt|;
 name|found

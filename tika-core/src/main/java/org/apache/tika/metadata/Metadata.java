@@ -1282,6 +1282,13 @@ name|PropertyTypeException
 argument_list|(
 name|property
 operator|.
+name|getName
+argument_list|()
+operator|+
+literal|" : "
+operator|+
+name|property
+operator|.
 name|getPropertyType
 argument_list|()
 argument_list|)

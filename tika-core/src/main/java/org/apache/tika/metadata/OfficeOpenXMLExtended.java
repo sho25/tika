@@ -65,7 +65,7 @@ name|MANAGER
 init|=
 name|Property
 operator|.
-name|externalText
+name|externalTextBag
 argument_list|(
 name|PREFIX
 operator|+
