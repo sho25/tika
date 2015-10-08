@@ -318,13 +318,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ContentHandler
-name|handler
-init|=
-operator|new
-name|BodyContentHandler
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|metadata
 init|=
@@ -332,179 +325,143 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|InputStream
-name|stream
-init|=
-name|PowerPointParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPPT_various.ppt"
-argument_list|)
-init|)
-block|{
-operator|new
-name|OfficeParser
-argument_list|()
-operator|.
-name|parse
-argument_list|(
-name|stream
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
 name|String
-name|content
+name|xml
 init|=
-name|handler
+name|getXML
+argument_list|(
+literal|"testPPT_various.ppt"
+argument_list|,
+name|metadata
+argument_list|)
 operator|.
-name|toString
-argument_list|()
+name|xml
 decl_stmt|;
-comment|//content = content.replaceAll("\\s+"," ");
 name|assertContains
 argument_list|(
-literal|"Footnote appears here"
+literal|"<p>Footnote appears here"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"This is a footnote."
+literal|"<p>[1]This is a footnote."
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"This is the header text."
+literal|"<p>This is the header text.</p>"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"This is the footer text."
+literal|"<p>This is the footer text.</p>"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Here is a text box"
+literal|"<p>Here is a text box</p>"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
-name|assertContains
-argument_list|(
-literal|"Bold"
-argument_list|,
-name|content
-argument_list|)
-expr_stmt|;
+comment|//TODO: fix this spacing: assertContains("<p>Bold ", xml);
 name|assertContains
 argument_list|(
 literal|"italic"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"underline"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"superscript"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"subscript"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Here is a citation:"
+literal|"<p>Here is a citation:"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"Figure 1 This is a caption for Figure 1"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"(Kramer)"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Row 1 Col 1 Row 1 Col 2 Row 1 Col 3 Row 2 Col 1 Row 2 Col 2 Row 2 Col 3"
+literal|"<table><tr>\t<td>Row 1 Col 1</td>"
 argument_list|,
-name|content
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Row 1 column 1 Row 2 column 1 Row 1 column 2 Row 2 column 2"
+literal|"<td>Row 2 Col 2</td>\t<td>Row 2 Col 3</td></tr>"
 argument_list|,
-name|content
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"This is a hyperlink"
+literal|"<p>Row 1 column 1</p>"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Here is a list:"
+literal|"<p>Row 2 column 2</p>"
 argument_list|,
-name|content
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>This is a hyperlink"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p>Here is a list:"
+argument_list|,
+name|xml
 argument_list|)
 expr_stmt|;
 for|for
@@ -524,14 +481,13 @@ control|)
 block|{
 comment|//assertContains("·\tBullet " + row, content);
 comment|//assertContains("\u00b7\tBullet " + row, content);
-comment|// TODO OfficeParser fails to extract the bullet symbol
 name|assertContains
 argument_list|(
-literal|"Bullet "
+literal|"<p>Bullet "
 operator|+
 name|row
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
@@ -539,7 +495,7 @@ name|assertContains
 argument_list|(
 literal|"Here is a numbered list:"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 for|for
@@ -559,14 +515,14 @@ control|)
 block|{
 comment|//assertContains(row + ")\tNumber bullet " + row, content);
 comment|//assertContains(row + ") Number bullet " + row, content);
-comment|// TODO: OfficeParser fails to number the bullets:
+comment|// TODO: OOXMLExtractor fails to number the bullets:
 name|assertContains
 argument_list|(
-literal|"Number bullet "
+literal|"<p>Number bullet "
 operator|+
 name|row
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
@@ -610,7 +566,7 @@ literal|" Col "
 operator|+
 name|col
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
@@ -619,7 +575,7 @@ name|assertContains
 argument_list|(
 literal|"Keyword1 Keyword2"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -640,7 +596,7 @@ name|assertContains
 argument_list|(
 literal|"Subject is here"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -676,7 +632,7 @@ name|assertContains
 argument_list|(
 literal|"Suddenly some Japanese text:"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 comment|// Special version of (GHQ)
@@ -684,7 +640,7 @@ name|assertContains
 argument_list|(
 literal|"\uff08\uff27\uff28\uff31\uff09"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 comment|// 6 other characters
@@ -692,21 +648,21 @@ name|assertContains
 argument_list|(
 literal|"\u30be\u30eb\u30b2\u3068\u5c3e\u5d0e\u3001\u6de1\u3005\u3068\u6700\u671f"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"And then some Gothic text:"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"\uD800\uDF32\uD800\uDF3f\uD800\uDF44\uD800\uDF39\uD800\uDF43\uD800\uDF3A"
 argument_list|,
-name|content
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
@@ -1367,6 +1323,33 @@ argument_list|(
 literal|"<div class=\"slide-content\"><p>Now</p>"
 argument_list|,
 name|result
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testCommentAuthorship
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_comment.ppt"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p class=\"slide-comment\"><b>Allison, Timothy B. (ATB)"
+argument_list|,
+name|r
 operator|.
 name|xml
 argument_list|)
