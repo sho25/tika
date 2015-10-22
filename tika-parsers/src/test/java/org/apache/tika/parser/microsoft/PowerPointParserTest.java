@@ -346,7 +346,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>[1]This is a footnote."
+literal|"<p>[1] This is a footnote."
 argument_list|,
 name|xml
 argument_list|)
@@ -372,10 +372,16 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-comment|//TODO: fix this spacing: assertContains("<p>Bold ", xml);
 name|assertContains
 argument_list|(
-literal|"italic"
+literal|"<p>Bold "
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"italic underline superscript subscript"
 argument_list|,
 name|xml
 argument_list|)
