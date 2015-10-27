@@ -216,8 +216,6 @@ name|AUTO
 init|=
 name|unmodifiableSet
 argument_list|(
-literal|"html"
-argument_list|,
 literal|"head"
 argument_list|,
 literal|"frameset"
