@@ -18,6 +18,20 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -368,20 +382,6 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -790,6 +790,21 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+literal|"throwIllegalChars"
+operator|.
+name|equals
+argument_list|(
+name|name
+argument_list|)
+condition|)
+block|{
+name|throwIllegalChars
+argument_list|()
+expr_stmt|;
+block|}
 else|else
 block|{
 throw|throw
@@ -802,6 +817,21 @@ name|name
 argument_list|)
 throw|;
 block|}
+block|}
+specifier|private
+name|void
+name|throwIllegalChars
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Can't say \u0000 in xml or \u0001 or \u0002 or \u0003"
+argument_list|)
+throw|;
 block|}
 specifier|private
 name|void

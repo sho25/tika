@@ -871,6 +871,9 @@ parameter_list|(
 name|String
 name|testConfig
 parameter_list|,
+name|String
+name|loggerProps
+parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -940,6 +943,8 @@ name|commandLine
 argument_list|(
 name|testConfig
 argument_list|,
+name|loggerProps
+argument_list|,
 name|argList
 operator|.
 name|toArray
@@ -970,6 +975,9 @@ name|commandLine
 parameter_list|(
 name|String
 name|testConfig
+parameter_list|,
+name|String
+name|loggerProps
 parameter_list|,
 name|String
 index|[]
@@ -1007,7 +1015,7 @@ argument_list|()
 operator|.
 name|getResource
 argument_list|(
-literal|"/log4j_process.properties"
+name|loggerProps
 argument_list|)
 operator|.
 name|getFile
