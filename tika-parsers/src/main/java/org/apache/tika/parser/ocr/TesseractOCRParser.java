@@ -825,8 +825,6 @@ block|{
 name|tesseract
 block|}
 decl_stmt|;
-try|try
-block|{
 name|boolean
 name|hasTesseract
 init|=
@@ -849,29 +847,6 @@ expr_stmt|;
 return|return
 name|hasTesseract
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|NoClassDefFoundError
-name|e
-parameter_list|)
-block|{
-comment|// This happens under OSGi + Fork Parser - see TIKA-1507
-comment|// As a workaround for now, just say we can't use OCR
-comment|// TODO Resolve it so we don't need this try/catch block
-name|TESSERACT_PRESENT
-operator|.
-name|put
-argument_list|(
-name|tesseract
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
 block|}
 specifier|public
 name|void
