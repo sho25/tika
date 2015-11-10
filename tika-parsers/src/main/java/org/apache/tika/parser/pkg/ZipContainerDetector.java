@@ -1050,7 +1050,7 @@ operator|.
 name|APPLICATION_ZIP
 return|;
 block|}
-comment|/**      * OpenDocument files, along with EPub files, have a mimetype      *  entry in the root of their Zip file. This entry contains the      *  mimetype of the overall file, stored as a single string.        */
+comment|/**      * OpenDocument files, along with EPub files and ASiC ones, have a       *  mimetype entry in the root of their Zip file. This entry contains      *  the mimetype of the overall file, stored as a single string.        */
 specifier|private
 specifier|static
 name|MediaType
