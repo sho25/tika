@@ -447,7 +447,7 @@ return|return
 name|SUPPORTED_TYPES
 return|;
 block|}
-comment|/** 	 * Initializes this parser 	 * @param modelUrl the URL to NER model 	 */
+comment|/**      * Initializes this parser      * @param modelUrl the URL to NER model      */
 specifier|public
 name|void
 name|initialize
@@ -474,7 +474,7 @@ name|modelUrl
 argument_list|)
 condition|)
 block|{
-comment|//previously initialized for the same URL
+comment|// Previously initialized for the same URL
 return|return;
 block|}
 name|this
