@@ -474,7 +474,7 @@ name|modelUrl
 argument_list|)
 condition|)
 block|{
-comment|// Previously initialized for the same URL
+comment|// Previously initialized for the same URL, no initialization needed
 return|return;
 block|}
 name|this
@@ -483,7 +483,8 @@ name|modelUrl
 operator|=
 name|modelUrl
 expr_stmt|;
-comment|//if NER model is available and lucene-geo-gazetteer is available
+comment|// Check if the NER model is available, and if the
+comment|//  lucene-geo-gazetteer is available
 name|this
 operator|.
 name|available
@@ -535,10 +536,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warning
+argument_list|(
+literal|"Named Entity Extractor setup failed: "
+operator|+
+name|e
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
