@@ -72,7 +72,8 @@ specifier|final
 name|long
 name|serialVersionUID
 init|=
-literal|2L
+operator|-
+literal|3167692634278575818L
 decl_stmt|;
 specifier|private
 name|URL
