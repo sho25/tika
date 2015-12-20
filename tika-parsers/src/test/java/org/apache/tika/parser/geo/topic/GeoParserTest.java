@@ -354,7 +354,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"China"
+literal|"People’s Republic of China"
 argument_list|,
 name|metadata
 operator|.
@@ -378,7 +378,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"27.33931"
+literal|"35.0"
 argument_list|,
 name|metadata
 operator|.
@@ -390,7 +390,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"-108.60288"
+literal|"105.0"
 argument_list|,
 name|metadata
 operator|.
