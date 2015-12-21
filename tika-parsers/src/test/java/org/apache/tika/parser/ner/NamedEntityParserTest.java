@@ -37,6 +37,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|config
 operator|.
 name|TikaConfig
@@ -151,9 +163,9 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Assert
+name|Assume
 operator|.
-name|assertTrue
+name|assumeTrue
 import|;
 end_import
 
@@ -165,6 +177,8 @@ begin_class
 specifier|public
 class|class
 name|NamedEntityParserTest
+extends|extends
+name|TikaTest
 block|{
 specifier|public
 specifier|static
@@ -275,7 +289,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|set
 operator|.
@@ -312,7 +326,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|set
 operator|.
@@ -344,7 +358,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|set
 operator|.
@@ -376,7 +390,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|set
 operator|.
@@ -408,7 +422,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|set
 operator|.
@@ -538,7 +552,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|keys
 operator|.
@@ -548,7 +562,7 @@ literal|"NER_WEEK_DAY"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertTrue
+name|assumeTrue
 argument_list|(
 name|keys
 operator|.
