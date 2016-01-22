@@ -887,7 +887,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
-comment|// TODO Find the Notes for this slide and extract inline
+comment|// Find the Notes for this slide and extract inline
 name|HSLFNotes
 name|notes
 init|=
