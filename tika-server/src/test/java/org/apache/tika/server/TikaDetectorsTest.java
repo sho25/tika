@@ -594,12 +594,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
 name|Object
-argument_list|>
 argument_list|>
 name|json
 init|=
@@ -608,12 +603,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|Map
-argument_list|<
-name|String
-argument_list|,
 name|Object
-argument_list|>
 argument_list|>
 operator|)
 name|JSON
@@ -688,9 +678,6 @@ init|=
 operator|(
 name|Object
 index|[]
-operator|)
-operator|(
-name|Object
 operator|)
 name|json
 operator|.
