@@ -2223,6 +2223,22 @@ expr_stmt|;
 comment|// From name, gets the common parent type
 name|assertTypeByName
 argument_list|(
+literal|"model/vnd.dwf"
+argument_list|,
+literal|"x.dwf"
+argument_list|)
+expr_stmt|;
+comment|// With the data, can work out it's the v6 zip-based flavour
+name|assertTypeByData
+argument_list|(
+literal|"model/vnd.dwf; version=6"
+argument_list|,
+literal|"testDWF2010.dwf"
+argument_list|)
+expr_stmt|;
+comment|// From name, gets the common parent type
+name|assertTypeByName
+argument_list|(
 literal|"image/vnd.dxf"
 argument_list|,
 literal|"x.dxf"
