@@ -3896,6 +3896,8 @@ name|pdfs
 init|=
 literal|0
 decl_stmt|;
+comment|//empty as of PDFBox 1.8.11
+comment|//leave this in for the 1.8.x series in case something new happens
 name|Set
 argument_list|<
 name|String
@@ -3909,30 +3911,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//PDFBox-1792/Tika-1203
-name|knownMetadataDiffs
-operator|.
-name|add
-argument_list|(
-literal|"testAnnotations.pdf"
-argument_list|)
-expr_stmt|;
-comment|// Added for TIKA-93.
-name|knownMetadataDiffs
-operator|.
-name|add
-argument_list|(
-literal|"testOCR.pdf"
-argument_list|)
-expr_stmt|;
-comment|// Added for TIKA-1085
-name|knownMetadataDiffs
-operator|.
-name|add
-argument_list|(
-literal|"testPDF_bom.pdf"
-argument_list|)
-expr_stmt|;
 comment|//empty for now
 name|Set
 argument_list|<
