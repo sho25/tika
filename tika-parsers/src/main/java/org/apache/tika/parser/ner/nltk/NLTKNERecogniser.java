@@ -290,7 +290,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  This class offers an implementation of {@link NERecogniser} based on  *  CRF classifiers from Stanford CoreNLP. This NER requires additional setup,  *  due to runtime binding to Stanford CoreNLP.  *  See<a href="http://wiki.apache.org/tika/TikaAndNER#NLTK">  *      Tika NER Wiki</a> for configuring this recogniser.  *  @see NERecogniser  *  */
+comment|/**  *  This class offers an implementation of {@link NERecogniser} based on  *  ne_chunk() module of NLTK. This NER requires additional setup,  *  due to Http requests to an endpoint server that runs NLTK.  *  See<a href="http://wiki.apache.org/tika/TikaAndNER#NLTK">  *  */
 end_comment
 
 begin_class
@@ -330,6 +330,7 @@ name|available
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * some common entities identified by NLTK      */
 specifier|public
 specifier|static
 specifier|final
@@ -500,7 +501,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @return {@code true} if model was available, valid and was able to initialise the classifier.      * returns {@code false} when this recogniser is not available for service.      */
+comment|/**      * @return {@code true} if server endpoint is available.      * returns {@code false} if server endpoint is not avaliable for service.      */
 specifier|public
 name|boolean
 name|isAvailable
@@ -583,7 +584,6 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-comment|// add header
 name|post
 operator|.
 name|setHeader
@@ -810,21 +810,6 @@ argument_list|(
 name|entities
 operator|.
 name|keySet
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"returning this:"
-operator|+
-name|entities
-operator|.
-name|keySet
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
