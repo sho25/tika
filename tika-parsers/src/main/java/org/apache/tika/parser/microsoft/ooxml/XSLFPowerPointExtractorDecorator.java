@@ -165,9 +165,11 @@ name|apache
 operator|.
 name|poi
 operator|.
-name|xslf
+name|sl
 operator|.
-name|XSLFSlideShow
+name|usermodel
+operator|.
+name|SimpleShape
 import|;
 end_import
 
@@ -184,22 +186,6 @@ operator|.
 name|extractor
 operator|.
 name|XSLFPowerPointExtractor
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
-name|xslf
-operator|.
-name|usermodel
-operator|.
-name|Placeholder
 import|;
 end_import
 
@@ -408,6 +394,22 @@ operator|.
 name|usermodel
 operator|.
 name|XSLFSlideLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|xslf
+operator|.
+name|usermodel
+operator|.
+name|XSLFSlideShow
 import|;
 end_import
 
@@ -1251,6 +1253,8 @@ name|XSLFTextShape
 operator|)
 name|sh
 decl_stmt|;
+name|SimpleShape
+operator|.
 name|Placeholder
 name|ph
 init|=
@@ -1789,12 +1793,15 @@ try|try
 block|{
 name|document
 operator|=
-name|slideShow
+operator|new
+name|XSLFSlideShow
+argument_list|(
+name|extractor
 operator|.
-name|_getXSLFSlideShow
+name|getPackage
 argument_list|()
+argument_list|)
 expr_stmt|;
-comment|// TODO Avoid this in future
 block|}
 catch|catch
 parameter_list|(
