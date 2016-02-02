@@ -15,10 +15,6 @@ name|nltk
 package|;
 end_package
 
-begin_comment
-comment|/**  * Created by manali on 2/1/16.  */
-end_comment
-
 begin_import
 import|import
 name|org
