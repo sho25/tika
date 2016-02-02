@@ -1773,17 +1773,6 @@ name|ArrayList
 argument_list|<>
 argument_list|()
 decl_stmt|;
-name|XMLSlideShow
-name|slideShow
-init|=
-operator|(
-name|XMLSlideShow
-operator|)
-name|extractor
-operator|.
-name|getDocument
-argument_list|()
-decl_stmt|;
 name|XSLFSlideShow
 name|document
 init|=
