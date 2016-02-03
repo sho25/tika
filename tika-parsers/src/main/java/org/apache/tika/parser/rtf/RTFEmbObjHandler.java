@@ -1267,9 +1267,9 @@ name|Metadata
 operator|.
 name|CONTENT_TYPE
 argument_list|,
-name|mediaType
+name|mime
 operator|.
-name|getSubtype
+name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;

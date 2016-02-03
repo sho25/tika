@@ -18,6 +18,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|javax
 operator|.
@@ -748,20 +762,6 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -1731,6 +1731,12 @@ operator|.
 name|CONTENT_TYPE
 argument_list|)
 decl_stmt|;
+comment|//make sure never to return null -- TIKA-1845
+name|MediaType
+name|type
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|ct
@@ -1738,13 +1744,26 @@ operator|!=
 literal|null
 condition|)
 block|{
-return|return
+comment|//this can return null if ct is not a valid mime type
+name|type
+operator|=
 name|MediaType
 operator|.
 name|parse
 argument_list|(
 name|ct
 argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|type
 return|;
 block|}
 else|else
