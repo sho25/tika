@@ -4232,6 +4232,40 @@ argument_list|,
 literal|"testMATLAB_barcast.m"
 argument_list|)
 expr_stmt|;
+comment|// By name, or by name+data, gets it as JS
+name|assertTypeByName
+argument_list|(
+literal|"application/javascript"
+argument_list|,
+literal|"testJS.js"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/javascript"
+argument_list|,
+literal|"testJS_HTML.js"
+argument_list|)
+expr_stmt|;
+name|assertType
+argument_list|(
+literal|"application/javascript"
+argument_list|,
+literal|"testJS.js"
+argument_list|)
+expr_stmt|;
+name|assertType
+argument_list|(
+literal|"application/javascript"
+argument_list|,
+literal|"testJS_HTML.js"
+argument_list|)
+expr_stmt|;
+comment|// With data only, because we have no JS file magic, can't be
+comment|//  detected. One will come through as plain text, the other
+comment|//  as HTML due to<html> in it. TODO Add JS magic. See TIKA-1141
+comment|//assertTypeByData("application/javascript", "testJS.js");
+comment|//assertTypeByData("application/javascript", "testJS_HTML.js");
 block|}
 annotation|@
 name|Test
