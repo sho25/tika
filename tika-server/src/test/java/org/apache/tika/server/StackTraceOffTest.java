@@ -789,13 +789,6 @@ argument_list|(
 literal|"*/*"
 argument_list|)
 operator|.
-name|header
-argument_list|(
-literal|"Content-Disposition"
-argument_list|,
-literal|"attachment; filename=null_pointer.evil"
-argument_list|)
-operator|.
 name|put
 argument_list|(
 name|ClassLoader
