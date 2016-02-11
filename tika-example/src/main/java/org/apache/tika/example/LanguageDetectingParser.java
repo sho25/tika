@@ -57,9 +57,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|language
+name|langdetect
 operator|.
-name|LanguageIdentifier
+name|LanguageHandler
 import|;
 end_import
 
@@ -71,9 +71,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|language
+name|langdetect
 operator|.
-name|ProfilingHandler
+name|LanguageResult
 import|;
 end_import
 
@@ -88,6 +88,20 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -201,11 +215,11 @@ name|IOException
 throws|,
 name|TikaException
 block|{
-name|ProfilingHandler
-name|profiler
+name|LanguageHandler
+name|langHandler
 init|=
 operator|new
-name|ProfilingHandler
+name|LanguageHandler
 argument_list|()
 decl_stmt|;
 name|ContentHandler
@@ -216,7 +230,7 @@ name|TeeContentHandler
 argument_list|(
 name|handler
 argument_list|,
-name|profiler
+name|langHandler
 argument_list|)
 decl_stmt|;
 name|super
@@ -232,17 +246,17 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
-name|LanguageIdentifier
-name|identifier
+name|LanguageResult
+name|result
 init|=
-name|profiler
+name|langHandler
 operator|.
 name|getLanguage
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|identifier
+name|result
 operator|.
 name|isReasonablyCertain
 argument_list|()
@@ -252,11 +266,11 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LANGUAGE
 argument_list|,
-name|identifier
+name|result
 operator|.
 name|getLanguage
 argument_list|()

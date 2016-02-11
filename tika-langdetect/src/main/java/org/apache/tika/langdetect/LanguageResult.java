@@ -26,6 +26,25 @@ specifier|public
 class|class
 name|LanguageResult
 block|{
+comment|// A result that indicates no match. Used when no language was detected.
+specifier|public
+specifier|static
+specifier|final
+name|LanguageResult
+name|NULL
+init|=
+operator|new
+name|LanguageResult
+argument_list|(
+literal|""
+argument_list|,
+name|LanguageConfidence
+operator|.
+name|NONE
+argument_list|,
+literal|0.0f
+argument_list|)
+decl_stmt|;
 specifier|private
 name|String
 name|language
@@ -111,6 +130,19 @@ operator|==
 name|LanguageConfidence
 operator|.
 name|HIGH
+return|;
+block|}
+specifier|public
+name|boolean
+name|isUnknown
+parameter_list|()
+block|{
+return|return
+name|confidence
+operator|==
+name|LanguageConfidence
+operator|.
+name|NONE
 return|;
 block|}
 comment|/** 	 * Return true if the target language matches the detected language. We consider 	 * it a match if, for the precision requested or detected, it matches. This means: 	 *  	 * target	|	detected	| match? 	 * zh		|	en			| false 	 * zh		|	zh			| true 	 * zh		|	zh-CN		| true 	 * zh-CN	|	zh			| true 	 * zh-CN	|	zh-TW		| false 	 * zh-CN	|	zh-cn		| true (case-insensitive) 	 *  	 * @param language 	 * @return 	 */

@@ -498,8 +498,8 @@ argument_list|>
 name|languageProfiles
 parameter_list|)
 block|{
-comment|// FUTURE decide whether we really want to use the short text algorithm when dealing with mixed languages,
-comment|// as that would get really, really slow for big chunks of text.
+comment|// FUTURE currently the short text algorithm doesn't normalize probabilities until the end, which
+comment|// means you can often get 0 probabilities. So we pick a very short length for this limit.
 name|LanguageDetectorBuilder
 name|builder
 init|=
@@ -515,13 +515,7 @@ argument_list|)
 operator|.
 name|shortTextAlgorithm
 argument_list|(
-name|mixedLanguages
-condition|?
-name|Integer
-operator|.
-name|MAX_VALUE
-else|:
-literal|100
+literal|30
 argument_list|)
 operator|.
 name|withProfiles
@@ -814,6 +808,24 @@ operator|.
 name|getProbability
 argument_list|()
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|result
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|result
+operator|.
+name|add
+argument_list|(
+name|LanguageResult
+operator|.
+name|NULL
 argument_list|)
 expr_stmt|;
 block|}

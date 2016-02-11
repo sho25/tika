@@ -316,7 +316,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Detect languages based on previously submitted text (via addText calls). 	 *  	 * @return list of all possible languages with at least medium confidence, 	 * 			sorted by confidence from highest to lowest. 	 */
+comment|/** 	 * Detect languages based on previously submitted text (via addText calls). 	 *  	 * @return	list of all possible languages with at least medium confidence, 	 * 			sorted by confidence from highest to lowest. There will always 	 * 			be at least one result, which might have a confidence of NONE. 	 */
 specifier|public
 specifier|abstract
 name|List
@@ -341,13 +341,6 @@ name|detectAll
 argument_list|()
 decl_stmt|;
 return|return
-name|results
-operator|.
-name|isEmpty
-argument_list|()
-condition|?
-literal|null
-else|:
 name|results
 operator|.
 name|get

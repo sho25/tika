@@ -80,6 +80,19 @@ return|return
 name|detector
 return|;
 block|}
+comment|/**      * Returns the detected language based on text written thus far.      *       * @return LanguageResult      */
+specifier|public
+name|LanguageResult
+name|getLanguage
+parameter_list|()
+block|{
+return|return
+name|detector
+operator|.
+name|detect
+argument_list|()
+return|;
+block|}
 annotation|@
 name|Override
 specifier|public

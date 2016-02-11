@@ -21,6 +21,9 @@ block|,
 name|MEDIUM
 block|,
 name|LOW
+block|,
+name|NONE
+comment|// Special value when no language is detected
 block|}
 end_enum
 
