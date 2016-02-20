@@ -40,6 +40,11 @@ init|=
 literal|"embeddedRelationshipId"
 decl_stmt|;
 name|String
+name|EMBEDDED_STORAGE_CLASS_ID
+init|=
+literal|"embeddedStorageClassId"
+decl_stmt|;
+name|String
 name|EMBEDDED_RESOURCE_TYPE
 init|=
 literal|"embeddedResourceType"

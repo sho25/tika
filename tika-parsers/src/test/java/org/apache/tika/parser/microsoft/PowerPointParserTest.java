@@ -489,7 +489,7 @@ comment|//assertContains("·\tBullet " + row, content);
 comment|//assertContains("\u00b7\tBullet " + row, content);
 name|assertContains
 argument_list|(
-literal|"<p>Bullet "
+literal|"<li>Bullet "
 operator|+
 name|row
 argument_list|,
@@ -524,7 +524,7 @@ comment|//assertContains(row + ") Number bullet " + row, content);
 comment|// TODO: OOXMLExtractor fails to number the bullets:
 name|assertContains
 argument_list|(
-literal|"<p>Number bullet "
+literal|"<li>Number bullet "
 operator|+
 name|row
 argument_list|,

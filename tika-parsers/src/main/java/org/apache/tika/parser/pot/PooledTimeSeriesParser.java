@@ -391,6 +391,10 @@ name|UTF_8
 import|;
 end_import
 
+begin_comment
+comment|/**  * Uses the Pooled Time Series algorithm + command line tool, to  *  generate a numeric representation of the video suitable for  *  similarity searches.  *<p>See https://wiki.apache.org/tika/PooledTimeSeriesParser for  *  more details and setup instructions.  */
+end_comment
+
 begin_class
 specifier|public
 class|class

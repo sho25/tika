@@ -2985,6 +2985,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//TIKA-1010 test regular (not "embedded") images/picts
+annotation|@
+name|Test
 specifier|public
 name|void
 name|testRegularImages
@@ -3120,7 +3122,7 @@ name|metadatas
 operator|.
 name|get
 argument_list|(
-literal|0
+literal|1
 argument_list|)
 decl_stmt|;
 comment|//("testJPEG_EXIF_\u666E\u6797\u65AF\u987F.jpg");
@@ -3131,7 +3133,7 @@ name|metadatas
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|3
 argument_list|)
 decl_stmt|;
 comment|//("testJPEG_\u666E\u6797\u65AF\u987F.jpg");
@@ -3235,7 +3237,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|40
+literal|46
 argument_list|,
 name|meta_jpg
 operator|.
@@ -3247,9 +3249,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|105
+literal|110
 argument_list|,
-name|meta_jpg
+name|meta_jpg_exif
 operator|.
 name|names
 argument_list|()
