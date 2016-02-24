@@ -721,7 +721,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|server
+name|sax
 operator|.
 name|RichTextContentHandler
 import|;

@@ -11,7 +11,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|server
+name|sax
 package|;
 end_package
 
@@ -22,20 +22,6 @@ operator|.
 name|io
 operator|.
 name|Writer
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|WriteOutContentHandler
 import|;
 end_import
 
