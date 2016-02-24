@@ -49,6 +49,10 @@ name|SAXException
 import|;
 end_import
 
+begin_comment
+comment|/**  * Content handler for Rich Text, it will extract XHTML&lt;img/&gt;  * tag&lt;alt/&gt; attribute and XHTML&lt;a/&gt; tag&lt;name/&gt;  * attribute into the output.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -56,6 +60,7 @@ name|RichTextContentHandler
 extends|extends
 name|WriteOutContentHandler
 block|{
+comment|/**      * Creates a content handler that writes XHTML body character events to      * the given writer.      *      * @param writer writer      */
 specifier|public
 name|RichTextContentHandler
 parameter_list|(
