@@ -19,17 +19,21 @@ end_package
 
 begin_import
 import|import
-name|com
+name|java
 operator|.
-name|fasterxml
+name|io
 operator|.
-name|jackson
-operator|.
-name|databind
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
 name|util
 operator|.
-name|LRUMap
+name|HashMap
 import|;
 end_import
 
@@ -77,21 +81,17 @@ end_import
 
 begin_import
 import|import
-name|java
+name|com
 operator|.
-name|io
+name|fasterxml
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jackson
+operator|.
+name|databind
 operator|.
 name|util
 operator|.
-name|HashMap
+name|LRUMap
 import|;
 end_import
 
@@ -230,10 +230,12 @@ name|translator
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|text
 return|;
-name|HashMap
+block|}
+name|LRUMap
 argument_list|<
 name|String
 argument_list|,
@@ -384,7 +386,7 @@ name|String
 name|targetLanguage
 parameter_list|)
 block|{
-name|HashMap
+name|LRUMap
 argument_list|<
 name|String
 argument_list|,
@@ -410,16 +412,20 @@ name|translationCache
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 else|else
+block|{
 return|return
 name|translationCache
 operator|.
 name|size
 argument_list|()
 return|;
+block|}
 block|}
 comment|/**      * Check whether this CachedTranslator's cache contains a translation of the text from the      * source language to the target language.      *      * @param text What string to check for.      * @param sourceLanguage The source language of translation.      * @param targetLanguage The target language of translation.      * @return true if the cache contains a translation of the text, false otherwise.      */
 specifier|public
@@ -436,7 +442,7 @@ name|String
 name|targetLanguage
 parameter_list|)
 block|{
-name|HashMap
+name|LRUMap
 argument_list|<
 name|String
 argument_list|,
@@ -454,10 +460,12 @@ decl_stmt|;
 return|return
 name|translationCache
 operator|.
-name|containsKey
+name|get
 argument_list|(
 name|text
 argument_list|)
+operator|!=
+literal|null
 return|;
 block|}
 comment|/**      * Check whether this CachedTranslator's cache contains a translation of the text to the target language,      * attempting to auto-detect the source language.      *      * @param text What string to check for.      * @param targetLanguage The target language of translation.      * @return true if the cache contains a translation of the text, false otherwise.      */
