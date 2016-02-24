@@ -144,7 +144,7 @@ name|IOUtils
 operator|.
 name|readLines
 argument_list|(
-name|LanguageDetector
+name|LanguageDetectorTest
 operator|.
 name|class
 operator|.

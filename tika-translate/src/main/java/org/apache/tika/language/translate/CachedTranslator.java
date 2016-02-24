@@ -59,7 +59,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
+operator|.
+name|detect
 operator|.
 name|LanguageResult
 import|;

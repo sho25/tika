@@ -57,7 +57,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
+operator|.
+name|detect
 operator|.
 name|LanguageHandler
 import|;
@@ -71,7 +73,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
+operator|.
+name|detect
 operator|.
 name|LanguageResult
 import|;
@@ -172,11 +176,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|public
 class|class
 name|LanguageDetectingParser

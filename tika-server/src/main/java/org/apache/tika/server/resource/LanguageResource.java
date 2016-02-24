@@ -163,7 +163,7 @@ name|tika
 operator|.
 name|langdetect
 operator|.
-name|LanguageResult
+name|OptimaizeLangDetector
 import|;
 end_import
 
@@ -175,9 +175,11 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
 operator|.
-name|OptimaizeLangDetector
+name|detect
+operator|.
+name|LanguageResult
 import|;
 end_import
 

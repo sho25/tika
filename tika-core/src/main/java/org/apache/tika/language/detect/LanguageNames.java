@@ -7,7 +7,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
+operator|.
+name|detect
 package|;
 end_package
 

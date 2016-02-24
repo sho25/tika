@@ -227,7 +227,7 @@ name|tika
 operator|.
 name|langdetect
 operator|.
-name|LanguageConfidence
+name|OptimaizeLangDetector
 import|;
 end_import
 
@@ -239,23 +239,11 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|langdetect
+name|language
+operator|.
+name|detect
 operator|.
 name|LanguageResult
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|langdetect
-operator|.
-name|OptimaizeLangDetector
 import|;
 end_import
 
