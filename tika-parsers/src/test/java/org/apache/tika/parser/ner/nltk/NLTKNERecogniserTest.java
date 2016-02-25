@@ -269,7 +269,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|gpe
+name|names
 init|=
 operator|new
 name|HashSet
@@ -283,14 +283,14 @@ name|md
 operator|.
 name|getValues
 argument_list|(
-literal|"NER_GPE"
+literal|"NER_NAMES"
 argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|gpe
+name|names
 operator|.
 name|size
 argument_list|()
@@ -304,7 +304,7 @@ else|else
 block|{
 name|assertTrue
 argument_list|(
-name|gpe
+name|names
 operator|.
 name|contains
 argument_list|(
@@ -314,7 +314,7 @@ argument_list|)
 expr_stmt|;
 name|assertTrue
 argument_list|(
-name|gpe
+name|names
 operator|.
 name|size
 argument_list|()
