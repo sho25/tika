@@ -300,6 +300,17 @@ name|XWPFParagraph
 name|paragraph
 parameter_list|)
 block|{
+if|if
+condition|(
+name|numbering
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 name|int
 name|currNumId
 init|=
