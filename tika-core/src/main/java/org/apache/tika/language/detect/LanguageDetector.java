@@ -87,22 +87,6 @@ name|ServiceLoader
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|language
-operator|.
-name|translate
-operator|.
-name|Translator
-import|;
-end_import
-
 begin_comment
 comment|// We should use the IANA registry for primary language names...see
 end_comment
