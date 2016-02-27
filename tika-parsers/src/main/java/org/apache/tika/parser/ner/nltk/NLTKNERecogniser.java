@@ -293,13 +293,6 @@ argument_list|(
 name|restHostUrlStr
 argument_list|)
 operator|.
-name|accept
-argument_list|(
-name|MediaType
-operator|.
-name|TEXT_HTML
-argument_list|)
-operator|.
 name|get
 argument_list|()
 decl_stmt|;
@@ -470,13 +463,6 @@ operator|.
 name|create
 argument_list|(
 name|url
-argument_list|)
-operator|.
-name|accept
-argument_list|(
-name|MediaType
-operator|.
-name|TEXT_HTML
 argument_list|)
 operator|.
 name|post
