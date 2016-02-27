@@ -200,7 +200,7 @@ block|{
 name|String
 name|text
 init|=
-literal|"America"
+literal|"America is a big country."
 decl_stmt|;
 name|System
 operator|.
