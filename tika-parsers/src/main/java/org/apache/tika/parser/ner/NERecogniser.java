@@ -97,16 +97,6 @@ name|MONEY
 init|=
 literal|"MONEY"
 decl_stmt|;
-name|String
-name|FACILITY
-init|=
-literal|"FACILITY"
-decl_stmt|;
-name|String
-name|GPE
-init|=
-literal|"GPE"
-decl_stmt|;
 comment|/**      * checks if this Named Entity recogniser is available for service      * @return true if this recogniser is ready to recognise, false otherwise      */
 name|boolean
 name|isAvailable
