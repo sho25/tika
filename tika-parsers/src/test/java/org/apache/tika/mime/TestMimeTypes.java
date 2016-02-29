@@ -1462,6 +1462,13 @@ argument_list|,
 literal|"testFITS.fits"
 argument_list|)
 expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/fits"
+argument_list|,
+literal|"4E8D6B46E2366D7063DE3926AF0F976A0DCCD57A7E3B53B7D54768F16DD23984"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
