@@ -322,7 +322,6 @@ operator|==
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//and nothing else
 block|}
 block|}
 block|}
