@@ -167,6 +167,14 @@ specifier|private
 name|Float
 name|spacingTolerance
 decl_stmt|;
+comment|//If the PDF has an XFA element, process only that and skip extracting
+comment|//content from elsewhere in the document.
+specifier|private
+name|boolean
+name|ifXFAExtractOnlyXFA
+init|=
+literal|false
+decl_stmt|;
 specifier|private
 name|AccessChecker
 name|accessChecker
@@ -399,6 +407,22 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setIfXFAExtractOnlyXFA
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"ifXFAExtractOnlyXFA"
+argument_list|)
+argument_list|,
+name|getIfXFAExtractOnlyXFA
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|boolean
 name|checkExtractAccessPermission
 init|=
@@ -558,7 +582,7 @@ return|return
 name|extractAcroFormContent
 return|;
 block|}
-comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.      *      * @param extractAcroFormContent      */
+comment|/**      * If true (the default), extract content from AcroForms      * at the end of the document.  If an XFA is found,      * try to process that, otherwise, process the AcroForm.      *      * @param extractAcroFormContent      */
 specifier|public
 name|void
 name|setExtractAcroFormContent
@@ -572,6 +596,32 @@ operator|.
 name|extractAcroFormContent
 operator|=
 name|extractAcroFormContent
+expr_stmt|;
+block|}
+comment|/**      * @see #setIfXFAExtractOnlyXFA(boolean)      * @return how to handle XFA data if it exists      */
+specifier|public
+name|boolean
+name|getIfXFAExtractOnlyXFA
+parameter_list|()
+block|{
+return|return
+name|ifXFAExtractOnlyXFA
+return|;
+block|}
+comment|/**      * If false (the default), extract content from the full PDF      * as well as the XFA form.  This will likely lead to some duplicative      * content.      *      * @param ifXFAExtractOnlyXFA      */
+specifier|public
+name|void
+name|setIfXFAExtractOnlyXFA
+parameter_list|(
+name|boolean
+name|ifXFAExtractOnlyXFA
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ifXFAExtractOnlyXFA
+operator|=
+name|ifXFAExtractOnlyXFA
 expr_stmt|;
 block|}
 comment|/**      * @see #setExtractInlineImages(boolean)      */
@@ -1076,6 +1126,20 @@ else|:
 literal|1237
 operator|)
 expr_stmt|;
+name|result
+operator|=
+name|prime
+operator|*
+name|result
+operator|+
+operator|(
+name|ifXFAExtractOnlyXFA
+condition|?
+literal|1231
+else|:
+literal|1237
+operator|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -1287,6 +1351,17 @@ condition|)
 return|return
 literal|false
 return|;
+if|if
+condition|(
+name|ifXFAExtractOnlyXFA
+operator|!=
+name|other
+operator|.
+name|ifXFAExtractOnlyXFA
+condition|)
+return|return
+literal|false
+return|;
 return|return
 literal|true
 return|;
@@ -1322,6 +1397,10 @@ operator|+
 literal|", extractAcroFormContent="
 operator|+
 name|extractAcroFormContent
+operator|+
+literal|", ifXFAExtractOnlyXFA="
+operator|+
+name|ifXFAExtractOnlyXFA
 operator|+
 literal|", extractInlineImages="
 operator|+
