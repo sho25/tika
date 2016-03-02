@@ -151,9 +151,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|detect
+name|config
 operator|.
-name|CompositeDetector
+name|TikaConfigSerializer
 import|;
 end_import
 
@@ -165,11 +165,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|example
+name|detect
 operator|.
-name|DumpTikaConfigExample
-operator|.
-name|Mode
+name|CompositeDetector
 import|;
 end_import
 
@@ -374,9 +372,13 @@ control|)
 block|{
 for|for
 control|(
+name|TikaConfigSerializer
+operator|.
 name|Mode
 name|mode
 range|:
+name|TikaConfigSerializer
+operator|.
 name|Mode
 operator|.
 name|values
@@ -398,9 +400,9 @@ argument_list|,
 name|charset
 argument_list|)
 decl_stmt|;
-name|ex
+name|TikaConfigSerializer
 operator|.
-name|dump
+name|serialize
 argument_list|(
 name|TikaConfig
 operator|.
@@ -412,9 +414,6 @@ argument_list|,
 name|writer
 argument_list|,
 name|charset
-operator|.
-name|name
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|writer
