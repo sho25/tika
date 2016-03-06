@@ -1334,6 +1334,13 @@ argument_list|,
 literal|"test.cpio"
 argument_list|)
 expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"application/vnd.ms-cab-compressed"
+argument_list|,
+literal|"test.cab"
+argument_list|)
+expr_stmt|;
 comment|// TODO Add an example .deb and .udeb, then check these
 comment|// Check the mime magic patterns for them work too
 name|assertTypeByData
@@ -1378,6 +1385,13 @@ argument_list|(
 literal|"application/x-cpio"
 argument_list|,
 literal|"test-documents.cpio"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/vnd.ms-cab-compressed"
+argument_list|,
+literal|"test-documents.cab"
 argument_list|)
 expr_stmt|;
 comment|// For spanned zip files, the .zip file doesn't have the header, it's the other parts
