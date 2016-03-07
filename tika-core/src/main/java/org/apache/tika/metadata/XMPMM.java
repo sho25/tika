@@ -117,6 +117,84 @@ operator|+
 literal|"RenditionParams"
 argument_list|)
 decl_stmt|;
+comment|/**      * Instance id in the XMPMM's history section      */
+name|Property
+name|HISTORY_EVENT_INSTANCEID
+init|=
+name|Property
+operator|.
+name|externalTextBag
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"History:InstanceID"
+argument_list|)
+decl_stmt|;
+comment|/**      * Action in the XMPMM's history section      */
+name|Property
+name|HISTORY_ACTION
+init|=
+name|Property
+operator|.
+name|externalTextBag
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"History:Action"
+argument_list|)
+decl_stmt|;
+comment|/**      * When the action occurred in the XMPMM's history section      */
+name|Property
+name|HISTORY_WHEN
+init|=
+name|Property
+operator|.
+name|externalTextBag
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"History:When"
+argument_list|)
+decl_stmt|;
+comment|/**      * Software agent that created the action in the XMPMM's      * history section      */
+name|Property
+name|HISTORY_SOFTWARE_AGENT
+init|=
+name|Property
+operator|.
+name|externalTextBag
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"History:SoftwareAgent"
+argument_list|)
+decl_stmt|;
+comment|/**      * Document id for the document that this document      * was derived from      */
+name|Property
+name|DERIVED_FROM_DOCUMENTID
+init|=
+name|Property
+operator|.
+name|externalText
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"DerivedFrom:DocumentID"
+argument_list|)
+decl_stmt|;
+comment|/**      * Instance id for the document instance that this      * document was derived from      */
+name|Property
+name|DERIVED_FROM_INSTANCEID
+init|=
+name|Property
+operator|.
+name|externalText
+argument_list|(
+name|PREFIX_
+operator|+
+literal|"DerivedFrom:InstanceID"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 
