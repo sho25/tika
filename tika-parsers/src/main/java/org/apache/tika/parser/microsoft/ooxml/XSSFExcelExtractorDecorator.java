@@ -1234,6 +1234,13 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
+name|saxFactory
+operator|.
+name|setNamespaceAware
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|SAXParser

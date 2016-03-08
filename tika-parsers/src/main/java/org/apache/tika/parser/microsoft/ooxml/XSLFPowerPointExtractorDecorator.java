@@ -169,7 +169,7 @@ name|sl
 operator|.
 name|usermodel
 operator|.
-name|SimpleShape
+name|Placeholder
 import|;
 end_import
 
@@ -1253,8 +1253,6 @@ name|XSLFTextShape
 operator|)
 name|sh
 decl_stmt|;
-name|SimpleShape
-operator|.
 name|Placeholder
 name|ph
 init|=
