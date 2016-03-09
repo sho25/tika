@@ -761,7 +761,7 @@ name|assertTypeByData
 argument_list|(
 literal|"application/x-erdas-hfa"
 argument_list|,
-literal|"39235201F864F0E1732D126BD35E6E4E2A634C6CF0B63594C6209AB86DB98C50"
+literal|"testHFA.hfa"
 argument_list|)
 expr_stmt|;
 block|}
