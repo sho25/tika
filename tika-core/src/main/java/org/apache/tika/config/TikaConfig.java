@@ -3428,7 +3428,6 @@ name|Element
 name|el
 parameter_list|)
 block|{
-comment|//TODO: move this constant to static final
 name|Map
 argument_list|<
 name|String
