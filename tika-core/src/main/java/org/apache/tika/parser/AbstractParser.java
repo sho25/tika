@@ -37,6 +37,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Properties
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -97,8 +107,13 @@ specifier|abstract
 class|class
 name|AbstractParser
 implements|implements
-name|Parser
+name|ConfigurableParser
 block|{
+comment|/**      * Configuration supplied at runtime      */
+specifier|protected
+name|ParseContext
+name|context
+decl_stmt|;
 comment|/**      * Serial version UID.      */
 specifier|private
 specifier|static
@@ -141,6 +156,26 @@ operator|new
 name|ParseContext
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * called by the framework to supply runtime parameters which may be      * required for initialization      * @param context the parser context at runtime      * @since Apache Tika 1.13      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|configure
+parameter_list|(
+name|ParseContext
+name|context
+parameter_list|)
+throws|throws
+name|TikaException
+block|{
+name|this
+operator|.
+name|context
+operator|=
+name|context
 expr_stmt|;
 block|}
 block|}
