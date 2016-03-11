@@ -2098,6 +2098,13 @@ decl_stmt|;
 if|if
 condition|(
 name|flash
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|flash
 operator|.
 name|contains
 argument_list|(
@@ -2163,6 +2170,7 @@ argument_list|,
 name|flash
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
