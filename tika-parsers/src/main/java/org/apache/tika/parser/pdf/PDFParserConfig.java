@@ -75,7 +75,7 @@ name|apache
 operator|.
 name|pdfbox
 operator|.
-name|util
+name|text
 operator|.
 name|PDFTextStripper
 import|;
@@ -125,13 +125,6 @@ comment|// (necessary for some PDFs, but messes up other PDFs):
 specifier|private
 name|boolean
 name|sortByPosition
-init|=
-literal|false
-decl_stmt|;
-comment|//True if we should use PDFBox's NonSequentialParser
-specifier|private
-name|boolean
-name|useNonSequentialParser
 init|=
 literal|false
 decl_stmt|;
@@ -343,22 +336,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setUseNonSequentialParser
-argument_list|(
-name|getProp
-argument_list|(
-name|props
-operator|.
-name|getProperty
-argument_list|(
-literal|"useNonSequentialParser"
-argument_list|)
-argument_list|,
-name|getUseNonSequentialParser
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|setExtractAcroFormContent
 argument_list|(
 name|getProp
@@ -490,13 +467,6 @@ name|PDF2XHTML
 name|pdf2XHTML
 parameter_list|)
 block|{
-name|pdf2XHTML
-operator|.
-name|setForceParsing
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|pdf2XHTML
 operator|.
 name|setSortByPosition
@@ -778,32 +748,6 @@ operator|.
 name|sortByPosition
 operator|=
 name|sortByPosition
-expr_stmt|;
-block|}
-comment|/**      * @see #setUseNonSequentialParser(boolean)      */
-specifier|public
-name|boolean
-name|getUseNonSequentialParser
-parameter_list|()
-block|{
-return|return
-name|useNonSequentialParser
-return|;
-block|}
-comment|/**      * If true, uses PDFBox's non-sequential parser.      * The non-sequential parser should be much faster than the traditional      * full doc parser.  However, until PDFBOX-XXX is fixed,      * the non-sequential parser fails      * to extract some document metadata.      *<p/>      * Default is false (use the traditional parser)      *      * @param useNonSequentialParser      */
-specifier|public
-name|void
-name|setUseNonSequentialParser
-parameter_list|(
-name|boolean
-name|useNonSequentialParser
-parameter_list|)
-block|{
-name|this
-operator|.
-name|useNonSequentialParser
-operator|=
-name|useNonSequentialParser
 expr_stmt|;
 block|}
 comment|/**      * @see #setAverageCharTolerance(Float)      */
@@ -1119,20 +1063,6 @@ operator|*
 name|result
 operator|+
 operator|(
-name|useNonSequentialParser
-condition|?
-literal|1231
-else|:
-literal|1237
-operator|)
-expr_stmt|;
-name|result
-operator|=
-name|prime
-operator|*
-name|result
-operator|+
-operator|(
 name|ifXFAExtractOnlyXFA
 condition|?
 literal|1231
@@ -1342,17 +1272,6 @@ literal|false
 return|;
 if|if
 condition|(
-name|useNonSequentialParser
-operator|!=
-name|other
-operator|.
-name|useNonSequentialParser
-condition|)
-return|return
-literal|false
-return|;
-if|if
-condition|(
 name|ifXFAExtractOnlyXFA
 operator|!=
 name|other
@@ -1389,10 +1308,6 @@ operator|+
 literal|", sortByPosition="
 operator|+
 name|sortByPosition
-operator|+
-literal|", useNonSequentialParser="
-operator|+
-name|useNonSequentialParser
 operator|+
 literal|", extractAcroFormContent="
 operator|+

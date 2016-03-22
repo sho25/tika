@@ -43,6 +43,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Collections
 import|;
 end_import
@@ -91,7 +101,7 @@ name|fontbox
 operator|.
 name|afm
 operator|.
-name|FontMetric
+name|FontMetrics
 import|;
 end_import
 
@@ -397,7 +407,7 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
-name|FontMetric
+name|FontMetrics
 name|fontMetrics
 decl_stmt|;
 name|AFMParser
@@ -410,16 +420,11 @@ name|stream
 argument_list|)
 decl_stmt|;
 comment|// Have FontBox process the file
-name|parser
-operator|.
-name|parse
-argument_list|()
-expr_stmt|;
 name|fontMetrics
 operator|=
 name|parser
 operator|.
-name|getResult
+name|parse
 argument_list|()
 expr_stmt|;
 comment|// Get the comments in the file to display in xhtml
@@ -427,13 +432,41 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|comments
+name|unModifiableComments
 init|=
 name|fontMetrics
 operator|.
 name|getComments
 argument_list|()
 decl_stmt|;
+comment|//have to copy because we modify list in extractCreationDate
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|comments
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|comment
+range|:
+name|unModifiableComments
+control|)
+block|{
+name|comments
+operator|.
+name|add
+argument_list|(
+name|comment
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Get the creation date
 name|extractCreationDate
 argument_list|(
