@@ -558,6 +558,8 @@ literal|0
 index|]
 decl_stmt|;
 comment|// TODO add to metadata?
+try|try
+init|(
 name|InputStream
 name|stream
 init|=
@@ -575,7 +577,8 @@ operator|+
 name|investigation
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|ISATabUtils
 operator|.
 name|parseInvestigation
@@ -593,6 +596,7 @@ operator|.
 name|studyFileName
 argument_list|)
 expr_stmt|;
+block|}
 name|xhtml
 operator|.
 name|element
@@ -744,6 +748,11 @@ name|metadata
 argument_list|,
 name|context
 argument_list|)
+expr_stmt|;
+name|stream
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 name|xhtml
 operator|.
