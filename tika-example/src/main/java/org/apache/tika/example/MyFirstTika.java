@@ -16,6 +16,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -99,9 +113,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|language
+name|langdetect
 operator|.
-name|LanguageIdentifier
+name|OptimaizeLangDetector
 import|;
 end_import
 
@@ -115,7 +129,25 @@ name|tika
 operator|.
 name|language
 operator|.
-name|LanguageProfile
+name|detect
+operator|.
+name|LanguageDetector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|language
+operator|.
+name|detect
+operator|.
+name|LanguageResult
 import|;
 end_import
 
@@ -226,20 +258,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -626,14 +644,22 @@ operator|+
 literal|"]"
 argument_list|)
 expr_stmt|;
-name|LanguageIdentifier
-name|lang
+name|LanguageDetector
+name|langDetector
 init|=
 operator|new
-name|LanguageIdentifier
-argument_list|(
-operator|new
-name|LanguageProfile
+name|OptimaizeLangDetector
+argument_list|()
+operator|.
+name|loadModels
+argument_list|()
+decl_stmt|;
+name|LanguageResult
+name|lang
+init|=
+name|langDetector
+operator|.
+name|detect
 argument_list|(
 name|FileUtils
 operator|.
@@ -646,7 +672,6 @@ name|filename
 argument_list|)
 argument_list|,
 name|UTF_8
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
