@@ -2776,6 +2776,8 @@ parameter_list|)
 throws|throws
 name|MetadataException
 block|{
+comment|//TODO: should we try to process ExifSubIFDDirectory.TAG_TIME_ZONE_OFFSET
+comment|//if it exists?
 comment|// Date/Time Original overrides value from ExifDirectory.TAG_DATETIME
 name|Date
 name|original
