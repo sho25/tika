@@ -149,6 +149,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|JSONObject
 name|teiHeader
 init|=
@@ -230,6 +232,23 @@ literal|"profileDesc"
 argument_list|)
 argument_list|,
 name|metadata
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|JSONException
+name|e
+parameter_list|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"No TEI Object found."
 argument_list|)
 expr_stmt|;
 block|}
