@@ -413,12 +413,7 @@ block|{
 name|Path
 name|dbFile
 init|=
-name|TikaInputStream
-operator|.
-name|get
-argument_list|(
-name|is
-argument_list|)
+name|tis
 operator|.
 name|getPath
 argument_list|()
