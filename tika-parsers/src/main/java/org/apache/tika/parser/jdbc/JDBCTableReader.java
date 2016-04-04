@@ -1816,6 +1816,8 @@ block|}
 catch|catch
 parameter_list|(
 name|SQLException
+decl||
+name|UnsupportedOperationException
 name|e
 parameter_list|)
 block|{
