@@ -89,6 +89,20 @@ name|tika
 operator|.
 name|io
 operator|.
+name|CloseShieldInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
 name|TikaInputStream
 import|;
 end_import
@@ -432,6 +446,9 @@ throws|,
 name|TikaException
 block|{
 comment|// Must have a TikaInputStream, so we can re-use it if parsing fails
+comment|// Need to close internally created tstream to release resources
+try|try
+init|(
 name|TikaInputStream
 name|tstream
 init|=
@@ -439,9 +456,14 @@ name|TikaInputStream
 operator|.
 name|get
 argument_list|(
+operator|new
+name|CloseShieldInputStream
+argument_list|(
 name|stream
 argument_list|)
-decl_stmt|;
+argument_list|)
+init|)
+block|{
 name|tstream
 operator|.
 name|getFile
@@ -495,6 +517,7 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
