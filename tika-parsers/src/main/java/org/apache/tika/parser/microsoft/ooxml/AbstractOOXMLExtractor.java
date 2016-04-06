@@ -599,7 +599,7 @@ name|extractor
 argument_list|)
 return|;
 block|}
-comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getXHTML(org.xml.sax.ContentHandler,      * org.apache.tika.metadata.Metadata)      */
+comment|/**      * @see org.apache.tika.parser.microsoft.ooxml.OOXMLExtractor#getXHTML(ContentHandler, Metadata, ParseContext)      */
 specifier|public
 name|void
 name|getXHTML
@@ -1257,6 +1257,11 @@ name|getInputStream
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|TikaInputStream
+name|stream
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|Metadata
@@ -1265,11 +1270,6 @@ init|=
 operator|new
 name|Metadata
 argument_list|()
-decl_stmt|;
-name|TikaInputStream
-name|stream
-init|=
-literal|null
 decl_stmt|;
 name|metadata
 operator|.
@@ -1509,6 +1509,35 @@ parameter_list|)
 block|{
 comment|// Could not process an OLE 1.0 entry, so skip this part
 block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|fs
+operator|!=
+literal|null
+condition|)
+block|{
+name|fs
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|stream
+operator|!=
+literal|null
+condition|)
+block|{
+name|stream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 comment|/**      * Handles an embedded file in the document      */
 specifier|protected
@@ -1608,10 +1637,11 @@ name|metadata
 argument_list|)
 condition|)
 block|{
-name|embeddedExtractor
-operator|.
-name|parseEmbedded
-argument_list|(
+try|try
+init|(
+name|TikaInputStream
+name|tis
+init|=
 name|TikaInputStream
 operator|.
 name|get
@@ -1621,6 +1651,13 @@ operator|.
 name|getInputStream
 argument_list|()
 argument_list|)
+init|)
+block|{
+name|embeddedExtractor
+operator|.
+name|parseEmbedded
+argument_list|(
+name|tis
 argument_list|,
 operator|new
 name|EmbeddedContentHandler
@@ -1633,6 +1670,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Populates the {@link XHTMLContentHandler} object received as parameter.      */
