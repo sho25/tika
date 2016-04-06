@@ -466,7 +466,7 @@ name|TemporaryResources
 argument_list|()
 decl_stmt|;
 try|try
-init|(
+block|{
 name|TikaInputStream
 name|tstream
 init|=
@@ -478,8 +478,7 @@ name|stream
 argument_list|,
 name|tmp
 argument_list|)
-init|)
-block|{
+decl_stmt|;
 name|tstream
 operator|.
 name|getFile
