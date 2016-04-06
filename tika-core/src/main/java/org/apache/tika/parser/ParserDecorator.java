@@ -89,7 +89,7 @@ name|tika
 operator|.
 name|io
 operator|.
-name|CloseShieldInputStream
+name|TemporaryResources
 import|;
 end_import
 
@@ -447,6 +447,24 @@ name|TikaException
 block|{
 comment|// Must have a TikaInputStream, so we can re-use it if parsing fails
 comment|// Need to close internally created tstream to release resources
+name|TemporaryResources
+name|tmp
+init|=
+operator|(
+name|TikaInputStream
+operator|.
+name|isTikaInputStream
+argument_list|(
+name|stream
+argument_list|)
+operator|)
+condition|?
+literal|null
+else|:
+operator|new
+name|TemporaryResources
+argument_list|()
+decl_stmt|;
 try|try
 init|(
 name|TikaInputStream
@@ -456,11 +474,9 @@ name|TikaInputStream
 operator|.
 name|get
 argument_list|(
-operator|new
-name|CloseShieldInputStream
-argument_list|(
 name|stream
-argument_list|)
+argument_list|,
+name|tmp
 argument_list|)
 init|)
 block|{
@@ -515,6 +531,22 @@ comment|// Prepare for the next parser, if present
 name|tstream
 operator|.
 name|reset
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|tmp
+operator|!=
+literal|null
+condition|)
+block|{
+name|tmp
+operator|.
+name|dispose
 argument_list|()
 expr_stmt|;
 block|}
