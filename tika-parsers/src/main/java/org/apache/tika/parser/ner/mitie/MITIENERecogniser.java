@@ -148,7 +148,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  This class offers an implementation of {@link NERecogniser} based on  *  CRF classifiers from Stanford CoreNLP. This NER requires additional setup,  *  due to runtime binding to Stanford CoreNLP.  *  See<a href="http://wiki.apache.org/tika/TikaAndNER#CoreNLP">  *      Tika NER Wiki</a> for configuring this recogniser.  *  @see NERecogniser  *  */
+comment|/**  *  This class offers an implementation of {@link NERecogniser} based on  *  trained models using state-of-the-art information extraction tools. This NER requires additional setup,  *  due to runtime binding to MIT Information Extraction.  *  See<a href="http://wiki.apache.org/tika/TikaAndMITIE">  *      Tika NER Wiki</a> for configuring this recogniser.  *  @see NERecogniser  *  */
 end_comment
 
 begin_class
