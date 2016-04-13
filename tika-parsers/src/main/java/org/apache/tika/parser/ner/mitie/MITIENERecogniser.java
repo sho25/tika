@@ -571,10 +571,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-name|text
-operator|=
-literal|"Hi, my name is Abraham Lincoln. I live in Los Angeles, California."
-expr_stmt|;
+comment|//            text = "Hi, my name is Abraham Lincoln. I live in Los Angeles, California.";
 name|stringVectorObject
 operator|=
 name|tokenize
