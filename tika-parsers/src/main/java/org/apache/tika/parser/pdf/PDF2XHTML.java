@@ -3642,6 +3642,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//if successful, return
 name|XFAExtractor
 name|xfaExtractor
 init|=
@@ -3650,11 +3651,10 @@ name|XFAExtractor
 argument_list|()
 decl_stmt|;
 try|try
-block|{
-name|xfaExtractor
-operator|.
-name|extract
-argument_list|(
+init|(
+name|InputStream
+name|is
+init|=
 operator|new
 name|BufferedInputStream
 argument_list|(
@@ -3667,10 +3667,19 @@ name|getBytes
 argument_list|()
 argument_list|)
 argument_list|)
+init|)
+block|{
+name|xfaExtractor
+operator|.
+name|extract
+argument_list|(
+name|is
 argument_list|,
 name|handler
 argument_list|,
 name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 return|return;
