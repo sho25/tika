@@ -3113,6 +3113,8 @@ parameter_list|(
 name|IOException
 decl||
 name|SAXException
+decl||
+name|TikaException
 name|e
 parameter_list|)
 block|{

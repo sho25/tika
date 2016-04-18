@@ -543,7 +543,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Returns the SAX parser factory specified in this parsing context.      * If a factory is not explicitly specified, then a default factory      * instance is created and returned. The default factory instance is      * configured to be namespace-aware and to use      * {@link XMLConstants#FEATURE_SECURE_PROCESSING secure XML processing}.      *      * @since Apache Tika 0.8      * @return SAX parser factory      */
+comment|/**      * Returns the SAX parser factory specified in this parsing context.      * If a factory is not explicitly specified, then a default factory      * instance is created and returned. The default factory instance is      * configured to be namespace-aware, not validating, and to use      * {@link XMLConstants#FEATURE_SECURE_PROCESSING secure XML processing}.      *      * @since Apache Tika 0.8      * @return SAX parser factory      */
 specifier|public
 name|SAXParserFactory
 name|getSAXParserFactory
@@ -578,6 +578,13 @@ operator|.
 name|setNamespaceAware
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|factory
+operator|.
+name|setValidating
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 try|try
@@ -624,7 +631,7 @@ name|factory
 return|;
 block|}
 comment|/**      * Returns the DOM builder factory specified in this parsing context.      * If a factory is not explicitly specified, then a default factory      * instance is created and returned. The default factory instance is      * configured to be namespace-aware and to apply reasonable security      * features.      *      * @since Apache Tika 1.13      * @return DOM parser factory      */
-specifier|public
+specifier|private
 name|DocumentBuilderFactory
 name|getDocumentBuilderFactory
 parameter_list|()
@@ -689,12 +696,35 @@ return|return
 name|documentBuilderFactory
 return|;
 block|}
-comment|/**      * Returns the DOM builder specified in this parsing context.      * If a factory is not explicitly specified, then a builder      * instance is created and returned. The builder instance is      * configured to apply an {@link #IGNORING_ENTITY_RESOLVER}.      *      * @since Apache Tika 1.13      * @return DOM Builder      */
+comment|/**      * Returns the DOM builder specified in this parsing context.      * If a builder is not explicitly specified, then a builder      * instance is created and returned. The builder instance is      * configured to apply an {@link #IGNORING_ENTITY_RESOLVER},      * and it sets the ErrorHandler to<code>null</code>.      *      * @since Apache Tika 1.13      * @return DOM Builder      */
 specifier|public
 name|DocumentBuilder
 name|getDocumentBuilder
 parameter_list|()
+throws|throws
+name|TikaException
 block|{
+name|DocumentBuilder
+name|documentBuilder
+init|=
+name|get
+argument_list|(
+name|DocumentBuilder
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|documentBuilder
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|documentBuilder
+return|;
+block|}
 try|try
 block|{
 name|DocumentBuilderFactory
@@ -703,14 +733,13 @@ init|=
 name|getDocumentBuilderFactory
 argument_list|()
 decl_stmt|;
-name|DocumentBuilder
 name|documentBuilder
-init|=
+operator|=
 name|documentBuilderFactory
 operator|.
 name|newDocumentBuilder
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|documentBuilder
 operator|.
 name|setEntityResolver
@@ -737,9 +766,9 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IllegalStateException
+name|TikaException
 argument_list|(
-literal|"cannot create a DocumentBuilder"
+literal|"XML parser not available"
 argument_list|,
 name|e
 argument_list|)
@@ -758,7 +787,7 @@ name|String
 name|feature
 parameter_list|,
 name|boolean
-name|enabled
+name|value
 parameter_list|)
 block|{
 try|try
@@ -769,7 +798,7 @@ name|setFeature
 argument_list|(
 name|feature
 argument_list|,
-name|enabled
+name|value
 argument_list|)
 expr_stmt|;
 block|}
@@ -887,21 +916,21 @@ decl_stmt|;
 if|if
 condition|(
 name|factory
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
+return|return
+name|factory
+return|;
+block|}
 name|factory
 operator|=
 name|XMLInputFactory
 operator|.
 name|newFactory
 argument_list|()
-operator|.
-name|newFactory
-argument_list|()
 expr_stmt|;
-block|}
 name|tryToSetProperty
 argument_list|(
 name|factory
