@@ -18,6 +18,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -295,20 +309,6 @@ name|DefaultHandler
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
 begin_comment
 comment|/**  * Epub parser  */
 end_comment
@@ -551,6 +551,22 @@ argument_list|,
 name|UTF_8
 argument_list|)
 decl_stmt|;
+comment|//often has trailing new lines
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+condition|)
+block|{
+name|type
+operator|=
+name|type
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+block|}
 name|metadata
 operator|.
 name|set
