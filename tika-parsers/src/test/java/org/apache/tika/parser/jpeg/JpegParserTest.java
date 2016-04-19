@@ -85,6 +85,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TimeZone
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -173,6 +183,26 @@ name|org
 operator|.
 name|junit
 operator|.
+name|AfterClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|BeforeClass
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -205,6 +235,58 @@ operator|new
 name|JpegParser
 argument_list|()
 decl_stmt|;
+specifier|static
+name|TimeZone
+name|CURR_TIME_ZONE
+init|=
+name|TimeZone
+operator|.
+name|getDefault
+argument_list|()
+decl_stmt|;
+comment|//As of Drew Noakes' metadata-extractor 2.8.1,
+comment|//unspecified timezones appear to be set to
+comment|//TimeZone.getDefault().  We need to normalize this
+comment|//for testing across different time zones.
+comment|//We also appear to have to specify it in the surefire config:
+comment|//<argLine>-Duser.timezone=UTC</argLine>
+annotation|@
+name|BeforeClass
+specifier|public
+specifier|static
+name|void
+name|setDefaultTimeZone
+parameter_list|()
+block|{
+name|TimeZone
+operator|.
+name|setDefault
+argument_list|(
+name|TimeZone
+operator|.
+name|getTimeZone
+argument_list|(
+literal|"UTC"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|AfterClass
+specifier|public
+specifier|static
+name|void
+name|resetDefaultTimeZone
+parameter_list|()
+block|{
+name|TimeZone
+operator|.
+name|setDefault
+argument_list|(
+name|CURR_TIME_ZONE
+argument_list|)
+expr_stmt|;
+block|}
 annotation|@
 name|Test
 specifier|public
@@ -503,7 +585,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Common tags
-comment|//assertEquals("2009-10-02T23:02:49", metadata.get(Metadata.LAST_MODIFIED));
+name|assertEquals
+argument_list|(
+literal|"2009-10-02T23:02:49"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|LAST_MODIFIED
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Date/Time Original for when the photo was taken, unspecified time zone"

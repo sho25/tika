@@ -65,6 +65,22 @@ name|Metadata
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
+comment|/**      * Use this to store exceptions caught during a parse that are      * non-fatal, e.g. if a parser is in lenient mode and more      * content can be extracted if we ignore an exception thrown by      * a dependency.      */
+specifier|public
+specifier|static
+specifier|final
+name|Property
+name|TIKA_META_EXCEPTION_WARNING
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|TIKA_META_EXCEPTION_PREFIX
+operator|+
+literal|"warn"
+argument_list|)
+decl_stmt|;
 comment|/**      * This is currently used to identify Content-Type that may be      * included within a document, such as in html documents      * (e.g.<meta http-equiv="content-type" content="text/html; charset=UTF-8">)      , or the value might come from outside the document.  This information      * may be faulty and should be treated only as a hint.      */
 specifier|public
 specifier|static

@@ -595,6 +595,16 @@ return|;
 block|}
 block|}
 block|}
+comment|/**      *      * @return handler type used by this factory      */
+specifier|public
+name|HANDLER_TYPE
+name|getType
+parameter_list|()
+block|{
+return|return
+name|type
+return|;
+block|}
 block|}
 end_class
 

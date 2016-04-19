@@ -155,7 +155,7 @@ name|commons
 operator|.
 name|cli
 operator|.
-name|GnuParser
+name|DefaultParser
 import|;
 end_import
 
@@ -577,7 +577,7 @@ name|CommandLineParser
 name|cliParser
 init|=
 operator|new
-name|GnuParser
+name|DefaultParser
 argument_list|()
 decl_stmt|;
 name|CommandLine

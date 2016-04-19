@@ -920,7 +920,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**     * Similar to {@link #testXMLParser()}, but using a different     *  OO2 file with different metadata in it     */
+comment|/**     * Similar to {@link #testOO2()}, but using a different     *  OO2 file with different metadata in it     */
 annotation|@
 name|Test
 specifier|public
@@ -1372,7 +1372,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**     * Similar to {@link #testXMLParser()}, but using an OO3 file     */
+comment|/**     * Similar to {@link #testOO2()} )}, but using an OO3 file     */
 annotation|@
 name|Test
 specifier|public
@@ -2563,6 +2563,34 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+comment|//TIKA-1916
+specifier|public
+name|void
+name|testMissingMeta
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testODTNoMeta.odt"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Test text"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

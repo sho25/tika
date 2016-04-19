@@ -66,6 +66,17 @@ name|type
 expr_stmt|;
 block|}
 specifier|public
+name|String
+name|getType
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|type
+return|;
+block|}
+specifier|public
 name|void
 name|setURI
 parameter_list|(
