@@ -172,6 +172,16 @@ specifier|private
 name|AccessChecker
 name|accessChecker
 decl_stmt|;
+comment|//The PDFParser can throw IOExceptions if there is a problem
+comment|//with a streams.  If this is set to true, Tika's
+comment|//parser catches these exceptions, reports them in the metadata
+comment|//and then throws the first stored exception after the parse has completed.
+specifier|private
+name|boolean
+name|isCatchIntermediateIOExceptions
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|PDFParserConfig
 parameter_list|()
@@ -396,6 +406,22 @@ literal|"ifXFAExtractOnlyXFA"
 argument_list|)
 argument_list|,
 name|getIfXFAExtractOnlyXFA
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setCatchIntermediateIOExceptions
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"catchIntermediateIOExceptions"
+argument_list|)
+argument_list|,
+name|isCatchIntermediateIOExceptions
 argument_list|()
 argument_list|)
 argument_list|)
@@ -824,6 +850,30 @@ operator|.
 name|accessChecker
 operator|=
 name|accessChecker
+expr_stmt|;
+block|}
+comment|/**      * See {@link #setCatchIntermediateIOExceptions(boolean)}      * @return whether or not to catch IOExceptions      */
+specifier|public
+name|boolean
+name|isCatchIntermediateIOExceptions
+parameter_list|()
+block|{
+return|return
+name|isCatchIntermediateIOExceptions
+return|;
+block|}
+comment|/**      * The PDFBox parser will throw an IOException if there is      * a problem with a stream.  If this is set to<code>true</code>,      * Tika's PDFParser will catch these exceptions and try to parse      * the rest of the document.  After the parse is completed,      * Tika's PDFParser will throw the first caught exception.      * @param catchIntermediateIOExceptions      */
+specifier|public
+name|void
+name|setCatchIntermediateIOExceptions
+parameter_list|(
+name|boolean
+name|catchIntermediateIOExceptions
+parameter_list|)
+block|{
+name|isCatchIntermediateIOExceptions
+operator|=
+name|catchIntermediateIOExceptions
 expr_stmt|;
 block|}
 specifier|private
