@@ -460,7 +460,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses the Pooled Time Series algorithm + command line tool, to  *  generate a numeric representation of the video suitable for  *  similarity searches.  *<p>See https://wiki.apache.org/tika/PooledTimeSeriesParser for  *  more details and setup instructions.  */
+comment|/**  * Uses the Pooled Time Series algorithm + command line tool, to  * generate a numeric representation of the video suitable for  * similarity searches.  *<p>See https://wiki.apache.org/tika/PooledTimeSeriesParser for  * more details and setup instructions.  */
 end_comment
 
 begin_class
@@ -570,16 +570,7 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
-specifier|public
-name|boolean
-name|isAvailable
-parameter_list|()
-block|{
-return|return
-name|isAvailable
-return|;
-block|}
-comment|/**    * Returns the set of media types supported by this parser when used with the    * given parse context.    *    * @param context    *          parse context    * @return immutable set of media types    * @since Apache Tika 0.7    */
+comment|/**      * Returns the set of media types supported by this parser when used with the      * given parse context.      *      * @param context parse context      * @return immutable set of media types      * @since Apache Tika 0.7      */
 annotation|@
 name|Override
 specifier|public
@@ -597,7 +588,7 @@ return|return
 name|SUPPORTED_TYPES
 return|;
 block|}
-comment|/**    * Parses a document stream into a sequence of XHTML SAX events. Fills in    * related document metadata in the given metadata object.    *<p>    * The given document stream is consumed but not closed by this method. The    * responsibility to close the stream remains on the caller.    *<p>    * Information about the parsing context can be passed in the context    * parameter. See the parser implementations for the kinds of context    * information they expect.    *    * @param stream    *          the document stream (input)    * @param handler    *          handler for the XHTML SAX events (output)    * @param metadata    *          document metadata (input and output)    * @param context    *          parse context    * @throws IOException    *           if the document stream could not be read    * @throws SAXException    *           if the SAX events could not be processed    * @throws TikaException    *           if the document could not be parsed    * @since Apache Tika 0.5    */
+comment|/**      * Parses a document stream into a sequence of XHTML SAX events. Fills in      * related document metadata in the given metadata object.      *<p>      * The given document stream is consumed but not closed by this method. The      * responsibility to close the stream remains on the caller.      *<p>      * Information about the parsing context can be passed in the context      * parameter. See the parser implementations for the kinds of context      * information they expect.      *      * @param stream   the document stream (input)      * @param handler  handler for the XHTML SAX events (output)      * @param metadata document metadata (input and output)      * @param context  parse context      * @throws IOException   if the document stream could not be read      * @throws SAXException  if the SAX events could not be processed      * @throws TikaException if the document could not be parsed      * @since Apache Tika 0.5      */
 annotation|@
 name|Override
 specifier|public
@@ -627,7 +618,6 @@ if|if
 condition|(
 operator|!
 name|isAvailable
-argument_list|()
 condition|)
 block|{
 name|LOG
@@ -656,11 +646,6 @@ init|=
 operator|new
 name|TemporaryResources
 argument_list|()
-decl_stmt|;
-name|File
-name|output
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -692,7 +677,9 @@ argument_list|(
 name|input
 argument_list|)
 decl_stmt|;
-name|FileInputStream
+try|try
+init|(
+name|InputStream
 name|ofStream
 init|=
 operator|new
@@ -709,8 +696,11 @@ operator|+
 literal|".of.txt"
 argument_list|)
 argument_list|)
-decl_stmt|;
-name|FileInputStream
+init|)
+block|{
+try|try
+init|(
+name|InputStream
 name|ogStream
 init|=
 operator|new
@@ -727,7 +717,8 @@ operator|+
 literal|".hog.txt"
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|extractHeaderOutput
 argument_list|(
 name|ofStream
@@ -802,6 +793,8 @@ operator|.
 name|endDocument
 argument_list|()
 expr_stmt|;
+block|}
+block|}
 comment|// Temporary workaround for TIKA-1445 - until we can specify
 comment|//  composite parsers with strategies (eg Composite, Try In Turn),
 comment|//  always send the image onwards to the regular parser to have
@@ -827,19 +820,6 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|output
-operator|!=
-literal|null
-condition|)
-block|{
-name|output
-operator|.
-name|delete
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 comment|// TIKA-1445 workaround parser
@@ -1028,7 +1008,7 @@ literal|"UTF-8"
 argument_list|)
 return|;
 block|}
-comment|/**    * Reads the contents of the given stream and write it to the given XHTML    * content handler. The stream is closed once fully processed.    *    * @param stream    *          Stream where is the result of ocr    * @param xhtml    *          XHTML content handler    * @param tableTitle    *          The name of the matrix/table to display.    * @param frames    *          Number of frames read from the video.    * @param vecSize    *          Size of the OF or HOG vector.    * @throws SAXException    *           if the XHTML SAX events could not be handled    * @throws IOException    *           if an input error occurred    */
+comment|/**      * Reads the contents of the given stream and write it to the given XHTML      * content handler. The stream is closed once fully processed.      *      * @param stream     Stream where is the result of ocr      * @param xhtml      XHTML content handler      * @param tableTitle The name of the matrix/table to display.      * @param frames     Number of frames read from the video.      * @param vecSize    Size of the OF or HOG vector.      * @throws SAXException if the XHTML SAX events could not be handled      * @throws IOException  if an input error occurred      */
 specifier|private
 name|void
 name|doExtract
@@ -1053,6 +1033,8 @@ name|SAXException
 throws|,
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|reader
 init|=
@@ -1067,7 +1049,8 @@ argument_list|,
 name|UTF_8
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|line
 init|=
@@ -1212,6 +1195,7 @@ literal|"table"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 specifier|private
 name|void
 name|extractHeaderOutput
@@ -1228,6 +1212,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+try|try
+init|(
 name|BufferedReader
 name|reader
 init|=
@@ -1242,7 +1228,8 @@ argument_list|,
 name|UTF_8
 argument_list|)
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|String
 name|line
 init|=
@@ -1312,6 +1299,7 @@ argument_list|,
 name|vecSize
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
