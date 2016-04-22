@@ -121,6 +121,18 @@ name|assertNotNull
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by trevorlewis on 3/7/16.  */
 end_comment
@@ -139,6 +151,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|assumeTrue
+argument_list|(
+name|TextLangDetector
+operator|.
+name|canRun
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|LanguageDetector
 name|detector
 init|=
@@ -202,9 +222,7 @@ name|length
 operator|!=
 literal|2
 condition|)
-block|{
 continue|continue;
-block|}
 name|writer
 operator|.
 name|reset
@@ -233,7 +251,6 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
-comment|/*if (!data[0].equals(result.getLanguage())) {                 System.out.println(result.getLanguage() + " : " + data[0] + " - " + data[1]);             }*/
 name|assertEquals
 argument_list|(
 name|data
