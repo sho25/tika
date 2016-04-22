@@ -1236,6 +1236,15 @@ operator|.
 name|getXMLReader
 argument_list|()
 decl_stmt|;
+name|sheetParser
+operator|.
+name|setEntityResolver
+argument_list|(
+name|ParseContext
+operator|.
+name|IGNORING_SAX_ENTITY_RESOLVER
+argument_list|)
+expr_stmt|;
 name|XSSFSheetInterestingPartsCapturer
 name|handler
 init|=
