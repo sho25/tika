@@ -18,14 +18,18 @@ package|;
 end_package
 
 begin_import
-import|import
+import|import static
 name|com
 operator|.
 name|googlecode
 operator|.
 name|mp4parser
 operator|.
-name|DataSource
+name|util
+operator|.
+name|CastUtils
+operator|.
+name|l2i
 import|;
 end_import
 
@@ -82,18 +86,14 @@ import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|com
 operator|.
 name|googlecode
 operator|.
 name|mp4parser
 operator|.
-name|util
-operator|.
-name|CastUtils
-operator|.
-name|l2i
+name|DataSource
 import|;
 end_import
 
@@ -243,6 +243,32 @@ argument_list|,
 name|bytesRead
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|bytesRead
+operator|<
+literal|0
+operator|&&
+name|position
+argument_list|()
+operator|==
+name|size
+argument_list|()
+operator|&&
+name|byteBuffer
+operator|.
+name|hasRemaining
+argument_list|()
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"End of stream reached earlier than expected"
+argument_list|)
+throw|;
 block|}
 return|return
 operator|(

@@ -21,20 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -50,6 +36,18 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -209,6 +207,8 @@ begin_class
 specifier|public
 class|class
 name|MP4ParserTest
+extends|extends
+name|TikaTest
 block|{
 comment|/**      * Test that we can extract information from      *  a M4A MP4 Audio file      */
 annotation|@
@@ -703,6 +703,63 @@ block|}
 block|}
 comment|// TODO Test a MP4 Video file
 comment|// TODO Test an old QuickTime Video File
+annotation|@
+name|Test
+argument_list|(
+name|timeout
+operator|=
+literal|30000
+argument_list|)
+specifier|public
+name|void
+name|testInfiniteLoop
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//test that a truncated mp4 doesn't cause an infinite loop
+comment|//TIKA-1931 and TIKA-1924
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testMP4_truncated.m4a"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"audio/mp4"
+argument_list|,
+name|r
+operator|.
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"M4A"
+argument_list|,
+name|r
+operator|.
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|XMPDM
+operator|.
+name|AUDIO_COMPRESSOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
