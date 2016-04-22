@@ -33,9 +33,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|language
+name|langdetect
 operator|.
-name|LanguageIdentifier
+name|OptimaizeLangDetector
 import|;
 end_import
 
@@ -49,7 +49,9 @@ name|tika
 operator|.
 name|language
 operator|.
-name|LanguageProfile
+name|detect
+operator|.
+name|LanguageDetector
 import|;
 end_import
 
@@ -63,7 +65,9 @@ name|tika
 operator|.
 name|language
 operator|.
-name|ProfilingHandler
+name|detect
+operator|.
+name|LanguageHandler
 import|;
 end_import
 
@@ -77,7 +81,25 @@ name|tika
 operator|.
 name|language
 operator|.
-name|ProfilingWriter
+name|detect
+operator|.
+name|LanguageResult
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|language
+operator|.
+name|detect
+operator|.
+name|LanguageWriter
 import|;
 end_import
 
@@ -136,22 +158,24 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|LanguageProfile
-name|profile
+name|LanguageDetector
+name|detector
 init|=
 operator|new
-name|LanguageProfile
+name|OptimaizeLangDetector
+argument_list|()
+operator|.
+name|loadModels
+argument_list|()
+decl_stmt|;
+name|LanguageResult
+name|result
+init|=
+name|detector
+operator|.
+name|detect
 argument_list|(
 literal|"Alla människor är födda fria och lika i värde och rättigheter."
-argument_list|)
-decl_stmt|;
-name|LanguageIdentifier
-name|identifier
-init|=
-operator|new
-name|LanguageIdentifier
-argument_list|(
-name|profile
 argument_list|)
 decl_stmt|;
 name|System
@@ -160,7 +184,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|identifier
+name|result
 operator|.
 name|getLanguage
 argument_list|()
@@ -175,12 +199,25 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|ProfilingWriter
+comment|// TODO support version of LanguageWriter that doesn't need a detector.
+name|LanguageDetector
+name|detector
+init|=
+operator|new
+name|OptimaizeLangDetector
+argument_list|()
+operator|.
+name|loadModels
+argument_list|()
+decl_stmt|;
+name|LanguageWriter
 name|writer
 init|=
 operator|new
-name|ProfilingWriter
-argument_list|()
+name|LanguageWriter
+argument_list|(
+name|detector
+argument_list|)
 decl_stmt|;
 name|writer
 operator|.
@@ -210,8 +247,8 @@ argument_list|(
 literal|" joga van."
 argument_list|)
 expr_stmt|;
-name|LanguageIdentifier
-name|identifier
+name|LanguageResult
+name|result
 init|=
 name|writer
 operator|.
@@ -224,7 +261,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|identifier
+name|result
 operator|.
 name|getLanguage
 argument_list|()
@@ -244,11 +281,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|ProfilingHandler
+name|LanguageHandler
 name|handler
 init|=
 operator|new
-name|ProfilingHandler
+name|LanguageHandler
 argument_list|()
 decl_stmt|;
 operator|new
@@ -272,8 +309,8 @@ name|ParseContext
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|LanguageIdentifier
-name|identifier
+name|LanguageResult
+name|result
 init|=
 name|handler
 operator|.
@@ -286,7 +323,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-name|identifier
+name|result
 operator|.
 name|getLanguage
 argument_list|()

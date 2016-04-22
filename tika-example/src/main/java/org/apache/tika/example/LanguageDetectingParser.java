@@ -59,7 +59,9 @@ name|tika
 operator|.
 name|language
 operator|.
-name|LanguageIdentifier
+name|detect
+operator|.
+name|LanguageHandler
 import|;
 end_import
 
@@ -73,7 +75,9 @@ name|tika
 operator|.
 name|language
 operator|.
-name|ProfilingHandler
+name|detect
+operator|.
+name|LanguageResult
 import|;
 end_import
 
@@ -88,6 +92,20 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -158,11 +176,6 @@ import|;
 end_import
 
 begin_class
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"deprecation"
-argument_list|)
 specifier|public
 class|class
 name|LanguageDetectingParser
@@ -201,11 +214,11 @@ name|IOException
 throws|,
 name|TikaException
 block|{
-name|ProfilingHandler
-name|profiler
+name|LanguageHandler
+name|langHandler
 init|=
 operator|new
-name|ProfilingHandler
+name|LanguageHandler
 argument_list|()
 decl_stmt|;
 name|ContentHandler
@@ -216,7 +229,7 @@ name|TeeContentHandler
 argument_list|(
 name|handler
 argument_list|,
-name|profiler
+name|langHandler
 argument_list|)
 decl_stmt|;
 name|super
@@ -232,17 +245,17 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
-name|LanguageIdentifier
-name|identifier
+name|LanguageResult
+name|result
 init|=
-name|profiler
+name|langHandler
 operator|.
 name|getLanguage
 argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|identifier
+name|result
 operator|.
 name|isReasonablyCertain
 argument_list|()
@@ -252,11 +265,11 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|LANGUAGE
 argument_list|,
-name|identifier
+name|result
 operator|.
 name|getLanguage
 argument_list|()
