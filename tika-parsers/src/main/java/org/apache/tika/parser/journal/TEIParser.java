@@ -77,6 +77,16 @@ name|org
 operator|.
 name|json
 operator|.
+name|JSONException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|json
+operator|.
 name|XML
 import|;
 end_import
