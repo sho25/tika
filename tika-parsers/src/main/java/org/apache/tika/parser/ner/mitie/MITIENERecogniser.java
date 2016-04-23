@@ -302,7 +302,7 @@ argument_list|)
 operator|.
 name|newInstance
 argument_list|(
-literal|"/Users/manali/cs599_dr/MITIE/MITIE-models/english/ner_model.dat"
+name|modelPath
 argument_list|)
 expr_stmt|;
 name|this
