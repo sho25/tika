@@ -311,6 +311,11 @@ argument_list|(
 name|TMP_FILE_NAME
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|OutputStreamWriter
 name|out
 init|=
@@ -387,6 +392,11 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"resource"
+argument_list|)
 name|BufferedReader
 name|reader
 init|=
