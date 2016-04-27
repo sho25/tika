@@ -725,6 +725,15 @@ name|Metadata
 name|metadata
 parameter_list|)
 block|{
+if|if
+condition|(
+name|xmp
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|XMPSchemaMediaManagement
 name|mmSchema
 init|=
