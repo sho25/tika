@@ -509,6 +509,8 @@ name|startPosition
 argument_list|)
 decl_stmt|;
 name|end
+operator|=
+name|end
 operator|.
 name|add
 argument_list|(
