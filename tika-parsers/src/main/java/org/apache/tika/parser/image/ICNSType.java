@@ -28,7 +28,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author Manisha Kampasi  */
+comment|/**  * Holds details on Apple ICNS icons  */
 end_comment
 
 begin_class

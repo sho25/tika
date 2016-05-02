@@ -208,11 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author Manisha Kampasi  */
-end_comment
-
-begin_comment
-comment|//Create a basic parser class to parse ICNS files
+comment|/**  * A basic parser class for Apple ICNS icon files  */
 end_comment
 
 begin_class
@@ -222,7 +218,14 @@ name|ICNSParser
 extends|extends
 name|AbstractParser
 block|{
-comment|//private static final long serialVersionUID = 261736541253892772L;
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|922010233654248327L
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
