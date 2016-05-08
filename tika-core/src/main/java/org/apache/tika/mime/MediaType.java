@@ -282,6 +282,17 @@ specifier|public
 specifier|static
 specifier|final
 name|MediaType
+name|ZERO_SIZE
+init|=
+name|parse
+argument_list|(
+literal|"application/x-zerosize"
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
 name|TEXT_PLAIN
 init|=
 name|parse
