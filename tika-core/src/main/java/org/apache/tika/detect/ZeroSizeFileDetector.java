@@ -108,7 +108,7 @@ block|{
 return|return
 name|MediaType
 operator|.
-name|ZERO_SIZE
+name|EMPTY
 return|;
 block|}
 block|}

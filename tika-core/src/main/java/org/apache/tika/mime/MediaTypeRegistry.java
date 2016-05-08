@@ -675,13 +675,13 @@ argument_list|()
 operator|.
 name|contains
 argument_list|(
-literal|"zero"
+literal|"empty"
 argument_list|)
 operator|&&
 operator|!
 name|MediaType
 operator|.
-name|ZERO_SIZE
+name|EMPTY
 operator|.
 name|equals
 argument_list|(
@@ -692,7 +692,7 @@ block|{
 return|return
 name|MediaType
 operator|.
-name|ZERO_SIZE
+name|EMPTY
 return|;
 block|}
 elseif|else

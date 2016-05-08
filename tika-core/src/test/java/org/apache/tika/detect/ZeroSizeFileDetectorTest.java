@@ -178,7 +178,7 @@ name|data
 argument_list|,
 name|MediaType
 operator|.
-name|ZERO_SIZE
+name|EMPTY
 argument_list|)
 expr_stmt|;
 name|System

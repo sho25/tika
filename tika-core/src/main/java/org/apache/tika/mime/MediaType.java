@@ -282,11 +282,11 @@ specifier|public
 specifier|static
 specifier|final
 name|MediaType
-name|ZERO_SIZE
+name|EMPTY
 init|=
 name|parse
 argument_list|(
-literal|"application/x-zerosize"
+literal|"application/x-empty"
 argument_list|)
 decl_stmt|;
 specifier|public
