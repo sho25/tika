@@ -95,6 +95,20 @@ end_import
 
 begin_import
 import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
+import|import static
 name|org
 operator|.
 name|junit
@@ -154,7 +168,9 @@ init|=
 literal|""
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|UTF_8
+argument_list|)
 decl_stmt|;
 name|detect
 argument_list|(
@@ -187,7 +203,9 @@ init|=
 literal|"Testing 1...2...3"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|UTF_8
+argument_list|)
 decl_stmt|;
 name|detect
 argument_list|(
