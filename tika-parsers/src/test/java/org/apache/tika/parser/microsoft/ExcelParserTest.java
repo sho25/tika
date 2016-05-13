@@ -109,6 +109,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|detect
 operator|.
 name|DefaultDetector
@@ -313,6 +325,8 @@ begin_class
 specifier|public
 class|class
 name|ExcelParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -2541,6 +2555,53 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHyperlinksInXLS
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEXCEL_hyperlinks.xls"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+comment|//external url
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//mail url
+name|assertContains
+argument_list|(
+literal|"<a href=\"mailto:user@tika.apache.org?subject=help\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//external linked file
+name|assertContains
+argument_list|(
+literal|"<a href=\"linked_file.txt.htm\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//TODO: not extracting these yet
+comment|//link on textbox
+comment|//        assertContains("<a href=\"http://tika.apache.org/1.12/gettingstarted.html\">", xml);
 block|}
 block|}
 end_class
