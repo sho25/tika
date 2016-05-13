@@ -346,7 +346,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p><a href=\"_ftnref1\">[1]</a> This is a footnote."
+literal|"<p>[1] This is a footnote."
 argument_list|,
 name|xml
 argument_list|)

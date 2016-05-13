@@ -1023,11 +1023,6 @@ argument_list|(
 literal|"p"
 argument_list|)
 expr_stmt|;
-name|p
-operator|.
-name|getText
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|XSLFTextRun

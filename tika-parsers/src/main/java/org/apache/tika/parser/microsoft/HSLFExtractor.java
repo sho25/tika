@@ -1630,13 +1630,19 @@ operator|.
 name|getAddress
 argument_list|()
 decl_stmt|;
-comment|//consider ignoring footnote refs:
-comment|// e.g.&& ! address.startsWith("_ftnref")
 if|if
 condition|(
 name|address
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|address
+operator|.
+name|startsWith
+argument_list|(
+literal|"_ftn"
+argument_list|)
 condition|)
 block|{
 name|xhtml
