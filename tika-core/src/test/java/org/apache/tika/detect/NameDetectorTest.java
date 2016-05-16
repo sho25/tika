@@ -364,6 +364,65 @@ argument_list|,
 literal|"README.NOW"
 argument_list|)
 expr_stmt|;
+comment|// TIKA-1928 # in the filename
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"text.txt"
+argument_list|)
+expr_stmt|;
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"text#.txt"
+argument_list|)
+expr_stmt|;
+comment|// # before extension
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"text#123.txt"
+argument_list|)
+expr_stmt|;
+comment|// # before extension
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"text.txt#pdf"
+argument_list|)
+expr_stmt|;
+comment|// # after extension
+comment|// Check # as URL fragment too
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"http://foo/test.txt?1=2#pdf"
+argument_list|)
+expr_stmt|;
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_PLAIN
+argument_list|,
+literal|"http://foo/test.txt#pdf"
+argument_list|)
+expr_stmt|;
 comment|// tough one
 name|assertDetect
 argument_list|(
