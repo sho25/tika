@@ -2964,6 +2964,14 @@ operator|new
 name|SimpleDateFormat
 argument_list|(
 literal|"yyyy-MM-dd'T'HH:mm:ss'Z'"
+argument_list|,
+operator|new
+name|DateFormatSymbols
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
