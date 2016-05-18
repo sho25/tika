@@ -597,22 +597,6 @@ name|utils
 operator|.
 name|DateUtils
 operator|.
-name|MIDDAY
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|DateUtils
-operator|.
 name|UTC
 import|;
 end_import
@@ -1128,7 +1112,7 @@ name|MimeException
 throws|,
 name|IOException
 block|{     }
-comment|/**      * Header for the whole message or its parts      *      * @see http://james.apache.org/mime4j/apidocs/org/apache/james/mime4j/parser/      * Field.html      */
+comment|/**      * Header for the whole message or its parts      *      * @see<a href="http://james.apache.org/mime4j/apidocs/org/apache/james/mime4j/parser/">      *     http://james.apache.org/mime4j/apidocs/org/apache/james/mime4j/parser/</a>      * Field.html      */
 specifier|public
 name|void
 name|field
@@ -1349,7 +1333,7 @@ condition|)
 block|{
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
@@ -1500,11 +1484,6 @@ name|RuntimeException
 name|me
 parameter_list|)
 block|{
-name|me
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|strictParsing
