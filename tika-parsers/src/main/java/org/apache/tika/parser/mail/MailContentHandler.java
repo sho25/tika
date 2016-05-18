@@ -597,6 +597,22 @@ name|utils
 operator|.
 name|DateUtils
 operator|.
+name|MIDDAY
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|DateUtils
+operator|.
 name|UTC
 import|;
 end_import
@@ -625,6 +641,21 @@ argument_list|(
 literal|"(?:UTC|GMT)([+-])(\\d?\\d)\\Z"
 argument_list|)
 decl_stmt|;
+comment|//find a time ending in am/pm without a space: 10:30am and
+comment|//use this pattern to insert space: 10:30 am
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|AM_PM
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(?i)(\\d)([ap]m)\\b"
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -636,15 +667,121 @@ operator|new
 name|DateFormat
 index|[]
 block|{
-comment|//16 May 2016 at 09:30:32  GMT+1
+comment|//note that the string is "cleaned" before processing:
+comment|//1) condense multiple whitespace to single space
+comment|//2) trim()
+comment|//3) strip out commas
+comment|//4) insert space before am/pm
+comment|//May 16 2016 1:32am
 name|createDateFormat
 argument_list|(
-literal|"dd MMM yyyy 'at' HH:mm:ss z"
+literal|"MMM dd yy hh:mm a"
+argument_list|,
+literal|null
+argument_list|)
+block|,
+comment|//this is a standard pattern handled by mime4j;
+comment|//but mime4j fails with leading whitespace
+name|createDateFormat
+argument_list|(
+literal|"EEE d MMM yy HH:mm:ss Z"
+argument_list|,
+name|UTC
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"EEE d MMM yy HH:mm:ss z"
+argument_list|,
+name|UTC
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"EEE d MMM yy HH:mm:ss"
+argument_list|,
+literal|null
+argument_list|)
+block|,
+comment|// no timezone
+name|createDateFormat
+argument_list|(
+literal|"EEEEE MMM d yy hh:mm a"
+argument_list|,
+literal|null
+argument_list|)
+block|,
+comment|// Sunday, May 15 2016 1:32 PM
+comment|//16 May 2016 at 09:30:32  GMT+1 (Mac Mail TIKA-1970)
+name|createDateFormat
+argument_list|(
+literal|"d MMM yy 'at' HH:mm:ss z"
 argument_list|,
 name|UTC
 argument_list|)
 block|,
 comment|// UTC/Zulu
+name|createDateFormat
+argument_list|(
+literal|"yy-MM-dd HH:mm:ss"
+argument_list|,
+literal|null
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"MM/dd/yy hh:mm a"
+argument_list|,
+literal|null
+argument_list|,
+literal|false
+argument_list|)
+block|,
+comment|//now dates without times
+name|createDateFormat
+argument_list|(
+literal|"MMM d yy"
+argument_list|,
+name|MIDDAY
+argument_list|,
+literal|false
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"EEE d MMM yy"
+argument_list|,
+name|MIDDAY
+argument_list|,
+literal|false
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"d MMM yy"
+argument_list|,
+name|MIDDAY
+argument_list|,
+literal|false
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"yy/MM/dd"
+argument_list|,
+name|MIDDAY
+argument_list|,
+literal|false
+argument_list|)
+block|,
+name|createDateFormat
+argument_list|(
+literal|"MM/dd/yy"
+argument_list|,
+name|MIDDAY
+argument_list|,
+literal|false
+argument_list|)
 block|}
 decl_stmt|;
 specifier|private
@@ -657,6 +794,32 @@ name|format
 parameter_list|,
 name|TimeZone
 name|timezone
+parameter_list|)
+block|{
+return|return
+name|createDateFormat
+argument_list|(
+name|format
+argument_list|,
+name|timezone
+argument_list|,
+literal|true
+argument_list|)
+return|;
+block|}
+specifier|private
+specifier|static
+name|DateFormat
+name|createDateFormat
+parameter_list|(
+name|String
+name|format
+parameter_list|,
+name|TimeZone
+name|timezone
+parameter_list|,
+name|boolean
+name|isLenient
 parameter_list|)
 block|{
 name|SimpleDateFormat
@@ -691,6 +854,13 @@ name|timezone
 argument_list|)
 expr_stmt|;
 block|}
+name|sdf
+operator|.
+name|setLenient
+argument_list|(
+name|isLenient
+argument_list|)
+expr_stmt|;
 return|return
 name|sdf
 return|;
@@ -1530,6 +1700,18 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+comment|//strip out commas
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|","
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|Matcher
 name|matcher
 init|=
@@ -1555,6 +1737,33 @@ operator|.
 name|replaceFirst
 argument_list|(
 literal|"GMT$1$2:00"
+argument_list|)
+expr_stmt|;
+block|}
+name|matcher
+operator|=
+name|AM_PM
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|matcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+name|text
+operator|=
+name|matcher
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"$1 $2"
 argument_list|)
 expr_stmt|;
 block|}
