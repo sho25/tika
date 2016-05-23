@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|junit
@@ -50,10 +60,10 @@ end_import
 begin_class
 specifier|public
 class|class
-name|LanguageIdentifierExampleTest
+name|LanguageDetectorExampleTest
 block|{
-name|LanguageIdentifierExample
-name|languageIdentifierExample
+name|LanguageDetectorExample
+name|languageDetectorExample
 decl_stmt|;
 annotation|@
 name|Before
@@ -62,10 +72,10 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|languageIdentifierExample
+name|languageDetectorExample
 operator|=
 operator|new
-name|LanguageIdentifierExample
+name|LanguageDetectorExample
 argument_list|()
 expr_stmt|;
 block|}
@@ -73,8 +83,10 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testIdentifyLanguage
+name|testDetectLanguage
 parameter_list|()
+throws|throws
+name|IOException
 block|{
 name|String
 name|text
@@ -85,9 +97,9 @@ name|assertEquals
 argument_list|(
 literal|"en"
 argument_list|,
-name|languageIdentifierExample
+name|languageDetectorExample
 operator|.
-name|identifyLanguage
+name|detectLanguage
 argument_list|(
 name|text
 argument_list|)

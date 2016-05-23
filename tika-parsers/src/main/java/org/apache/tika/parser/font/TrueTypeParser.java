@@ -373,7 +373,7 @@ name|font
 operator|=
 name|parser
 operator|.
-name|parseTTF
+name|parse
 argument_list|(
 name|tis
 operator|.
@@ -388,7 +388,7 @@ name|font
 operator|=
 name|parser
 operator|.
-name|parseTTF
+name|parse
 argument_list|(
 name|stream
 argument_list|)

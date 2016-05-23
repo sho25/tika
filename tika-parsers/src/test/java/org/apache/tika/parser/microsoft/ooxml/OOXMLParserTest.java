@@ -3301,7 +3301,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>This is a hyperlink"
+literal|"<p><a href=\"http://tika.apache.org/\">This is a hyperlink</a>"
 argument_list|,
 name|xml
 argument_list|)
@@ -5459,61 +5459,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Metadata
-name|metadata
+name|XMLResult
+name|r
 init|=
-operator|new
-name|Metadata
-argument_list|()
-decl_stmt|;
-name|ContentHandler
-name|handler
-init|=
-operator|new
-name|BodyContentHandler
-argument_list|()
-decl_stmt|;
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
-name|InputStream
-name|input
-init|=
-name|getTestDocument
+name|getXML
 argument_list|(
 literal|"testEXCEL_textbox.xlsx"
-argument_list|)
-decl_stmt|;
+argument_list|,
 name|parser
-operator|.
-name|parse
-argument_list|(
-name|input
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-name|context
 argument_list|)
-expr_stmt|;
-name|String
-name|content
-init|=
-name|handler
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 name|assertContains
 argument_list|(
 literal|"some autoshape"
 argument_list|,
-name|content
+name|r
+operator|.
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
@@ -6742,6 +6704,58 @@ name|managers
 index|[
 literal|1
 index|]
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHyperlinksInXLSX
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEXCEL_hyperlinks.xlsx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+comment|//external url
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//mail url
+name|assertContains
+argument_list|(
+literal|"<a href=\"mailto:user@tika.apache.org?subject=help\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//external linked file
+name|assertContains
+argument_list|(
+literal|"<a href=\"linked_file.txt.htm\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//link on textbox
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/1.12/gettingstarted.html\">"
+argument_list|,
+name|xml
 argument_list|)
 expr_stmt|;
 block|}

@@ -16,6 +16,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -178,20 +192,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -843,6 +843,21 @@ operator|.
 name|destroy
 argument_list|()
 expr_stmt|;
+try|try
+block|{
+comment|//TIKA-1933
+name|process
+operator|.
+name|waitFor
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{              }
 block|}
 if|if
 condition|(

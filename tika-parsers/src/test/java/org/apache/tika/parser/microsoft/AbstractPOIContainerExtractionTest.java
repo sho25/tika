@@ -60,8 +60,6 @@ operator|.
 name|tika
 operator|.
 name|TikaTest
-operator|.
-name|TrackingHandler
 import|;
 end_import
 
@@ -116,6 +114,8 @@ specifier|public
 specifier|abstract
 class|class
 name|AbstractPOIContainerExtractionTest
+extends|extends
+name|TikaTest
 block|{
 specifier|public
 specifier|static

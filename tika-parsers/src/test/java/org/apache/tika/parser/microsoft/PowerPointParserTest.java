@@ -458,7 +458,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>This is a hyperlink"
+literal|"<p><a href=\"http://tika.apache.org/\">This is a hyperlink</a>"
 argument_list|,
 name|xml
 argument_list|)

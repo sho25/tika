@@ -282,6 +282,17 @@ specifier|public
 specifier|static
 specifier|final
 name|MediaType
+name|EMPTY
+init|=
+name|parse
+argument_list|(
+literal|"application/x-empty"
+argument_list|)
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
 name|TEXT_PLAIN
 init|=
 name|parse

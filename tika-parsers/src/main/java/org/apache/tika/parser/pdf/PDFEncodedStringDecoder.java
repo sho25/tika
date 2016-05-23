@@ -18,6 +18,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -69,23 +83,37 @@ name|apache
 operator|.
 name|pdfbox
 operator|.
-name|pdfparser
+name|io
 operator|.
-name|BaseParser
+name|RandomAccessBuffer
 import|;
 end_import
 
 begin_import
-import|import static
-name|java
+import|import
+name|org
 operator|.
-name|nio
+name|apache
 operator|.
-name|charset
+name|pdfbox
 operator|.
-name|StandardCharsets
+name|io
 operator|.
-name|ISO_8859_1
+name|RandomAccessRead
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdfparser
+operator|.
+name|COSParser
 import|;
 end_import
 
@@ -213,7 +241,11 @@ init|=
 operator|new
 name|COSStringParser
 argument_list|(
+operator|new
+name|RandomAccessBuffer
+argument_list|(
 name|is
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
@@ -252,11 +284,11 @@ block|}
 class|class
 name|COSStringParser
 extends|extends
-name|BaseParser
+name|COSParser
 block|{
 name|COSStringParser
 parameter_list|(
-name|InputStream
+name|RandomAccessRead
 name|buffer
 parameter_list|)
 throws|throws

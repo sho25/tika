@@ -19,6 +19,26 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|ws
@@ -161,26 +181,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -235,7 +235,9 @@ name|tika
 operator|.
 name|language
 operator|.
-name|ProfilingHandler
+name|detect
+operator|.
+name|LanguageHandler
 import|;
 end_import
 
@@ -716,7 +718,7 @@ argument_list|,
 name|is
 argument_list|,
 operator|new
-name|ProfilingHandler
+name|LanguageHandler
 argument_list|()
 block|{
 specifier|public

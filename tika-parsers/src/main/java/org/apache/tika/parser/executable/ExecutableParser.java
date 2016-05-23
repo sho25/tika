@@ -425,6 +425,11 @@ argument_list|,
 name|metadata
 argument_list|)
 decl_stmt|;
+name|xhtml
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
 comment|// What kind is it?
 name|byte
 index|[]

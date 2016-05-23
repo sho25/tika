@@ -75,7 +75,7 @@ name|apache
 operator|.
 name|pdfbox
 operator|.
-name|util
+name|text
 operator|.
 name|PDFTextStripper
 import|;
@@ -128,13 +128,6 @@ name|sortByPosition
 init|=
 literal|false
 decl_stmt|;
-comment|//True if we should use PDFBox's NonSequentialParser
-specifier|private
-name|boolean
-name|useNonSequentialParser
-init|=
-literal|false
-decl_stmt|;
 comment|//True if acroform content should be extracted
 specifier|private
 name|boolean
@@ -178,6 +171,16 @@ decl_stmt|;
 specifier|private
 name|AccessChecker
 name|accessChecker
+decl_stmt|;
+comment|//The PDFParser can throw IOExceptions if there is a problem
+comment|//with a streams.  If this is set to true, Tika's
+comment|//parser catches these exceptions, reports them in the metadata
+comment|//and then throws the first stored exception after the parse has completed.
+specifier|private
+name|boolean
+name|isCatchIntermediateIOExceptions
+init|=
+literal|true
 decl_stmt|;
 specifier|public
 name|PDFParserConfig
@@ -343,22 +346,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setUseNonSequentialParser
-argument_list|(
-name|getProp
-argument_list|(
-name|props
-operator|.
-name|getProperty
-argument_list|(
-literal|"useNonSequentialParser"
-argument_list|)
-argument_list|,
-name|getUseNonSequentialParser
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|setExtractAcroFormContent
 argument_list|(
 name|getProp
@@ -419,6 +406,22 @@ literal|"ifXFAExtractOnlyXFA"
 argument_list|)
 argument_list|,
 name|getIfXFAExtractOnlyXFA
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setCatchIntermediateIOExceptions
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"catchIntermediateIOExceptions"
+argument_list|)
+argument_list|,
+name|isCatchIntermediateIOExceptions
 argument_list|()
 argument_list|)
 argument_list|)
@@ -490,13 +493,6 @@ name|PDF2XHTML
 name|pdf2XHTML
 parameter_list|)
 block|{
-name|pdf2XHTML
-operator|.
-name|setForceParsing
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|pdf2XHTML
 operator|.
 name|setSortByPosition
@@ -780,32 +776,6 @@ operator|=
 name|sortByPosition
 expr_stmt|;
 block|}
-comment|/**      * @see #setUseNonSequentialParser(boolean)      */
-specifier|public
-name|boolean
-name|getUseNonSequentialParser
-parameter_list|()
-block|{
-return|return
-name|useNonSequentialParser
-return|;
-block|}
-comment|/**      * If true, uses PDFBox's non-sequential parser.      * The non-sequential parser should be much faster than the traditional      * full doc parser.  However, until PDFBOX-XXX is fixed,      * the non-sequential parser fails      * to extract some document metadata.      *<p/>      * Default is false (use the traditional parser)      *      * @param useNonSequentialParser      */
-specifier|public
-name|void
-name|setUseNonSequentialParser
-parameter_list|(
-name|boolean
-name|useNonSequentialParser
-parameter_list|)
-block|{
-name|this
-operator|.
-name|useNonSequentialParser
-operator|=
-name|useNonSequentialParser
-expr_stmt|;
-block|}
 comment|/**      * @see #setAverageCharTolerance(Float)      */
 specifier|public
 name|Float
@@ -880,6 +850,30 @@ operator|.
 name|accessChecker
 operator|=
 name|accessChecker
+expr_stmt|;
+block|}
+comment|/**      * See {@link #setCatchIntermediateIOExceptions(boolean)}      * @return whether or not to catch IOExceptions      */
+specifier|public
+name|boolean
+name|isCatchIntermediateIOExceptions
+parameter_list|()
+block|{
+return|return
+name|isCatchIntermediateIOExceptions
+return|;
+block|}
+comment|/**      * The PDFBox parser will throw an IOException if there is      * a problem with a stream.  If this is set to<code>true</code>,      * Tika's PDFParser will catch these exceptions and try to parse      * the rest of the document.  After the parse is completed,      * Tika's PDFParser will throw the first caught exception.      * @param catchIntermediateIOExceptions      */
+specifier|public
+name|void
+name|setCatchIntermediateIOExceptions
+parameter_list|(
+name|boolean
+name|catchIntermediateIOExceptions
+parameter_list|)
+block|{
+name|isCatchIntermediateIOExceptions
+operator|=
+name|catchIntermediateIOExceptions
 expr_stmt|;
 block|}
 specifier|private
@@ -1119,20 +1113,6 @@ operator|*
 name|result
 operator|+
 operator|(
-name|useNonSequentialParser
-condition|?
-literal|1231
-else|:
-literal|1237
-operator|)
-expr_stmt|;
-name|result
-operator|=
-name|prime
-operator|*
-name|result
-operator|+
-operator|(
 name|ifXFAExtractOnlyXFA
 condition|?
 literal|1231
@@ -1342,17 +1322,6 @@ literal|false
 return|;
 if|if
 condition|(
-name|useNonSequentialParser
-operator|!=
-name|other
-operator|.
-name|useNonSequentialParser
-condition|)
-return|return
-literal|false
-return|;
-if|if
-condition|(
 name|ifXFAExtractOnlyXFA
 operator|!=
 name|other
@@ -1389,10 +1358,6 @@ operator|+
 literal|", sortByPosition="
 operator|+
 name|sortByPosition
-operator|+
-literal|", useNonSequentialParser="
-operator|+
-name|useNonSequentialParser
 operator|+
 literal|", extractAcroFormContent="
 operator|+
