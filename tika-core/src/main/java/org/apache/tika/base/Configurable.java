@@ -54,7 +54,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines contract for configurable services  * @since Apache Tika 1.13  */
+comment|/**  * Defines contract for configurable services  * @since Apache Tika 1.14  */
 end_comment
 
 begin_interface
@@ -62,7 +62,7 @@ specifier|public
 interface|interface
 name|Configurable
 block|{
-comment|/**      * Configure an instance with Tika Context      * @param context configuration instance in the form of context      * @throws TikaConfigException when an instance fails to work at the given context      * @since Apache Tika 1.13      */
+comment|/**      * Configure an instance with Tika Context      * @param context configuration instance in the form of context      * @throws TikaConfigException when an instance fails to work at the given context      * @since Apache Tika 1.14      */
 name|void
 name|configure
 parameter_list|(

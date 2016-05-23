@@ -16,7 +16,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Tika Config Exception is an exception to occur when there is an error  * in Tika config file and/or one or more of the parsers failed to initialize  * from that erroneous config.  *  * @since Apache Tika 1.13  */
+comment|/**  * Tika Config Exception is an exception to occur when there is an error  * in Tika config file and/or one or more of the parsers failed to initialize  * from that erroneous config.  *  * @since Apache Tika 1.14  */
 end_comment
 
 begin_class

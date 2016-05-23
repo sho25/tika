@@ -182,7 +182,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * called by the framework to supply runtime parameters which may be      * required for initialization      * @param context the parser context at runtime      * @since Apache Tika 1.13      */
+comment|/**      * called by the framework to supply runtime parameters which may be      * required for initialization      * @param context the parser context at runtime      * @since Apache Tika 1.14      */
 annotation|@
 name|Override
 specifier|public
@@ -202,7 +202,7 @@ operator|=
 name|context
 expr_stmt|;
 block|}
-comment|/**      * Gets Parameters of this configurable instance      * @return a map of key value pairs      */
+comment|/**      * Gets Parameters of this configurable instance      * @return a map of key value pairs      *      * @since Apache Tika 1.14      */
 annotation|@
 name|Override
 specifier|public
