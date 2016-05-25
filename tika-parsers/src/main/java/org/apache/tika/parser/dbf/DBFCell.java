@@ -777,13 +777,7 @@ operator|.
 name|BufferUnderrunException
 name|e
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{          }
 return|return
 literal|""
 return|;
