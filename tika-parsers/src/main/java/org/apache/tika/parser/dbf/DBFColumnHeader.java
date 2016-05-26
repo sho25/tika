@@ -33,6 +33,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Map
@@ -108,20 +120,6 @@ operator|.
 name|ColType
 operator|.
 name|PLUS
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|json
-operator|.
-name|zip
-operator|.
-name|JSONzip
-operator|.
-name|end
 import|;
 end_import
 
@@ -358,7 +356,12 @@ name|IllegalArgumentException
 argument_list|(
 literal|"Unrecognized column type for column: "
 operator|+
-name|name
+name|getName
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 operator|+
 literal|". I regret I don't recognize: "
 operator|+
