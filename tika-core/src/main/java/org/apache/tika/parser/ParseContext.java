@@ -806,15 +806,19 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Gets the value associated with given parameter      * @param key parameter name      */
+comment|/**      * Gets the value associated with given parameter      * @param key parameter name      * @return param value      */
 specifier|public
-name|void
+name|Param
+argument_list|<
+name|?
+argument_list|>
 name|getParam
 parameter_list|(
 name|String
 name|key
 parameter_list|)
 block|{
+return|return
 name|this
 operator|.
 name|params
@@ -823,7 +827,7 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/**      * Gets all the params      * @return map of key values      */
 specifier|public
