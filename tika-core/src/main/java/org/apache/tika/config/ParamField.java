@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaConfigException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|lang
@@ -215,6 +229,8 @@ parameter_list|(
 name|AccessibleObject
 name|member
 parameter_list|)
+throws|throws
+name|TikaConfigException
 block|{
 if|if
 condition|(
@@ -451,6 +467,8 @@ specifier|private
 name|Class
 name|retrieveType
 parameter_list|()
+throws|throws
+name|TikaConfigException
 block|{
 name|Class
 name|type
@@ -490,7 +508,6 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|//todo:Tika config exception
 name|String
 name|msg
 init|=
@@ -523,7 +540,7 @@ expr_stmt|;
 block|}
 throw|throw
 operator|new
-name|RuntimeException
+name|TikaConfigException
 argument_list|(
 name|msg
 argument_list|)
