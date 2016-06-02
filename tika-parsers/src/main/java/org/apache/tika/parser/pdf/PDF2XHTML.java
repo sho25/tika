@@ -2245,8 +2245,8 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|COSBase
-name|cosObject
+name|COSStream
+name|cosStream
 init|=
 name|object
 operator|.
@@ -2259,7 +2259,7 @@ name|seenThisPage
 operator|.
 name|contains
 argument_list|(
-name|cosObject
+name|cosStream
 argument_list|)
 condition|)
 block|{
@@ -2270,7 +2270,7 @@ name|seenThisPage
 operator|.
 name|add
 argument_list|(
-name|cosObject
+name|cosStream
 argument_list|)
 expr_stmt|;
 if|if
@@ -2412,10 +2412,7 @@ name|processedInlineImages
 operator|.
 name|get
 argument_list|(
-name|name
-operator|.
-name|getName
-argument_list|()
+name|cosStream
 argument_list|)
 decl_stmt|;
 if|if
@@ -2521,14 +2518,6 @@ operator|==
 literal|true
 condition|)
 block|{
-name|COSStream
-name|cosStream
-init|=
-name|object
-operator|.
-name|getCOSObject
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|processedInlineImages
