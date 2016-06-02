@@ -6761,12 +6761,17 @@ decl_stmt|;
 comment|//sanity check
 name|assertEquals
 argument_list|(
-literal|4
+literal|5
 argument_list|,
 name|metadataList
 operator|.
 name|size
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|debug
+argument_list|(
+name|metadataList
 argument_list|)
 expr_stmt|;
 comment|//inlined jpeg metadata
