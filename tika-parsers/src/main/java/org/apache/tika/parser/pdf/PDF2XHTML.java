@@ -137,6 +137,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Calendar
 import|;
 end_import
@@ -274,6 +284,20 @@ operator|.
 name|cos
 operator|.
 name|COSName
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|cos
+operator|.
+name|COSStream
 import|;
 end_import
 
@@ -1004,6 +1028,34 @@ name|MAX_ACROFORM_RECURSIONS
 init|=
 literal|10
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|JPEG
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|COSName
+operator|.
+name|DCT_DECODE
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|COSName
+operator|.
+name|DCT_DECODE_ABBREVIATION
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|/**      * Format used for signature dates      * TODO Make this thread-safe      */
 specifier|private
 specifier|final
@@ -1062,7 +1114,7 @@ comment|/**      * This keeps track of the pdf object ids for inline      * imag
 specifier|private
 name|Map
 argument_list|<
-name|String
+name|COSStream
 argument_list|,
 name|Integer
 argument_list|>
@@ -2193,8 +2245,8 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|COSBase
-name|cosObject
+name|COSStream
+name|cosStream
 init|=
 name|object
 operator|.
@@ -2207,7 +2259,7 @@ name|seenThisPage
 operator|.
 name|contains
 argument_list|(
-name|cosObject
+name|cosStream
 argument_list|)
 condition|)
 block|{
@@ -2218,7 +2270,7 @@ name|seenThisPage
 operator|.
 name|add
 argument_list|(
-name|cosObject
+name|cosStream
 argument_list|)
 expr_stmt|;
 if|if
@@ -2360,10 +2412,7 @@ name|processedInlineImages
 operator|.
 name|get
 argument_list|(
-name|name
-operator|.
-name|getName
-argument_list|()
+name|cosStream
 argument_list|)
 decl_stmt|;
 if|if
@@ -2469,21 +2518,13 @@ operator|==
 literal|true
 condition|)
 block|{
-name|String
-name|cosObjectId
-init|=
-name|name
-operator|.
-name|getName
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|processedInlineImages
 operator|.
 name|containsKey
 argument_list|(
-name|cosObjectId
+name|cosStream
 argument_list|)
 condition|)
 block|{
@@ -2493,7 +2534,7 @@ name|processedInlineImages
 operator|.
 name|put
 argument_list|(
-name|cosObjectId
+name|cosStream
 argument_list|,
 name|imageNumber
 argument_list|)
@@ -2676,8 +2717,6 @@ argument_list|)
 condition|)
 block|{
 comment|// RGB or Gray colorspace: get and write the unmodifiedJPEG stream
-comment|//TODO: shouldn't need to do this: should be able to call createInputStream directly?!
-comment|//version clash somewhere?!
 name|InputStream
 name|data
 init|=
@@ -2687,7 +2726,9 @@ name|getStream
 argument_list|()
 operator|.
 name|createInputStream
-argument_list|()
+argument_list|(
+name|JPEG
+argument_list|)
 decl_stmt|;
 name|org
 operator|.

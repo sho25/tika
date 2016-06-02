@@ -318,6 +318,56 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|//strip out comments
+name|String
+name|headNoComments
+init|=
+name|head
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<!--.*?(-->|$)"
+argument_list|,
+literal|" "
+argument_list|)
+decl_stmt|;
+comment|//try to find the encoding in head without comments
+name|Charset
+name|charset
+init|=
+name|findCharset
+argument_list|(
+name|headNoComments
+argument_list|)
+decl_stmt|;
+comment|//if nothing is found, back off to find any encoding
+if|if
+condition|(
+name|charset
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|findCharset
+argument_list|(
+name|head
+argument_list|)
+return|;
+block|}
+return|return
+name|charset
+return|;
+block|}
+comment|//returns null if no charset was found
+specifier|private
+name|Charset
+name|findCharset
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
 name|Matcher
 name|equiv
 init|=
@@ -325,7 +375,7 @@ name|HTTP_META_PATTERN
 operator|.
 name|matcher
 argument_list|(
-name|head
+name|s
 argument_list|)
 decl_stmt|;
 name|Matcher
