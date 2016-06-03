@@ -359,6 +359,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|EncryptedDocumentException
@@ -529,6 +543,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|ConfigurableParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ParseContext
 import|;
 end_import
@@ -643,6 +671,24 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|bouncycastle
+operator|.
+name|asn1
+operator|.
+name|x500
+operator|.
+name|style
+operator|.
+name|RFC4519Style
+operator|.
+name|name
+import|;
+end_import
+
 begin_comment
 comment|/**  * PDF parser.  *<p/>  * This parser can process also encrypted PDF documents if the required  * password is given as a part of the input metadata associated with a  * document. If no password is given, then this parser will try decrypting  * the document using the empty password that's often used with PDFs. If  * the PDF contains any embedded documents (for example as part of a PDF  * package) then this parser will use the {@link EmbeddedDocumentExtractor}  * to handle them.  *<p/>  * As of Tika 1.6, it is possible to extract inline images with  * the {@link EmbeddedDocumentExtractor} as if they were regular  * attachments.  By default, this feature is turned off because of  * the potentially enormous number and size of inline images.  To  * turn this feature on, see  * {@link PDFParserConfig#setExtractInlineImages(boolean)}.  */
 end_comment
@@ -653,6 +699,8 @@ class|class
 name|PDFParser
 extends|extends
 name|AbstractParser
+implements|implements
+name|ConfigurableParser
 block|{
 comment|/**      * Metadata key for giving the document password to the parser.      *      * @since Apache Tika 0.5      * @deprecated Supply a {@link PasswordProvider} on the {@link ParseContext} instead      */
 specifier|public
@@ -725,6 +773,14 @@ return|return
 name|SUPPORTED_TYPES
 return|;
 block|}
+annotation|@
+name|Field
+specifier|private
+name|boolean
+name|sortByPosition
+init|=
+literal|false
+decl_stmt|;
 specifier|public
 name|void
 name|parse
@@ -775,6 +831,14 @@ argument_list|,
 name|defaultConfig
 argument_list|)
 decl_stmt|;
+comment|//TODO: get rid of this after dev of TIKA-1508!!!
+name|localConfig
+operator|.
+name|setSortByPosition
+argument_list|(
+name|sortByPosition
+argument_list|)
+expr_stmt|;
 name|String
 name|password
 init|=
@@ -3120,13 +3184,12 @@ name|getSortByPosition
 parameter_list|()
 block|{
 return|return
-name|defaultConfig
-operator|.
-name|getSortByPosition
-argument_list|()
+name|sortByPosition
 return|;
 block|}
 comment|/**      * If true, sort text tokens by their x/y position      * before extracting text.  This may be necessary for      * some PDFs (if the text tokens are not rendered "in      * order"), while for other PDFs it can produce the      * wrong result (for example if there are 2 columns,      * the text will be interleaved).  Default is false.      *      * @deprecated use {@link #setPDFParserConfig(PDFParserConfig)}      */
+annotation|@
+name|Field
 specifier|public
 name|void
 name|setSortByPosition
@@ -3135,12 +3198,9 @@ name|boolean
 name|v
 parameter_list|)
 block|{
-name|defaultConfig
-operator|.
-name|setSortByPosition
-argument_list|(
+name|sortByPosition
+operator|=
 name|v
-argument_list|)
 expr_stmt|;
 block|}
 comment|//can return null!
