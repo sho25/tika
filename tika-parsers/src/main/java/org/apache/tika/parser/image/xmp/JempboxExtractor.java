@@ -292,6 +292,7 @@ name|JempboxExtractor
 block|{
 specifier|private
 specifier|static
+specifier|volatile
 name|int
 name|MAX_EVENT_HISTORY_IN_XMPMM
 init|=
@@ -320,11 +321,6 @@ decl_stmt|;
 specifier|private
 name|Metadata
 name|metadata
-decl_stmt|;
-specifier|private
-specifier|static
-name|int
-name|maxXMPMMHistory
 decl_stmt|;
 specifier|public
 name|JempboxExtractor
@@ -1124,7 +1120,7 @@ name|getMaxXMPMMHistory
 parameter_list|()
 block|{
 return|return
-name|maxXMPMMHistory
+name|MAX_EVENT_HISTORY_IN_XMPMM
 return|;
 block|}
 block|}
