@@ -275,6 +275,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -758,6 +768,10 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|,
 literal|" %s [%s](confidence = %f )"
 argument_list|,
 name|object

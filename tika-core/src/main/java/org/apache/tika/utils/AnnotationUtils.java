@@ -175,6 +175,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Map
 import|;
 end_import
@@ -616,6 +626,10 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|,
 literal|"Value '%s' of type '%s' cant be"
 operator|+
 literal|" assigned to field '%s' of defined type '%s'"
@@ -670,6 +684,10 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|Locale
+operator|.
+name|ENGLISH
+argument_list|,
 literal|"Param %s is required for %s,"
 operator|+
 literal|" but it is not given in config."
