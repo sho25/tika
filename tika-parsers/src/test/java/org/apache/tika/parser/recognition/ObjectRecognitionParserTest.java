@@ -355,24 +355,12 @@ block|,
 literal|"Border collie"
 block|}
 decl_stmt|;
-name|HashSet
-argument_list|<
 name|String
-argument_list|>
-name|objects
+name|metaValues
 init|=
-operator|new
-name|HashSet
-argument_list|<>
-argument_list|()
-decl_stmt|;
-name|objects
+name|StringUtils
 operator|.
-name|addAll
-argument_list|(
-name|Arrays
-operator|.
-name|asList
+name|join
 argument_list|(
 name|metadata
 operator|.
@@ -382,9 +370,10 @@ name|ObjectRecognitionParser
 operator|.
 name|MD_KEY
 argument_list|)
+argument_list|,
+literal|" "
 argument_list|)
-argument_list|)
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -422,7 +411,7 @@ name|assertTrue
 argument_list|(
 name|message
 argument_list|,
-name|objects
+name|metaValues
 operator|.
 name|contains
 argument_list|(
@@ -431,6 +420,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|metadata
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
