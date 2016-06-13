@@ -64,7 +64,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Field annotation is a contract for binding {@link Param} value from  * Tika Configuration to any instance of {@link org.apache.tika.base.Configurable}  * services  * @since Apache Tika 1.14  */
+comment|/**  * Field annotation is a contract for binding {@link Param} value from  * Tika Configuration to an object.  * services  * @since Apache Tika 1.14  */
 end_comment
 
 begin_annotation_defn
