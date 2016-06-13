@@ -3217,16 +3217,6 @@ expr_stmt|;
 comment|// TODO Support arguments, needed for Translators etc
 comment|// See the thread "Configuring parsers and translators" for details
 block|}
-comment|// Have any decoration performed, eg explicit mimetypes
-name|loaded
-operator|=
-name|decorate
-argument_list|(
-name|loaded
-argument_list|,
-name|element
-argument_list|)
-expr_stmt|;
 comment|//if the instance is configurable, then call configure()
 name|Map
 argument_list|<
@@ -3252,6 +3242,16 @@ argument_list|(
 name|loaded
 argument_list|,
 name|params
+argument_list|)
+expr_stmt|;
+comment|// Have any decoration performed, eg explicit mimetypes
+name|loaded
+operator|=
+name|decorate
+argument_list|(
+name|loaded
+argument_list|,
+name|element
 argument_list|)
 expr_stmt|;
 comment|// All done with setup
