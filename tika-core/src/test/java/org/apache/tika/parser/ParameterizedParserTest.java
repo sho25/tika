@@ -453,11 +453,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"can we get this to work, somehow?"
-argument_list|)
 specifier|public
 name|void
 name|testBadParam

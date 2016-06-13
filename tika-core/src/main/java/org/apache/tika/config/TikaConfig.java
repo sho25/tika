@@ -3228,13 +3228,6 @@ name|element
 argument_list|)
 expr_stmt|;
 comment|//if the instance is configurable, then call configure()
-if|if
-condition|(
-name|loaded
-operator|instanceof
-name|Configurable
-condition|)
-block|{
 name|Map
 argument_list|<
 name|String
@@ -3261,38 +3254,6 @@ argument_list|,
 name|params
 argument_list|)
 expr_stmt|;
-comment|//invoking the configure() hook
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
-name|context
-operator|.
-name|getParams
-argument_list|()
-operator|.
-name|putAll
-argument_list|(
-name|params
-argument_list|)
-expr_stmt|;
-operator|(
-operator|(
-name|Configurable
-operator|)
-name|loaded
-operator|)
-operator|.
-name|configure
-argument_list|(
-name|context
-argument_list|)
-expr_stmt|;
-comment|// initialize here
-block|}
 comment|// All done with setup
 return|return
 name|loaded

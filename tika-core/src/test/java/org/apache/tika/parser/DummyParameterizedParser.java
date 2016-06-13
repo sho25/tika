@@ -221,8 +221,6 @@ class|class
 name|DummyParameterizedParser
 extends|extends
 name|AbstractParser
-implements|implements
-name|ConfigurableParser
 block|{
 specifier|private
 specifier|static

@@ -71,6 +71,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -166,6 +176,8 @@ literal|"testparamval"
 decl_stmt|;
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|testConfigurableParser
@@ -247,6 +259,8 @@ comment|//assert that param from configuration file is read, given to parser and
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 specifier|public
 name|void
 name|testConfigurableParserTypes
