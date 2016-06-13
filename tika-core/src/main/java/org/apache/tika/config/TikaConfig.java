@@ -3217,7 +3217,6 @@ expr_stmt|;
 comment|// TODO Support arguments, needed for Translators etc
 comment|// See the thread "Configuring parsers and translators" for details
 block|}
-comment|//if the instance is configurable, then call configure()
 name|Map
 argument_list|<
 name|String
