@@ -25,9 +25,23 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|base
+name|config
 operator|.
-name|Configurable
+name|Initializable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|Param
 import|;
 end_import
 
@@ -179,6 +193,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Set
 import|;
 end_import
@@ -192,7 +216,7 @@ specifier|public
 interface|interface
 name|ObjectRecogniser
 extends|extends
-name|Configurable
+name|Initializable
 block|{
 comment|/**      * The mimes supported by this recogniser      * @return set of mediatypes      */
 name|Set
@@ -207,17 +231,22 @@ name|boolean
 name|isAvailable
 parameter_list|()
 function_decl|;
-comment|/**      * This is the hook for configuring the recogniser      * @param context configuration instance in the form of context      * @throws TikaConfigException when there is an issue with configuration      */
+comment|/**      * This is the hook for configuring the recogniser      * @param params configuration instance in the form of context      * @throws TikaConfigException when there is an issue with configuration      */
 name|void
-name|configure
+name|initialize
 parameter_list|(
-name|ParseContext
-name|context
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Param
+argument_list|>
+name|params
 parameter_list|)
 throws|throws
 name|TikaConfigException
 function_decl|;
-comment|/**      * Recognise the objects in the stream      * @param stream content stream      * @param handler tika's content handle      * @param metadata metadata instance      * @param context parser context      * @return List of {@link RecognisedObject}s      * @throws IOException when an I/O error occurs      * @throws SAXException when an issue with XML occurs      * @throws TikaException any generic error      */
+comment|/**      * Recognise the objects in the stream      * @param stream content stream      * @param handler tika's content handler      * @param metadata metadata instance      * @param context parser context      * @return List of {@link RecognisedObject}s      * @throws IOException when an I/O error occurs      * @throws SAXException when an issue with XML occurs      * @throws TikaException any generic error      */
 name|List
 argument_list|<
 name|RecognisedObject
