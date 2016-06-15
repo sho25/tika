@@ -101,7 +101,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATOR
+name|MODIFIER
 argument_list|)
 argument_list|)
 expr_stmt|;
