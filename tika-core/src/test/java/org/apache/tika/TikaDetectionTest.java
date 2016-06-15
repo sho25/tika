@@ -9433,7 +9433,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"video/x-ms-asf"
+literal|"application/x-ms-asx"
 argument_list|,
 name|tika
 operator|.
