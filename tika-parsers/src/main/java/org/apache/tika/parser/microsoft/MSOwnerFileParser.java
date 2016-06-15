@@ -372,7 +372,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATOR
+name|MODIFIER
 argument_list|,
 name|asciiName
 argument_list|)
@@ -438,7 +438,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|CREATOR
+name|MODIFIER
 argument_list|,
 name|unicodeName
 argument_list|)
