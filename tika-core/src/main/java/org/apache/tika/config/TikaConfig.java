@@ -3208,9 +3208,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|params
 init|=
@@ -3220,15 +3217,6 @@ name|element
 argument_list|)
 decl_stmt|;
 comment|//Assigning the params to bean fields/setters
-name|AnnotationUtils
-operator|.
-name|assignFieldParams
-argument_list|(
-name|loaded
-argument_list|,
-name|params
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|loaded
@@ -3244,7 +3232,21 @@ name|loaded
 operator|)
 operator|.
 name|initialize
-argument_list|()
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|AnnotationUtils
+operator|.
+name|assignFieldParams
+argument_list|(
+name|loaded
+argument_list|,
+name|params
+argument_list|)
 expr_stmt|;
 block|}
 comment|// Have any decoration performed, eg explicit mimetypes
@@ -3391,9 +3393,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|getParams
 parameter_list|(
@@ -3406,9 +3405,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|params
 init|=
