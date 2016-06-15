@@ -23,6 +23,18 @@ name|lang
 operator|.
 name|annotation
 operator|.
+name|Documented
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|annotation
+operator|.
 name|ElementType
 import|;
 end_import
@@ -64,7 +76,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Field annotation is a contract for binding {@link Param} value from  * Tika Configuration to any instance of {@link org.apache.tika.base.Configurable}  * services  * @since Apache Tika 1.14  */
+comment|/**  * Field annotation is a contract for binding {@link Param} value from  * Tika Configuration to an object.  * services  * @since Apache Tika 1.14  */
 end_comment
 
 begin_annotation_defn
@@ -88,6 +100,8 @@ operator|.
 name|METHOD
 block|}
 argument_list|)
+annotation|@
+name|Documented
 specifier|public
 annotation_defn|@interface
 name|Field

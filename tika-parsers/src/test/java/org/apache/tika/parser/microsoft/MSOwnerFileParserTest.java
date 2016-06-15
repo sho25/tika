@@ -12,6 +12,8 @@ operator|.
 name|tika
 operator|.
 name|parser
+operator|.
+name|microsoft
 package|;
 end_package
 
@@ -23,38 +25,89 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|base
-operator|.
-name|Configurable
+name|TikaTest
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|Serializable
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
 import|;
 end_import
 
-begin_comment
-comment|/**  * Extension of {@link Parser} with {@link Configurable} contract.  * This interface shall be implemented to create parsers which accepts runtime parameters  * from tika configuration file  *  * @since Tika 1.14  */
-end_comment
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
 
-begin_interface
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_class
 specifier|public
-interface|interface
-name|ConfigurableParser
+class|class
+name|MSOwnerFileParserTest
 extends|extends
-name|Parser
-extends|,
-name|Configurable
-extends|,
-name|Serializable
-block|{ }
-end_interface
+name|TikaTest
+block|{
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testBasic
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testMSOwnerFile"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"heidi"
+argument_list|,
+name|r
+operator|.
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|MODIFIER
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

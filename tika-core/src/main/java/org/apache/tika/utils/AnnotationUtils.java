@@ -402,9 +402,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|params
 parameter_list|)
@@ -535,6 +532,17 @@ argument_list|(
 name|beanClass
 argument_list|)
 decl_stmt|;
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|validFieldNames
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|ParamField
@@ -543,6 +551,16 @@ range|:
 name|fields
 control|)
 block|{
+name|validFieldNames
+operator|.
+name|add
+argument_list|(
+name|field
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|Param
 argument_list|<
 name|?
@@ -628,7 +646,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|ENGLISH
+name|ROOT
 argument_list|,
 literal|"Value '%s' of type '%s' cant be"
 operator|+
@@ -686,7 +704,7 @@ name|format
 argument_list|(
 name|Locale
 operator|.
-name|ENGLISH
+name|ROOT
 argument_list|,
 literal|"Param %s is required for %s,"
 operator|+
@@ -718,6 +736,63 @@ else|else
 block|{
 comment|//FIXME: SLF4j is not showing up for import, fix it and send this to LOG.debug
 comment|//LOG.debug("Param not supplied, field is not mandatory");
+block|}
+block|}
+comment|//now test that params doesn't contain a field
+comment|//not allowed by this object
+for|for
+control|(
+name|String
+name|fieldName
+range|:
+name|params
+operator|.
+name|keySet
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|validFieldNames
+operator|.
+name|contains
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+name|String
+name|msg
+init|=
+name|String
+operator|.
+name|format
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|,
+literal|"No field '%s' exists for %s"
+argument_list|,
+name|fieldName
+argument_list|,
+name|bean
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
+throw|throw
+operator|new
+name|TikaConfigException
+argument_list|(
+name|msg
+argument_list|)
+throw|;
 block|}
 block|}
 block|}

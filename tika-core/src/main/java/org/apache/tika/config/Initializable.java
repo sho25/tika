@@ -11,23 +11,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|base
+name|config
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|Param
-import|;
-end_import
 
 begin_import
 import|import
@@ -45,20 +31,6 @@ end_import
 
 begin_import
 import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -68,36 +40,27 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Defines contract for configurable services  * @since Apache Tika 1.14  */
+comment|/**  * Components that must do special processing across multiple fields  * at initialization time should implement this interface.  *<p>  * TikaConfig will call initialize on Initializable classes after  * setting the parameters.  */
 end_comment
 
 begin_interface
 specifier|public
 interface|interface
-name|Configurable
+name|Initializable
 block|{
-comment|/**      * Configure an instance with Tika Context      * @param context configuration instance in the form of context      * @throws TikaConfigException when an instance fails to work at the given context      * @since Apache Tika 1.14      */
 name|void
-name|configure
+name|initialize
 parameter_list|(
-name|ParseContext
-name|context
-parameter_list|)
-throws|throws
-name|TikaConfigException
-function_decl|;
-comment|/**      * Gets parameters of this configurable instance      * @return parameters in the form  of a map of key value pairs      */
 name|Map
 argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
 argument_list|>
-argument_list|>
-name|getParams
-parameter_list|()
+name|params
+parameter_list|)
+throws|throws
+name|TikaConfigException
 function_decl|;
 block|}
 end_interface

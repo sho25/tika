@@ -251,20 +251,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|base
-operator|.
-name|Configurable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|concurrent
 operator|.
 name|ConfigurableThreadPoolExecutor
@@ -3217,22 +3203,11 @@ expr_stmt|;
 comment|// TODO Support arguments, needed for Translators etc
 comment|// See the thread "Configuring parsers and translators" for details
 block|}
-comment|//if the instance is configurable, then call configure()
-if|if
-condition|(
-name|loaded
-operator|instanceof
-name|Configurable
-condition|)
-block|{
 name|Map
 argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|params
 init|=
@@ -3242,6 +3217,28 @@ name|element
 argument_list|)
 decl_stmt|;
 comment|//Assigning the params to bean fields/setters
+if|if
+condition|(
+name|loaded
+operator|instanceof
+name|Initializable
+condition|)
+block|{
+operator|(
+operator|(
+name|Initializable
+operator|)
+name|loaded
+operator|)
+operator|.
+name|initialize
+argument_list|(
+name|params
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|AnnotationUtils
 operator|.
 name|assignFieldParams
@@ -3251,37 +3248,6 @@ argument_list|,
 name|params
 argument_list|)
 expr_stmt|;
-comment|//invoking the configure() hook
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
-name|context
-operator|.
-name|getParams
-argument_list|()
-operator|.
-name|putAll
-argument_list|(
-name|params
-argument_list|)
-expr_stmt|;
-operator|(
-operator|(
-name|Configurable
-operator|)
-name|loaded
-operator|)
-operator|.
-name|configure
-argument_list|(
-name|context
-argument_list|)
-expr_stmt|;
-comment|// initialize here
 block|}
 comment|// Have any decoration performed, eg explicit mimetypes
 name|loaded
@@ -3427,9 +3393,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|getParams
 parameter_list|(
@@ -3442,9 +3405,6 @@ argument_list|<
 name|String
 argument_list|,
 name|Param
-argument_list|<
-name|?
-argument_list|>
 argument_list|>
 name|params
 init|=

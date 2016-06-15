@@ -1729,7 +1729,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|getOCRStrategy
+name|getOcrStrategy
 argument_list|()
 operator|.
 name|equals
@@ -1813,7 +1813,7 @@ literal|2.0f
 argument_list|,
 name|config
 operator|.
-name|getOCRImageType
+name|getOcrImageType
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1847,14 +1847,14 @@ name|image
 argument_list|,
 name|config
 operator|.
-name|getOCRImageFormatName
+name|getOcrImageFormatName
 argument_list|()
 argument_list|,
 name|os
 argument_list|,
 name|config
 operator|.
-name|getOCRDPI
+name|getOcrDPI
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2328,7 +2328,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|getOCRStrategy
+name|getOcrStrategy
 argument_list|()
 operator|.
 name|equals
