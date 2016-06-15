@@ -3229,6 +3229,24 @@ argument_list|,
 name|params
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|loaded
+operator|instanceof
+name|Initializable
+condition|)
+block|{
+operator|(
+operator|(
+name|Initializable
+operator|)
+name|loaded
+operator|)
+operator|.
+name|initialize
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Have any decoration performed, eg explicit mimetypes
 name|loaded
 operator|=
