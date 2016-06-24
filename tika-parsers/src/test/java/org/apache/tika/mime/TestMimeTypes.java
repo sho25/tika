@@ -1029,6 +1029,14 @@ argument_list|,
 literal|"testWORD.docx"
 argument_list|)
 expr_stmt|;
+comment|// POI-generated files have the rels first not Content Types
+name|assertTypeByData
+argument_list|(
+literal|"application/x-tika-ooxml"
+argument_list|,
+literal|"testEXCEL_poi.xlsx"
+argument_list|)
+expr_stmt|;
 comment|// If we give the filename as well as the data, we can
 comment|//  specialise the ooxml generic one to the correct type
 name|assertTypeByNameAndData
@@ -1050,6 +1058,13 @@ argument_list|(
 literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 argument_list|,
 literal|"testWORD.docx"
+argument_list|)
+expr_stmt|;
+name|assertTypeByNameAndData
+argument_list|(
+literal|"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+argument_list|,
+literal|"testEXCEL_poi.xlsx"
 argument_list|)
 expr_stmt|;
 comment|// Test a few of the less usual ones
