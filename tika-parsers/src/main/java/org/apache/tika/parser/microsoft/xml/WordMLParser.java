@@ -396,12 +396,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
-name|boolean
-name|inBody
-init|=
-literal|false
-decl_stmt|;
 static|static
 block|{
 name|WORDML_TO_XHTML
@@ -634,6 +628,12 @@ specifier|private
 name|boolean
 name|ignoreCharacters
 decl_stmt|;
+specifier|private
+name|boolean
+name|inBody
+init|=
+literal|false
+decl_stmt|;
 comment|//use inP to keep track of whether the handler is
 comment|//in a paragraph or not.<p><p></p></p> was allowed
 comment|//in wordml. Use this boolean to prevent<p> within<p>
@@ -732,7 +732,7 @@ condition|)
 block|{
 if|if
 condition|(
-literal|"p"
+name|P
 operator|.
 name|equals
 argument_list|(
@@ -954,7 +954,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-literal|"p"
+name|P
 operator|.
 name|equals
 argument_list|(
@@ -997,7 +997,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-literal|"p"
+name|P
 operator|.
 name|equals
 argument_list|(

@@ -325,7 +325,6 @@ name|AbstractXML2003Parser
 extends|extends
 name|AbstractParser
 block|{
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -333,7 +332,6 @@ name|MS_OFFICE_PROPERTIES_URN
 init|=
 literal|"urn:schemas-microsoft-com:office:office"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -341,7 +339,6 @@ name|MS_DOC_PROPERTIES_URN
 init|=
 literal|"urn:schemas-microsoft-com:office:office"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -349,7 +346,6 @@ name|MS_SPREADSHEET_URN
 init|=
 literal|"urn:schemas-microsoft-com:office:spreadsheet"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -357,7 +353,6 @@ name|WORD_ML_URL
 init|=
 literal|"http://schemas.microsoft.com/office/word/2003/wordml"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|Attributes
@@ -367,7 +362,6 @@ operator|new
 name|AttributesImpl
 argument_list|()
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -375,7 +369,6 @@ name|DOCUMENT_PROPERTIES
 init|=
 literal|"DocumentProperties"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -383,7 +376,6 @@ name|PICT
 init|=
 literal|"pict"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -391,7 +383,6 @@ name|BIN_DATA
 init|=
 literal|"binData"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -399,7 +390,6 @@ name|A
 init|=
 literal|"a"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -407,7 +397,6 @@ name|BODY
 init|=
 literal|"body"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -415,7 +404,6 @@ name|CDATA
 init|=
 literal|"cdata"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -423,7 +411,6 @@ name|DIV
 init|=
 literal|"div"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -431,7 +418,6 @@ name|HREF
 init|=
 literal|"href"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -439,7 +425,6 @@ name|IMG
 init|=
 literal|"img"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -447,7 +432,6 @@ name|P
 init|=
 literal|"p"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -455,7 +439,6 @@ name|TD
 init|=
 literal|"td"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -463,7 +446,6 @@ name|TR
 init|=
 literal|"tr"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -471,7 +453,6 @@ name|TABLE
 init|=
 literal|"table"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -479,7 +460,6 @@ name|TBODY
 init|=
 literal|"tbody"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -487,7 +467,6 @@ name|HLINK
 init|=
 literal|"hlink"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -495,7 +474,6 @@ name|HLINK_DEST
 init|=
 literal|"dest"
 decl_stmt|;
-specifier|protected
 specifier|final
 specifier|static
 name|String
@@ -532,6 +510,8 @@ name|property
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|parse

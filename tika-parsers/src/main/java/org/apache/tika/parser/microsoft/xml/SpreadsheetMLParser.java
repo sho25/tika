@@ -281,12 +281,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
-name|boolean
-name|inBody
-init|=
-literal|false
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -392,6 +386,12 @@ literal|null
 decl_stmt|;
 name|boolean
 name|inData
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|boolean
+name|inBody
 init|=
 literal|false
 decl_stmt|;
