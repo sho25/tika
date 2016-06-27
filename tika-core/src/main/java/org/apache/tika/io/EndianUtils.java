@@ -50,7 +50,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * General Endian Related Utilties.  *<p>  * This class provides static utility methods for input/output operations  *  on numbers in Big and Little Endian formats.  *<p>  * Origin of code: Based on the version in POI  */
+comment|/**  * General Endian Related Utilties.  *<p>  * This class provides static utility methods for input/output operations  * on numbers in Big and Little Endian formats.  *<p>  * Origin of code: Based on the version in POI  */
 end_comment
 
 begin_class
@@ -58,7 +58,7 @@ specifier|public
 class|class
 name|EndianUtils
 block|{
-comment|/**     * Get a LE short value from an InputStream     *     * @param  stream the InputStream from which the short is to be read     * @return                              the short (16-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a LE short value from an InputStream      *      * @param stream the InputStream from which the short is to be read      * @return the short (16-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|short
@@ -82,7 +82,7 @@ name|stream
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE short value from an InputStream     *     * @param  stream the InputStream from which the short is to be read     * @return                              the short (16-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a BE short value from an InputStream      *      * @param stream the InputStream from which the short is to be read      * @return the short (16-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|short
@@ -226,7 +226,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a LE unsigned int value from an InputStream     *     * @param  stream the InputStream from which the int is to be read     * @return                              the int (32-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a LE unsigned int value from an InputStream      *      * @param stream the InputStream from which the int is to be read      * @return the int (32-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|long
@@ -323,7 +323,7 @@ operator|&
 literal|0x00FFFFFFFFl
 return|;
 block|}
-comment|/**     * Get a LE int value from an InputStream     *     * @param  stream the InputStream from which the int is to be read     * @return                              the int (32-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a LE int value from an InputStream      *      * @param stream the InputStream from which the int is to be read      * @return the int (32-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|int
@@ -416,7 +416,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a BE int value from an InputStream     *     * @param  stream the InputStream from which the int is to be read     * @return                              the int (32-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a BE int value from an InputStream      *      * @param stream the InputStream from which the int is to be read      * @return the int (32-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|int
@@ -509,7 +509,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a LE long value from an InputStream     *     * @param  stream the InputStream from which the long is to be read     * @return                              the long (64-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a LE long value from an InputStream      *      * @param stream the InputStream from which the long is to be read      * @return the long (64-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|long
@@ -682,7 +682,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a NE long value from an InputStream     *     * @param  stream the InputStream from which the long is to be read     * @return                              the long (64-bit) value     * @exception  IOException              will be propagated back to the caller     * @exception  BufferUnderrunException  if the stream cannot provide enough bytes     */
+comment|/**      * Get a NE long value from an InputStream      *      * @param stream the InputStream from which the long is to be read      * @return the long (64-bit) value      * @throws IOException             will be propagated back to the caller      * @throws BufferUnderrunException if the stream cannot provide enough bytes      */
 specifier|public
 specifier|static
 name|long
@@ -855,7 +855,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Gets the integer value that is stored in UTF-8 like fashion, in Big Endian     *   but with the high bit on each number indicating if it continues or not     */
+comment|/**      * Gets the integer value that is stored in UTF-8 like fashion, in Big Endian      * but with the high bit on each number indicating if it continues or not      */
 specifier|public
 specifier|static
 name|long
@@ -930,7 +930,7 @@ return|return
 name|v
 return|;
 block|}
-comment|/**     * Get a LE short value from the beginning of a byte array     *     *@param  data  the byte array     *@return       the short (16-bit) value     */
+comment|/**      * Get a LE short value from the beginning of a byte array      *      * @param data the byte array      * @return the short (16-bit) value      */
 specifier|public
 specifier|static
 name|short
@@ -950,7 +950,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a LE short value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the short (16-bit) value     */
+comment|/**      * Get a LE short value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the short (16-bit) value      */
 specifier|public
 specifier|static
 name|short
@@ -976,7 +976,7 @@ name|offset
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a LE unsigned short value from the beginning of a byte array     *     *@param  data  the byte array     *@return       the unsigned short (16-bit) value in an int     */
+comment|/**      * Get a LE unsigned short value from the beginning of a byte array      *      * @param data the byte array      * @return the unsigned short (16-bit) value in an int      */
 specifier|public
 specifier|static
 name|int
@@ -996,7 +996,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a LE unsigned short value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the unsigned short (16-bit) value in an integer     */
+comment|/**      * Get a LE unsigned short value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the unsigned short (16-bit) value in an integer      */
 specifier|public
 specifier|static
 name|int
@@ -1046,7 +1046,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a BE short value from the beginning of a byte array     *     *@param  data  the byte array     *@return       the short (16-bit) value     */
+comment|/**      * Get a BE short value from the beginning of a byte array      *      * @param data the byte array      * @return the short (16-bit) value      */
 specifier|public
 specifier|static
 name|short
@@ -1066,7 +1066,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE short value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the short (16-bit) value     */
+comment|/**      * Get a BE short value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the short (16-bit) value      */
 specifier|public
 specifier|static
 name|short
@@ -1092,7 +1092,7 @@ name|offset
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE unsigned short value from the beginning of a byte array     *     *@param  data  the byte array     *@return       the unsigned short (16-bit) value in an int     */
+comment|/**      * Get a BE unsigned short value from the beginning of a byte array      *      * @param data the byte array      * @return the unsigned short (16-bit) value in an int      */
 specifier|public
 specifier|static
 name|int
@@ -1112,7 +1112,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE unsigned short value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the unsigned short (16-bit) value in an integer     */
+comment|/**      * Get a BE unsigned short value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the unsigned short (16-bit) value in an integer      */
 specifier|public
 specifier|static
 name|int
@@ -1162,7 +1162,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a LE int value from the beginning of a byte array     *     *@param  data  the byte array     *@return the int (32-bit) value     */
+comment|/**      * Get a LE int value from the beginning of a byte array      *      * @param data the byte array      * @return the int (32-bit) value      */
 specifier|public
 specifier|static
 name|int
@@ -1182,7 +1182,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a LE int value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the int (32-bit) value     */
+comment|/**      * Get a LE int value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the int (32-bit) value      */
 specifier|public
 specifier|static
 name|int
@@ -1271,7 +1271,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a BE int value from the beginning of a byte array     *     *@param  data  the byte array     *@return the int (32-bit) value     */
+comment|/**      * Get a BE int value from the beginning of a byte array      *      * @param data the byte array      * @return the int (32-bit) value      */
 specifier|public
 specifier|static
 name|int
@@ -1291,7 +1291,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE int value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the int (32-bit) value     */
+comment|/**      * Get a BE int value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the int (32-bit) value      */
 specifier|public
 specifier|static
 name|int
@@ -1380,7 +1380,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/**     * Get a LE unsigned int value from a byte array     *     *@param  data    the byte array     *@return         the unsigned int (32-bit) value in a long     */
+comment|/**      * Get a LE unsigned int value from a byte array      *      * @param data the byte array      * @return the unsigned int (32-bit) value in a long      */
 specifier|public
 specifier|static
 name|long
@@ -1400,7 +1400,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a LE unsigned int value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the unsigned int (32-bit) value in a long     */
+comment|/**      * Get a LE unsigned int value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the unsigned int (32-bit) value in a long      */
 specifier|public
 specifier|static
 name|long
@@ -1430,7 +1430,7 @@ operator|&
 literal|0x00FFFFFFFFl
 return|;
 block|}
-comment|/**     * Get a BE unsigned int value from a byte array     *     *@param  data    the byte array     *@return         the unsigned int (32-bit) value in a long     */
+comment|/**      * Get a BE unsigned int value from a byte array      *      * @param data the byte array      * @return the unsigned int (32-bit) value in a long      */
 specifier|public
 specifier|static
 name|long
@@ -1450,7 +1450,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**     * Get a BE unsigned int value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the unsigned int (32-bit) value in a long     */
+comment|/**      * Get a BE unsigned int value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the unsigned int (32-bit) value in a long      */
 specifier|public
 specifier|static
 name|long
@@ -1480,7 +1480,7 @@ operator|&
 literal|0x00FFFFFFFFl
 return|;
 block|}
-comment|/**     * Get a LE long value from a byte array     *     *@param  data    the byte array     *@param  offset  a starting offset into the byte array     *@return         the long (64-bit) value     */
+comment|/**      * Get a LE long value from a byte array      *      * @param data   the byte array      * @param offset a starting offset into the byte array      * @return the long (64-bit) value      */
 specifier|public
 specifier|static
 name|long
@@ -1544,7 +1544,7 @@ name|LONG_SIZE
 init|=
 literal|8
 decl_stmt|;
-comment|/**     *  Convert an 'unsigned' byte to an integer. ie, don't carry across the     *  sign.     *     * @param  b  Description of the Parameter     * @return    Description of the Return Value     */
+comment|/**      * Convert an 'unsigned' byte to an integer. ie, don't carry across the      * sign.      *      * @param b Description of the Parameter      * @return Description of the Return Value      */
 specifier|public
 specifier|static
 name|int
@@ -1560,7 +1560,7 @@ operator|&
 literal|0xFF
 return|;
 block|}
-comment|/**     * get the unsigned value of a byte.     *      * @param data     *            the byte array.     * @param offset     *            a starting offset into the byte array.     * @return the unsigned value of the byte as a 16 bit short     */
+comment|/**      * get the unsigned value of a byte.      *      * @param data   the byte array.      * @param offset a starting offset into the byte array.      * @return the unsigned value of the byte as a 16 bit short      */
 specifier|public
 specifier|static
 name|short
