@@ -83,20 +83,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|metadata
-operator|.
-name|TikaCoreProperties
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|parser
 operator|.
 name|RecursiveParserWrapper
@@ -156,6 +142,11 @@ argument_list|(
 literal|"testAppleSingleFile.pdf"
 argument_list|)
 decl_stmt|;
+name|debug
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|2
@@ -222,7 +213,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"END OF SORTIE NUMBER TWO"
+literal|"Hello World"
 argument_list|,
 name|list
 operator|.
@@ -236,25 +227,6 @@ argument_list|(
 name|RecursiveParserWrapper
 operator|.
 name|TIKA_CONTENT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"fltsyllabussortie2rev1.2"
-argument_list|,
-name|list
-operator|.
-name|get
-argument_list|(
-literal|1
-argument_list|)
-operator|.
-name|get
-argument_list|(
-name|TikaCoreProperties
-operator|.
-name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;

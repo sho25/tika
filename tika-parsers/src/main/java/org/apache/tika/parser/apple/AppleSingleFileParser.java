@@ -291,7 +291,7 @@ extends|extends
 name|AbstractParser
 block|{
 comment|/**      * Entry types      */
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -299,7 +299,7 @@ name|DATA_FORK
 init|=
 literal|1
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -307,7 +307,7 @@ name|RESOURCE_FORK
 init|=
 literal|2
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -315,7 +315,7 @@ name|REAL_NAME
 init|=
 literal|3
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -323,7 +323,7 @@ name|COMMENT
 init|=
 literal|4
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -331,7 +331,7 @@ name|ICON_BW
 init|=
 literal|5
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -340,7 +340,7 @@ init|=
 literal|6
 decl_stmt|;
 comment|//7?!
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -348,7 +348,7 @@ name|FILE_DATES_INFO
 init|=
 literal|8
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -356,7 +356,7 @@ name|FINDER_INFO
 init|=
 literal|9
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -364,7 +364,7 @@ name|MACINTOSH_FILE_INFO
 init|=
 literal|10
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -372,7 +372,7 @@ name|PRODOS_FILE_INFO
 init|=
 literal|11
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -380,7 +380,7 @@ name|MSDOS_FILE_INFO
 init|=
 literal|12
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -388,7 +388,7 @@ name|SHORT_NAME
 init|=
 literal|13
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -396,7 +396,7 @@ name|AFP_FILE_INFO
 init|=
 literal|14
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -914,32 +914,26 @@ name|FieldInfo
 argument_list|(
 name|EndianUtils
 operator|.
-name|readIntBE
+name|readUIntBE
 argument_list|(
 name|stream
 argument_list|)
-operator|&
-literal|0x00000000ffffffffL
 argument_list|,
 comment|//entry id
 name|EndianUtils
 operator|.
-name|readIntBE
+name|readUIntBE
 argument_list|(
 name|stream
 argument_list|)
-operator|&
-literal|0x00000000ffffffffL
 argument_list|,
 comment|//offset
 name|EndianUtils
 operator|.
-name|readIntBE
+name|readUIntBE
 argument_list|(
 name|stream
 argument_list|)
-operator|&
-literal|0x00000000ffffffffL
 comment|//length
 argument_list|)
 argument_list|)
