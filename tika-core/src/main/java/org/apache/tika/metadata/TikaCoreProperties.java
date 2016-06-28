@@ -81,6 +81,22 @@ operator|+
 literal|"warn"
 argument_list|)
 decl_stmt|;
+comment|/**      * Some file formats can store information about their original      * file name/location or about their attachment's original file name/location.      */
+specifier|public
+specifier|static
+specifier|final
+name|Property
+name|ORIGINAL_RESOURCE_NAME
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|TIKA_META_PREFIX
+operator|+
+literal|"origResourceName"
+argument_list|)
+decl_stmt|;
 comment|/**      * This is currently used to identify Content-Type that may be      * included within a document, such as in html documents      * (e.g.<meta http-equiv="content-type" content="text/html; charset=UTF-8">)      , or the value might come from outside the document.  This information      * may be faulty and should be treated only as a hint.      */
 specifier|public
 specifier|static

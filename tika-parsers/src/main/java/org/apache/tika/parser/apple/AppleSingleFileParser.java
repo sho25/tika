@@ -207,6 +207,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|mime
 operator|.
 name|MediaType
@@ -820,8 +834,17 @@ operator|.
 name|US_ASCII
 argument_list|)
 decl_stmt|;
-comment|//TODO: figure out correct metadata key
-comment|//embeddedMetadata.set(TikaCoreProperties.IDENTIFIER, originalFileName);
+name|embeddedMetadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|ORIGINAL_RESOURCE_NAME
+argument_list|,
+name|originalFileName
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if

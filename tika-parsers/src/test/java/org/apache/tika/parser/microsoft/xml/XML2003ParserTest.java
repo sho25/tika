@@ -20,6 +20,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -142,18 +154,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
 import|;
 end_import
 
@@ -518,6 +518,25 @@ argument_list|(
 literal|"footnote Figure"
 argument_list|,
 name|txt
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"testJPEG_EXIF.jpg"
+argument_list|,
+name|list
+operator|.
+name|get
+argument_list|(
+literal|7
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|ORIGINAL_RESOURCE_NAME
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

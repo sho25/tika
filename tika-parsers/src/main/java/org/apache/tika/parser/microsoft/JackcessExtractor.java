@@ -1870,6 +1870,9 @@ name|SimplePackageContent
 operator|)
 name|content
 decl_stmt|;
+comment|//TODO: find test file that has this kind of attachment
+comment|//and see if getFilePath or getLocalFilePath is meaningful
+comment|//for TikaCoreProperties.ORIGINAL_RESOURCE_NAME
 name|handleEmbeddedResource
 argument_list|(
 name|TikaInputStream

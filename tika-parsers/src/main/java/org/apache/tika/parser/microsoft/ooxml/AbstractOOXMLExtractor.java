@@ -1332,6 +1332,8 @@ argument_list|)
 condition|)
 block|{
 comment|// TIKA-704: OLE 2.0 embedded non-Office document?
+comment|//TODO: original file paths can be stored underneath root
+comment|//figure out how to extract that info for: TikaCoreProperties.ORIGINAL_RESOURCE_NAME
 name|stream
 operator|=
 name|TikaInputStream
