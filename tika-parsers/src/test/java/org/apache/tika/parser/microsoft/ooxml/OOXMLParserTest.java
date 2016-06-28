@@ -6800,7 +6800,7 @@ name|metadataList
 init|=
 name|getRecursiveJson
 argument_list|(
-literal|"testPPT_embeddedPDF.pptx"
+literal|"testPPT_EmbeddedPDF.pptx"
 argument_list|)
 decl_stmt|;
 name|Metadata
@@ -6869,7 +6869,7 @@ name|metadataList
 init|=
 name|getRecursiveJson
 argument_list|(
-literal|"testEXCEL_embeddedPDF.xls"
+literal|"testExcel_embeddedPDF.xlsx"
 argument_list|)
 decl_stmt|;
 name|Metadata
@@ -6879,7 +6879,7 @@ name|metadataList
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|1
 argument_list|)
 decl_stmt|;
 name|assertContains

@@ -2616,7 +2616,7 @@ name|metadataList
 init|=
 name|getRecursiveJson
 argument_list|(
-literal|"testEXCEL_embeddedPDF.xls"
+literal|"testExcel_embeddedPDF.xls"
 argument_list|)
 decl_stmt|;
 name|assertContains

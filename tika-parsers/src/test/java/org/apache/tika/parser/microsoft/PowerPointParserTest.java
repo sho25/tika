@@ -1402,7 +1402,7 @@ name|metadataList
 init|=
 name|getRecursiveJson
 argument_list|(
-literal|"testPPT_embeddedPDF.ppt"
+literal|"testPPT_EmbeddedPDF.ppt"
 argument_list|)
 decl_stmt|;
 name|assertContains
