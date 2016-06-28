@@ -1850,6 +1850,13 @@ expr_stmt|;
 comment|// Process image if ImageMagick Tool is present
 if|if
 condition|(
+name|config
+operator|.
+name|isEnableProcessing
+argument_list|()
+operator|==
+literal|1
+operator|&&
 name|hasImageMagick
 argument_list|(
 name|config

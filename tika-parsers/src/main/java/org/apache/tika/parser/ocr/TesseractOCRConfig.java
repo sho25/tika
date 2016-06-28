@@ -148,6 +148,13 @@ name|timeout
 init|=
 literal|120
 decl_stmt|;
+comment|// enable image processing (optional)
+specifier|private
+name|int
+name|enableProcessing
+init|=
+literal|0
+decl_stmt|;
 comment|// Path to ImageMagick program, if not on system path.
 specifier|private
 name|String
@@ -383,6 +390,19 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// set parameters for ImageMagick
+name|setEnableProcessing
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+argument_list|,
+literal|"enableProcessing"
+argument_list|,
+name|isEnableProcessing
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|setImageMagickPath
 argument_list|(
 name|getProp
@@ -729,6 +749,32 @@ block|{
 return|return
 name|timeout
 return|;
+block|}
+comment|/** @see #setEnableProcessing(boolean) */
+specifier|public
+name|int
+name|isEnableProcessing
+parameter_list|()
+block|{
+return|return
+name|enableProcessing
+return|;
+block|}
+comment|/**  	 * Set the value to true if processing is to be enabled. 	 * Default value is false. 	 */
+specifier|public
+name|void
+name|setEnableProcessing
+parameter_list|(
+name|int
+name|enableProcessing
+parameter_list|)
+block|{
+name|this
+operator|.
+name|enableProcessing
+operator|=
+name|enableProcessing
+expr_stmt|;
 block|}
 comment|/** 	 * @return the density 	 */
 specifier|public
