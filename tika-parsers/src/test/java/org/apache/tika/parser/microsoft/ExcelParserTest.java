@@ -21,34 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertNotContained
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -88,6 +60,16 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -264,6 +246,20 @@ operator|.
 name|parser
 operator|.
 name|PasswordProvider
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|RecursiveParserWrapper
 import|;
 end_import
 
@@ -2602,6 +2598,46 @@ expr_stmt|;
 comment|//TODO: not extracting these yet
 comment|//link on textbox
 comment|//        assertContains("<a href=\"http://tika.apache.org/1.12/gettingstarted.html\">", xml);
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testEmbeddedPDF
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|List
+argument_list|<
+name|Metadata
+argument_list|>
+name|metadataList
+init|=
+name|getRecursiveJson
+argument_list|(
+literal|"testEXCEL_embeddedPDF.xls"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Hello World!"
+argument_list|,
+name|metadataList
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|RecursiveParserWrapper
+operator|.
+name|TIKA_CONTENT
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

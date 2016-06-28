@@ -1322,13 +1322,6 @@ name|hasEntry
 argument_list|(
 literal|"\u0001CompObj"
 argument_list|)
-operator|&&
-name|root
-operator|.
-name|hasEntry
-argument_list|(
-literal|"\u0003ObjInfo"
-argument_list|)
 condition|)
 block|{
 comment|// TIKA-704: OLE 2.0 embedded non-Office document?
