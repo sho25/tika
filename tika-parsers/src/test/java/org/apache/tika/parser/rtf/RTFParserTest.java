@@ -2793,24 +2793,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|oneOff
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|debug
-argument_list|(
-name|getRecursiveJson
-argument_list|(
-literal|"testRTFEmbeddedFiles.rtf"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|//TIKA-1010 test regular (not "embedded") images/picts
 annotation|@
 name|Test
