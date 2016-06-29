@@ -1325,8 +1325,9 @@ argument_list|)
 condition|)
 block|{
 comment|// TIKA-704: OLE 2.0 embedded non-Office document?
-comment|//TODO: original file paths can be stored underneath root
-comment|//figure out how to extract that info for: TikaCoreProperties.ORIGINAL_RESOURCE_NAME
+comment|//TODO: figure out if the equivalent of OLE 1.0's
+comment|//getCommand() and getFileName() exist for OLE 2.0 to populate
+comment|//TikaCoreProperties.ORIGINAL_RESOURCE_NAME
 name|stream
 operator|=
 name|TikaInputStream
@@ -1412,6 +1413,56 @@ argument_list|,
 name|ole
 operator|.
 name|getLabel
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|ole
+operator|.
+name|getCommand
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|metadata
+operator|.
+name|add
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|ORIGINAL_RESOURCE_NAME
+argument_list|,
+name|ole
+operator|.
+name|getCommand
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|ole
+operator|.
+name|getFileName
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|metadata
+operator|.
+name|add
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|ORIGINAL_RESOURCE_NAME
+argument_list|,
+name|ole
+operator|.
+name|getFileName
 argument_list|()
 argument_list|)
 expr_stmt|;
