@@ -2614,7 +2614,7 @@ name|Metadata
 argument_list|>
 name|metadataList
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testExcel_embeddedPDF.xls"
 argument_list|)

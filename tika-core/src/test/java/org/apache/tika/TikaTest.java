@@ -979,7 +979,7 @@ name|List
 argument_list|<
 name|Metadata
 argument_list|>
-name|getRecursiveJson
+name|getRecursiveMetadata
 parameter_list|(
 name|String
 name|filePath
@@ -988,7 +988,7 @@ throws|throws
 name|Exception
 block|{
 return|return
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 name|filePath
 argument_list|,
@@ -1003,7 +1003,7 @@ name|List
 argument_list|<
 name|Metadata
 argument_list|>
-name|getRecursiveJson
+name|getRecursiveMetadata
 parameter_list|(
 name|String
 name|filePath

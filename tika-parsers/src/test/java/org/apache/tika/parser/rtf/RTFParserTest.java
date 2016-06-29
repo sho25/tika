@@ -2665,7 +2665,7 @@ name|Metadata
 argument_list|>
 name|metadataList
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testRTFEmbeddedFiles.rtf"
 argument_list|)

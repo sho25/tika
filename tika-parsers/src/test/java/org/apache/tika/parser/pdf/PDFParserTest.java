@@ -4637,7 +4637,7 @@ name|Metadata
 argument_list|>
 name|metadatas
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_childAttachments.pdf"
 argument_list|,
@@ -4772,7 +4772,7 @@ literal|0
 expr_stmt|;
 name|metadatas
 operator|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_childAttachments.pdf"
 argument_list|,
@@ -4881,7 +4881,7 @@ name|Metadata
 argument_list|>
 name|metadatas
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_childAttachments.pdf"
 argument_list|)
@@ -5063,7 +5063,7 @@ literal|0
 expr_stmt|;
 name|metadatas
 operator|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_childAttachments.pdf"
 argument_list|,
@@ -5173,7 +5173,7 @@ name|Metadata
 argument_list|>
 name|metadatas
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_multiFormatEmbFiles.pdf"
 argument_list|)
@@ -5233,7 +5233,7 @@ name|Metadata
 argument_list|>
 name|metadatas
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_multiFormatEmbFiles.pdf"
 argument_list|)
@@ -6824,7 +6824,7 @@ name|Metadata
 argument_list|>
 name|metadataList
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDF_childAttachments.pdf"
 argument_list|,
@@ -7077,7 +7077,7 @@ name|assertEquals
 argument_list|(
 literal|4
 argument_list|,
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPDFEmbeddingAndEmbedded.docx"
 argument_list|,

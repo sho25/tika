@@ -6808,7 +6808,7 @@ name|Metadata
 argument_list|>
 name|metadataList
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testPPT_EmbeddedPDF.pptx"
 argument_list|)
@@ -6877,7 +6877,7 @@ name|Metadata
 argument_list|>
 name|metadataList
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testExcel_embeddedPDF.xlsx"
 argument_list|)
@@ -6919,7 +6919,7 @@ block|{
 name|Metadata
 name|embed1_zip_metadata
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"test_recursive_embedded.docx"
 argument_list|)
