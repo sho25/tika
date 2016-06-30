@@ -1852,7 +1852,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|isEnableProcessing
+name|isEnableImageProcessing
 argument_list|()
 operator|==
 literal|1

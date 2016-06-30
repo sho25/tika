@@ -151,7 +151,7 @@ decl_stmt|;
 comment|// enable image processing (optional)
 specifier|private
 name|int
-name|enableProcessing
+name|enableImageProcessing
 init|=
 literal|0
 decl_stmt|;
@@ -390,15 +390,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// set parameters for ImageMagick
-name|setEnableProcessing
+name|setEnableImageProcessing
 argument_list|(
 name|getProp
 argument_list|(
 name|props
 argument_list|,
-literal|"enableProcessing"
+literal|"enableImageProcessing"
 argument_list|,
-name|isEnableProcessing
+name|isEnableImageProcessing
 argument_list|()
 argument_list|)
 argument_list|)
@@ -750,30 +750,30 @@ return|return
 name|timeout
 return|;
 block|}
-comment|/** @see #setEnableProcessing(boolean) */
+comment|/** @see #setEnableImageProcessing(boolean) */
 specifier|public
 name|int
-name|isEnableProcessing
+name|isEnableImageProcessing
 parameter_list|()
 block|{
 return|return
-name|enableProcessing
+name|enableImageProcessing
 return|;
 block|}
 comment|/**  	 * Set the value to true if processing is to be enabled. 	 * Default value is false. 	 */
 specifier|public
 name|void
-name|setEnableProcessing
+name|setEnableImageProcessing
 parameter_list|(
 name|int
-name|enableProcessing
+name|enableImageProcessing
 parameter_list|)
 block|{
 name|this
 operator|.
-name|enableProcessing
+name|enableImageProcessing
 operator|=
-name|enableProcessing
+name|enableImageProcessing
 expr_stmt|;
 block|}
 comment|/** 	 * @return the density 	 */
