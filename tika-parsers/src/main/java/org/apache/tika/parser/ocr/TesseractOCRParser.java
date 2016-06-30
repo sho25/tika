@@ -974,7 +974,7 @@ return|return
 name|hasTesseract
 return|;
 block|}
-specifier|public
+specifier|private
 name|boolean
 name|hasImageMagick
 parameter_list|(
@@ -1046,7 +1046,7 @@ return|return
 name|hasImageMagick
 return|;
 block|}
-specifier|public
+specifier|private
 name|boolean
 name|hasPython
 parameter_list|()
@@ -1503,7 +1503,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method is used to process the image to an OCR-friendly format.      * @param streamingObject input image to be processed      * @param config TesseractOCRconfig class to get ImageMagick properties      * @throws IOException      * @throws TikaException      */
+comment|/**      * This method is used to process the image to an OCR-friendly format.      * @param streamingObject input image to be processed      * @param config TesseractOCRconfig class to get ImageMagick properties      * @throws IOException if an input error occurred      * @throws TikaException if an exception timed out      */
 specifier|private
 name|void
 name|processImage

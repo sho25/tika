@@ -740,7 +740,7 @@ operator|=
 name|timeout
 expr_stmt|;
 block|}
-comment|/** @see #setTimeout(int timeout)*/
+comment|/** @see #setTimeout(int timeout) 	 * @return timeout value for Tesseract */
 specifier|public
 name|int
 name|getTimeout
@@ -750,7 +750,7 @@ return|return
 name|timeout
 return|;
 block|}
-comment|/** @see #setEnableImageProcessing(boolean) */
+comment|/** @see #setEnableImageProcessing(boolean) 	 * @return image processing is enabled or not */
 specifier|public
 name|int
 name|isEnableImageProcessing
@@ -786,7 +786,7 @@ return|return
 name|density
 return|;
 block|}
-comment|/** 	 * @param density the density to set 	 * Default value is 300. 	 */
+comment|/** 	 * @param density the density to set. Valid range of values is 150-1200. 	 * Default value is 300. 	 */
 specifier|public
 name|void
 name|setDensity
@@ -810,7 +810,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid density value"
+literal|"Invalid density value. Valid range of values is 150-1200."
 argument_list|)
 throw|;
 block|}
@@ -831,7 +831,7 @@ return|return
 name|depth
 return|;
 block|}
-comment|/** 	 * @param depth the depth to set 	 * Default value is 4. 	 */
+comment|/** 	 * @param depth the depth to set. Valid values are 2, 4, 8, 16, 32, 64, 256, 4096. 	 * Default value is 4. 	 */
 specifier|public
 name|void
 name|setDepth
@@ -902,7 +902,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid depth value"
+literal|"Invalid depth value. Valid values are 2, 4, 8, 16, 32, 64, 256, 4096."
 argument_list|)
 throw|;
 block|}
@@ -949,7 +949,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid colorspace value"
+literal|"Colorspace value cannot be null."
 argument_list|)
 throw|;
 block|}
@@ -964,7 +964,7 @@ return|return
 name|filter
 return|;
 block|}
-comment|/** 	 * @param filter the filter to set 	 * Default value is triangle. 	 */
+comment|/** 	 * @param filter the filter to set. Valid values are point, hermite, cubic, box, gaussian, catrom, triangle, quadratic and mitchell. 	 * Default value is triangle. 	 */
 specifier|public
 name|void
 name|setFilter
@@ -987,7 +987,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid filter value"
+literal|"Filter value cannot be null. Valid values are point, hermite, "
+operator|+
+literal|"cubic, box, gaussian, catrom, triangle, quadratic and mitchell."
 argument_list|)
 throw|;
 block|}
@@ -1058,7 +1060,9 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid filter value"
+literal|"Invalid filter value. Valid values are point, hermite, "
+operator|+
+literal|"cubic, box, gaussian, catrom, triangle, quadratic and mitchell."
 argument_list|)
 throw|;
 block|}
@@ -1072,7 +1076,7 @@ return|return
 name|resize
 return|;
 block|}
-comment|/** 	 * @param resize the resize to set 	 * Default value is 900. 	 */
+comment|/** 	 * @param resize the resize to set. Valid range of values is 100-900. 	 * Default value is 900. 	 */
 specifier|public
 name|void
 name|setResize
@@ -1118,11 +1122,11 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid resize value"
+literal|"Invalid resize value. Valid range of values is 100-900."
 argument_list|)
 throw|;
 block|}
-comment|/** @see #setImageMagickPath(String ImageMagickPath)*/
+comment|/** @see #setImageMagickPath(String ImageMagickPath) 	 * @return path to ImageMagick file. */
 specifier|public
 name|String
 name|getImageMagickPath
@@ -1132,7 +1136,7 @@ return|return
 name|ImageMagickPath
 return|;
 block|}
-comment|/** 	 * Set the path to the ImageMagick executable, needed if it is not on system path. 	 */
+comment|/** 	 * Set the path to the ImageMagick executable, needed if it is not on system path. 	 * @param path to ImageMagick file. 	 */
 specifier|public
 name|void
 name|setImageMagickPath
