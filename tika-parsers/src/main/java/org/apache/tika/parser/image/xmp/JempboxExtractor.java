@@ -290,6 +290,14 @@ specifier|public
 class|class
 name|JempboxExtractor
 block|{
+specifier|private
+specifier|static
+specifier|volatile
+name|int
+name|MAX_EVENT_HISTORY_IN_XMPMM
+init|=
+literal|1024
+decl_stmt|;
 comment|// The XMP spec says it must be unicode, but for most file formats it specifies "must be encoded in UTF-8"
 specifier|private
 specifier|static
@@ -855,6 +863,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|int
+name|eventsAdded
+init|=
+literal|0
+decl_stmt|;
 for|for
 control|(
 name|ResourceEvent
@@ -866,6 +879,15 @@ name|getHistory
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|eventsAdded
+operator|>=
+name|MAX_EVENT_HISTORY_IN_XMPMM
+condition|)
+block|{
+break|break;
+block|}
 name|String
 name|instanceId
 init|=
@@ -1034,6 +1056,9 @@ argument_list|,
 name|softwareAgent
 argument_list|)
 expr_stmt|;
+name|eventsAdded
+operator|++
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -1071,6 +1096,32 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Maximum number of events to extract from the      * event history in the XMP Media Management (XMPMM) section.      * The extractor will silently stop adding events after it      * has reached this threshold.      *<p>      * The default is 1024.      */
+specifier|public
+specifier|static
+name|void
+name|setMaxXMPMMHistory
+parameter_list|(
+name|int
+name|maxEvents
+parameter_list|)
+block|{
+name|MAX_EVENT_HISTORY_IN_XMPMM
+operator|=
+name|maxEvents
+expr_stmt|;
+block|}
+comment|/**      *      * @return maximum number of events to extract from the XMPMM history.      */
+specifier|public
+specifier|static
+name|int
+name|getMaxXMPMMHistory
+parameter_list|()
+block|{
+return|return
+name|MAX_EVENT_HISTORY_IN_XMPMM
+return|;
 block|}
 block|}
 end_class

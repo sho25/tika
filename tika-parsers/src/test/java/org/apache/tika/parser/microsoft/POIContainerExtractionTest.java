@@ -2846,7 +2846,7 @@ name|Metadata
 argument_list|>
 name|list
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testWORD_embeded.doc"
 argument_list|)
@@ -2944,7 +2944,7 @@ name|Metadata
 argument_list|>
 name|list
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testMSChart-govdocs-428996."
 operator|+

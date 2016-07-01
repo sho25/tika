@@ -2506,7 +2506,7 @@ name|Metadata
 argument_list|>
 name|list
 init|=
-name|getRecursiveJson
+name|getRecursiveMetadata
 argument_list|(
 literal|"testMSChart-govdocs-428996."
 operator|+

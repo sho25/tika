@@ -7237,6 +7237,11 @@ specifier|final
 name|ServerSocket
 name|server
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|port
+decl_stmt|;
 specifier|public
 name|TikaServer
 parameter_list|(
@@ -7261,6 +7266,12 @@ argument_list|(
 name|port
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|port
+operator|=
+name|port
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -7269,6 +7280,53 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Successfully started tika-app's server on port: "
+operator|+
+name|port
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"WARNING: The server option in tika-app is deprecated and will be removed "
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"by Tika 2.0 if not shortly after Tika 1.14."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Please migrate to the JAX-RS tika-server package."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"See https://wiki.apache.org/tika/TikaJAXRS for usage."
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 try|try

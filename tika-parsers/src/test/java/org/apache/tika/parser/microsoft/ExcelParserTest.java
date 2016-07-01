@@ -21,34 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertNotContained
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -97,7 +69,29 @@ name|java
 operator|.
 name|util
 operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -265,6 +259,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|RecursiveParserWrapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|microsoft
 operator|.
 name|ooxml
@@ -313,6 +321,8 @@ begin_class
 specifier|public
 class|class
 name|ExcelParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -2541,6 +2551,93 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHyperlinksInXLS
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEXCEL_hyperlinks.xls"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+comment|//external url
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//mail url
+name|assertContains
+argument_list|(
+literal|"<a href=\"mailto:user@tika.apache.org?subject=help\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//external linked file
+name|assertContains
+argument_list|(
+literal|"<a href=\"linked_file.txt.htm\">"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//TODO: not extracting these yet
+comment|//link on textbox
+comment|//        assertContains("<a href=\"http://tika.apache.org/1.12/gettingstarted.html\">", xml);
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testEmbeddedPDF
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|List
+argument_list|<
+name|Metadata
+argument_list|>
+name|metadataList
+init|=
+name|getRecursiveMetadata
+argument_list|(
+literal|"testExcel_embeddedPDF.xls"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Hello World!"
+argument_list|,
+name|metadataList
+operator|.
+name|get
+argument_list|(
+literal|2
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|RecursiveParserWrapper
+operator|.
+name|TIKA_CONTENT
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
