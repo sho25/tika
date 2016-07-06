@@ -953,7 +953,7 @@ argument_list|)
 expr_stmt|;
 name|config
 operator|.
-name|setDensity
+name|setResize
 argument_list|(
 literal|1000
 argument_list|)
