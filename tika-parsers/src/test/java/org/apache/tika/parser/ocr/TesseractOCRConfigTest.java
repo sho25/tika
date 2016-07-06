@@ -23,6 +23,20 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|lang
+operator|.
+name|SystemUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|TikaTest
@@ -484,6 +498,13 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|SystemUtils
+operator|.
+name|IS_OS_UNIX
+condition|)
+block|{
 name|assertEquals
 argument_list|(
 literal|"Invalid overridden tesseractPath value"
@@ -516,6 +537,19 @@ name|getTessdataPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid overridden ImageMagickPath value"
+argument_list|,
+literal|"/usr/local/bin/"
+argument_list|,
+name|config
+operator|.
+name|getImageMagickPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|assertEquals
 argument_list|(
 literal|"Invalid overridden language value"
@@ -573,18 +607,6 @@ argument_list|,
 name|config
 operator|.
 name|getTimeout
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Invalid overridden ImageMagickPath value"
-argument_list|,
-literal|"/usr/local/bin/"
-argument_list|,
-name|config
-operator|.
-name|getImageMagickPath
 argument_list|()
 argument_list|)
 expr_stmt|;
