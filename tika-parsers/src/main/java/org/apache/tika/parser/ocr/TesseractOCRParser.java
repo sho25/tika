@@ -1073,6 +1073,8 @@ name|proc
 operator|.
 name|getInputStream
 argument_list|()
+argument_list|,
+literal|"UTF-8"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1633,7 +1635,9 @@ operator|=
 name|outputStream
 operator|.
 name|toString
-argument_list|()
+argument_list|(
+literal|"UTF-8"
+argument_list|)
 operator|.
 name|trim
 argument_list|()

@@ -1098,10 +1098,8 @@ name|getImageMagickProg
 argument_list|()
 block|}
 decl_stmt|;
-name|assertEquals
+name|assumeTrue
 argument_list|(
-literal|true
-argument_list|,
 name|ExternalParser
 operator|.
 name|check
