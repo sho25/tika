@@ -6968,6 +6968,59 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testBigIntegersWGeneralFormat
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-2025
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEXCEL_big_numbers.xlsx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"123456789012345"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//15 digit number
+name|assertContains
+argument_list|(
+literal|"123456789012346"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//15 digit formula
+name|assertContains
+argument_list|(
+literal|"1.23456789012345E+15"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//16 digit number is treated as scientific notation
+name|assertContains
+argument_list|(
+literal|"1.23456789012345E+15"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//16 digit formula, ditto
+block|}
 block|}
 end_class
 
