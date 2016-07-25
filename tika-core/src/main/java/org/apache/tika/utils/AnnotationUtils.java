@@ -758,63 +758,7 @@ comment|//FIXME: SLF4j is not showing up for import, fix it and send this to LOG
 comment|//LOG.debug("Param not supplied, field is not mandatory");
 block|}
 block|}
-comment|//now test that params doesn't contain a field
-comment|//not allowed by this object
-for|for
-control|(
-name|String
-name|fieldName
-range|:
-name|params
-operator|.
-name|keySet
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|validFieldNames
-operator|.
-name|contains
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-block|{
-name|String
-name|msg
-init|=
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"No field '%s' exists for %s"
-argument_list|,
-name|fieldName
-argument_list|,
-name|bean
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-decl_stmt|;
-throw|throw
-operator|new
-name|TikaConfigException
-argument_list|(
-name|msg
-argument_list|)
-throw|;
-block|}
-block|}
+comment|/*         //now test that params doesn't contain a field         //not allowed by this object         for (String fieldName : params.keySet()) {             if (! validFieldNames.contains(fieldName)) {                 String msg = String.format(Locale.ROOT,                         "No field '%s' exists for %s",                         fieldName, bean.getClass().getName());                 throw new TikaConfigException(msg);             }         }         */
 block|}
 block|}
 end_class

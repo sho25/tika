@@ -3217,6 +3217,15 @@ name|element
 argument_list|)
 decl_stmt|;
 comment|//Assigning the params to bean fields/setters
+name|AnnotationUtils
+operator|.
+name|assignFieldParams
+argument_list|(
+name|loaded
+argument_list|,
+name|params
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|loaded
@@ -3233,18 +3242,6 @@ operator|)
 operator|.
 name|initialize
 argument_list|(
-name|params
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|AnnotationUtils
-operator|.
-name|assignFieldParams
-argument_list|(
-name|loaded
-argument_list|,
 name|params
 argument_list|)
 expr_stmt|;

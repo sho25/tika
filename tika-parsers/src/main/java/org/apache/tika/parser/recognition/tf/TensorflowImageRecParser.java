@@ -346,7 +346,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is an implementation of {@link ObjectRecogniser} powered by<a href="http://www.tensorflow.org"> Tensorflow<a/>  *  convolutional neural network (CNN). This implementation binds to Python API using {@link ExternalParser}.  *<br/>  * // NOTE: This is a proof of concept for an efficient implementation using JNI binding to Tensorflow's C++ api.  *  *<br/>  *<p>  *<b>Environment Setup:</b>  *<ol>  *<li> Python must be available</li>  *<li> Tensorflow must be available for import by the python script.<a href="https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html#pip-installation"> Setup Instructions here</a></li>  *<li> All dependencies of tensor flow (such as numpy) must also be available.<a href="https://www.tensorflow.org/versions/r0.9/tutorials/image_recognition/index.html#image-recognition">Follow the image recognition guide and make sure it works</a></li>  *</ol>  *</p>  * @since Apache Tika 1.14  */
+comment|/**  * This is an implementation of {@link ObjectRecogniser} powered by<a href="http://www.tensorflow.org"> Tensorflow<a/>  *  convolutional neural network (CNN). This implementation binds to Python API using {@link ExternalParser}.  *<br/>  * // NOTE: This is a proof of concept for an efficient implementation using JNI binding to Tensorflow's C++ api.  *  *<br/>  *<p>  *<b>Environment Setup:</b>  *<ol>  *<li> Python must be available</li>  *<li> Tensorflow must be available for import by the python script.<a href="https://www.tensorflow.org/versions/r0.9/get_started/os_setup.html#pip-installation"> Setup Instructions here</a></li>  *<li> All dependencies of tensor flow (such as numpy) must also be available.<a href="https://www.tensorflow.org/versions/r0.9/tutorials/image_recognition/index.html#image-recognition">Follow the image recognition guide and make sure it works</a></li>  *</ol>  *</p>  *  @see TensorflowGrpcRecogniser  * @since Apache Tika 1.14  */
 end_comment
 
 begin_class
@@ -381,7 +381,7 @@ name|SCRIPT_FILE_NAME
 init|=
 literal|"classify_image.py"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|Set

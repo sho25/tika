@@ -236,11 +236,15 @@ block|{
 name|Class
 name|loadedClass
 init|=
-name|loader
+name|Class
 operator|.
-name|loadClass
+name|forName
 argument_list|(
 name|className
+argument_list|,
+literal|true
+argument_list|,
+name|loader
 argument_list|)
 decl_stmt|;
 name|Class
