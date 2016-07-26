@@ -3778,6 +3778,14 @@ argument_list|,
 literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
+comment|// MBOX
+name|assertTypeDetection
+argument_list|(
+literal|"headers.mbox"
+argument_list|,
+literal|"application/mbox"
+argument_list|)
+expr_stmt|;
 comment|// Thunderbird - doesn't currently work by name
 name|assertTypeByNameAndData
 argument_list|(
