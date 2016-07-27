@@ -1242,6 +1242,8 @@ parameter_list|,
 name|int
 name|to
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 name|checkCopyOfRangeParams
 argument_list|(
@@ -1276,6 +1278,23 @@ operator|+
 name|to
 argument_list|)
 throw|;
+if|if
+condition|(
+name|to
+operator|>
+name|original
+operator|.
+name|length
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"can't copy beyond array length"
+argument_list|)
+throw|;
+block|}
 name|byte
 index|[]
 name|copy

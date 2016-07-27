@@ -20,6 +20,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -114,20 +128,6 @@ operator|.
 name|exception
 operator|.
 name|ChmParsingException
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -374,6 +374,8 @@ parameter_list|,
 name|ChmItspHeader
 name|chmItspHeader
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 try|try
 block|{
@@ -525,7 +527,7 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|ChmParsingException
 name|e
 parameter_list|)
 block|{
@@ -701,6 +703,8 @@ name|dir_chunk
 parameter_list|)
 throws|throws
 name|ChmParsingException
+throws|,
+name|TikaException
 block|{
 comment|//        try {
 if|if
