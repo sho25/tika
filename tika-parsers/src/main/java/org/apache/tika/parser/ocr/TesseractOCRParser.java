@@ -1035,6 +1035,7 @@ name|hasImageMagick
 return|;
 block|}
 specifier|private
+specifier|static
 name|boolean
 name|hasPython
 parameter_list|()
@@ -1100,13 +1101,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{  		}
 return|return
 name|hasPython
 return|;
@@ -1648,13 +1643,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{	              }
 block|}
 comment|// process the image - parameter values can be set in TesseractOCRConfig.properties
 name|String
@@ -1737,13 +1726,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+block|{	  		}
 name|tmp
 operator|.
 name|close
