@@ -613,7 +613,95 @@ return|return
 name|compareResult
 return|;
 block|}
-comment|//   the recognizer during the detect operation.
+comment|/**      * compare this CharsetMatch to another based on confidence value      * @param o the CharsetMatch object to compare against      * @return true if equal      */
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+if|if
+condition|(
+name|o
+operator|instanceof
+name|CharsetMatch
+condition|)
+block|{
+name|CharsetMatch
+name|that
+init|=
+operator|(
+name|CharsetMatch
+operator|)
+name|o
+decl_stmt|;
+return|return
+operator|(
+name|this
+operator|.
+name|fConfidence
+operator|==
+name|that
+operator|.
+name|fConfidence
+operator|)
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * generates a hashCode based on the confidence value      * @return the hashCode      */
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|fConfidence
+return|;
+block|}
+comment|//   gave us a byte array.
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+name|String
+name|s
+init|=
+literal|"Match of "
+operator|+
+name|fCharsetName
+decl_stmt|;
+if|if
+condition|(
+name|getLanguage
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|s
+operator|+=
+literal|" in "
+operator|+
+name|getLanguage
+argument_list|()
+expr_stmt|;
+block|}
+name|s
+operator|+=
+literal|" with confidence "
+operator|+
+name|fConfidence
+expr_stmt|;
+return|return
+name|s
+return|;
+block|}
 block|}
 end_class
 
