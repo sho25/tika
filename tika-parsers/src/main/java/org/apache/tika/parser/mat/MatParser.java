@@ -280,6 +280,17 @@ name|MatParser
 extends|extends
 name|AbstractParser
 block|{
+static|static
+block|{
+comment|//make sure that this is set to false
+name|MatFileReader
+operator|.
+name|setAllowObjectDeserialization
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 specifier|static
 specifier|final
