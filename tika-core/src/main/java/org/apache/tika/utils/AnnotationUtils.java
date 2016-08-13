@@ -758,7 +758,6 @@ comment|//FIXME: SLF4j is not showing up for import, fix it and send this to LOG
 comment|//LOG.debug("Param not supplied, field is not mandatory");
 block|}
 block|}
-comment|/*         //now test that params doesn't contain a field         //not allowed by this object         for (String fieldName : params.keySet()) {             if (! validFieldNames.contains(fieldName)) {                 String msg = String.format(Locale.ROOT,                         "No field '%s' exists for %s",                         fieldName, bean.getClass().getName());                 throw new TikaConfigException(msg);             }         }         */
 block|}
 block|}
 end_class
