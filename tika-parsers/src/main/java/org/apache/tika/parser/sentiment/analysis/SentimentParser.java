@@ -321,17 +321,7 @@ comment|/**    * Constructor    */
 specifier|public
 name|SentimentParser
 parameter_list|()
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Create sentiment parser"
-argument_list|)
-expr_stmt|;
-block|}
+block|{   }
 comment|/**    * Initialises a sentiment parser    *    * @param url    *          the url to the model    */
 specifier|public
 name|void
