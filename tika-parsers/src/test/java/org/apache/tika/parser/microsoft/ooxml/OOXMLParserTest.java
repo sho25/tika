@@ -2231,14 +2231,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Anchor links
-name|assertTrue
-argument_list|(
-name|xml
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<a href=\"#OnMainHeading\">The Main Heading Bookmark</a>"
-argument_list|)
+argument_list|,
+name|xml
 argument_list|)
 expr_stmt|;
 comment|// Paragraphs with other styles
@@ -7020,6 +7017,52 @@ name|xml
 argument_list|)
 expr_stmt|;
 comment|//16 digit formula, ditto
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testBoldHyperlink
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1255
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_boldHyperlink.docx"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|xml
+operator|=
+name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\">hyper<b>link</b></a>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\"><b>hyper</b> link</a>; bold"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
