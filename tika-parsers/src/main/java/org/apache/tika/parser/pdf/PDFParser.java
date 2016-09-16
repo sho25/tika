@@ -731,13 +731,6 @@ name|pdfDocument
 init|=
 literal|null
 decl_stmt|;
-name|TemporaryResources
-name|tmp
-init|=
-operator|new
-name|TemporaryResources
-argument_list|()
-decl_stmt|;
 name|String
 name|password
 init|=
