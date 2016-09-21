@@ -49,20 +49,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -100,6 +86,18 @@ operator|.
 name|io
 operator|.
 name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -227,6 +225,8 @@ begin_class
 specifier|public
 class|class
 name|TXTParserTest
+extends|extends
+name|TikaTest
 block|{
 specifier|private
 name|Parser
@@ -1096,7 +1096,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain; charset=ISO-8859-15"
+literal|"text/html; charset=ISO-8859-15"
 argument_list|,
 name|metadata
 operator|.
@@ -1568,8 +1568,43 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"text/plain; charset=UTF-8"
+literal|"application/binary; charset=UTF-8"
 argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|//TIKA-2047
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testSubclassingMimeTypesRemain
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testVCalendar.vcs"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"text/x-vcalendar; charset=ISO-8859-1"
+argument_list|,
+name|r
+operator|.
 name|metadata
 operator|.
 name|get
