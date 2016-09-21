@@ -1995,6 +1995,8 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+try|try
+init|(
 name|NPOIFSFileSystem
 name|nfs
 init|=
@@ -2006,7 +2008,8 @@ operator|.
 name|getStream
 argument_list|()
 argument_list|)
-decl_stmt|;
+init|)
+block|{
 name|handleEmbeddedOfficeDoc
 argument_list|(
 name|nfs
@@ -2017,6 +2020,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|formatCurrency

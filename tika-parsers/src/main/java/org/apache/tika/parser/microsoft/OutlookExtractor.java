@@ -18,6 +18,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -594,20 +608,6 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -1699,6 +1699,33 @@ argument_list|,
 name|e
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|msg
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|msg
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|//swallow
+block|}
+block|}
 block|}
 block|}
 specifier|private
