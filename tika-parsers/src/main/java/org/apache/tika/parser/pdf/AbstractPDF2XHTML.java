@@ -1763,7 +1763,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|getOCRStrategy
+name|getOcrStrategy
 argument_list|()
 operator|.
 name|equals
@@ -1847,7 +1847,7 @@ literal|2.0f
 argument_list|,
 name|config
 operator|.
-name|getOCRImageType
+name|getOcrImageType
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1881,14 +1881,14 @@ name|image
 argument_list|,
 name|config
 operator|.
-name|getOCRImageFormatName
+name|getOcrImageFormatName
 argument_list|()
 argument_list|,
 name|os
 argument_list|,
 name|config
 operator|.
-name|getOCRDPI
+name|getOcrDPI
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2122,6 +2122,9 @@ operator|instanceof
 name|PDActionURI
 condition|)
 block|{
+comment|//can't currently associate link to text.
+comment|//for now, extract link and repeat the link as if it
+comment|//were the visible text
 name|PDActionURI
 name|uri
 init|=
@@ -2143,6 +2146,16 @@ condition|(
 name|link
 operator|!=
 literal|null
+operator|&&
+name|link
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
 condition|)
 block|{
 name|xhtml
@@ -2164,6 +2177,13 @@ literal|"a"
 argument_list|,
 literal|"href"
 argument_list|,
+name|link
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|characters
+argument_list|(
 name|link
 argument_list|)
 expr_stmt|;
@@ -2365,7 +2385,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|getOCRStrategy
+name|getOcrStrategy
 argument_list|()
 operator|.
 name|equals

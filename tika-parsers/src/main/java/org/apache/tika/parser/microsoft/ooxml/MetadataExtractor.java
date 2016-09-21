@@ -289,6 +289,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|xmlbeans
+operator|.
+name|impl
+operator|.
+name|values
+operator|.
+name|XmlValueOutOfRangeException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|openxmlformats
 operator|.
 name|schemas
@@ -736,6 +752,33 @@ operator|.
 name|getUnderlyingProperties
 argument_list|()
 decl_stmt|;
+comment|//TIKA-2055, some ooxml files can include unsigned int/long values
+comment|//which cause this exception.
+comment|//For now, catch it and record as '0' because
+comment|//Word converts to '0' on save.
+name|int
+name|totalTime
+init|=
+literal|0
+decl_stmt|;
+try|try
+block|{
+name|totalTime
+operator|=
+name|propsHolder
+operator|.
+name|getTotalTime
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|XmlValueOutOfRangeException
+name|e
+parameter_list|)
+block|{
+comment|//swallow for now
+block|}
 name|addProperty
 argument_list|(
 name|metadata
@@ -858,10 +901,7 @@ name|OfficeOpenXMLExtended
 operator|.
 name|TOTAL_TIME
 argument_list|,
-name|propsHolder
-operator|.
-name|getTotalTime
-argument_list|()
+name|totalTime
 argument_list|)
 expr_stmt|;
 if|if
@@ -1108,10 +1148,7 @@ name|Metadata
 operator|.
 name|TOTAL_TIME
 argument_list|,
-name|propsHolder
-operator|.
-name|getTotalTime
-argument_list|()
+name|totalTime
 argument_list|)
 expr_stmt|;
 name|addProperty

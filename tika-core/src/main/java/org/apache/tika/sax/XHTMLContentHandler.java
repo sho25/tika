@@ -202,6 +202,8 @@ argument_list|,
 literal|"base"
 argument_list|,
 literal|"meta"
+argument_list|,
+literal|"script"
 argument_list|)
 decl_stmt|;
 comment|/**      * The elements that are automatically emitted by lazyStartHead, so      * skip them if they get sent to startElement/endElement by mistake.      */
@@ -311,6 +313,10 @@ argument_list|,
 literal|"select"
 argument_list|,
 literal|"option"
+argument_list|,
+literal|"link"
+argument_list|,
+literal|"script"
 argument_list|)
 decl_stmt|;
 specifier|private

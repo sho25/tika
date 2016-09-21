@@ -520,6 +520,13 @@ argument_list|,
 name|txt
 argument_list|)
 expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"test space"
+argument_list|,
+name|txt
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"testJPEG_EXIF.jpg"

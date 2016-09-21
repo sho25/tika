@@ -1,6 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * ******************************************************************************  * Copyright (C) 2005 - 2007, International Business Machines Corporation and  *  * others. All Rights Reserved.                                                *  * ******************************************************************************  */
+comment|// © 2016 and later: Unicode, Inc. and others.
+end_comment
+
+begin_comment
+comment|// License& terms of use: http://www.unicode.org/copyright.html#License
+end_comment
+
+begin_comment
+comment|/**  * ******************************************************************************  * Copyright (C) 2005 - 2014, International Business Machines Corporation and  *  * others. All Rights Reserved.                                                *  * ******************************************************************************  */
 end_comment
 
 begin_package
@@ -18,7 +26,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Charset recognizer for UTF-8  *  * @internal  */
+comment|/**  * Charset recognizer for UTF-8  */
 end_comment
 
 begin_class
@@ -36,7 +44,7 @@ literal|"UTF-8"
 return|;
 block|}
 comment|/* (non-Javadoc)      * @see com.ibm.icu.text.CharsetRecognizer#match(com.ibm.icu.text.CharsetDetector)      */
-name|int
+name|CharsetMatch
 name|match
 parameter_list|(
 name|CharsetDetector
@@ -219,19 +227,7 @@ block|{
 name|numInvalid
 operator|++
 expr_stmt|;
-if|if
-condition|(
-name|numInvalid
-operator|>
-literal|5
-condition|)
-block|{
-break|break;
-block|}
-name|trailBytes
-operator|=
-literal|0
-expr_stmt|;
+continue|continue;
 block|}
 comment|// Verify that we've got the right number of trail bytes in the sequence
 for|for
@@ -375,10 +371,12 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// Plain ASCII.
+comment|// Plain ASCII. Confidence must be> 10, it's more likely than UTF-16, which
+comment|//              accepts ASCII with confidence = 10.
+comment|// TODO: add plain ASCII as an explicitly detected type.
 name|confidence
 operator|=
-literal|10
+literal|15
 expr_stmt|;
 block|}
 elseif|else
@@ -399,6 +397,20 @@ expr_stmt|;
 block|}
 return|return
 name|confidence
+operator|==
+literal|0
+condition|?
+literal|null
+else|:
+operator|new
+name|CharsetMatch
+argument_list|(
+name|det
+argument_list|,
+name|this
+argument_list|,
+name|confidence
+argument_list|)
 return|;
 block|}
 block|}

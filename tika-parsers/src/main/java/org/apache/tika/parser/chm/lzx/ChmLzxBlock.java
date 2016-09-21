@@ -5221,6 +5221,8 @@ parameter_list|,
 name|int
 name|endOffset
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 return|return
 operator|(
@@ -5257,6 +5259,8 @@ parameter_list|(
 name|int
 name|start
 parameter_list|)
+throws|throws
+name|TikaException
 block|{
 return|return
 operator|(

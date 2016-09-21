@@ -122,7 +122,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tika parser interface.  */
+comment|/**  * Tika parser interface.  * @see ConfigurableParser for parsers which adopts to runtime params  */
 end_comment
 
 begin_interface

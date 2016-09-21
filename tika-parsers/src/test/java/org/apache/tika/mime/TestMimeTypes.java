@@ -3778,6 +3778,14 @@ argument_list|,
 literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
+comment|// MBOX
+name|assertTypeDetection
+argument_list|(
+literal|"headers.mbox"
+argument_list|,
+literal|"application/mbox"
+argument_list|)
+expr_stmt|;
 comment|// Thunderbird - doesn't currently work by name
 name|assertTypeByNameAndData
 argument_list|(
@@ -4615,6 +4623,40 @@ argument_list|(
 literal|"application/x-endnote-refer"
 argument_list|,
 literal|"testEndNoteImportFile.enw"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testStataDTA
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// Filename only gives base type
+name|assertTypeByName
+argument_list|(
+literal|"application/x-stata-dta"
+argument_list|,
+literal|"testStataDTA.dta"
+argument_list|)
+expr_stmt|;
+comment|// With data too, can get specific version
+name|assertTypeByData
+argument_list|(
+literal|"application/x-stata-dta; version=13"
+argument_list|,
+literal|"testStataDTA.dta"
+argument_list|)
+expr_stmt|;
+comment|// Name + data gets specific version as well
+name|assertType
+argument_list|(
+literal|"application/x-stata-dta; version=13"
+argument_list|,
+literal|"testStataDTA.dta"
 argument_list|)
 expr_stmt|;
 block|}

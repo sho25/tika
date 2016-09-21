@@ -2145,7 +2145,7 @@ name|Exception
 block|{
 name|assertContains
 argument_list|(
-literal|"1. Introduzione<b></a></b></p>"
+literal|"1. Introduzione<b></b></a></p>"
 argument_list|,
 name|getXML
 argument_list|(
@@ -2876,6 +2876,52 @@ operator|.
 name|ORIGINAL_RESOURCE_NAME
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testBoldHyperlink
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-1255
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_boldHyperlink.doc"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|xml
+operator|=
+name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\">hyper<b>link</b></a>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<a href=\"http://tika.apache.org/\"><b>hyper</b> link</a>; bold"
+argument_list|,
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
