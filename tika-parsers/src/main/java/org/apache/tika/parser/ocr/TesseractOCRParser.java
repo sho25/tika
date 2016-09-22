@@ -1855,7 +1855,7 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-comment|// Tesseract appends .txt to output file name
+comment|// Tesseract appends the output type (.txt or .hocr) to output file name
 name|tmpTxtOutput
 operator|=
 operator|new
@@ -1866,7 +1866,12 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 operator|+
-literal|".txt"
+literal|"."
+operator|+
+name|config
+operator|.
+name|getOutputType
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -2046,6 +2051,11 @@ block|,
 name|config
 operator|.
 name|getPageSegMode
+argument_list|()
+block|,
+name|config
+operator|.
+name|getOutputType
 argument_list|()
 block|}
 decl_stmt|;

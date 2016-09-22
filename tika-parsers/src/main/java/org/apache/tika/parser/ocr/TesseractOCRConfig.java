@@ -148,6 +148,13 @@ name|timeout
 init|=
 literal|120
 decl_stmt|;
+comment|// The format of the ocr'ed output to be returned, txt or hocr.
+specifier|private
+name|String
+name|outputType
+init|=
+literal|"txt"
+decl_stmt|;
 comment|// enable image processing (optional)
 specifier|private
 name|int
@@ -385,6 +392,19 @@ argument_list|,
 literal|"timeout"
 argument_list|,
 name|getTimeout
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setOutputType
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+argument_list|,
+literal|"outputType"
+argument_list|,
+name|getOutputType
 argument_list|()
 argument_list|)
 argument_list|)
@@ -748,6 +768,32 @@ parameter_list|()
 block|{
 return|return
 name|timeout
+return|;
+block|}
+comment|/** 	 * Set output type from ocr process.  Default is "txt", but can be "hocr". 	 * Default value is 120s. 	 */
+specifier|public
+name|void
+name|setOutputType
+parameter_list|(
+name|String
+name|outputType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|outputType
+operator|=
+name|outputType
+expr_stmt|;
+block|}
+comment|/** @see #setOutputType(String outputType) */
+specifier|public
+name|String
+name|getOutputType
+parameter_list|()
+block|{
+return|return
+name|outputType
 return|;
 block|}
 comment|/** @see #setEnableImageProcessing(boolean) 	 * @return image processing is enabled or not */
