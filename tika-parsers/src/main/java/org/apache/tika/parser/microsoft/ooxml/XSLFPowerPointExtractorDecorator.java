@@ -1884,6 +1884,17 @@ throw|;
 block|}
 block|}
 block|}
+comment|//add full document to include macros
+name|parts
+operator|.
+name|add
+argument_list|(
+name|document
+operator|.
+name|getPackagePart
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 name|parts
 return|;

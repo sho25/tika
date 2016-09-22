@@ -29,7 +29,7 @@ specifier|public
 interface|interface
 name|TikaCoreProperties
 block|{
-comment|/**      * A file might contain different types of embedded documents.      * The most common is the ATTACHEMENT.      * An INLINE embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * Not all parsers have yet implemented this.       *      */
+comment|/**      * A file might contain different types of embedded documents.      * The most common is the ATTACHMENT.      *<p>      * An INLINE embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * A MACRO is code that is embedded in the document and is intended      * to be executable within the application that opens the document.  This      * includes traditional macros within Microsoft Office files and      * javascript within PDFActions.  This would not include, e.g., an      * .exe file embedded in a .zip file.      *<p>      * Not all parsers have yet implemented this.      *      */
 specifier|public
 enum|enum
 name|EmbeddedResourceType
@@ -37,6 +37,8 @@ block|{
 name|INLINE
 block|,
 name|ATTACHMENT
+block|,
+name|MACRO
 block|}
 empty_stmt|;
 comment|/**      * Use this to prefix metadata properties that store information      * about the parsing process.  Users should be able to distinguish      * between metadata that was contained within the document and      * metadata about the parsing process.      * In Tika 2.0 (or earlier?), let's change X-ParsedBy to X-TIKA-Parsed-By.      */

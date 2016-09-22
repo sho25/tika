@@ -2005,6 +2005,32 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|//add main document so that macros can be extracted
+comment|//by AbstractOOXMLExtractor
+for|for
+control|(
+name|PackagePart
+name|part
+range|:
+name|extractor
+operator|.
+name|getPackage
+argument_list|()
+operator|.
+name|getPartsByRelationshipType
+argument_list|(
+name|RELATION_OFFICE_DOCUMENT
+argument_list|)
+control|)
+block|{
+name|parts
+operator|.
+name|add
+argument_list|(
+name|part
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|parts
 return|;
