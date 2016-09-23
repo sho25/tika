@@ -97,6 +97,14 @@ init|=
 operator|-
 literal|4861942486845757891L
 decl_stmt|;
+specifier|public
+enum|enum
+name|OUTPUT_TYPE
+block|{
+name|TXT
+block|,
+name|HOCR
+block|}
 comment|// Path to tesseract installation folder, if not on system path.
 specifier|private
 name|String
@@ -150,10 +158,12 @@ literal|120
 decl_stmt|;
 comment|// The format of the ocr'ed output to be returned, txt or hocr.
 specifier|private
-name|String
+name|OUTPUT_TYPE
 name|outputType
 init|=
-literal|"txt"
+name|OUTPUT_TYPE
+operator|.
+name|TXT
 decl_stmt|;
 comment|// enable image processing (optional)
 specifier|private
@@ -396,19 +406,53 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|String
+name|outputTypeString
+init|=
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"outputType"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+literal|"txt"
+operator|.
+name|equals
+argument_list|(
+name|outputTypeString
+argument_list|)
+condition|)
+block|{
 name|setOutputType
 argument_list|(
-name|getProp
-argument_list|(
-name|props
-argument_list|,
-literal|"outputType"
-argument_list|,
-name|getOutputType
-argument_list|()
-argument_list|)
+name|OUTPUT_TYPE
+operator|.
+name|TXT
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+literal|"hocr"
+operator|.
+name|equals
+argument_list|(
+name|outputTypeString
+argument_list|)
+condition|)
+block|{
+name|setOutputType
+argument_list|(
+name|OUTPUT_TYPE
+operator|.
+name|HOCR
+argument_list|)
+expr_stmt|;
+block|}
 comment|// set parameters for ImageMagick
 name|setEnableImageProcessing
 argument_list|(
@@ -775,7 +819,7 @@ specifier|public
 name|void
 name|setOutputType
 parameter_list|(
-name|String
+name|OUTPUT_TYPE
 name|outputType
 parameter_list|)
 block|{
@@ -786,9 +830,9 @@ operator|=
 name|outputType
 expr_stmt|;
 block|}
-comment|/** @see #setOutputType(String outputType) */
+comment|/** @see #setOutputType(OUTPUT_TYPE outputType) */
 specifier|public
-name|String
+name|OUTPUT_TYPE
 name|getOutputType
 parameter_list|()
 block|{
@@ -796,7 +840,7 @@ return|return
 name|outputType
 return|;
 block|}
-comment|/** @see #setEnableImageProcessing(boolean) 	 * @return image processing is enabled or not */
+comment|/** @see #setEnableImageProcessing(int) 	 * @return image processing is enabled or not */
 specifier|public
 name|int
 name|isEnableImageProcessing
@@ -1182,7 +1226,7 @@ return|return
 name|ImageMagickPath
 return|;
 block|}
-comment|/** 	 * Set the path to the ImageMagick executable, needed if it is not on system path. 	 * @param path to ImageMagick file. 	 */
+comment|/** 	 * Set the path to the ImageMagick executable, needed if it is not on system path. 	 * @param ImageMagickPath to ImageMagick file. 	 */
 specifier|public
 name|void
 name|setImageMagickPath
