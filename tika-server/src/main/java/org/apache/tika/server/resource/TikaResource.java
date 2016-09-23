@@ -463,6 +463,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|Tika
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|config
 operator|.
 name|TikaConfig
@@ -795,7 +807,16 @@ specifier|final
 name|String
 name|GREETING
 init|=
-literal|"This is Tika Server. Please PUT\n"
+literal|"This is Tika Server ("
+operator|+
+operator|new
+name|Tika
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"). Please PUT\n"
 decl_stmt|;
 specifier|public
 specifier|static
