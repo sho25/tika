@@ -276,7 +276,14 @@ name|TikaInputStream
 operator|.
 name|get
 argument_list|(
+name|TikaResource
+operator|.
+name|getInputStream
+argument_list|(
 name|is
+argument_list|,
+name|httpHeaders
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|String

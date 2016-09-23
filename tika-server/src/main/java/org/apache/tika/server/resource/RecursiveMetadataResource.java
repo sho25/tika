@@ -19,16 +19,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|ws
@@ -166,6 +156,16 @@ operator|.
 name|core
 operator|.
 name|UriInfo
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
 import|;
 end_import
 
@@ -492,7 +492,14 @@ name|ok
 argument_list|(
 name|parseMetadata
 argument_list|(
+name|TikaResource
+operator|.
+name|getInputStream
+argument_list|(
 name|is
+argument_list|,
+name|httpHeaders
+argument_list|)
 argument_list|,
 name|httpHeaders
 operator|.
