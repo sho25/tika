@@ -846,7 +846,7 @@ name|options
 operator|.
 name|addOption
 argument_list|(
-literal|"enable-unsecure-features"
+literal|"enableUnsecureFeatures"
 argument_list|,
 literal|false
 argument_list|,
@@ -857,7 +857,7 @@ name|options
 operator|.
 name|addOption
 argument_list|(
-literal|"enable-fileUrl"
+literal|"enableFileUrl"
 argument_list|,
 literal|false
 argument_list|,
@@ -1333,7 +1333,7 @@ name|line
 operator|.
 name|hasOption
 argument_list|(
-literal|"enable-fileUrl"
+literal|"enableFileUrl"
 argument_list|)
 operator|&&
 operator|!
@@ -1341,7 +1341,7 @@ name|line
 operator|.
 name|hasOption
 argument_list|(
-literal|"enable-unsecure-features"
+literal|"enableUnsecureFeatures"
 argument_list|)
 condition|)
 block|{
@@ -1353,7 +1353,7 @@ name|println
 argument_list|(
 literal|"If you want to enable fileUrl, you must also acknowledge the security risks\n"
 operator|+
-literal|"by including --enable-unsecure-features.  See CVE-2015-3271."
+literal|"by including --enableUnsecureFeatures.  See CVE-2015-3271."
 argument_list|)
 expr_stmt|;
 name|System
@@ -1376,14 +1376,14 @@ name|line
 operator|.
 name|hasOption
 argument_list|(
-literal|"enable-fileUrl"
+literal|"enableFileUrl"
 argument_list|)
 operator|&&
 name|line
 operator|.
 name|hasOption
 argument_list|(
-literal|"enable-unsecure-features"
+literal|"enableUnsecureFeatures"
 argument_list|)
 condition|)
 block|{
