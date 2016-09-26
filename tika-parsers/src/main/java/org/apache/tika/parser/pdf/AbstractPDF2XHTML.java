@@ -1703,6 +1703,45 @@ name|isCatchIntermediateIOExceptions
 argument_list|()
 condition|)
 block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|SAXException
+operator|&&
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Your document contained more than"
+argument_list|)
+condition|)
+block|{
+comment|//TODO -- is there a cleaner way of checking for:
+comment|// WriteOutContentHandler.WriteLimitReachedException?
+throw|throw
+name|e
+throw|;
+block|}
 name|String
 name|msg
 init|=
