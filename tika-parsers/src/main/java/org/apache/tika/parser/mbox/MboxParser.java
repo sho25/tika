@@ -721,6 +721,15 @@ operator|.
 name|readLine
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|curLine
+operator|==
+literal|null
+condition|)
+block|{
+break|break;
+block|}
 name|ByteArrayOutputStream
 name|message
 init|=
