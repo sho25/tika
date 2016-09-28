@@ -1702,30 +1702,12 @@ throw|;
 block|}
 finally|finally
 block|{
-if|if
-condition|(
-name|msg
-operator|!=
-literal|null
-condition|)
-block|{
-try|try
-block|{
-name|msg
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|//swallow
-block|}
-block|}
+comment|//You'd think you'd want to call msg.close().
+comment|//Don't do that.  That closes down the file system.
+comment|//If an msg has multiple msg attachments, some of them
+comment|//can reside in the same file system.  After the first
+comment|//child is read, the fs is closed, and the other children
+comment|//get a java.nio.channels.ClosedChannelException
 block|}
 block|}
 specifier|private
