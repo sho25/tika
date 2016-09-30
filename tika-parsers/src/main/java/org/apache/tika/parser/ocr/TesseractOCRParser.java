@@ -1979,6 +1979,16 @@ name|config
 operator|.
 name|getOutputType
 argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|(
+name|Locale
+operator|.
+name|US
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
