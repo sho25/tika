@@ -208,13 +208,8 @@ name|fileResource
 operator|.
 name|getResourceId
 argument_list|()
-operator|+
-literal|" :: "
-operator|+
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}

@@ -310,12 +310,9 @@ name|logger
 operator|.
 name|info
 argument_list|(
-literal|"InterruptedException in FileCrawler: "
-operator|+
+literal|"InterruptedException in FileCrawler"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -330,11 +327,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Exception in FileResourceCrawler: "
-operator|+
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

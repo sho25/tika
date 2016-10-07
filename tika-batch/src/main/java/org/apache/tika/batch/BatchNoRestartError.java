@@ -52,6 +52,24 @@ name|message
 argument_list|)
 expr_stmt|;
 block|}
+specifier|public
+name|BatchNoRestartError
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|Throwable
+name|t
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|,
+name|t
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

@@ -16,6 +16,20 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -180,20 +194,6 @@ operator|.
 name|slf4j
 operator|.
 name|LoggerFactory
-import|;
-end_import
-
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
 import|;
 end_import
 
@@ -920,11 +920,8 @@ operator|.
 name|error
 argument_list|(
 literal|"Main loop execution exception: "
-operator|+
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1269,12 +1266,9 @@ name|logger
 operator|.
 name|error
 argument_list|(
-literal|"Execution exception trying to shutdown after shutdownNow:"
-operator|+
+literal|"Execution exception trying to shutdown after shutdownNow"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1288,12 +1282,9 @@ name|logger
 operator|.
 name|error
 argument_list|(
-literal|"Interrupted exception trying to shutdown after shutdownNow:"
-operator|+
+literal|"Interrupted exception trying to shutdown after shutdownNow"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
