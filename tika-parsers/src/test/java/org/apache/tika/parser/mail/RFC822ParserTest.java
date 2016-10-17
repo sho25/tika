@@ -2537,6 +2537,18 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"<juha.haaga@gmail.com>"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+literal|"Message:Raw-Header:Return-Path"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * TIKA-1222 When requested, ensure that the various attachments of      * the mail come through properly as embedded resources      */
 annotation|@

@@ -133,6 +133,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|regex
 operator|.
 name|Matcher
@@ -412,6 +422,23 @@ name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//ensure that "raw" header is correctly decoded
+name|assertEquals
+argument_list|(
+literal|"L'\u00C9quipe Microsoft Outlook Express<msoe@microsoft.com>"
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|MESSAGE_RAW_HEADER_PREFIX
+operator|+
+literal|"From"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Stored as Thu, 5 Apr 2007 09:26:06 -0700
 name|assertEquals
 argument_list|(
@@ -582,6 +609,44 @@ name|matcher
 operator|.
 name|find
 argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//test that last header is added
+name|assertContains
+argument_list|(
+literal|"29 Jan 2009 19:17:10.0163 (UTC) FILETIME=[2ED25E30:01C98246]"
+argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|metadata
+operator|.
+name|getValues
+argument_list|(
+literal|"Message:Raw-Header:X-OriginalArrivalTime"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//confirm next line is added correctly
+name|assertContains
+argument_list|(
+literal|"from athena.apache.org (HELO athena.apache.org) (140.211.11.136)\n"
+operator|+
+literal|"    by apache.org (qpsmtpd/0.29) with ESMTP; Thu, 29 Jan 2009 11:17:08 -0800"
+argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|metadata
+operator|.
+name|getValues
+argument_list|(
+literal|"Message:Raw-Header:Received"
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -15,6 +15,18 @@ name|metadata
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|Tika
+import|;
+end_import
+
 begin_comment
 comment|/**  * A collection of Message related property names.  */
 end_comment
@@ -24,6 +36,26 @@ specifier|public
 interface|interface
 name|Message
 block|{
+name|String
+name|MESSAGE_PREFIX
+init|=
+literal|"Message"
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+decl_stmt|;
+name|String
+name|MESSAGE_RAW_HEADER_PREFIX
+init|=
+name|MESSAGE_PREFIX
+operator|+
+literal|"Raw-Header"
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+decl_stmt|;
 name|String
 name|MESSAGE_RECIPIENT_ADDRESS
 init|=
