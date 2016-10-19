@@ -677,6 +677,13 @@ operator|.
 name|getMasterSheet
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|notesMaster
+operator|!=
+literal|null
+condition|)
+block|{
 name|extractContent
 argument_list|(
 name|notesMaster
@@ -691,6 +698,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|xhtml
 operator|.
 name|endElement
