@@ -755,6 +755,26 @@ condition|)
 block|{
 break|break;
 block|}
+if|if
+condition|(
+name|offset
+operator|-
+literal|1
+operator|<
+name|last
+operator|||
+name|offset
+operator|>
+name|numberText
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+comment|//something went wrong.
+comment|//silently stop
+break|break;
+block|}
 name|sb
 operator|.
 name|append
