@@ -590,21 +590,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|contentFieldInfo
-operator|.
-name|offset
-operator|+
-literal|" "
-operator|+
-name|bytesRead
-argument_list|)
-expr_stmt|;
 name|long
 name|diff
 init|=
