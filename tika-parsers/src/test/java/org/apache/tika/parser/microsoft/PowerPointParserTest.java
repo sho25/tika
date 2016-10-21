@@ -1589,6 +1589,35 @@ name|metadataList
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testSkippingBadCompressedObj
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//test file is from govdocs1: 258642.ppt
+comment|//TIKA-2130
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testPPT_skipBadCompressedObject.ppt"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"NASA Human"
+argument_list|,
+name|r
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
