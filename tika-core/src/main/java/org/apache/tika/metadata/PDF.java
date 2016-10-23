@@ -254,6 +254,19 @@ operator|+
 literal|"encrypted"
 argument_list|)
 decl_stmt|;
+comment|/**      * This specifies where an action or destination would be found/triggered      * in the document: on document open, close, etc.      */
+name|Property
+name|ACTION_LOCATION
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"actionLocation"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 
