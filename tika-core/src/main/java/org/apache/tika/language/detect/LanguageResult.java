@@ -65,7 +65,7 @@ specifier|private
 name|float
 name|rawScore
 decl_stmt|;
-comment|/** 	 *  	 * @param language ISO 639-1 language code (plus optional "-<country code>") 	 * @param rawScore confidence of detector in the result. 	 */
+comment|/** 	 *  	 * @param language ISO 639-1 language code (plus optional country code) 	 * @param rawScore confidence of detector in the result. 	 */
 specifier|public
 name|LanguageResult
 parameter_list|(
@@ -98,6 +98,7 @@ operator|=
 name|rawScore
 expr_stmt|;
 block|}
+comment|/** 	 * The ISO 639-1 language code (plus optional country code) 	 * @return a string representation of the language code 	 */
 specifier|public
 name|String
 name|getLanguage
