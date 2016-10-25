@@ -99,9 +99,9 @@ name|translate
 argument_list|(
 name|source
 argument_list|,
-literal|"es"
+literal|"spanish"
 argument_list|,
-literal|"en"
+literal|"english"
 argument_list|)
 decl_stmt|;
 if|if
