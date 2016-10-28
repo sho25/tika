@@ -1047,12 +1047,17 @@ name|styleClass
 init|=
 literal|null
 decl_stmt|;
+comment|//TIKA-2144 check that styles is not null
 if|if
 condition|(
 name|paragraph
 operator|.
 name|getStyleID
 argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|styles
 operator|!=
 literal|null
 condition|)
