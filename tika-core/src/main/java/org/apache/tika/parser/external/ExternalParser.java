@@ -354,6 +354,8 @@ comment|/**      * Consumer contract      * @since Apache Tika 1.14      */
 specifier|public
 interface|interface
 name|LineConsumer
+extends|extends
+name|Serializable
 block|{
 comment|/**          * Consume a line          * @param line a line of string          */
 name|void
@@ -381,7 +383,7 @@ name|String
 name|line
 parameter_list|)
 block|{
-comment|//ignore
+comment|// ignores
 block|}
 block|}
 decl_stmt|;
