@@ -7485,8 +7485,15 @@ name|content
 operator|.
 name|length
 argument_list|()
-operator|<=
+operator|==
 literal|100
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Tika - Content"
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
