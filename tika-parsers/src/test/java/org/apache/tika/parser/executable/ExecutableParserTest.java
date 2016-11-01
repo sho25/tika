@@ -106,24 +106,17 @@ name|r
 operator|.
 name|metadata
 decl_stmt|;
-comment|//not clear why ExecutableParser is adding instead of
-comment|//setting CONTENT_TYPE
-name|assertContains
+name|assertEquals
 argument_list|(
 literal|"application/x-msdownload"
 argument_list|,
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|metadata
 operator|.
-name|getValues
+name|get
 argument_list|(
 name|Metadata
 operator|.
 name|CONTENT_TYPE
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
