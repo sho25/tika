@@ -737,7 +737,7 @@ operator|new
 name|BrokenParser
 argument_list|()
 decl_stmt|;
-name|Parser
+name|ForkParser
 name|parser
 init|=
 operator|new
@@ -819,6 +819,14 @@ operator|.
 name|getCause
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|parser
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 comment|// With a non serializable one, we'll get something else
