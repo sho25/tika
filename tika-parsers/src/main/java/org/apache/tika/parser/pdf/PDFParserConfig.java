@@ -413,7 +413,7 @@ comment|//parser catches these exceptions, reports them in the metadata
 comment|//and then throws the first stored exception after the parse has completed.
 specifier|private
 name|boolean
-name|isCatchIntermediateIOExceptions
+name|catchIntermediateIOExceptions
 init|=
 literal|true
 decl_stmt|;
@@ -1141,14 +1141,24 @@ operator|=
 name|accessChecker
 expr_stmt|;
 block|}
-comment|/**      * See {@link #setCatchIntermediateIOExceptions(boolean)}      * @return whether or not to catch IOExceptions      */
+comment|/**      * See {@link #setCatchIntermediateIOExceptions(boolean)}      * @return whether or not to catch IOExceptions      * @deprecated use {@link #getCatchIntermediateIOExceptions()}      */
 specifier|public
 name|boolean
 name|isCatchIntermediateIOExceptions
 parameter_list|()
 block|{
 return|return
-name|isCatchIntermediateIOExceptions
+name|catchIntermediateIOExceptions
+return|;
+block|}
+comment|/**      * See {@link #setCatchIntermediateIOExceptions(boolean)}      * @return whether or not to catch IOExceptions      */
+specifier|public
+name|boolean
+name|getCatchIntermediateIOExceptions
+parameter_list|()
+block|{
+return|return
+name|catchIntermediateIOExceptions
 return|;
 block|}
 comment|/**      * The PDFBox parser will throw an IOException if there is      * a problem with a stream.  If this is set to<code>true</code>,      * Tika's PDFParser will catch these exceptions and try to parse      * the rest of the document.  After the parse is completed,      * Tika's PDFParser will throw the first caught exception.      * @param catchIntermediateIOExceptions      */
@@ -1160,7 +1170,9 @@ name|boolean
 name|catchIntermediateIOExceptions
 parameter_list|)
 block|{
-name|isCatchIntermediateIOExceptions
+name|this
+operator|.
+name|catchIntermediateIOExceptions
 operator|=
 name|catchIntermediateIOExceptions
 expr_stmt|;
@@ -2091,9 +2103,9 @@ literal|", accessChecker="
 operator|+
 name|accessChecker
 operator|+
-literal|", isCatchIntermediateIOExceptions="
+literal|", catchIntermediateIOExceptions="
 operator|+
-name|isCatchIntermediateIOExceptions
+name|catchIntermediateIOExceptions
 operator|+
 literal|'}'
 return|;
