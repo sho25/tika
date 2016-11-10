@@ -7694,6 +7694,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//TODO: figure out how to test jp2 embedded with OCR
 specifier|private
 name|void
 name|assertException
