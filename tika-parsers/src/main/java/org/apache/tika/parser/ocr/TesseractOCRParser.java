@@ -803,8 +803,6 @@ argument_list|)
 block|,
 name|MediaType
 operator|.
-name|APPLICATION_XML
-operator|.
 name|image
 argument_list|(
 literal|"jp2"
