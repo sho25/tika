@@ -239,7 +239,7 @@ name|tika
 operator|.
 name|extractor
 operator|.
-name|ParsingEmbeddedDocumentExtractor
+name|EmbeddedDocumentUtil
 import|;
 end_import
 
@@ -560,19 +560,11 @@ block|{
 name|EmbeddedDocumentExtractor
 name|extractor
 init|=
-name|context
+name|EmbeddedDocumentUtil
 operator|.
-name|get
-argument_list|(
-name|EmbeddedDocumentExtractor
-operator|.
-name|class
-argument_list|,
-operator|new
-name|ParsingEmbeddedDocumentExtractor
+name|getEmbeddedDocumentExtractor
 argument_list|(
 name|context
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|String

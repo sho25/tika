@@ -371,7 +371,7 @@ name|tika
 operator|.
 name|extractor
 operator|.
-name|ParsingEmbeddedDocumentExtractor
+name|EmbeddedDocumentUtil
 import|;
 end_import
 
@@ -912,34 +912,6 @@ name|xhtml
 argument_list|)
 expr_stmt|;
 comment|//now try to get macros
-name|EmbeddedDocumentExtractor
-name|ex
-init|=
-name|context
-operator|.
-name|get
-argument_list|(
-name|EmbeddedDocumentExtractor
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|ex
-operator|==
-literal|null
-condition|)
-block|{
-name|ex
-operator|=
-operator|new
-name|ParsingEmbeddedDocumentExtractor
-argument_list|(
-name|context
-argument_list|)
-expr_stmt|;
-block|}
 name|extractMacros
 argument_list|(
 name|root
@@ -949,7 +921,12 @@ argument_list|()
 argument_list|,
 name|xhtml
 argument_list|,
-name|ex
+name|EmbeddedDocumentUtil
+operator|.
+name|getEmbeddedDocumentExtractor
+argument_list|(
+name|context
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1101,6 +1078,8 @@ operator|new
 name|HSLFExtractor
 argument_list|(
 name|context
+argument_list|,
+name|metadata
 argument_list|)
 operator|.
 name|parse
