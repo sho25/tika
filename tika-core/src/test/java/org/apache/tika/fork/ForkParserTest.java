@@ -1244,6 +1244,8 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|TikaException
 name|e
 parameter_list|)
 block|{
