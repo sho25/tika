@@ -816,6 +816,13 @@ name|image
 argument_list|(
 literal|"jpx"
 argument_list|)
+block|,
+name|MediaType
+operator|.
+name|image
+argument_list|(
+literal|"x-portable-pixmap"
+argument_list|)
 block|}
 argument_list|)
 argument_list|)
