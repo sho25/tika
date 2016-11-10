@@ -1403,7 +1403,7 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-return|return;
+continue|continue;
 block|}
 name|embeddedDocumentExtractor
 operator|.
