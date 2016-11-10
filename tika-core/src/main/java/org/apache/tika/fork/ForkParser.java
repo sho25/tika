@@ -313,6 +313,12 @@ name|ForkClient
 argument_list|>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|long
+name|serverPulseMillis
+init|=
+literal|5000
+decl_stmt|;
 comment|/**      * @param loader The ClassLoader to use       * @param parser the parser to delegate to. This one cannot be another ForkParser      */
 specifier|public
 name|ForkParser
@@ -836,6 +842,8 @@ argument_list|,
 name|parser
 argument_list|,
 name|java
+argument_list|,
+name|serverPulseMillis
 argument_list|)
 expr_stmt|;
 block|}
@@ -958,6 +966,22 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|/**      * The amount of time in milliseconds that the server      * should wait for any input or output.  If it receives no      * input or output in this amount of time, it will shutdown.      * The default is 5 seconds.      *      * @param serverPulseMillis milliseconds to sleep before checking if there has been any activity      */
+specifier|public
+name|void
+name|setServerPulseMillis
+parameter_list|(
+name|long
+name|serverPulseMillis
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serverPulseMillis
+operator|=
+name|serverPulseMillis
+expr_stmt|;
 block|}
 block|}
 end_class
