@@ -1130,17 +1130,6 @@ operator|new
 name|ParseContext
 argument_list|()
 expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|,
-name|parser
-argument_list|)
-expr_stmt|;
 block|}
 try|try
 block|{
