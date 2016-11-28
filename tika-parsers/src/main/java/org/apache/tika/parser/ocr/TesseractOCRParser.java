@@ -627,20 +627,6 @@ name|tika
 operator|.
 name|sax
 operator|.
-name|EmbeddedContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
 name|OfflineContentHandler
 import|;
 end_import
@@ -1417,6 +1403,42 @@ argument_list|,
 name|tmp
 argument_list|)
 decl_stmt|;
+comment|//trigger the spooling to a tmp file if the stream wasn't
+comment|//already a TikaInputStream that contained a file
+name|tikaStream
+operator|.
+name|getPath
+argument_list|()
+expr_stmt|;
+comment|//this is the text output file name specified on the tesseract
+comment|//commandline.  The actual output file name will have a suffix added.
+name|File
+name|tmpOCROutputFile
+init|=
+name|tmp
+operator|.
+name|createTemporaryFile
+argument_list|()
+decl_stmt|;
+comment|// Temporary workaround for TIKA-1445 - until we can specify
+comment|//  composite parsers with strategies (eg Composite, Try In Turn),
+comment|//  always send the image onwards to the regular parser to have
+comment|//  the metadata for them extracted as well
+name|_TMP_IMAGE_METADATA_PARSER
+operator|.
+name|parse
+argument_list|(
+name|tikaStream
+argument_list|,
+operator|new
+name|DefaultHandler
+argument_list|()
+argument_list|,
+name|metadata
+argument_list|,
+name|parseContext
+argument_list|)
+expr_stmt|;
 name|XHTMLContentHandler
 name|xhtml
 init|=
@@ -1433,46 +1455,17 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
-name|File
-name|tmpImgFile
-init|=
-name|tmp
-operator|.
-name|createTemporaryFile
-argument_list|()
-decl_stmt|;
 name|parse
 argument_list|(
 name|tikaStream
 argument_list|,
-name|tmpImgFile
+name|tmpOCROutputFile
 argument_list|,
 name|parseContext
 argument_list|,
 name|xhtml
 argument_list|,
 name|config
-argument_list|)
-expr_stmt|;
-comment|// Temporary workaround for TIKA-1445 - until we can specify
-comment|//  composite parsers with strategies (eg Composite, Try In Turn),
-comment|//  always send the image onwards to the regular parser to have
-comment|//  the metadata for them extracted as well
-name|_TMP_IMAGE_METADATA_PARSER
-operator|.
-name|parse
-argument_list|(
-name|tikaStream
-argument_list|,
-operator|new
-name|EmbeddedContentHandler
-argument_list|(
-name|xhtml
-argument_list|)
-argument_list|,
-name|metadata
-argument_list|,
-name|parseContext
 argument_list|)
 expr_stmt|;
 name|xhtml
@@ -1525,7 +1518,7 @@ name|config
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Use this to parse content without starting a new document.      * This appends SAX events to xhtml without re-adding the metadata, body start, etc.      *      * @param stream inputstream      * @param xhtml handler      * @param config TesseractOCRConfig to use for this parse      * @throws IOException      * @throws SAXException      * @throws TikaException      *      * @deprecated use {@link #parseInline(InputStream, XHTMLContentHandler, ParseContext, TesseractOCRConfig)}      */
+comment|/**      * Use this to parse content without starting a new document.      * This appends SAX events to xhtml without re-adding the metadata, body start, etc.      *      * @param stream inputstream      * @param xhtml handler      * @param config TesseractOCRConfig to use for this parse      * @throws IOException      * @throws SAXException      * @throws TikaException      *      */
 specifier|public
 name|void
 name|parseInline
@@ -1866,7 +1859,7 @@ name|TikaInputStream
 name|tikaInputStream
 parameter_list|,
 name|File
-name|tmpImgFile
+name|tmpOCROutputFile
 parameter_list|,
 name|ParseContext
 name|parseContext
@@ -1924,8 +1917,24 @@ name|getMaxFileSizeToOcr
 argument_list|()
 condition|)
 block|{
+comment|// Process image if ImageMagick Tool is present
+if|if
+condition|(
+name|config
+operator|.
+name|isEnableImageProcessing
+argument_list|()
+operator|==
+literal|1
+operator|&&
+name|hasImageMagick
+argument_list|(
+name|config
+argument_list|)
+condition|)
+block|{
 comment|// copy the contents of the original input file into a temporary file
-comment|// which will be processed for OCR
+comment|// which will be preprocessed for OCR
 name|TemporaryResources
 name|tmp
 init|=
@@ -1933,6 +1942,8 @@ operator|new
 name|TemporaryResources
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 name|File
 name|tmpFile
 init|=
@@ -1950,22 +1961,6 @@ argument_list|,
 name|tmpFile
 argument_list|)
 expr_stmt|;
-comment|// Process image if ImageMagick Tool is present
-if|if
-condition|(
-name|config
-operator|.
-name|isEnableImageProcessing
-argument_list|()
-operator|==
-literal|1
-operator|&&
-name|hasImageMagick
-argument_list|(
-name|config
-argument_list|)
-condition|)
-block|{
 name|processImage
 argument_list|(
 name|tmpFile
@@ -1973,23 +1968,52 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-block|}
 name|doOCR
 argument_list|(
 name|tmpFile
 argument_list|,
-name|tmpImgFile
+name|tmpOCROutputFile
 argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|tmp
+operator|!=
+literal|null
+condition|)
+block|{
+name|tmp
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
+block|{
+name|doOCR
+argument_list|(
+name|input
+argument_list|,
+name|tmpOCROutputFile
+argument_list|,
+name|config
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Tesseract appends the output type (.txt or .hocr) to output file name
 name|tmpTxtOutput
 operator|=
 operator|new
 name|File
 argument_list|(
-name|tmpImgFile
+name|tmpOCROutputFile
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -2071,11 +2095,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-name|tmp
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 finally|finally
