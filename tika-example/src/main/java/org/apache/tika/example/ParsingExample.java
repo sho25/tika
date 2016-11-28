@@ -195,6 +195,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|EmptyParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ParseContext
 import|;
 end_import
@@ -411,7 +425,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * If you don't want content from embedded documents, send in      * a {@link org.apache.tika.parser.ParseContext} that does not contain a      * {@link Parser}.      *      * @return The content of a file.      */
+comment|/**      * If you don't want content from embedded documents, send in      * a {@link org.apache.tika.parser.ParseContext} that does contains a      * {@link EmptyParser}.      *      * @return The content of a file.      */
 specifier|public
 name|String
 name|parseNoEmbeddedExample
@@ -444,6 +458,26 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|parseContext
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
+name|parseContext
+operator|.
+name|set
+argument_list|(
+name|Parser
+operator|.
+name|class
+argument_list|,
+operator|new
+name|EmptyParser
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|InputStream
@@ -469,9 +503,7 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|parseContext
 argument_list|)
 expr_stmt|;
 return|return
