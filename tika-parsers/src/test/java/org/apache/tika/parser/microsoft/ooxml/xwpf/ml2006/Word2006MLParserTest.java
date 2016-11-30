@@ -648,8 +648,8 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//test default includes deleted
-name|assertContains
+comment|//test default ignores deleted
+name|assertNotContained
 argument_list|(
 literal|"frog"
 argument_list|,
@@ -703,7 +703,7 @@ name|officeParserConfig
 operator|.
 name|setIncludeDeletedContent
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|officeParserConfig
@@ -734,7 +734,7 @@ argument_list|,
 name|pc
 argument_list|)
 decl_stmt|;
-name|assertNotContained
+name|assertContains
 argument_list|(
 literal|"frog"
 argument_list|,
