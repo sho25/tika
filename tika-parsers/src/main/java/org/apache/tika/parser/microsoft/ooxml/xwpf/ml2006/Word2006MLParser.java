@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -129,7 +131,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|ParseContext
 import|;
 end_import
 
@@ -143,7 +145,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ParseContext
+name|microsoft
+operator|.
+name|AbstractOfficeParser
 import|;
 end_import
 
@@ -218,7 +222,7 @@ specifier|public
 class|class
 name|Word2006MLParser
 extends|extends
-name|AbstractParser
+name|AbstractOfficeParser
 block|{
 specifier|protected
 specifier|static
@@ -283,6 +287,12 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|//set OfficeParserConfig if the user hasn't specified one
+name|configure
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 specifier|final
 name|XHTMLContentHandler
 name|xhtml
@@ -322,7 +332,7 @@ operator|new
 name|EmbeddedContentHandler
 argument_list|(
 operator|new
-name|Word2006MLHandler
+name|Word2006MLDocHandler
 argument_list|(
 name|xhtml
 argument_list|,

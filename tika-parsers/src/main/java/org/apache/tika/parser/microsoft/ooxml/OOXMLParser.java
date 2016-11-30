@@ -147,7 +147,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|ParseContext
 import|;
 end_import
 
@@ -161,7 +161,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ParseContext
+name|microsoft
+operator|.
+name|AbstractOfficeParser
 import|;
 end_import
 
@@ -198,7 +200,7 @@ specifier|public
 class|class
 name|OOXMLParser
 extends|extends
-name|AbstractParser
+name|AbstractOfficeParser
 block|{
 static|static
 block|{
@@ -438,6 +440,12 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|//set OfficeParserConfig if the user hasn't specified one
+name|configure
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 comment|// Have the OOXML file processed
 name|OOXMLExtractorFactory
 operator|.

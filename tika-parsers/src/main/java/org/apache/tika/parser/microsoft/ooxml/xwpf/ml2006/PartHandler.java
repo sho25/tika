@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -43,7 +45,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|SAXException
+name|ContentHandler
 import|;
 end_import
 
@@ -55,53 +57,31 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|helpers
-operator|.
-name|DefaultHandler
+name|SAXException
 import|;
 end_import
 
-begin_class
-specifier|abstract
-class|class
+begin_interface
+interface|interface
 name|PartHandler
 extends|extends
-name|DefaultHandler
+name|ContentHandler
 block|{
-specifier|private
-name|String
-name|name
-decl_stmt|;
-specifier|public
-specifier|abstract
-name|String
-name|getPartContentType
-parameter_list|()
-function_decl|;
-specifier|public
 name|void
 name|setName
 parameter_list|(
 name|String
 name|name
 parameter_list|)
-block|{
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
-block|}
-specifier|public
+function_decl|;
 name|String
 name|getName
 parameter_list|()
-block|{
-return|return
-name|name
-return|;
-block|}
+function_decl|;
+name|String
+name|getContentType
+parameter_list|()
+function_decl|;
 comment|/**      * Override this to flush buffers, etc if necessary      */
 name|void
 name|endPart
@@ -110,9 +90,9 @@ throws|throws
 name|SAXException
 throws|,
 name|TikaException
-block|{      }
+function_decl|;
 block|}
-end_class
+end_interface
 
 end_unit
 

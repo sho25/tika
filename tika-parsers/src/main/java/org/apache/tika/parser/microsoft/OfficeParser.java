@@ -441,20 +441,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
 import|;
 end_import
@@ -566,7 +552,7 @@ specifier|public
 class|class
 name|OfficeParser
 extends|extends
-name|AbstractParser
+name|AbstractOfficeParser
 block|{
 comment|/**      * Serial version UID      */
 specifier|private
@@ -728,6 +714,11 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|configure
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 name|XHTMLContentHandler
 name|xhtml
 init|=

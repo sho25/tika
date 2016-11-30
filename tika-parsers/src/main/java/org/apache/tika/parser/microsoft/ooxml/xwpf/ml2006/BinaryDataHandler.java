@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -193,7 +195,7 @@ begin_class
 class|class
 name|BinaryDataHandler
 extends|extends
-name|PartHandler
+name|AbstractPartHandler
 block|{
 specifier|private
 specifier|final
@@ -284,6 +286,7 @@ name|SAXException
 block|{      }
 annotation|@
 name|Override
+specifier|public
 name|void
 name|endPart
 parameter_list|()
@@ -395,7 +398,7 @@ name|uri
 operator|.
 name|equals
 argument_list|(
-name|Word2006MLHandler
+name|Word2006MLDocHandler
 operator|.
 name|PKG_NS
 argument_list|)
@@ -438,7 +441,7 @@ name|uri
 operator|.
 name|equals
 argument_list|(
-name|Word2006MLHandler
+name|Word2006MLDocHandler
 operator|.
 name|PKG_NS
 argument_list|)
@@ -517,7 +520,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getPartContentType
+name|getContentType
 parameter_list|()
 block|{
 return|return

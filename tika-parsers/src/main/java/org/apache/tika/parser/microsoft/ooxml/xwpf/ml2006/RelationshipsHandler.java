@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -81,7 +83,7 @@ begin_class
 class|class
 name|RelationshipsHandler
 extends|extends
-name|PartHandler
+name|AbstractPartHandler
 block|{
 specifier|final
 specifier|static
@@ -340,7 +342,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getPartContentType
+name|getContentType
 parameter_list|()
 block|{
 return|return

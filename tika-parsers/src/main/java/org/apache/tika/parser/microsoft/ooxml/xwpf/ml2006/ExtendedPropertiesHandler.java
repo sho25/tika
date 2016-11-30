@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -360,7 +362,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getPartContentType
+name|getContentType
 parameter_list|()
 block|{
 return|return

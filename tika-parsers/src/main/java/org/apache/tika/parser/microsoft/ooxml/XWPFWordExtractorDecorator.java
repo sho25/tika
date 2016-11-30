@@ -748,6 +748,9 @@ operator|new
 name|XWPFListManager
 argument_list|(
 name|document
+operator|.
+name|getNumbering
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// headers

@@ -18,6 +18,8 @@ operator|.
 name|ooxml
 operator|.
 name|xwpf
+operator|.
+name|ml2006
 package|;
 end_package
 
@@ -141,7 +143,7 @@ begin_class
 class|class
 name|CorePropertiesHandler
 extends|extends
-name|PartHandler
+name|AbstractPartHandler
 block|{
 specifier|final
 specifier|static
@@ -408,9 +410,9 @@ name|put
 argument_list|(
 literal|"lastModifiedBy"
 argument_list|,
-name|OfficeOpenXMLCore
+name|TikaCoreProperties
 operator|.
-name|LAST_MODIFIED_BY
+name|MODIFIER
 argument_list|)
 expr_stmt|;
 name|cp
@@ -760,7 +762,7 @@ annotation|@
 name|Override
 specifier|public
 name|String
-name|getPartContentType
+name|getContentType
 parameter_list|()
 block|{
 return|return
