@@ -3041,16 +3041,31 @@ throws|throws
 name|Exception
 block|{
 comment|//test classic behavior
-name|assertNotContained
-argument_list|(
-literal|"frog"
-argument_list|,
+name|String
+name|xml
+init|=
 name|getXML
 argument_list|(
 literal|"testWORD_2006ml.doc"
 argument_list|)
 operator|.
 name|xml
+decl_stmt|;
+name|assertNotContained
+argument_list|(
+literal|"frog"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//moveFrom is deleted in .doc files
+name|assertContainsCount
+argument_list|(
+literal|"Second paragraph"
+argument_list|,
+name|xml
+argument_list|,
+literal|1
 argument_list|)
 expr_stmt|;
 comment|//now test inclusion of deleted text
@@ -3103,6 +3118,18 @@ argument_list|,
 name|r
 operator|.
 name|xml
+argument_list|)
+expr_stmt|;
+comment|//moveFrom is deleted in .doc files
+name|assertContainsCount
+argument_list|(
+literal|"Second paragraph"
+argument_list|,
+name|r
+operator|.
+name|xml
+argument_list|,
+literal|2
 argument_list|)
 expr_stmt|;
 block|}
