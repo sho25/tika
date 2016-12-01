@@ -1743,12 +1743,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|EmbeddedDocumentExtractor
-name|extractor
-init|=
-name|getEmbeddedDocumentExtractor
-argument_list|()
-decl_stmt|;
 comment|//current strategy is to pull all, not just first non-null
 name|extractPDEmbeddedFile
 argument_list|(
@@ -1768,8 +1762,6 @@ name|spec
 operator|.
 name|getEmbeddedFile
 argument_list|()
-argument_list|,
-name|extractor
 argument_list|,
 name|attributes
 argument_list|)
@@ -1793,8 +1785,6 @@ operator|.
 name|getEmbeddedFileMac
 argument_list|()
 argument_list|,
-name|extractor
-argument_list|,
 name|attributes
 argument_list|)
 expr_stmt|;
@@ -1816,8 +1806,6 @@ name|spec
 operator|.
 name|getEmbeddedFileDos
 argument_list|()
-argument_list|,
-name|extractor
 argument_list|,
 name|attributes
 argument_list|)
@@ -1841,8 +1829,6 @@ operator|.
 name|getEmbeddedFileUnix
 argument_list|()
 argument_list|,
-name|extractor
-argument_list|,
 name|attributes
 argument_list|)
 expr_stmt|;
@@ -1862,9 +1848,6 @@ name|fileName
 parameter_list|,
 name|PDEmbeddedFile
 name|file
-parameter_list|,
-name|EmbeddedDocumentExtractor
-name|extractor
 parameter_list|,
 name|AttributesImpl
 name|attributes
@@ -1932,13 +1915,13 @@ name|fileName
 expr_stmt|;
 comment|// TODO: other metadata?
 name|Metadata
-name|metadata
+name|embeddedMetadata
 init|=
 operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-name|metadata
+name|embeddedMetadata
 operator|.
 name|set
 argument_list|(
@@ -1949,7 +1932,7 @@ argument_list|,
 name|fileName
 argument_list|)
 expr_stmt|;
-name|metadata
+name|embeddedMetadata
 operator|.
 name|set
 argument_list|(
@@ -1963,7 +1946,7 @@ name|getSubtype
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|metadata
+name|embeddedMetadata
 operator|.
 name|set
 argument_list|(
@@ -1982,7 +1965,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|metadata
+name|embeddedMetadata
 operator|.
 name|set
 argument_list|(
@@ -2000,7 +1983,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|metadata
+name|embeddedMetadata
 operator|.
 name|set
 argument_list|(
@@ -2013,11 +1996,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|extractor
+name|embeddedDocumentExtractor
 operator|.
 name|shouldParseEmbedded
 argument_list|(
-name|metadata
+name|embeddedMetadata
 argument_list|)
 condition|)
 block|{
@@ -2040,7 +2023,7 @@ name|createInputStream
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|extractor
+name|embeddedDocumentExtractor
 operator|.
 name|parseEmbedded
 argument_list|(
@@ -2439,12 +2422,6 @@ name|IOException
 block|{
 try|try
 block|{
-name|EmbeddedDocumentExtractor
-name|extractor
-init|=
-name|getEmbeddedDocumentExtractor
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|PDAnnotation
@@ -3461,12 +3438,6 @@ name|PDActionJavaScript
 operator|)
 name|action
 decl_stmt|;
-name|EmbeddedDocumentExtractor
-name|ex
-init|=
-name|getEmbeddedDocumentExtractor
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|m
 init|=
@@ -3555,7 +3526,7 @@ name|js
 expr_stmt|;
 if|if
 condition|(
-name|ex
+name|embeddedDocumentExtractor
 operator|.
 name|shouldParseEmbedded
 argument_list|(
@@ -3583,7 +3554,7 @@ argument_list|)
 argument_list|)
 init|)
 block|{
-name|ex
+name|embeddedDocumentExtractor
 operator|.
 name|parseEmbedded
 argument_list|(
