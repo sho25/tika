@@ -5588,7 +5588,7 @@ decl_stmt|;
 comment|//regular attachment
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"Unit10.doc\" />"
+literal|"<div source=\"attachment\" class=\"embedded\" id=\"Unit10.doc\" />"
 argument_list|,
 name|r
 operator|.
@@ -5615,7 +5615,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<div class=\"embedded\" id=\"Excel.xlsx\" />"
+literal|"<div source=\"annotation\" class=\"embedded\" id=\"Excel.xlsx\" />"
 argument_list|,
 name|r
 operator|.
