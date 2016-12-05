@@ -831,8 +831,6 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//TODO: add chart parsing
-comment|//        assertContains("This is the chart", content);
 name|assertContains
 argument_list|(
 literal|"This is a comment"
@@ -913,6 +911,8 @@ argument_list|)
 expr_stmt|;
 comment|//TODO: extract chart text
 comment|//        assertContains("This is the chart title", content);
+comment|//TODO: add chart parsing
+comment|//        assertContains("This is the chart", content);
 block|}
 comment|/**      * Test the plain text output of the Word converter      *      * @throws Exception      */
 annotation|@
@@ -1254,10 +1254,21 @@ literal|"<p>The end!</p>"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testContiguousHTMLFormatting
+parameter_list|()
+throws|throws
+name|Exception
+block|{
 comment|// TIKA-692: test document containing multiple
 comment|// character runs within a bold tag:
+name|String
 name|xml
-operator|=
+init|=
 name|getXML
 argument_list|(
 literal|"testWORD_bold_character_runs.docx"
@@ -1266,11 +1277,24 @@ name|parseContext
 argument_list|)
 operator|.
 name|xml
-expr_stmt|;
+decl_stmt|;
 comment|// Make sure bold text arrived as single
 comment|// contiguous string even though Word parser
 comment|// handled this as 3 character runs
-comment|//TODO:        assertTrue("Bold text wasn't contiguous: " + xml, xml.contains("F<b>oob</b>a<b>r</b>"));
+name|assertTrue
+argument_list|(
+literal|"Bold text wasn't contiguous: "
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"F<b>oob</b>a<b>r</b>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// TIKA-692: test document containing multiple
 comment|// character runs within a bold tag:
 name|xml
@@ -1287,7 +1311,20 @@ expr_stmt|;
 comment|// Make sure bold text arrived as single
 comment|// contiguous string even though Word parser
 comment|// handled this as 3 character runs
-comment|//TODO:        assertTrue("Bold text wasn't contiguous: " + xml, xml.contains("F<b>oob</b>a<b>r</b>"));
+name|assertTrue
+argument_list|(
+literal|"Bold text wasn't contiguous: "
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"F<b>oob</b>a<b>r</b>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Test that we can extract image from docx header      */
 annotation|@
@@ -1401,29 +1438,31 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|XMLResult
-name|xmlResult
+name|Metadata
+name|metadata
 init|=
-name|getXML
-argument_list|(
-literal|"testWORD_various.docx"
-argument_list|,
-name|parseContext
-argument_list|)
+operator|new
+name|Metadata
+argument_list|()
 decl_stmt|;
 name|String
 name|content
 init|=
-name|xmlResult
-operator|.
-name|xml
-decl_stmt|;
-name|Metadata
+name|getText
+argument_list|(
+name|getResourceAsStream
+argument_list|(
+literal|"/test-documents/testWORD_various.docx"
+argument_list|)
+argument_list|,
+operator|new
+name|AutoDetectParser
+argument_list|()
+argument_list|,
+name|parseContext
+argument_list|,
 name|metadata
-init|=
-name|xmlResult
-operator|.
-name|metadata
+argument_list|)
 decl_stmt|;
 comment|//content = content.replaceAll("\\s+"," ");
 name|assertContains
@@ -1517,8 +1556,34 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//TODO:        assertContains("Row 1 Col 1 Row 1 Col 2 Row 1 Col 3 Row 2 Col 1 Row 2 Col 2 Row 2 Col 3", content.replaceAll("\\s+", " "));
-comment|//TODO:        assertContains("Row 1 column 1 Row 2 column 1 Row 1 column 2 Row 2 column 2", content.replaceAll("\\s+", " "));
+name|assertContains
+argument_list|(
+literal|"Row 1 Col 1 Row 1 Col 2 Row 1 Col 3 Row 2 Col 1 Row 2 Col 2 Row 2 Col 3"
+argument_list|,
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Row 1 column 1 Row 2 column 1 Row 1 column 2 Row 2 column 2"
+argument_list|,
+name|content
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"This is a hyperlink"
@@ -2686,6 +2751,15 @@ argument_list|(
 literal|"<div class=\"embedded\" id=\"/docProps/thumbnail.emf\" />"
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|xml
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|a
@@ -2929,6 +3003,11 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"TODO -- paragraph list numbers"
+argument_list|)
 specifier|public
 name|void
 name|testDOCXParagraphNumbering
@@ -2948,7 +3027,7 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
-comment|//SAX parser is getting this.  DOM parser is not
+comment|//SAX parser is getting this.  DOM parser is not!
 name|assertContains
 argument_list|(
 literal|"add a list here"
@@ -2956,14 +3035,153 @@ argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-comment|/*TODO:         assertContains("1) This", xml);         assertContains("a) Is", xml);         assertContains("i) A multi", xml);         assertContains("ii) Level", xml);         assertContains("1. Within cell 1", xml);         assertContains("b. Cell b", xml);         assertContains("iii) List", xml);         assertContains("2) foo", xml);         assertContains("ii) baz", xml);         assertContains("ii) foo", xml);         assertContains("II. bar", xml);         assertContains("6. six", xml);         assertContains("7. seven", xml);         assertContains("a. seven a", xml);         assertContains("e. seven e", xml);         assertContains("2. A ii 2", xml);         assertContains("3. page break list 3", xml);         assertContains("Some-1-CrazyFormat Greek numbering with crazy format - alpha", xml);         assertContains("1.1.1. 1.1.1", xml);         assertContains("1.1. 1.2-&gt;1.1  //set the value", xml); */
+name|assertContains
+argument_list|(
+literal|"1) This"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"a) Is"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"i) A multi"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) Level"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1. Within cell 1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"b. Cell b"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"iii) List"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"2) foo"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) baz"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"ii) foo"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"II. bar"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"6. six"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"7. seven"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"a. seven a"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"e. seven e"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"2. A ii 2"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"3. page break list 3"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Some-1-CrazyFormat Greek numbering with crazy format - alpha"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1.1.1. 1.1.1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"1.1. 1.2-&gt;1.1  //set the value"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
 annotation|@
 name|Ignore
 argument_list|(
-literal|"TODO"
+literal|"TODO -- paragraph list numbers"
 argument_list|)
 specifier|public
 name|void
@@ -3389,11 +3607,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"TODO"
-argument_list|)
 specifier|public
 name|void
 name|testMacrosInDocm
@@ -3401,6 +3614,39 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|List
+argument_list|<
+name|Metadata
+argument_list|>
+name|metadataList
+init|=
+name|getRecursiveMetadata
+argument_list|(
+literal|"testWORD_macros.docm"
+argument_list|,
+name|parseContext
+argument_list|)
+decl_stmt|;
+comment|//check that content came out of the .docm file
+name|assertContains
+argument_list|(
+literal|"quick"
+argument_list|,
+name|metadataList
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|get
+argument_list|(
+name|RecursiveParserWrapper
+operator|.
+name|TIKA_CONTENT
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|Metadata
 name|minExpected
 init|=
@@ -3469,14 +3715,10 @@ name|assertContainsAtLeast
 argument_list|(
 name|minExpected
 argument_list|,
-name|getRecursiveMetadata
-argument_list|(
-literal|"testWORD_macros.docm"
-argument_list|,
-name|parseContext
-argument_list|)
+name|metadataList
 argument_list|)
 expr_stmt|;
+comment|//, parseContext));
 block|}
 block|}
 end_class
