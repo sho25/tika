@@ -823,7 +823,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//basic formatting
+comment|//basic b/i tags...make sure not to overlap!
 name|assertContains
 argument_list|(
 literal|"<p>The<i>quick</i> brown<b>fox</b>j<i>um</i><b><i>ped</i></b> over"
@@ -3529,11 +3529,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"TODO"
-argument_list|)
 specifier|public
 name|void
 name|testBoldHyperlink
@@ -3554,6 +3549,15 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|xml
+argument_list|)
+expr_stmt|;
 name|xml
 operator|=
 name|xml
