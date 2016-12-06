@@ -2452,11 +2452,6 @@ block|}
 comment|/**      * Test that we can extract image from docx header      */
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"fix actual extraction"
-argument_list|)
 specifier|public
 name|void
 name|testWordPicturesInHeader
@@ -2538,7 +2533,7 @@ name|Test
 annotation|@
 name|Ignore
 argument_list|(
-literal|"not currently extracting from non-body components"
+literal|"need to add links in xhtml"
 argument_list|)
 specifier|public
 name|void
