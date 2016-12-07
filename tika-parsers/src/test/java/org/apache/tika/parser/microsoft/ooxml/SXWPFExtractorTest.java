@@ -73,16 +73,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -267,20 +257,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|EmptyParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
 import|;
 end_import
@@ -364,16 +340,6 @@ operator|.
 name|junit
 operator|.
 name|Before
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|junit
-operator|.
-name|Ignore
 import|;
 end_import
 
@@ -702,15 +668,14 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>\tHeading1\t3</p>"
+literal|"<p class=\"toc_1\">\t<a href=\"#_Toc467647605\">Heading1\t3</a></p>"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|//TODO: integrate numbering
 name|assertContains
 argument_list|(
-literal|"Really basic 2."
+literal|"2. Really basic 2."
 argument_list|,
 name|content
 argument_list|)
@@ -748,7 +713,7 @@ expr_stmt|;
 comment|//caption
 name|assertContains
 argument_list|(
-literal|"<p>Table 1: Table1 Caption</p>"
+literal|"<p class=\"table_of_figures\">\t<a href=\"#_Toc467647797\">Table 1: Table1 Caption\t2</a></p>"
 argument_list|,
 name|content
 argument_list|)
@@ -757,7 +722,7 @@ comment|//embedded table
 comment|//TODO: figure out how to handle embedded tables in html
 name|assertContains
 argument_list|(
-literal|"<p>Embedded table r1c1</p>"
+literal|"<td>Embedded table r1c1"
 argument_list|,
 name|content
 argument_list|)
@@ -1184,13 +1149,60 @@ literal|"Sample Word Document"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|xml
+argument_list|)
+expr_stmt|;
 comment|// Check that custom headings came through
-comment|//TODO:        assertTrue(xml.contains("<h1 class=\"title\">"));
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<h1 class=\"title\">"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Regular headings
-comment|//TODO:        assertTrue(xml.contains("<h1>Heading Level 1</h1>"));
-comment|//TODO:        assertTrue(xml.contains("<h2>Heading Level 2</h2>"));
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<h1>Heading Level 1</h1>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<h2>Heading Level 2</h2>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Headings with anchor tags in them
-comment|//TODO:        assertTrue(xml.contains("<h3><a name=\"OnLevel3\" />Heading Level 3</h3>"));
+comment|//TODO: still not getting bookmarks
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<h3>Heading Level 3<a name=\"OnLevel3\" /></h3>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//        assertTrue(xml.contains("<h3>Heading Level 3</h3>"));
 comment|// Bold and italic
 name|assertTrue
 argument_list|(
@@ -1245,9 +1257,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Anchor links
-comment|//TODO:        assertContains("<a href=\"#OnMainHeading\">The Main Heading Bookmark</a>", xml);
+name|assertContains
+argument_list|(
+literal|"<a href=\"#OnMainHeading\">The Main Heading Bookmark</a>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 comment|// Paragraphs with other styles
-comment|//TODO:        assertTrue(xml.contains("<p class=\"signature\">This one"));
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<p class=\"signature\">This one"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|result
 operator|=
 name|getXML
@@ -1264,9 +1291,48 @@ operator|.
 name|xml
 expr_stmt|;
 comment|// Images 2-4 (there is no 1!)
-comment|//TODO:        assertTrue("Image not found in:\n" + xml, xml.contains("<img src=\"embedded:image2.png\" alt=\"A description...\" />"));
-comment|//TODO:        assertTrue("Image not found in:\n" + xml, xml.contains("<img src=\"embedded:image3.jpeg\" alt=\"A description...\" />"));
-comment|//TODO:        assertTrue("Image not found in:\n" + xml, xml.contains("<img src=\"embedded:image4.png\" alt=\"A description...\" />"));
+name|assertTrue
+argument_list|(
+literal|"Image not found in:\n"
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<img src=\"embedded:image2.png\" alt=\"A description...\" />"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Image not found in:\n"
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<img src=\"embedded:image3.jpeg\" alt=\"A description...\" />"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Image not found in:\n"
+operator|+
+name|xml
+argument_list|,
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<img src=\"embedded:image4.png\" alt=\"A description...\" />"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Text too
 name|assertTrue
 argument_list|(
@@ -3195,11 +3261,6 @@ block|}
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"TODO -- paragraph list numbers"
-argument_list|)
 specifier|public
 name|void
 name|testDOCXParagraphNumbering
@@ -3370,11 +3431,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"TODO -- paragraph list numbers"
-argument_list|)
 specifier|public
 name|void
 name|testDOCXOverrideParagraphNumbering
@@ -3741,15 +3797,6 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 name|xml
 operator|=
 name|xml
@@ -3985,155 +4032,6 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|iterate
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|ParseContext
-name|context
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|,
-name|EmptyParser
-operator|.
-name|INSTANCE
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|File
-name|f
-range|:
-name|getResourceAsFile
-argument_list|(
-literal|"/test-documents"
-argument_list|)
-operator|.
-name|listFiles
-argument_list|()
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"testWORD_embeded.docx"
-argument_list|)
-condition|)
-block|{
-continue|continue;
-block|}
-if|if
-condition|(
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|endsWith
-argument_list|(
-literal|"docx"
-argument_list|)
-operator|||
-name|f
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|endsWith
-argument_list|(
-literal|".docm"
-argument_list|)
-condition|)
-block|{
-try|try
-block|{
-name|XMLResult
-name|r
-init|=
-name|getXML
-argument_list|(
-name|f
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|context
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|r
-operator|.
-name|xml
-operator|.
-name|contains
-argument_list|(
-literal|"<img"
-argument_list|)
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|f
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|r
-operator|.
-name|xml
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
 block|}
 block|}
 end_class

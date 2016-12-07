@@ -442,7 +442,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>\tHeading1\t3</p>"
+literal|"<p>\t<a href=\"#_Toc467647605\">Heading1	3</a></p>"
 argument_list|,
 name|content
 argument_list|)
@@ -476,7 +476,7 @@ expr_stmt|;
 comment|//caption
 name|assertContains
 argument_list|(
-literal|"<p>Table 1: Table1 Caption</p>"
+literal|"<p>\t<a href=\"#_Toc467647797\">Table 1: Table1 Caption\t2</a>"
 argument_list|,
 name|content
 argument_list|)
@@ -485,7 +485,7 @@ comment|//embedded table
 comment|//TODO: figure out how to handle embedded tables in html
 name|assertContains
 argument_list|(
-literal|"<p>Embedded table r1c1</p>"
+literal|"<td>Embedded table r1c1"
 argument_list|,
 name|content
 argument_list|)
