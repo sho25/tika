@@ -1149,15 +1149,6 @@ literal|"Sample Word Document"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 comment|// Check that custom headings came through
 name|assertTrue
 argument_list|(
@@ -2481,15 +2472,6 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 name|int
 name|i
 init|=
@@ -3009,15 +2991,6 @@ argument_list|(
 literal|"<div class=\"embedded\" id=\"/docProps/thumbnail.emf\" />"
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 name|assertTrue
 argument_list|(
 name|a
