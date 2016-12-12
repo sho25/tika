@@ -117,7 +117,6 @@ name|MOVE_TO
 block|,
 name|MOVE_FROM
 block|}
-specifier|private
 specifier|final
 specifier|static
 name|String

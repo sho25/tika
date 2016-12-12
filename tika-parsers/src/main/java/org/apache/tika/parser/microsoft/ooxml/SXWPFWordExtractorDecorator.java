@@ -784,7 +784,7 @@ argument_list|(
 name|numbering
 argument_list|)
 decl_stmt|;
-name|XWPFStyles
+name|XWPFStylesShim
 name|styles
 init|=
 name|loadStyles
@@ -998,7 +998,7 @@ parameter_list|(
 name|PackagePart
 name|packagePart
 parameter_list|,
-name|XWPFStyles
+name|XWPFStylesShim
 name|styles
 parameter_list|,
 name|XWPFListManager
@@ -1395,7 +1395,7 @@ name|linkedRelationships
 return|;
 block|}
 specifier|private
-name|XWPFStyles
+name|XWPFStylesShim
 name|loadStyles
 parameter_list|(
 name|PackagePart
@@ -1476,14 +1476,14 @@ operator|new
 name|XWPFStylesShim
 argument_list|(
 name|stylesPart
+argument_list|,
+name|context
 argument_list|)
 return|;
 block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|OpenXML4JException
 name|e
 parameter_list|)
