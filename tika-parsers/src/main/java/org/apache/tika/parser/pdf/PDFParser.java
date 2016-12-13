@@ -3490,6 +3490,23 @@ name|extractUniqueInlineImagesOnly
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Field
+name|void
+name|setExtractActions
+parameter_list|(
+name|boolean
+name|extractActions
+parameter_list|)
+block|{
+name|defaultConfig
+operator|.
+name|setExtractActions
+argument_list|(
+name|extractActions
+argument_list|)
+expr_stmt|;
+block|}
 comment|//can return null!
 specifier|private
 name|Document
