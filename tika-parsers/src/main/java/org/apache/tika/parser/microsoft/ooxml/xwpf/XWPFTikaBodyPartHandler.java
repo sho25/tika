@@ -143,6 +143,14 @@ block|{
 specifier|private
 specifier|final
 specifier|static
+name|String
+name|P
+init|=
+literal|"p"
+decl_stmt|;
+specifier|private
+specifier|final
+specifier|static
 name|char
 index|[]
 name|NEWLINE
@@ -538,7 +546,7 @@ condition|)
 block|{
 name|paragraphTag
 operator|=
-literal|"p"
+name|P
 expr_stmt|;
 name|String
 name|styleClass
