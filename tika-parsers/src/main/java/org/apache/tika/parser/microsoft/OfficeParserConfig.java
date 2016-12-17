@@ -52,6 +52,12 @@ name|useSAXDocxExtractor
 init|=
 literal|false
 decl_stmt|;
+specifier|private
+name|boolean
+name|useSAXPptxExtractor
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Sets whether or not the parser should include deleted content.      *<p/>      *<b>This has only been implemented in the streaming docx parser      * ({@link org.apache.tika.parser.microsoft.ooxml.SXWPFWordExtractorDecorator} so far!!!</b>      * @param includeDeletedContent      */
 specifier|public
 name|void
@@ -111,7 +117,7 @@ return|return
 name|useSAXDocxExtractor
 return|;
 block|}
-comment|/**      * Use the experimental SAX-based streaming DOCX parser?      * If set to<code>false</code>, the classic parser will be used; if<code>true</code>,      * the new experimental parser will be used.      *<p/>      * Default: classic parser      * @param useSAXDocxExtractor      */
+comment|/**      * Use the experimental SAX-based streaming DOCX parser?      * If set to<code>false</code>, the classic parser will be used; if<code>true</code>,      * the new experimental parser will be used.      *<p/>      * Default:<code>false</code> (classic DOM parser)      * @param useSAXDocxExtractor      */
 specifier|public
 name|void
 name|setUseSAXDocxExtractor
@@ -126,6 +132,31 @@ name|useSAXDocxExtractor
 operator|=
 name|useSAXDocxExtractor
 expr_stmt|;
+block|}
+comment|/**      * Use the experimental SAX-based streaming DOCX parser?      * If set to<code>false</code>, the classic parser will be used; if<code>true</code>,      * the new experimental parser will be used.      *<p/>      * Default:<code>false</code> (classic DOM parser)      * @param useSAXPptxExtractor      */
+specifier|public
+name|void
+name|setUseSAXPptxExtractor
+parameter_list|(
+name|boolean
+name|useSAXPptxExtractor
+parameter_list|)
+block|{
+name|this
+operator|.
+name|useSAXPptxExtractor
+operator|=
+name|useSAXPptxExtractor
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getUseSAXPptxExtractor
+parameter_list|()
+block|{
+return|return
+name|useSAXPptxExtractor
+return|;
 block|}
 block|}
 end_class

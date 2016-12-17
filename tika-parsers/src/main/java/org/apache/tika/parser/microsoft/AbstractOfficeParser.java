@@ -204,6 +204,24 @@ name|useSAXDocxExtractor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Field
+specifier|public
+name|void
+name|setUseSAXPptxExtractor
+parameter_list|(
+name|boolean
+name|useSAXPptxExtractor
+parameter_list|)
+block|{
+name|defaultOfficeParserConfig
+operator|.
+name|setUseSAXPptxExtractor
+argument_list|(
+name|useSAXPptxExtractor
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
