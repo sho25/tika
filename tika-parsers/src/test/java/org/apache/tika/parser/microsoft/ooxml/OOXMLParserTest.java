@@ -6977,7 +6977,7 @@ name|metadataList
 operator|.
 name|get
 argument_list|(
-literal|2
+literal|4
 argument_list|)
 decl_stmt|;
 name|assertContains
@@ -7001,7 +7001,7 @@ name|metadataList
 operator|.
 name|get
 argument_list|(
-literal|4
+literal|5
 argument_list|)
 decl_stmt|;
 name|assertContains

@@ -393,7 +393,7 @@ name|assertEquals
 argument_list|(
 literal|"right number of attachments"
 argument_list|,
-literal|10
+literal|14
 argument_list|,
 name|metadataList
 operator|.
