@@ -54,6 +54,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -3132,6 +3144,43 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testProtected
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+name|getXML
+argument_list|(
+literal|"testWORD_protected_passtika.doc"
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"should have thrown encrypted document exception"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|EncryptedDocumentException
+name|e
+parameter_list|)
+block|{          }
 block|}
 block|}
 end_class
