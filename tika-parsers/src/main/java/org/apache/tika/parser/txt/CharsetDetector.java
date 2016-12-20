@@ -1239,6 +1239,16 @@ argument_list|,
 name|csr
 argument_list|,
 name|confidence
+argument_list|,
+name|charsetMatch
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|charsetMatch
+operator|.
+name|getLanguage
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|matches
