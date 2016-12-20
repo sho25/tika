@@ -2254,6 +2254,19 @@ name|Locale
 operator|.
 name|US
 argument_list|)
+block|,
+literal|"-c"
+block|,
+operator|(
+name|config
+operator|.
+name|getPreserveInterwordSpacing
+argument_list|()
+operator|)
+operator|?
+literal|"preserve_interword_spaces=1"
+operator|:
+literal|"preserve_interword_spaces=0"
 block|}
 decl_stmt|;
 name|ProcessBuilder
@@ -2543,6 +2556,7 @@ name|n
 operator|>
 literal|0
 condition|)
+block|{
 name|xhtml
 operator|.
 name|characters
@@ -2554,6 +2568,7 @@ argument_list|,
 name|n
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|xhtml
