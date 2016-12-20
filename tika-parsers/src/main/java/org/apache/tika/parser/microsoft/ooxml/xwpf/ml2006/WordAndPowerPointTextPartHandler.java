@@ -77,9 +77,7 @@ name|microsoft
 operator|.
 name|ooxml
 operator|.
-name|xwpf
-operator|.
-name|XWPFDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 import|;
 end_import
 
@@ -97,9 +95,7 @@ name|microsoft
 operator|.
 name|ooxml
 operator|.
-name|xwpf
-operator|.
-name|XWPFTikaBodyPartHandler
+name|OOXMLTikaBodyPartHandler
 import|;
 end_import
 
@@ -130,14 +126,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Simple wrapper/extension of XWPFDocumentXMLBodyHandler to fit  * into the inline parsing scheme.  */
+comment|/**  * Simple wrapper/extension of OOXMLWordAndPowerPointTextHandler to fit  * into the inline parsing scheme.  */
 end_comment
 
 begin_class
 class|class
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 extends|extends
-name|XWPFDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 implements|implements
 name|PartHandler
 block|{
@@ -151,7 +147,7 @@ name|String
 name|name
 decl_stmt|;
 specifier|public
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 parameter_list|(
 name|String
 name|contentType
@@ -169,7 +165,7 @@ block|{
 name|super
 argument_list|(
 operator|new
-name|XWPFTikaBodyPartHandler
+name|OOXMLTikaBodyPartHandler
 argument_list|(
 name|xhtml
 argument_list|,

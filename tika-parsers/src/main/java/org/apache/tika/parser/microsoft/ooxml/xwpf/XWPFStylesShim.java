@@ -119,7 +119,7 @@ name|microsoft
 operator|.
 name|ooxml
 operator|.
-name|AbstractDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 import|;
 end_import
 
@@ -184,6 +184,16 @@ specifier|public
 class|class
 name|XWPFStylesShim
 block|{
+comment|/**      * Empty singleton to be used when there is no style info      */
+specifier|public
+specifier|static
+name|XWPFStylesShim
+name|EMPTY_STYLES
+init|=
+operator|new
+name|EmptyXWPFStyles
+argument_list|()
+decl_stmt|;
 specifier|private
 name|Map
 argument_list|<
@@ -198,6 +208,10 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+specifier|private
+name|XWPFStylesShim
+parameter_list|()
+block|{      }
 specifier|public
 name|XWPFStylesShim
 parameter_list|(
@@ -306,6 +320,28 @@ argument_list|)
 return|;
 block|}
 specifier|private
+specifier|static
+class|class
+name|EmptyXWPFStyles
+extends|extends
+name|XWPFStylesShim
+block|{
+annotation|@
+name|Override
+specifier|public
+name|String
+name|getStyleName
+parameter_list|(
+name|String
+name|styleId
+parameter_list|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+block|}
+specifier|private
 class|class
 name|StylesStripper
 extends|extends
@@ -343,7 +379,7 @@ name|uri
 operator|==
 literal|null
 operator|||
-name|AbstractDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 operator|.
 name|W_NS
 operator|.
@@ -369,7 +405,7 @@ name|atts
 operator|.
 name|getValue
 argument_list|(
-name|AbstractDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 operator|.
 name|W_NS
 argument_list|,
@@ -395,7 +431,7 @@ name|atts
 operator|.
 name|getValue
 argument_list|(
-name|AbstractDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 operator|.
 name|W_NS
 argument_list|,
@@ -450,7 +486,7 @@ name|uri
 operator|==
 literal|null
 operator|||
-name|AbstractDocumentXMLBodyHandler
+name|OOXMLWordAndPowerPointTextHandler
 operator|.
 name|W_NS
 operator|.

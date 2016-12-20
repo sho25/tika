@@ -1161,14 +1161,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Regular headings
-name|assertTrue
-argument_list|(
-name|xml
-operator|.
-name|contains
+name|assertContains
 argument_list|(
 literal|"<h1>Heading Level 1</h1>"
-argument_list|)
+argument_list|,
+name|xml
 argument_list|)
 expr_stmt|;
 name|assertTrue

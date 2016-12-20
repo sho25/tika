@@ -287,7 +287,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 name|XWPFRelation
 operator|.
@@ -307,7 +307,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 name|XWPFRelation
 operator|.
@@ -327,7 +327,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml"
 argument_list|,
@@ -342,7 +342,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 name|XWPFRelation
 operator|.
@@ -362,7 +362,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 name|XWPFRelation
 operator|.
@@ -382,7 +382,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml"
 argument_list|,
@@ -397,7 +397,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml"
 argument_list|,
@@ -412,7 +412,7 @@ expr_stmt|;
 name|addPartHandler
 argument_list|(
 operator|new
-name|BodyPartHandler
+name|WordAndPowerPointTextPartHandler
 argument_list|(
 literal|"application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml"
 argument_list|,
