@@ -78,7 +78,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for TesseractOCRParser.  *  * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *  * Parameters can also be set by either editing the existing TesseractOCRConfig.properties file in,  * tika-parser/src/main/resources/org/apache/tika/parser/ocr, or overriding it by creating your own  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  *  */
+comment|/**  * Configuration for TesseractOCRParser.  *<p>  * This allows to enable TesseractOCRParser and set its parameters:  *<p>  * TesseractOCRConfig config = new TesseractOCRConfig();<br>  * config.setTesseractPath(tesseractFolder);<br>  * parseContext.set(TesseractOCRConfig.class, config);<br>  *</p>  *<p>  * Parameters can also be set by either editing the existing TesseractOCRConfig.properties file in,  * tika-parser/src/main/resources/org/apache/tika/parser/ocr, or overriding it by creating your own  * and placing it in the package org/apache/tika/parser/ocr on the classpath.  */
 end_comment
 
 begin_class
@@ -214,7 +214,7 @@ name|resize
 init|=
 literal|900
 decl_stmt|;
-comment|/** 	 * Default contructor. 	 */
+comment|/**      * Default contructor.      */
 specifier|public
 name|TesseractOCRConfig
 parameter_list|()
@@ -233,7 +233,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Loads properties from InputStream and then tries to close InputStream. 	 * If there is an IOException, this silently swallows the exception 	 * and goes back to the default. 	 * 	 * @param is 	 */
+comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * If there is an IOException, this silently swallows the exception      * and goes back to the default.      *      * @param is      */
 specifier|public
 name|TesseractOCRConfig
 parameter_list|(
@@ -286,7 +286,7 @@ parameter_list|(
 name|IOException
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 finally|finally
 block|{
 if|if
@@ -546,7 +546,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** @see #setTesseractPath(String tesseractPath)*/
+comment|/**      * @see #setTesseractPath(String tesseractPath)      */
 specifier|public
 name|String
 name|getTesseractPath
@@ -556,7 +556,7 @@ return|return
 name|tesseractPath
 return|;
 block|}
-comment|/** 	 * Set the path to the Tesseract executable, needed if it is not on system path.      *<p>      * Note that if you set this value, it is highly recommended that you also      * set the path to the 'tessdata' folder using {@link #setTessdataPath}.      *</p> 	 */
+comment|/**      * Set the path to the Tesseract executable, needed if it is not on system path.      *<p>      * Note that if you set this value, it is highly recommended that you also      * set the path to the 'tessdata' folder using {@link #setTessdataPath}.      *</p>      */
 specifier|public
 name|void
 name|setTesseractPath
@@ -596,7 +596,7 @@ operator|=
 name|tesseractPath
 expr_stmt|;
 block|}
-comment|/** @see #setTessdataPath(String tessdataPath) */
+comment|/**      * @see #setTessdataPath(String tessdataPath)      */
 specifier|public
 name|String
 name|getTessdataPath
@@ -646,7 +646,7 @@ operator|=
 name|tessdataPath
 expr_stmt|;
 block|}
-comment|/** @see #setLanguage(String language)*/
+comment|/**      * @see #setLanguage(String language)      */
 specifier|public
 name|String
 name|getLanguage
@@ -656,7 +656,7 @@ return|return
 name|language
 return|;
 block|}
-comment|/** 	 * Set tesseract language dictionary to be used. Default is "eng". 	 * Multiple languages may be specified, separated by plus characters. 	 */
+comment|/**      * Set tesseract language dictionary to be used. Default is "eng".      * Multiple languages may be specified, separated by plus characters.      */
 specifier|public
 name|void
 name|setLanguage
@@ -691,7 +691,7 @@ operator|=
 name|language
 expr_stmt|;
 block|}
-comment|/** @see #setPageSegMode(String pageSegMode)*/
+comment|/**      * @see #setPageSegMode(String pageSegMode)      */
 specifier|public
 name|String
 name|getPageSegMode
@@ -701,7 +701,7 @@ return|return
 name|pageSegMode
 return|;
 block|}
-comment|/** 	 * Set tesseract page segmentation mode. 	 * Default is 1 = Automatic page segmentation with OSD (Orientation and Script Detection) 	 */
+comment|/**      * Set tesseract page segmentation mode.      * Default is 1 = Automatic page segmentation with OSD (Orientation and Script Detection)      */
 specifier|public
 name|void
 name|setPageSegMode
@@ -736,7 +736,7 @@ operator|=
 name|pageSegMode
 expr_stmt|;
 block|}
-comment|/** @see #setMinFileSizeToOcr(int minFileSizeToOcr)*/
+comment|/**      * @see #setMinFileSizeToOcr(int minFileSizeToOcr)      */
 specifier|public
 name|int
 name|getMinFileSizeToOcr
@@ -746,7 +746,7 @@ return|return
 name|minFileSizeToOcr
 return|;
 block|}
-comment|/** 	 * Set minimum file size to submit file to ocr. 	 * Default is 0. 	 */
+comment|/**      * Set minimum file size to submit file to ocr.      * Default is 0.      */
 specifier|public
 name|void
 name|setMinFileSizeToOcr
@@ -762,7 +762,7 @@ operator|=
 name|minFileSizeToOcr
 expr_stmt|;
 block|}
-comment|/** @see #setMaxFileSizeToOcr(int maxFileSizeToOcr)*/
+comment|/**      * @see #setMaxFileSizeToOcr(int maxFileSizeToOcr)      */
 specifier|public
 name|int
 name|getMaxFileSizeToOcr
@@ -772,7 +772,7 @@ return|return
 name|maxFileSizeToOcr
 return|;
 block|}
-comment|/** 	 * Set maximum file size to submit file to ocr. 	 * Default is Integer.MAX_VALUE. 	 */
+comment|/**      * Set maximum file size to submit file to ocr.      * Default is Integer.MAX_VALUE.      */
 specifier|public
 name|void
 name|setMaxFileSizeToOcr
@@ -788,7 +788,7 @@ operator|=
 name|maxFileSizeToOcr
 expr_stmt|;
 block|}
-comment|/** 	 * Set maximum time (seconds) to wait for the ocring process to terminate. 	 * Default value is 120s. 	 */
+comment|/**      * Set maximum time (seconds) to wait for the ocring process to terminate.      * Default value is 120s.      */
 specifier|public
 name|void
 name|setTimeout
@@ -804,7 +804,7 @@ operator|=
 name|timeout
 expr_stmt|;
 block|}
-comment|/** @see #setTimeout(int timeout) 	 * @return timeout value for Tesseract */
+comment|/**      * @return timeout value for Tesseract      * @see #setTimeout(int timeout)      */
 specifier|public
 name|int
 name|getTimeout
@@ -814,7 +814,7 @@ return|return
 name|timeout
 return|;
 block|}
-comment|/** 	 * Set output type from ocr process.  Default is "txt", but can be "hocr". 	 * Default value is 120s. 	 */
+comment|/**      * Set output type from ocr process.  Default is "txt", but can be "hocr".      * Default value is 120s.      */
 specifier|public
 name|void
 name|setOutputType
@@ -830,7 +830,7 @@ operator|=
 name|outputType
 expr_stmt|;
 block|}
-comment|/** @see #setOutputType(OUTPUT_TYPE outputType) */
+comment|/**      * @see #setOutputType(OUTPUT_TYPE outputType)      */
 specifier|public
 name|OUTPUT_TYPE
 name|getOutputType
@@ -840,7 +840,7 @@ return|return
 name|outputType
 return|;
 block|}
-comment|/** @see #setEnableImageProcessing(int) 	 * @return image processing is enabled or not */
+comment|/**      * @return image processing is enabled or not      * @see #setEnableImageProcessing(int)      */
 specifier|public
 name|int
 name|isEnableImageProcessing
@@ -850,7 +850,7 @@ return|return
 name|enableImageProcessing
 return|;
 block|}
-comment|/**  	 * Set the value to true if processing is to be enabled. 	 * Default value is false. 	 */
+comment|/**      * Set the value to true if processing is to be enabled.      * Default value is false.      */
 specifier|public
 name|void
 name|setEnableImageProcessing
@@ -866,7 +866,7 @@ operator|=
 name|enableImageProcessing
 expr_stmt|;
 block|}
-comment|/** 	 * @return the density 	 */
+comment|/**      * @return the density      */
 specifier|public
 name|int
 name|getDensity
@@ -876,7 +876,7 @@ return|return
 name|density
 return|;
 block|}
-comment|/** 	 * @param density the density to set. Valid range of values is 150-1200. 	 * Default value is 300. 	 */
+comment|/**      * @param density the density to set. Valid range of values is 150-1200.      *                Default value is 300.      */
 specifier|public
 name|void
 name|setDensity
@@ -911,7 +911,7 @@ operator|=
 name|density
 expr_stmt|;
 block|}
-comment|/** 	 * @return the depth 	 */
+comment|/**      * @return the depth      */
 specifier|public
 name|int
 name|getDepth
@@ -921,7 +921,7 @@ return|return
 name|depth
 return|;
 block|}
-comment|/** 	 * @param depth the depth to set. Valid values are 2, 4, 8, 16, 32, 64, 256, 4096. 	 * Default value is 4. 	 */
+comment|/**      * @param depth the depth to set. Valid values are 2, 4, 8, 16, 32, 64, 256, 4096.      *              Default value is 4.      */
 specifier|public
 name|void
 name|setDepth
@@ -996,7 +996,7 @@ literal|"Invalid depth value. Valid values are 2, 4, 8, 16, 32, 64, 256, 4096."
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * @return the colorspace 	 */
+comment|/**      * @return the colorspace      */
 specifier|public
 name|String
 name|getColorspace
@@ -1006,7 +1006,7 @@ return|return
 name|colorspace
 return|;
 block|}
-comment|/** 	 * @param colorspace the colorspace to set 	 * Deafult value is gray. 	 */
+comment|/**      * @param colorspace the colorspace to set      *                   Deafult value is gray.      */
 specifier|public
 name|void
 name|setColorspace
@@ -1044,7 +1044,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * @return the filter 	 */
+comment|/**      * @return the filter      */
 specifier|public
 name|String
 name|getFilter
@@ -1054,7 +1054,7 @@ return|return
 name|filter
 return|;
 block|}
-comment|/** 	 * @param filter the filter to set. Valid values are point, hermite, cubic, box, gaussian, catrom, triangle, quadratic and mitchell. 	 * Default value is triangle. 	 */
+comment|/**      * @param filter the filter to set. Valid values are point, hermite, cubic, box, gaussian, catrom, triangle, quadratic and mitchell.      *               Default value is triangle.      */
 specifier|public
 name|void
 name|setFilter
@@ -1156,7 +1156,7 @@ literal|"cubic, box, gaussian, catrom, triangle, quadratic and mitchell."
 argument_list|)
 throw|;
 block|}
-comment|/** 	 * @return the resize 	 */
+comment|/**      * @return the resize      */
 specifier|public
 name|int
 name|getResize
@@ -1166,7 +1166,7 @@ return|return
 name|resize
 return|;
 block|}
-comment|/** 	 * @param resize the resize to set. Valid range of values is 100-900. 	 * Default value is 900. 	 */
+comment|/**      * @param resize the resize to set. Valid range of values is 100-900.      *               Default value is 900.      */
 specifier|public
 name|void
 name|setResize
@@ -1216,7 +1216,7 @@ literal|"Invalid resize value. Valid range of values is 100-900."
 argument_list|)
 throw|;
 block|}
-comment|/** @see #setImageMagickPath(String ImageMagickPath) 	 * @return path to ImageMagick file. */
+comment|/**      * @return path to ImageMagick file.      * @see #setImageMagickPath(String ImageMagickPath)      */
 specifier|public
 name|String
 name|getImageMagickPath
@@ -1226,7 +1226,7 @@ return|return
 name|ImageMagickPath
 return|;
 block|}
-comment|/** 	 * Set the path to the ImageMagick executable, needed if it is not on system path. 	 * @param ImageMagickPath to ImageMagick file. 	 */
+comment|/**      * Set the path to the ImageMagick executable, needed if it is not on system path.      *      * @param ImageMagickPath to ImageMagick file.      */
 specifier|public
 name|void
 name|setImageMagickPath
@@ -1266,7 +1266,7 @@ operator|=
 name|ImageMagickPath
 expr_stmt|;
 block|}
-comment|/** 	 * Get property from the properties file passed in. 	 * @param properties properties file to read from. 	 * @param property the property to fetch. 	 * @param defaultMissing default parameter to use. 	 * @return the value. 	 */
+comment|/**      * Get property from the properties file passed in.      *      * @param properties     properties file to read from.      * @param property       the property to fetch.      * @param defaultMissing default parameter to use.      * @return the value.      */
 specifier|private
 name|int
 name|getProp
@@ -1346,7 +1346,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * Get property from the properties file passed in. 	 * @param properties properties file to read from. 	 * @param property the property to fetch. 	 * @param defaultMissing default parameter to use. 	 * @return the value. 	 */
+comment|/**      * Get property from the properties file passed in.      *      * @param properties     properties file to read from.      * @param property       the property to fetch.      * @param defaultMissing default parameter to use.      * @return the value.      */
 specifier|private
 name|String
 name|getProp
