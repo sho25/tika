@@ -121,6 +121,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -1186,6 +1200,8 @@ throws|throws
 name|IOException
 throws|,
 name|SAXException
+throws|,
+name|TikaException
 block|{
 name|POIFSFileSystem
 name|pfs
@@ -1219,9 +1235,9 @@ name|OLE_DOCUMENT_NAME
 argument_list|)
 condition|)
 block|{
-name|LOG
-operator|.
-name|info
+throw|throw
+operator|new
+name|TikaException
 argument_list|(
 literal|"Unsupported QuattroPro file format. "
 operator|+
@@ -1236,8 +1252,7 @@ operator|.
 name|getEntryNames
 argument_list|()
 argument_list|)
-expr_stmt|;
-return|return;
+throw|;
 block|}
 comment|//TODO shall we validate and throw warning/error if the file does not
 comment|//start with a BOF and ends with a EOF?
