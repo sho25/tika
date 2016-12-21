@@ -11,39 +11,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
-operator|.
-name|wordperfect
+name|metadata
 package|;
 end_package
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|Metadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|Property
-import|;
-end_import
 
 begin_comment
 comment|/**  * QuattroPro properties collection.  * @author Pascal Essiembre  */
@@ -62,23 +32,7 @@ name|QUATTROPRO_METADATA_NAME_PREFIX
 init|=
 literal|"wordperfect"
 decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_CREATOR
-init|=
-literal|"creator"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|META_LAST_USER
-init|=
-literal|"last-user"
-decl_stmt|;
-comment|/**     * ID.      */
+comment|/**     * ID.     */
 name|Property
 name|ID
 init|=
@@ -95,7 +49,7 @@ operator|+
 literal|"Id"
 argument_list|)
 decl_stmt|;
-comment|/**     * Version.      */
+comment|/**     * Version.     */
 name|Property
 name|VERSION
 init|=
@@ -112,7 +66,7 @@ operator|+
 literal|"Version"
 argument_list|)
 decl_stmt|;
-comment|/**     * Build.      */
+comment|/**     * Build.     */
 name|Property
 name|BUILD
 init|=
@@ -129,7 +83,7 @@ operator|+
 literal|"Build"
 argument_list|)
 decl_stmt|;
-comment|/**     * Lowest version.      */
+comment|/**     * Lowest version.     */
 name|Property
 name|LOWEST_VERSION
 init|=
@@ -144,57 +98,6 @@ operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"LowestVersion"
-argument_list|)
-decl_stmt|;
-comment|/**     * Number of pages.      */
-name|Property
-name|PAGE_COUNT
-init|=
-name|Property
-operator|.
-name|internalInteger
-argument_list|(
-name|QUATTROPRO_METADATA_NAME_PREFIX
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
-operator|+
-literal|"PageCount"
-argument_list|)
-decl_stmt|;
-comment|/**     * Creator.      */
-name|Property
-name|CREATOR
-init|=
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|QUATTROPRO_METADATA_NAME_PREFIX
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
-operator|+
-literal|"Creator"
-argument_list|)
-decl_stmt|;
-comment|/**     * Last User.      */
-name|Property
-name|LAST_USER
-init|=
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|QUATTROPRO_METADATA_NAME_PREFIX
-operator|+
-name|Metadata
-operator|.
-name|NAMESPACE_PREFIX_DELIMITER
-operator|+
-literal|"LastUser"
 argument_list|)
 decl_stmt|;
 block|}

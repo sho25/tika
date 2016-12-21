@@ -86,7 +86,6 @@ comment|/**  * {@link InputStream} wrapper adding WordPerfect-specific byte-read
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|WPInputStream
 extends|extends
@@ -353,14 +352,33 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-return|return
-operator|(
-name|char
-operator|)
+name|int
+name|c
+init|=
 name|in
 operator|.
 name|read
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|EOFException
+argument_list|()
+throw|;
+block|}
+return|return
+operator|(
+name|char
+operator|)
+name|c
 return|;
 block|}
 comment|/**      * Reads a WordPerfect string of specified length (1 byte per character).      * @param length how many characters to read      * @return a string       * @throws IOException if not enough bytes remain      */
@@ -506,7 +524,7 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|read
+name|readWP
 argument_list|()
 argument_list|,
 literal|16
@@ -516,6 +534,38 @@ literal|2
 argument_list|,
 literal|'0'
 argument_list|)
+return|;
+block|}
+comment|/**      * Reads a byte      * @return byte read      * @throws IOException if not enough bytes remain      */
+specifier|public
+name|int
+name|readWP
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|int
+name|i
+init|=
+name|read
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|i
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+throw|throw
+operator|new
+name|EOFException
+argument_list|()
+throw|;
+block|}
+return|return
+name|i
 return|;
 block|}
 annotation|@
@@ -534,6 +584,7 @@ name|read
 argument_list|()
 return|;
 block|}
+comment|/**      * Does not guarantee full buffer is read.      */
 annotation|@
 name|Override
 specifier|public
@@ -556,6 +607,7 @@ name|b
 argument_list|)
 return|;
 block|}
+comment|/**      * Does not guarantee full buffer is read.      */
 annotation|@
 name|Override
 specifier|public
@@ -588,6 +640,7 @@ name|len
 argument_list|)
 return|;
 block|}
+comment|/**      * Does not guarantee full length is skipped.      */
 annotation|@
 name|Override
 specifier|public

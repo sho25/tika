@@ -22,7 +22,6 @@ comment|/**  * WordPerfect constant values used for parsing and extracting text.
 end_comment
 
 begin_class
-specifier|public
 specifier|final
 class|class
 name|WP6Constants

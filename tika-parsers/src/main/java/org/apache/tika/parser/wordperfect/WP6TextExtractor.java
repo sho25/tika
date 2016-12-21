@@ -59,6 +59,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|WordPerfect
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|sax
 operator|.
 name|XHTMLContentHandler
@@ -82,7 +96,6 @@ comment|/**  * Extracts text from a WordPerfect document according to WP6 File F
 end_comment
 
 begin_class
-specifier|public
 class|class
 name|WP6TextExtractor
 block|{
@@ -533,7 +546,7 @@ name|subgroup
 init|=
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 decl_stmt|;
 name|int
@@ -563,7 +576,7 @@ control|)
 block|{
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 expr_stmt|;
 block|}
@@ -720,7 +733,7 @@ name|charval
 init|=
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 decl_stmt|;
 name|int
@@ -728,12 +741,12 @@ name|charset
 init|=
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 decl_stmt|;
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 expr_stmt|;
 comment|// closing character
@@ -992,7 +1005,7 @@ name|setProductType
 argument_list|(
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1014,7 +1027,7 @@ name|setMajorVersion
 argument_list|(
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1025,7 +1038,7 @@ name|setMinorVersion
 argument_list|(
 name|in
 operator|.
-name|read
+name|readWP
 argument_list|()
 argument_list|)
 expr_stmt|;
