@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *<p>  * http://www.apache.org/licenses/LICENSE-2.0  *<p>  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -31,11 +31,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|apache
 operator|.
-name|InputStream
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -71,65 +73,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|epub
-operator|.
-name|EpubParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|sax
-operator|.
-name|BodyContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|ContentHandler
 import|;
 end_import
 
@@ -137,6 +83,8 @@ begin_class
 specifier|public
 class|class
 name|iBooksParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -147,56 +95,20 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-try|try
-init|(
-name|InputStream
-name|input
+name|XMLResult
+name|xmlResult
 init|=
-name|iBooksParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
+name|getXML
 argument_list|(
-literal|"/test-documents/testiBooks.ibooks"
+literal|"testiBooks.ibooks"
 argument_list|)
-init|)
-block|{
-name|Metadata
-name|metadata
-init|=
-operator|new
-name|Metadata
-argument_list|()
 decl_stmt|;
-name|ContentHandler
-name|handler
-init|=
-operator|new
-name|BodyContentHandler
-argument_list|()
-decl_stmt|;
-operator|new
-name|EpubParser
-argument_list|()
-operator|.
-name|parse
-argument_list|(
-name|input
-argument_list|,
-name|handler
-argument_list|,
-name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"application/x-ibooks+zip"
 argument_list|,
+name|xmlResult
+operator|.
 name|metadata
 operator|.
 name|get
@@ -211,6 +123,8 @@ name|assertEquals
 argument_list|(
 literal|"en-GB"
 argument_list|,
+name|xmlResult
+operator|.
 name|metadata
 operator|.
 name|get
@@ -225,6 +139,8 @@ name|assertEquals
 argument_list|(
 literal|"iBooks Author v1.0"
 argument_list|,
+name|xmlResult
+operator|.
 name|metadata
 operator|.
 name|get
@@ -239,6 +155,8 @@ name|assertEquals
 argument_list|(
 literal|"Apache"
 argument_list|,
+name|xmlResult
+operator|.
 name|metadata
 operator|.
 name|get
@@ -249,8 +167,44 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* TODO For some reason, the xhtml files in iBooks-style ePub are not parsed properly, and the content comes back empty.git che             String content = handler.toString();             System.out.println("content="+content);             assertContains("Plus a simple div", content);             assertContains("First item", content);             assertContains("The previous headings were subchapters", content);             assertContains("Table data", content);             assertContains("Lorem ipsum dolor rutur amet", content);             */
-block|}
+name|String
+name|content
+init|=
+name|xmlResult
+operator|.
+name|xml
+decl_stmt|;
+comment|//appears twice in section 1
+comment|// (we skip it in searchRefText.xml because of that file's suffix)
+name|assertContainsCount
+argument_list|(
+literal|"rutur"
+argument_list|,
+name|content
+argument_list|,
+literal|2
+argument_list|)
+expr_stmt|;
+comment|//only appears in section 2
+name|assertContains
+argument_list|(
+literal|"Morbi"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+comment|//Glossary has no body content so we can't test for that
+comment|//Toc does
+name|assertContains
+argument_list|(
+literal|"1.1\tUntitled"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+comment|//this is a legacy comment...I can't find this content in the current ibooks
+comment|//test file.  I think we're good?
+comment|/* TODO For some reason, the xhtml files in iBooks-style ePub are not parsed properly, and the content comes back empty.git che             String content = handler.toString();             System.out.println("content="+content);             assertContains("Plus a simple div", content);             assertContains("First item", content);             assertContains("The previous headings were subchapters", content);             assertContains("Table data", content);             assertContains("Lorem ipsum dolor rutur amet", content);         */
 block|}
 block|}
 end_class
