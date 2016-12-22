@@ -135,6 +135,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|UnsupportedFormatException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -1274,7 +1288,7 @@ condition|)
 block|{
 throw|throw
 operator|new
-name|TikaException
+name|UnsupportedFormatException
 argument_list|(
 literal|"Unsupported QuattroPro file format. "
 operator|+

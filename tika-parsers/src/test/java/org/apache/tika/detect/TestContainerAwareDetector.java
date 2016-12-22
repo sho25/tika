@@ -596,14 +596,14 @@ name|assertTypeByData
 argument_list|(
 literal|"testQUATTRO.qpw"
 argument_list|,
-literal|"application/x-quattro-pro"
+literal|"application/x-quattro-pro; version=9"
 argument_list|)
 expr_stmt|;
 name|assertTypeByData
 argument_list|(
 literal|"testQUATTRO.wb3"
 argument_list|,
-literal|"application/x-quattro-pro"
+literal|"application/x-quattro-pro; version=7-8"
 argument_list|)
 expr_stmt|;
 name|assertTypeByData

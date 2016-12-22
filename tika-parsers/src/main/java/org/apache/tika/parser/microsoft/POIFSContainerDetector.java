@@ -544,6 +544,18 @@ argument_list|(
 literal|"x-hwp-v5"
 argument_list|)
 decl_stmt|;
+comment|/**      * Base QuattroPro mime      */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|QUATTROPRO
+init|=
+name|application
+argument_list|(
+literal|"x-quattro-pro"
+argument_list|)
+decl_stmt|;
 comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
@@ -1292,11 +1304,14 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|new
 name|MediaType
-operator|.
-name|application
 argument_list|(
-literal|"x-quattro-pro"
+name|QUATTROPRO
+argument_list|,
+literal|"version"
+argument_list|,
+literal|"7-8"
 argument_list|)
 return|;
 comment|// .wb?
@@ -1314,11 +1329,14 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|new
 name|MediaType
-operator|.
-name|application
 argument_list|(
-literal|"x-quattro-pro"
+name|QUATTROPRO
+argument_list|,
+literal|"version"
+argument_list|,
+literal|"9"
 argument_list|)
 return|;
 comment|// .qpw
