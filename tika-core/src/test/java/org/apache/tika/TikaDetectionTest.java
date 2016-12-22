@@ -657,54 +657,11 @@ literal|"x.ogx"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/onenote"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.onetoc"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/onenote"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.onetoc2"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/onenote"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.onetmp"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/onenote"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.onepkg"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - We have subtypes they lack
+comment|//assertEquals("application/onenote", tika.detect("x.onetoc"));
+comment|//assertEquals("application/onenote", tika.detect("x.onetoc2"));
+comment|//assertEquals("application/onenote", tika.detect("x.onetmp"));
+comment|//assertEquals("application/onenote", tika.detect("x.onepkg"));
 name|assertEquals
 argument_list|(
 literal|"application/patch-ops-error+xml"
