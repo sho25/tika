@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright 2015-2016 Norconex Inc.  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -17,46 +17,53 @@ name|wordperfect
 package|;
 end_package
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|LogManager
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|log4j
+operator|.
+name|Logger
+import|;
+end_import
+
 begin_comment
-comment|/**  * WordPerfect constant values used for parsing and extracting text.  * @author Pascal Essiembre  */
+comment|/**  * WordPerfect 6+ constant values used for mapping WordPerfect charsets to  * unicode equivalents when possible.  * @author Pascal Essiembre  */
 end_comment
 
 begin_class
 specifier|final
 class|class
-name|WP6Constants
+name|WP6Charsets
 block|{
-specifier|public
+specifier|private
 specifier|static
 specifier|final
-name|String
-name|WP6_FILE_ID
+name|Logger
+name|LOG
 init|=
-literal|"ÿWPC"
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|WP6_PRODUCT_TYPE
-init|=
-literal|1
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|WP6_FILE_TYPE_WP_DOCUMENT
-init|=
-literal|10
-decl_stmt|;
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|WP6_FILE_TYPE_WPD
-init|=
-literal|36
+name|LogManager
+operator|.
+name|getLogger
+argument_list|(
+name|WP6Charsets
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 specifier|public
 specifier|static
@@ -136,7 +143,7 @@ block|,
 literal|'\u00DF'
 block|,     }
 decl_stmt|;
-comment|/**      * Extended character sets used when fixed-length multi-byte functions      * with a byte value of 240 (0xF0) are found in a WordPerfect document.      * Those character set codes may be specific to WordPerfect       * file specifications and may or may not be considered standard       * outside WordPerfect.      */
+comment|/**      * Extended character sets used when fixed-length multi-byte functions      * with a byte value of 240 (0xF0) are found in a WordPerfect document.      * Those character set codes may be specific to WordPerfect       * file specifications and may or may not be considered standard       * outside WordPerfect. Applies to version 6 and likely higher.      */
 specifier|public
 specifier|static
 specifier|final
@@ -150,9 +157,11 @@ name|char
 index|[]
 index|[]
 block|{
-comment|// WP Charset 0: ASCII (95 chars)
+comment|// WP Charset 0: ASCII (96 chars)
 block|{
 literal|' '
+block|,
+literal|'!'
 block|,
 literal|'"'
 block|,
@@ -5640,11 +5649,110 @@ literal|'\ufba5'
 block|}
 block|,     }
 decl_stmt|;
+comment|//TODO map multi-characters
 comment|/**      * Constructor.      */
 specifier|private
-name|WP6Constants
+name|WP6Charsets
 parameter_list|()
 block|{     }
+specifier|public
+specifier|static
+name|void
+name|append
+parameter_list|(
+name|StringBuilder
+name|out
+parameter_list|,
+name|int
+name|charset
+parameter_list|,
+name|int
+name|charval
+parameter_list|)
+block|{
+if|if
+condition|(
+name|charset
+operator|>=
+name|WP6Charsets
+operator|.
+name|EXTENDED_CHARSETS
+operator|.
+name|length
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unsupported WordPerfect 6+ charset: "
+operator|+
+name|charset
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|charval
+operator|>=
+name|WP6Charsets
+operator|.
+name|EXTENDED_CHARSETS
+index|[
+name|charset
+index|]
+operator|.
+name|length
+condition|)
+block|{
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Unsupported WordPerfect 6+ charset ("
+operator|+
+name|charset
+operator|+
+literal|") character value: "
+operator|+
+name|charval
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|out
+operator|.
+name|append
+argument_list|(
+name|WP6Charsets
+operator|.
+name|EXTENDED_CHARSETS
+index|[
+name|charset
+index|]
+index|[
+name|charval
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 end_class
 
