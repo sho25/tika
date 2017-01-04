@@ -27,6 +27,32 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|XHTMLContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Extracts WordPerfect Document Area text from a WordPerfect document  * version 5.x.  * @author Pascal Essiembre  */
 end_comment
@@ -49,9 +75,14 @@ name|in
 parameter_list|,
 name|StringBuilder
 name|out
+parameter_list|,
+name|XHTMLContentHandler
+name|xhtml
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|SAXException
 block|{
 comment|// 0-31: control characters
 if|if
@@ -61,11 +92,11 @@ operator|==
 literal|10
 condition|)
 block|{
-name|out
-operator|.
-name|append
+name|endParagraph
 argument_list|(
-literal|'\n'
+name|out
+argument_list|,
+name|xhtml
 argument_list|)
 expr_stmt|;
 comment|// hard return ("Enter")
@@ -95,11 +126,11 @@ operator|==
 literal|12
 condition|)
 block|{
-name|out
-operator|.
-name|append
+name|endParagraph
 argument_list|(
-literal|'\n'
+name|out
+argument_list|,
+name|xhtml
 argument_list|)
 expr_stmt|;
 comment|// hard page break
@@ -155,11 +186,11 @@ operator|==
 literal|140
 condition|)
 block|{
-name|out
-operator|.
-name|append
+name|endParagraph
 argument_list|(
-literal|'\n'
+name|out
+argument_list|,
+name|xhtml
 argument_list|)
 expr_stmt|;
 comment|// combination hard return/soft page (WP5.1)
@@ -193,11 +224,11 @@ operator|==
 literal|153
 condition|)
 block|{
-name|out
-operator|.
-name|append
+name|endParagraph
 argument_list|(
-literal|'\4'
+name|out
+argument_list|,
+name|xhtml
 argument_list|)
 expr_stmt|;
 comment|// Dormant Hard return (WP5.1)

@@ -134,7 +134,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"test test"
+literal|"<p>AND FURTHER</p>"
 argument_list|,
 name|r
 operator|.
@@ -201,7 +201,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Surrounded by her family"
+literal|"<p>Surrounded by her family"
 argument_list|,
 name|r
 operator|.
@@ -268,7 +268,16 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Summer is the peak travel time"
+literal|"<p>STUDY RESULTS: Existing condition"
+argument_list|,
+name|r
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"Seattle nonstop flights.</p>"
 argument_list|,
 name|r
 operator|.

@@ -487,13 +487,6 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
-name|xhtml
-operator|.
-name|startElement
-argument_list|(
-literal|"p"
-argument_list|)
-expr_stmt|;
 name|getDocumentAreaExtractor
 argument_list|(
 name|prefixArea
@@ -504,13 +497,6 @@ argument_list|(
 name|in
 argument_list|,
 name|xhtml
-argument_list|)
-expr_stmt|;
-name|xhtml
-operator|.
-name|endElement
-argument_list|(
-literal|"p"
 argument_list|)
 expr_stmt|;
 name|xhtml
