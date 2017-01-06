@@ -560,6 +560,27 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|JB2
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+name|COSName
+operator|.
+name|JBIG2_DECODE
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|/**      * This keeps track of the pdf object ids for inline      * images that have been processed.      * If {@link PDFParserConfig#getExtractUniqueInlineImagesOnly()      * is true, this will be checked before extracting an embedded image.      * The integer keeps track of the inlineImageCounter for that image.      * This integer is used to identify images in the markup.      *      * This is used across the document.  To avoid infinite recursion      * TIKA-1742, we're limiting the export to one image per page.      */
 specifier|private
 name|Map
@@ -1081,6 +1102,23 @@ operator|.
 name|getSuffix
 argument_list|()
 decl_stmt|;
+comment|//TODO remove this next block when upgrading to PDFBox 2.0.5.
+comment|//See: https://issues.apache.org/jira/browse/PDFBOX-3634
+if|if
+condition|(
+name|extension
+operator|==
+literal|null
+condition|)
+block|{
+name|extension
+operator|=
+name|getJBIG2Suffix
+argument_list|(
+name|image
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|extension
@@ -1183,18 +1221,29 @@ argument_list|,
 literal|"image/jp2"
 argument_list|)
 expr_stmt|;
-comment|// PDFBox does not yet return JBIG2 extension and extracting
-comment|// inline JBIG2 images fails with test file testPDF_JBIG2.pdf
-comment|// if we explicitely set the content type to image/x-jbig2
-comment|// (no "pages" are found when image is embedded).
-comment|// It works when it thinks it is PNG so we do not force it to
-comment|// jb2 for parsing until this issue is addressed in PDFBox and
-comment|// Levigo jbig2-imageio.  Will result in bad content-type in
-comment|// metadata for now, but that's better than not being able to
-comment|// handle JBIG2 in PDFs at all.
-comment|//                } else if (extension.equals("jb2")) {
-comment|//                    embeddedMetadata.set(
-comment|//                            Metadata.CONTENT_TYPE, "image/x-jbig2");
+block|}
+elseif|else
+if|if
+condition|(
+name|extension
+operator|.
+name|equals
+argument_list|(
+literal|"jb2"
+argument_list|)
+condition|)
+block|{
+name|embeddedMetadata
+operator|.
+name|set
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|,
+literal|"image/x-jbig2"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1650,6 +1699,60 @@ name|data
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+literal|"jb2"
+operator|.
+name|equals
+argument_list|(
+name|suffix
+argument_list|)
+condition|)
+block|{
+name|InputStream
+name|data
+init|=
+name|pdImage
+operator|.
+name|createInputStream
+argument_list|(
+name|JB2
+argument_list|)
+decl_stmt|;
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|io
+operator|.
+name|IOUtils
+operator|.
+name|copy
+argument_list|(
+name|data
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|io
+operator|.
+name|IOUtils
+operator|.
+name|closeQuietly
+argument_list|(
+name|data
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|ImageIOUtil
@@ -1911,6 +2014,55 @@ name|e
 argument_list|)
 throw|;
 block|}
+block|}
+comment|//TODO remove this method once upgrading to PDFBox 2.0.5 which will
+comment|// then return jb2 suffix properly.
+comment|//See: https://issues.apache.org/jira/browse/PDFBOX-3634
+specifier|private
+name|String
+name|getJBIG2Suffix
+parameter_list|(
+name|PDImageXObject
+name|image
+parameter_list|)
+block|{
+name|List
+argument_list|<
+name|COSName
+argument_list|>
+name|filters
+init|=
+name|image
+operator|.
+name|getStream
+argument_list|()
+operator|.
+name|getFilters
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|filters
+operator|!=
+literal|null
+operator|&&
+name|filters
+operator|.
+name|contains
+argument_list|(
+name|COSName
+operator|.
+name|JBIG2_DECODE
+argument_list|)
+condition|)
+block|{
+return|return
+literal|"jb2"
+return|;
+block|}
+return|return
+literal|null
+return|;
 block|}
 block|}
 end_class

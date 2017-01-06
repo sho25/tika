@@ -4127,11 +4127,9 @@ name|RESOURCE_NAME_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TODO mime/extension should be tested against JBIG2 once better
-comment|//supported by PDFBox and Levigo jbig2-imageio
 name|assertEquals
 argument_list|(
-literal|"image0.png"
+literal|"image0.jb2"
 argument_list|,
 name|metadatas
 operator|.
@@ -4154,7 +4152,7 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"png"
+literal|"x-jbig2"
 argument_list|)
 operator|.
 name|toString
