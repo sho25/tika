@@ -155,20 +155,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|io
-operator|.
-name|IOExceptionWithCause
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|pdfbox
 operator|.
 name|cos
@@ -902,7 +888,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to end a page"
 argument_list|,
@@ -1197,6 +1183,18 @@ argument_list|,
 literal|"image/jp2"
 argument_list|)
 expr_stmt|;
+comment|// PDFBox does not yet return JBIG2 extension and extracting
+comment|// inline JBIG2 images fails with test file testPDF_JBIG2.pdf
+comment|// if we explicitely set the content type to image/x-jbig2
+comment|// (no "pages" are found when image is embedded).
+comment|// It works when it thinks it is PNG so we do not force it to
+comment|// jb2 for parsing until this issue is addressed in PDFBox and
+comment|// Levigo jbig2-imageio.  Will result in bad content-type in
+comment|// metadata for now, but that's better than not being able to
+comment|// handle JBIG2 in PDFs at all.
+comment|//                } else if (extension.equals("jb2")) {
+comment|//                    embeddedMetadata.set(
+comment|//                            Metadata.CONTENT_TYPE, "image/x-jbig2");
 block|}
 else|else
 block|{
@@ -1705,7 +1703,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to start a paragraph"
 argument_list|,
@@ -1746,7 +1744,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to end a paragraph"
 argument_list|,
@@ -1785,7 +1783,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to write a string: "
 operator|+
@@ -1829,7 +1827,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to write a character: "
 operator|+
@@ -1871,7 +1869,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to write a space character"
 argument_list|,
@@ -1905,7 +1903,7 @@ parameter_list|)
 block|{
 throw|throw
 operator|new
-name|IOExceptionWithCause
+name|IOException
 argument_list|(
 literal|"Unable to write a newline character"
 argument_list|,
