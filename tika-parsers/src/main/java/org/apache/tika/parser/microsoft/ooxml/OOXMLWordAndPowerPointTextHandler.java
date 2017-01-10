@@ -637,6 +637,14 @@ name|EditType
 operator|.
 name|NONE
 decl_stmt|;
+specifier|private
+name|DateUtils
+name|dateUtils
+init|=
+operator|new
+name|DateUtils
+argument_list|()
+decl_stmt|;
 specifier|public
 name|OOXMLWordAndPowerPointTextHandler
 parameter_list|(
@@ -1804,7 +1812,7 @@ condition|)
 block|{
 name|editDate
 operator|=
-name|DateUtils
+name|dateUtils
 operator|.
 name|tryToParse
 argument_list|(
