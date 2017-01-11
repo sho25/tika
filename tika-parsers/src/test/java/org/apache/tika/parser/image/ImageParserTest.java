@@ -47,6 +47,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -123,6 +135,8 @@ begin_class
 specifier|public
 class|class
 name|ImageParserTest
+extends|extends
+name|TikaTest
 block|{
 specifier|private
 specifier|final
