@@ -387,7 +387,7 @@ specifier|private
 name|int
 name|ocrDPI
 init|=
-literal|200
+literal|300
 decl_stmt|;
 specifier|private
 name|ImageType
