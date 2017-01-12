@@ -586,6 +586,8 @@ init|=
 operator|new
 name|JackcessExtractor
 argument_list|(
+name|metadata
+argument_list|,
 name|context
 argument_list|,
 name|locale
@@ -598,8 +600,6 @@ argument_list|(
 name|db
 argument_list|,
 name|xhtml
-argument_list|,
-name|metadata
 argument_list|)
 expr_stmt|;
 block|}

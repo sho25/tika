@@ -83,6 +83,19 @@ operator|+
 literal|"warn"
 argument_list|)
 decl_stmt|;
+comment|/**      * Use this to store exceptions caught while trying to read the      * stream of an embedded resource.  Do not use this if there is      * a parse exception on the embedded resource.      */
+name|Property
+name|TIKA_META_EXCEPTION_EMBEDDED_STREAM
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|TIKA_META_EXCEPTION_PREFIX
+operator|+
+literal|"embedded_stream_exception"
+argument_list|)
+decl_stmt|;
 comment|/**      * Some file formats can store information about their original      * file name/location or about their attachment's original file name/location.      */
 specifier|public
 specifier|static

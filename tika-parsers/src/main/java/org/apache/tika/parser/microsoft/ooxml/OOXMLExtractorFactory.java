@@ -827,6 +827,8 @@ operator|=
 operator|new
 name|SXWPFWordExtractorDecorator
 argument_list|(
+name|metadata
+argument_list|,
 name|context
 argument_list|,
 operator|(
@@ -863,6 +865,8 @@ operator|=
 operator|new
 name|SXSLFPowerPointExtractorDecorator
 argument_list|(
+name|metadata
+argument_list|,
 name|context
 argument_list|,
 operator|(

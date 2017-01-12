@@ -277,6 +277,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|parser
 operator|.
 name|ParseContext
@@ -502,6 +516,11 @@ name|ParseContext
 name|context
 decl_stmt|;
 specifier|private
+specifier|final
+name|Metadata
+name|metadata
+decl_stmt|;
+specifier|private
 name|PackagePart
 name|mainDocument
 init|=
@@ -519,6 +538,9 @@ decl_stmt|;
 specifier|public
 name|SXSLFPowerPointExtractorDecorator
 parameter_list|(
+name|Metadata
+name|metadata
+parameter_list|,
 name|ParseContext
 name|context
 parameter_list|,
@@ -532,6 +554,12 @@ name|context
 argument_list|,
 name|extractor
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|metadata
+operator|=
+name|metadata
 expr_stmt|;
 name|this
 operator|.
@@ -928,6 +956,8 @@ argument_list|(
 name|slidePart
 argument_list|,
 literal|false
+argument_list|,
+name|metadata
 argument_list|)
 decl_stmt|;
 comment|//        Map<String, String> hyperlinks = loadHyperlinkRelationships(packagePart);
