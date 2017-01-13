@@ -1143,6 +1143,16 @@ name|getMainDocumentParts
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|source
+operator|==
+literal|null
+condition|)
+block|{
+comment|//parts can go missing; silently ignore --  TIKA-2134
+continue|continue;
+block|}
 for|for
 control|(
 name|PackageRelationship
