@@ -3033,7 +3033,7 @@ name|metadataList
 init|=
 name|getRecursiveMetadata
 argument_list|(
-literal|"testMSEquation-govdos-863534.doc"
+literal|"testMSEquation-govdocs-863534.doc"
 argument_list|)
 decl_stmt|;
 name|assertEquals
