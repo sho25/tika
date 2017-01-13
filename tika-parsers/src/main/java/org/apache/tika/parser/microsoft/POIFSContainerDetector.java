@@ -364,6 +364,18 @@ argument_list|(
 literal|"vnd.ms-graph"
 argument_list|)
 decl_stmt|;
+comment|/**      * Equation embedded in Office docs      */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|MS_EQUATION
+init|=
+name|application
+argument_list|(
+literal|"vnd.ms-equation"
+argument_list|)
+decl_stmt|;
 comment|/**      * Microsoft Excel      */
 specifier|public
 specifier|static
@@ -1340,6 +1352,21 @@ literal|"9"
 argument_list|)
 return|;
 comment|// .qpw
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"Equation Native"
+argument_list|)
+condition|)
+block|{
+return|return
+name|MS_EQUATION
+return|;
 block|}
 else|else
 block|{
