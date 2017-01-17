@@ -356,11 +356,17 @@ specifier|public
 enum|enum
 name|Mode
 block|{
+comment|/** Minimal version of the config, defaults where possible */
 name|MINIMAL
 block|,
+comment|/** Current config, roughly as loaded */
 name|CURRENT
 block|,
+comment|/** Static version of the config, with explicit lists of parsers/decorators/etc */
 name|STATIC
+block|,
+comment|/**           * Static version of the config, with explicit lists of decorators etc,          * and all parsers given with their detected supported mime types */
+name|STATIC_FULL
 block|;     }
 comment|/**      *      * @param config config to serialize      * @param mode serialization mode      * @param writer writer      * @param charset charset      * @throws Exception      */
 specifier|public
@@ -757,11 +763,19 @@ name|translator
 operator|instanceof
 name|DefaultTranslator
 operator|&&
+operator|(
 name|mode
 operator|==
 name|Mode
 operator|.
 name|STATIC
+operator|||
+name|mode
+operator|==
+name|Mode
+operator|.
+name|STATIC_FULL
+operator|)
 condition|)
 block|{
 name|translator
@@ -1298,15 +1312,23 @@ block|}
 comment|// Special case for making Default to static
 if|if
 condition|(
+name|parser
+operator|instanceof
+name|DefaultParser
+operator|&&
+operator|(
 name|mode
 operator|==
 name|Mode
 operator|.
 name|STATIC
-operator|&&
-name|parser
-operator|instanceof
-name|DefaultParser
+operator|||
+name|mode
+operator|==
+name|Mode
+operator|.
+name|STATIC_FULL
+operator|)
 condition|)
 block|{
 name|outputParser
@@ -1324,6 +1346,8 @@ name|rootElement
 operator|=
 name|addParser
 argument_list|(
+name|mode
+argument_list|,
 name|rootElement
 argument_list|,
 name|doc
@@ -1361,6 +1385,9 @@ specifier|static
 name|Element
 name|addParser
 parameter_list|(
+name|Mode
+name|mode
+parameter_list|,
 name|Element
 name|rootElement
 parameter_list|,
@@ -1482,6 +1509,29 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|mode
+operator|==
+name|Mode
+operator|.
+name|STATIC_FULL
+condition|)
+block|{
+name|addedTypes
+operator|.
+name|addAll
+argument_list|(
+name|parser
+operator|.
+name|getSupportedTypes
+argument_list|(
+name|context
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 name|String
 name|className
