@@ -751,6 +751,14 @@ block|{
 comment|// At the end we want to close the compression stream to release
 comment|// any associated resources, but the underlying document stream
 comment|// should not be closed
+if|if
+condition|(
+name|stream
+operator|.
+name|markSupported
+argument_list|()
+condition|)
+block|{
 name|stream
 operator|=
 operator|new
@@ -759,15 +767,23 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 comment|// Ensure that the stream supports the mark feature
 name|stream
 operator|=
 operator|new
 name|BufferedInputStream
 argument_list|(
+operator|new
+name|CloseShieldInputStream
+argument_list|(
 name|stream
 argument_list|)
+argument_list|)
 expr_stmt|;
+block|}
 name|CompressorInputStream
 name|cis
 decl_stmt|;

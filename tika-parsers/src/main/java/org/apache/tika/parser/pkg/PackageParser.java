@@ -880,12 +880,10 @@ comment|// Ensure that the stream supports the mark feature
 if|if
 condition|(
 operator|!
-name|TikaInputStream
-operator|.
-name|isTikaInputStream
-argument_list|(
 name|stream
-argument_list|)
+operator|.
+name|markSupported
+argument_list|()
 condition|)
 name|stream
 operator|=
