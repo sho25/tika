@@ -4686,6 +4686,31 @@ argument_list|)
 expr_stmt|;
 comment|// TODO Get sample .onetoc2 and .onepkg files
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testMSWriteFile
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//This file is govdocs1's 746255.doc
+name|assertTypeByName
+argument_list|(
+literal|"application/x-mswrite"
+argument_list|,
+literal|"testMSWriteFile.wri"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"application/x-mswrite"
+argument_list|,
+literal|"testMSWriteFile.wri"
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|void
 name|assertText
