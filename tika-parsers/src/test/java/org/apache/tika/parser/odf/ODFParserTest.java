@@ -2592,6 +2592,43 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+comment|//TIKA-2242
+specifier|public
+name|void
+name|testParagraphLevelFontStyles
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testODTStyles2.odt"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+comment|//test text span font-style properties
+name|assertContains
+argument_list|(
+literal|"<p><b>name</b>, advocaat"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|//test paragraph's font-style properties
+name|assertContains
+argument_list|(
+literal|"<p><b>Publicatie Onbekwaamverklaring"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
