@@ -675,7 +675,7 @@ return|return
 name|language
 return|;
 block|}
-comment|/**      * Set tesseract language dictionary to be used. Default is "eng".      * Multiple languages may be specified, separated by plus characters.      */
+comment|/**      * Set tesseract language dictionary to be used. Default is "eng".      * Multiple languages may be specified, separated by plus characters.      * e.g. "chi_tra+chi_sim"      */
 specifier|public
 name|void
 name|setLanguage
@@ -691,7 +691,14 @@ name|language
 operator|.
 name|matches
 argument_list|(
-literal|"([A-Za-z](\\+?))*"
+literal|"([a-zA-Z]{3}(_[a-zA-Z]{3,4})?(\\+?))+"
+argument_list|)
+operator|||
+name|language
+operator|.
+name|endsWith
+argument_list|(
+literal|"+"
 argument_list|)
 condition|)
 block|{

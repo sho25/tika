@@ -2685,6 +2685,31 @@ name|arg
 operator|.
 name|equals
 argument_list|(
+literal|"--dump-static-full-config"
+argument_list|)
+condition|)
+block|{
+name|pipeMode
+operator|=
+literal|false
+expr_stmt|;
+name|dumpConfig
+argument_list|(
+name|TikaConfigSerializer
+operator|.
+name|Mode
+operator|.
+name|STATIC_FULL
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|arg
+operator|.
+name|equals
+argument_list|(
 literal|"--container-aware"
 argument_list|)
 operator|||
@@ -3922,6 +3947,13 @@ operator|.
 name|println
 argument_list|(
 literal|"    --dump-static-config   Print static config"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"    --dump-static-full-config  Print static explicit config"
 argument_list|)
 expr_stmt|;
 name|out
