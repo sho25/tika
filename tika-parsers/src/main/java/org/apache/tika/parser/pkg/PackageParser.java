@@ -885,6 +885,7 @@ operator|.
 name|markSupported
 argument_list|()
 condition|)
+block|{
 name|stream
 operator|=
 operator|new
@@ -893,6 +894,7 @@ argument_list|(
 name|stream
 argument_list|)
 expr_stmt|;
+block|}
 name|TemporaryResources
 name|tmp
 init|=
