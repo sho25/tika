@@ -281,9 +281,9 @@ name|TYPE_EMF
 init|=
 name|MediaType
 operator|.
-name|application
+name|image
 argument_list|(
-literal|"x-emf"
+literal|"emf"
 argument_list|)
 decl_stmt|;
 specifier|public

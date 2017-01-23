@@ -1939,7 +1939,7 @@ name|EMF
 case|:
 name|mediaType
 operator|=
-literal|"application/x-emf"
+literal|"image/emf"
 expr_stmt|;
 break|break;
 case|case
