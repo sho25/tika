@@ -379,26 +379,26 @@ specifier|private
 specifier|static
 specifier|final
 name|MediaType
-name|CANONICAL_BMP_TYPE
-init|=
-name|MediaType
-operator|.
-name|image
-argument_list|(
-literal|"x-ms-bmp"
-argument_list|)
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|MediaType
-name|JAVA_BMP_TYPE
+name|MAIN_BMP_TYPE
 init|=
 name|MediaType
 operator|.
 name|image
 argument_list|(
 literal|"bmp"
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|MediaType
+name|OLD_BMP_TYPE
+init|=
+name|MediaType
+operator|.
+name|image
+argument_list|(
+literal|"x-ms-bmp"
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -424,9 +424,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|CANONICAL_BMP_TYPE
+name|MAIN_BMP_TYPE
 argument_list|,
-name|JAVA_BMP_TYPE
+name|OLD_BMP_TYPE
 argument_list|,
 name|MediaType
 operator|.
@@ -1079,11 +1079,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// Java has a different idea of the BMP mime type to
-comment|//  what the canonical one is, fix this up.
+comment|// If the old (pre-RFC7903) BMP mime type is given,
+comment|//  fix it up to the new one, so Java is happy
 if|if
 condition|(
-name|CANONICAL_BMP_TYPE
+name|OLD_BMP_TYPE
 operator|.
 name|toString
 argument_list|()
@@ -1096,7 +1096,7 @@ condition|)
 block|{
 name|type
 operator|=
-name|JAVA_BMP_TYPE
+name|MAIN_BMP_TYPE
 operator|.
 name|toString
 argument_list|()

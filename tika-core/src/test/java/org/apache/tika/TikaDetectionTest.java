@@ -7597,18 +7597,8 @@ literal|"x.xyz"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"image/x-ms-bmp"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.bmp"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - bmp was properly registered in RFC 7903
+comment|//assertEquals("image/x-ms-bmp", tika.detect("x.bmp"));
 name|assertEquals
 argument_list|(
 literal|"image/cgm"
