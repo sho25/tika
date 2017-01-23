@@ -294,9 +294,9 @@ name|TYPE_WMF
 init|=
 name|MediaType
 operator|.
-name|application
+name|image
 argument_list|(
-literal|"x-msmetafile"
+literal|"wmf"
 argument_list|)
 decl_stmt|;
 specifier|protected
