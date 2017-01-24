@@ -1939,7 +1939,7 @@ name|EMF
 case|:
 name|mediaType
 operator|=
-literal|"application/x-emf"
+literal|"image/emf"
 expr_stmt|;
 break|break;
 case|case
@@ -1947,7 +1947,7 @@ name|WMF
 case|:
 name|mediaType
 operator|=
-literal|"application/x-msmetafile"
+literal|"image/wmf"
 expr_stmt|;
 break|break;
 case|case

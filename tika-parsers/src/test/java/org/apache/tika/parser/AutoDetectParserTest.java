@@ -472,7 +472,7 @@ specifier|final
 name|String
 name|BMP
 init|=
-literal|"image/x-ms-bmp"
+literal|"image/bmp"
 decl_stmt|;
 specifier|private
 specifier|static

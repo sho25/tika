@@ -777,7 +777,7 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"x-ms-bmp"
+literal|"bmp"
 argument_list|)
 block|,
 name|MediaType
