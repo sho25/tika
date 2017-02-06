@@ -341,6 +341,18 @@ name|getLsid
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|listData
+operator|==
+literal|null
+condition|)
+block|{
+comment|//silently skip
+return|return
+literal|""
+return|;
+block|}
 name|LevelTuple
 index|[]
 name|levelTuples
