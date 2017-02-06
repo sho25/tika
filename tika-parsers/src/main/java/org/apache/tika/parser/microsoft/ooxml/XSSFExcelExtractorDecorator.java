@@ -1164,26 +1164,11 @@ name|XSSFShape
 argument_list|>
 name|shapes
 init|=
-literal|null
-decl_stmt|;
-try|try
-block|{
-name|shapes
-operator|=
 name|iter
 operator|.
 name|getShapes
 argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NullPointerException
-name|e
-parameter_list|)
-block|{
-comment|//missing shape
-block|}
+decl_stmt|;
 name|processShapes
 argument_list|(
 name|shapes
