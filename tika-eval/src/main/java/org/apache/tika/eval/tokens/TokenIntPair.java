@@ -17,18 +17,6 @@ name|tokens
 package|;
 end_package
 
-begin_import
-import|import
-name|org
-operator|.
-name|jetbrains
-operator|.
-name|annotations
-operator|.
-name|NotNull
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -188,8 +176,6 @@ specifier|public
 name|int
 name|compareTo
 parameter_list|(
-annotation|@
-name|NotNull
 name|TokenIntPair
 name|o
 parameter_list|)
