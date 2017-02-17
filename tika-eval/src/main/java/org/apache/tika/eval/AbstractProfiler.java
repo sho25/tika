@@ -984,6 +984,7 @@ specifier|protected
 name|IDBWriter
 name|writer
 decl_stmt|;
+comment|/**      *      * @param p path to the common_tokens directory.  If this is null, try to load from classPath      * @throws IOException      */
 specifier|public
 specifier|static
 name|void
@@ -3387,7 +3388,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @param metadata      * @param extractDir      * @return evalfilepaths for files if crawling an extract directory      */
+comment|/**      *      * @param metadata      * @param extracts      * @return evalfilepaths for files if crawling an extract directory      */
 specifier|protected
 name|EvalFilePaths
 name|getPathsFromExtractCrawl
@@ -3396,7 +3397,7 @@ name|Metadata
 name|metadata
 parameter_list|,
 name|Path
-name|extractDir
+name|extracts
 parameter_list|)
 block|{
 name|String
@@ -3440,7 +3441,7 @@ comment|//just try slapping the relextractfilepath on the extractdir
 name|Path
 name|extractFile
 init|=
-name|extractDir
+name|extracts
 operator|.
 name|resolve
 argument_list|(
@@ -3465,7 +3466,7 @@ name|extractFile
 operator|=
 name|findFile
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|,
 name|relativeSourceFilePath
 argument_list|)
@@ -3493,7 +3494,7 @@ name|Path
 name|srcDir
 parameter_list|,
 name|Path
-name|extractDir
+name|extracts
 parameter_list|)
 block|{
 name|Path
@@ -3518,7 +3519,7 @@ name|extractFile
 init|=
 name|findFile
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|,
 name|relativeSourceFilePath
 argument_list|)

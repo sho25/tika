@@ -96,7 +96,7 @@ name|args
 operator|.
 name|add
 argument_list|(
-literal|"-extractDir"
+literal|"-extracts"
 argument_list|)
 expr_stmt|;
 name|args

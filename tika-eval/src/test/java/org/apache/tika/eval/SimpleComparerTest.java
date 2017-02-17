@@ -411,7 +411,7 @@ name|this
 operator|.
 name|getResourceAsFile
 argument_list|(
-literal|"/commontokens"
+literal|"/common_tokens"
 argument_list|)
 operator|.
 name|toPath

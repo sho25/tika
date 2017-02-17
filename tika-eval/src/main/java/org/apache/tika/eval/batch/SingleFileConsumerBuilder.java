@@ -232,7 +232,7 @@ throws|throws
 name|IOException
 block|{
 name|Path
-name|extractDir
+name|extracts
 init|=
 name|PropsUtil
 operator|.
@@ -242,7 +242,7 @@ name|localAttrs
 operator|.
 name|get
 argument_list|(
-literal|"extractDir"
+literal|"extracts"
 argument_list|)
 argument_list|,
 literal|null
@@ -250,7 +250,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|extractDir
+name|extracts
 operator|==
 literal|null
 condition|)
@@ -259,7 +259,7 @@ throw|throw
 operator|new
 name|RuntimeException
 argument_list|(
-literal|"Must specify \"extractDir\" -- directory to crawl"
+literal|"Must specify \"extracts\" -- directory to crawl"
 argument_list|)
 throw|;
 block|}
@@ -270,7 +270,7 @@ name|Files
 operator|.
 name|isDirectory
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|)
 condition|)
 block|{
@@ -280,7 +280,7 @@ name|RuntimeException
 argument_list|(
 literal|"ROOT DIRECTORY DOES NOT EXIST: "
 operator|+
-name|extractDir
+name|extracts
 operator|.
 name|toAbsolutePath
 argument_list|()
@@ -366,7 +366,7 @@ name|e
 argument_list|)
 throw|;
 block|}
-comment|//we _could_ set this to extractDir (if not null)
+comment|//we _could_ set this to extracts (if not null)
 comment|//here, but the Crawler defaults to "input" if nothing is passed
 comment|//so this won't work
 if|if
@@ -386,7 +386,7 @@ throw|;
 block|}
 if|if
 condition|(
-name|extractDir
+name|extracts
 operator|==
 literal|null
 operator|&&
@@ -395,7 +395,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|extractDir
+name|extracts
 operator|=
 name|inputDir
 expr_stmt|;
@@ -408,7 +408,7 @@ name|queue
 argument_list|,
 name|inputDir
 argument_list|,
-name|extractDir
+name|extracts
 argument_list|,
 name|writer
 argument_list|,

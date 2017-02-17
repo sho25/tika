@@ -286,21 +286,21 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//By the time this commandline is parsed, there should be both an extractDir and an inputDir
+comment|//By the time this commandline is parsed, there should be both an extracts and an inputDir
 name|Option
-name|extractDir
+name|extracts
 init|=
 operator|new
 name|Option
 argument_list|(
-literal|"extractDir"
+literal|"extracts"
 argument_list|,
 literal|true
 argument_list|,
 literal|"directory for extract files"
 argument_list|)
 decl_stmt|;
-name|extractDir
+name|extracts
 operator|.
 name|setRequired
 argument_list|(
@@ -319,7 +319,7 @@ literal|true
 argument_list|,
 literal|"optional: directory for original binary input documents."
 operator|+
-literal|" If not specified, -extractDir is crawled as is."
+literal|" If not specified, -extracts is crawled as is."
 argument_list|)
 decl_stmt|;
 name|inputDir
@@ -342,7 +342,7 @@ argument_list|)
 operator|.
 name|addOption
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|)
 operator|.
 name|addOption
@@ -405,7 +405,7 @@ name|printHelp
 argument_list|(
 literal|80
 argument_list|,
-literal|"java -jar tika-eval-x.y.jar Profile -extractDir extracts -db mydb [-inputDir input]"
+literal|"java -jar tika-eval-x.y.jar Profile -extracts extracts -db mydb [-inputDir input]"
 argument_list|,
 literal|"Tool: Profile"
 argument_list|,
@@ -1063,7 +1063,7 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Path
-name|extractDir
+name|extracts
 decl_stmt|;
 specifier|private
 specifier|final
@@ -1094,7 +1094,7 @@ name|Path
 name|inputDir
 parameter_list|,
 name|Path
-name|extractDir
+name|extracts
 parameter_list|,
 name|IDBWriter
 name|dbWriter
@@ -1120,9 +1120,9 @@ name|inputDir
 expr_stmt|;
 name|this
 operator|.
-name|extractDir
+name|extracts
 operator|=
-name|extractDir
+name|extracts
 expr_stmt|;
 name|this
 operator|.
@@ -1164,7 +1164,7 @@ name|inputDir
 operator|.
 name|equals
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|)
 condition|)
 block|{
@@ -1175,7 +1175,7 @@ name|getPathsFromExtractCrawl
 argument_list|(
 name|metadata
 argument_list|,
-name|extractDir
+name|extracts
 argument_list|)
 expr_stmt|;
 block|}
@@ -1189,7 +1189,7 @@ name|metadata
 argument_list|,
 name|inputDir
 argument_list|,
-name|extractDir
+name|extracts
 argument_list|)
 expr_stmt|;
 block|}

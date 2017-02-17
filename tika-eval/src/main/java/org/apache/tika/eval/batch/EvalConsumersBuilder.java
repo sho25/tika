@@ -425,7 +425,7 @@ block|}
 name|Path
 name|commonTokens
 init|=
-name|getNonNullPath
+name|getPath
 argument_list|(
 name|localAttrs
 argument_list|,

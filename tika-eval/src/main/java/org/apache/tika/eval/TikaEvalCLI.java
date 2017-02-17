@@ -474,7 +474,7 @@ init|=
 literal|null
 decl_stmt|;
 name|String
-name|extractDir
+name|extracts
 init|=
 literal|null
 decl_stmt|;
@@ -588,7 +588,7 @@ name|arg
 operator|.
 name|equals
 argument_list|(
-literal|"-extractDir"
+literal|"-extracts"
 argument_list|)
 condition|)
 block|{
@@ -610,7 +610,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Must specify directory after -extractDir"
+literal|"Must specify directory after -extracts"
 argument_list|)
 expr_stmt|;
 name|ExtractProfiler
@@ -620,7 +620,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|extractDir
+name|extracts
 operator|=
 name|argList
 operator|.
@@ -742,12 +742,12 @@ expr_stmt|;
 return|return;
 block|}
 comment|//need to specify each in this commandline
-comment|//if only extractDir is passed to tika-batch,
+comment|//if only extracts is passed to tika-batch,
 comment|//the crawler will see no inputDir and start crawling "input".
-comment|//this allows the user to specify either extractDir or inputDir
+comment|//this allows the user to specify either extracts or inputDir
 if|if
 condition|(
-name|extractDir
+name|extracts
 operator|==
 literal|null
 operator|&&
@@ -760,7 +760,7 @@ name|argList
 operator|.
 name|add
 argument_list|(
-literal|"-extractDir"
+literal|"-extracts"
 argument_list|)
 expr_stmt|;
 name|argList
@@ -778,7 +778,7 @@ name|inputDir
 operator|==
 literal|null
 operator|&&
-name|extractDir
+name|extracts
 operator|!=
 literal|null
 condition|)
@@ -794,7 +794,7 @@ name|argList
 operator|.
 name|add
 argument_list|(
-name|extractDir
+name|extracts
 argument_list|)
 expr_stmt|;
 block|}
@@ -1271,7 +1271,7 @@ expr_stmt|;
 return|return;
 block|}
 comment|//need to specify each in the commandline that goes into tika-batch
-comment|//if only extractDir is passed to tika-batch,
+comment|//if only extracts is passed to tika-batch,
 comment|//the crawler will see no inputDir and start crawling "input".
 comment|//if the user doesn't specify inputDir, crawl extractsA
 if|if
