@@ -39,9 +39,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|Serializable
+name|charset
+operator|.
+name|Charset
 import|;
 end_import
 
@@ -53,7 +55,7 @@ name|nio
 operator|.
 name|charset
 operator|.
-name|Charset
+name|StandardCharsets
 import|;
 end_import
 
@@ -72,17 +74,48 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Character encoding detector. Implementations of this interface use  * various heuristics to detect the character encoding of a text document  * based on given input metadata or the first few bytes of the document stream.  *  * @since Apache Tika 0.4  */
+comment|/**  * Always returns the charset passed in via the initializer.  */
 end_comment
 
-begin_interface
+begin_class
 specifier|public
-interface|interface
+class|class
+name|NonDetectingEncodingDetector
+implements|implements
 name|EncodingDetector
-extends|extends
-name|Serializable
 block|{
-comment|/**      * Detects the character encoding of the given text document, or      *<code>null</code> if the encoding of the document can not be detected.      *<p>      * If the document input stream is not available, then the first      * argument may be<code>null</code>. Otherwise the detector may      * read bytes from the start of the stream to help in encoding detection.      * The given stream is guaranteed to support the      * {@link InputStream#markSupported() mark feature} and the detector      * is expected to {@link InputStream#mark(int) mark} the stream before      * reading any bytes from it, and to {@link InputStream#reset() reset}      * the stream before returning. The stream must not be closed by the      * detector.      *<p>      * The given input metadata is only read, not modified, by the detector.      *      * @param input text document input stream, or<code>null</code>      * @param metadata input metadata for the document      * @return detected character encoding, or<code>null</code>      * @throws IOException if the document input stream could not be read      */
+comment|//would have preferred final, but need mutability for
+comment|//loading via TikaConfig
+specifier|private
+name|Charset
+name|charset
+init|=
+name|StandardCharsets
+operator|.
+name|UTF_8
+decl_stmt|;
+comment|/**      * Sets charset to UTF-8.      */
+specifier|public
+name|NonDetectingEncodingDetector
+parameter_list|()
+block|{      }
+specifier|public
+name|NonDetectingEncodingDetector
+parameter_list|(
+name|Charset
+name|charset
+parameter_list|)
+block|{
+name|this
+operator|.
+name|charset
+operator|=
+name|charset
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
 name|Charset
 name|detect
 parameter_list|(
@@ -94,9 +127,28 @@ name|metadata
 parameter_list|)
 throws|throws
 name|IOException
-function_decl|;
+block|{
+return|return
+name|charset
+return|;
 block|}
-end_interface
+specifier|public
+name|void
+name|setCharset
+parameter_list|(
+name|Charset
+name|charset
+parameter_list|)
+block|{
+name|this
+operator|.
+name|charset
+operator|=
+name|charset
+expr_stmt|;
+block|}
+block|}
+end_class
 
 end_unit
 

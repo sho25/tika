@@ -41,6 +41,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -59,18 +71,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -82,6 +82,20 @@ operator|.
 name|input
 operator|.
 name|CloseShieldInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|TikaConfig
 import|;
 end_import
 
@@ -151,7 +165,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|ParseContext
+name|AbstractEncodingDetectorParser
 import|;
 end_import
 
@@ -165,7 +179,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|ParseContext
 import|;
 end_import
 
@@ -212,7 +226,7 @@ specifier|public
 class|class
 name|EnviHeaderParser
 extends|extends
-name|AbstractParser
+name|AbstractEncodingDetectorParser
 block|{
 specifier|private
 specifier|static
@@ -304,6 +318,33 @@ argument_list|)
 expr_stmt|;
 comment|// The following code was taken from the TXTParser
 comment|// Automatically detect the character encoding
+name|TikaConfig
+name|tikaConfig
+init|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|TikaConfig
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tikaConfig
+operator|==
+literal|null
+condition|)
+block|{
+name|tikaConfig
+operator|=
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+expr_stmt|;
+block|}
 try|try
 init|(
 name|AutoDetectReader
@@ -319,6 +360,11 @@ name|stream
 argument_list|)
 argument_list|,
 name|metadata
+argument_list|,
+name|getEncodingDetector
+argument_list|(
+name|context
+argument_list|)
 argument_list|)
 init|)
 block|{

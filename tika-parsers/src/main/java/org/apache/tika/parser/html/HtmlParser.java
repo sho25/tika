@@ -113,20 +113,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|config
-operator|.
-name|ServiceLoader
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|detect
 operator|.
 name|AutoDetectReader
@@ -185,7 +171,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AbstractParser
+name|AbstractEncodingDetectorParser
 import|;
 end_import
 
@@ -264,7 +250,7 @@ specifier|public
 class|class
 name|HtmlParser
 extends|extends
-name|AbstractParser
+name|AbstractEncodingDetectorParser
 block|{
 comment|/**      * Serial version UID      */
 specifier|private
@@ -353,23 +339,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|ServiceLoader
-name|LOADER
-init|=
-operator|new
-name|ServiceLoader
-argument_list|(
-name|HtmlParser
-operator|.
-name|class
-operator|.
-name|getClassLoader
-argument_list|()
-argument_list|)
-decl_stmt|;
 comment|/**      * HTML schema singleton used to amortise the heavy instantiation time.      */
 specifier|private
 specifier|static
@@ -436,15 +405,9 @@ argument_list|)
 argument_list|,
 name|metadata
 argument_list|,
-name|context
-operator|.
-name|get
+name|getEncodingDetector
 argument_list|(
-name|ServiceLoader
-operator|.
-name|class
-argument_list|,
-name|LOADER
+name|context
 argument_list|)
 argument_list|)
 init|)

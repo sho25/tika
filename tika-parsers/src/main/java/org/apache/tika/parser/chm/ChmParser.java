@@ -451,11 +451,11 @@ name|htmlParser
 init|=
 name|EmbeddedDocumentUtil
 operator|.
-name|tryToFindExistingParser
+name|tryToFindExistingLeafParser
 argument_list|(
-name|MediaType
+name|HtmlParser
 operator|.
-name|TEXT_HTML
+name|class
 argument_list|,
 name|context
 argument_list|)

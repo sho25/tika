@@ -49,7 +49,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertTrue
+name|assertFalse
 import|;
 end_import
 
@@ -61,7 +61,7 @@ name|junit
 operator|.
 name|Assert
 operator|.
-name|assertFalse
+name|assertTrue
 import|;
 end_import
 
@@ -440,6 +440,16 @@ operator|.
 name|sax
 operator|.
 name|BodyContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
 import|;
 end_import
 
@@ -1002,6 +1012,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"temporarily"
+argument_list|)
 specifier|public
 name|void
 name|testForkParser
@@ -1644,6 +1659,11 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"temporarily"
+argument_list|)
 specifier|public
 name|void
 name|testTikaBundle
