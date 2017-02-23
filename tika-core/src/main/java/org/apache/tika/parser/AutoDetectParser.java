@@ -215,6 +215,11 @@ name|serialVersionUID
 init|=
 literal|6110455808615143122L
 decl_stmt|;
+specifier|private
+specifier|final
+name|TikaConfig
+name|config
+decl_stmt|;
 comment|/**      * The type detector used by this parser to auto-detect the type      * of a document.      */
 specifier|private
 name|Detector
@@ -301,6 +306,13 @@ argument_list|(
 name|detector
 argument_list|)
 expr_stmt|;
+name|config
+operator|=
+name|TikaConfig
+operator|.
+name|getDefaultConfig
+argument_list|()
+expr_stmt|;
 block|}
 specifier|public
 name|AutoDetectParser
@@ -329,6 +341,12 @@ operator|.
 name|getDetector
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|config
+operator|=
+name|config
 expr_stmt|;
 block|}
 comment|/**      * Returns the type detector used by this parser to auto-detect the type      * of a document.      *      * @return type detector      * @since Apache Tika 0.4      */
@@ -446,6 +464,34 @@ argument_list|)
 else|:
 literal|null
 decl_stmt|;
+comment|//pass the config to the parsers if
+comment|//the caller hasn't specified one.
+if|if
+condition|(
+name|context
+operator|.
+name|get
+argument_list|(
+name|TikaConfig
+operator|.
+name|class
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|context
+operator|.
+name|set
+argument_list|(
+name|TikaConfig
+operator|.
+name|class
+argument_list|,
+name|config
+argument_list|)
+expr_stmt|;
+block|}
 try|try
 block|{
 comment|// Parse the document
