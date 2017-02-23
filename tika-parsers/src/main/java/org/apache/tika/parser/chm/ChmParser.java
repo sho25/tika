@@ -477,6 +477,8 @@ argument_list|(
 name|data
 argument_list|,
 name|xhtml
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 comment|//                xhtml.endElement("", "", "document");
@@ -498,6 +500,9 @@ name|byteObject
 parameter_list|,
 name|ContentHandler
 name|xhtml
+parameter_list|,
+name|ParseContext
+name|context
 parameter_list|)
 throws|throws
 name|TikaException
