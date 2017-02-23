@@ -714,6 +714,11 @@ specifier|final
 name|MAPIMessage
 name|msg
 decl_stmt|;
+specifier|private
+specifier|final
+name|ParseContext
+name|parseContext
+decl_stmt|;
 specifier|public
 name|OutlookExtractor
 parameter_list|(
@@ -753,6 +758,12 @@ name|super
 argument_list|(
 name|context
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|parseContext
+operator|=
+name|context
 expr_stmt|;
 try|try
 block|{
@@ -1545,9 +1556,7 @@ operator|new
 name|Metadata
 argument_list|()
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|parseContext
 argument_list|)
 expr_stmt|;
 name|doneBody
@@ -1631,9 +1640,7 @@ operator|new
 name|Metadata
 argument_list|()
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|parseContext
 argument_list|)
 expr_stmt|;
 name|doneBody

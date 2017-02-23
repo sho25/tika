@@ -536,13 +536,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// -1
-name|ParseContext
-name|parser
-init|=
-operator|new
-name|ParseContext
-argument_list|()
-decl_stmt|;
 try|try
 block|{
 name|stream
@@ -563,7 +556,7 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-name|parser
+name|context
 argument_list|)
 expr_stmt|;
 block|}
