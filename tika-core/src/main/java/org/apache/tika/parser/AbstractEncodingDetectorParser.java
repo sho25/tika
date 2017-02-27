@@ -73,16 +73,6 @@ specifier|private
 name|EncodingDetector
 name|encodingDetector
 decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|Object
-name|lock
-init|=
-operator|new
-name|Object
-argument_list|()
-decl_stmt|;
 specifier|public
 name|AbstractEncodingDetectorParser
 parameter_list|()
