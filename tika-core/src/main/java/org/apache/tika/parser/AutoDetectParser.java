@@ -330,7 +330,6 @@ argument_list|(
 name|detector
 argument_list|)
 expr_stmt|;
-comment|//config = TikaConfig.getDefaultConfig();
 block|}
 specifier|public
 name|AutoDetectParser
@@ -360,7 +359,6 @@ name|getDetector
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//this.config = config;
 block|}
 comment|/**      * Returns the type detector used by this parser to auto-detect the type      * of a document.      *      * @return type detector      * @since Apache Tika 0.4      */
 specifier|public

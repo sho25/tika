@@ -67,6 +67,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -74,7 +88,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Always returns the charset passed in via the initializer.  */
+comment|/**  * Always returns the charset passed in via the initializer  */
 end_comment
 
 begin_class
@@ -132,20 +146,36 @@ return|return
 name|charset
 return|;
 block|}
-specifier|public
+annotation|@
+name|Field
+specifier|private
 name|void
 name|setCharset
 parameter_list|(
-name|Charset
-name|charset
+name|String
+name|charsetName
 parameter_list|)
 block|{
 name|this
 operator|.
 name|charset
 operator|=
-name|charset
+name|Charset
+operator|.
+name|forName
+argument_list|(
+name|charsetName
+argument_list|)
 expr_stmt|;
+block|}
+specifier|public
+name|Charset
+name|getCharset
+parameter_list|()
+block|{
+return|return
+name|charset
+return|;
 block|}
 block|}
 end_class

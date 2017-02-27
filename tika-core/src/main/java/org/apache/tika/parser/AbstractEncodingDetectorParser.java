@@ -39,6 +39,20 @@ name|tika
 operator|.
 name|detect
 operator|.
+name|DefaultEncodingDetector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|detect
+operator|.
 name|EncodingDetector
 import|;
 end_import
@@ -55,10 +69,6 @@ name|AbstractEncodingDetectorParser
 extends|extends
 name|AbstractParser
 block|{
-comment|//In the most common scenario, this will be set
-comment|//at the creation via AutoDetectParser and TikaConfig
-comment|//If it isn't set then, lazily initialize it in the
-comment|//getter.
 specifier|private
 name|EncodingDetector
 name|encodingDetector
@@ -73,6 +83,31 @@ operator|new
 name|Object
 argument_list|()
 decl_stmt|;
+specifier|public
+name|AbstractEncodingDetectorParser
+parameter_list|()
+block|{
+name|encodingDetector
+operator|=
+operator|new
+name|DefaultEncodingDetector
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|AbstractEncodingDetectorParser
+parameter_list|(
+name|EncodingDetector
+name|encodingDetector
+parameter_list|)
+block|{
+name|this
+operator|.
+name|encodingDetector
+operator|=
+name|encodingDetector
+expr_stmt|;
+block|}
 comment|/**      * Look for an EncodingDetetor in the ParseContext.  If it hasn't been      * passed in, use the original EncodingDetector from initialization.      *      * @param parseContext      * @return      */
 specifier|protected
 name|EncodingDetector
@@ -115,41 +150,6 @@ name|EncodingDetector
 name|getEncodingDetector
 parameter_list|()
 block|{
-comment|//lazily initialize to the default if one hasn't been set
-comment|//via TikaConfig loading
-if|if
-condition|(
-name|encodingDetector
-operator|==
-literal|null
-condition|)
-block|{
-synchronized|synchronized
-init|(
-name|lock
-init|)
-block|{
-comment|//check again
-if|if
-condition|(
-name|encodingDetector
-operator|==
-literal|null
-condition|)
-block|{
-name|encodingDetector
-operator|=
-name|TikaConfig
-operator|.
-name|getDefaultConfig
-argument_list|()
-operator|.
-name|getEncodingDetector
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
 return|return
 name|encodingDetector
 return|;
