@@ -43,7 +43,7 @@ name|eval
 operator|.
 name|AbstractProfiler
 operator|.
-name|EXTRACT_ERROR_TYPE
+name|getContent
 import|;
 end_import
 
@@ -57,9 +57,11 @@ name|tika
 operator|.
 name|eval
 operator|.
-name|AbstractProfiler
+name|io
 operator|.
-name|getContent
+name|ExtractReader
+operator|.
+name|IGNORE_LENGTH
 import|;
 end_import
 
@@ -255,6 +257,22 @@ name|tika
 operator|.
 name|eval
 operator|.
+name|io
+operator|.
+name|ExtractReaderException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|eval
+operator|.
 name|util
 operator|.
 name|LanguageIDWrapper
@@ -390,11 +408,9 @@ argument_list|)
 argument_list|,
 name|writer
 argument_list|,
-operator|-
-literal|1
+name|IGNORE_LENGTH
 argument_list|,
-operator|-
-literal|1
+name|IGNORE_LENGTH
 argument_list|,
 name|ExtractReader
 operator|.
@@ -1112,7 +1128,7 @@ name|getTable
 argument_list|(
 name|ExtractComparer
 operator|.
-name|ERROR_TABLE_B
+name|EXTRACT_EXCEPTION_TABLE_B
 argument_list|)
 decl_stmt|;
 name|Map
@@ -1137,7 +1153,9 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|EXTRACT_ERROR_TYPE
+name|ExtractReaderException
+operator|.
+name|TYPE
 operator|.
 name|ZERO_BYTE_EXTRACT_FILE
 operator|.
@@ -1151,7 +1169,7 @@ name|get
 argument_list|(
 name|Cols
 operator|.
-name|EXTRACT_ERROR_TYPE_ID
+name|EXTRACT_EXCEPTION_TYPE_ID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1776,11 +1794,11 @@ name|COMPARISON_CONTAINERS
 block|,
 name|ExtractComparer
 operator|.
-name|ERROR_TABLE_A
+name|EXTRACT_EXCEPTION_TABLE_A
 block|,
 name|ExtractComparer
 operator|.
-name|ERROR_TABLE_B
+name|EXTRACT_EXCEPTION_TABLE_B
 block|,
 name|ExtractComparer
 operator|.

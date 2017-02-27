@@ -97,6 +97,20 @@ name|concurrent
 operator|.
 name|atomic
 operator|.
+name|AtomicInteger
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|atomic
+operator|.
 name|AtomicLong
 import|;
 end_import
@@ -110,20 +124,6 @@ operator|.
 name|log4j
 operator|.
 name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|TikaConfig
 import|;
 end_import
 
@@ -222,7 +222,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is still in its early stages.  The idea is to  * get something working with h2 and then add to that  * as necessary.  *  * Beware, this deletes the db file with each initialization.  */
+comment|/**  * This is still in its early stages.  The idea is to  * get something working with h2 and then add to that  * as necessary.  *  * Beware, this deletes the db file with each initialization.  *  * Each thread must construct its own DBWriter because each  * DBWriter creates its own PreparedStatements at initialization.  */
 end_comment
 
 begin_class
@@ -232,6 +232,16 @@ name|DBWriter
 implements|implements
 name|IDBWriter
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|AtomicInteger
+name|WRITER_ID
+init|=
+operator|new
+name|AtomicInteger
+argument_list|()
+decl_stmt|;
 specifier|private
 specifier|static
 name|Logger
@@ -264,14 +274,6 @@ literal|1000L
 decl_stmt|;
 specifier|private
 specifier|final
-name|List
-argument_list|<
-name|TableInfo
-argument_list|>
-name|tableInfos
-decl_stmt|;
-specifier|private
-specifier|final
 name|Connection
 name|conn
 decl_stmt|;
@@ -281,9 +283,19 @@ name|DBUtil
 name|dbUtil
 decl_stmt|;
 specifier|private
-specifier|static
+specifier|final
 name|MimeBuffer
 name|mimeBuffer
+decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|myId
+init|=
+name|WRITER_ID
+operator|.
+name|getAndIncrement
+argument_list|()
 decl_stmt|;
 comment|//<tableName, preparedStatement>
 specifier|private
@@ -304,17 +316,20 @@ decl_stmt|;
 specifier|public
 name|DBWriter
 parameter_list|(
+name|Connection
+name|connection
+parameter_list|,
 name|List
 argument_list|<
 name|TableInfo
 argument_list|>
 name|tableInfos
 parameter_list|,
-name|TikaConfig
-name|tikaConfig
-parameter_list|,
 name|DBUtil
 name|dbUtil
+parameter_list|,
+name|MimeBuffer
+name|mimeBuffer
 parameter_list|)
 throws|throws
 name|IOException
@@ -325,36 +340,13 @@ name|this
 operator|.
 name|conn
 operator|=
-name|dbUtil
-operator|.
-name|getConnection
-argument_list|(
-literal|true
-argument_list|)
+name|connection
 expr_stmt|;
-if|if
-condition|(
-name|mimeBuffer
-operator|==
-literal|null
-condition|)
-block|{
-name|mimeBuffer
-operator|=
-operator|new
-name|MimeBuffer
-argument_list|(
-name|conn
-argument_list|,
-name|tikaConfig
-argument_list|)
-expr_stmt|;
-block|}
 name|this
 operator|.
-name|tableInfos
+name|mimeBuffer
 operator|=
-name|tableInfos
+name|mimeBuffer
 expr_stmt|;
 name|this
 operator|.
@@ -669,9 +661,13 @@ condition|)
 block|{
 name|logger
 operator|.
-name|info
+name|debug
 argument_list|(
-literal|"writer is committing after "
+literal|"writer ("
+operator|+
+name|myId
+operator|+
+literal|") is committing after "
 operator|+
 name|rows
 operator|+
@@ -709,11 +705,6 @@ name|IOException
 block|{
 try|try
 block|{
-name|mimeBuffer
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 name|conn
 operator|.
 name|commit

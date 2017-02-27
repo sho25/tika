@@ -473,6 +473,11 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 return|return
 operator|-
 literal|1
@@ -655,7 +660,7 @@ name|INTEGER
 case|:
 name|st
 operator|.
-name|setDouble
+name|setInt
 argument_list|(
 name|dbColOffset
 argument_list|,

@@ -239,6 +239,22 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|eval
+operator|.
+name|io
+operator|.
+name|ExtractReaderException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|AfterClass
@@ -669,7 +685,7 @@ name|debugTable
 argument_list|(
 name|ExtractProfiler
 operator|.
-name|ERROR_TABLE
+name|EXTRACT_EXCEPTION_TABLE
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -755,7 +771,7 @@ block|{
 name|String
 name|sql
 init|=
-literal|"select EXTRACT_ERROR_TYPE_ID from errors e"
+literal|"select EXTRACT_EXCEPTION_TYPE_ID from extract_exceptions e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -805,12 +821,12 @@ name|debugTable
 argument_list|(
 name|ExtractProfiler
 operator|.
-name|ERROR_TABLE
+name|EXTRACT_EXCEPTION_TABLE
 argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select EXTRACT_ERROR_TYPE_ID from errors e"
+literal|"select EXTRACT_EXCEPTION_TYPE_ID from errors e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -830,7 +846,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select EXTRACT_ERROR_TYPE_ID from errors e"
+literal|"select EXTRACT_EXCEPTION_TYPE_ID from errors e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -862,7 +878,7 @@ name|debugTable
 argument_list|(
 name|ExtractProfiler
 operator|.
-name|ERROR_TABLE
+name|EXTRACT_EXCEPTION_TABLE
 argument_list|)
 expr_stmt|;
 name|String
@@ -882,7 +898,9 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select extract_error_type_id from errors where file_path='file11_oom.txt'"
+literal|"select extract_error_type_id from extract_exceptions "
+operator|+
+literal|"where file_path='file11_oom.txt'"
 expr_stmt|;
 name|assertEquals
 argument_list|(
@@ -890,9 +908,9 @@ name|Integer
 operator|.
 name|toString
 argument_list|(
-name|AbstractProfiler
+name|ExtractReaderException
 operator|.
-name|EXTRACT_ERROR_TYPE
+name|TYPE
 operator|.
 name|ZERO_BYTE_EXTRACT_FILE
 operator|.
@@ -908,7 +926,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select parse_error_type_id from errors where file_path='file11_oom.txt'"
+literal|"select parse_error_type_id from extract_exceptions where file_path='file11_oom.txt'"
 expr_stmt|;
 name|assertEquals
 argument_list|(

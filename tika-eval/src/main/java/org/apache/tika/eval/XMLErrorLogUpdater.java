@@ -439,7 +439,7 @@ name|connection
 argument_list|,
 name|ExtractComparer
 operator|.
-name|ERROR_TABLE_A
+name|EXTRACT_EXCEPTION_TABLE_A
 argument_list|,
 name|xmlLogFileA
 argument_list|)
@@ -452,7 +452,7 @@ name|connection
 argument_list|,
 name|ExtractComparer
 operator|.
-name|ERROR_TABLE_B
+name|EXTRACT_EXCEPTION_TABLE_B
 argument_list|,
 name|xmlLogFileB
 argument_list|)
