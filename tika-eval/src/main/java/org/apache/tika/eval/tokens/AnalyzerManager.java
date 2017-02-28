@@ -166,11 +166,6 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|Analyzer
-name|alphaIdeoAnalyzer
-decl_stmt|;
-specifier|private
-specifier|final
-name|Analyzer
 name|commonTokensAnalyzer
 decl_stmt|;
 specifier|private
@@ -178,9 +173,6 @@ name|AnalyzerManager
 parameter_list|(
 name|Analyzer
 name|generalAnalyzer
-parameter_list|,
-name|Analyzer
-name|alphaIdeoAnalyzer
 parameter_list|,
 name|Analyzer
 name|commonTokensAnalyzer
@@ -191,12 +183,6 @@ operator|.
 name|generalAnalyzer
 operator|=
 name|generalAnalyzer
-expr_stmt|;
-name|this
-operator|.
-name|alphaIdeoAnalyzer
-operator|=
-name|alphaIdeoAnalyzer
 expr_stmt|;
 name|this
 operator|.
@@ -339,25 +325,6 @@ throw|;
 block|}
 if|if
 condition|(
-name|alphaIdeo
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|JsonParseException
-argument_list|(
-literal|"Must specify "
-operator|+
-name|ALPHA_IDEOGRAPH
-operator|+
-literal|" analyzer"
-argument_list|)
-throw|;
-block|}
-if|if
-condition|(
 name|common
 operator|==
 literal|null
@@ -381,8 +348,6 @@ name|AnalyzerManager
 argument_list|(
 name|general
 argument_list|,
-name|alphaIdeo
-argument_list|,
 name|common
 argument_list|)
 return|;
@@ -395,16 +360,6 @@ parameter_list|()
 block|{
 return|return
 name|generalAnalyzer
-return|;
-block|}
-comment|/**      * This analyzer is used to extract "alphabetic" tokens.      * @return      */
-specifier|public
-name|Analyzer
-name|getAlphaIdeoAnalyzer
-parameter_list|()
-block|{
-return|return
-name|alphaIdeoAnalyzer
 return|;
 block|}
 comment|/**      * This analyzer should be used to generate common tokens lists from      * large corpora.  It is not used by tika-eval in profiling or comparing.      * @return      */

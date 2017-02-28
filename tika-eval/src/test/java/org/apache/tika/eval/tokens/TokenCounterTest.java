@@ -226,11 +226,6 @@ name|analyzerManager
 operator|.
 name|getGeneralAnalyzer
 argument_list|()
-argument_list|,
-name|analyzerManager
-operator|.
-name|getAlphaIdeoAnalyzer
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|counter
@@ -261,11 +256,6 @@ argument_list|(
 name|analyzerManager
 operator|.
 name|getGeneralAnalyzer
-argument_list|()
-argument_list|,
-name|analyzerManager
-operator|.
-name|getAlphaIdeoAnalyzer
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -356,11 +346,6 @@ name|analyzerManager
 operator|.
 name|getGeneralAnalyzer
 argument_list|()
-argument_list|,
-name|analyzerManager
-operator|.
-name|getAlphaIdeoAnalyzer
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|counter
@@ -412,11 +397,6 @@ name|analyzerManager
 operator|.
 name|getGeneralAnalyzer
 argument_list|()
-argument_list|,
-name|analyzerManager
-operator|.
-name|getAlphaIdeoAnalyzer
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|tokenCounter
@@ -454,7 +434,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println("SIMPLE: " + simple + " lucene: "+lucene);
 block|}
 annotation|@
 name|Test
@@ -473,12 +452,7 @@ name|TokenCounter
 argument_list|(
 name|analyzerManager
 operator|.
-name|getGeneralAnalyzer
-argument_list|()
-argument_list|,
-name|analyzerManager
-operator|.
-name|getAlphaIdeoAnalyzer
+name|getCommonTokensAnalyzer
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -506,7 +480,7 @@ name|tokens
 init|=
 name|tokenCounter
 operator|.
-name|getAlphaTokens
+name|getTokens
 argument_list|(
 name|FIELD
 argument_list|)
