@@ -1133,20 +1133,8 @@ name|MAPI_EXCHANGE_FROM_CN
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Tests Chang@FT (張毓倫)"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Office
-operator|.
-name|MAPI_FROM_REPRESENTING_NAME
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//this no longer works because we forbid email like contents...do we want to do this?
+comment|//assertEquals("Tests Chang@FT (張毓倫)", metadata.get(Office.MAPI_FROM_REPRESENTING_NAME));
 name|assertEquals
 argument_list|(
 literal|"FT GROUP"
