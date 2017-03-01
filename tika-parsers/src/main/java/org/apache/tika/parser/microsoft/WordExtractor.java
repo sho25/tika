@@ -876,9 +876,6 @@ literal|null
 operator|||
 name|styleName
 operator|.
-name|trim
-argument_list|()
-operator|.
 name|length
 argument_list|()
 operator|<
