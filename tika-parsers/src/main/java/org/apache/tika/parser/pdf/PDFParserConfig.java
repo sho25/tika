@@ -404,6 +404,12 @@ init|=
 literal|"png"
 decl_stmt|;
 specifier|private
+name|float
+name|ocrImageQuality
+init|=
+literal|1.0f
+decl_stmt|;
+specifier|private
 name|AccessChecker
 name|accessChecker
 decl_stmt|;
@@ -1431,7 +1437,7 @@ return|return
 name|ocrDPI
 return|;
 block|}
-comment|/**      * Dots per inche used to render the page image for OCR      * @param ocrDPI      */
+comment|/**      * Dots per inch used to render the page image for OCR.      * This does not apply to all image formats.      *      * @param ocrDPI      */
 specifier|public
 name|void
 name|setOcrDPI
@@ -1445,6 +1451,32 @@ operator|.
 name|ocrDPI
 operator|=
 name|ocrDPI
+expr_stmt|;
+block|}
+comment|/**      * Image quality used to render the page image for OCR.      * This does not apply to all image formats      * @return      */
+specifier|public
+name|float
+name|getOcrImageQuality
+parameter_list|()
+block|{
+return|return
+name|ocrImageQuality
+return|;
+block|}
+comment|/**      * Image quality used to render the page image for OCR.      * This does not apply to all image formats      * @return      */
+specifier|public
+name|void
+name|setOcrImageQuality
+parameter_list|(
+name|float
+name|ocrImageQuality
+parameter_list|)
+block|{
+name|this
+operator|.
+name|ocrImageQuality
+operator|=
+name|ocrImageQuality
 expr_stmt|;
 block|}
 comment|/**      * Whether or not to extract PDActions from the file.      * Most Action types are handled inline; javascript macros      * are processed as embedded documents.      *      * @param v      */
