@@ -108,6 +108,32 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+name|s
+operator|=
+literal|"<jira@apache.org> Julien Nioche (JIRA) "
+expr_stmt|;
+name|assertExtracted
+argument_list|(
+literal|"Julien Nioche (JIRA)"
+argument_list|,
+literal|"jira@apache.org"
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
+name|s
+operator|=
+literal|"<jira@apache.org> \"Julien Nioche (JIRA)\" "
+expr_stmt|;
+name|assertExtracted
+argument_list|(
+literal|"Julien Nioche (JIRA)"
+argument_list|,
+literal|"jira@apache.org"
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
 block|}
 specifier|private
 name|void

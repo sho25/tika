@@ -337,6 +337,7 @@ name|email
 init|=
 literal|""
 decl_stmt|;
+comment|//TODO: warn if more than one email is found?
 while|while
 condition|(
 name|emailMatcher
@@ -364,6 +365,13 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|emailMatcher
+operator|.
+name|appendTail
+argument_list|(
+name|sb
+argument_list|)
+expr_stmt|;
 return|return
 name|email
 return|;
