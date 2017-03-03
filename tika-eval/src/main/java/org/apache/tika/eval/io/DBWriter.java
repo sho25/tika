@@ -171,7 +171,7 @@ name|eval
 operator|.
 name|db
 operator|.
-name|DBUtil
+name|JDBCUtil
 import|;
 end_import
 
@@ -279,7 +279,7 @@ name|conn
 decl_stmt|;
 specifier|private
 specifier|final
-name|DBUtil
+name|JDBCUtil
 name|dbUtil
 decl_stmt|;
 specifier|private
@@ -325,7 +325,7 @@ name|TableInfo
 argument_list|>
 name|tableInfos
 parameter_list|,
-name|DBUtil
+name|JDBCUtil
 name|dbUtil
 parameter_list|,
 name|MimeBuffer

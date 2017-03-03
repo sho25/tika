@@ -435,26 +435,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|Option
-name|db
-init|=
-operator|new
-name|Option
-argument_list|(
-literal|"db"
-argument_list|,
-literal|true
-argument_list|,
-literal|"db file to which to write results"
-argument_list|)
-decl_stmt|;
-name|db
-operator|.
-name|setRequired
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Option
 name|inputDir
 init|=
 operator|new
@@ -469,13 +449,6 @@ operator|+
 literal|"or can be the same as -extractsA or -extractsB. If not specified, -inputDir=-extractsA"
 argument_list|)
 decl_stmt|;
-name|inputDir
-operator|.
-name|setRequired
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|OPTIONS
 operator|=
 operator|new
@@ -490,11 +463,6 @@ operator|.
 name|addOption
 argument_list|(
 name|extractsB
-argument_list|)
-operator|.
-name|addOption
-argument_list|(
-name|db
 argument_list|)
 operator|.
 name|addOption
@@ -554,6 +522,69 @@ literal|true
 argument_list|,
 literal|"maximum extract length to process (in bytes)"
 argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"db"
+argument_list|,
+literal|true
+argument_list|,
+literal|"db file to which to write results"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"jdbc"
+argument_list|,
+literal|true
+argument_list|,
+literal|"EXPERT: full jdbc connection string. Must specify this or -db<h2db>"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"jdbcDriver"
+argument_list|,
+literal|true
+argument_list|,
+literal|"EXPERT: jdbc driver, or specify via -Djdbc.driver"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"tablePrefixA"
+argument_list|,
+literal|true
+argument_list|,
+literal|"EXPERT: optional prefix for table names for A"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"tablePrefixB"
+argument_list|,
+literal|true
+argument_list|,
+literal|"EXPERT: optional prefix for table names for B"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"drop"
+argument_list|,
+literal|true
+argument_list|,
+literal|"drop tables if they exist"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"maxFilesToAdd"
+argument_list|,
+literal|true
+argument_list|,
+literal|"maximum number of files to add to the crawler"
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
@@ -583,7 +614,7 @@ name|ExtractComparer
 operator|.
 name|OPTIONS
 argument_list|,
-literal|"Note: do not include the .mv.db at the end of the db name."
+literal|"Note: for the default h2 db, do not include the .mv.db at the end of the db name."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1044,23 +1075,6 @@ name|extractsB
 decl_stmt|;
 specifier|private
 specifier|final
-name|long
-name|minExtractLength
-decl_stmt|;
-specifier|private
-specifier|final
-name|long
-name|maxExtractLength
-decl_stmt|;
-specifier|private
-specifier|final
-name|ExtractReader
-operator|.
-name|ALTER_METADATA_LIST
-name|alterExtractList
-decl_stmt|;
-specifier|private
-specifier|final
 name|TokenContraster
 name|tokenContraster
 init|=
@@ -1072,10 +1086,6 @@ specifier|private
 specifier|final
 name|ExtractReader
 name|extractReader
-init|=
-operator|new
-name|ExtractReader
-argument_list|()
 decl_stmt|;
 specifier|public
 name|ExtractComparer
@@ -1095,19 +1105,11 @@ parameter_list|,
 name|Path
 name|extractsB
 parameter_list|,
+name|ExtractReader
+name|extractReader
+parameter_list|,
 name|IDBWriter
 name|writer
-parameter_list|,
-name|long
-name|minJsonLength
-parameter_list|,
-name|long
-name|maxJsonLength
-parameter_list|,
-name|ExtractReader
-operator|.
-name|ALTER_METADATA_LIST
-name|alterExtractList
 parameter_list|)
 block|{
 name|super
@@ -1119,18 +1121,6 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|minExtractLength
-operator|=
-name|minJsonLength
-expr_stmt|;
-name|this
-operator|.
-name|maxExtractLength
-operator|=
-name|maxJsonLength
-expr_stmt|;
-name|this
-operator|.
 name|inputDir
 operator|=
 name|inputDir
@@ -1149,9 +1139,9 @@ name|extractsB
 expr_stmt|;
 name|this
 operator|.
-name|alterExtractList
+name|extractReader
 operator|=
-name|alterExtractList
+name|extractReader
 expr_stmt|;
 block|}
 annotation|@
@@ -1350,12 +1340,6 @@ name|fpsA
 operator|.
 name|getExtractFile
 argument_list|()
-argument_list|,
-name|alterExtractList
-argument_list|,
-name|minExtractLength
-argument_list|,
-name|maxExtractLength
 argument_list|)
 expr_stmt|;
 block|}
@@ -1394,12 +1378,6 @@ name|fpsB
 operator|.
 name|getExtractFile
 argument_list|()
-argument_list|,
-name|alterExtractList
-argument_list|,
-name|minExtractLength
-argument_list|,
-name|maxExtractLength
 argument_list|)
 expr_stmt|;
 block|}

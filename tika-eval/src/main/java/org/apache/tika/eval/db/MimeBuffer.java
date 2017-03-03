@@ -204,14 +204,20 @@ operator|+
 name|Cols
 operator|.
 name|MIME_STRING
+operator|.
+name|name
+argument_list|()
 operator|+
 literal|", "
 operator|+
 name|Cols
 operator|.
 name|FILE_EXTENSION
+operator|.
+name|name
+argument_list|()
 operator|+
-literal|") values (?,?,?);"
+literal|") values (?,?,?)"
 argument_list|)
 expr_stmt|;
 name|this

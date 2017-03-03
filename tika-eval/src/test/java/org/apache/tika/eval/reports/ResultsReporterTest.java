@@ -194,9 +194,7 @@ argument_list|)
 argument_list|)
 operator|.
 name|getConnection
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|String
 name|sql

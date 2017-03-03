@@ -147,7 +147,7 @@ name|eval
 operator|.
 name|db
 operator|.
-name|DBUtil
+name|JDBCUtil
 import|;
 end_import
 
@@ -216,7 +216,7 @@ decl_stmt|;
 specifier|public
 name|DBConsumersManager
 parameter_list|(
-name|DBUtil
+name|JDBCUtil
 name|dbUtil
 parameter_list|,
 name|MimeBuffer
@@ -229,7 +229,7 @@ argument_list|>
 name|consumers
 parameter_list|)
 throws|throws
-name|IOException
+name|SQLException
 block|{
 name|super
 argument_list|(
@@ -243,9 +243,7 @@ operator|=
 name|dbUtil
 operator|.
 name|getConnection
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|this
 operator|.
@@ -431,7 +429,7 @@ name|Path
 name|log
 parameter_list|,
 name|TableInfo
-name|tableName
+name|tableInfo
 parameter_list|)
 block|{
 name|LogTablePair
@@ -451,7 +449,7 @@ name|p
 operator|.
 name|tableInfo
 operator|=
-name|tableName
+name|tableInfo
 expr_stmt|;
 name|errorLogs
 operator|.

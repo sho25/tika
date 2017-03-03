@@ -145,10 +145,6 @@ name|XSSFWorkbook
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by TALLISON on 4/20/2016.  */
-end_comment
-
 begin_class
 specifier|public
 class|class

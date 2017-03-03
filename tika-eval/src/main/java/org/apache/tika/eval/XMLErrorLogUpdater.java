@@ -209,7 +209,7 @@ name|eval
 operator|.
 name|db
 operator|.
-name|DBUtil
+name|H2Util
 import|;
 end_import
 
@@ -225,7 +225,7 @@ name|eval
 operator|.
 name|db
 operator|.
-name|H2Util
+name|JDBCUtil
 import|;
 end_import
 
@@ -412,7 +412,7 @@ literal|2
 index|]
 argument_list|)
 decl_stmt|;
-name|DBUtil
+name|JDBCUtil
 name|dbUtil
 init|=
 operator|new
@@ -427,9 +427,7 @@ init|=
 name|dbUtil
 operator|.
 name|getConnection
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|writer
 operator|.

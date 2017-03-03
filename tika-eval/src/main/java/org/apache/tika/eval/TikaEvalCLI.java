@@ -101,6 +101,20 @@ name|commons
 operator|.
 name|cli
 operator|.
+name|CommandLine
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|cli
+operator|.
 name|DefaultParser
 import|;
 end_import
@@ -664,7 +678,9 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Must specify directory after -extractsB"
+literal|"Must specify type 'as_is', 'first_only' or "
+operator|+
+literal|"'concatenate_content' after -alterExtract"
 argument_list|)
 expr_stmt|;
 name|ExtractComparer
@@ -891,6 +907,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|CommandLine
+name|commandLine
+init|=
 name|defaultCLIParser
 operator|.
 name|parse
@@ -901,7 +920,40 @@ name|OPTIONS
 argument_list|,
 name|updatedArgs
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commandLine
+operator|.
+name|hasOption
+argument_list|(
+literal|"db"
+argument_list|)
+operator|&&
+name|commandLine
+operator|.
+name|hasOption
+argument_list|(
+literal|"jdbc"
+argument_list|)
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Please specify either the default -db or the full -jdbc, not both"
+argument_list|)
 expr_stmt|;
+name|ExtractProfiler
+operator|.
+name|USAGE
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1193,7 +1245,9 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Must specify directory after -extractsB"
+literal|"Must specify type 'as_is', 'first_only' or "
+operator|+
+literal|"'concatenate_content' after -alterExtract"
 argument_list|)
 expr_stmt|;
 name|ExtractComparer
@@ -1393,6 +1447,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+name|CommandLine
+name|commandLine
+init|=
 name|defaultCLIParser
 operator|.
 name|parse
@@ -1403,7 +1460,40 @@ name|OPTIONS
 argument_list|,
 name|updatedArgs
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|commandLine
+operator|.
+name|hasOption
+argument_list|(
+literal|"db"
+argument_list|)
+operator|&&
+name|commandLine
+operator|.
+name|hasOption
+argument_list|(
+literal|"jdbc"
+argument_list|)
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Please specify either the default -db or the full -jdbc, not both"
+argument_list|)
 expr_stmt|;
+name|ExtractComparer
+operator|.
+name|USAGE
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 block|}
 catch|catch
 parameter_list|(
