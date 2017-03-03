@@ -103,7 +103,7 @@ name|args
 operator|.
 name|add
 argument_list|(
-literal|"watson2"
+literal|"extractsA"
 argument_list|)
 expr_stmt|;
 name|args
@@ -117,7 +117,7 @@ name|args
 operator|.
 name|add
 argument_list|(
-literal|"tika"
+literal|"extractsB"
 argument_list|)
 expr_stmt|;
 name|args
@@ -232,7 +232,7 @@ name|args
 operator|.
 name|add
 argument_list|(
-literal|"watson2"
+literal|"extracts"
 argument_list|)
 expr_stmt|;
 name|args

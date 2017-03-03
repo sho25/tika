@@ -431,7 +431,7 @@ name|List
 argument_list|<
 name|TableInfo
 argument_list|>
-name|getTableInfo
+name|getTableInfos
 parameter_list|(
 name|String
 name|tableNamePrefixA
@@ -439,6 +439,15 @@ parameter_list|,
 name|String
 name|tableNamePrefixB
 parameter_list|)
+function_decl|;
+specifier|protected
+specifier|abstract
+name|List
+argument_list|<
+name|TableInfo
+argument_list|>
+name|getRefTableInfos
+parameter_list|()
 function_decl|;
 specifier|protected
 specifier|abstract
@@ -775,7 +784,7 @@ name|DBWriter
 argument_list|(
 name|conn
 argument_list|,
-name|getTableInfo
+name|getTableInfos
 argument_list|(
 literal|null
 argument_list|,
