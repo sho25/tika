@@ -69,7 +69,7 @@ name|MESSAGE_BCC
 init|=
 literal|"Message-Bcc"
 decl_stmt|;
-comment|/**      * Where possible, we try to separate the name from the email address      * in Message files.  This is multivalued for cases where an email is sent      * "on behalf of" someone...this is still to be implemented, though.      * The name may be an organization name.      */
+comment|/**      * Where possible, this records the value from the name field.      * Even in MAPI messages, though, this can be an email address.      */
 name|Property
 name|MESSAGE_FROM_NAME
 init|=
@@ -82,7 +82,7 @@ operator|+
 literal|"From-Name"
 argument_list|)
 decl_stmt|;
-comment|/**      * Where possible, we try to separate the name from the email address      * in Message files.  This is multivalued for cases where an email is sent      * "on behalf of" someone...this is still to be implemented, though.      */
+comment|/**      * Where possible, this records the value from the name field.      * Even in MAPI messages, though, this can be a name.      *<p/>      * Note that the value may also be an X400/x500 Exchange format:      * /o=ExchangeLabs/ou=Exchange Administrative Group/cn=Recipients/cn=someone.or.other      */
 name|Property
 name|MESSAGE_FROM_EMAIL
 init|=
@@ -95,6 +95,7 @@ operator|+
 literal|"From-Email"
 argument_list|)
 decl_stmt|;
+comment|/**      * In Outlook messages, there are sometimes separate fields for "to-name" and      * "to-display-name" name.      */
 name|Property
 name|MESSAGE_TO_NAME
 init|=
@@ -108,6 +109,19 @@ literal|"To-Name"
 argument_list|)
 decl_stmt|;
 name|Property
+name|MESSAGE_TO_DISPLAY_NAME
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|MESSAGE_PREFIX
+operator|+
+literal|"To-Display-Name"
+argument_list|)
+decl_stmt|;
+comment|/**      * Where possible, this records the email value in the to field.      * Even in MAPI messages, though, this can be a name.      *<p/>      * Note that the value may also be an X400/x500 Exchange format:      * /o=ExchangeLabs/ou=Exchange Administrative Group/cn=Recipients/cn=someone.or.other      */
+name|Property
 name|MESSAGE_TO_EMAIL
 init|=
 name|Property
@@ -116,9 +130,10 @@ name|internalTextBag
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-literal|"To-Name"
+literal|"To-Email"
 argument_list|)
 decl_stmt|;
+comment|/**      * In Outlook messages, there are sometimes separate fields for "cc-name" and      * "cc-display-name" name.      */
 name|Property
 name|MESSAGE_CC_NAME
 init|=
@@ -132,6 +147,19 @@ literal|"CC-Name"
 argument_list|)
 decl_stmt|;
 name|Property
+name|MESSAGE_CC_DISPLAY_NAME
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|MESSAGE_PREFIX
+operator|+
+literal|"CC-Display-Name"
+argument_list|)
+decl_stmt|;
+comment|/**      * Where possible, this records the email value in the cc field.      * Even in MAPI messages, though, this can be a name.      *<p/>      * Note that the value may also be an X400/x500 Exchange format:      * /o=ExchangeLabs/ou=Exchange Administrative Group/cn=Recipients/cn=someone.or.other      */
+name|Property
 name|MESSAGE_CC_EMAIL
 init|=
 name|Property
@@ -140,9 +168,10 @@ name|internalTextBag
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-literal|"CC-Name"
+literal|"CC-Email"
 argument_list|)
 decl_stmt|;
+comment|/**      * In Outlook messages, there are sometimes separate fields for "bcc-name" and      * "bcc-display-name" name.      */
 name|Property
 name|MESSAGE_BCC_NAME
 init|=
@@ -152,9 +181,22 @@ name|internalTextBag
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-literal|"CC-Name"
+literal|"BCC-Name"
 argument_list|)
 decl_stmt|;
+name|Property
+name|MESSAGE_BCC_DISPLAY_NAME
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|MESSAGE_PREFIX
+operator|+
+literal|"BCC-Display-Name"
+argument_list|)
+decl_stmt|;
+comment|/**      * Where possible, this records the email value in the bcc field.      * Even in MAPI messages, though, this can be a name.      *<p/>      * Note that the value may also be an X400/x500 Exchange format:      * /o=ExchangeLabs/ou=Exchange Administrative Group/cn=Recipients/cn=someone.or.other      */
 name|Property
 name|MESSAGE_BCC_EMAIL
 init|=
@@ -164,7 +206,7 @@ name|internalTextBag
 argument_list|(
 name|MESSAGE_PREFIX
 operator|+
-literal|"CC-Name"
+literal|"BCC-Email"
 argument_list|)
 decl_stmt|;
 block|}
