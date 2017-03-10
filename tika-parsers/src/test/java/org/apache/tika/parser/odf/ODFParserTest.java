@@ -2629,6 +2629,44 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+comment|//TIKA-2242
+specifier|public
+name|void
+name|testAnnotationsAndPDepthGt1
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//not allowed in html:<p><annotation><p> this is an annotation</p></annotation></p>
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testODTStyles3.odt"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p><b>WOUTERS Rolf</b><span class=\"annotation\"> Beschermde persoon is overleden</annotation>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
