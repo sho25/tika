@@ -275,7 +275,7 @@ begin_class
 annotation|@
 name|Ignore
 argument_list|(
-literal|"need to fix tika-batch tests to make this work"
+literal|"move these tests to TikaEvalCLITest"
 argument_list|)
 specifier|public
 class|class
