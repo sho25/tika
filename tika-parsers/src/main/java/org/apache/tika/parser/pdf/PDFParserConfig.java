@@ -342,6 +342,13 @@ name|extractAcroFormContent
 init|=
 literal|true
 decl_stmt|;
+comment|//True if bookmarks content should be extracted
+specifier|private
+name|boolean
+name|extractBookmarksText
+init|=
+literal|true
+decl_stmt|;
 comment|//True if inline PDXImage objects should be extracted
 specifier|private
 name|boolean
@@ -605,6 +612,22 @@ literal|"extractAcroFormContent"
 argument_list|)
 argument_list|,
 name|getExtractAcroFormContent
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setExtractBookmarksText
+argument_list|(
+name|getBooleanProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"extractBookmarksText"
+argument_list|)
+argument_list|,
+name|getExtractBookmarksText
 argument_list|()
 argument_list|)
 argument_list|)
@@ -934,6 +957,32 @@ operator|.
 name|ifXFAExtractOnlyXFA
 operator|=
 name|ifXFAExtractOnlyXFA
+expr_stmt|;
+block|}
+comment|/** 	 * @see #setExtractBookmarksText(boolean) 	 */
+specifier|public
+name|boolean
+name|getExtractBookmarksText
+parameter_list|()
+block|{
+return|return
+name|extractBookmarksText
+return|;
+block|}
+comment|/** 	 * If true, extract bookmarks (document outline) text. 	 *<p/> 	 * Te default is<code>true</code> 	 * @param extractBookmarksText 	 */
+specifier|public
+name|void
+name|setExtractBookmarksText
+parameter_list|(
+name|boolean
+name|extractBookmarksText
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractBookmarksText
+operator|=
+name|extractBookmarksText
 expr_stmt|;
 block|}
 comment|/**      * @see #setExtractInlineImages(boolean)      */
@@ -1728,6 +1777,19 @@ literal|false
 return|;
 if|if
 condition|(
+name|getExtractBookmarksText
+argument_list|()
+operator|!=
+name|config
+operator|.
+name|getExtractBookmarksText
+argument_list|()
+condition|)
+return|return
+literal|false
+return|;
+if|if
+condition|(
 name|getExtractInlineImages
 argument_list|()
 operator|!=
@@ -1984,6 +2046,21 @@ operator|*
 name|result
 operator|+
 operator|(
+name|getExtractBookmarksText
+argument_list|()
+condition|?
+literal|1
+else|:
+literal|0
+operator|)
+expr_stmt|;
+name|result
+operator|=
+literal|31
+operator|*
+name|result
+operator|+
+operator|(
 name|getExtractInlineImages
 argument_list|()
 condition|?
@@ -2165,6 +2242,10 @@ operator|+
 literal|", extractAcroFormContent="
 operator|+
 name|extractAcroFormContent
+operator|+
+literal|", extractBookmarksText="
+operator|+
+name|extractBookmarksText
 operator|+
 literal|", extractInlineImages="
 operator|+

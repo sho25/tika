@@ -18,38 +18,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|pdf
-operator|.
-name|PDFParserConfig
-operator|.
-name|OCR_STRATEGY
-operator|.
-name|NO_OCR
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|stream
-operator|.
-name|XMLStreamException
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -248,6 +216,18 @@ operator|.
 name|util
 operator|.
 name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|stream
+operator|.
+name|XMLStreamException
 import|;
 end_import
 
@@ -1138,6 +1118,26 @@ operator|.
 name|helpers
 operator|.
 name|AttributesImpl
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|pdf
+operator|.
+name|PDFParserConfig
+operator|.
+name|OCR_STRATEGY
+operator|.
+name|NO_OCR
 import|;
 end_import
 
@@ -3694,6 +3694,13 @@ block|{
 try|try
 block|{
 comment|// Extract text for any bookmarks:
+if|if
+condition|(
+name|config
+operator|.
+name|getExtractBookmarksText
+argument_list|()
+condition|)
 name|extractBookmarkText
 argument_list|()
 expr_stmt|;
