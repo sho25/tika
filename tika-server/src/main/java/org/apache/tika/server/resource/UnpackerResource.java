@@ -705,9 +705,7 @@ name|list
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|values
 operator|.
@@ -1031,12 +1029,7 @@ name|files
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|byte
-index|[]
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|MutableInt

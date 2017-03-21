@@ -577,9 +577,7 @@ name|metadataList
 operator|=
 operator|new
 name|LinkedList
-argument_list|<
-name|Metadata
-argument_list|>
+argument_list|<>
 argument_list|()
 expr_stmt|;
 block|}

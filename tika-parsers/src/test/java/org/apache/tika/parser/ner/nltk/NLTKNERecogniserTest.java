@@ -260,13 +260,9 @@ name|names
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|!=
 literal|0
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|assertTrue
 argument_list|(

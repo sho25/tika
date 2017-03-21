@@ -1423,9 +1423,7 @@ name|rCoreProviders
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ResourceProvider
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|rCoreProviders
@@ -1579,9 +1577,7 @@ name|rAllProviders
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ResourceProvider
-argument_list|>
+argument_list|<>
 argument_list|(
 name|rCoreProviders
 argument_list|)
@@ -1616,9 +1612,7 @@ name|providers
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|providers

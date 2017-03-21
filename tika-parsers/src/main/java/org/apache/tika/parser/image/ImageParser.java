@@ -409,9 +409,7 @@ name|TMP_SUPPORTED
 operator|=
 operator|new
 name|HashSet
-argument_list|<
-name|MediaType
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.

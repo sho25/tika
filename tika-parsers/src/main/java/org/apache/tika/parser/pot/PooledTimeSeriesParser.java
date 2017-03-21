@@ -556,7 +556,11 @@ argument_list|)
 else|:
 name|Collections
 operator|.
-name|EMPTY_SET
+expr|<
+name|MediaType
+operator|>
+name|emptySet
+argument_list|()
 decl_stmt|;
 empty_stmt|;
 comment|// TODO: Add all supported video types

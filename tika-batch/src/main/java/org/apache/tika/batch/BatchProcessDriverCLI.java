@@ -251,10 +251,11 @@ comment|//message has been received through stdout, but the
 comment|//child process has not yet exited
 specifier|private
 name|int
-name|waitNumLoopsAfterRestartmessage
+name|waitNumLoopsAfterRestartMessage
 init|=
 literal|60
 decl_stmt|;
+specifier|private
 name|int
 name|loopsAfterRestartMessageReceived
 init|=

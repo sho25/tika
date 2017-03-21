@@ -761,9 +761,7 @@ name|unmodifiableSet
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|MediaType
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -845,11 +843,7 @@ name|TESSERACT_PRESENT
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Boolean
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 annotation|@
@@ -2365,9 +2359,7 @@ name|waitTask
 init|=
 operator|new
 name|FutureTask
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 operator|new
 name|Callable
@@ -3042,9 +3034,7 @@ name|unmodifiableSet
 argument_list|(
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.

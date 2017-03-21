@@ -388,9 +388,7 @@ name|timedOuts
 operator|=
 operator|new
 name|ArrayBlockingQueue
-argument_list|<
-name|FileStarted
-argument_list|>
+argument_list|<>
 argument_list|(
 name|consumersManager
 operator|.
@@ -526,9 +524,7 @@ name|completionService
 init|=
 operator|new
 name|ExecutorCompletionService
-argument_list|<
-name|IFileProcessorFutureResult
-argument_list|>
+argument_list|<>
 argument_list|(
 name|ex
 argument_list|)

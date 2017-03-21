@@ -1304,10 +1304,18 @@ name|OLE_DOCUMENT_NAME
 operator|+
 literal|"\". Found: "
 operator|+
+operator|(
+name|rootNode
+operator|==
+literal|null
+condition|?
+literal|"null"
+else|:
 name|rootNode
 operator|.
 name|getEntryNames
 argument_list|()
+operator|)
 argument_list|)
 throw|;
 block|}
