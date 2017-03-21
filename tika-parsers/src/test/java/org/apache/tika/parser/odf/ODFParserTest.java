@@ -1372,6 +1372,9 @@ name|handler
 operator|.
 name|toString
 argument_list|()
+operator|.
+name|trim
+argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -2505,7 +2508,10 @@ name|handler
 init|=
 operator|new
 name|BodyContentHandler
-argument_list|()
+argument_list|(
+operator|-
+literal|1
+argument_list|)
 decl_stmt|;
 name|parser
 operator|.
@@ -2660,15 +2666,6 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"<p><b>WOUTERS Rolf</b><span class=\"annotation\"> Beschermde persoon is overleden</annotation>"

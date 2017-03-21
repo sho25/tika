@@ -979,11 +979,6 @@ name|MESSAGE_FROM_EMAIL
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|debug
-argument_list|(
-name|m
-argument_list|)
-expr_stmt|;
 name|m
 operator|=
 name|getXML
