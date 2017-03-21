@@ -240,8 +240,9 @@ name|ImportContext
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -348,7 +349,7 @@ else|:
 operator|new
 name|DefaultIOListener
 argument_list|(
-name|log
+name|LOG
 argument_list|)
 expr_stmt|;
 name|this
@@ -655,12 +656,12 @@ operator|<
 literal|0
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Unable to determine content length -> default value = "
-operator|+
+literal|"Unable to determine content length -> default value = {}"
+argument_list|,
 name|IOUtil
 operator|.
 name|UNDEFINED_LENGTH

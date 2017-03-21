@@ -381,7 +381,6 @@ name|SCRIPT_FILE_NAME
 init|=
 literal|"classify_image.py"
 decl_stmt|;
-specifier|public
 specifier|static
 specifier|final
 name|Set

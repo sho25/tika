@@ -179,7 +179,7 @@ parameter_list|)
 block|{
 comment|//This can happen if the disk has run out of space,
 comment|//or if there was a failure with mkdirs in fsOSFactory
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -247,7 +247,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(

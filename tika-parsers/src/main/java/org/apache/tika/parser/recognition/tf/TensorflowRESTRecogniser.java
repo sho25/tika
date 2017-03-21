@@ -392,7 +392,6 @@ name|TensorflowRESTRecogniser
 implements|implements
 name|ObjectRecogniser
 block|{
-comment|/**      * Maximum buffer size for image      */
 specifier|private
 specifier|static
 specifier|final
@@ -408,6 +407,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+comment|/**      * Maximum buffer size for image      */
 specifier|private
 specifier|static
 specifier|final

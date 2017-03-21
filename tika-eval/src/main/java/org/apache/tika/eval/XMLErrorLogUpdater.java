@@ -336,10 +336,11 @@ specifier|public
 class|class
 name|XMLErrorLogUpdater
 block|{
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|Logger
-name|LOGGER
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -1091,7 +1092,7 @@ literal|0
 condition|)
 block|{
 comment|//TODO: log
-name|LOGGER
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1107,7 +1108,7 @@ operator|>
 literal|1
 condition|)
 block|{
-name|LOGGER
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1213,12 +1214,12 @@ operator|==
 literal|0
 condition|)
 block|{
-name|LOGGER
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Should have found a container for: "
-operator|+
+literal|"Should have found a container for: {}"
+argument_list|,
 name|resourceId
 argument_list|)
 expr_stmt|;
@@ -1231,12 +1232,12 @@ operator|>
 literal|1
 condition|)
 block|{
-name|LOGGER
+name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Records ids should be unique:"
-operator|+
+literal|"Records ids should be unique: {}"
+argument_list|,
 name|resourceId
 argument_list|)
 expr_stmt|;

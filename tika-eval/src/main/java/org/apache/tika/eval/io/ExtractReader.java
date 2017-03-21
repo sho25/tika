@@ -326,6 +326,21 @@ specifier|public
 class|class
 name|ExtractReader
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ExtractReader
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|static
 specifier|final
@@ -349,20 +364,6 @@ name|CONCATENATE_CONTENT_INTO_FIRST
 comment|// concatenate all of the content into the first
 block|}
 specifier|private
-specifier|final
-specifier|static
-name|Logger
-name|LOGGER
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|ExtractReader
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 name|TikaConfig
 name|tikaConfig
 init|=
@@ -792,12 +793,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|LOGGER
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Can't yet process compression of type: "
-operator|+
+literal|"Can't yet process compression of type: {}"
+argument_list|,
 name|fileSuffixes
 operator|.
 name|compression

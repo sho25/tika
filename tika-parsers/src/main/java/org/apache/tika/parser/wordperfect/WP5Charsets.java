@@ -21,11 +21,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|log4j
-operator|.
-name|LogManager
+name|Logger
 import|;
 end_import
 
@@ -33,11 +31,9 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
+name|slf4j
 operator|.
-name|log4j
-operator|.
-name|Logger
+name|LoggerFactory
 import|;
 end_import
 
@@ -56,7 +52,7 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|LogManager
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -2149,8 +2145,8 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Unsupported WordPerfect 5.x charset: "
-operator|+
+literal|"Unsupported WordPerfect 5.x charset: {}"
+argument_list|,
 name|charset
 argument_list|)
 expr_stmt|;
@@ -2181,12 +2177,10 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Unsupported WordPerfect 5.x charset ("
-operator|+
+literal|"Unsupported WordPerfect 5.x charset ({}) character value: {}"
+argument_list|,
 name|charset
-operator|+
-literal|") character value: "
-operator|+
+argument_list|,
 name|charval
 argument_list|)
 expr_stmt|;

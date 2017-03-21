@@ -220,8 +220,9 @@ literal|0
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|Logger
-name|logger
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -537,7 +538,7 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -560,7 +561,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -574,12 +575,12 @@ operator|.
 name|exitValue
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"The child process has finished with an exit value of: "
-operator|+
+literal|"The child process has finished with an exit value of: {}"
+argument_list|,
 name|exit
 argument_list|)
 expr_stmt|;
@@ -594,7 +595,7 @@ name|e
 parameter_list|)
 block|{
 comment|//hasn't exited
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -602,18 +603,14 @@ literal|"process has not exited; IllegalThreadStateException"
 argument_list|)
 expr_stmt|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Before sleep:"
-operator|+
-literal|" exit="
-operator|+
+literal|"Before sleep: exit={} receivedRestartMsg={}"
+argument_list|,
 name|exit
-operator|+
-literal|" receivedRestartMsg="
-operator|+
+argument_list|,
 name|receivedRestartMsg
 argument_list|)
 expr_stmt|;
@@ -636,7 +633,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -644,18 +641,14 @@ literal|"interrupted exception during sleep"
 argument_list|)
 expr_stmt|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"After sleep:"
-operator|+
-literal|" exit="
-operator|+
+literal|"After sleep: exit={} receivedRestartMsg={}"
+argument_list|,
 name|exit
-operator|+
-literal|" receivedRestartMsg="
-operator|+
+argument_list|,
 name|receivedRestartMsg
 argument_list|)
 expr_stmt|;
@@ -672,18 +665,18 @@ literal|null
 operator|&&
 name|loopsAfterRestartMessageReceived
 operator|<=
-name|waitNumLoopsAfterRestartmessage
+name|waitNumLoopsAfterRestartMessage
 condition|)
 block|{
 name|loopsAfterRestartMessageReceived
 operator|++
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Must restart, still not exited; loops after restart: "
-operator|+
+literal|"Must restart, still not exited; loops after restart: {}"
+argument_list|,
 name|loopsAfterRestartMessageReceived
 argument_list|)
 expr_stmt|;
@@ -693,30 +686,26 @@ if|if
 condition|(
 name|loopsAfterRestartMessageReceived
 operator|>
-name|waitNumLoopsAfterRestartmessage
+name|waitNumLoopsAfterRestartMessage
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"About to try to restart because:"
-operator|+
-literal|" exit="
-operator|+
+literal|"About to try to restart because: exit={} receivedRestartMsg={}"
+argument_list|,
 name|exit
-operator|+
-literal|" receivedRestartMsg="
-operator|+
+argument_list|,
 name|receivedRestartMsg
 argument_list|)
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Restarting after exceeded wait loops waiting for exit: "
-operator|+
+literal|"Restarting after exceeded wait loops waiting for exit: {}"
+argument_list|,
 name|loopsAfterRestartMessageReceived
 argument_list|)
 expr_stmt|;
@@ -759,18 +748,14 @@ operator|.
 name|PROCESS_COMPLETED_SUCCESSFULLY
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"About to try to restart because:"
-operator|+
-literal|" exit="
-operator|+
+literal|"About to try to restart because: exit={} receivedRestartMsg={}"
+argument_list|,
 name|exit
-operator|+
-literal|" receivedRestartMsg="
-operator|+
+argument_list|,
 name|receivedRestartMsg
 argument_list|)
 expr_stmt|;
@@ -783,7 +768,7 @@ operator|.
 name|PROCESS_RESTART_EXIT_CODE
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -793,12 +778,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Restarting on unexpected restart code: "
-operator|+
+literal|"Restarting on unexpected restart code: {}"
+argument_list|,
 name|exit
 argument_list|)
 expr_stmt|;
@@ -842,19 +827,19 @@ name|PROCESS_NO_RESTART_EXIT_CODE
 operator|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"Will not restart: "
-operator|+
+literal|"Will not restart: {}"
+argument_list|,
 name|exit
 argument_list|)
 expr_stmt|;
 break|break;
 block|}
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -864,7 +849,7 @@ expr_stmt|;
 name|shutdownDriverNow
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -899,12 +884,12 @@ name|i
 operator|++
 control|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"trying to shut down: "
-operator|+
+literal|"trying to shut down: {}"
+argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
@@ -918,12 +903,12 @@ operator|.
 name|exitValue
 argument_list|()
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"trying to stop:"
-operator|+
+literal|"trying to stop: {}"
+argument_list|,
 name|exit
 argument_list|)
 expr_stmt|;
@@ -964,7 +949,7 @@ block|{
 comment|//swallow
 block|}
 block|}
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1024,7 +1009,7 @@ operator|>=
 name|maxProcessRestarts
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1038,23 +1023,17 @@ return|return
 literal|false
 return|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Must restart process (exitValue="
-operator|+
+literal|"Must restart process (exitValue={} numRestarts={} receivedRestartMessage={})"
+argument_list|,
 name|exitValue
-operator|+
-literal|" numRestarts="
-operator|+
+argument_list|,
 name|numRestarts
-operator|+
-literal|" receivedRestartMessage="
-operator|+
+argument_list|,
 name|receivedRestartMsg
-operator|+
-literal|")"
 argument_list|)
 expr_stmt|;
 name|stop
@@ -1086,7 +1065,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1482,7 +1461,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1532,7 +1511,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1541,7 +1520,7 @@ argument_list|)
 expr_stmt|;
 comment|//swallow ioe
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1554,7 +1533,7 @@ name|void
 name|stopGobblingAndDie
 parameter_list|()
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1610,7 +1589,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1657,7 +1636,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -1674,7 +1653,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1683,7 +1662,7 @@ argument_list|)
 expr_stmt|;
 comment|//swallow ioe
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(

@@ -243,12 +243,8 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|logger
-decl_stmt|;
-static|static
-block|{
-name|logger
-operator|=
+name|LOG
+init|=
 name|LoggerFactory
 operator|.
 name|getLogger
@@ -257,8 +253,7 @@ name|BatchProcess
 operator|.
 name|class
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 specifier|private
 name|PrintStream
 name|outputStreamWriter
@@ -643,7 +638,7 @@ operator|new
 name|State
 argument_list|()
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -915,11 +910,16 @@ operator|.
 name|MAIN_LOOP_EXCEPTION
 expr_stmt|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Main loop execution exception: "
+literal|"Main loop execution exception: {}"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
 argument_list|,
 name|e
 argument_list|)
@@ -1028,7 +1028,7 @@ comment|//Step 3: Gloves come off.  We've tried to ask kindly before.
 comment|//Now it is time shut down. This will corrupt
 comment|//nio channels via thread interrupts!  Hopefully, everything
 comment|//has shut down by now.
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1046,25 +1046,21 @@ operator|.
 name|shutdownNow
 argument_list|()
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
-literal|"TERMINATED "
-operator|+
+literal|"TERMINATED {} : {} : {}"
+argument_list|,
 name|ex
 operator|.
 name|isTerminated
 argument_list|()
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|state
 operator|.
 name|consumersRemoved
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|state
 operator|.
 name|crawlersRemoved
@@ -1135,7 +1131,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1144,7 +1140,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1207,18 +1203,18 @@ operator|>
 name|timeoutThresholdMillis
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"{} caused a file processor to hang or crash. You may need to remove "
+operator|+
+literal|"this file from your input set and rerun."
+argument_list|,
 name|fileStarted
 operator|.
 name|getResourceId
 argument_list|()
-operator|+
-literal|"\t caused a file processor to hang or crash. You may need to remove "
-operator|+
-literal|"this file from your input set and rerun."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1262,7 +1258,7 @@ name|ExecutionException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1278,7 +1274,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1465,27 +1461,21 @@ range|:
 name|timedOuts
 control|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"A parser was still working on>"
-operator|+
+literal|"A parser was still working on>{}< for {} milliseconds after it started. This exceeds the maxTimeoutMillis parameter"
+argument_list|,
 name|fs
 operator|.
 name|getResourceId
 argument_list|()
-operator|+
-literal|"< for "
-operator|+
+argument_list|,
 name|fs
 operator|.
 name|getElapsedMillis
 argument_list|()
-operator|+
-literal|" milliseconds after it started."
-operator|+
-literal|" This exceeds the maxTimeoutMillis parameter"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1646,7 +1636,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1658,7 +1648,7 @@ operator|.
 name|init
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1697,7 +1687,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1713,15 +1703,13 @@ name|isAlive
 argument_list|()
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"ConsumersManager did not start within "
-operator|+
+literal|"ConsumersManager did not start within {}ms"
+argument_list|,
 name|consumersManagerMaxMillis
-operator|+
-literal|"ms"
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -1768,7 +1756,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1780,7 +1768,7 @@ operator|.
 name|shutdown
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|trace
 argument_list|(
@@ -1818,7 +1806,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1834,7 +1822,7 @@ name|isAlive
 argument_list|()
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1908,7 +1896,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1941,15 +1929,13 @@ operator|>
 name|pauseOnEarlyTerminationMillis
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"I waited after an early termination for "
-operator|+
+literal|"Waited after an early termination for {}ms, but there was at least one active consumer"
+argument_list|,
 name|elapsed
-operator|+
-literal|", but there was at least one active consumer"
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2014,7 +2000,7 @@ operator|.
 name|MAIN_LOOP_EXCEPTION_NO_RESTART
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2054,7 +2040,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -2064,7 +2050,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -2330,7 +2316,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -2351,7 +2337,7 @@ operator|==
 literal|0
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -2361,12 +2347,12 @@ expr_stmt|;
 break|break;
 block|}
 block|}
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"TimeoutChecker quitting: "
-operator|+
+literal|"TimeoutChecker quitting: {}"
+argument_list|,
 name|timedOuts
 operator|.
 name|size

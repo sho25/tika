@@ -445,12 +445,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping: "
-operator|+
+literal|"Skipping: {}"
+argument_list|,
 name|fileResource
 operator|.
 name|getMetadata
@@ -694,7 +694,7 @@ name|e
 parameter_list|)
 block|{
 comment|//this is a stop the world kind of thing
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(

@@ -167,18 +167,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|poi
 operator|.
 name|ss
@@ -285,6 +273,26 @@ name|XSSFWorkbook
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class represents a single report.  */
 end_comment
@@ -294,12 +302,13 @@ specifier|public
 class|class
 name|Report
 block|{
+specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|logger
+name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -381,16 +390,14 @@ name|SQLException
 throws|,
 name|IOException
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Writing report: "
-operator|+
+literal|"Writing report: {} to {}"
+argument_list|,
 name|reportName
-operator|+
-literal|" to "
-operator|+
+argument_list|,
 name|reportFilename
 argument_list|)
 expr_stmt|;
@@ -1133,20 +1140,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Couldn't find type for: "
-operator|+
+literal|"Couldn't find type for: {}. Defaulting to String"
+argument_list|,
 name|meta
 operator|.
 name|getColumnType
 argument_list|(
 name|colIndex
 argument_list|)
-operator|+
-literal|". Defaulting to String"
 argument_list|)
 expr_stmt|;
 block|}

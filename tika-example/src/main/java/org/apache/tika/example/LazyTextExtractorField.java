@@ -276,7 +276,7 @@ specifier|private
 specifier|static
 specifier|final
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -412,7 +412,7 @@ name|InterruptedException
 name|e
 parameter_list|)
 block|{
-name|log
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -646,7 +646,7 @@ operator|!=
 name|STOP
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
