@@ -1269,7 +1269,10 @@ name|zfe
 argument_list|)
 throw|;
 block|}
-comment|// Otherwise fall through to raise the exception as normal
+comment|// Otherwise throw the exception
+throw|throw
+name|zfe
+throw|;
 block|}
 catch|catch
 parameter_list|(
