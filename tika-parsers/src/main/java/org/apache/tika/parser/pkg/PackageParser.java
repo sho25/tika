@@ -1271,7 +1271,13 @@ throw|;
 block|}
 comment|// Otherwise throw the exception
 throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"UnsupportedZipFeature"
+argument_list|,
 name|zfe
+argument_list|)
 throw|;
 block|}
 catch|catch
