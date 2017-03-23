@@ -4393,6 +4393,7 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// With the most common text header
 name|assertType
 argument_list|(
 literal|"text/vtt"
@@ -4405,6 +4406,36 @@ argument_list|(
 literal|"text/vtt"
 argument_list|,
 literal|"testWebVTT.vtt"
+argument_list|)
+expr_stmt|;
+comment|// With no text header, just plain WebVTT one
+name|assertType
+argument_list|(
+literal|"text/vtt"
+argument_list|,
+literal|"testWebVTT_simple.vtt"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"text/vtt"
+argument_list|,
+literal|"testWebVTT_simple.vtt"
+argument_list|)
+expr_stmt|;
+comment|// With a custom text header
+name|assertType
+argument_list|(
+literal|"text/vtt"
+argument_list|,
+literal|"testWebVTT_header.vtt"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"text/vtt"
+argument_list|,
+literal|"testWebVTT_header.vtt"
 argument_list|)
 expr_stmt|;
 block|}
