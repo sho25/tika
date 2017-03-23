@@ -7808,6 +7808,11 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"until poi-3.16-beta3"
+argument_list|)
 specifier|public
 name|void
 name|testXLSBVarious
