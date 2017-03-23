@@ -462,13 +462,6 @@ name|MediaType
 operator|.
 name|application
 argument_list|(
-literal|"vnd.ms-excel.sheet.binary.macroenabled.12"
-argument_list|)
-argument_list|,
-name|MediaType
-operator|.
-name|application
-argument_list|(
 literal|"vnd.ms-xpsdocument"
 argument_list|)
 argument_list|)
