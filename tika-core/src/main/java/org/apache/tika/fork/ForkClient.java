@@ -209,9 +209,7 @@ name|resources
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ForkResource
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 specifier|private
@@ -302,9 +300,7 @@ name|command
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|command
@@ -570,9 +566,7 @@ name|r
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ForkResource
-argument_list|>
+argument_list|<>
 argument_list|(
 name|resources
 argument_list|)

@@ -121,18 +121,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|tika
 operator|.
 name|eval
@@ -221,6 +209,26 @@ name|IOExceptionWithCause
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is still in its early stages.  The idea is to  * get something working with h2 and then add to that  * as necessary.  *  * Beware, this deletes the db file with each initialization.  *  * Each thread must construct its own DBWriter because each  * DBWriter creates its own PreparedStatements at initialization.  */
 end_comment
@@ -235,19 +243,10 @@ block|{
 specifier|private
 specifier|static
 specifier|final
-name|AtomicInteger
-name|WRITER_ID
-init|=
-operator|new
-name|AtomicInteger
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|static
 name|Logger
-name|logger
+name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -255,6 +254,16 @@ name|DBWriter
 operator|.
 name|class
 argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|AtomicInteger
+name|WRITER_ID
+init|=
+operator|new
+name|AtomicInteger
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|final
@@ -659,19 +668,15 @@ operator|==
 literal|0
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"writer ("
-operator|+
+literal|"writer ({}) is committing after {} rows"
+argument_list|,
 name|myId
-operator|+
-literal|") is committing after "
-operator|+
+argument_list|,
 name|rows
-operator|+
-literal|" rows"
 argument_list|)
 expr_stmt|;
 name|conn

@@ -141,34 +141,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|cxf
 operator|.
 name|binding
@@ -615,6 +587,26 @@ name|ZipWriter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -659,9 +651,7 @@ name|LOG_LEVELS
 init|=
 operator|new
 name|HashSet
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|(
 name|Arrays
 operator|.
@@ -676,12 +666,12 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|Log
-name|logger
+name|Logger
+name|LOG
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|TikaServerCli
 operator|.
@@ -878,20 +868,15 @@ index|[]
 name|args
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Starting "
-operator|+
+literal|"Starting {} server"
+argument_list|,
 operator|new
 name|Tika
 argument_list|()
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|" server"
 argument_list|)
 expr_stmt|;
 try|try
@@ -1102,12 +1087,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Unsupported request URI log level: "
-operator|+
+literal|"Unsupported request URI log level: {}"
+argument_list|,
 name|logLevel
 argument_list|)
 expr_stmt|;
@@ -1207,12 +1192,12 @@ argument_list|(
 literal|"config"
 argument_list|)
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Using custom config: "
-operator|+
+literal|"Using custom config: {}"
+argument_list|,
 name|configFilePath
 argument_list|)
 expr_stmt|;
@@ -1438,9 +1423,7 @@ name|rCoreProviders
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ResourceProvider
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|rCoreProviders
@@ -1594,9 +1577,7 @@ name|rAllProviders
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|ResourceProvider
-argument_list|>
+argument_list|<>
 argument_list|(
 name|rCoreProviders
 argument_list|)
@@ -1631,9 +1612,7 @@ name|providers
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|Object
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|providers
@@ -1747,10 +1726,9 @@ argument_list|(
 name|providers
 argument_list|)
 expr_stmt|;
-name|sf
-operator|.
-name|setAddress
-argument_list|(
+name|String
+name|url
+init|=
 literal|"http://"
 operator|+
 name|host
@@ -1760,6 +1738,12 @@ operator|+
 name|port
 operator|+
 literal|"/"
+decl_stmt|;
+name|sf
+operator|.
+name|setAddress
+argument_list|(
+name|url
 argument_list|)
 expr_stmt|;
 name|BindingFactoryManager
@@ -1810,11 +1794,13 @@ operator|.
 name|create
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Started"
+literal|"Started Apache Tika server at {}"
+argument_list|,
+name|url
 argument_list|)
 expr_stmt|;
 block|}
@@ -1824,9 +1810,9 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
-name|fatal
+name|error
 argument_list|(
 literal|"Can't start"
 argument_list|,

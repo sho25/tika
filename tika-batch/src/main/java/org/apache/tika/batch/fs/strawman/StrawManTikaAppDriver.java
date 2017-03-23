@@ -309,6 +309,21 @@ argument_list|>
 block|{
 specifier|private
 specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|StrawManTikaAppDriver
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
+specifier|private
+specifier|static
 name|AtomicInteger
 name|threadCount
 init|=
@@ -346,19 +361,6 @@ index|[]
 name|args
 init|=
 literal|null
-decl_stmt|;
-specifier|private
-name|Logger
-name|logger
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|StrawManTikaAppDriver
-operator|.
-name|class
-argument_list|)
 decl_stmt|;
 specifier|public
 name|StrawManTikaAppDriver
@@ -549,7 +551,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -560,11 +562,9 @@ argument_list|(
 literal|"FATAL"
 argument_list|)
 argument_list|,
-literal|"parent directory for "
-operator|+
+literal|"parent directory for {} was not made!"
+argument_list|,
 name|outputFile
-operator|+
-literal|" was not made!"
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -646,12 +646,12 @@ index|]
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"about to process: "
-operator|+
+literal|"about to process: {}"
+argument_list|,
 name|file
 operator|.
 name|toAbsolutePath
@@ -725,7 +725,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -779,9 +779,6 @@ try|try
 block|{
 name|Thread
 operator|.
-name|currentThread
-argument_list|()
-operator|.
 name|sleep
 argument_list|(
 name|pulse
@@ -827,12 +824,12 @@ operator|!
 name|finished
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Had to kill process working on: "
-operator|+
+literal|"Had to kill process working on: {}"
+argument_list|,
 name|file
 operator|.
 name|toAbsolutePath
@@ -933,19 +930,15 @@ name|double
 operator|)
 literal|1000
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Finished processing "
-operator|+
+literal|"Finished processing {} files in {} seconds."
+argument_list|,
 name|processed
-operator|+
-literal|" files in "
-operator|+
+argument_list|,
 name|elapsedSecs
-operator|+
-literal|" seconds."
 argument_list|)
 expr_stmt|;
 return|return
@@ -1019,7 +1012,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1041,7 +1034,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1063,7 +1056,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1098,7 +1091,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1245,9 +1238,7 @@ name|commandLine
 init|=
 operator|new
 name|ArrayList
-argument_list|<
-name|String
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 name|commandLine
@@ -1301,9 +1292,7 @@ name|completionService
 init|=
 operator|new
 name|ExecutorCompletionService
-argument_list|<
-name|Integer
-argument_list|>
+argument_list|<>
 argument_list|(
 name|ex
 argument_list|)
@@ -1410,25 +1399,22 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
+decl||
 name|ExecutionException
 name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1454,21 +1440,15 @@ name|double
 operator|)
 literal|1000
 decl_stmt|;
-name|System
+name|LOG
 operator|.
-name|out
-operator|.
-name|println
+name|info
 argument_list|(
-literal|"Processed "
-operator|+
+literal|"Processed {} in {} seconds"
+argument_list|,
 name|totalFilesProcessed
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|elapsedSeconds
-operator|+
-literal|" seconds"
 argument_list|)
 expr_stmt|;
 block|}

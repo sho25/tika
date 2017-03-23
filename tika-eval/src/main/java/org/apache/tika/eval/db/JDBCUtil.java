@@ -205,11 +205,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|log4j
+name|slf4j
 operator|.
 name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
 import|;
 end_import
 
@@ -218,6 +226,21 @@ specifier|public
 class|class
 name|JDBCUtil
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|JDBCUtil
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 enum|enum
 name|CREATE_TABLE
@@ -228,20 +251,6 @@ name|SKIP_IF_EXISTS
 block|,
 name|THROW_EX_IF_EXISTS
 block|,     }
-specifier|public
-specifier|static
-name|Logger
-name|logger
-init|=
-name|Logger
-operator|.
-name|getLogger
-argument_list|(
-name|JDBCUtil
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|final
 name|String
@@ -749,12 +758,12 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"couldn't insert data for this row: "
-operator|+
+literal|"couldn't insert data for this row: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -859,19 +868,17 @@ name|getPrecision
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"truncated varchar value in "
-operator|+
+literal|"truncated varchar value in {} : {}"
+argument_list|,
 name|colInfo
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
@@ -1033,19 +1040,17 @@ name|value
 argument_list|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"number format exception: "
-operator|+
+literal|"number format exception: {} : {}"
+argument_list|,
 name|colInfo
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
@@ -1069,16 +1074,14 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"sqlexception: "
-operator|+
+literal|"sqlexception: {} : {}"
+argument_list|,
 name|colInfo
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|value
 argument_list|)
 expr_stmt|;

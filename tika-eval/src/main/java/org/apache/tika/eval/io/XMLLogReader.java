@@ -123,18 +123,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|log4j
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|tika
 operator|.
 name|io
@@ -157,18 +145,38 @@ name|ParseContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
 name|XMLLogReader
 block|{
 specifier|private
-specifier|final
 specifier|static
+specifier|final
 name|Logger
-name|logger
+name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -327,12 +335,12 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Error parsing: "
-operator|+
+literal|"Error parsing: {}"
+argument_list|,
 name|reader
 operator|.
 name|getElementText
@@ -351,12 +359,12 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"SQLException: "
-operator|+
+literal|"SQLException: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage

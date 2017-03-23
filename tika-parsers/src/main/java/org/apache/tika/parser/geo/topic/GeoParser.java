@@ -111,18 +111,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -235,6 +223,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -301,16 +309,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|GeoParser
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -508,10 +513,15 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
-literal|"Named Entity Extractor setup failed: "
-operator|+
+literal|"Named Entity Extractor setup failed: {}"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;
@@ -612,10 +622,15 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
-literal|"Named Entity Extractor setup failed: "
-operator|+
+literal|"Named Entity Extractor setup failed: {}"
+argument_list|,
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
 name|e
 argument_list|)
 expr_stmt|;

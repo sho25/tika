@@ -420,10 +420,11 @@ specifier|public
 class|class
 name|ResultsReporter
 block|{
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|Logger
-name|LOGGER
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -1717,7 +1718,7 @@ name|reportsRootDirectory
 argument_list|)
 condition|)
 block|{
-name|LOGGER
+name|LOG
 operator|.
 name|warn
 argument_list|(

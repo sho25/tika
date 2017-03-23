@@ -350,7 +350,7 @@ name|AbstractParser
 implements|implements
 name|Initializable
 block|{
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Logger

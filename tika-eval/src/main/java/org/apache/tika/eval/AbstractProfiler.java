@@ -1676,17 +1676,17 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
+literal|"{} in {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
@@ -1719,19 +1719,17 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Again: "
-operator|+
+literal|"Again: {} in {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-operator|+
-literal|" in "
-operator|+
+argument_list|,
 name|path
 argument_list|)
 expr_stmt|;
@@ -2014,10 +2012,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
+literal|"{}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
@@ -3594,12 +3594,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Couldn't get length for: "
-operator|+
+literal|"Couldn't get length for: {}"
+argument_list|,
 name|inputFile
 operator|.
 name|toAbsolutePath

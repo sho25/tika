@@ -278,6 +278,21 @@ argument_list|<
 name|IFileProcessorFutureResult
 argument_list|>
 block|{
+specifier|protected
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|FileResourceConsumer
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 enum|enum
 name|STATE
@@ -361,20 +376,6 @@ name|AtomicInteger
 argument_list|(
 operator|-
 literal|1
-argument_list|)
-decl_stmt|;
-specifier|protected
-specifier|static
-name|Logger
-name|logger
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|FileResourceConsumer
-operator|.
-name|class
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -499,12 +500,12 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
-literal|"file consumer is about to process: "
-operator|+
+literal|"file consumer is about to process: {}"
+argument_list|,
 name|fileResource
 operator|.
 name|getResourceId
@@ -519,12 +520,12 @@ argument_list|(
 name|fileResource
 argument_list|)
 decl_stmt|;
-name|logger
+name|LOG
 operator|.
-name|debug
+name|trace
 argument_list|(
-literal|"file consumer has finished processing: "
-operator|+
+literal|"file consumer has finished processing: {}"
+argument_list|,
 name|fileResource
 operator|.
 name|getResourceId
@@ -860,7 +861,7 @@ operator|.
 name|TIMED_OUT
 argument_list|)
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1138,12 +1139,12 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"error writing xml stream for: "
-operator|+
+literal|"error writing xml stream for: {}"
+argument_list|,
 name|resourceId
 argument_list|,
 name|t
@@ -1205,7 +1206,7 @@ operator|.
 name|THREAD_INTERRUPTED
 argument_list|)
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1229,16 +1230,13 @@ operator|.
 name|ACTIVELY_CONSUMING
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Consumer already closed because of: "
-operator|+
+literal|"Consumer already closed because of: {}"
+argument_list|,
 name|currentState
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1285,14 +1283,14 @@ expr_stmt|;
 block|}
 break|break;
 block|}
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
+literal|"{} is waiting for file and the queue size is: {}"
+argument_list|,
 name|consumerId
-operator|+
-literal|" is waiting for file and the queue size is: "
-operator|+
+argument_list|,
 name|fileQueue
 operator|.
 name|size
@@ -1365,7 +1363,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1427,7 +1425,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1552,7 +1550,7 @@ operator|instanceof
 name|OutOfMemoryError
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1575,7 +1573,7 @@ operator|instanceof
 name|Error
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -1592,7 +1590,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(

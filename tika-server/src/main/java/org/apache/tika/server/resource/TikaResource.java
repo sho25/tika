@@ -413,34 +413,6 @@ name|org
 operator|.
 name|apache
 operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|Log
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|commons
-operator|.
-name|logging
-operator|.
-name|LogFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
 name|cxf
 operator|.
 name|jaxrs
@@ -783,6 +755,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -849,12 +841,12 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
-name|Log
-name|logger
+name|Logger
+name|LOG
 init|=
-name|LogFactory
+name|LoggerFactory
 operator|.
-name|getLog
+name|getLogger
 argument_list|(
 name|TikaResource
 operator|.
@@ -1168,30 +1160,16 @@ name|e
 parameter_list|)
 block|{
 comment|// not a valid content-disposition field
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"Parse exception %s determining content disposition"
+literal|"Parse exception {} determining content disposition"
 argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -2175,7 +2153,7 @@ parameter_list|(
 name|Parser
 name|parser
 parameter_list|,
-name|Log
+name|Logger
 name|logger
 parameter_list|,
 name|String
@@ -2247,18 +2225,9 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"%s: Encrypted document"
+literal|"{}: Encrypted document"
 argument_list|,
 name|path
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -2281,18 +2250,9 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"%s: Text extraction failed"
+literal|"{}: Text extraction failed"
 argument_list|,
 name|path
-argument_list|)
 argument_list|,
 name|e
 argument_list|)
@@ -2311,7 +2271,7 @@ specifier|static
 name|void
 name|logRequest
 parameter_list|(
-name|Log
+name|Logger
 name|logger
 parameter_list|,
 name|UriInfo
@@ -2347,21 +2307,12 @@ name|logger
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"%s (autodetecting type)"
+literal|"{} (autodetecting type)"
 argument_list|,
 name|info
 operator|.
 name|getPath
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2371,15 +2322,7 @@ name|logger
 operator|.
 name|info
 argument_list|(
-name|String
-operator|.
-name|format
-argument_list|(
-name|Locale
-operator|.
-name|ROOT
-argument_list|,
-literal|"%s (%s)"
+literal|"{} ({})"
 argument_list|,
 name|info
 operator|.
@@ -2401,7 +2344,6 @@ operator|.
 name|HttpHeaders
 operator|.
 name|CONTENT_TYPE
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2592,7 +2534,7 @@ argument_list|)
 expr_stmt|;
 name|logRequest
 argument_list|(
-name|logger
+name|LOG
 argument_list|,
 name|info
 argument_list|,
@@ -2652,7 +2594,7 @@ name|parse
 argument_list|(
 name|parser
 argument_list|,
-name|logger
+name|LOG
 argument_list|,
 name|info
 operator|.
@@ -2958,7 +2900,7 @@ argument_list|)
 expr_stmt|;
 name|logRequest
 argument_list|(
-name|logger
+name|LOG
 argument_list|,
 name|info
 argument_list|,
@@ -3100,7 +3042,7 @@ name|parse
 argument_list|(
 name|parser
 argument_list|,
-name|logger
+name|LOG
 argument_list|,
 name|info
 operator|.

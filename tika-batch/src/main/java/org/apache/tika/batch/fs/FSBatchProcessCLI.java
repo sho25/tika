@@ -347,8 +347,9 @@ literal|"Main thread in TikaFSBatchCLI has finished processing."
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|final
 name|Logger
-name|logger
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -493,7 +494,7 @@ condition|(
 name|logDefault
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -940,7 +941,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -951,8 +952,8 @@ argument_list|(
 literal|"FATAL"
 argument_list|)
 argument_list|,
-literal|"Fatal exception from FSBatchProcessCLI: "
-operator|+
+literal|"Fatal exception from FSBatchProcessCLI: {}"
+argument_list|,
 name|t
 operator|.
 name|getMessage

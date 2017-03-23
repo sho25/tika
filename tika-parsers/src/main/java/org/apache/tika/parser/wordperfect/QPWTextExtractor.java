@@ -59,25 +59,15 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|apache
+name|google
 operator|.
-name|log4j
+name|common
 operator|.
-name|LogManager
-import|;
-end_import
-
-begin_import
-import|import
-name|org
+name|base
 operator|.
-name|apache
-operator|.
-name|log4j
-operator|.
-name|Logger
+name|Strings
 import|;
 end_import
 
@@ -215,6 +205,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -237,7 +247,7 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|LogManager
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
@@ -977,8 +987,8 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"REC ("
-operator|+
+literal|"REC ({}/{}):{}"
+argument_list|,
 name|Integer
 operator|.
 name|toHexString
@@ -987,15 +997,11 @@ name|ctx
 operator|.
 name|type
 argument_list|)
-operator|+
-literal|"/"
-operator|+
+argument_list|,
 name|ctx
 operator|.
 name|bodyLength
-operator|+
-literal|"):"
-operator|+
+argument_list|,
 name|ctx
 operator|.
 name|in
@@ -1298,10 +1304,18 @@ name|OLE_DOCUMENT_NAME
 operator|+
 literal|"\". Found: "
 operator|+
+operator|(
+name|rootNode
+operator|==
+literal|null
+condition|?
+literal|"null"
+else|:
 name|rootNode
 operator|.
 name|getEntryNames
 argument_list|()
+operator|)
 argument_list|)
 throw|;
 block|}
