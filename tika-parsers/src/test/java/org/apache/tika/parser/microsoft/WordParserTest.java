@@ -3019,7 +3019,7 @@ condition|)
 block|{
 name|fail
 argument_list|(
-literal|"Shouldn't have extract macros as default"
+literal|"Shouldn't have extracted macros as default"
 argument_list|)
 expr_stmt|;
 block|}
