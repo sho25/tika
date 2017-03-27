@@ -36,6 +36,12 @@ name|Serializable
 block|{
 specifier|private
 name|boolean
+name|extractMacros
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+name|boolean
 name|includeDeletedContent
 init|=
 literal|false
@@ -58,6 +64,32 @@ name|useSAXPptxExtractor
 init|=
 literal|false
 decl_stmt|;
+comment|/**      * Sets whether or not MSOffice parsers should extract macros.      * As of Tika 1.15, the default is<code>false</code>.      *      * @param extractMacros      */
+specifier|public
+name|void
+name|setExtractMacros
+parameter_list|(
+name|boolean
+name|extractMacros
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractMacros
+operator|=
+name|extractMacros
+expr_stmt|;
+block|}
+comment|/**      *      * @return whether or not to extract macros      */
+specifier|public
+name|boolean
+name|getExtractMacros
+parameter_list|()
+block|{
+return|return
+name|extractMacros
+return|;
+block|}
 comment|/**      * Sets whether or not the parser should include deleted content.      *<p/>      *<b>This has only been implemented in the streaming docx parser      * ({@link org.apache.tika.parser.microsoft.ooxml.SXWPFWordExtractorDecorator} so far!!!</b>      * @param includeDeletedContent      */
 specifier|public
 name|void
