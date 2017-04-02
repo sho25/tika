@@ -895,7 +895,7 @@ name|IOException
 block|{
 if|if
 condition|(
-literal|"file://"
+literal|"file"
 operator|.
 name|equals
 argument_list|(
