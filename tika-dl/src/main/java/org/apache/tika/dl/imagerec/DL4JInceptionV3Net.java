@@ -1003,7 +1003,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Cache exists at {}. Not downloading it"
+literal|"Cache exist at {}. Not downloading it"
 argument_list|,
 name|cacheFile
 operator|.
@@ -1032,7 +1032,7 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Cache doesn't exists. Going to make a copy"
+literal|"Cache doesn't exist. Going to make a copy"
 argument_list|)
 expr_stmt|;
 name|LOG
@@ -1183,7 +1183,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"modelWeights does not exists at :: {}"
+literal|"modelWeights does not exist at :: {}"
 argument_list|,
 name|modelWeightsPath
 argument_list|)
@@ -1392,7 +1392,7 @@ name|INDArray
 name|input
 parameter_list|)
 block|{
-comment|// Transform to [1.0, 1.0] range
+comment|// Transform to [-1.0, 1.0] range
 return|return
 name|input
 operator|.
