@@ -481,7 +481,7 @@ literal|0
 init|;
 name|i
 operator|<
-literal|101000
+literal|1001000
 condition|;
 name|i
 operator|++
@@ -560,7 +560,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|100000
+literal|1000000
 argument_list|,
 name|tokens
 argument_list|)
