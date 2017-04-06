@@ -1183,7 +1183,7 @@ name|get
 argument_list|(
 name|Cols
 operator|.
-name|EXTRACT_EXCEPTION_TYPE_ID
+name|EXTRACT_EXCEPTION_ID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1509,7 +1509,7 @@ name|get
 argument_list|(
 name|Cols
 operator|.
-name|PARSE_EXCEPTION_TYPE_ID
+name|PARSE_EXCEPTION_ID
 argument_list|)
 argument_list|)
 expr_stmt|;

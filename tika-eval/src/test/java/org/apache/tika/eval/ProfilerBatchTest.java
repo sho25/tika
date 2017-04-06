@@ -769,7 +769,7 @@ block|{
 name|String
 name|sql
 init|=
-literal|"select EXTRACT_EXCEPTION_TYPE_ID from extract_exceptions e"
+literal|"select EXTRACT_EXCEPTION_ID from extract_exceptions e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -824,7 +824,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select EXTRACT_EXCEPTION_TYPE_ID from errors e"
+literal|"select EXTRACT_EXCEPTION_ID from errors e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -844,7 +844,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select EXTRACT_EXCEPTION_TYPE_ID from errors e"
+literal|"select EXTRACT_EXCEPTION_ID from errors e"
 operator|+
 literal|" join containers c on c.container_id = e.container_id "
 operator|+
@@ -896,7 +896,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select extract_error_type_id from extract_exceptions "
+literal|"select extract_error_id from extract_exceptions "
 operator|+
 literal|"where file_path='file11_oom.txt'"
 expr_stmt|;
@@ -924,7 +924,7 @@ argument_list|)
 expr_stmt|;
 name|sql
 operator|=
-literal|"select parse_error_type_id from extract_exceptions where file_path='file11_oom.txt'"
+literal|"select parse_error_id from extract_exceptions where file_path='file11_oom.txt'"
 expr_stmt|;
 name|assertEquals
 argument_list|(

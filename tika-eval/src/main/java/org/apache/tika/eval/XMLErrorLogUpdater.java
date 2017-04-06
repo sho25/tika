@@ -932,7 +932,7 @@ literal|" SET "
 operator|+
 name|Cols
 operator|.
-name|PARSE_ERROR_TYPE_ID
+name|PARSE_ERROR_ID
 operator|+
 literal|" = "
 operator|+
@@ -1011,7 +1011,7 @@ literal|","
 operator|+
 name|Cols
 operator|.
-name|PARSE_ERROR_TYPE_ID
+name|PARSE_ERROR_ID
 operator|+
 literal|")"
 operator|+
@@ -1055,7 +1055,7 @@ literal|","
 operator|+
 name|Cols
 operator|.
-name|PARSE_ERROR_TYPE_ID
+name|PARSE_ERROR_ID
 operator|+
 literal|")"
 operator|+

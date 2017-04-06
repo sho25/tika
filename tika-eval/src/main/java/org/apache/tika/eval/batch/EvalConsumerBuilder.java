@@ -714,7 +714,7 @@ name|put
 argument_list|(
 name|Cols
 operator|.
-name|PARSE_ERROR_TYPE_ID
+name|PARSE_ERROR_ID
 argument_list|,
 name|Integer
 operator|.
@@ -779,7 +779,7 @@ name|put
 argument_list|(
 name|Cols
 operator|.
-name|PARSE_EXCEPTION_TYPE_ID
+name|PARSE_EXCEPTION_ID
 argument_list|,
 name|Integer
 operator|.
@@ -844,7 +844,7 @@ name|put
 argument_list|(
 name|Cols
 operator|.
-name|EXTRACT_EXCEPTION_TYPE_ID
+name|EXTRACT_EXCEPTION_ID
 argument_list|,
 name|Integer
 operator|.
