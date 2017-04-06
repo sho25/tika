@@ -772,7 +772,7 @@ operator|!=
 literal|""
 return|;
 block|}
-comment|/**      * Returns a string of error messages related to initializing langauge profiles      * @return the String containing the error messages      */
+comment|/**      * Returns a string of error messages related to initializing language profiles      * @return the String containing the error messages      */
 specifier|public
 specifier|static
 name|String
