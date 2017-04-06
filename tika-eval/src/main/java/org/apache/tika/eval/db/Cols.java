@@ -97,6 +97,9 @@ block|,
 name|NUM_PAGES
 block|,
 comment|//number of pages a document alleges it has
+name|CONTENT_TRUNCATED_AT_MAX_LEN
+block|,
+comment|// was the string truncated at AbstractProfiler.MAX_STRING_LENGTH
 comment|//content comparisons
 name|TOP_10_UNIQUE_TOKEN_DIFFS_A
 block|,
