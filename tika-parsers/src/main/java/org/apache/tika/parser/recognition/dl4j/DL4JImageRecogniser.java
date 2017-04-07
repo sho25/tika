@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *<p>  * http://www.apache.org/licenses/LICENSE-2.0  *<p>  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -587,6 +587,7 @@ name|outPattern
 init|=
 literal|"(.*) \\(score = ([0-9]+\\.[0-9]+)\\)$"
 decl_stmt|;
+specifier|private
 name|File
 name|locationToSave
 decl_stmt|;
@@ -596,6 +597,7 @@ name|available
 init|=
 literal|false
 decl_stmt|;
+specifier|private
 name|ComputationGraph
 name|model
 decl_stmt|;
@@ -658,7 +660,7 @@ argument_list|(
 literal|"VGG16NOTOP is not supported right now"
 argument_list|)
 throw|;
-comment|/*# TODO hookup VGGNOTOP by uncommenting following code once the issue is resolved by dl4j team 				modelFile = new File(MODEL_DIR_PREPROCESSED+File.separator+"vgg16_notop.zip"); 				locationToSave= new File(MODEL_DIR+File.separator+"tikaPreprocessed"+File.separator+"vgg16.zip");*/
+comment|/*# TODO hookup VGGNOTOP by uncommenting following code once the issue is resolved by dl4j team                 modelFile = new File(MODEL_DIR_PREPROCESSED+File.separator+"vgg16_notop.zip"); 				locationToSave= new File(MODEL_DIR+File.separator+"tikaPreprocessed"+File.separator+"vgg16.zip");*/
 block|}
 elseif|else
 if|if
@@ -735,16 +737,14 @@ expr_stmt|;
 name|TrainedModelHelper
 name|helper
 decl_stmt|;
-if|if
+switch|switch
 condition|(
 name|modelType
-operator|.
-name|equals
-argument_list|(
-literal|"VGG16NOTOP"
-argument_list|)
 condition|)
 block|{
+case|case
+literal|"VGG16NOTOP"
+case|:
 name|helper
 operator|=
 operator|new
@@ -755,18 +755,10 @@ operator|.
 name|VGG16NOTOP
 argument_list|)
 expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|modelType
-operator|.
-name|equals
-argument_list|(
+break|break;
+case|case
 literal|"VGG16"
-argument_list|)
-condition|)
-block|{
+case|:
 name|helper
 operator|=
 operator|new
@@ -777,9 +769,8 @@ operator|.
 name|VGG16
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
+break|break;
+default|default:
 throw|throw
 operator|new
 name|TikaConfigException
@@ -843,15 +834,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-name|LOG
-operator|.
-name|debug
-argument_list|(
-literal|"Available? {}"
-argument_list|,
-name|available
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
