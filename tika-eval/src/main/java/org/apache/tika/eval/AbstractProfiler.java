@@ -1622,8 +1622,6 @@ init|=
 name|getContent
 argument_list|(
 name|m
-argument_list|,
-name|maxContentLength
 argument_list|)
 decl_stmt|;
 if|if
@@ -2673,12 +2671,15 @@ init|=
 name|getContent
 argument_list|(
 name|metadata
-argument_list|,
-name|maxLength
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|maxLength
+operator|>
+operator|-
+literal|1
+operator|&&
 name|c
 operator|.
 name|length
@@ -2721,9 +2722,6 @@ name|getContent
 parameter_list|(
 name|Metadata
 name|metadata
-parameter_list|,
-name|int
-name|maxLength
 parameter_list|)
 block|{
 if|if
@@ -2785,8 +2783,6 @@ init|=
 name|getContent
 argument_list|(
 name|metadata
-argument_list|,
-name|maxContentLengthForLangId
 argument_list|)
 decl_stmt|;
 if|if
@@ -3188,8 +3184,6 @@ init|=
 name|getContent
 argument_list|(
 name|metadata
-argument_list|,
-name|maxContentLengthForLangId
 argument_list|)
 decl_stmt|;
 if|if

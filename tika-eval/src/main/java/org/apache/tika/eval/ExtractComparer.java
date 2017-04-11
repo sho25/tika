@@ -588,24 +588,6 @@ argument_list|)
 operator|.
 name|addOption
 argument_list|(
-literal|"maxContentLength"
-argument_list|,
-literal|true
-argument_list|,
-literal|"truncate content beyond this length for calculating 'contents' stats"
-argument_list|)
-operator|.
-name|addOption
-argument_list|(
-literal|"maxContentLengthForLangId"
-argument_list|,
-literal|true
-argument_list|,
-literal|"truncate content beyond this length for language id"
-argument_list|)
-operator|.
-name|addOption
-argument_list|(
 literal|"maxTokens"
 argument_list|,
 literal|true

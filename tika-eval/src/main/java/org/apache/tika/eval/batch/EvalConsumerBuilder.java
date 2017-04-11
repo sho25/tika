@@ -1129,7 +1129,7 @@ literal|"maxContentLength"
 argument_list|)
 argument_list|,
 operator|-
-literal|1
+literal|2
 argument_list|)
 decl_stmt|;
 if|if
@@ -1137,7 +1137,7 @@ condition|(
 name|maxContentLength
 operator|>
 operator|-
-literal|1
+literal|2
 condition|)
 block|{
 name|abstractProfiler
@@ -1163,7 +1163,7 @@ literal|"maxContentLengthForLangId"
 argument_list|)
 argument_list|,
 operator|-
-literal|1
+literal|2
 argument_list|)
 decl_stmt|;
 if|if
@@ -1171,7 +1171,7 @@ condition|(
 name|maxContentLengthForLangId
 operator|>
 operator|-
-literal|1
+literal|2
 condition|)
 block|{
 name|abstractProfiler
@@ -1197,7 +1197,7 @@ literal|"maxTokens"
 argument_list|)
 argument_list|,
 operator|-
-literal|1
+literal|2
 argument_list|)
 decl_stmt|;
 if|if
@@ -1205,7 +1205,7 @@ condition|(
 name|maxTokens
 operator|>
 operator|-
-literal|1
+literal|2
 condition|)
 block|{
 name|abstractProfiler
