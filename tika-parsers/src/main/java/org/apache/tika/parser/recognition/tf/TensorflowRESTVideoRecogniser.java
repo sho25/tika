@@ -200,7 +200,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tensor Flow image recogniser which has high performance.  * This implementation uses Tensorflow via REST API.  *<p>  * NOTE : //TODO: link to wiki page here  *  * @since Apache Tika 1.14  */
+comment|/**  * Tensor Flow video recogniser which has high performance.  * This implementation uses Tensorflow via REST API.  *<p>  * NOTE : //TODO: link to wiki page here  *  * @since Apache Tika 1.15  */
 end_comment
 
 begin_class
