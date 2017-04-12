@@ -467,6 +467,15 @@ literal|true
 argument_list|,
 literal|"truncate content beyond this length for language id, default=50000"
 argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"defaultLangCode"
+argument_list|,
+literal|true
+argument_list|,
+literal|"which language to use for common words if no 'common words' file exists for the langid result"
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public

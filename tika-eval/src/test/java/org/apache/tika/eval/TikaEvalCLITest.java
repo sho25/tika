@@ -245,7 +245,6 @@ extends|extends
 name|TikaTest
 block|{
 comment|//TODO: these barely reach the minimal acceptable stage for unit tests
-comment|//but we have to start somewhere on the integration tests
 specifier|private
 specifier|static
 name|Path
