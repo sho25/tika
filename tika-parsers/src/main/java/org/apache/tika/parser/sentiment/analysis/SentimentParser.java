@@ -441,6 +441,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|resolvedUrl
+operator|=
 name|getClass
 argument_list|()
 operator|.
