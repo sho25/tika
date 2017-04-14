@@ -51,7 +51,7 @@ name|IS_EMBEDDED
 block|,
 name|EMBEDDED_FILE_PATH
 block|,
-name|MIME_TYPE_ID
+name|MIME_ID
 block|,
 name|MD5
 block|,
@@ -97,6 +97,9 @@ block|,
 name|NUM_PAGES
 block|,
 comment|//number of pages a document alleges it has
+name|CONTENT_TRUNCATED_AT_MAX_LEN
+block|,
+comment|// was the string truncated at AbstractProfiler.MAX_STRING_LENGTH
 comment|//content comparisons
 name|TOP_10_UNIQUE_TOKEN_DIFFS_A
 block|,
@@ -111,13 +114,13 @@ block|,
 name|DICE_COEFFICIENT
 block|,
 comment|//errors
-name|PARSE_ERROR_TYPE_ID
+name|PARSE_ERROR_ID
 block|,
 name|PARSE_ERROR_DESCRIPTION
 block|,
 name|PARSE_EXCEPTION_DESCRIPTION
 block|,
-name|EXTRACT_EXCEPTION_TYPE_ID
+name|EXTRACT_EXCEPTION_ID
 block|,
 name|EXTRACT_EXCEPTION_DESCRIPTION
 block|,
@@ -126,7 +129,7 @@ name|ORIG_STACK_TRACE
 block|,
 name|SORT_STACK_TRACE
 block|,
-name|PARSE_EXCEPTION_TYPE_ID
+name|PARSE_EXCEPTION_ID
 block|,
 name|MIME_STRING
 block|,

@@ -199,7 +199,9 @@ operator|=
 name|AnalyzerManager
 operator|.
 name|newInstance
-argument_list|()
+argument_list|(
+literal|100000
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@

@@ -195,7 +195,10 @@ specifier|public
 specifier|static
 name|AnalyzerManager
 name|newInstance
-parameter_list|()
+parameter_list|(
+name|int
+name|maxTokens
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -244,7 +247,9 @@ name|class
 argument_list|,
 operator|new
 name|AnalyzerDeserializer
-argument_list|()
+argument_list|(
+name|maxTokens
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Gson

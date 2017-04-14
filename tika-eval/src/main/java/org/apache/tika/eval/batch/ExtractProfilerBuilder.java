@@ -461,6 +461,8 @@ name|inputDir
 expr_stmt|;
 block|}
 return|return
+name|parameterizeProfiler
+argument_list|(
 operator|new
 name|ExtractProfiler
 argument_list|(
@@ -478,6 +480,7 @@ argument_list|,
 name|getDBWriter
 argument_list|(
 name|tableInfos
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

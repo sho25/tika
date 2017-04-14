@@ -714,6 +714,8 @@ name|poiExtractor
 init|=
 literal|null
 decl_stmt|;
+comment|//This has already been set by OOXMLParser's call to configure()
+comment|//We can rely on this being non-null.
 name|OfficeParserConfig
 name|config
 init|=
@@ -724,10 +726,6 @@ argument_list|(
 name|OfficeParserConfig
 operator|.
 name|class
-argument_list|,
-operator|new
-name|OfficeParserConfig
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -844,7 +842,7 @@ name|XWPFEventBasedWordExtractor
 operator|.
 name|class
 operator|.
-name|getSimpleName
+name|getCanonicalName
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -882,7 +880,7 @@ name|XSLFEventBasedPowerPointExtractor
 operator|.
 name|class
 operator|.
-name|getSimpleName
+name|getCanonicalName
 argument_list|()
 argument_list|)
 expr_stmt|;

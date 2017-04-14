@@ -1059,6 +1059,11 @@ comment|//fall through strings
 case|case
 name|Types
 operator|.
+name|BOOLEAN
+case|:
+case|case
+name|Types
+operator|.
 name|CHAR
 case|:
 case|case

@@ -585,6 +585,42 @@ literal|true
 argument_list|,
 literal|"maximum number of files to add to the crawler"
 argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"maxTokens"
+argument_list|,
+literal|true
+argument_list|,
+literal|"maximum tokens to process, default=200000"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"maxContentLength"
+argument_list|,
+literal|true
+argument_list|,
+literal|"truncate content beyond this length for calculating 'contents' stats, default=1000000"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"maxContentLengthForLangId"
+argument_list|,
+literal|true
+argument_list|,
+literal|"truncate content beyond this length for language id, default=50000"
+argument_list|)
+operator|.
+name|addOption
+argument_list|(
+literal|"defaultLangCode"
+argument_list|,
+literal|true
+argument_list|,
+literal|"which language to use for common words if no 'common words' file exists for the langid result"
+argument_list|)
 expr_stmt|;
 block|}
 specifier|public
