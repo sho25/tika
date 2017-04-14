@@ -354,7 +354,7 @@ init|=
 block|{
 literal|"Egyptian cat"
 block|,
-literal|"Border collie"
+literal|"tabby, tabby cat"
 block|}
 decl_stmt|;
 name|String
@@ -519,7 +519,7 @@ init|=
 block|{
 literal|"Egyptian cat"
 block|,
-literal|"tabby cat"
+literal|"tabby, tabby cat"
 block|}
 decl_stmt|;
 name|String
