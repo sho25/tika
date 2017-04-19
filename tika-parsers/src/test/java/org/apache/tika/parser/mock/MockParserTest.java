@@ -1024,7 +1024,7 @@ name|boolean
 name|longEnough
 init|=
 name|elapsed
-operator|>
+operator|>=
 literal|3000
 decl_stmt|;
 comment|//the xml file specifies 3000, this sleeps 1000
