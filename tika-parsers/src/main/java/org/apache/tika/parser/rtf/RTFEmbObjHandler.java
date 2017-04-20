@@ -667,6 +667,8 @@ condition|(
 name|len
 operator|>
 name|memoryLimitInKb
+operator|*
+literal|1024
 condition|)
 block|{
 throw|throw
@@ -679,7 +681,11 @@ name|len
 operator|+
 literal|") bytes), but maximum allowed is ("
 operator|+
+operator|(
 name|memoryLimitInKb
+operator|*
+literal|1024
+operator|)
 operator|+
 literal|")."
 operator|+
@@ -749,7 +755,9 @@ name|objParser
 init|=
 operator|new
 name|RTFObjDataParser
-argument_list|()
+argument_list|(
+name|memoryLimitInKb
+argument_list|)
 decl_stmt|;
 try|try
 block|{

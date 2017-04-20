@@ -315,6 +315,8 @@ name|int
 name|memoryLimitInKb
 init|=
 name|EMB_OBJ_MAX_BYTES
+operator|/
+literal|1024
 decl_stmt|;
 specifier|public
 name|void
