@@ -111,6 +111,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaMemoryLimitException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|extractor
 operator|.
 name|EmbeddedDocumentUtil
@@ -303,6 +317,11 @@ name|EMB_STATE
 operator|.
 name|NADA
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|memoryLimitInKb
+decl_stmt|;
 specifier|protected
 name|RTFEmbObjHandler
 parameter_list|(
@@ -314,6 +333,9 @@ name|metadata
 parameter_list|,
 name|ParseContext
 name|context
+parameter_list|,
+name|int
+name|memoryLimitInKb
 parameter_list|)
 block|{
 name|this
@@ -337,6 +359,12 @@ operator|=
 operator|new
 name|ByteArrayOutputStream
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|memoryLimitInKb
+operator|=
+name|memoryLimitInKb
 expr_stmt|;
 block|}
 specifier|protected
@@ -622,24 +650,40 @@ block|{
 if|if
 condition|(
 name|len
-argument_list|<
+operator|<
 literal|0
-operator|||
-name|len
-argument_list|>
-name|RTFParser
-operator|.
-name|getMaxBytesForEmbeddedObject
-argument_list|()
 condition|)
 block|{
 throw|throw
 operator|new
-name|IOException
+name|TikaException
 argument_list|(
-literal|"length of bytes to read out of bounds: "
+literal|"Requesting I read< 0 bytes ?!"
+argument_list|)
+throw|;
+block|}
+if|if
+condition|(
+name|len
+operator|>
+name|memoryLimitInKb
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaMemoryLimitException
+argument_list|(
+literal|"File embedded in RTF caused this ("
 operator|+
 name|len
+operator|+
+literal|") bytes), but maximum allowed is ("
+operator|+
+name|memoryLimitInKb
+operator|+
+literal|")."
+operator|+
+literal|"If this is a valid RTF file, consider increasing the memory limit via TikaConfig."
 argument_list|)
 throw|;
 block|}
