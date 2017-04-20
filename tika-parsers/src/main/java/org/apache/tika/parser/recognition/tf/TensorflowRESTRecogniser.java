@@ -426,7 +426,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/inception/v3/classify?topk=10"
+literal|"http://localhost:8764/inception/v4/classify?topk=10"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -439,7 +439,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/inception/v3/ping"
+literal|"http://localhost:8764/inception/v4/ping"
 argument_list|)
 decl_stmt|;
 specifier|private

@@ -306,13 +306,9 @@ index|[]
 name|expected
 init|=
 block|{
-literal|"English foxhound"
-block|,
 literal|"Egyptian cat"
 block|,
-literal|"collie"
-block|,
-literal|"Border collie"
+literal|"tabby, tabby cat"
 block|}
 decl_stmt|;
 for|for
