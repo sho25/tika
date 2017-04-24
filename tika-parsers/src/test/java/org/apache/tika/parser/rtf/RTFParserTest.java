@@ -2243,7 +2243,7 @@ name|xml
 init|=
 name|getXML
 argument_list|(
-literal|"test_embedded_package.rtf"
+literal|"testRTFWord2010CzechCharacters.rtf"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -2264,7 +2264,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"7"
+literal|"70"
 argument_list|,
 name|xml
 operator|.
@@ -2280,7 +2280,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"36"
+literal|"401"
 argument_list|,
 name|xml
 operator|.
@@ -2309,7 +2309,7 @@ argument_list|)
 operator|.
 name|startsWith
 argument_list|(
-literal|"2012-09-02T"
+literal|"2010-10-13T"
 argument_list|)
 argument_list|)
 expr_stmt|;
