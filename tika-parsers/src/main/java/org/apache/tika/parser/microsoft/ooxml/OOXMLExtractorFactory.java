@@ -730,8 +730,8 @@ name|poiExtractor
 init|=
 literal|null
 decl_stmt|;
-comment|//This has already been set by OOXMLParser's call to configure()
-comment|//We can rely on this being non-null.
+comment|// This has already been set by OOXMLParser's call to configure()
+comment|// We can rely on this being non-null.
 name|OfficeParserConfig
 name|config
 init|=

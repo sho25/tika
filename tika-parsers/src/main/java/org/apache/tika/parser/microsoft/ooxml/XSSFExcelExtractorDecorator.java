@@ -863,6 +863,21 @@ operator|)
 name|extractor
 operator|)
 operator|.
+name|setIncludeTextBoxes
+argument_list|(
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+operator|(
+operator|(
+name|XSSFEventBasedExcelExtractor
+operator|)
+name|extractor
+operator|)
+operator|.
 name|setFormulasNotResults
 argument_list|(
 literal|false
@@ -1199,6 +1214,15 @@ name|xhtml
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Do text held in shapes, if required
+if|if
+condition|(
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+condition|)
+block|{
 name|List
 argument_list|<
 name|XSSFShape
@@ -1217,6 +1241,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 comment|//for now dump sheet hyperlinks at bottom of page
 comment|//consider a double-pass of the inputstream to reunite hyperlinks with cells/textboxes
 comment|//step 1: extract hyperlink info from bottom of page
