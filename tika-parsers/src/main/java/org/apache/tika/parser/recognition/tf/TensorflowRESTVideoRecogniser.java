@@ -257,7 +257,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/inception/v3/classify/video?topk=10"
+literal|"http://localhost:8764/inception/v4/classify/video?topk=10"
 argument_list|)
 decl_stmt|;
 annotation|@
