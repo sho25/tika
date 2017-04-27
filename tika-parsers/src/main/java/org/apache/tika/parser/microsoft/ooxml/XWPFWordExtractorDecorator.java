@@ -1915,6 +1915,14 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Also extract any paragraphs embedded in text boxes:
+if|if
+condition|(
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+condition|)
+block|{
 for|for
 control|(
 name|XmlObject
@@ -1959,6 +1967,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Finish this paragraph
 name|xhtml
