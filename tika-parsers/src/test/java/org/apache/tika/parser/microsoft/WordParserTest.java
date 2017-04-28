@@ -692,7 +692,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<a href=\"http://tika.apache.org/\">Tika</a>"
+literal|"<a href=\"http://tika.apache.org/\"><u>Tika</u></a>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1150,6 +1150,61 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testTextDecoration
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_various.doc"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<b>Bold</b>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<i>italic</i>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|xml
+operator|.
+name|contains
+argument_list|(
+literal|"<u>underline</u>"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|//TIKA-2346
 annotation|@
@@ -2304,7 +2359,7 @@ expr_stmt|;
 comment|// Check we do have the link
 name|assertContains
 argument_list|(
-literal|"<a href=\"http://tw-systemhaus.de\">http:"
+literal|"<a href=\"http://tw-systemhaus.de\"><u>http:"
 argument_list|,
 name|xml
 argument_list|)
@@ -2312,7 +2367,7 @@ expr_stmt|;
 comment|// Check we do have the email
 name|assertContains
 argument_list|(
-literal|"<a href=\"mailto:ab@example.com\">ab@"
+literal|"<a href=\"mailto:ab@example.com\"><u>ab@"
 argument_list|,
 name|xml
 argument_list|)
@@ -2329,7 +2384,7 @@ name|Exception
 block|{
 name|assertContains
 argument_list|(
-literal|"1. Introduzione<b></b></a></p>"
+literal|"<u>1.</u><u>Introduzione</u><b></b></a><u></u></p>"
 argument_list|,
 name|getXML
 argument_list|(
@@ -2394,7 +2449,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<p>1. Organisering av vakten:</p>"
+literal|"<p><u>1. Organisering av vakten:</u></p>"
 argument_list|,
 name|xml
 argument_list|)
@@ -3096,14 +3151,14 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<a href=\"http://tika.apache.org/\">hyper<b>link</b></a>"
+literal|"<a href=\"http://tika.apache.org/\"><u>hyper</u><b><u>link</u></b></a>"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<a href=\"http://tika.apache.org/\"><b>hyper</b> link</a>; bold"
+literal|"<a href=\"http://tika.apache.org/\"><b><u>hyper</u></b><u> link</u></a>; bold"
 argument_list|,
 name|xml
 argument_list|)
