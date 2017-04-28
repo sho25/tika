@@ -1103,6 +1103,11 @@ name|config
 argument_list|)
 argument_list|,
 name|linkedRelationships
+argument_list|,
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

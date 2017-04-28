@@ -2251,6 +2251,16 @@ name|TextObjectRecord
 operator|.
 name|sid
 case|:
+if|if
+condition|(
+name|extractor
+operator|.
+name|officeParserConfig
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+condition|)
+block|{
 name|TextObjectRecord
 name|tor
 init|=
@@ -2272,6 +2282,7 @@ name|getString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|SeriesTextRecord
