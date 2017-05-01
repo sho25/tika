@@ -766,6 +766,28 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|//try opc first because opening a package
+comment|//will not necessarily throw an exception for
+comment|//truncated files.
+name|MediaType
+name|type
+init|=
+name|detectOPCBased
+argument_list|(
+name|tis
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|type
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|type
+return|;
+block|}
 name|ZipFile
 name|zip
 init|=
@@ -781,31 +803,13 @@ decl_stmt|;
 comment|// TODO: hasFile()?
 try|try
 block|{
-name|MediaType
 name|type
-init|=
+operator|=
 name|detectOpenDocument
 argument_list|(
 name|zip
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|type
-operator|==
-literal|null
-condition|)
-block|{
-name|type
-operator|=
-name|detectOPCBased
-argument_list|(
-name|zip
-argument_list|,
-name|tis
-argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|type
@@ -1014,36 +1018,14 @@ specifier|static
 name|MediaType
 name|detectOPCBased
 parameter_list|(
-name|ZipFile
-name|zip
-parameter_list|,
 name|TikaInputStream
 name|stream
 parameter_list|)
 block|{
 try|try
 block|{
-if|if
-condition|(
-name|zip
-operator|.
-name|getEntry
-argument_list|(
-literal|"_rels/.rels"
-argument_list|)
-operator|!=
-literal|null
-operator|||
-name|zip
-operator|.
-name|getEntry
-argument_list|(
-literal|"[Content_Types].xml"
-argument_list|)
-operator|!=
-literal|null
-condition|)
-block|{
+comment|//            if (zip.getEntry("_rels/.rels") != null
+comment|//                  || zip.getEntry("[Content_Types].xml") != null) {
 comment|// Use POI to open and investigate it for us
 name|OPCPackage
 name|pkg
@@ -1128,13 +1110,6 @@ comment|// We don't know what it is, sorry
 return|return
 literal|null
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|null
-return|;
-block|}
 block|}
 catch|catch
 parameter_list|(
