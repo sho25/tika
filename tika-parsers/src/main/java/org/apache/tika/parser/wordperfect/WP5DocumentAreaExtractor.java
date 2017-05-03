@@ -29,6 +29,40 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|collections4
+operator|.
+name|MapUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -63,6 +97,118 @@ name|WP5DocumentAreaExtractor
 extends|extends
 name|WPDocumentAreaExtractor
 block|{
+comment|/* 192-207 characters represent fixed-length multi-byte functions.        * Those that are not handled explicitely in the code below should be      * skipped according to their size (minus the first char if already read).      */
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|Integer
+argument_list|,
+name|Integer
+argument_list|>
+name|FIXED_LENGTH_FUNCTION_SIZES
+init|=
+name|MapUtils
+operator|.
+name|putAll
+argument_list|(
+operator|new
+name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|Integer
+argument_list|>
+argument_list|()
+argument_list|,
+operator|new
+name|Integer
+index|[]
+block|{
+literal|192
+block|,
+literal|4
+block|,
+comment|// Extended character
+literal|193
+block|,
+literal|9
+block|,
+comment|// Center/Align/ Tab/Left Margin Release
+literal|194
+block|,
+literal|11
+block|,
+comment|// Indent
+literal|195
+block|,
+literal|3
+block|,
+comment|// Attribute ON
+literal|196
+block|,
+literal|3
+block|,
+comment|// Attribute OFF
+literal|197
+block|,
+literal|5
+block|,
+comment|// Block Protect
+literal|198
+block|,
+literal|6
+block|,
+comment|// End of Indent
+literal|199
+block|,
+literal|7
+block|,
+comment|// Different Display Character when Hyphenated
+literal|200
+block|,
+literal|4
+block|,
+comment|// (Reserved)
+literal|201
+block|,
+literal|5
+block|,
+comment|// (Reserved)
+literal|202
+block|,
+literal|6
+block|,
+comment|// (Reserved)
+literal|203
+block|,
+literal|6
+block|,
+comment|// (Reserved)
+literal|204
+block|,
+literal|8
+block|,
+comment|// (Reserved)
+literal|205
+block|,
+literal|10
+block|,
+comment|// (Reserved)
+literal|206
+block|,
+literal|10
+block|,
+comment|// (Reserved)
+literal|207
+block|,
+literal|12
+block|,
+comment|// (Reserved)
+block|}
+argument_list|)
+decl_stmt|;
 specifier|protected
 name|void
 name|extract
@@ -327,14 +473,21 @@ operator|<=
 literal|207
 condition|)
 block|{
-name|skipUntilChar
-argument_list|(
+comment|// removing 1 from function length since first char already read
 name|in
-argument_list|,
+operator|.
+name|skipWPByte
+argument_list|(
+name|FIXED_LENGTH_FUNCTION_SIZES
+operator|.
+name|get
+argument_list|(
 name|c
 argument_list|)
+operator|-
+literal|1
+argument_list|)
 expr_stmt|;
-comment|// opening/closing chars are same
 comment|// 208-255: variable-length multi-byte function
 block|}
 elseif|else
