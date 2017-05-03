@@ -732,11 +732,6 @@ operator|new
 name|HeaderFooterHelper
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|final
-name|XSSFEventBasedExcelExtractor
-name|extractor
-decl_stmt|;
 specifier|protected
 specifier|final
 name|DataFormatter
@@ -815,14 +810,12 @@ name|XSSFEventBasedExcelExtractor
 operator|)
 name|extractor
 expr_stmt|;
-comment|// not yet supported in POI-3.16-beta3
-comment|// this.extractor.setFormulasNotResults(false);
+name|configureExtractor
+argument_list|(
 name|this
 operator|.
 name|extractor
-operator|.
-name|setLocale
-argument_list|(
+argument_list|,
 name|locale
 argument_list|)
 expr_stmt|;
@@ -851,6 +844,57 @@ name|locale
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|protected
+name|void
+name|configureExtractor
+parameter_list|(
+name|POIXMLTextExtractor
+name|extractor
+parameter_list|,
+name|Locale
+name|locale
+parameter_list|)
+block|{
+operator|(
+operator|(
+name|XSSFEventBasedExcelExtractor
+operator|)
+name|extractor
+operator|)
+operator|.
+name|setIncludeTextBoxes
+argument_list|(
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+argument_list|)
+expr_stmt|;
+operator|(
+operator|(
+name|XSSFEventBasedExcelExtractor
+operator|)
+name|extractor
+operator|)
+operator|.
+name|setFormulasNotResults
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+operator|(
+operator|(
+name|XSSFEventBasedExcelExtractor
+operator|)
+name|extractor
+operator|)
+operator|.
+name|setLocale
+argument_list|(
+name|locale
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1170,6 +1214,15 @@ name|xhtml
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Do text held in shapes, if required
+if|if
+condition|(
+name|config
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+condition|)
+block|{
 name|List
 argument_list|<
 name|XSSFShape
@@ -1188,6 +1241,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 comment|//for now dump sheet hyperlinks at bottom of page
 comment|//consider a double-pass of the inputstream to reunite hyperlinks with cells/textboxes
 comment|//step 1: extract hyperlink info from bottom of page

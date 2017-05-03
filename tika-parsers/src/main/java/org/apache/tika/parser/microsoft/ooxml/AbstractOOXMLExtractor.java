@@ -704,6 +704,10 @@ name|ParseContext
 name|context
 decl_stmt|;
 specifier|protected
+name|OfficeParserConfig
+name|config
+decl_stmt|;
+specifier|protected
 name|POIXMLTextExtractor
 name|extractor
 decl_stmt|;
@@ -736,6 +740,21 @@ operator|.
 name|getEmbeddedDocumentExtractor
 argument_list|(
 name|context
+argument_list|)
+expr_stmt|;
+comment|// This has already been set by OOXMLParser's call to configure()
+comment|// We can rely on this being non-null.
+name|this
+operator|.
+name|config
+operator|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|OfficeParserConfig
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}

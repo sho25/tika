@@ -3161,6 +3161,8 @@ operator|.
 name|startDocument
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|handleDestinationOrAction
 argument_list|(
 name|pdf
@@ -3176,6 +3178,16 @@ operator|.
 name|DOCUMENT_OPEN
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|//See PDFBOX-3773
+comment|//swallow -- no need to report this
+block|}
 block|}
 catch|catch
 parameter_list|(

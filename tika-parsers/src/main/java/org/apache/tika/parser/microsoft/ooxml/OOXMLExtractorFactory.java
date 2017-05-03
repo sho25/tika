@@ -243,6 +243,22 @@ name|xssf
 operator|.
 name|extractor
 operator|.
+name|XSSFBEventBasedExcelExtractor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|xssf
+operator|.
+name|extractor
+operator|.
 name|XSSFEventBasedExcelExtractor
 import|;
 end_import
@@ -714,8 +730,8 @@ name|poiExtractor
 init|=
 literal|null
 decl_stmt|;
-comment|//This has already been set by OOXMLParser's call to configure()
-comment|//We can rely on this being non-null.
+comment|// This has already been set by OOXMLParser's call to configure()
+comment|// We can rely on this being non-null.
 name|OfficeParserConfig
 name|config
 init|=
@@ -789,6 +805,27 @@ operator|.
 name|getDocument
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|poiExtractor
+operator|instanceof
+name|XSSFBEventBasedExcelExtractor
+condition|)
+block|{
+name|extractor
+operator|=
+operator|new
+name|XSSFBExcelExtractorDecorator
+argument_list|(
+name|context
+argument_list|,
+name|poiExtractor
+argument_list|,
+name|locale
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|poiExtractor
