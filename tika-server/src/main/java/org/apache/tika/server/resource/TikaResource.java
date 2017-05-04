@@ -2487,7 +2487,7 @@ return|;
 block|}
 comment|//this is equivalent to text-main (Boilerpipe handler) in tika-app
 annotation|@
-name|PUT
+name|POST
 annotation|@
 name|Consumes
 argument_list|(

@@ -588,7 +588,7 @@ argument_list|(
 literal|"text/plain"
 argument_list|)
 operator|.
-name|put
+name|post
 argument_list|(
 name|attachmentPart
 argument_list|)
