@@ -568,7 +568,7 @@ specifier|final
 name|String
 name|DEF_WEIGHTS_URL
 init|=
-literal|"https://media.githubusercontent.com/media/USCDataScience/dl4j-kerasimport-examples/master/dl4j-import-example/data/inception-model-weights.h5"
+literal|"https://raw.githubusercontent.com/USCDataScience/dl4j-kerasimport-examples/98ec48b56a5b8fb7d54a2994ce9cb23bfefac821/dl4j-import-example/data/inception-model-weights.h5"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -606,7 +606,7 @@ specifier|private
 name|String
 name|modelWeightsPath
 init|=
-literal|"<download>"
+name|DEF_WEIGHTS_URL
 decl_stmt|;
 comment|/**      * Path to a JSON file that contains network (graph) structure exported from Keras.      *<p>      *<br/>      * Default is retrieved from {@value DEF_MODEL_JSON}      */
 annotation|@
@@ -1105,11 +1105,18 @@ block|{
 comment|//STEP 1: resolve weights file, download if necessary
 if|if
 condition|(
-literal|"<download>"
-operator|.
-name|equals
-argument_list|(
 name|modelWeightsPath
+operator|.
+name|startsWith
+argument_list|(
+literal|"http://"
+argument_list|)
+operator|||
+name|modelWeightsPath
+operator|.
+name|startsWith
+argument_list|(
+literal|"https://"
 argument_list|)
 condition|)
 block|{
@@ -1132,7 +1139,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-name|DEF_WEIGHTS_URL
+name|modelWeightsPath
 argument_list|)
 argument_list|)
 operator|.
