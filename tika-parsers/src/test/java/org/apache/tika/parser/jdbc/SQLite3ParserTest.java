@@ -237,6 +237,20 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|EmptyParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|ParseContext
 import|;
 end_import
@@ -738,8 +752,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|//test what happens if the user forgets to pass in a parser via context
-comment|//to handle embedded documents
+comment|//test what happens if the user does not want embedded docs handled
 annotation|@
 name|Test
 specifier|public
@@ -770,6 +783,26 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
+name|ParseContext
+name|parseContext
+init|=
+operator|new
+name|ParseContext
+argument_list|()
+decl_stmt|;
+name|parseContext
+operator|.
+name|set
+argument_list|(
+name|Parser
+operator|.
+name|class
+argument_list|,
+operator|new
+name|EmptyParser
+argument_list|()
+argument_list|)
+expr_stmt|;
 try|try
 init|(
 name|InputStream
@@ -802,9 +835,7 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|parseContext
 argument_list|)
 expr_stmt|;
 block|}

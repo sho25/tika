@@ -96,10 +96,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Language profile based on ngram counts.  *  * @since Apache Tika 0.5  */
+comment|/**  * Language profile based on ngram counts.  *  * @since Apache Tika 0.5  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|LanguageProfile

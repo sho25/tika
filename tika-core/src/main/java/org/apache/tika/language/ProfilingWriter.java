@@ -36,10 +36,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Writer that builds a language profile based on all the written content.  *  * @since Apache Tika 0.5  */
+comment|/**  * Writer that builds a language profile based on all the written content.  *  * @since Apache Tika 0.5  * @deprecated use {@link org.apache.tika.language.detect.LanguageWriter}  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ProfilingWriter

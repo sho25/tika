@@ -99,16 +99,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|LinkedList
 import|;
 end_import
@@ -396,7 +386,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -455,23 +445,23 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"FSFileAdder couldn't read "
-operator|+
+literal|"FSFileAdder couldn't read {}: {}"
+argument_list|,
 name|directory
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|": "
-operator|+
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -485,12 +475,12 @@ operator|==
 literal|0
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Empty directory: "
-operator|+
+literal|"Empty directory: {}"
+argument_list|,
 name|directory
 operator|.
 name|toAbsolutePath
@@ -590,18 +580,16 @@ name|f
 argument_list|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Skipping -- "
-operator|+
+literal|"Skipping -- {} -- file/directory is not readable"
+argument_list|,
 name|f
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|" -- file/directory is not readable"
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -664,37 +652,33 @@ operator|.
 name|STOP_NOW
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"crawler has hit a limit: "
-operator|+
+literal|"crawler has hit a limit: {} : {}"
+argument_list|,
 name|f
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|added
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"trying to add: "
-operator|+
+literal|"trying to add: {} : {}"
+argument_list|,
 name|f
 operator|.
 name|toAbsolutePath
 argument_list|()
-operator|+
-literal|" : "
-operator|+
+argument_list|,
 name|added
 argument_list|)
 expr_stmt|;

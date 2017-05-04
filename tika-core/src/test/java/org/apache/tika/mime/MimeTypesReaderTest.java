@@ -584,7 +584,7 @@ name|mimeTypes
 operator|.
 name|forName
 argument_list|(
-literal|"image/x-ms-bmp"
+literal|"image/bmp"
 argument_list|)
 decl_stmt|;
 name|assertEquals

@@ -39,6 +39,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|nio
 operator|.
 name|charset
@@ -69,6 +79,8 @@ begin_interface
 specifier|public
 interface|interface
 name|EncodingDetector
+extends|extends
+name|Serializable
 block|{
 comment|/**      * Detects the character encoding of the given text document, or      *<code>null</code> if the encoding of the document can not be detected.      *<p>      * If the document input stream is not available, then the first      * argument may be<code>null</code>. Otherwise the detector may      * read bytes from the start of the stream to help in encoding detection.      * The given stream is guaranteed to support the      * {@link InputStream#markSupported() mark feature} and the detector      * is expected to {@link InputStream#mark(int) mark} the stream before      * reading any bytes from it, and to {@link InputStream#reset() reset}      * the stream before returning. The stream must not be closed by the      * detector.      *<p>      * The given input metadata is only read, not modified, by the detector.      *      * @param input text document input stream, or<code>null</code>      * @param metadata input metadata for the document      * @return detected character encoding, or<code>null</code>      * @throws IOException if the document input stream could not be read      */
 name|Charset

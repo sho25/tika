@@ -301,7 +301,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"alias:     image/bmp"
+literal|"alias:     image/x-ms-bmp"
 argument_list|,
 name|text
 argument_list|)
@@ -399,7 +399,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Alias: image/bmp"
+literal|"Alias: image/x-ms-bmp"
 argument_list|,
 name|text
 argument_list|)
@@ -555,7 +555,7 @@ name|json
 operator|.
 name|containsKey
 argument_list|(
-literal|"image/x-ms-bmp"
+literal|"image/bmp"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -571,7 +571,7 @@ name|json
 operator|.
 name|get
 argument_list|(
-literal|"image/x-ms-bmp"
+literal|"image/bmp"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -603,7 +603,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|aliases
 operator|.
@@ -612,11 +612,21 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image/bmp"
+literal|"image/x-bmp"
 argument_list|,
 name|aliases
 index|[
 literal|0
+index|]
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"image/x-ms-bmp"
+argument_list|,
+name|aliases
+index|[
+literal|1
 index|]
 argument_list|)
 expr_stmt|;

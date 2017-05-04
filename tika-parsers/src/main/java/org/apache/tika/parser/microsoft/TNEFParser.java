@@ -191,7 +191,7 @@ name|tika
 operator|.
 name|extractor
 operator|.
-name|ParsingEmbeddedDocumentExtractor
+name|EmbeddedDocumentUtil
 import|;
 end_import
 
@@ -424,43 +424,15 @@ name|TikaException
 block|{
 comment|// We work by recursing, so get the appropriate bits
 name|EmbeddedDocumentExtractor
-name|ex
+name|embeddedExtractor
 init|=
-name|context
+name|EmbeddedDocumentUtil
 operator|.
-name|get
-argument_list|(
-name|EmbeddedDocumentExtractor
-operator|.
-name|class
-argument_list|)
-decl_stmt|;
-name|EmbeddedDocumentExtractor
-name|embeddedExtractor
-decl_stmt|;
-if|if
-condition|(
-name|ex
-operator|==
-literal|null
-condition|)
-block|{
-name|embeddedExtractor
-operator|=
-operator|new
-name|ParsingEmbeddedDocumentExtractor
+name|getEmbeddedDocumentExtractor
 argument_list|(
 name|context
 argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|embeddedExtractor
-operator|=
-name|ex
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|// Ask POI to process the file for us
 name|HMEFMessage
 name|msg

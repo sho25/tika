@@ -16,6 +16,20 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -95,25 +109,13 @@ name|Set
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
 begin_comment
-comment|/**  * Identifier of the language that best matches a given content profile.  * The content profile is compared to generic language profiles based on  * material from various sources.  *  * @since Apache Tika 0.5  * @see<a href="http://www.iccs.inf.ed.ac.uk/~pkoehn/publications/europarl/">  *      Europarl: A Parallel Corpus for Statistical Machine Translation</a>  * @see<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php">  *      ISO 639 Language Codes</a>  */
+comment|/**  * Identifier of the language that best matches a given content profile.  * The content profile is compared to generic language profiles based on  * material from various sources.  * @since Apache Tika 0.5  * @see<a href="http://www.iccs.inf.ed.ac.uk/~pkoehn/publications/europarl/">  *      Europarl: A Parallel Corpus for Statistical Machine Translation</a>  * @see<a href="http://www.loc.gov/standards/iso639-2/php/code_list.php">  *      ISO 639 Language Codes</a>  * @deprecated  use a concrete class of {@link org.apache.tika.language.detect.LanguageDetector}  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|LanguageIdentifier
@@ -770,7 +772,7 @@ operator|!=
 literal|""
 return|;
 block|}
-comment|/**      * Returns a string of error messages related to initializing langauge profiles      * @return the String containing the error messages      */
+comment|/**      * Returns a string of error messages related to initializing language profiles      * @return the String containing the error messages      */
 specifier|public
 specifier|static
 name|String

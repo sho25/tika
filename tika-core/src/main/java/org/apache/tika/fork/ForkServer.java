@@ -226,6 +226,14 @@ name|READY
 init|=
 literal|4
 decl_stmt|;
+comment|//milliseconds to sleep before checking to see if there has been any reading/writing
+comment|//If no reading or writing in this time, shutdown the server.
+specifier|private
+name|long
+name|serverPulseMillis
+init|=
+literal|5000
+decl_stmt|;
 comment|/**      * Starts a forked server process using the standard input and output      * streams for communication with the parent process. Any attempts by      * stray code to read from standard input or write to standard output      * is redirected to avoid interfering with the communication channel.      *       * @param args command line arguments, ignored      * @throws Exception if the server could not be started      */
 specifier|public
 specifier|static
@@ -239,6 +247,34 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|long
+name|serverPulseMillis
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|args
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+name|serverPulseMillis
+operator|=
+name|Long
+operator|.
+name|parseLong
+argument_list|(
+name|args
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 name|URL
 operator|.
 name|setURLStreamHandlerFactory
@@ -261,6 +297,8 @@ argument_list|,
 name|System
 operator|.
 name|out
+argument_list|,
+name|serverPulseMillis
 argument_list|)
 decl_stmt|;
 name|System
@@ -344,6 +382,9 @@ name|input
 parameter_list|,
 name|OutputStream
 name|output
+parameter_list|,
+name|long
+name|serverPulseMillis
 parameter_list|)
 throws|throws
 name|IOException
@@ -380,6 +421,12 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|serverPulseMillis
+operator|=
+name|serverPulseMillis
+expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -401,7 +448,7 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
-literal|5000
+name|serverPulseMillis
 argument_list|)
 expr_stmt|;
 block|}

@@ -1,6 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* ******************************************************************************* * Copyright (C) 2005 - 2008, International Business Machines Corporation and  * * others. All Rights Reserved.                                                * ******************************************************************************* */
+comment|// © 2016 and later: Unicode, Inc. and others.
+end_comment
+
+begin_comment
+comment|// License& terms of use: http://www.unicode.org/copyright.html#License
+end_comment
+
+begin_comment
+comment|/* ******************************************************************************* * Copyright (C) 2005 - 2012, International Business Machines Corporation and  * * others. All Rights Reserved.                                                * ******************************************************************************* */
 end_comment
 
 begin_package
@@ -18,7 +26,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * class CharsetRecog_2022  part of the ICU charset detection imlementation.  * This is a superclass for the individual detectors for  * each of the detectable members of the ISO 2022 family  * of encodings.  *<p/>  * The separate classes are nested within this class.  *  * @internal  */
+comment|/**  * class CharsetRecog_2022  part of the ICU charset detection imlementation.  * This is a superclass for the individual detectors for  * each of the detectable members of the ISO 2022 family  * of encodings.  *<p>  * The separate classes are nested within this class.  */
 end_comment
 
 begin_class
@@ -431,14 +439,16 @@ return|return
 literal|"ISO-2022-JP"
 return|;
 block|}
-name|int
+name|CharsetMatch
 name|match
 parameter_list|(
 name|CharsetDetector
 name|det
 parameter_list|)
 block|{
-return|return
+name|int
+name|confidence
+init|=
 name|match
 argument_list|(
 name|det
@@ -450,6 +460,23 @@ operator|.
 name|fInputLen
 argument_list|,
 name|escapeSequences
+argument_list|)
+decl_stmt|;
+return|return
+name|confidence
+operator|==
+literal|0
+condition|?
+literal|null
+else|:
+operator|new
+name|CharsetMatch
+argument_list|(
+name|det
+argument_list|,
+name|this
+argument_list|,
+name|confidence
 argument_list|)
 return|;
 block|}
@@ -486,14 +513,16 @@ return|return
 literal|"ISO-2022-KR"
 return|;
 block|}
-name|int
+name|CharsetMatch
 name|match
 parameter_list|(
 name|CharsetDetector
 name|det
 parameter_list|)
 block|{
-return|return
+name|int
+name|confidence
+init|=
 name|match
 argument_list|(
 name|det
@@ -505,6 +534,23 @@ operator|.
 name|fInputLen
 argument_list|,
 name|escapeSequences
+argument_list|)
+decl_stmt|;
+return|return
+name|confidence
+operator|==
+literal|0
+condition|?
+literal|null
+else|:
+operator|new
+name|CharsetMatch
+argument_list|(
+name|det
+argument_list|,
+name|this
+argument_list|,
+name|confidence
 argument_list|)
 return|;
 block|}
@@ -645,14 +691,16 @@ return|return
 literal|"ISO-2022-CN"
 return|;
 block|}
-name|int
+name|CharsetMatch
 name|match
 parameter_list|(
 name|CharsetDetector
 name|det
 parameter_list|)
 block|{
-return|return
+name|int
+name|confidence
+init|=
 name|match
 argument_list|(
 name|det
@@ -664,6 +712,23 @@ operator|.
 name|fInputLen
 argument_list|,
 name|escapeSequences
+argument_list|)
+decl_stmt|;
+return|return
+name|confidence
+operator|==
+literal|0
+condition|?
+literal|null
+else|:
+operator|new
+name|CharsetMatch
+argument_list|(
+name|det
+argument_list|,
+name|this
+argument_list|,
+name|confidence
 argument_list|)
 return|;
 block|}

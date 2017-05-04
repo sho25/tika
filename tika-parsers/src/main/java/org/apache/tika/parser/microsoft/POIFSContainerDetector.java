@@ -364,6 +364,18 @@ argument_list|(
 literal|"vnd.ms-graph"
 argument_list|)
 decl_stmt|;
+comment|/**      * Equation embedded in Office docs      */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|MS_EQUATION
+init|=
+name|application
+argument_list|(
+literal|"vnd.ms-equation"
+argument_list|)
+decl_stmt|;
 comment|/**      * Microsoft Excel      */
 specifier|public
 specifier|static
@@ -542,6 +554,18 @@ init|=
 name|application
 argument_list|(
 literal|"x-hwp-v5"
+argument_list|)
+decl_stmt|;
+comment|/**      * Base QuattroPro mime      */
+specifier|public
+specifier|static
+specifier|final
+name|MediaType
+name|QUATTROPRO
+init|=
+name|application
+argument_list|(
+literal|"x-quattro-pro"
 argument_list|)
 decl_stmt|;
 comment|/**      * Serial version UID      */
@@ -1292,11 +1316,14 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|new
 name|MediaType
-operator|.
-name|application
 argument_list|(
-literal|"x-quattro-pro"
+name|QUATTROPRO
+argument_list|,
+literal|"version"
+argument_list|,
+literal|"7-8"
 argument_list|)
 return|;
 comment|// .wb?
@@ -1314,14 +1341,32 @@ argument_list|)
 condition|)
 block|{
 return|return
+operator|new
 name|MediaType
-operator|.
-name|application
 argument_list|(
-literal|"x-quattro-pro"
+name|QUATTROPRO
+argument_list|,
+literal|"version"
+argument_list|,
+literal|"9"
 argument_list|)
 return|;
 comment|// .qpw
+block|}
+elseif|else
+if|if
+condition|(
+name|names
+operator|.
+name|contains
+argument_list|(
+literal|"Equation Native"
+argument_list|)
+condition|)
+block|{
+return|return
+name|MS_EQUATION
+return|;
 block|}
 else|else
 block|{

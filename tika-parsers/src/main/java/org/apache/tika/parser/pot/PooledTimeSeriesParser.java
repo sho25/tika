@@ -153,18 +153,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -425,6 +413,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -548,7 +556,11 @@ argument_list|)
 else|:
 name|Collections
 operator|.
-name|EMPTY_SET
+expr|<
+name|MediaType
+operator|>
+name|emptySet
+argument_list|()
 decl_stmt|;
 empty_stmt|;
 comment|// TODO: Add all supported video types
@@ -558,16 +570,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|PooledTimeSeriesParser
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|/**      * Returns the set of media types supported by this parser when used with the      * given parse context.      *      * @param context parse context      * @return immutable set of media types      * @since Apache Tika 0.7      */
@@ -622,7 +631,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"PooledTimeSeries not installed!"
 argument_list|)
@@ -931,10 +940,10 @@ argument_list|)
 expr_stmt|;
 name|LOG
 operator|.
-name|fine
+name|trace
 argument_list|(
-literal|"Executing: "
-operator|+
+literal|"Executing: {}"
+argument_list|,
 name|cmdLine
 argument_list|)
 expr_stmt|;

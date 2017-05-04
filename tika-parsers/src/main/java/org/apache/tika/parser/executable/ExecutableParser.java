@@ -573,7 +573,7 @@ name|IOException
 block|{
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.
@@ -1770,7 +1770,7 @@ literal|1
 case|:
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.
@@ -1788,7 +1788,7 @@ literal|2
 case|:
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.
@@ -1806,7 +1806,7 @@ literal|3
 case|:
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.
@@ -1824,7 +1824,7 @@ literal|4
 case|:
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.
@@ -1840,7 +1840,7 @@ break|break;
 default|default:
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|Metadata
 operator|.

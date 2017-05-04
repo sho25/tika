@@ -380,12 +380,12 @@ name|f
 argument_list|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"File doesn't exist:"
-operator|+
+literal|"File doesn't exist: {}"
+argument_list|,
 name|f
 operator|.
 name|toAbsolutePath
@@ -409,12 +409,12 @@ name|f
 argument_list|)
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"File is a directory:"
-operator|+
+literal|"File is a directory: {}"
+argument_list|,
 name|f
 operator|.
 name|toAbsolutePath

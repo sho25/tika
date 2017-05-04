@@ -17,11 +17,13 @@ end_package
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|xml
 operator|.
-name|Map
+name|namespace
+operator|.
+name|QName
 import|;
 end_import
 
@@ -37,13 +39,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|xml
+name|util
 operator|.
-name|namespace
-operator|.
-name|QName
+name|Map
 import|;
 end_import
 
@@ -55,7 +55,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|SAXException
+name|Attributes
 import|;
 end_import
 
@@ -79,7 +79,7 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|Attributes
+name|SAXException
 import|;
 end_import
 

@@ -483,7 +483,7 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"x-ms-bmp"
+literal|"bmp"
 argument_list|)
 decl_stmt|;
 name|Map
@@ -553,7 +553,7 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"bmp"
+literal|"x-ms-bmp"
 argument_list|)
 decl_stmt|;
 name|Map

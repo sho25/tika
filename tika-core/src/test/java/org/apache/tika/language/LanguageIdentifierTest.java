@@ -164,6 +164,8 @@ comment|/**  * JUnit based test of class {@link LanguageIdentifier}.  *  * @auth
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|LanguageIdentifierTest

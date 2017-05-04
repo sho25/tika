@@ -18,6 +18,20 @@ comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more
 end_comment
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -183,20 +197,6 @@ name|ContentHandler
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
 begin_comment
 comment|/**  * Basic FileResourceConsumer that reads files from an input  * directory and writes content to the output directory.  *<p>  * This catches all exceptions and errors and then logs them.  * This will re-throw errors.  *  */
 end_comment
@@ -358,12 +358,12 @@ operator|==
 literal|null
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Skipping: "
-operator|+
+literal|"Skipping: {}"
+argument_list|,
 name|fileResource
 operator|.
 name|getMetadata
@@ -434,7 +434,7 @@ block|{
 name|incrementHandledExceptions
 argument_list|()
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -461,9 +461,6 @@ operator|new
 name|RuntimeException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
 block|}

@@ -27,38 +27,6 @@ name|utils
 operator|.
 name|DateUtils
 operator|.
-name|MIDDAY
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|DateUtils
-operator|.
-name|UTC
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|DateUtils
-operator|.
 name|formatDate
 import|;
 end_import
@@ -90,16 +58,6 @@ operator|.
 name|text
 operator|.
 name|DateFormatSymbols
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|text
-operator|.
-name|ParseException
 import|;
 end_import
 
@@ -206,6 +164,20 @@ operator|.
 name|Property
 operator|.
 name|PropertyType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|DateUtils
 import|;
 end_import
 
@@ -418,86 +390,16 @@ name|TYPE
 init|=
 literal|"type"
 decl_stmt|;
-comment|/**      * Some parsers will have the date as a ISO-8601 string      *  already, and will set that into the Metadata object.      * So we can return Date objects for these, this is the      *  list (in preference order) of the various ISO-8601      *  variants that we try when processing a date based      *  property.      */
+comment|/**      * Some parsers will have the date as a ISO-8601 string      *  already, and will set that into the Metadata object.      */
 specifier|private
 specifier|static
 specifier|final
-name|DateFormat
-index|[]
-name|iso8601InputFormats
+name|DateUtils
+name|DATE_UTILS
 init|=
 operator|new
-name|DateFormat
-index|[]
-block|{
-comment|// yyyy-mm-ddThh...
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ss'Z'"
-argument_list|,
-name|UTC
-argument_list|)
-block|,
-comment|// UTC/Zulu
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ssZ"
-argument_list|,
-literal|null
-argument_list|)
-block|,
-comment|// With timezone
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd'T'HH:mm:ss"
-argument_list|,
-literal|null
-argument_list|)
-block|,
-comment|// Without timezone
-comment|// yyyy-mm-dd hh...
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd' 'HH:mm:ss'Z'"
-argument_list|,
-name|UTC
-argument_list|)
-block|,
-comment|// UTC/Zulu
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd' 'HH:mm:ssZ"
-argument_list|,
-literal|null
-argument_list|)
-block|,
-comment|// With timezone
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd' 'HH:mm:ss"
-argument_list|,
-literal|null
-argument_list|)
-block|,
-comment|// Without timezone
-comment|// Date without time, set to Midday UTC
-name|createDateFormat
-argument_list|(
-literal|"yyyy-MM-dd"
-argument_list|,
-name|MIDDAY
-argument_list|)
-block|,
-comment|// Normal date format
-name|createDateFormat
-argument_list|(
-literal|"yyyy:MM:dd"
-argument_list|,
-name|MIDDAY
-argument_list|)
-block|,
-comment|// Image (IPTC/EXIF) format
-block|}
+name|DateUtils
+argument_list|()
 decl_stmt|;
 specifier|private
 specifier|static
@@ -558,106 +460,13 @@ name|String
 name|date
 parameter_list|)
 block|{
-comment|// Java doesn't like timezones in the form ss+hh:mm
-comment|// It only likes the hhmm form, without the colon
-name|int
-name|n
-init|=
-name|date
-operator|.
-name|length
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|date
-operator|.
-name|charAt
-argument_list|(
-name|n
-operator|-
-literal|3
-argument_list|)
-operator|==
-literal|':'
-operator|&&
-operator|(
-name|date
-operator|.
-name|charAt
-argument_list|(
-name|n
-operator|-
-literal|6
-argument_list|)
-operator|==
-literal|'+'
-operator|||
-name|date
-operator|.
-name|charAt
-argument_list|(
-name|n
-operator|-
-literal|6
-argument_list|)
-operator|==
-literal|'-'
-operator|)
-condition|)
-block|{
-name|date
-operator|=
-name|date
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|n
-operator|-
-literal|3
-argument_list|)
-operator|+
-name|date
-operator|.
-name|substring
-argument_list|(
-name|n
-operator|-
-literal|2
-argument_list|)
-expr_stmt|;
-block|}
-comment|// Try several different ISO-8601 variants
-for|for
-control|(
-name|DateFormat
-name|format
-range|:
-name|iso8601InputFormats
-control|)
-block|{
-try|try
-block|{
 return|return
-name|format
+name|DATE_UTILS
 operator|.
-name|parse
+name|tryToParse
 argument_list|(
 name|date
 argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|ParseException
-name|ignore
-parameter_list|)
-block|{             }
-block|}
-return|return
-literal|null
 return|;
 block|}
 comment|/**      * Constructs a new, empty metadata.      */

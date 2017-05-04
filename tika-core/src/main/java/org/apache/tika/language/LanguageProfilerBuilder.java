@@ -20,6 +20,20 @@ comment|// JDK imports
 end_comment
 
 begin_import
+import|import static
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+operator|.
+name|UTF_8
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -193,25 +207,13 @@ name|TikaException
 import|;
 end_import
 
-begin_import
-import|import static
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|StandardCharsets
-operator|.
-name|UTF_8
-import|;
-end_import
-
 begin_comment
-comment|/**  * This class runs a ngram analysis over submitted text, results might be used  * for automatic language identification.  *   * The similarity calculation is at experimental level. You have been warned.  *   * Methods are provided to build new NGramProfiles profiles.  *   * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  */
+comment|/**  * This class runs a ngram analysis over submitted text, results might be used  * for automatic language identification.  *   * The similarity calculation is at experimental level. You have been warned.  *   * Methods are provided to build new NGramProfiles profiles.  *   * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  * @deprecated  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|LanguageProfilerBuilder
@@ -579,7 +581,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Adds ngrams from a single word in this profile      *       * @param word is the word to add      * @param n is the ngram size      */
+comment|/**      * Adds ngrams from a single word in this profile      *       * @param cs char sequence to add      */
 specifier|private
 name|void
 name|add

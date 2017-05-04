@@ -121,6 +121,24 @@ name|IFileProcessorFutureResult
 argument_list|>
 block|{
 specifier|protected
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|FileResourceCrawler
+operator|.
+name|class
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+specifier|protected
 specifier|final
 specifier|static
 name|int
@@ -180,23 +198,6 @@ name|long
 name|PAUSE_INCREMENT_MILLIS
 init|=
 literal|1000
-decl_stmt|;
-specifier|protected
-specifier|static
-name|Logger
-name|logger
-init|=
-name|LoggerFactory
-operator|.
-name|getLogger
-argument_list|(
-name|FileResourceCrawler
-operator|.
-name|class
-operator|.
-name|toString
-argument_list|()
-argument_list|)
 decl_stmt|;
 specifier|private
 name|int
@@ -306,16 +307,13 @@ name|e
 parameter_list|)
 block|{
 comment|//this can be triggered by shutdownNow in BatchProcess
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"InterruptedException in FileCrawler: "
-operator|+
+literal|"InterruptedException in FileCrawler"
+argument_list|,
 name|e
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -325,16 +323,18 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Exception in FileResourceCrawler: "
-operator|+
+literal|"Exception in FileResourceCrawler: {}"
+argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -451,12 +451,12 @@ operator|==
 literal|false
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"FileResourceCrawler is pausing.  Queue is full: "
-operator|+
+literal|"FileResourceCrawler is pausing. Queue is full: {}"
+argument_list|,
 name|queue
 operator|.
 name|size
@@ -490,7 +490,7 @@ name|timedOut
 operator|=
 literal|true
 expr_stmt|;
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -516,7 +516,7 @@ name|isInterrupted
 argument_list|()
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|info
 argument_list|(
@@ -542,12 +542,12 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"crawler did not select: "
-operator|+
+literal|"crawler did not select: {}"
+argument_list|,
 name|fileResource
 operator|.
 name|getResourceId
@@ -577,7 +577,7 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -631,7 +631,7 @@ condition|(
 name|shutDownNoPoison
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -651,7 +651,7 @@ name|isInterrupted
 argument_list|()
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -684,7 +684,7 @@ operator|>
 name|maxConsecWaitInMillis
 condition|)
 block|{
-name|logger
+name|LOG
 operator|.
 name|error
 argument_list|(
@@ -693,15 +693,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|logger
+name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"added "
-operator|+
+literal|"added {} number of PoisonFileResource(s)"
+argument_list|,
 name|i
-operator|+
-literal|" number of PoisonFileResource(s)"
 argument_list|)
 expr_stmt|;
 if|if

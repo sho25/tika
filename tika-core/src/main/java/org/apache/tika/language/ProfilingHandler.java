@@ -30,10 +30,12 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * SAX content handler that builds a language profile based on all the  * received character content.  *  * @since Apache Tika 0.5  */
+comment|/**  * SAX content handler that builds a language profile based on all the  * received character content.  * @deprecated use {@link org.apache.tika.language.detect.LanguageHandler}  * @since Apache Tika 0.5  */
 end_comment
 
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|ProfilingHandler

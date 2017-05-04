@@ -21,6 +21,26 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -89,18 +109,6 @@ name|Properties
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -135,16 +143,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|GeoParserConfig
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -221,7 +226,7 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"GeoTopicConfig.properties not found in class path"
 argument_list|)
@@ -252,10 +257,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|severe
+name|error
 argument_list|(
-literal|"Unable to close stream: "
-operator|+
+literal|"Unable to close stream: {}"
+argument_list|,
 name|ioe
 operator|.
 name|getMessage

@@ -29,7 +29,7 @@ specifier|public
 interface|interface
 name|TikaCoreProperties
 block|{
-comment|/**      * A file might contain different types of embedded documents.      * The most common is the ATTACHEMENT.      * An INLINE embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * Not all parsers have yet implemented this.       *      */
+comment|/**      * A file might contain different types of embedded documents.      * The most common is the ATTACHMENT.      *<p>      * An INLINE embedded resource should be used for embedded image      * files that are used to render the page image (as in PDXObjImages in PDF files).      *<p>      * A MACRO is code that is embedded in the document and is intended      * to be executable within the application that opens the document.  This      * includes traditional macros within Microsoft Office files and      * javascript within PDFActions.  This would not include, e.g., an      * .exe file embedded in a .zip file.      *<p>      * Not all parsers have yet implemented this.      *      */
 specifier|public
 enum|enum
 name|EmbeddedResourceType
@@ -37,6 +37,8 @@ block|{
 name|INLINE
 block|,
 name|ATTACHMENT
+block|,
+name|MACRO
 block|}
 empty_stmt|;
 comment|/**      * Use this to prefix metadata properties that store information      * about the parsing process.  Users should be able to distinguish      * between metadata that was contained within the document and      * metadata about the parsing process.      * In Tika 2.0 (or earlier?), let's change X-ParsedBy to X-TIKA-Parsed-By.      */
@@ -79,6 +81,35 @@ argument_list|(
 name|TIKA_META_EXCEPTION_PREFIX
 operator|+
 literal|"warn"
+argument_list|)
+decl_stmt|;
+comment|/**      * Use this to store exceptions caught while trying to read the      * stream of an embedded resource.  Do not use this if there is      * a parse exception on the embedded resource.      */
+name|Property
+name|TIKA_META_EXCEPTION_EMBEDDED_STREAM
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|TIKA_META_EXCEPTION_PREFIX
+operator|+
+literal|"embedded_stream_exception"
+argument_list|)
+decl_stmt|;
+comment|/**      * Some file formats can store information about their original      * file name/location or about their attachment's original file name/location.      */
+specifier|public
+specifier|static
+specifier|final
+name|Property
+name|ORIGINAL_RESOURCE_NAME
+init|=
+name|Property
+operator|.
+name|internalTextBag
+argument_list|(
+name|TIKA_META_PREFIX
+operator|+
+literal|"origResourceName"
 argument_list|)
 decl_stmt|;
 comment|/**      * This is currently used to identify Content-Type that may be      * included within a document, such as in html documents      * (e.g.<meta http-equiv="content-type" content="text/html; charset=UTF-8">)      , or the value might come from outside the document.  This information      * may be faulty and should be treated only as a hint.      */

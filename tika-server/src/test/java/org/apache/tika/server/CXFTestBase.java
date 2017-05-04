@@ -608,6 +608,10 @@ name|DigestAlgorithm
 operator|.
 name|MD5
 argument_list|)
+argument_list|,
+operator|new
+name|DefaultInputStreamFactory
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|JAXRSServerFactoryBean

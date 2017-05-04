@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -34,6 +82,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -106,30 +166,6 @@ import|;
 end_import
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotNull
-import|;
-end_import
-
-begin_import
 import|import
 name|org
 operator|.
@@ -153,6 +189,8 @@ begin_class
 specifier|public
 class|class
 name|TestChmExtractor
+extends|extends
+name|TikaTest
 block|{
 specifier|private
 name|ChmExtractor
@@ -284,6 +322,46 @@ argument_list|,
 name|count
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testOOMOnCorruptCHM
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+try|try
+block|{
+name|XMLResult
+name|r
+init|=
+name|getXML
+argument_list|(
+literal|"testChm_oom.chm"
+argument_list|)
+decl_stmt|;
+name|fail
+argument_list|(
+literal|"should have thrown TikaException"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TikaException
+name|e
+parameter_list|)
+block|{
+name|assertTrue
+argument_list|(
+literal|"correct exception thrown"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class
