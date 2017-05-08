@@ -861,7 +861,7 @@ name|config
 operator|.
 name|setPageSegMode
 argument_list|(
-literal|"11"
+literal|"14"
 argument_list|)
 expr_stmt|;
 block|}

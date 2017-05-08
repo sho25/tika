@@ -743,7 +743,7 @@ name|pageSegMode
 operator|.
 name|matches
 argument_list|(
-literal|"[1-9]|10"
+literal|"[0-9]|10|11|12|13"
 argument_list|)
 condition|)
 block|{
@@ -751,7 +751,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Invalid language code"
+literal|"Invalid page segmentation mode"
 argument_list|)
 throw|;
 block|}
