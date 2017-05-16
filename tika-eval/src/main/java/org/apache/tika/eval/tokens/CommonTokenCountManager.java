@@ -261,20 +261,29 @@ argument_list|()
 decl_stmt|;
 comment|//if we have no model or if no langid is passed in
 comment|//make this configurable
+specifier|private
+specifier|final
 name|String
 name|defaultLangCode
-init|=
-literal|"en"
 decl_stmt|;
 specifier|public
 name|CommonTokenCountManager
 parameter_list|(
 name|Path
 name|commonTokensDir
+parameter_list|,
+name|String
+name|defaultLangCode
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|this
+operator|.
+name|defaultLangCode
+operator|=
+name|defaultLangCode
+expr_stmt|;
 name|this
 operator|.
 name|commonTokensDir

@@ -194,7 +194,7 @@ literal|"( "
 operator|+
 name|Cols
 operator|.
-name|MIME_TYPE_ID
+name|MIME_ID
 operator|.
 name|name
 argument_list|()

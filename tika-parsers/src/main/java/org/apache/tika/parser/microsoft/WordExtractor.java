@@ -753,11 +753,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-specifier|private
-specifier|final
-name|boolean
-name|extractDeletedContent
-decl_stmt|;
 comment|// True if we are currently in the named style tag:
 specifier|private
 name|boolean
@@ -796,20 +791,6 @@ operator|.
 name|metadata
 operator|=
 name|metadata
-expr_stmt|;
-name|extractDeletedContent
-operator|=
-name|context
-operator|.
-name|get
-argument_list|(
-name|OfficeParserConfig
-operator|.
-name|class
-argument_list|)
-operator|.
-name|getIncludeDeletedContent
-argument_list|()
 expr_stmt|;
 block|}
 specifier|private
@@ -1317,6 +1298,14 @@ name|xhtml
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|officeParserConfig
+operator|.
+name|getIncludeShapeBasedContent
+argument_list|()
+condition|)
+block|{
 comment|// Do everything else
 for|for
 control|(
@@ -1338,6 +1327,7 @@ argument_list|,
 name|paragraph
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -3918,7 +3908,7 @@ literal|null
 condition|)
 block|{
 return|return
-literal|false
+literal|true
 return|;
 block|}
 return|return
@@ -3934,7 +3924,10 @@ operator|.
 name|isMarkedDeleted
 argument_list|()
 operator|&&
-name|extractDeletedContent
+name|officeParserConfig
+operator|.
+name|getIncludeDeletedContent
+argument_list|()
 operator|)
 return|;
 block|}

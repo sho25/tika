@@ -249,6 +249,34 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaMemoryLimitException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|extractor
 operator|.
 name|EmbeddedDocumentUtil
@@ -359,6 +387,24 @@ name|WIN_ASCII
 init|=
 literal|"WINDOWS-1252"
 decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|memoryLimitInKb
+decl_stmt|;
+name|RTFObjDataParser
+parameter_list|(
+name|int
+name|memoryLimitInKb
+parameter_list|)
+block|{
+name|this
+operator|.
+name|memoryLimitInKb
+operator|=
+name|memoryLimitInKb
+expr_stmt|;
+block|}
 comment|/**      * Parses the embedded object/pict string      *      * @param bytes actual bytes (already converted from the       *  hex pair string stored in the embedded object data into actual bytes or read      *  as raw binary bytes)      * @return a SimpleRTFEmbObj or null      * @throws IOException if there are any surprise surprises during parsing      */
 comment|/**      * @param bytes      * @param metadata             incoming metadata      * @param unknownFilenameCount      * @return byte[] for contents of obj data      * @throws IOException      */
 specifier|protected
@@ -378,6 +424,8 @@ name|unknownFilenameCount
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 name|ByteArrayInputStream
 name|is
@@ -1039,6 +1087,8 @@ name|metadata
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 comment|//now parse the package header
 name|ByteArrayInputStream
@@ -1528,6 +1578,8 @@ name|is
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 name|long
 name|len
@@ -1589,6 +1641,8 @@ name|len
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 comment|//initByteArray tests for "reading of too many bytes"
 name|byte
@@ -1623,28 +1677,82 @@ name|len
 parameter_list|)
 throws|throws
 name|IOException
+throws|,
+name|TikaException
 block|{
 if|if
 condition|(
 name|len
-argument_list|<
+operator|<
 literal|0
-operator|||
-name|len
-argument_list|>
-name|RTFParser
-operator|.
-name|getMaxBytesForEmbeddedObject
-argument_list|()
 condition|)
 block|{
 throw|throw
 operator|new
 name|IOException
 argument_list|(
-literal|"Requested length for reading bytes is out of bounds: "
+literal|"Requested length for reading bytes< 0?!: "
 operator|+
 name|len
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|memoryLimitInKb
+operator|>
+operator|-
+literal|1
+operator|&&
+name|len
+operator|>
+name|memoryLimitInKb
+operator|*
+literal|1024
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaMemoryLimitException
+argument_list|(
+literal|"File embedded in RTF caused this ("
+operator|+
+name|len
+operator|+
+literal|") bytes), but maximum allowed is ("
+operator|+
+operator|(
+name|memoryLimitInKb
+operator|*
+literal|1024
+operator|)
+operator|+
+literal|")."
+operator|+
+literal|"If this is a valid RTF file, consider increasing the memory limit via TikaConfig."
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|len
+operator|>
+name|Integer
+operator|.
+name|MAX_VALUE
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaMemoryLimitException
+argument_list|(
+literal|"File embedded in RTF caused this ("
+operator|+
+name|len
+operator|+
+literal|") bytes), but there is a hard limit of Integer.MAX_VALUE+"
 argument_list|)
 throw|;
 block|}

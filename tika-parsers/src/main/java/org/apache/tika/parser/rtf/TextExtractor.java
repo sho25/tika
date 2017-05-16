@@ -5157,12 +5157,20 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
+decl||
+name|TikaException
 name|e
 parameter_list|)
 block|{
-comment|//param was out of bounds or something went wrong during writing.
-comment|//skip this obj and move on
-comment|//TODO: log.warn
+name|EmbeddedDocumentUtil
+operator|.
+name|recordEmbeddedStreamException
+argument_list|(
+name|e
+argument_list|,
+name|metadata
+argument_list|)
+expr_stmt|;
 name|embObjHandler
 operator|.
 name|reset

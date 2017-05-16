@@ -571,6 +571,8 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|parameterizeProfiler
+argument_list|(
 operator|new
 name|ExtractComparer
 argument_list|(
@@ -591,6 +593,7 @@ name|getDBWriter
 argument_list|(
 name|getNonRefTableInfos
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 return|;

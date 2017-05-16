@@ -426,6 +426,11 @@ name|parentMetadata
 decl_stmt|;
 comment|//metadata of the parent/container document
 specifier|protected
+specifier|final
+name|OfficeParserConfig
+name|officeParserConfig
+decl_stmt|;
+specifier|protected
 name|AbstractPOIFSExtractor
 parameter_list|(
 name|ParseContext
@@ -469,6 +474,23 @@ argument_list|(
 name|PasswordProvider
 operator|.
 name|class
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|officeParserConfig
+operator|=
+name|context
+operator|.
+name|get
+argument_list|(
+name|OfficeParserConfig
+operator|.
+name|class
+argument_list|,
+operator|new
+name|OfficeParserConfig
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|this
