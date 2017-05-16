@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser that uses an external program (like catdoc or pdf2txt) to extract  *  text content and metadata from a given document.  */
+comment|/**  * Parser that uses an external program (like catdoc or pdf2txt) to extract  * text content and metadata from a given document.  */
 end_comment
 
 begin_class
@@ -360,14 +360,14 @@ name|ExternalParser
 extends|extends
 name|AbstractParser
 block|{
-comment|/**      * Consumer contract      * @since Apache Tika 1.14      */
+comment|/**      * Consumer contract      *      * @since Apache Tika 1.14      */
 specifier|public
 interface|interface
 name|LineConsumer
 extends|extends
 name|Serializable
 block|{
-comment|/**          * Consume a line          * @param line a line of string          */
+comment|/**          * Consume a line          *          * @param line a line of string          */
 name|void
 name|consume
 parameter_list|(
@@ -407,7 +407,7 @@ init|=
 operator|-
 literal|1079128990650687037L
 decl_stmt|;
-comment|/**      * The token, which if present in the Command string, will      *  be replaced with the input filename.       * Alternately, the input data can be streamed over STDIN.      */
+comment|/**      * The token, which if present in the Command string, will      * be replaced with the input filename.      * Alternately, the input data can be streamed over STDIN.      */
 specifier|public
 specifier|static
 specifier|final
@@ -416,7 +416,7 @@ name|INPUT_FILE_TOKEN
 init|=
 literal|"${INPUT}"
 decl_stmt|;
-comment|/**      * The token, which if present in the Command string, will      *  be replaced with the output filename.       * Alternately, the output data can be collected on STDOUT.      */
+comment|/**      * The token, which if present in the Command string, will      * be replaced with the output filename.      * Alternately, the output data can be collected on STDOUT.      */
 specifier|public
 specifier|static
 specifier|final
@@ -438,7 +438,7 @@ operator|.
 name|emptySet
 argument_list|()
 decl_stmt|;
-comment|/**      * Regular Expressions to run over STDOUT to      *  extract Metadata.      */
+comment|/**      * Regular Expressions to run over STDOUT to      * extract Metadata.      */
 specifier|private
 name|Map
 argument_list|<
@@ -450,7 +450,7 @@ name|metadataPatterns
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * The external command to invoke.      * @see Runtime#exec(String[])      */
+comment|/**      * The external command to invoke.      *      * @see Runtime#exec(String[])      */
 specifier|private
 name|String
 index|[]
@@ -540,7 +540,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**      * Sets the command to be run. This can include either of      *  {@link #INPUT_FILE_TOKEN} or {@link #OUTPUT_FILE_TOKEN}      *  if the command needs filenames.      * @see Runtime#exec(String[])      */
+comment|/**      * Sets the command to be run. This can include either of      * {@link #INPUT_FILE_TOKEN} or {@link #OUTPUT_FILE_TOKEN}      * if the command needs filenames.      *      * @see Runtime#exec(String[])      */
 specifier|public
 name|void
 name|setCommand
@@ -557,7 +557,7 @@ operator|=
 name|command
 expr_stmt|;
 block|}
-comment|/**      * Gets lines consumer      * @return consumer instance      */
+comment|/**      * Gets lines consumer      *      * @return consumer instance      */
 specifier|public
 name|LineConsumer
 name|getIgnoredLineConsumer
@@ -567,7 +567,7 @@ return|return
 name|ignoredLineConsumer
 return|;
 block|}
-comment|/**      * Set a consumer for the lines ignored by the parse functions      * @param ignoredLineConsumer consumer instance      */
+comment|/**      * Set a consumer for the lines ignored by the parse functions      *      * @param ignoredLineConsumer consumer instance      */
 specifier|public
 name|void
 name|setIgnoredLineConsumer
@@ -597,7 +597,7 @@ return|return
 name|metadataPatterns
 return|;
 block|}
-comment|/**      * Sets the map of regular expression patterns and Metadata      *  keys. Any matching patterns will have the matching      *  metadata entries set.      * Set this to null to disable Metadata extraction.      */
+comment|/**      * Sets the map of regular expression patterns and Metadata      * keys. Any matching patterns will have the matching      * metadata entries set.      * Set this to null to disable Metadata extraction.      */
 specifier|public
 name|void
 name|setMetadataExtractionPatterns
@@ -618,7 +618,7 @@ operator|=
 name|patterns
 expr_stmt|;
 block|}
-comment|/**      * Executes the configured external command and passes the given document      *  stream as a simple XHTML document to the given SAX content handler.      * Metadata is only extracted if {@link #setMetadataExtractionPatterns(Map)}      *  has been called to set patterns.      */
+comment|/**      * Executes the configured external command and passes the given document      * stream as a simple XHTML document to the given SAX content handler.      * Metadata is only extracted if {@link #setMetadataExtractionPatterns(Map)}      * has been called to set patterns.      */
 specifier|public
 name|void
 name|parse
@@ -1116,7 +1116,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Starts a thread that extracts the contents of the standard output      * stream of the given process to the given XHTML content handler.      * The standard output stream is closed once fully processed.      *      * @param process process      * @param xhtml XHTML content handler      * @throws SAXException if the XHTML SAX events could not be handled      * @throws IOException if an input error occurred      */
+comment|/**      * Starts a thread that extracts the contents of the standard output      * stream of the given process to the given XHTML content handler.      * The standard output stream is closed once fully processed.      *      * @param process process      * @param xhtml   XHTML content handler      * @throws SAXException if the XHTML SAX events could not be handled      * @throws IOException  if an input error occurred      */
 specifier|private
 name|void
 name|extractOutput
@@ -1221,7 +1221,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Starts a thread that sends the contents of the given input stream      * to the standard input stream of the given process. Potential      * exceptions are ignored, and the standard input stream is closed      * once fully processed. Note that the given input stream is<em>not</em>      * closed by this method.      *      * @param process process      * @param stream input stream      */
+comment|/**      * Starts a thread that sends the contents of the given input stream      * to the standard input stream of the given process. Potential      * exceptions are ignored, and the standard input stream is closed      * once fully processed. Note that the given input stream is<em>not</em>      * closed by this method.      *      * @param process process      * @param stream  input stream      */
 specifier|private
 name|void
 name|sendInput
@@ -1294,9 +1294,9 @@ parameter_list|(
 name|InterruptedException
 name|ignore
 parameter_list|)
-block|{}
+block|{         }
 block|}
-comment|/**      * Starts a thread that reads and discards the contents of the      * standard stream of the given process. Potential exceptions      * are ignored, and the stream is closed once fully processed.      * Note: calling this starts a new thread and blocks the current(caller) thread until the new thread dies      * @param stream stream to be ignored      */
+comment|/**      * Starts a thread that reads and discards the contents of the      * standard stream of the given process. Potential exceptions      * are ignored, and the stream is closed once fully processed.      * Note: calling this starts a new thread and blocks the current(caller) thread until the new thread dies      *      * @param stream stream to be ignored      */
 specifier|private
 specifier|static
 name|void
@@ -1315,7 +1315,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Starts a thread that reads and discards the contents of the      * standard stream of the given process. Potential exceptions      * are ignored, and the stream is closed once fully processed.      * @param stream stream to sent to black hole (a k a null)      * @param waitForDeath when {@code true} the caller thread will be blocked till the death of new thread.      * @return The thread that is created and started      */
+comment|/**      * Starts a thread that reads and discards the contents of the      * standard stream of the given process. Potential exceptions      * are ignored, and the stream is closed once fully processed.      *      * @param stream       stream to sent to black hole (a k a null)      * @param waitForDeath when {@code true} the caller thread will be blocked till the death of new thread.      * @return The thread that is created and started      */
 specifier|private
 specifier|static
 name|Thread
@@ -1397,7 +1397,7 @@ parameter_list|(
 name|InterruptedException
 name|ignore
 parameter_list|)
-block|{}
+block|{             }
 block|}
 return|return
 name|t
@@ -1633,9 +1633,9 @@ parameter_list|(
 name|InterruptedException
 name|ignore
 parameter_list|)
-block|{}
+block|{         }
 block|}
-comment|/**      * Checks to see if the command can be run. Typically used with      *  something like "myapp --version" to check to see if "myapp"      *  is installed and on the path.      *        * @param checkCmd The check command to run      * @param errorValue What is considered an error value?       */
+comment|/**      * Checks to see if the command can be run. Typically used with      * something like "myapp --version" to check to see if "myapp"      * is installed and on the path.      *      * @param checkCmd   The check command to run      * @param errorValue What is considered an error value?      */
 specifier|public
 specifier|static
 name|boolean
