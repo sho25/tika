@@ -770,11 +770,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 return|return
 operator|-
 literal|1

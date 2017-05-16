@@ -253,6 +253,26 @@ name|ParseContext
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Implementation of {@link org.apache.tika.parser.DigestingParser.Digester}  * that relies on commons.codec.digest.DigestUtils to calculate digest hashes.  *<p>  * This digester tries to use the regular mark/reset protocol on the InputStream.  * However, this wraps an internal BoundedInputStream, and if the InputStream  * is not fully read, then this will reset the stream and  * spool the InputStream to disk (via TikaInputStream) and then digest the file.  *<p>  * If a TikaInputStream is passed in and it has an underlying file that is longer  * than the {@link #markLimit}, then this digester digests the file directly.  *  */
 end_comment
@@ -266,6 +286,21 @@ name|DigestingParser
 operator|.
 name|Digester
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|CommonsDigester
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|public
 enum|enum
 name|DigestAlgorithm
@@ -776,10 +811,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Problem digesting"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 comment|//swallow, or should we throw this?
 block|}

@@ -269,10 +269,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"couldn't read rest url"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 if|if

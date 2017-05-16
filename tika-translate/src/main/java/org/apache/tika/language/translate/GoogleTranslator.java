@@ -167,6 +167,26 @@ name|ObjectMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of a REST client to the<a  * href="https://www.googleapis.com/language/translate/v2">Google Translate v2  * API</a>. Based on the<a  * href="http://hayageek.com/google-translate-api-tutorial/">great tutorial</a>  * from<a href="http://hayageek.com">hayageek.com</a>. Set your API key in  * translator.google.properties.  *   *   */
 end_comment
@@ -178,6 +198,21 @@ name|GoogleTranslator
 extends|extends
 name|AbstractTranslator
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|GoogleTranslator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -285,10 +320,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Exception reading config file"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|isAvailable
 operator|=

@@ -209,7 +209,6 @@ argument_list|(
 name|xmlLogFileIs
 argument_list|)
 decl_stmt|;
-comment|/* try {             System.out.println("WRAPPED: " + IOUtils.toString(is)+ "<<WRAPPED");         } catch (IOException e) {             e.printStackTrace();         }*/
 name|XMLInputFactory
 name|factory
 init|=
@@ -330,11 +329,6 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
 name|warn
@@ -354,11 +348,6 @@ name|SQLException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|LOG
 operator|.
 name|warn
@@ -411,7 +400,7 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|//sdo we care any more?
+comment|//do we care any more?
 block|}
 break|break;
 block|}

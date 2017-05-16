@@ -131,6 +131,26 @@ name|ChmParsingException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Holds chm listing entries  */
 end_comment
@@ -140,6 +160,21 @@ specifier|public
 class|class
 name|ChmDirectoryListingSet
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|ChmDirectoryListingSet
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|List
 argument_list|<
@@ -531,10 +566,14 @@ name|ChmParsingException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Chm parse exception"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 finally|finally
@@ -1050,7 +1089,7 @@ comment|//                    } while (nextEntry(dir_chunk));
 comment|//                }
 block|}
 comment|//        } catch (Exception e) {
-comment|//            e.printStackTrace();
+comment|//                LOG.warn("problem parsing", e);
 comment|//        }
 block|}
 comment|/**      * Returns encrypted integer      *       * @param data_chunk      *       * @return      */

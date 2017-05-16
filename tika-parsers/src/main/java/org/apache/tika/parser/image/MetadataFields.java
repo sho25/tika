@@ -93,6 +93,26 @@ name|TikaCoreProperties
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Knowns about all declared {@link Metadata} fields.  * Didn't find this functionality anywhere so it was added for  * ImageMetadataExtractor, but it can be generalized.  */
 end_comment
@@ -103,6 +123,21 @@ specifier|abstract
 class|class
 name|MetadataFields
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|MetadataFields
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 name|HashSet
@@ -258,10 +293,14 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Illegal argument in field"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -270,10 +309,14 @@ name|IllegalAccessException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Illegal access in field"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -329,10 +372,14 @@ name|IllegalArgumentException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Illegal argument in field"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -341,10 +388,14 @@ name|IllegalAccessException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Illegal access in field"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
