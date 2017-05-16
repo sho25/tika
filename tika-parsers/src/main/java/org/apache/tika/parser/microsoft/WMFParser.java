@@ -454,6 +454,13 @@ name|font
 operator|.
 name|getCharSet
 argument_list|()
+operator|==
+literal|null
+operator|||
+name|font
+operator|.
+name|getCharSet
+argument_list|()
 operator|.
 name|getCharset
 argument_list|()
