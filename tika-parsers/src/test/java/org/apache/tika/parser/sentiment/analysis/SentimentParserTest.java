@@ -265,9 +265,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|sentiment
-argument_list|,
 literal|"positive"
+argument_list|,
+name|sentiment
 argument_list|)
 expr_stmt|;
 block|}
@@ -352,9 +352,9 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|sentiment
-argument_list|,
 literal|"angry"
+argument_list|,
+name|sentiment
 argument_list|)
 expr_stmt|;
 block|}
@@ -382,7 +382,7 @@ argument_list|()
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"tika-config-sentiment-opennlp.xml"
+name|configXml
 argument_list|)
 init|)
 block|{
