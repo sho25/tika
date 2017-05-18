@@ -349,7 +349,11 @@ decl_stmt|;
 comment|// Ask FontBox to parse the file for us
 name|TrueTypeFont
 name|font
+init|=
+literal|null
 decl_stmt|;
+try|try
+block|{
 name|TTFParser
 name|parser
 init|=
@@ -655,6 +659,23 @@ operator|.
 name|getString
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|font
+operator|!=
+literal|null
+condition|)
+block|{
+name|font
+operator|.
+name|close
+argument_list|()
 expr_stmt|;
 block|}
 block|}
