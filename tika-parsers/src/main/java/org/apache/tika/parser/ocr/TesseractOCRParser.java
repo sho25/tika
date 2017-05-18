@@ -846,6 +846,14 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|volatile
+name|boolean
+name|HAS_ALERTED
+init|=
+literal|false
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -881,9 +889,35 @@ argument_list|(
 name|config
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|HAS_ALERTED
+condition|)
+block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Tesseract OCR is installed and will be automatically applied to image files.\n"
+operator|+
+literal|"This may dramatically slow down content extraction (TIKA-2359).\n"
+operator|+
+literal|"As of Tika 1.15 (and prior versions), Tesseract is automatically called.\n"
+operator|+
+literal|"In future versions of Tika, users may need to turn the TesseractOCRParser on via TikaConfig."
+argument_list|)
+expr_stmt|;
+name|HAS_ALERTED
+operator|=
+literal|true
+expr_stmt|;
+block|}
 return|return
 name|SUPPORTED_TYPES
 return|;
+block|}
 comment|// Otherwise don't advertise anything, so the other image parsers
 comment|//  can be selected instead
 return|return
