@@ -18,6 +18,18 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -77,19 +89,17 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Test
+name|Ignore
 import|;
 end_import
 
 begin_import
-import|import static
+import|import
 name|org
 operator|.
 name|junit
 operator|.
-name|Assert
-operator|.
-name|*
+name|Test
 import|;
 end_import
 
@@ -100,6 +110,11 @@ name|DL4JInceptionV3NetTest
 block|{
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"until we can make this more robust across platforms"
+argument_list|)
 specifier|public
 name|void
 name|recognise
