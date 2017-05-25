@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/**  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *<p>  * http://www.apache.org/licenses/LICENSE-2.0  *<p>  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -67,7 +67,7 @@ name|org
 operator|.
 name|json
 operator|.
-name|JSONObject
+name|JSONException
 import|;
 end_import
 
@@ -77,7 +77,7 @@ name|org
 operator|.
 name|json
 operator|.
-name|JSONException
+name|JSONObject
 import|;
 end_import
 
@@ -99,7 +99,7 @@ block|{
 specifier|public
 name|TEIParser
 parameter_list|()
-block|{   }
+block|{     }
 specifier|public
 name|Metadata
 name|parse
@@ -2509,7 +2509,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return the surName      */
+comment|/**          * @return the surName          */
 specifier|public
 name|String
 name|getSurName
@@ -2519,7 +2519,7 @@ return|return
 name|surName
 return|;
 block|}
-comment|/**      * @param surName      *          the surName to set      */
+comment|/**          * @param surName          *          the surName to set          */
 specifier|public
 name|void
 name|setSurName
@@ -2535,7 +2535,7 @@ operator|=
 name|surName
 expr_stmt|;
 block|}
-comment|/**      * @return the middleName      */
+comment|/**          * @return the middleName          */
 specifier|public
 name|String
 name|getMiddleName
@@ -2545,7 +2545,7 @@ return|return
 name|middleName
 return|;
 block|}
-comment|/**      * @param middleName      *          the middleName to set      */
+comment|/**          * @param middleName          *          the middleName to set          */
 specifier|public
 name|void
 name|setMiddleName
@@ -2561,7 +2561,7 @@ operator|=
 name|middleName
 expr_stmt|;
 block|}
-comment|/**      * @return the firstName      */
+comment|/**          * @return the firstName          */
 specifier|public
 name|String
 name|getFirstName
@@ -2571,7 +2571,7 @@ return|return
 name|firstName
 return|;
 block|}
-comment|/**      * @param firstName      *          the firstName to set      */
+comment|/**          * @param firstName          *          the firstName to set          */
 specifier|public
 name|void
 name|setFirstName
@@ -2587,7 +2587,7 @@ operator|=
 name|firstName
 expr_stmt|;
 block|}
-comment|/**      * @return the affiliations      */
+comment|/**          * @return the affiliations          */
 specifier|public
 name|List
 argument_list|<
@@ -2600,7 +2600,7 @@ return|return
 name|affiliations
 return|;
 block|}
-comment|/**      * @param affiliations      *          the affiliations to set      */
+comment|/**          * @param affiliations          *          the affiliations to set          */
 specifier|public
 name|void
 name|setAffiliations
@@ -2619,7 +2619,7 @@ operator|=
 name|affiliations
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#toString()      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 specifier|public
@@ -2686,7 +2686,7 @@ name|Address
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return the orgName      */
+comment|/**          * @return the orgName          */
 specifier|public
 name|OrgName
 name|getOrgName
@@ -2696,7 +2696,7 @@ return|return
 name|orgName
 return|;
 block|}
-comment|/**      * @param orgName      *          the orgName to set      */
+comment|/**          * @param orgName          *          the orgName to set          */
 specifier|public
 name|void
 name|setOrgName
@@ -2712,7 +2712,7 @@ operator|=
 name|orgName
 expr_stmt|;
 block|}
-comment|/**      * @return the address      */
+comment|/**          * @return the address          */
 specifier|public
 name|Address
 name|getAddress
@@ -2722,7 +2722,7 @@ return|return
 name|address
 return|;
 block|}
-comment|/**      * @param address      *          the address to set      */
+comment|/**          * @param address          *          the address to set          */
 specifier|public
 name|void
 name|setAddress
@@ -2738,7 +2738,7 @@ operator|=
 name|address
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#equals(java.lang.Object)          */
 annotation|@
 name|Override
 specifier|public
@@ -2785,7 +2785,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#toString()      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 specifier|public
@@ -2832,7 +2832,7 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return the typeNames      */
+comment|/**          * @return the typeNames          */
 specifier|public
 name|List
 argument_list|<
@@ -2845,7 +2845,7 @@ return|return
 name|typeNames
 return|;
 block|}
-comment|/**      * @param typeNames      *          the typeNames to set      */
+comment|/**          * @param typeNames          *          the typeNames to set          */
 specifier|public
 name|void
 name|setTypeNames
@@ -2914,7 +2914,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#equals(java.lang.Object)          */
 annotation|@
 name|Override
 specifier|public
@@ -3026,7 +3026,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * @return the name      */
+comment|/**          * @return the name          */
 specifier|public
 name|String
 name|getName
@@ -3036,7 +3036,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**      * @param name      *          the name to set      */
+comment|/**          * @param name          *          the name to set          */
 specifier|public
 name|void
 name|setName
@@ -3052,7 +3052,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * @return the type      */
+comment|/**          * @return the type          */
 specifier|public
 name|String
 name|getType
@@ -3062,7 +3062,7 @@ return|return
 name|type
 return|;
 block|}
-comment|/**      * @param type      *          the type to set      */
+comment|/**          * @param type          *          the type to set          */
 specifier|public
 name|void
 name|setType
@@ -3078,7 +3078,7 @@ operator|=
 name|type
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#equals(java.lang.Object)          */
 annotation|@
 name|Override
 specifier|public
@@ -3175,7 +3175,7 @@ name|Country
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @return the region      */
+comment|/**          * @return the region          */
 specifier|public
 name|String
 name|getRegion
@@ -3185,7 +3185,7 @@ return|return
 name|region
 return|;
 block|}
-comment|/**      * @param region      *          the region to set      */
+comment|/**          * @param region          *          the region to set          */
 specifier|public
 name|void
 name|setRegion
@@ -3201,7 +3201,7 @@ operator|=
 name|region
 expr_stmt|;
 block|}
-comment|/**      * @return the postCode      */
+comment|/**          * @return the postCode          */
 specifier|public
 name|String
 name|getPostCode
@@ -3211,7 +3211,7 @@ return|return
 name|postCode
 return|;
 block|}
-comment|/**      * @param postCode      *          the postCode to set      */
+comment|/**          * @param postCode          *          the postCode to set          */
 specifier|public
 name|void
 name|setPostCode
@@ -3227,7 +3227,7 @@ operator|=
 name|postCode
 expr_stmt|;
 block|}
-comment|/**      * @return the settlment      */
+comment|/**          * @return the settlment          */
 specifier|public
 name|String
 name|getSettlment
@@ -3237,7 +3237,7 @@ return|return
 name|settlment
 return|;
 block|}
-comment|/**      * @param settlment      *          the settlment to set      */
+comment|/**          * @param settlment          *          the settlment to set          */
 specifier|public
 name|void
 name|setSettlment
@@ -3253,7 +3253,7 @@ operator|=
 name|settlment
 expr_stmt|;
 block|}
-comment|/**      * @return the country      */
+comment|/**          * @return the country          */
 specifier|public
 name|Country
 name|getCountry
@@ -3263,7 +3263,7 @@ return|return
 name|country
 return|;
 block|}
-comment|/**      * @param country      *          the country to set      */
+comment|/**          * @param country          *          the country to set          */
 specifier|public
 name|void
 name|setCountry
@@ -3279,7 +3279,7 @@ operator|=
 name|country
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#equals(java.lang.Object)          */
 annotation|@
 name|Override
 specifier|public
@@ -3423,7 +3423,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#toString()      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 specifier|public
@@ -3527,7 +3527,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/**      * @return the key      */
+comment|/**          * @return the key          */
 specifier|public
 name|String
 name|getKey
@@ -3537,7 +3537,7 @@ return|return
 name|key
 return|;
 block|}
-comment|/**      * @param key      *          the key to set      */
+comment|/**          * @param key          *          the key to set          */
 specifier|public
 name|void
 name|setKey
@@ -3553,7 +3553,7 @@ operator|=
 name|key
 expr_stmt|;
 block|}
-comment|/**      * @return the content      */
+comment|/**          * @return the content          */
 specifier|public
 name|String
 name|getContent
@@ -3563,7 +3563,7 @@ return|return
 name|content
 return|;
 block|}
-comment|/**      * @param content      *          the content to set      */
+comment|/**          * @param content          *          the content to set          */
 specifier|public
 name|void
 name|setContent
@@ -3579,7 +3579,7 @@ operator|=
 name|content
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.lang.Object#equals(java.lang.Object)      */
+comment|/*          * (non-Javadoc)          *          * @see java.lang.Object#equals(java.lang.Object)          */
 annotation|@
 name|Override
 specifier|public
