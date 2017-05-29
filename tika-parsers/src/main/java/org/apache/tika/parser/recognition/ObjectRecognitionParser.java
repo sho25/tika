@@ -669,6 +669,8 @@ argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
+name|?
+extends|extends
 name|RecognisedObject
 argument_list|>
 name|objects
