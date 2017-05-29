@@ -249,6 +249,8 @@ function_decl|;
 comment|/**      * Recognise the objects in the stream      * @param stream content stream      * @param handler tika's content handler      * @param metadata metadata instance      * @param context parser context      * @return List of {@link RecognisedObject}s      * @throws IOException when an I/O error occurs      * @throws SAXException when an issue with XML occurs      * @throws TikaException any generic error      */
 name|List
 argument_list|<
+name|?
+extends|extends
 name|RecognisedObject
 argument_list|>
 name|recognise
