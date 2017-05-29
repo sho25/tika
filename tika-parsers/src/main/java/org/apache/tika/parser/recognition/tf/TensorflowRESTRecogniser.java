@@ -581,8 +581,6 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|?
-extends|extends
 name|RecognisedObject
 argument_list|>
 name|recognise

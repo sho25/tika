@@ -603,9 +603,7 @@ name|Override
 specifier|public
 name|List
 argument_list|<
-name|?
-extends|extends
-name|RecognisedObject
+name|CaptionObject
 argument_list|>
 name|recognise
 parameter_list|(
