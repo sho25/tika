@@ -93,20 +93,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|TikaInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -162,26 +148,6 @@ operator|.
 name|io
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
 import|;
 end_import
 
@@ -370,7 +336,7 @@ name|getValues
 argument_list|(
 name|ObjectRecognitionParser
 operator|.
-name|MD_KEY
+name|MD_KEY_OBJ_REC
 argument_list|)
 argument_list|,
 literal|" "
@@ -535,7 +501,7 @@ name|getValues
 argument_list|(
 name|ObjectRecognitionParser
 operator|.
-name|MD_KEY
+name|MD_KEY_OBJ_REC
 argument_list|)
 argument_list|,
 literal|" "

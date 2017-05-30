@@ -369,9 +369,17 @@ specifier|public
 specifier|static
 specifier|final
 name|String
-name|MD_KEY
+name|MD_KEY_OBJ_REC
 init|=
 literal|"OBJECT"
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|MD_KEY_IMG_CAP
+init|=
+literal|"CAPTION"
 decl_stmt|;
 specifier|public
 specifier|static
@@ -831,7 +839,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|MD_KEY
+name|MD_KEY_OBJ_REC
 argument_list|,
 name|mdValue
 argument_list|)
