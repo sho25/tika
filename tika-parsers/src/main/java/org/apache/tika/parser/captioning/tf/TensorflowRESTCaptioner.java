@@ -473,7 +473,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/captions?beam_size=3&max_caption_length=15"
+literal|"http://localhost:8764/inception/v3/captions?beam_size=3&max_caption_length=15"
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -486,7 +486,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/ping"
+literal|"http://localhost:8764/inception/v3/ping"
 argument_list|)
 decl_stmt|;
 specifier|private
