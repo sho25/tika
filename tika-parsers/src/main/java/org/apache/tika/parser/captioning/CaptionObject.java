@@ -69,6 +69,33 @@ name|confidence
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Caption{"
+operator|+
+literal|"sentence='"
+operator|+
+name|label
+operator|+
+literal|"\' ("
+operator|+
+name|labelLang
+operator|+
+literal|')'
+operator|+
+literal|", confidence="
+operator|+
+name|confidence
+operator|+
+literal|'}'
+return|;
+block|}
 block|}
 end_class
 

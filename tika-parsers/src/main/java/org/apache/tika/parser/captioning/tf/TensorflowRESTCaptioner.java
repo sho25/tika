@@ -450,7 +450,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-literal|"http://localhost:8764/caption?beam_size=3&max_caption_length=15"
+literal|"http://localhost:8764/captions?beam_size=3&max_caption_length=15"
 argument_list|)
 decl_stmt|;
 annotation|@
