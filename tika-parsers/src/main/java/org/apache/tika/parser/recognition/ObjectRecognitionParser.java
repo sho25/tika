@@ -530,10 +530,6 @@ decl_stmt|;
 specifier|private
 name|ObjectRecogniser
 name|recogniser
-init|=
-operator|new
-name|TensorflowRESTRecogniser
-argument_list|()
 decl_stmt|;
 annotation|@
 name|Field
