@@ -591,6 +591,33 @@ argument_list|(
 name|params
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recogniser = {}"
+argument_list|,
+name|recogniser
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"Recogniser Available = {}"
+argument_list|,
+name|recogniser
+operator|.
+name|isAvailable
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|recogniser
@@ -606,38 +633,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Recogniser = {}"
-argument_list|,
-name|recogniser
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
 literal|"minConfidence = {}, topN={}"
 argument_list|,
 name|minConfidence
 argument_list|,
 name|topN
-argument_list|)
-expr_stmt|;
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Recogniser Available = {}"
-argument_list|,
-name|recogniser
-operator|.
-name|isAvailable
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -653,15 +653,11 @@ name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"Recogniser = {}"
+literal|"captions = {}, maxCaptionLength={}"
 argument_list|,
-name|recogniser
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
+name|captions
+argument_list|,
+name|maxCaptionLength
 argument_list|)
 expr_stmt|;
 block|}
@@ -989,6 +985,7 @@ condition|)
 block|{
 break|break;
 block|}
+block|}
 else|else
 block|{
 name|LOG
@@ -1007,7 +1004,6 @@ argument_list|,
 name|minConfidence
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
