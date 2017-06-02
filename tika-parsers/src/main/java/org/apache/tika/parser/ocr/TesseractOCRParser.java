@@ -1152,7 +1152,6 @@ return|return
 name|hasImageMagick
 return|;
 block|}
-specifier|private
 specifier|static
 name|boolean
 name|hasPython
@@ -1779,6 +1778,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|config
+operator|.
+name|getApplyRotation
+argument_list|()
+operator|&&
 name|hasPython
 argument_list|()
 condition|)
