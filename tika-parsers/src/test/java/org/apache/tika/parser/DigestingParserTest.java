@@ -1449,7 +1449,15 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-literal|"result"
+literal|"result (fileLength="
+operator|+
+name|fileLength
+operator|+
+literal|", markLimit="
+operator|+
+name|markLimit
+operator|+
+literal|")"
 argument_list|,
 name|resultValue
 argument_list|)

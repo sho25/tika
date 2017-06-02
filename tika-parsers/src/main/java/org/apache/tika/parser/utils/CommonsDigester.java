@@ -151,20 +151,6 @@ name|tika
 operator|.
 name|io
 operator|.
-name|CloseShieldInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|io
-operator|.
 name|IOExceptionWithCause
 import|;
 end_import
@@ -274,7 +260,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implementation of {@link org.apache.tika.parser.DigestingParser.Digester}  * that relies on commons.codec.digest.DigestUtils to calculate digest hashes.  *<p>  * This digester tries to use the regular mark/reset protocol on the InputStream.  * However, this wraps an internal BoundedInputStream, and if the InputStream  * is not fully read, then this will reset the stream and  * spool the InputStream to disk (via TikaInputStream) and then digest the file.  *<p>  * If a TikaInputStream is passed in and it has an underlying file that is longer  * than the {@link #markLimit}, then this digester digests the file directly.  *  */
+comment|/**  * Implementation of {@link org.apache.tika.parser.DigestingParser.Digester}  * that relies on commons.codec.digest.DigestUtils to calculate digest hashes.  *<p>  * This digester tries to use the regular mark/reset protocol on the InputStream.  * However, this wraps an internal BoundedInputStream, and if the InputStream  * is not fully read, then this will reset the stream and  * spool the InputStream to disk (via TikaInputStream) and then digest the file.  *<p>  * If a TikaInputStream is passed in and it has an underlying file that is longer  * than the {@link #markLimit}, then this digester digests the file directly.  */
 end_comment
 
 begin_class
@@ -422,8 +408,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|//if this is already a TikaInputStream, rely on the caller to close
-comment|//the stream and free the tmp file.
 name|TikaInputStream
 name|tis
 init|=
@@ -434,43 +418,17 @@ argument_list|(
 name|is
 argument_list|)
 decl_stmt|;
-name|TemporaryResources
-name|tmp
-init|=
-literal|null
-decl_stmt|;
 if|if
 condition|(
 name|tis
-operator|==
+operator|!=
 literal|null
-condition|)
-block|{
-comment|//if this isn't a TikaInputStream, create a new TempResources
-comment|//and make sure to release it!!!
-name|tmp
-operator|=
-operator|new
-name|TemporaryResources
-argument_list|()
-expr_stmt|;
+operator|&&
 name|tis
-operator|=
-name|TikaInputStream
 operator|.
-name|get
-argument_list|(
-operator|new
-name|CloseShieldInputStream
-argument_list|(
-name|is
-argument_list|)
-argument_list|,
-name|tmp
-argument_list|)
-expr_stmt|;
-block|}
-try|try
+name|hasFile
+argument_list|()
+condition|)
 block|{
 name|long
 name|sz
@@ -494,7 +452,7 @@ name|getLength
 argument_list|()
 expr_stmt|;
 block|}
-comment|//if the file is definitely a file,
+comment|//if the inputstream has a file,
 comment|//and its size is greater than its mark limit,
 comment|//just digest the underlying file.
 if|if
@@ -516,6 +474,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+block|}
 comment|//try the usual mark/reset stuff.
 comment|//however, if you actually hit the bound,
 comment|//then stop and spool to file via TikaInputStream
@@ -527,7 +486,7 @@ name|SimpleBoundedInputStream
 argument_list|(
 name|markLimit
 argument_list|,
-name|tis
+name|is
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -577,10 +536,19 @@ block|{
 break|break;
 block|}
 block|}
+comment|//if the stream wasn't finished -- if the stream was longer than the mark limit --
+comment|//spool to File and digest that.
 if|if
 condition|(
 operator|!
 name|finishedStream
+condition|)
+block|{
+if|if
+condition|(
+name|tis
+operator|!=
+literal|null
 condition|)
 block|{
 name|digestFile
@@ -594,24 +562,49 @@ name|m
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+name|TemporaryResources
+name|tmp
+init|=
+operator|new
+name|TemporaryResources
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|TikaInputStream
+name|tmpTikaInputStream
+init|=
+name|TikaInputStream
+operator|.
+name|get
+argument_list|(
+name|is
+argument_list|,
+name|tmp
+argument_list|)
+decl_stmt|;
+name|digestFile
+argument_list|(
+name|tmpTikaInputStream
+operator|.
+name|getFile
+argument_list|()
+argument_list|,
+name|m
+argument_list|)
+expr_stmt|;
 block|}
 finally|finally
 block|{
 try|try
-block|{
-if|if
-condition|(
-name|tmp
-operator|!=
-literal|null
-condition|)
 block|{
 name|tmp
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -626,6 +619,8 @@ argument_list|(
 name|e
 argument_list|)
 throw|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -683,7 +678,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      *      * @param algorithm algo to use      * @param is input stream to read from      * @param metadata metadata for reporting the digest      * @return whether or not this finished the input stream      * @throws IOException      */
+comment|/**      * @param algorithm algo to use      * @param is        input stream to read from      * @param metadata  metadata for reporting the digest      * @return whether or not this finished the input stream      * @throws IOException      */
 specifier|private
 name|boolean
 name|digestEach
@@ -863,7 +858,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      *      * @param s comma-delimited (no space) list of algorithms to use: md5,sha256      * @return      */
+comment|/**      * @param s comma-delimited (no space) list of algorithms to use: md5,sha256      * @return      */
 specifier|public
 specifier|static
 name|DigestAlgorithm
@@ -1251,7 +1246,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**          * Invokes the delegate's<code>read(byte[])</code> method.          * @param b the buffer to read the bytes into          * @return the number of bytes read or -1 if the end of stream or          * the limit has been reached.          * @throws IOException if an I/O error occurs          */
+comment|/**          * Invokes the delegate's<code>read(byte[])</code> method.          *          * @param b the buffer to read the bytes into          * @return the number of bytes read or -1 if the end of stream or          * the limit has been reached.          * @throws IOException if an I/O error occurs          */
 annotation|@
 name|Override
 specifier|public
@@ -1281,7 +1276,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**          * Invokes the delegate's<code>read(byte[], int, int)</code> method.          * @param b the buffer to read the bytes into          * @param off The start offset          * @param len The number of bytes to read          * @return the number of bytes read or -1 if the end of stream or          * the limit has been reached.          * @throws IOException if an I/O error occurs          */
+comment|/**          * Invokes the delegate's<code>read(byte[], int, int)</code> method.          *          * @param b   the buffer to read the bytes into          * @param off The start offset          * @param len The number of bytes to read          * @return the number of bytes read or -1 if the end of stream or          * the limit has been reached.          * @throws IOException if an I/O error occurs          */
 annotation|@
 name|Override
 specifier|public
@@ -1377,7 +1372,7 @@ return|return
 name|bytesRead
 return|;
 block|}
-comment|/**          * Invokes the delegate's<code>skip(long)</code> method.          * @param n the number of bytes to skip          * @return the actual number of bytes skipped          * @throws IOException if an I/O error occurs          */
+comment|/**          * Invokes the delegate's<code>skip(long)</code> method.          *          * @param n the number of bytes to skip          * @return the actual number of bytes skipped          * @throws IOException if an I/O error occurs          */
 annotation|@
 name|Override
 specifier|public
@@ -1444,6 +1439,10 @@ name|in
 operator|.
 name|reset
 argument_list|()
+expr_stmt|;
+name|pos
+operator|=
+literal|0
 expr_stmt|;
 block|}
 annotation|@
