@@ -2257,6 +2257,14 @@ name|e
 argument_list|)
 throw|;
 block|}
+finally|finally
+block|{
+name|inputStream
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 specifier|public
 specifier|static
@@ -2523,8 +2531,6 @@ specifier|final
 name|InputStream
 name|is
 parameter_list|,
-annotation|@
-name|Context
 name|MultivaluedMap
 argument_list|<
 name|String
@@ -2533,8 +2539,6 @@ name|String
 argument_list|>
 name|httpHeaders
 parameter_list|,
-annotation|@
-name|Context
 specifier|final
 name|UriInfo
 name|info
