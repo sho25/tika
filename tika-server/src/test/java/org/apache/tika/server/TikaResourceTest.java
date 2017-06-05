@@ -816,6 +816,13 @@ argument_list|,
 name|responseMsg
 argument_list|)
 expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"X-TIKA:digest:SHA1\" content=\"N4EBCE7EGTIGZWETEJ6WD3W4KN32TLPG\"/>"
+argument_list|,
+name|responseMsg
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
