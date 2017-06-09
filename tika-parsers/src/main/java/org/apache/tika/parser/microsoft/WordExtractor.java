@@ -1157,15 +1157,6 @@ argument_list|(
 name|document
 argument_list|)
 decl_stmt|;
-name|HeaderStories
-name|headerFooter
-init|=
-operator|new
-name|HeaderStories
-argument_list|(
-name|document
-argument_list|)
-decl_stmt|;
 comment|// Grab the list of pictures. As far as we can tell,
 comment|//  the pictures should be in order, and may be directly
 comment|//  placed or referenced from an anchor
@@ -1186,7 +1177,28 @@ argument_list|(
 name|document
 argument_list|)
 decl_stmt|;
+name|HeaderStories
+name|headerFooter
+init|=
+literal|null
+decl_stmt|;
 comment|// Do any headers, if present
+if|if
+condition|(
+name|officeParserConfig
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
+condition|)
+block|{
+name|headerFooter
+operator|=
+operator|new
+name|HeaderStories
+argument_list|(
+name|document
+argument_list|)
+expr_stmt|;
 name|Range
 index|[]
 name|headers
@@ -1226,6 +1238,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Do the main paragraph text
 name|Range
 name|r
@@ -1392,6 +1405,14 @@ name|paragraph
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|officeParserConfig
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
+condition|)
+block|{
 comment|// Do any footers, if present
 name|Range
 index|[]
@@ -1432,6 +1453,7 @@ argument_list|,
 name|xhtml
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Handle any pictures that we haven't output yet
 for|for
 control|(

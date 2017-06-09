@@ -840,6 +840,11 @@ init|=
 operator|new
 name|SheetTextAsHTML
 argument_list|(
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
+argument_list|,
 name|xhtml
 argument_list|)
 decl_stmt|;

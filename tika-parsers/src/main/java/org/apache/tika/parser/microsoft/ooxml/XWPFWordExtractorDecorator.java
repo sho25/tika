@@ -911,6 +911,11 @@ condition|(
 name|hfPolicy
 operator|!=
 literal|null
+operator|&&
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
 condition|)
 block|{
 name|extractHeaders
@@ -1011,6 +1016,11 @@ condition|(
 name|hfPolicy
 operator|!=
 literal|null
+operator|&&
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
 condition|)
 block|{
 name|extractFooters
@@ -1240,6 +1250,11 @@ condition|(
 name|ctSectPr
 operator|!=
 literal|null
+operator|&&
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
 condition|)
 block|{
 name|headerFooterPolicy
@@ -2120,6 +2135,11 @@ condition|(
 name|headerFooterPolicy
 operator|!=
 literal|null
+operator|&&
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
 condition|)
 block|{
 name|extractFooters
