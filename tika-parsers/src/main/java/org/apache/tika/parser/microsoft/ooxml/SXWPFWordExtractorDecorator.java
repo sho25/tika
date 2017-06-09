@@ -936,6 +936,10 @@ block|,
 name|AbstractOOXMLExtractor
 operator|.
 name|RELATION_DIAGRAM_DATA
+block|,
+name|AbstractOOXMLExtractor
+operator|.
+name|RELATION_CHART
 block|}
 control|)
 block|{

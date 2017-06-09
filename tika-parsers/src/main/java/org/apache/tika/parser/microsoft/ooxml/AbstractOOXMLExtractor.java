@@ -700,6 +700,14 @@ name|RELATION_DIAGRAM_DATA
 init|=
 literal|"http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramData"
 decl_stmt|;
+comment|//once we add this to XWPFRelation, we should swap that out and remove this
+specifier|static
+specifier|final
+name|String
+name|RELATION_CHART
+init|=
+literal|"http://schemas.openxmlformats.org/officeDocument/2006/relationships/chart"
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
