@@ -117,6 +117,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|ParseContext
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Test
@@ -134,16 +148,16 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testCurrent
+name|testBasic
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|TEIParser
+name|TEIDOMParser
 name|teiParser
 init|=
 operator|new
-name|TEIParser
+name|TEIDOMParser
 argument_list|()
 decl_stmt|;
 name|ByteArrayOutputStream
@@ -198,13 +212,17 @@ operator|.
 name|parse
 argument_list|(
 name|xml
+argument_list|,
+operator|new
+name|ParseContext
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Montbonnot Saint-Martin, Montbonnot Saint-Martin, Montbonnot Saint-Martin, "
 operator|+
-literal|"Montbonnot Saint-Martin, null \"38330, 38330, 38330, 38330\" "
+literal|"Montbonnot Saint-Martin, null 38330, 38330, 38330, 38330 "
 operator|+
 literal|"France, France, France, France "
 argument_list|,
@@ -224,15 +242,15 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"\"F22 [Analysis of Algorithms and Problem Complexity]: Nonnumerical Algorithms and Problems\\u2014Sequencing\""
+literal|"F22 [Analysis of Algorithms and Problem Complexity]: Nonnumerical Algorithms and Problems\u2014Sequencing"
 block|,
-literal|"\"and scheduling; D41 [Operating Systems]: Process management\\u2014Scheduling, Concurrency\""
+literal|"and scheduling; D41 [Operating Systems]: Process management\u2014Scheduling, Concurrency"
 block|,
-literal|"\"Keywords\""
+literal|"Keywords"
 block|,
-literal|"\"Parallel Computing, Algorithms, Scheduling, Parallel Tasks,\""
+literal|"Parallel Computing, Algorithms, Scheduling, Parallel Tasks,"
 block|,
-literal|"\"Moldable Tasks, Bi-criteria\""
+literal|"Moldable Tasks, Bi-criteria"
 block|}
 decl_stmt|;
 name|assertArrayEquals
@@ -289,13 +307,13 @@ literal|"[Affiliation {orgName=ID-IMAG ID-IMAG ID-IMAG ID-IMAG , "
 operator|+
 literal|"address=Montbonnot Saint-Martin, Montbonnot Saint-Martin, Montbonnot Saint-Martin, Montbonnot Saint-Martin, "
 operator|+
-literal|"null \"38330, 38330, 38330, 38330\" France, France, France, France}"
+literal|"null 38330, 38330, 38330, 38330 France, France, France, France}"
 operator|+
 literal|"[Affiliation {orgName=ID-IMAG ID-IMAG ID-IMAG ID-IMAG , "
 operator|+
 literal|"address=Montbonnot Saint-Martin, Montbonnot Saint-Martin, Montbonnot Saint-Martin, Montbonnot Saint-Martin, "
 operator|+
-literal|"null \"38330, 38330, 38330, 38330\" France, France, France, France}]"
+literal|"null 38330, 38330, 38330, 38330 France, France, France, France}]"
 argument_list|,
 name|metadata
 operator|.
