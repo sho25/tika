@@ -197,7 +197,27 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Reader
 import|;
 end_import
 
@@ -589,9 +609,11 @@ index|[]
 name|expectedObjects
 init|=
 block|{
-literal|"Egyptian cat"
+literal|"baseball"
 block|,
-literal|"tabby, tabby cat"
+literal|"bat"
+block|,
+literal|"field"
 block|}
 decl_stmt|;
 name|doRecognize
