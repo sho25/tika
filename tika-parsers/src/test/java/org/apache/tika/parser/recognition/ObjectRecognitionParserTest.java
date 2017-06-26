@@ -303,6 +303,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|String
+name|BASEBALL_IMAGE_GIF
+init|=
+literal|"test-documents/baseball.gif"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|ClassLoader
 name|loader
 init|=
@@ -569,7 +577,7 @@ index|[]
 name|expectedCaption
 init|=
 block|{
-literal|"a baseball player holding a bat on a field "
+literal|"a baseball player holding a bat on a field"
 block|}
 decl_stmt|;
 name|doRecognize
@@ -605,7 +613,7 @@ index|[]
 name|expectedCaption
 init|=
 block|{
-literal|"a baseball player holding a bat on a field "
+literal|"a baseball player holding a bat on a field"
 block|}
 decl_stmt|;
 name|doRecognize
@@ -613,6 +621,42 @@ argument_list|(
 name|CONFIG_REST_FILE_IM2TXT
 argument_list|,
 name|BASEBALL_IMAGE_PNG
+argument_list|,
+name|ObjectRecognitionParser
+operator|.
+name|MD_KEY_IMG_CAP
+argument_list|,
+name|expectedCaption
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Ignore
+argument_list|(
+literal|"Configure Rest API service"
+argument_list|)
+annotation|@
+name|Test
+specifier|public
+name|void
+name|gifRESTim2txtTest
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+index|[]
+name|expectedCaption
+init|=
+block|{
+literal|"a baseball player pitching a ball on top of a field"
+block|}
+decl_stmt|;
+name|doRecognize
+argument_list|(
+name|CONFIG_REST_FILE_IM2TXT
+argument_list|,
+name|BASEBALL_IMAGE_GIF
 argument_list|,
 name|ObjectRecognitionParser
 operator|.
