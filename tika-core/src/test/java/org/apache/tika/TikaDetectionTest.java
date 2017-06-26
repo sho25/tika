@@ -4108,18 +4108,8 @@ literal|"x.otc"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"application/vnd.oasis.opendocument.database"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.odb"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - Mimetype embedded in file is .base not .database
+comment|//assertEquals("application/vnd.oasis.opendocument.database", tika.detect("x.odb"));
 name|assertEquals
 argument_list|(
 literal|"application/vnd.oasis.opendocument.formula"

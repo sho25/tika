@@ -602,11 +602,7 @@ name|CommonsDigester
 argument_list|(
 name|DIGESTER_READ_LIMIT
 argument_list|,
-name|CommonsDigester
-operator|.
-name|DigestAlgorithm
-operator|.
-name|MD5
+literal|"md5,sha1:32"
 argument_list|)
 argument_list|,
 operator|new

@@ -2324,7 +2324,10 @@ name|renderImage
 argument_list|(
 name|pageIndex
 argument_list|,
-literal|2.0f
+name|config
+operator|.
+name|getOcrImageScale
+argument_list|()
 argument_list|,
 name|config
 operator|.

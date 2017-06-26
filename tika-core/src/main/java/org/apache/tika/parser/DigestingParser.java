@@ -122,7 +122,7 @@ name|DigestingParser
 extends|extends
 name|ParserDecorator
 block|{
-comment|/**      * Interface for optional digester, if specified during construction.      * See org.apache.parser.utils.CommonsDigester in tika-parsers for an      * implementation.      */
+comment|/**      * Interface for digester. See      * org.apache.parser.utils.CommonsDigester in tika-parsers for an      * implementation.      */
 specifier|public
 interface|interface
 name|Digester
@@ -145,6 +145,20 @@ name|IOException
 function_decl|;
 block|}
 empty_stmt|;
+comment|/**      * Encodes byte array from a MessageDigest to String      */
+specifier|public
+interface|interface
+name|Encoder
+block|{
+name|String
+name|encode
+parameter_list|(
+name|byte
+index|[]
+name|bytes
+parameter_list|)
+function_decl|;
+block|}
 specifier|private
 specifier|final
 name|Digester
