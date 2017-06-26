@@ -484,6 +484,13 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
+literal|"jpeg"
+argument_list|)
+block|,
+name|MediaType
+operator|.
+name|image
+argument_list|(
 literal|"png"
 argument_list|)
 block|,
@@ -491,7 +498,7 @@ name|MediaType
 operator|.
 name|image
 argument_list|(
-literal|"jpeg"
+literal|"gif"
 argument_list|)
 block|}
 argument_list|)

@@ -566,14 +566,10 @@ name|Exception
 block|{
 name|String
 index|[]
-name|expectedObjects
+name|expectedCaption
 init|=
 block|{
-literal|"baseball"
-block|,
-literal|"bat"
-block|,
-literal|"field"
+literal|"a baseball player holding a bat on a field "
 block|}
 decl_stmt|;
 name|doRecognize
@@ -586,7 +582,7 @@ name|ObjectRecognitionParser
 operator|.
 name|MD_KEY_IMG_CAP
 argument_list|,
-name|expectedObjects
+name|expectedCaption
 argument_list|)
 expr_stmt|;
 block|}
@@ -606,14 +602,10 @@ name|Exception
 block|{
 name|String
 index|[]
-name|expectedObjects
+name|expectedCaption
 init|=
 block|{
-literal|"baseball"
-block|,
-literal|"bat"
-block|,
-literal|"field"
+literal|"a baseball player holding a bat on a field "
 block|}
 decl_stmt|;
 name|doRecognize
@@ -626,7 +618,7 @@ name|ObjectRecognitionParser
 operator|.
 name|MD_KEY_IMG_CAP
 argument_list|,
-name|expectedObjects
+name|expectedCaption
 argument_list|)
 expr_stmt|;
 block|}
