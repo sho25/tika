@@ -114,7 +114,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"audio/x-wav"
+literal|"audio/vnd.wave"
 argument_list|,
 name|metadata
 operator|.

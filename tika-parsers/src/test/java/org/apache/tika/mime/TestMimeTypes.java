@@ -3545,7 +3545,7 @@ argument_list|)
 expr_stmt|;
 name|assertType
 argument_list|(
-literal|"audio/x-wav"
+literal|"audio/vnd.wave"
 argument_list|,
 literal|"testWAV.wav"
 argument_list|)
