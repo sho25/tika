@@ -14,8 +14,6 @@ operator|.
 name|parser
 operator|.
 name|sentiment
-operator|.
-name|analysis
 package|;
 end_package
 
