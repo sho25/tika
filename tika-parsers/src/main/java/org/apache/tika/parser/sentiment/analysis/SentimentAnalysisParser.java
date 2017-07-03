@@ -318,7 +318,7 @@ end_comment
 begin_class
 specifier|public
 class|class
-name|SentimentParser
+name|SentimentAnalysisParser
 extends|extends
 name|AbstractParser
 implements|implements
@@ -355,7 +355,7 @@ name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
-name|SentimentParser
+name|SentimentAnalysisParser
 operator|.
 name|class
 argument_list|)

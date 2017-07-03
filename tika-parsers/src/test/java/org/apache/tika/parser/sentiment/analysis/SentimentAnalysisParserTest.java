@@ -176,13 +176,13 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case for {@link SentimentParser}  */
+comment|/**  * Test case for {@link SentimentAnalysisParser}  */
 end_comment
 
 begin_class
 specifier|public
 class|class
-name|SentimentParserTest
+name|SentimentAnalysisParserTest
 block|{
 annotation|@
 name|Test
