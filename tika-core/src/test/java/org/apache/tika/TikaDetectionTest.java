@@ -7493,18 +7493,8 @@ literal|"x.rmp"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"audio/x-wav"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.wav"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - wav was properly registered in RFC 2361
+comment|//assertEquals("audio/x-wav", tika.detect("x.wav"));
 name|assertEquals
 argument_list|(
 literal|"chemical/x-cdx"
