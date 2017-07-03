@@ -17,6 +17,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -29,18 +39,8 @@ name|TikaConfigException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_comment
-comment|/**  * Components that must do special processing across multiple fields  * at initialization time should implement this interface.  *<p>  * TikaConfig will call initialize on Initializable classes after  * setting the parameters.  */
+comment|/**  * Components that must do special processing across multiple fields  * at initialization time should implement this interface.  *<p>  * TikaConfig will call initialize on Initializable classes after  * setting the parameters for non-statically service loaded classes.  *<p>  * TikaConfig will call checkInitialization on all Initializables,  * whether loaded statically  */
 end_comment
 
 begin_interface
@@ -48,6 +48,7 @@ specifier|public
 interface|interface
 name|Initializable
 block|{
+comment|/**      * @param params params to use for initialization      * @throws TikaConfigException      */
 name|void
 name|initialize
 parameter_list|(
@@ -58,6 +59,16 @@ argument_list|,
 name|Param
 argument_list|>
 name|params
+parameter_list|)
+throws|throws
+name|TikaConfigException
+function_decl|;
+comment|/**      *      *      * @param problemHandler if there is a problem and no      *                                           custom initializableProblemHandler has been configured      *                                           via Initializable parameters,      *                                           this is called to respond.      * @throws TikaConfigException      */
+name|void
+name|checkInitialization
+parameter_list|(
+name|InitializableProblemHandler
+name|problemHandler
 parameter_list|)
 throws|throws
 name|TikaConfigException

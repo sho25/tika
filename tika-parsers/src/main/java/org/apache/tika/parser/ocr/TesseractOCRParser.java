@@ -407,6 +407,62 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|Initializable
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|InitializableProblemHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|Param
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
+name|TikaConfigException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -711,6 +767,8 @@ class|class
 name|TesseractOCRParser
 extends|extends
 name|AbstractParser
+implements|implements
+name|Initializable
 block|{
 specifier|private
 specifier|static
@@ -846,14 +904,6 @@ name|HashMap
 argument_list|<>
 argument_list|()
 decl_stmt|;
-specifier|private
-specifier|static
-specifier|volatile
-name|boolean
-name|HAS_ALERTED
-init|=
-literal|false
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -890,30 +940,6 @@ name|config
 argument_list|)
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|HAS_ALERTED
-condition|)
-block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"Tesseract OCR is installed and will be automatically applied to image files.\n"
-operator|+
-literal|"This may dramatically slow down content extraction (TIKA-2359).\n"
-operator|+
-literal|"As of Tika 1.15 (and prior versions), Tesseract is automatically called.\n"
-operator|+
-literal|"In future versions of Tika, users may need to turn the TesseractOCRParser on via TikaConfig."
-argument_list|)
-expr_stmt|;
-name|HAS_ALERTED
-operator|=
-literal|true
-expr_stmt|;
-block|}
 return|return
 name|SUPPORTED_TYPES
 return|;
@@ -2161,6 +2187,70 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+comment|/**      * no-op      * @param params params to use for initialization      * @throws TikaConfigException      */
+annotation|@
+name|Override
+specifier|public
+name|void
+name|initialize
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Param
+argument_list|>
+name|params
+parameter_list|)
+throws|throws
+name|TikaConfigException
+block|{      }
+annotation|@
+name|Override
+specifier|public
+name|void
+name|checkInitialization
+parameter_list|(
+name|InitializableProblemHandler
+name|problemHandler
+parameter_list|)
+throws|throws
+name|TikaConfigException
+block|{
+comment|//this will incorrectly trigger for people who turn off Tesseract
+comment|//by sending in a bogus tesseract path via a custom TesseractOCRConfig.
+comment|//TODO: figure out how to solve that.
+if|if
+condition|(
+name|hasTesseract
+argument_list|(
+name|DEFAULT_CONFIG
+argument_list|)
+condition|)
+block|{
+name|problemHandler
+operator|.
+name|handleInitializableProblem
+argument_list|(
+name|this
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+literal|"Tesseract OCR is installed and will be automatically applied to image files.\n"
+operator|+
+literal|"This may dramatically slow down content extraction (TIKA-2359).\n"
+operator|+
+literal|"As of Tika 1.15 (and prior versions), Tesseract is automatically called.\n"
+operator|+
+literal|"In future versions of Tika, users may need to turn the TesseractOCRParser on via TikaConfig."
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// TIKA-1445 workaround parser
