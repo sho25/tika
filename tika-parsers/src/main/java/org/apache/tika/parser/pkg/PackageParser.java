@@ -904,7 +904,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|JAR
 operator|.
@@ -921,7 +921,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|ZIP
 operator|.
@@ -938,7 +938,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|AR
 operator|.
@@ -955,7 +955,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|ARJ
 operator|.
@@ -972,7 +972,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|CPIO
 operator|.
@@ -989,7 +989,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|DUMP
 operator|.
@@ -1006,7 +1006,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|TAR
 operator|.
@@ -1023,7 +1023,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 operator|.
 name|SEVEN_Z
 operator|.

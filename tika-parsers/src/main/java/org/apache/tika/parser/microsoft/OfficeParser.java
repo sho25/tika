@@ -327,20 +327,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|config
-operator|.
-name|Initializable
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|exception
 operator|.
 name|EncryptedDocumentException
@@ -936,7 +922,10 @@ name|getExtractMacros
 argument_list|()
 condition|)
 block|{
-comment|//now try to get macros
+comment|//now try to get macros.
+comment|//Note that macros are handled separately for ppt in HSLFExtractor.
+comment|//We might consider not bothering to check for macros in root,
+comment|//if we know we're processing ppt based on content-type identified in metadata
 name|extractMacros
 argument_list|(
 name|root

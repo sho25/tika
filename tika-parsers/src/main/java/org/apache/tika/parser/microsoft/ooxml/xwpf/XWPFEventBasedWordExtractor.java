@@ -375,6 +375,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -422,6 +442,21 @@ name|XWPFEventBasedWordExtractor
 extends|extends
 name|POIXMLTextExtractor
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|XWPFEventBasedWordExtractor
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 name|OPCPackage
 name|container
@@ -693,10 +728,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"IOException handling document part"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -705,10 +744,15 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-name|e
+comment|//swallow this because we don't actually call it
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"SAXException handling document part"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -760,10 +804,14 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"IOException handling glossary document part"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -772,10 +820,15 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-name|e
+comment|//swallow this because we don't actually call it
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"SAXException handling glossary document part"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -897,7 +950,15 @@ name|InvalidFormatException
 name|e
 parameter_list|)
 block|{
-comment|//swallow
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Invalid format"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 comment|//main document
 name|handlePart
@@ -1010,7 +1071,15 @@ name|InvalidFormatException
 name|e
 parameter_list|)
 block|{
-comment|//swallow
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Invalid format"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -1103,10 +1172,14 @@ name|ParserConfigurationException
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Can't configure XMLReader"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1248,7 +1321,17 @@ parameter_list|(
 name|InvalidFormatException
 name|e
 parameter_list|)
-block|{         }
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Invalid format"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|hyperlinks
 return|;
@@ -1347,7 +1430,15 @@ name|OpenXML4JException
 name|e
 parameter_list|)
 block|{
-comment|//swallow
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Couldn't load numbering"
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 literal|null

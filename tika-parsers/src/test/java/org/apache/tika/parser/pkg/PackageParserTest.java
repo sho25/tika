@@ -47,6 +47,22 @@ name|org
 operator|.
 name|apache
 operator|.
+name|commons
+operator|.
+name|compress
+operator|.
+name|archivers
+operator|.
+name|ArchiveStreamFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
 name|tika
 operator|.
 name|mime
@@ -96,11 +112,11 @@ block|{
 comment|//test that the package parser covers all inputstreams handled
 comment|//by ArchiveStreamFactory.  When we update commons-compress, and they add
 comment|//a new stream type, we want to make sure that we're handling it.
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 name|archiveStreamFactory
 init|=
 operator|new
-name|TikaArchiveStreamFactory
+name|ArchiveStreamFactory
 argument_list|(
 name|StandardCharsets
 operator|.

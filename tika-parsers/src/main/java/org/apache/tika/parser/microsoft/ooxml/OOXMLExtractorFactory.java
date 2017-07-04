@@ -987,6 +987,8 @@ operator|=
 operator|new
 name|XWPFWordExtractorDecorator
 argument_list|(
+name|metadata
+argument_list|,
 name|context
 argument_list|,
 operator|(

@@ -167,6 +167,26 @@ name|ObjectMapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of a REST client for the  *<a href="https://developer.lingo24.com/premium-machine-translation-api">Premium MT API v1</a>.  * You can sign up for an access plan online on the<a href="https://developer.lingo24.com/plans">Lingo24 Developer Portal</a>  * and set your Application's User Key in the<code>translator.lingo24.properties</code> file.  */
 end_comment
@@ -178,6 +198,21 @@ name|Lingo24Translator
 extends|extends
 name|AbstractTranslator
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|Lingo24Translator
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -285,10 +320,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|e
+name|LOG
 operator|.
-name|printStackTrace
-argument_list|()
+name|warn
+argument_list|(
+literal|"Couldn't read config file"
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
 name|isAvailable
 operator|=
