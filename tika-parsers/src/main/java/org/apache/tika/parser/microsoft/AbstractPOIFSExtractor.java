@@ -431,6 +431,11 @@ name|OfficeParserConfig
 name|officeParserConfig
 decl_stmt|;
 specifier|protected
+specifier|final
+name|ParseContext
+name|context
+decl_stmt|;
+specifier|protected
 name|AbstractPOIFSExtractor
 parameter_list|(
 name|ParseContext
@@ -498,6 +503,12 @@ operator|.
 name|parentMetadata
 operator|=
 name|parentMetadata
+expr_stmt|;
+name|this
+operator|.
+name|context
+operator|=
+name|context
 expr_stmt|;
 block|}
 comment|// Note - these cache, but avoid creating the default TikaConfig if not needed
