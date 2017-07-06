@@ -114,6 +114,8 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+name|config
+operator|=
 operator|new
 name|TikaConfig
 argument_list|(
