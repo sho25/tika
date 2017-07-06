@@ -243,7 +243,6 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-comment|//    	AgeRecogniser.setAgePredictorClient(mockAgeClassifier);
 block|}
 annotation|@
 name|Test
