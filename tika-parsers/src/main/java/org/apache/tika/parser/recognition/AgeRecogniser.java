@@ -450,6 +450,20 @@ block|}
 annotation|@
 name|Override
 specifier|public
+name|void
+name|checkInitialization
+parameter_list|(
+name|InitializableProblemHandler
+name|problemHandler
+parameter_list|)
+throws|throws
+name|TikaConfigException
+block|{
+comment|//TODO: what do we want to check here?
+block|}
+annotation|@
+name|Override
+specifier|public
 name|Set
 argument_list|<
 name|MediaType
