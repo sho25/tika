@@ -76,11 +76,9 @@ parameter_list|)
 block|{
 name|setPathClassifyModel
 argument_list|(
-name|getClass
-argument_list|()
+name|AgeRecogniserConfig
 operator|.
-name|getClassLoader
-argument_list|()
+name|class
 operator|.
 name|getResource
 argument_list|(
@@ -104,11 +102,9 @@ argument_list|)
 expr_stmt|;
 name|setPathClassifyRegression
 argument_list|(
-name|getClass
-argument_list|()
+name|AgeRecogniserConfig
 operator|.
-name|getClassLoader
-argument_list|()
+name|class
 operator|.
 name|getResource
 argument_list|(
