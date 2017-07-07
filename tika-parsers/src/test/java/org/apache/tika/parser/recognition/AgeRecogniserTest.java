@@ -213,6 +213,13 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+name|AgeRecogniser
+operator|.
+name|setAgePredictorClient
+argument_list|(
+name|mockAgeClassifier
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|when
