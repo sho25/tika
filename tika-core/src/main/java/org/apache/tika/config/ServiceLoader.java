@@ -1228,9 +1228,7 @@ operator|)
 operator|.
 name|checkInitialization
 argument_list|(
-name|InitializableProblemHandler
-operator|.
-name|WARN
+name|initializableProblemHandler
 argument_list|)
 expr_stmt|;
 block|}
