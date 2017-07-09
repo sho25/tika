@@ -787,6 +787,27 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|volatile
+name|boolean
+name|HAS_WARNED
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Object
+index|[]
+name|LOCK
+init|=
+operator|new
+name|Object
+index|[
+literal|0
+index|]
+decl_stmt|;
+specifier|private
+specifier|static
 specifier|final
 name|long
 name|serialVersionUID
@@ -2224,6 +2245,13 @@ comment|//by sending in a bogus tesseract path via a custom TesseractOCRConfig.
 comment|//TODO: figure out how to solve that.
 if|if
 condition|(
+operator|!
+name|hasWarned
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
 name|hasTesseract
 argument_list|(
 name|DEFAULT_CONFIG
@@ -2242,15 +2270,21 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-literal|"Tesseract OCR is installed and will be automatically applied to image files.\n"
+literal|"Tesseract OCR is installed and will be automatically applied to image files unless\n"
 operator|+
-literal|"This may dramatically slow down content extraction (TIKA-2359).\n"
+literal|"you've excluded the TesseractOCRParser from the default parser.\n"
+operator|+
+literal|"Tesseract may dramatically slow down content extraction (TIKA-2359).\n"
 operator|+
 literal|"As of Tika 1.15 (and prior versions), Tesseract is automatically called.\n"
 operator|+
 literal|"In future versions of Tika, users may need to turn the TesseractOCRParser on via TikaConfig."
 argument_list|)
 expr_stmt|;
+name|warn
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|// TIKA-1445 workaround parser
@@ -3170,6 +3204,49 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+block|}
+specifier|protected
+name|boolean
+name|hasWarned
+parameter_list|()
+block|{
+if|if
+condition|(
+name|HAS_WARNED
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+synchronized|synchronized
+init|(
+name|LOCK
+init|)
+block|{
+if|if
+condition|(
+name|HAS_WARNED
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+block|}
+specifier|protected
+name|void
+name|warn
+parameter_list|()
+block|{
+name|HAS_WARNED
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 end_class

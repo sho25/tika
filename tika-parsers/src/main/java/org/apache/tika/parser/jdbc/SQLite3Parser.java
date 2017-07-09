@@ -230,6 +230,27 @@ name|AbstractParser
 implements|implements
 name|Initializable
 block|{
+specifier|private
+specifier|static
+specifier|volatile
+name|boolean
+name|HAS_WARNED
+init|=
+literal|false
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|Object
+index|[]
+name|LOCK
+init|=
+operator|new
+name|Object
+index|[
+literal|0
+index|]
+decl_stmt|;
 comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
@@ -422,6 +443,26 @@ operator|==
 literal|0
 condition|)
 block|{
+if|if
+condition|(
+name|HAS_WARNED
+condition|)
+block|{
+return|return;
+block|}
+synchronized|synchronized
+init|(
+name|LOCK
+init|)
+block|{
+comment|//check again while under the lock
+if|if
+condition|(
+name|HAS_WARNED
+condition|)
+block|{
+return|return;
+block|}
 name|problemHandler
 operator|.
 name|handleInitializableProblem
@@ -435,6 +476,11 @@ operator|+
 literal|"See tika-parsers/pom.xml for the correct version."
 argument_list|)
 expr_stmt|;
+name|HAS_WARNED
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}
