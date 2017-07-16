@@ -488,6 +488,7 @@ argument_list|(
 name|MEDIA_TYPE
 argument_list|)
 decl_stmt|;
+comment|//immutable
 annotation|@
 name|Override
 specifier|public
