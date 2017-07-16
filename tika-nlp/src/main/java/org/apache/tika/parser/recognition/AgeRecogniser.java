@@ -316,7 +316,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser for extracting features from text. Below features are extracted<br/>  *<li>Author Age</li>  */
+comment|/**  * Parser for extracting features from text. Below features are extracted  *  *<ul>  *<li>Author Age</li>  *</ul>  */
 end_comment
 
 begin_class
@@ -736,7 +736,7 @@ name|Level
 operator|.
 name|SEVERE
 argument_list|,
-literal|"Age Predcitor is not avaialble. Please check wiki for detailed instructions"
+literal|"Age Predictor is not available. Please check wiki for detailed instructions"
 argument_list|,
 name|e
 argument_list|)
