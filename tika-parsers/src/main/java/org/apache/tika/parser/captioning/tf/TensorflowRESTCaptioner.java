@@ -454,7 +454,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Tensorflow image captioner.  * This implementation uses Tensorflow via REST API.  *<p>  * NOTE : https://wiki.apache.org/tika/ImageCaption#preview  *  * @since Apache Tika 1.17  */
+comment|/**  * Tensorflow image captioner.  * This implementation uses Tensorflow via REST API.  *<p>  * NOTE : https://wiki.apache.org/tika/ImageCaption  *  * @since Apache Tika 1.17  */
 end_comment
 
 begin_class
