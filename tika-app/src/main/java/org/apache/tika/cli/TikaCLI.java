@@ -3345,6 +3345,9 @@ name|pipeMode
 operator|=
 literal|false
 expr_stmt|;
+name|configure
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|serverMode
@@ -3414,9 +3417,6 @@ block|}
 block|}
 else|else
 block|{
-name|configure
-argument_list|()
-expr_stmt|;
 name|URL
 name|url
 decl_stmt|;
