@@ -67,6 +67,18 @@ begin_import
 import|import
 name|java
 operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|StandardCharsets
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Collections
@@ -589,7 +601,11 @@ init|=
 literal|"StarImpress"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 decl_stmt|;
 comment|/**      * An ASCII String "StarDraw"      */
 specifier|private
@@ -602,7 +618,11 @@ init|=
 literal|"StarDraw"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 decl_stmt|;
 comment|/**      * An ASCII String "Quill96" for Works Files      */
 specifier|private
@@ -615,7 +635,11 @@ init|=
 literal|"Quill96"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 decl_stmt|;
 comment|/**      * An ASCII String "MSGraph.Chart" for embedded MSGraph files      * The full designator includes a version, e.g. MSGraph.Chart.8      */
 specifier|private
@@ -628,7 +652,11 @@ init|=
 literal|"MSGraph.Chart"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 decl_stmt|;
 comment|/**      * Regexp for matching the MPP Project Data stream      */
 specifier|private
