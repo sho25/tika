@@ -786,6 +786,7 @@ literal|' '
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**          * {@inheritDoc}          *          * @throws IllegalStateException if no models have been loaded with          * {@link #loadModels() } or {@link #loadModels(java.util.Set) }          * @return the detected list of languages          */
 annotation|@
 name|Override
 specifier|public
@@ -796,7 +797,21 @@ argument_list|>
 name|detectAll
 parameter_list|()
 block|{
-comment|// TODO throw exception if models haven't been loaded, or auto-load all?
+if|if
+condition|(
+name|detector
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"models haven't been loaded yet (forgot to call loadModels?)"
+argument_list|)
+throw|;
+block|}
 name|List
 argument_list|<
 name|LanguageResult
