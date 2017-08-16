@@ -300,7 +300,13 @@ specifier|final
 name|MimeType
 name|textMimeType
 decl_stmt|;
-comment|/*      * xml type, application/xml      */
+comment|/**      * html type, text/html      */
+specifier|private
+specifier|final
+name|MimeType
+name|htmlMimeType
+decl_stmt|;
+comment|/**      * xml type, application/xml      */
 specifier|private
 specifier|final
 name|MimeType
@@ -401,6 +407,16 @@ argument_list|(
 name|MediaType
 operator|.
 name|TEXT_PLAIN
+argument_list|)
+expr_stmt|;
+name|htmlMimeType
+operator|=
+operator|new
+name|MimeType
+argument_list|(
+name|MediaType
+operator|.
+name|TEXT_HTML
 argument_list|)
 expr_stmt|;
 name|xmlMimeType
@@ -788,8 +804,72 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
-comment|// Downgrade from application/xml to text/plain since
-comment|// the document seems not to be well-formed.
+comment|// Our XML magic is higher than our HTML magic
+comment|// So, if we got here, we might have a HTML file that's
+comment|//  invalid XML. So, try our HTML magics explicitly (TIKA-2419)
+name|boolean
+name|isHTML
+init|=
+literal|false
+decl_stmt|;
+for|for
+control|(
+name|Magic
+name|magic
+range|:
+name|magics
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|magic
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|htmlMimeType
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
+name|magic
+operator|.
+name|eval
+argument_list|(
+name|data
+argument_list|)
+condition|)
+block|{
+name|isHTML
+operator|=
+literal|true
+expr_stmt|;
+break|break;
+block|}
+block|}
+comment|// Otherwise, downgrade from application/xml to text/plain
+comment|//  since the document seems not to be well-formed.
+if|if
+condition|(
+name|isHTML
+condition|)
+block|{
+name|result
+operator|.
+name|set
+argument_list|(
+name|i
+argument_list|,
+name|htmlMimeType
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|result
 operator|.
 name|set
@@ -799,6 +879,7 @@ argument_list|,
 name|textMimeType
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

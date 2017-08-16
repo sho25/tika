@@ -2467,6 +2467,27 @@ argument_list|,
 literal|"testJS.js"
 argument_list|)
 expr_stmt|;
+name|assertType
+argument_list|(
+literal|"text/vnd.graphviz"
+argument_list|,
+literal|"testGRAPHVIZd.dot"
+argument_list|)
+expr_stmt|;
+name|assertType
+argument_list|(
+literal|"text/vnd.graphviz"
+argument_list|,
+literal|"testGRAPHVIZg.dot"
+argument_list|)
+expr_stmt|;
+name|assertType
+argument_list|(
+literal|"text/vnd.graphviz"
+argument_list|,
+literal|"testGRAPHVIZdc.dot"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -2621,6 +2642,7 @@ argument_list|,
 literal|"x.EMF"
 argument_list|)
 expr_stmt|;
+comment|// GZip Compressed WMF, get subtype by name only
 comment|// TODO: Need a test wmz file
 name|assertTypeByName
 argument_list|(
@@ -2636,17 +2658,18 @@ argument_list|,
 literal|"x.WMZ"
 argument_list|)
 expr_stmt|;
+comment|// GZip Compressed EMF, get subtype by name only
 comment|// TODO: Need a test emz file
 name|assertTypeByName
 argument_list|(
-literal|"application/gzip"
+literal|"image/x-emf-compressed"
 argument_list|,
 literal|"x.emz"
 argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
-literal|"application/gzip"
+literal|"image/x-emf-compressed"
 argument_list|,
 literal|"x.EMZ"
 argument_list|)
@@ -3545,7 +3568,7 @@ argument_list|)
 expr_stmt|;
 name|assertType
 argument_list|(
-literal|"audio/x-wav"
+literal|"audio/vnd.wave"
 argument_list|,
 literal|"testWAV.wav"
 argument_list|)

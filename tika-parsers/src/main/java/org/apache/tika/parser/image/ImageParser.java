@@ -483,15 +483,7 @@ parameter_list|(
 name|ClassNotFoundException
 name|e
 parameter_list|)
-block|{
-name|LOG
-operator|.
-name|warn
-argument_list|(
-literal|"JBIG2ImageReader not loaded. jbig2 files will be ignored"
-argument_list|)
-expr_stmt|;
-block|}
+block|{         }
 block|}
 specifier|private
 specifier|static

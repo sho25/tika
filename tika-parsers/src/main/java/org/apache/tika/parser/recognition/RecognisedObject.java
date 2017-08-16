@@ -27,22 +27,22 @@ class|class
 name|RecognisedObject
 block|{
 comment|/**      * Label of this object. Usually the name given to this object by humans      */
-specifier|private
+specifier|protected
 name|String
 name|label
 decl_stmt|;
 comment|/**      * Language of label, Example : english      */
-specifier|private
+specifier|protected
 name|String
 name|labelLang
 decl_stmt|;
 comment|/**      * Identifier for this object      */
-specifier|private
+specifier|protected
 name|String
 name|id
 decl_stmt|;
 comment|/**      * Confidence score      */
-specifier|private
+specifier|protected
 name|double
 name|confidence
 decl_stmt|;

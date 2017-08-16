@@ -325,11 +325,11 @@ name|org
 operator|.
 name|apache
 operator|.
-name|tika
+name|poi
 operator|.
-name|config
+name|util
 operator|.
-name|Initializable
+name|LocaleUtil
 import|;
 end_import
 
@@ -936,7 +936,10 @@ name|getExtractMacros
 argument_list|()
 condition|)
 block|{
-comment|//now try to get macros
+comment|//now try to get macros.
+comment|//Note that macros are handled separately for ppt in HSLFExtractor.
+comment|//We might consider not bothering to check for macros in root,
+comment|//if we know we're processing ppt based on content-type identified in metadata
 name|extractMacros
 argument_list|(
 name|root
@@ -1133,9 +1136,9 @@ name|Locale
 operator|.
 name|class
 argument_list|,
-name|Locale
+name|LocaleUtil
 operator|.
-name|getDefault
+name|getUserLocale
 argument_list|()
 argument_list|)
 decl_stmt|;

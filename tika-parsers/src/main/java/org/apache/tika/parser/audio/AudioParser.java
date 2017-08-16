@@ -344,9 +344,18 @@ name|MediaType
 operator|.
 name|audio
 argument_list|(
+literal|"vnd.wave"
+argument_list|)
+argument_list|,
+comment|// Official, fixed in Tika 1.16
+name|MediaType
+operator|.
+name|audio
+argument_list|(
 literal|"x-wav"
 argument_list|)
 argument_list|,
+comment|// Older, used until Tika 1.16
 name|MediaType
 operator|.
 name|audio
@@ -507,7 +516,7 @@ name|Metadata
 operator|.
 name|CONTENT_TYPE
 argument_list|,
-literal|"audio/x-wav"
+literal|"audio/vnd.wave"
 argument_list|)
 expr_stmt|;
 block|}
