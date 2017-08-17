@@ -1522,24 +1522,9 @@ literal|false
 return|;
 block|}
 specifier|private
-class|class
-name|OutputType
-block|{
-specifier|public
 name|void
-name|process
-parameter_list|(
-name|InputStream
-name|input
-parameter_list|,
-name|OutputStream
-name|output
-parameter_list|,
-name|Metadata
-name|metadata
-parameter_list|)
-throws|throws
-name|Exception
+name|extractInlineImagesFromPDFs
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -1580,7 +1565,9 @@ literal|"As a convenience, TikaCLI has turned on extraction of\n"
 operator|+
 literal|"inline images for the PDFParser (TIKA-2374).\n"
 operator|+
-literal|"This is not the default option in Tika generally or in tika-server."
+literal|"Aside from the -z option, this is not the default behavior\n"
+operator|+
+literal|"in Tika generally or in tika-server."
 decl_stmt|;
 name|LOG
 operator|.
@@ -1610,6 +1597,27 @@ name|pdfParserConfig
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|private
+class|class
+name|OutputType
+block|{
+specifier|public
+name|void
+name|process
+parameter_list|(
+name|InputStream
+name|input
+parameter_list|,
+name|OutputStream
+name|output
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|Parser
 name|p
 init|=
@@ -3201,6 +3209,9 @@ literal|"--extract"
 argument_list|)
 condition|)
 block|{
+name|extractInlineImagesFromPDFs
+argument_list|()
+expr_stmt|;
 name|type
 operator|=
 name|NO_OUTPUT
