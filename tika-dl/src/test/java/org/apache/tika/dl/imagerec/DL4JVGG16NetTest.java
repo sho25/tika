@@ -144,6 +144,7 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|e
 operator|.
 name|getMessage
@@ -153,6 +154,17 @@ name|contains
 argument_list|(
 literal|"Connection refused"
 argument_list|)
+operator|||
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"connect timed out"
+argument_list|)
+operator|)
 condition|)
 block|{
 comment|//skip test
