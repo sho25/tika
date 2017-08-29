@@ -965,6 +965,9 @@ argument_list|(
 name|locale
 argument_list|)
 expr_stmt|;
+comment|//given that we load our own shared strings table, setting:
+comment|//((XSSFEventBasedExcelExtractor)extractor).setConcatenatePhoneticRuns();
+comment|//does no good here.
 block|}
 annotation|@
 name|Override
@@ -1099,6 +1102,11 @@ operator|new
 name|ReadOnlySharedStringsTable
 argument_list|(
 name|container
+argument_list|,
+name|config
+operator|.
+name|getConcatenatePhoneticRuns
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
