@@ -3454,6 +3454,32 @@ name|e
 parameter_list|)
 block|{          }
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testPhonetic
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TODO: fix this
+comment|//current behavior:
+comment|//EQ \\* jc2 \\* "Font:MS Mincho" \\* hps11 \\o\\ad(\\s\\up 10(とうきょう),東京)
+comment|//We need to parse that string and separate content + phonetic
+name|assertContains
+argument_list|(
+literal|"\\s\\up 10(\u3068\u3046\u304D\u3087\u3046),\u6771\u4EAC"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testWORD_phonetic.doc"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
