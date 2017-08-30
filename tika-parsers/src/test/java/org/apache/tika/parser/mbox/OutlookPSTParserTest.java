@@ -1032,7 +1032,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|//TODO: figure out why the bold markup isn't coming through now that we're processing the html
+comment|//TODO: figure out why the bold markup isn't coming through if we do extract then parse the bodyhtml
 block|}
 block|}
 end_class
