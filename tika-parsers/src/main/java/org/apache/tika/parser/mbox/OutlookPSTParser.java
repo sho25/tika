@@ -555,16 +555,6 @@ argument_list|)
 decl_stmt|;
 specifier|private
 specifier|static
-specifier|final
-name|Parser
-name|TEXT_PARSER
-init|=
-operator|new
-name|TXTParser
-argument_list|()
-decl_stmt|;
-specifier|private
-specifier|static
 name|AttributesImpl
 name|createAttribute
 parameter_list|(
