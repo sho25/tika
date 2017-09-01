@@ -1666,6 +1666,41 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|confirmMultiPageTiffHandling
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assumeTrue
+argument_list|(
+name|canRun
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//tesseract should handle multipage tiffs by itself
+comment|//let's confirm that
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testTIFF_multipage.tif"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Page 2"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
