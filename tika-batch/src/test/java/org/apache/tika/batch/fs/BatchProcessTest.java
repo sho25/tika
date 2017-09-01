@@ -1437,14 +1437,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|""
 argument_list|,
 name|streamStrings
 operator|.
 name|getErrString
-argument_list|()
-operator|.
-name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
