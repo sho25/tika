@@ -21,7 +21,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
+name|Map
 import|;
 end_import
 
@@ -31,7 +31,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|TreeMap
 import|;
 end_import
 
@@ -59,7 +59,7 @@ block|{
 name|organizations
 operator|=
 operator|new
-name|HashMap
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
