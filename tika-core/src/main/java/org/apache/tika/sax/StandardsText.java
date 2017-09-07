@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * StandardText relies on regular expressions to extract standard references  * from text.  *   *<p>  * This class helps to find the standard references from text by performing the  * following steps:  *<ol>  *<li>searches for headers;</li>  *<li>searches for patterns that are supposed to be standard references  * (basically, every string mostly composed of uppercase letters followed by an  * alphanumeric characters);</li>  *<li>each potential standard reference starts with score equal to 0.25;</li>  *<li>increases by 0.50 the score of references which include the name of a  * known standard organization ({@link StandardOrganizations});</li>  *<li>increases by 0.25 the score of references which have been found within  * "Applicable Documents" and equivalent sections;</li>  *<li>returns the standard references along with scores.</li>  *</ol>  *</p>  *  */
+comment|/**  * StandardText relies on regular expressions to extract standard references  * from text.  *   *<p>  * This class helps to find the standard references from text by performing the  * following steps:  *<ol>  *<li>searches for headers;</li>  *<li>searches for patterns that are supposed to be standard references  * (basically, every string mostly composed of uppercase letters followed by an  * alphanumeric characters);</li>  *<li>each potential standard reference starts with score equal to 0.25;</li>  *<li>increases by 0.25 the score of references which include the name of a  * known standard organization ({@link StandardOrganizations});</li>  *<li>increases by 0.25 the score of references which include the word   * Publication or Standard;</li>  *<li>increases by 0.25 the score of references which have been found within  * "Applicable Documents" and equivalent sections;</li>  *<li>returns the standard references along with scores.</li>  *</ol>  *</p>  *  */
 end_comment
 
 begin_class
@@ -164,7 +164,7 @@ specifier|final
 name|String
 name|REGEX_STANDARD_TYPE
 init|=
-literal|"(\\s(Publication|Standard))?"
+literal|"(\\s(?i:Publication|Standard))"
 decl_stmt|;
 comment|// Regular expression to match a string that is supposed to be a standard
 comment|// reference
@@ -185,6 +185,8 @@ operator|+
 literal|"\\)?)?"
 operator|+
 name|REGEX_STANDARD_TYPE
+operator|+
+literal|"?"
 operator|+
 literal|"(-|\\s)?"
 operator|+
@@ -450,6 +452,7 @@ name|score
 operator|=
 literal|0.25
 expr_stmt|;
+comment|// increases by 0.25 the score of references which include the name of a known standard organization
 if|if
 condition|(
 name|matcher
@@ -465,7 +468,30 @@ condition|)
 block|{
 name|score
 operator|+=
-literal|0.50
+literal|0.25
+expr_stmt|;
+block|}
+comment|// increases by 0.25 the score of references which include the word "Publication" or "Standard"
+if|if
+condition|(
+name|matcher
+operator|.
+name|group
+argument_list|()
+operator|.
+name|matches
+argument_list|(
+literal|".*"
+operator|+
+name|REGEX_STANDARD_TYPE
+operator|+
+literal|".*"
+argument_list|)
+condition|)
+block|{
+name|score
+operator|+=
+literal|0.25
 expr_stmt|;
 block|}
 name|int
@@ -553,6 +579,7 @@ argument_list|(
 name|startHeader
 argument_list|)
 decl_stmt|;
+comment|// increases by 0.25 the score of references which have been found within "Applicable Documents" and equivalent sections
 if|if
 condition|(
 name|header

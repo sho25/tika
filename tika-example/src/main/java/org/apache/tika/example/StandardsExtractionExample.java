@@ -499,7 +499,7 @@ name|handler
 operator|.
 name|setThreshold
 argument_list|(
-literal|1.0
+literal|0.75
 argument_list|)
 expr_stmt|;
 try|try

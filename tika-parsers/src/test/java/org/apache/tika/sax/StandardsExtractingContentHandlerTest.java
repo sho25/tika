@@ -33,7 +33,31 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|TikaInputStream
 import|;
 end_import
 
@@ -221,6 +245,32 @@ operator|.
 name|equals
 argument_list|(
 literal|"TIA/ANSI 222-G-1"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|standardReferences
+index|[
+literal|2
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"FIPS 140-2"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|standardReferences
+index|[
+literal|3
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"FIPS 197"
 argument_list|)
 argument_list|)
 expr_stmt|;
