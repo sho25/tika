@@ -1388,6 +1388,11 @@ literal|"20"
 argument_list|)
 expr_stmt|;
 comment|//main process loop should stop after 5 seconds
+name|String
+name|stderr
+init|=
+literal|"writing something to System.err"
+decl_stmt|;
 name|BatchProcessTestExecutor
 name|ex
 init|=
@@ -1427,7 +1432,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"System.err"
+name|stderr
 argument_list|,
 name|streamStrings
 operator|.
@@ -1437,7 +1442,7 @@ argument_list|)
 expr_stmt|;
 name|assertNotContained
 argument_list|(
-literal|"writing something to System.err"
+name|stderr
 argument_list|,
 name|streamStrings
 operator|.
