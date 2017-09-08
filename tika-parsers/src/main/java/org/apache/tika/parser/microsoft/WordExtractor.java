@@ -4029,7 +4029,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Provides access to the pictures both by offset, iteration      * over the un-claimed, and peeking forward      */
+comment|/**      * Provides access to the pictures both by offset, iteration      * over the un-claimed, and peeking forward      *       * TODO When POI 3.18 is out, replace this with PictureRunMapper,      *  which is this class ported over into POI core      */
 specifier|private
 specifier|static
 class|class
