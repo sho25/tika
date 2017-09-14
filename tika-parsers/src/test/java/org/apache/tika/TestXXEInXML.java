@@ -739,7 +739,7 @@ literal|"testPPT_2imgs.pptx"
 block|,
 literal|"testPPT_comment.pptx"
 block|,
-literal|"testPPT_embeddedPDF.pptx"
+literal|"testPPT_EmbeddedPDF.pptx"
 block|,
 literal|"testPPT_macros.pptm"
 block|}
