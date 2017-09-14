@@ -736,6 +736,17 @@ argument_list|,
 literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
+name|mailMetadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CONTENT_TYPE_OVERRIDE
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
 name|curLine
 operator|=
 name|reader

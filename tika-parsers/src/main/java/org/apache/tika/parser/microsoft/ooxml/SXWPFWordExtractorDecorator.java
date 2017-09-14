@@ -1158,6 +1158,11 @@ name|config
 operator|.
 name|getIncludeShapeBasedContent
 argument_list|()
+argument_list|,
+name|config
+operator|.
+name|getConcatenatePhoneticRuns
+argument_list|()
 argument_list|)
 argument_list|)
 argument_list|)

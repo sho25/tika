@@ -130,6 +130,20 @@ operator|+
 literal|"-Hint"
 argument_list|)
 decl_stmt|;
+name|Property
+name|CONTENT_TYPE_OVERRIDE
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|HttpHeaders
+operator|.
+name|CONTENT_TYPE
+operator|+
+literal|"-Override"
+argument_list|)
+decl_stmt|;
 comment|/**      * @see DublinCore#FORMAT      */
 specifier|public
 specifier|static
