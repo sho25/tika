@@ -448,7 +448,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This tests for XXE in basically xml type files, straight xml and ooxml.  * It does not test for XXE prevention in files that may contain xml  * files, such as PDFs and other XMP-containing files.  */
+comment|/**  * This tests for XXE in basically xml type files, straight xml and zipped xmls, e.g. ebook and ooxml.  * It does not test for XXE prevention in files that may contain xml  * files, such as PDFs and other XMP-containing files.  */
 end_comment
 
 begin_class
@@ -707,7 +707,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|testOOXML
+name|testXMLInZips
 parameter_list|()
 throws|throws
 name|Exception
@@ -746,6 +746,8 @@ block|,
 literal|"testPPT_EmbeddedPDF.pptx"
 block|,
 literal|"testPPT_macros.pptm"
+block|,
+literal|"testEPUB.epub"
 block|}
 control|)
 block|{
@@ -782,7 +784,7 @@ decl_stmt|;
 name|Path
 name|injected
 init|=
-name|injectOOXML
+name|injectZippedXMLs
 argument_list|(
 name|originalOOXML
 argument_list|,
@@ -923,7 +925,7 @@ argument_list|)
 expr_stmt|;
 name|injected
 operator|=
-name|injectOOXML
+name|injectZippedXMLs
 argument_list|(
 name|originalOOXML
 argument_list|,
@@ -1010,7 +1012,7 @@ decl_stmt|;
 name|Path
 name|injected
 init|=
-name|injectOOXML
+name|injectZippedXMLs
 argument_list|(
 name|originalDocx
 argument_list|,
@@ -1111,7 +1113,7 @@ block|}
 block|}
 specifier|private
 name|Path
-name|injectOOXML
+name|injectZippedXMLs
 parameter_list|(
 name|Path
 name|original
