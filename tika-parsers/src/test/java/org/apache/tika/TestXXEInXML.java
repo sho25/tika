@@ -447,6 +447,10 @@ name|fail
 import|;
 end_import
 
+begin_comment
+comment|/**  * This tests for XXE in basically xml type files, straight xml and ooxml.  * It does not test for XXE prevention in files that may contain xml  * files, such as PDFs and other XMP-containing files.  */
+end_comment
+
 begin_class
 specifier|public
 class|class
