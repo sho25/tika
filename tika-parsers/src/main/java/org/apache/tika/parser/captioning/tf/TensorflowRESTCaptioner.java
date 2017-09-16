@@ -651,7 +651,7 @@ operator|.
 name|getDefault
 argument_list|()
 argument_list|,
-literal|"/captions?beam_size=%1$d&max_caption_length=%2$d"
+literal|"/caption/image?beam_size=%1$d&max_caption_length=%2$d"
 argument_list|,
 name|captions
 argument_list|,
