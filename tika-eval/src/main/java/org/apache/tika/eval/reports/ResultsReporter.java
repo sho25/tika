@@ -269,7 +269,7 @@ name|common
 operator|.
 name|usermodel
 operator|.
-name|Hyperlink
+name|HyperlinkType
 import|;
 end_import
 
@@ -330,20 +330,6 @@ operator|.
 name|db
 operator|.
 name|JDBCUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ParseContext
 import|;
 end_import
 
@@ -1266,9 +1252,9 @@ name|XLSXHREFFormatter
 argument_list|(
 name|base
 argument_list|,
-name|Hyperlink
+name|HyperlinkType
 operator|.
-name|LINK_URL
+name|URL
 argument_list|)
 decl_stmt|;
 name|ret
@@ -1330,9 +1316,9 @@ name|XLSXHREFFormatter
 argument_list|(
 name|base
 argument_list|,
-name|Hyperlink
+name|HyperlinkType
 operator|.
-name|LINK_FILE
+name|FILE
 argument_list|)
 decl_stmt|;
 name|ret
