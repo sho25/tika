@@ -9879,11 +9879,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"to be fixed in> POI 3.17"
-argument_list|)
 specifier|public
 name|void
 name|testDOCXPhoneticStrings

@@ -452,14 +452,14 @@ operator|=
 operator|(
 name|font
 operator|.
-name|getCharSet
+name|getCharset
 argument_list|()
 operator|==
 literal|null
 operator|||
 name|font
 operator|.
-name|getCharSet
+name|getCharset
 argument_list|()
 operator|.
 name|getCharset
@@ -474,7 +474,7 @@ name|CHARSET_1252
 else|:
 name|font
 operator|.
-name|getCharSet
+name|getCharset
 argument_list|()
 operator|.
 name|getCharset
