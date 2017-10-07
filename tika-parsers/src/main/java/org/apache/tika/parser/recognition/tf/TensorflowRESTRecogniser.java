@@ -446,6 +446,7 @@ name|TensorflowRESTRecogniser
 implements|implements
 name|ObjectRecogniser
 block|{
+comment|/**      * Some variables are protected, because this class is extended by TensorflowRESTVideoRecognizer class      */
 specifier|private
 specifier|static
 specifier|final
@@ -511,14 +512,13 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/**      * Maximum buffer size for image      */
 specifier|protected
 specifier|static
 specifier|final
 name|String
 name|LABEL_LANG
 init|=
-literal|"en"
+literal|"eng"
 decl_stmt|;
 annotation|@
 name|Field

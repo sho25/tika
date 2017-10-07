@@ -535,7 +535,7 @@ specifier|final
 name|String
 name|LABEL_LANG
 init|=
-literal|"en"
+literal|"eng"
 decl_stmt|;
 annotation|@
 name|Field

@@ -350,7 +350,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This parser recognises objects from Images.  * The Object Recognition implementation can be switched using 'class' argument.  *<p>  *<b>Example Usage :</b>  *<pre>  *&lt;properties&gt;  *&lt;parsers&gt;  *&lt;parser class=&quot;org.apache.tika.parser.recognition.ObjectRecognitionParser&quot;&gt;  *&lt;mime&gt;image/jpeg&lt;/mime&gt;  *&lt;params&gt;  *&lt;param name=&quot;topN&quot; type=&quot;int&quot;&gt;2&lt;/param&gt;  *&lt;param name=&quot;minConfidence&quot; type=&quot;double&quot;&gt;0.015&lt;/param&gt;  *&lt;param name=&quot;class&quot; type=&quot;string&quot;&gt;org.apache.tika.parser.recognition.tf.TensorflowRESTRecogniser&lt;/param&gt;  *&lt;/params&gt;  *&lt;/parser&gt;  *&lt;/parsers&gt;  *&lt;/properties&gt;  *</pre>  *  * @since Apache Tika 1.14  */
+comment|/**  * This parser recognises objects from Images.  * The Object Recognition implementation can be switched using 'class' argument.  *<p>  *<b>Example Usage :</b>  *<pre>  *&lt;properties&gt;  *&lt;parsers&gt;  *&lt;parser class=&quot;org.apache.tika.parser.recognition.ObjectRecognitionParser&quot;&gt;  *&lt;params&gt;  *&lt;param name=&quot;class&quot; type=&quot;string&quot;&gt;org.apache.tika.parser.recognition.tf.TensorflowRESTRecogniser&lt;/param&gt;  *&lt;param name=&quot;class&quot; type=&quot;string&quot;&gt;org.apache.tika.parser.captioning.tf.TensorflowRESTCaptioner&lt;/param&gt;  *&lt;/params&gt;  *&lt;/parser&gt;  *&lt;/parsers&gt;  *&lt;/properties&gt;  *</pre>  *  * @since Apache Tika 1.14  */
 end_comment
 
 begin_class
@@ -810,7 +810,7 @@ operator|=
 literal|"captions"
 expr_stmt|;
 name|String
-name|mdVal
+name|labelAndConfidence
 init|=
 name|String
 operator|.
@@ -839,7 +839,7 @@ name|add
 argument_list|(
 name|MD_KEY_IMG_CAP
 argument_list|,
-name|mdVal
+name|labelAndConfidence
 argument_list|)
 expr_stmt|;
 name|xhtmlIds
@@ -869,7 +869,7 @@ operator|=
 literal|"objects"
 expr_stmt|;
 name|String
-name|mdVal
+name|labelAndConfidence
 init|=
 name|String
 operator|.
@@ -898,7 +898,7 @@ name|add
 argument_list|(
 name|MD_KEY_OBJ_REC
 argument_list|,
-name|mdVal
+name|labelAndConfidence
 argument_list|)
 expr_stmt|;
 name|xhtmlIds
