@@ -2000,16 +2000,6 @@ name|getKey
 argument_list|()
 argument_list|)
 operator|^
-operator|(
-name|e
-operator|.
-name|getValue
-argument_list|()
-operator|==
-literal|null
-condition|?
-literal|0
-else|:
 name|Arrays
 operator|.
 name|hashCode
@@ -2019,7 +2009,6 @@ operator|.
 name|getValue
 argument_list|()
 argument_list|)
-operator|)
 return|;
 block|}
 specifier|public
