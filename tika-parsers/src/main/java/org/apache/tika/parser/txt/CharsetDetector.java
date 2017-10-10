@@ -948,6 +948,9 @@ name|in
 operator|.
 name|length
 expr_stmt|;
+name|MungeInput
+argument_list|()
+expr_stmt|;
 return|return
 name|this
 return|;
@@ -974,21 +977,24 @@ argument_list|(
 name|kBufSize
 argument_list|)
 expr_stmt|;
-name|fRawInput
-operator|=
+name|byte
+index|[]
+name|inputBytes
+init|=
 operator|new
 name|byte
 index|[
 name|kBufSize
 index|]
-expr_stmt|;
+decl_stmt|;
 comment|// Always make a new buffer because the
 comment|//   previous one may have come from the caller,
 comment|//   in which case we can't touch it.
-name|fRawLength
-operator|=
+name|int
+name|length
+init|=
 literal|0
-expr_stmt|;
+decl_stmt|;
 name|int
 name|remainingLength
 init|=
@@ -1009,9 +1015,9 @@ name|fInputStream
 operator|.
 name|read
 argument_list|(
-name|fRawInput
+name|inputBytes
 argument_list|,
-name|fRawLength
+name|length
 argument_list|,
 name|remainingLength
 argument_list|)
@@ -1025,10 +1031,6 @@ condition|)
 block|{
 break|break;
 block|}
-name|fRawLength
-operator|+=
-name|bytesRead
-expr_stmt|;
 name|remainingLength
 operator|-=
 name|bytesRead
@@ -1039,12 +1041,11 @@ operator|.
 name|reset
 argument_list|()
 expr_stmt|;
-name|MungeInput
-argument_list|()
-expr_stmt|;
-comment|// Strip html markup, collect byte stats.
 return|return
-name|this
+name|setText
+argument_list|(
+name|inputBytes
+argument_list|)
 return|;
 block|}
 comment|/**      * Return the charset that best matches the supplied input data.      *<p>      * Note though, that because the detection      * only looks at the start of the input data,      * there is a possibility that the returned charset will fail to handle      * the full set of input data.      *<p>      * Raise an exception if      *<ul>      *<li>no charset appears to match the data.</li>      *<li>no input text has been provided</li>      *</ul>      *      * @return a CharsetMatch object representing the best matching charset, or      *<code>null</code> if there are no matches.      * @stable ICU 3.4      */
