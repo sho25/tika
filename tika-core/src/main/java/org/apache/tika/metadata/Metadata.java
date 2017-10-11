@@ -2244,6 +2244,24 @@ name|j
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|buf
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+block|}
 name|buf
 operator|.
 name|append
@@ -2265,11 +2283,6 @@ name|values
 index|[
 name|j
 index|]
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|" "
 argument_list|)
 expr_stmt|;
 block|}
