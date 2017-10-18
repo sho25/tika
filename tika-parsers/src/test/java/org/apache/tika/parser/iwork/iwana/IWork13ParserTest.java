@@ -23,37 +23,11 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
 operator|.
 name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
 import|;
 end_import
 
@@ -69,26 +43,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -98,20 +52,6 @@ operator|.
 name|metadata
 operator|.
 name|Metadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|metadata
-operator|.
-name|TikaCoreProperties
 import|;
 end_import
 
@@ -301,8 +241,7 @@ argument_list|,
 name|parseContext
 argument_list|)
 expr_stmt|;
-comment|// Currently parsing is a no-op
-comment|// Will only get type
+comment|// Currently parsing is a no-op, so will only get the Type
 name|assertEquals
 argument_list|(
 literal|1
@@ -396,7 +335,8 @@ argument_list|,
 name|parseContext
 argument_list|)
 expr_stmt|;
-comment|// Currently parsing is a no-op
+comment|// Currently parsing is a no-op, and we can't get the type without
+comment|//  decoding the Snappy stream
 comment|// TODO Test properly when a full Parser is added
 name|assertEquals
 argument_list|(
@@ -467,7 +407,8 @@ argument_list|,
 name|parseContext
 argument_list|)
 expr_stmt|;
-comment|// Currently parsing is a no-op
+comment|// Currently parsing is a no-op, and we can't get the type without
+comment|//  decoding the Snappy stream
 comment|// TODO Test properly when a full Parser is added
 name|assertEquals
 argument_list|(

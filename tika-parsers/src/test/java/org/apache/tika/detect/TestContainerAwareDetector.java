@@ -1385,6 +1385,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Without decoding the Document snappy stream, we can't tell the
+comment|//  difference between these two just based on the zip entries
 name|assertTypeByData
 argument_list|(
 literal|"testNumbers2013.numbers"
