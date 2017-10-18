@@ -302,10 +302,10 @@ name|parseContext
 argument_list|)
 expr_stmt|;
 comment|// Currently parsing is a no-op
-comment|// TODO Test properly when a full Parser is added
+comment|// Will only get type
 name|assertEquals
 argument_list|(
-literal|0
+literal|1
 argument_list|,
 name|metadata
 operator|.
@@ -321,6 +321,30 @@ name|handler
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|IWork13PackageParser
+operator|.
+name|IWork13DocumentType
+operator|.
+name|KEYNOTE13
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|Metadata
+operator|.
+name|CONTENT_TYPE
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
