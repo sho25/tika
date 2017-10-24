@@ -7994,18 +7994,9 @@ expr_stmt|;
 comment|// Differ from httpd - An official mimetype has subsequently been issued
 comment|//  favicon.ico +friends should now be image/vnd.microsoft.icon
 comment|//assertEquals("image/x-icon", tika.detect("x.ico"));
-name|assertEquals
-argument_list|(
-literal|"image/x-pcx"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.pcx"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - An official mimetype has subsequently been issued
+comment|//  pcx PiCture eXchange files should now be image/vnd.zbrush.pcx
+comment|//assertEquals("image/x-pcx", tika.detect("x.pcx"));
 name|assertEquals
 argument_list|(
 literal|"image/x-pict"

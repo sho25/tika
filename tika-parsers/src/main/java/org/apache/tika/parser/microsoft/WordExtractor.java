@@ -3099,6 +3099,25 @@ expr_stmt|;
 block|}
 break|break;
 block|}
+elseif|else
+if|if
+condition|(
+name|cr
+operator|.
+name|text
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"\u0014\u0015"
+argument_list|)
+condition|)
+block|{
+name|has14
+operator|=
+literal|true
+expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -4029,7 +4048,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/**      * Provides access to the pictures both by offset, iteration      * over the un-claimed, and peeking forward      */
+comment|/**      * Provides access to the pictures both by offset, iteration      * over the un-claimed, and peeking forward      *       * TODO When POI 3.18 is out, replace this with PictureRunMapper,      *  which is this class ported over into POI core      */
 specifier|private
 specifier|static
 class|class

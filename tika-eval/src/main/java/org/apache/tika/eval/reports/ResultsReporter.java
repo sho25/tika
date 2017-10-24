@@ -269,7 +269,7 @@ name|common
 operator|.
 name|usermodel
 operator|.
-name|Hyperlink
+name|HyperlinkType
 import|;
 end_import
 
@@ -341,9 +341,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|utils
 operator|.
-name|ParseContext
+name|XMLReaderUtils
 import|;
 end_import
 
@@ -648,9 +648,7 @@ decl_stmt|;
 name|DocumentBuilder
 name|docBuilder
 init|=
-operator|new
-name|ParseContext
-argument_list|()
+name|XMLReaderUtils
 operator|.
 name|getDocumentBuilder
 argument_list|()
@@ -1254,9 +1252,9 @@ name|XLSXHREFFormatter
 argument_list|(
 name|base
 argument_list|,
-name|Hyperlink
+name|HyperlinkType
 operator|.
-name|LINK_URL
+name|URL
 argument_list|)
 decl_stmt|;
 name|ret
@@ -1318,9 +1316,9 @@ name|XLSXHREFFormatter
 argument_list|(
 name|base
 argument_list|,
-name|Hyperlink
+name|HyperlinkType
 operator|.
-name|LINK_FILE
+name|FILE
 argument_list|)
 decl_stmt|;
 name|ret

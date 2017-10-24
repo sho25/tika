@@ -3480,6 +3480,29 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testSpecialControlCharacter
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-2459
+name|assertContains
+argument_list|(
+literal|"Paragraph one"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testWORD_specialControlCharacter1415.doc"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

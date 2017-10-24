@@ -39,6 +39,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|Tika
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -349,6 +361,38 @@ literal|0
 index|]
 decl_stmt|;
 comment|//don't need to convert to unsigned int because it can't be that long
+comment|//sanity check name length
+if|if
+condition|(
+name|asciiNameLength
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"ascii name length must be>= 0"
+argument_list|)
+throw|;
+block|}
+elseif|else
+if|if
+condition|(
+name|asciiNameLength
+operator|>
+name|ASCII_CHUNK_LENGTH
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"ascii name length must be< 55"
+argument_list|)
+throw|;
+block|}
 name|String
 name|asciiName
 init|=
@@ -387,9 +431,9 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|asciiNameLength
+operator|==
 name|unicodeCharLength
-operator|>
-literal|0
 condition|)
 block|{
 name|stream
@@ -443,6 +487,16 @@ argument_list|,
 name|unicodeName
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Ascii name length should be the same as the unicode length"
+argument_list|)
+throw|;
 block|}
 name|xhtml
 operator|.

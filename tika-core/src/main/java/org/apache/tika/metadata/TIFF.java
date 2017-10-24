@@ -231,6 +231,16 @@ argument_list|(
 literal|"exif:DateTimeOriginal"
 argument_list|)
 decl_stmt|;
+name|Property
+name|EXIF_PAGE_COUNT
+init|=
+name|Property
+operator|.
+name|externalInteger
+argument_list|(
+literal|"exif:PageCount"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 
