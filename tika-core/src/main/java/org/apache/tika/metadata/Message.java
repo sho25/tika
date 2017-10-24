@@ -69,6 +69,16 @@ name|MESSAGE_BCC
 init|=
 literal|"Message-Bcc"
 decl_stmt|;
+name|String
+name|MULTIPART_SUBTYPE
+init|=
+literal|"Multipart-Subtype"
+decl_stmt|;
+name|String
+name|MULTIPART_BOUNDARY
+init|=
+literal|"Multipart-Boundary"
+decl_stmt|;
 comment|/**      * Where possible, this records the value from the name field.      * Even in MAPI messages, though, this can be an email address.      */
 name|Property
 name|MESSAGE_FROM_NAME
