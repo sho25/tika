@@ -127,6 +127,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -242,7 +256,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *<p/>  * A {@link MimeEntityConfig} object can be passed in the parsing context  * to better control the parsing process.  *  * @author jnioche@digitalpebble.com  */
+comment|/**  * Uses apache-mime4j to parse emails. Each part is treated with the  * corresponding parser and displayed within elements.  *<p/>  * A {@link MimeConfig} object can be passed in the parsing context  * to better control the parsing process.  *  * @author jnioche@digitalpebble.com  */
 end_comment
 
 begin_class
@@ -282,6 +296,14 @@ argument_list|(
 literal|"message/rfc822"
 argument_list|)
 argument_list|)
+decl_stmt|;
+annotation|@
+name|Field
+specifier|private
+name|boolean
+name|extractAllAlternatives
+init|=
+literal|false
 decl_stmt|;
 specifier|public
 name|Set
@@ -399,6 +421,8 @@ name|config
 operator|.
 name|isStrictParsing
 argument_list|()
+argument_list|,
+name|extractAllAlternatives
 argument_list|)
 decl_stmt|;
 name|parser
@@ -515,6 +539,22 @@ argument_list|)
 throw|;
 block|}
 block|}
+block|}
+comment|/**      * Until version 1.17, Tika handled all body parts as embedded objects (see TIKA-2478).      * In 1.17, we modified the parser to select only the best alternative body      * parts for multipart/alternative sections, and we inline the content      * as we do for .msg files.      *      * The legacy behavior can be set by setting {@link #extractAllAlternatives}      * to<code>true</code>.  As of 1.17, the default value is<code>false</code>      *      * @param extractAllAlternatives whether or not to extract all alternative parts      * @since 1.17      */
+specifier|public
+name|void
+name|setExtractAllAlternatives
+parameter_list|(
+name|boolean
+name|extractAllAlternatives
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractAllAlternatives
+operator|=
+name|extractAllAlternatives
+expr_stmt|;
 block|}
 block|}
 end_class

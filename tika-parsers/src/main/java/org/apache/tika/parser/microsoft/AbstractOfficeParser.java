@@ -303,6 +303,37 @@ name|getConcatenatePhoneticRuns
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Some .msg files can contain body content in html, rtf and/or text.      * The default behavior is to pick the first non-null value and include only that.      * If you'd like to extract all non-null body content, which is likely duplicative,      * set this value to true.      *      * @param extractAllAlternativesFromMSG whether or not to extract all alternative parts from msg files      * @since 1.17      */
+annotation|@
+name|Field
+specifier|public
+name|void
+name|setExtractAllAlternativesFromMSG
+parameter_list|(
+name|boolean
+name|extractAllAlternativesFromMSG
+parameter_list|)
+block|{
+name|defaultOfficeParserConfig
+operator|.
+name|setExtractAllAlternativesFromMSG
+argument_list|(
+name|extractAllAlternativesFromMSG
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getExtractAllAlternativesFromMSG
+parameter_list|()
+block|{
+return|return
+name|defaultOfficeParserConfig
+operator|.
+name|getExtractAllAlternativesFromMSG
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

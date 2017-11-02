@@ -19,6 +19,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|config
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -81,6 +95,10 @@ name|boolean
 name|useSAXPptxExtractor
 init|=
 literal|false
+decl_stmt|;
+specifier|private
+name|boolean
+name|extractAllAlternativesFromMSG
 decl_stmt|;
 comment|/**      * Sets whether or not MSOffice parsers should extract macros.      * As of Tika 1.15, the default is<code>false</code>.      *      * @param extractMacros      */
 specifier|public
@@ -282,6 +300,31 @@ name|concatenatePhoneticRuns
 operator|=
 name|concatenatePhoneticRuns
 expr_stmt|;
+block|}
+comment|/**      * Some .msg files can contain body content in html, rtf and/or text.      * The default behavior is to pick the first non-null value and include only that.      * If you'd like to extract all non-null body content, which is likely duplicative,      * set this value to true.      *      * @param extractAllAlternativesFromMSG whether or not to extract all alternative parts      * @since 1.17      */
+specifier|public
+name|void
+name|setExtractAllAlternativesFromMSG
+parameter_list|(
+name|boolean
+name|extractAllAlternativesFromMSG
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractAllAlternativesFromMSG
+operator|=
+name|extractAllAlternativesFromMSG
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getExtractAllAlternativesFromMSG
+parameter_list|()
+block|{
+return|return
+name|extractAllAlternativesFromMSG
+return|;
 block|}
 block|}
 end_class
