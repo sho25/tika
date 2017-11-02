@@ -142,19 +142,18 @@ specifier|private
 specifier|static
 specifier|final
 name|int
-name|kBufSize
-init|=
-literal|12000
-decl_stmt|;
-comment|//This is a Tika modification; ICU's is 8000
-specifier|private
-specifier|static
-specifier|final
-name|int
 name|MAX_CONFIDENCE
 init|=
 literal|100
 decl_stmt|;
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_MARK_LIMIT
+init|=
+literal|12000
+decl_stmt|;
+comment|//This is a Tika modification; ICU's is 8000
 comment|/*      * List of recognizers for all charsets known to the implementation.      */
 specifier|private
 specifier|static
@@ -789,18 +788,13 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*      *  The following items are accessed by individual CharsetRecongizers during      *     the recognition process      *      */
+specifier|final
 name|byte
 index|[]
 name|fInputBytes
-init|=
-comment|// The text to be checked.  Markup will have been
-operator|new
-name|byte
-index|[
-name|kBufSize
-index|]
 decl_stmt|;
-comment|//   removed if appropriate.
+comment|// The text to be checked.  Markup will have been
+comment|// removed if appropriate.
 name|int
 name|fInputLen
 decl_stmt|;
@@ -858,11 +852,42 @@ index|[]
 name|fEnabledRecognizers
 decl_stmt|;
 comment|// If not null, active set of charset recognizers had
+specifier|private
+specifier|final
+name|int
+name|kBufSize
+decl_stmt|;
 comment|/**      * Constructor      *      * @stable ICU 3.4      */
 specifier|public
 name|CharsetDetector
 parameter_list|()
-block|{     }
+block|{
+name|this
+argument_list|(
+name|DEFAULT_MARK_LIMIT
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|CharsetDetector
+parameter_list|(
+name|int
+name|markLimit
+parameter_list|)
+block|{
+name|kBufSize
+operator|=
+name|markLimit
+expr_stmt|;
+name|fInputBytes
+operator|=
+operator|new
+name|byte
+index|[
+name|kBufSize
+index|]
+expr_stmt|;
+block|}
 comment|/**      * Get the names of all charsets supported by<code>CharsetDetector</code> class.      *<p>      *<b>Note:</b> Multiple different charset encodings in a same family may use      * a single shared name in this implementation. For example, this method returns      * an array including "ISO-8859-1" (ISO Latin 1), but not including "windows-1252"      * (Windows Latin 1). However, actual detection result could be "windows-1252"      * when the input data matches Latin 1 code points with any points only available      * in "windows-1252".      *      * @return an array of the names of all charsets supported by      *<code>CharsetDetector</code> class.      * @stable ICU 3.4      */
 specifier|public
 specifier|static
