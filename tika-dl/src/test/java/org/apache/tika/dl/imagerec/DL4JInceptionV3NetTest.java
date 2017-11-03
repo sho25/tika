@@ -109,6 +109,8 @@ name|Exception
 block|{
 name|TikaConfig
 name|config
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
@@ -129,7 +131,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|TikaConfigException
+name|Exception
 name|e
 parameter_list|)
 block|{
@@ -142,6 +144,7 @@ argument_list|()
 operator|!=
 literal|null
 operator|&&
+operator|(
 name|e
 operator|.
 name|getMessage
@@ -151,13 +154,22 @@ name|contains
 argument_list|(
 literal|"Connection refused"
 argument_list|)
+operator|||
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"connect timed out"
+argument_list|)
+operator|)
 condition|)
 block|{
+comment|//skip test
 return|return;
 block|}
-throw|throw
-name|e
-throw|;
 block|}
 name|Tika
 name|tika
