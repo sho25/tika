@@ -85,18 +85,6 @@ end_import
 
 begin_import
 import|import
-name|jj2000
-operator|.
-name|j2k
-operator|.
-name|codestream
-operator|.
-name|HeaderInfo
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
