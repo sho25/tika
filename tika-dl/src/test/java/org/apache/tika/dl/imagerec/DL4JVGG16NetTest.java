@@ -171,6 +171,13 @@ comment|//skip test
 return|return;
 block|}
 block|}
+if|if
+condition|(
+name|config
+operator|!=
+literal|null
+condition|)
+block|{
 name|Tika
 name|tika
 init|=
@@ -247,6 +254,7 @@ argument_list|(
 name|found
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class
