@@ -1205,11 +1205,15 @@ name|IOException
 throws|,
 name|SAXException
 block|{
+comment|//keep track of media items that have been handled
+comment|//there can be multiple relationships pointing to the
+comment|//same underlying media item.  We only want to process
+comment|//the underlying media item once.
 name|Set
 argument_list|<
 name|String
 argument_list|>
-name|seen
+name|handledTarget
 init|=
 operator|new
 name|HashSet
@@ -1260,7 +1264,7 @@ name|handler
 argument_list|,
 name|metadata
 argument_list|,
-name|seen
+name|handledTarget
 argument_list|)
 expr_stmt|;
 block|}
@@ -1331,7 +1335,7 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|seen
+name|handledTarget
 parameter_list|)
 throws|throws
 name|IOException
@@ -1359,7 +1363,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|seen
+name|handledTarget
 operator|.
 name|contains
 argument_list|(
@@ -1372,16 +1376,6 @@ condition|)
 block|{
 return|return;
 block|}
-name|seen
-operator|.
-name|add
-argument_list|(
-name|targetURI
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 name|URI
 name|sourceURI
@@ -1524,6 +1518,16 @@ argument_list|,
 name|parentMetadata
 argument_list|)
 expr_stmt|;
+name|handledTarget
+operator|.
+name|add
+argument_list|(
+name|targetURI
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1591,6 +1595,16 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|handledTarget
+operator|.
+name|add
+argument_list|(
+name|targetURI
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1613,6 +1627,16 @@ argument_list|(
 name|target
 argument_list|,
 name|handler
+argument_list|)
+expr_stmt|;
+name|handledTarget
+operator|.
+name|add
+argument_list|(
+name|targetURI
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
