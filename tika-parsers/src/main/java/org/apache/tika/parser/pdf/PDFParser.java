@@ -293,6 +293,20 @@ name|apache
 operator|.
 name|pdfbox
 operator|.
+name|io
+operator|.
+name|MemoryUsageSetting
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
 name|pdmodel
 operator|.
 name|PDDocument
@@ -911,10 +925,6 @@ literal|""
 decl_stmt|;
 try|try
 block|{
-comment|// PDFBox can process entirely in memory, or can use a temp file
-comment|//  for unpacked / processed resources
-comment|// Decide which to do based on if we're reading from a file or not already
-comment|//TODO: make this configurable via MemoryUsageSetting
 name|TikaInputStream
 name|tstream
 init|=
@@ -934,6 +944,37 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+name|MemoryUsageSetting
+name|memoryUsageSetting
+init|=
+name|MemoryUsageSetting
+operator|.
+name|setupMainMemoryOnly
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|localConfig
+operator|.
+name|getMaxMainMemoryBytes
+argument_list|()
+operator|>=
+literal|0
+condition|)
+block|{
+name|memoryUsageSetting
+operator|=
+name|MemoryUsageSetting
+operator|.
+name|setupMixed
+argument_list|(
+name|localConfig
+operator|.
+name|getMaxMainMemoryBytes
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|tstream
@@ -962,6 +1003,8 @@ name|toFile
 argument_list|()
 argument_list|,
 name|password
+argument_list|,
+name|memoryUsageSetting
 argument_list|)
 expr_stmt|;
 block|}
@@ -980,6 +1023,8 @@ name|stream
 argument_list|)
 argument_list|,
 name|password
+argument_list|,
+name|memoryUsageSetting
 argument_list|)
 expr_stmt|;
 block|}
