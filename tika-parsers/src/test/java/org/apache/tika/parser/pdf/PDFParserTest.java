@@ -8118,6 +8118,16 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|524288000
+argument_list|,
+name|pdfParserConfig
+operator|.
+name|getMaxMainMemoryBytes
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|false
 argument_list|,
 name|pdfParserConfig
