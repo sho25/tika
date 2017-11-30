@@ -1204,51 +1204,44 @@ name|boolean
 name|hasPython
 parameter_list|()
 block|{
-comment|// check if python is installed and if the rotation program path has been specified correctly
+comment|// check if python is installed, it has the required dependencies for the rotation program to run
 name|boolean
 name|hasPython
 init|=
 literal|false
 decl_stmt|;
-try|try
-block|{
-name|Process
-name|proc
+name|DefaultExecutor
+name|executor
 init|=
-name|Runtime
-operator|.
-name|getRuntime
+operator|new
+name|DefaultExecutor
 argument_list|()
+decl_stmt|;
+name|CommandLine
+name|cmdLine
+init|=
+name|CommandLine
 operator|.
-name|exec
+name|parse
 argument_list|(
-literal|"python -h"
+literal|"python -c \"import numpy, matplotlib, skimage;\""
 argument_list|)
 decl_stmt|;
-name|BufferedReader
-name|stdInput
+try|try
+block|{
+name|int
+name|returnCode
 init|=
-operator|new
-name|BufferedReader
-argument_list|(
-operator|new
-name|InputStreamReader
-argument_list|(
-name|proc
+name|executor
 operator|.
-name|getInputStream
-argument_list|()
-argument_list|,
-literal|"UTF-8"
-argument_list|)
+name|execute
+argument_list|(
+name|cmdLine
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|stdInput
-operator|.
-name|read
-argument_list|()
+name|returnCode
 operator|!=
 operator|-
 literal|1
@@ -1262,10 +1255,12 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
-block|{  		}
+block|{
+comment|// Do nothing
+block|}
 return|return
 name|hasPython
 return|;
