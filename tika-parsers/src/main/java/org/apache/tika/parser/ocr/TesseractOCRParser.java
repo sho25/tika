@@ -1250,7 +1250,7 @@ decl_stmt|;
 name|String
 name|prg
 init|=
-literal|"import numpy, mathplotlib, skimage"
+literal|"import numpy, matplotlib, skimage"
 decl_stmt|;
 name|BufferedWriter
 name|out
