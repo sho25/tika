@@ -310,6 +310,18 @@ name|getResize
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid default applyRotation value"
+argument_list|,
+literal|false
+argument_list|,
+name|config
+operator|.
+name|getApplyRotation
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -484,6 +496,18 @@ argument_list|,
 name|config
 operator|.
 name|getResize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid default applyRotation value"
+argument_list|,
+literal|false
+argument_list|,
+name|config
+operator|.
+name|getApplyRotation
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -675,6 +699,18 @@ argument_list|,
 name|config
 operator|.
 name|getResize
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Invalid overridden applyRotation value"
+argument_list|,
+literal|true
+argument_list|,
+name|config
+operator|.
+name|getApplyRotation
 argument_list|()
 argument_list|)
 expr_stmt|;

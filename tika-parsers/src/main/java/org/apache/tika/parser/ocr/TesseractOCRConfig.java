@@ -221,6 +221,13 @@ name|preserveInterwordSpacing
 init|=
 literal|false
 decl_stmt|;
+comment|// whether or not to apply rotation calculated by the rotation.py script
+specifier|private
+name|boolean
+name|applyRotation
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Default contructor.      */
 specifier|public
 name|TesseractOCRConfig
@@ -560,6 +567,19 @@ argument_list|,
 literal|"resize"
 argument_list|,
 name|getResize
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|setApplyRotation
+argument_list|(
+name|getProp
+argument_list|(
+name|props
+argument_list|,
+literal|"applyRotation"
+argument_list|,
+name|getApplyRotation
 argument_list|()
 argument_list|)
 argument_list|)
@@ -1316,6 +1336,34 @@ operator|.
 name|ImageMagickPath
 operator|=
 name|ImageMagickPath
+expr_stmt|;
+block|}
+comment|/**      * @return Whether or not a rotation value should be calculated and passed to ImageMagick before performing OCR.      * (Requires that Python is installed).      */
+specifier|public
+name|boolean
+name|getApplyRotation
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|applyRotation
+return|;
+block|}
+comment|/**      * Sets whether or not a rotation value should be calculated and passed to ImageMagick.      *       * @param true to calculate and apply rotation, false to skip.  Default is false, true required Python installed.      */
+specifier|public
+name|void
+name|setApplyRotation
+parameter_list|(
+name|boolean
+name|applyRotation
+parameter_list|)
+block|{
+name|this
+operator|.
+name|applyRotation
+operator|=
+name|applyRotation
 expr_stmt|;
 block|}
 comment|/**      * Get property from the properties file passed in.      *      * @param properties     properties file to read from.      * @param property       the property to fetch.      * @param defaultMissing default parameter to use.      * @return the value.      */
