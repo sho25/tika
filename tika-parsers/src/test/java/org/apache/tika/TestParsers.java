@@ -153,6 +153,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -180,7 +190,7 @@ specifier|public
 class|class
 name|TestParsers
 extends|extends
-name|TikaTest
+name|MultiThreadedTikaTest
 block|{
 specifier|private
 name|TikaConfig
@@ -628,6 +638,32 @@ literal|"testComment"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|//TODO: add a @smoketest tag or something similar to run this occasionally automatically
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+argument_list|(
+literal|"ignore for regular builds; run occasionally"
+argument_list|)
+specifier|public
+name|void
+name|testAllMultiThreaded
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//this runs against all files in /test-documents
+name|testMultiThreaded
+argument_list|(
+literal|10
+argument_list|,
+literal|100
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
