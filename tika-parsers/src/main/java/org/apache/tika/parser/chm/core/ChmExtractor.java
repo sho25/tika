@@ -416,14 +416,12 @@ name|long
 name|lzxBlockLength
 decl_stmt|;
 specifier|private
-specifier|final
 name|ChmBlockInfo
 name|chmBlockInfo
 init|=
-operator|new
-name|ChmBlockInfo
-argument_list|()
+literal|null
 decl_stmt|;
+comment|//this will be instantiated at first call of
 comment|/**      * Returns lzxc control data.      *       * @return ChmLzxcControlData      */
 specifier|private
 name|ChmLzxcControlData
@@ -1183,9 +1181,11 @@ argument_list|)
 condition|)
 block|{
 comment|/* Gets a chm hit_cache info */
+name|chmBlockInfo
+operator|=
 name|ChmBlockInfo
 operator|.
-name|resetChmBlockInfoInstance
+name|getChmBlockInfoInstance
 argument_list|(
 name|directoryListingEntry
 argument_list|,

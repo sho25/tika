@@ -424,15 +424,7 @@ argument_list|(
 name|filter
 argument_list|)
 decl_stmt|;
-name|testEach
-argument_list|(
-name|allFiles
-argument_list|,
-name|numThreads
-argument_list|,
-name|numIterations
-argument_list|)
-expr_stmt|;
+comment|//testEach(allFiles, numThreads, numIterations);
 name|testAll
 argument_list|(
 name|allFiles
@@ -590,7 +582,7 @@ try|try
 block|{
 name|_testAll
 argument_list|(
-name|files
+name|testFiles
 argument_list|,
 name|numThreads
 argument_list|,
