@@ -515,6 +515,14 @@ name|STRICT_CORE_DOCUMENT
 init|=
 literal|"http://purl.oclc.org/ooxml/officeDocument/relationships/officeDocument"
 decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|XPS_DOCUMENT
+init|=
+literal|"http://schemas.microsoft.com/xps/2005/06/fixedrepresentation"
+decl_stmt|;
 comment|/** Serial version UID */
 specifier|private
 specifier|static
@@ -1278,6 +1286,25 @@ operator|.
 name|getContentType
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|coreType
+operator|.
+name|contains
+argument_list|(
+literal|".xps"
+argument_list|)
+condition|)
+block|{
+return|return
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"vnd.ms-package.xps"
+argument_list|)
+return|;
+block|}
 comment|// Turn that into the type of the overall document
 name|String
 name|docType
@@ -1371,7 +1398,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Detects Open XML Paper Specification (XPS)      */
-specifier|private
+specifier|public
 specifier|static
 name|MediaType
 name|detectXPSOPC

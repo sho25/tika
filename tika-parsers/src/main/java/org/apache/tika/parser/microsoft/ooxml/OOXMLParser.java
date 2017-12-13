@@ -217,6 +217,19 @@ block|}
 specifier|protected
 specifier|static
 specifier|final
+name|MediaType
+name|XPS
+init|=
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"vnd.ms-xpsdocument"
+argument_list|)
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
 name|Set
 argument_list|<
 name|MediaType
@@ -447,16 +460,10 @@ name|UNSUPPORTED_OOXML_TYPES
 init|=
 name|Collections
 operator|.
-name|singleton
-argument_list|(
-name|MediaType
-operator|.
-name|application
-argument_list|(
-literal|"vnd.ms-xpsdocument"
-argument_list|)
-argument_list|)
+name|EMPTY_SET
 decl_stmt|;
+comment|//TODO: should we do a singleton for dwfx+xps?
+comment|/*Collections.singleton(                     MediaType.application("vnd.ms-xpsdocument")             );*/
 comment|/**      * Serial version UID      */
 specifier|private
 specifier|static
