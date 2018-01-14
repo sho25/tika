@@ -1833,7 +1833,7 @@ expr_stmt|;
 name|String
 name|cmd
 init|=
-literal|"python "
+literal|"python -W ignore "
 operator|+
 name|rotationScript
 operator|.
