@@ -425,6 +425,11 @@ name|hasNext
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|boolean
+name|foundTika
+init|=
+literal|false
+decl_stmt|;
 while|while
 condition|(
 name|iterator
@@ -446,14 +451,26 @@ argument_list|(
 name|fileTypeDetector
 argument_list|)
 expr_stmt|;
-name|assertTrue
-argument_list|(
+if|if
+condition|(
 name|fileTypeDetector
 operator|instanceof
 name|TikaFileTypeDetector
-argument_list|)
+condition|)
+block|{
+name|foundTika
+operator|=
+literal|true
 expr_stmt|;
 block|}
+block|}
+comment|//o.a.sis.internal.storage.StoreTypeDetector appears with latest upgrade
+comment|//check that TikaFileTypeDetector appears at all
+name|assertTrue
+argument_list|(
+name|foundTika
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
