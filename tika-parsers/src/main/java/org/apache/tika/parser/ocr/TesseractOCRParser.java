@@ -1151,13 +1151,10 @@ comment|// Fetch where the config says to find ImageMagick Program
 name|String
 name|ImageMagick
 init|=
-name|config
-operator|.
 name|getImageMagickPath
-argument_list|()
-operator|+
-name|getImageMagickProg
-argument_list|()
+argument_list|(
+name|config
+argument_list|)
 decl_stmt|;
 comment|// Have we already checked for a copy of ImageMagick Program there?
 if|if
@@ -1209,6 +1206,24 @@ argument_list|)
 expr_stmt|;
 return|return
 name|hasImageMagick
+return|;
+block|}
+specifier|private
+name|String
+name|getImageMagickPath
+parameter_list|(
+name|TesseractOCRConfig
+name|config
+parameter_list|)
+block|{
+return|return
+name|config
+operator|.
+name|getImageMagickPath
+argument_list|()
+operator|+
+name|getImageMagickProg
+argument_list|()
 return|;
 block|}
 specifier|static
@@ -1818,7 +1833,7 @@ expr_stmt|;
 name|String
 name|cmd
 init|=
-literal|"python "
+literal|"python -W ignore "
 operator|+
 name|rotationScript
 operator|.
@@ -1922,7 +1937,12 @@ comment|// process the image - parameter values can be set in TesseractOCRConfig
 name|String
 name|line
 init|=
-literal|"convert -density "
+name|getImageMagickPath
+argument_list|(
+name|config
+argument_list|)
+operator|+
+literal|" -density "
 operator|+
 name|config
 operator|.
