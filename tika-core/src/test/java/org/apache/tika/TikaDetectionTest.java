@@ -8381,18 +8381,8 @@ literal|"x.text"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"text/plain"
-argument_list|,
-name|tika
-operator|.
-name|detect
-argument_list|(
-literal|"x.conf"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// Differ from httpd - Use a dedicated mimetype for Config files
+comment|//assertEquals("text/plain", tika.detect("x.conf"));
 name|assertEquals
 argument_list|(
 literal|"text/plain"
