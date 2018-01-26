@@ -153,20 +153,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|metadata
-operator|.
-name|TikaMetadataKeys
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|mime
 operator|.
 name|MediaType
@@ -889,7 +875,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)
@@ -903,7 +889,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)
@@ -916,7 +902,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_RELATIONSHIP_ID
 argument_list|)
@@ -930,7 +916,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_RELATIONSHIP_ID
 argument_list|)

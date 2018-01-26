@@ -43,7 +43,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -92,7 +92,7 @@ name|internalClosedChoise
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -110,7 +110,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -126,7 +126,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -142,7 +142,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -158,7 +158,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -174,7 +174,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -190,7 +190,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -206,7 +206,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -222,7 +222,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -238,7 +238,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -254,7 +254,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -270,7 +270,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -286,7 +286,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -302,7 +302,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PHOTOSHOP
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

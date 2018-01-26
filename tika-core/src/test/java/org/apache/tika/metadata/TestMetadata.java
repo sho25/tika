@@ -2333,14 +2333,9 @@ operator|new
 name|Property
 index|[]
 block|{
-name|Property
-operator|.
-name|internalText
-argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|DESCRIPTION
-argument_list|)
 block|,
 name|Property
 operator|.
@@ -2394,20 +2389,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Fetch as the aliases
-name|assertEquals
-argument_list|(
-name|message
-argument_list|,
-name|meta
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|DESCRIPTION
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 name|message

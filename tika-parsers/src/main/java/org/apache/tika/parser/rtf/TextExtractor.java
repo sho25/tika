@@ -5565,12 +5565,11 @@ literal|"subject"
 argument_list|)
 condition|)
 block|{
-comment|// TODO: Move to OO subject in Tika 2.0
 name|nextMetaData
 operator|=
-name|TikaCoreProperties
+name|OfficeOpenXMLCore
 operator|.
-name|TRANSITION_SUBJECT_TO_OO_SUBJECT
+name|SUBJECT
 expr_stmt|;
 block|}
 elseif|else
@@ -5584,9 +5583,9 @@ condition|)
 block|{
 name|nextMetaData
 operator|=
-name|TikaCoreProperties
+name|Office
 operator|.
-name|TRANSITION_KEYWORDS_TO_DC_SUBJECT
+name|KEYWORDS
 expr_stmt|;
 block|}
 elseif|else

@@ -38,7 +38,7 @@ name|internalText
 argument_list|(
 name|PREFIX_HTML_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

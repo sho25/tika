@@ -849,9 +849,9 @@ name|addMetadataByProperty
 argument_list|(
 name|metadata
 argument_list|,
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|date
 argument_list|)

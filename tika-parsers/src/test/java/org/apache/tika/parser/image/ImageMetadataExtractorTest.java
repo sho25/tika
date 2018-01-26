@@ -934,9 +934,12 @@ argument_list|)
 operator|.
 name|thenReturn
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|when
@@ -1063,9 +1066,9 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;

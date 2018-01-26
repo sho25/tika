@@ -1029,7 +1029,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1393,7 +1393,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1409,7 +1409,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_RELATIONSHIP_ID
 argument_list|,

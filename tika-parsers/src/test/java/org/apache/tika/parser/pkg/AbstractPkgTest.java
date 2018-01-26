@@ -464,7 +464,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)

@@ -74,7 +74,7 @@ name|internalBoolean
 argument_list|(
 name|PREFIX_RTF_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -91,7 +91,7 @@ name|internalText
 argument_list|(
 name|PREFIX_RTF_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -107,7 +107,7 @@ name|internalText
 argument_list|(
 name|PREFIX_RTF_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -123,7 +123,7 @@ name|internalText
 argument_list|(
 name|PREFIX_RTF_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -139,7 +139,7 @@ name|internalText
 argument_list|(
 name|PREFIX_RTF_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

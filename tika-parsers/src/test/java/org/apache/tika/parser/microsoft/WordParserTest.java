@@ -417,20 +417,6 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Keith Bennett"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"Sample Word Document"
@@ -583,20 +569,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|CREATOR
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Keith Bennett"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1099,20 +1071,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Gym class featuring a brown fox and lazy dog"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"Nevin Nollop"
 argument_list|,
 name|metadata
@@ -1122,20 +1080,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|CREATOR
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Nevin Nollop"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1645,7 +1589,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1654,21 +1598,6 @@ argument_list|(
 literal|"Subject is here"
 argument_list|,
 name|content
-argument_list|)
-expr_stmt|;
-comment|// TODO: Move to OO subject in Tika 2.0
-name|assertEquals
-argument_list|(
-literal|"Subject is here"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1986,20 +1915,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Etienne Jouvin"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|LAST_AUTHOR
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"2012-01-03T22:14:00Z"
 argument_list|,
 name|metadata
@@ -2014,20 +1929,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2012-01-03T22:14:00Z"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|DATE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"2010-10-05T09:03:00Z"
 argument_list|,
 name|metadata
@@ -2037,20 +1938,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|CREATED
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2010-10-05T09:03:00Z"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|CREATION_DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2120,7 +2007,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2153,20 +2040,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// TODO: Move to OO subject in Tika 2.0
-name|assertEquals
-argument_list|(
-literal|"My subject"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"My subject"

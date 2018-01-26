@@ -452,9 +452,9 @@ name|metadata
 operator|.
 name|getValues
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -475,25 +475,6 @@ operator|.
 name|contains
 argument_list|(
 literal|"bird watching"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|keywords
-argument_list|,
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-name|metadata
-operator|.
-name|getValues
-argument_list|(
-name|TikaCoreProperties
-operator|.
-name|KEYWORDS
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

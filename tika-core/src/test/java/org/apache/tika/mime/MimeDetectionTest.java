@@ -153,6 +153,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -818,7 +832,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -922,7 +936,7 @@ name|namehint
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1123,7 +1137,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1158,7 +1172,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1194,7 +1208,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,

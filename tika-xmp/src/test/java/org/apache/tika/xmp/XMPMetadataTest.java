@@ -376,7 +376,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 operator|new
 name|String
@@ -636,7 +636,7 @@ name|isMultiValued
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -727,7 +727,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -941,7 +941,7 @@ name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -995,7 +995,7 @@ name|put
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 operator|.
 name|getName
 argument_list|()
@@ -1034,7 +1034,7 @@ name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1180,7 +1180,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 operator|new
 name|String
@@ -1202,7 +1202,7 @@ name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 decl_stmt|;
 name|assertEquals

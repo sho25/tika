@@ -483,20 +483,6 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Keith Bennett"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Mon Oct 01 17:13:56 BST 2007
 name|assertEquals
 argument_list|(
@@ -512,20 +498,6 @@ name|CREATED
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2007-10-01T16:13:56Z"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|CREATION_DATE
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|// Mon Oct 01 17:31:43 BST 2007
 name|assertEquals
 argument_list|(
@@ -538,20 +510,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|MODIFIED
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"2007-10-01T16:31:43Z"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1550,7 +1508,7 @@ name|m
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1605,7 +1563,7 @@ name|m
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -2293,20 +2251,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|CREATOR
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Aeham Abushwashi"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -487,7 +487,7 @@ name|mime
 argument_list|)
 expr_stmt|;
 comment|// Add resource name and test again
-comment|// metadata.set(Metadata.RESOURCE_NAME_KEY, urlOrFileName);
+comment|// metadata.set(TikaCoreProperties.RESOURCE_NAME_KEY, urlOrFileName);
 name|mime
 operator|=
 name|this

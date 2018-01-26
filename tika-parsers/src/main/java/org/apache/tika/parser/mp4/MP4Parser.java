@@ -1302,9 +1302,9 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|mHeader
 operator|.

@@ -466,14 +466,24 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|// TODO: Move to title in Tika 2.0
 name|metadata
 operator|.
 name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_SUBJECT_TO_DC_TITLE
+name|TITLE
+argument_list|,
+name|subject
+argument_list|)
+expr_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|SUBJECT
 argument_list|,
 name|subject
 argument_list|)
@@ -669,7 +679,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,

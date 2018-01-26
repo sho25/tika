@@ -80,7 +80,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -113,7 +113,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -146,7 +146,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -163,7 +163,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -180,7 +180,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -253,7 +253,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -302,7 +302,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -319,7 +319,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -336,7 +336,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -353,7 +353,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -370,7 +370,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -387,7 +387,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -404,7 +404,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -421,7 +421,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_CORE
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -462,7 +462,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -479,7 +479,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -496,7 +496,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -513,7 +513,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -530,7 +530,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -547,7 +547,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -564,7 +564,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -581,7 +581,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -598,7 +598,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -615,7 +615,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -632,7 +632,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -649,7 +649,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -666,7 +666,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -683,7 +683,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -704,7 +704,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -735,7 +735,7 @@ name|IMAGE_SUPPLIER_ID_WRONG_CASE
 init|=
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -751,7 +751,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -768,7 +768,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -785,7 +785,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -802,7 +802,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -819,7 +819,7 @@ name|internalInteger
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -836,7 +836,7 @@ name|internalInteger
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -853,7 +853,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -870,7 +870,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -891,7 +891,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -922,7 +922,7 @@ name|COPYRIGHT_OWNER_ID_WRONG_CASE
 init|=
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -938,7 +938,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -955,7 +955,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -976,7 +976,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1007,7 +1007,7 @@ name|IMAGE_CREATOR_ID_WRONG_CASE
 init|=
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1023,7 +1023,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1040,7 +1040,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1061,7 +1061,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1092,7 +1092,7 @@ name|LICENSOR_ID_WRONG_CASE
 init|=
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1108,7 +1108,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1125,7 +1125,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1142,7 +1142,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1159,7 +1159,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1176,7 +1176,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1193,7 +1193,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1210,7 +1210,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1227,7 +1227,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1244,7 +1244,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1261,7 +1261,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1278,7 +1278,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1295,7 +1295,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1312,7 +1312,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1329,7 +1329,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1346,7 +1346,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1363,7 +1363,7 @@ name|internalText
 argument_list|(
 name|PREFIX_PLUS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1380,7 +1380,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1397,7 +1397,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1414,7 +1414,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1431,7 +1431,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1448,7 +1448,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1465,7 +1465,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1482,7 +1482,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1499,7 +1499,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1516,7 +1516,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1533,7 +1533,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1550,7 +1550,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1567,7 +1567,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1584,7 +1584,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1601,7 +1601,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1618,7 +1618,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1635,7 +1635,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1652,7 +1652,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1669,7 +1669,7 @@ name|internalText
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1686,7 +1686,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -1703,7 +1703,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_IPTC_EXT
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

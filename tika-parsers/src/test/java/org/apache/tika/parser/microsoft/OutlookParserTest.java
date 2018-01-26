@@ -488,20 +488,6 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"L'\u00C9quipe Microsoft Outlook Express"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|AUTHOR
-argument_list|)
-argument_list|)
-expr_stmt|;
 comment|//ensure that "raw" header is correctly decoded
 name|assertEquals
 argument_list|(

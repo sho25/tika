@@ -115,7 +115,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|TikaMetadataKeys
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -2865,7 +2865,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_STORAGE_CLASS_ID
 argument_list|)
@@ -2885,7 +2885,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_STORAGE_CLASS_ID
 argument_list|)
@@ -2905,7 +2905,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_STORAGE_CLASS_ID
 argument_list|)

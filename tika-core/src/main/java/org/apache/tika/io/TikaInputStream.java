@@ -231,6 +231,20 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * Input stream with extended capabilities. The purpose of this class is  * to allow files and other resources and information to be associated with  * the {@link InputStream} instance passed through the  * {@link org.apache.tika.parser.Parser} interface and other similar APIs.  *<p>  * TikaInputStream instances can be created using the various static  *<code>get()</code> factory methods. Most of these methods take an optional  * {@link Metadata} argument that is then filled with the available input  * metadata from the given resource. The created TikaInputStream instance  * keeps track of the original resource used to create it, while behaving  * otherwise just like a normal, buffered {@link InputStream}.  * A TikaInputStream instance is also guaranteed to support the  * {@link #mark(int)} feature.  *<p>  * Code that wants to access the underlying file or other resources  * associated with a TikaInputStream should first use the  * {@link #get(InputStream)} factory method to cast or wrap a given  * {@link InputStream} into a TikaInputStream instance.  *  * @since Apache Tika 0.8  */
 end_comment
@@ -506,7 +520,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -594,7 +608,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1008,7 +1022,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,

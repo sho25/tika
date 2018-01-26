@@ -67,6 +67,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Arrays
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -524,20 +534,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Gym class featuring a brown fox and lazy dog"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"Nevin Nollop"
 argument_list|,
 name|metadata
@@ -550,17 +546,22 @@ name|CREATOR
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertContains
 argument_list|(
 literal|"Pangram, fox, dog"
 argument_list|,
+name|Arrays
+operator|.
+name|asList
+argument_list|(
 name|metadata
 operator|.
-name|get
+name|getValues
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -596,35 +597,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|RELATION
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Check some of the old style metadata too
-name|assertEquals
-argument_list|(
-literal|"The quick brown fox jumps over the lazy dog"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|TITLE
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"Gym class featuring a brown fox and lazy dog"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -755,18 +727,6 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertNull
-argument_list|(
-name|metadata
-operator|.
-name|get
-argument_list|(
 name|TikaCoreProperties
 operator|.
 name|CREATOR
@@ -781,7 +741,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -922,20 +882,6 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Test Subject"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|SUBJECT
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
 literal|"My Author"
 argument_list|,
 name|metadata
@@ -958,7 +904,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -987,20 +933,6 @@ argument_list|(
 name|TikaCoreProperties
 operator|.
 name|MODIFIER
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"bejanpol"
-argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|Metadata
-operator|.
-name|LAST_AUTHOR
 argument_list|)
 argument_list|)
 expr_stmt|;

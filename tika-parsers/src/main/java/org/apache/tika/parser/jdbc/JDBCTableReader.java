@@ -287,7 +287,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|TikaMetadataKeys
+name|TikaCoreProperties
 import|;
 end_import
 
@@ -1318,7 +1318,7 @@ name|m
 operator|.
 name|set
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -1625,7 +1625,7 @@ name|m
 operator|.
 name|set
 argument_list|(
-name|TikaMetadataKeys
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
