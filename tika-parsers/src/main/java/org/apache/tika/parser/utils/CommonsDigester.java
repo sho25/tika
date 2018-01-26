@@ -236,7 +236,7 @@ name|TIKA_META_PREFIX
 operator|+
 literal|"digest"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

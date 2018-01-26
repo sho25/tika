@@ -36,7 +36,7 @@ name|PREFIX_
 init|=
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;

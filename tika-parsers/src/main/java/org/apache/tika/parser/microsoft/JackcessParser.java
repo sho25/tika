@@ -195,6 +195,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|mime
 operator|.
 name|MediaType
@@ -300,7 +314,7 @@ name|SUMMARY_PROPERTY_PREFIX
 init|=
 literal|"MDB_SUMMARY_PROP"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -311,7 +325,7 @@ name|MDB_PROPERTY_PREFIX
 init|=
 literal|"MDB_PROP"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -322,7 +336,7 @@ name|USER_DEFINED_PROPERTY_PREFIX
 init|=
 literal|"MDB_USER_PROP"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;

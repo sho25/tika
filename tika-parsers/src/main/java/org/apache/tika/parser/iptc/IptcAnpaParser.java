@@ -4591,7 +4591,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 name|clean
 argument_list|(

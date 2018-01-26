@@ -135,8 +135,22 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
-comment|/**  * FileSystem(FS)Resource wraps a file name.  *<p/>  * This class automatically sets the following keys in Metadata:  *<ul>  *<li>Metadata.RESOURCE_NAME_KEY (file name)</li>  *<li>Metadata.CONTENT_LENGTH</li>  *<li>FSProperties.FS_REL_PATH</li>  *<li>FileResource.FILE_EXTENSION</li>  *</ul>,  */
+comment|/**  * FileSystem(FS)Resource wraps a file name.  *<p/>  * This class automatically sets the following keys in Metadata:  *<ul>  *<li>TikaCoreProperties.RESOURCE_NAME_KEY (file name)</li>  *<li>Metadata.CONTENT_LENGTH</li>  *<li>FSProperties.FS_REL_PATH</li>  *<li>FileResource.FILE_EXTENSION</li>  *</ul>,  */
 end_comment
 
 begin_class
@@ -260,7 +274,7 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,

@@ -183,6 +183,20 @@ name|Property
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * Builds on the LuceneIndexer from Chapter 5 and adds indexing of Metadata.  */
 end_comment
@@ -356,7 +370,7 @@ name|met
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATOR
 argument_list|,
@@ -367,7 +381,7 @@ name|met
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|CREATOR
 argument_list|,
@@ -378,9 +392,9 @@ name|met
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|,
 operator|new
 name|Date
@@ -391,7 +405,7 @@ name|met
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|FORMAT
 argument_list|,
@@ -427,7 +441,7 @@ name|met
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,
@@ -438,7 +452,7 @@ name|met
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,
@@ -449,7 +463,7 @@ name|met
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|SUBJECT
 argument_list|,
@@ -464,9 +478,12 @@ name|Property
 operator|.
 name|externalClosedChoise
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RIGHTS
+operator|.
+name|getName
+argument_list|()
 argument_list|,
 literal|"public"
 argument_list|,

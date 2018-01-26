@@ -285,7 +285,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This is a duplication of the algorithm and functionality      * available in commons io FilenameUtils.  If Java's File were       * able handle Windows file paths correctly in linux,      * we wouldn't need this.      *<p>      * The goal of this is to get a filename from a path.      * The package parsers and some other embedded doc      * extractors could put anything into Metadata.RESOURCE_NAME_KEY.      *<p>      * If a careless client used that filename as if it were a      * filename and not a path when writing embedded files,      * bad things could happen.  Consider: "../../../my_ppt.ppt".      *<p>      * Consider using this in combination with {@link #normalize(String)}.      *       * @param path path to strip      * @return empty string or a filename, never null      */
+comment|/**      * This is a duplication of the algorithm and functionality      * available in commons io FilenameUtils.  If Java's File were       * able handle Windows file paths correctly in linux,      * we wouldn't need this.      *<p>      * The goal of this is to get a filename from a path.      * The package parsers and some other embedded doc      * extractors could put anything into TikaCoreProperties.RESOURCE_NAME_KEY.      *<p>      * If a careless client used that filename as if it were a      * filename and not a path when writing embedded files,      * bad things could happen.  Consider: "../../../my_ppt.ppt".      *<p>      * Consider using this in combination with {@link #normalize(String)}.      *       * @param path path to strip      * @return empty string or a filename, never null      */
 specifier|public
 specifier|static
 name|String

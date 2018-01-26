@@ -29,7 +29,7 @@ name|MESSAGE_PREFIX
 init|=
 literal|"Message"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -40,7 +40,7 @@ name|MESSAGE_PREFIX
 operator|+
 literal|"Raw-Header"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;

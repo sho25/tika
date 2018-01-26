@@ -291,7 +291,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,
@@ -606,7 +606,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|,

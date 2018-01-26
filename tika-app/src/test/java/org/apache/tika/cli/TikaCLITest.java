@@ -752,7 +752,7 @@ name|json
 operator|.
 name|indexOf
 argument_list|(
-literal|"\"title\""
+literal|"\"dc:title\""
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -785,7 +785,7 @@ operator|-
 literal|1
 operator|&&
 name|fb
-operator|<
+operator|>
 name|title
 argument_list|)
 expr_stmt|;
@@ -888,7 +888,7 @@ name|json
 operator|.
 name|indexOf
 argument_list|(
-literal|"\"title\""
+literal|"\"dc:title\""
 argument_list|)
 decl_stmt|;
 name|assertTrue
@@ -921,7 +921,7 @@ operator|-
 literal|1
 operator|&&
 name|fb
-operator|<
+operator|>
 name|title
 argument_list|)
 expr_stmt|;
@@ -2028,17 +2028,17 @@ name|content
 operator|.
 name|contains
 argument_list|(
-literal|"[\n"
-operator|+
-literal|"  {\n"
-operator|+
-literal|"    \"Application-Name\": \"Microsoft Office Word\",\n"
-operator|+
-literal|"    \"Application-Version\": \"15.0000\",\n"
-operator|+
-literal|"    \"Character Count\": \"28\",\n"
-operator|+
-literal|"    \"Character-Count-With-Spaces\": \"31\","
+literal|"\"extended-properties:AppVersion\": \"15.0000\","
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|content
+operator|.
+name|contains
+argument_list|(
+literal|"\"extended-properties:Application\": \"Microsoft Office Word\","
 argument_list|)
 argument_list|)
 expr_stmt|;

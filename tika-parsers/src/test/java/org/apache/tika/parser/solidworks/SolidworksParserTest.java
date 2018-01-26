@@ -260,7 +260,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -346,7 +346,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -460,7 +460,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -546,7 +546,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -660,7 +660,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -746,7 +746,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -859,7 +859,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -945,7 +945,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1067,7 +1067,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -1153,7 +1153,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1267,7 +1267,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|MODIFIED
 argument_list|)
@@ -1353,7 +1353,7 @@ name|get
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|)
 argument_list|)
 expr_stmt|;

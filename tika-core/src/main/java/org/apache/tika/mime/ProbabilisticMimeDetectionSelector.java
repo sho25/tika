@@ -103,6 +103,20 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * Selector for combining different mime detection results  *  based on probability  */
 end_comment
@@ -574,7 +588,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)

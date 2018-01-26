@@ -229,6 +229,20 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is a MimeType repository. It gathers a set of MimeTypes and  * enables to retrieves a content-type from its name, from a file name, or from  * a magic character sequence.  *<p>  * The MIME type detection methods that take an {@link InputStream} as  * an argument will never reads more than {@link #getMinLength()} bytes  * from the stream. Also the given stream is never  * {@link InputStream#close() closed}, {@link InputStream#mark(int) marked},  * or {@link InputStream#reset() reset} by the methods. Thus a client can  * use the {@link InputStream#markSupported() mark feature} of the stream  * (if available) to restore the stream back to the state it was before type  * detection if it wants to process the stream based on the detected type.  */
 end_comment
@@ -1617,7 +1631,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)

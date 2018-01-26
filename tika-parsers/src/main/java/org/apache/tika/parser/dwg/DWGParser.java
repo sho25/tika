@@ -303,7 +303,7 @@ name|TITLE
 block|,
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_SUBJECT_TO_DC_DESCRIPTION
+name|DESCRIPTION
 block|,
 name|TikaCoreProperties
 operator|.
@@ -311,7 +311,7 @@ name|CREATOR
 block|,
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_KEYWORDS_TO_DC_SUBJECT
+name|SUBJECT
 block|,
 name|TikaCoreProperties
 operator|.
@@ -354,7 +354,7 @@ block|,
 comment|// 0x02
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_SUBJECT_TO_DC_DESCRIPTION
+name|DESCRIPTION
 block|,
 comment|// 0x03
 name|TikaCoreProperties
@@ -371,7 +371,7 @@ block|,
 comment|// 0x06
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_KEYWORDS_TO_DC_SUBJECT
+name|SUBJECT
 block|,
 comment|// 0x07
 name|TikaCoreProperties

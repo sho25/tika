@@ -241,20 +241,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
-operator|.
-name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|utils
 operator|.
 name|DateUtils
@@ -636,13 +622,13 @@ name|add
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 name|keyword
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO should we set KEYWORDS too?
+comment|// TODO should we set SUBJECT too?
 comment|// All tested photo managers set the same in Iptc.Application2.Keywords and Xmp.dc.subject
 block|}
 block|}

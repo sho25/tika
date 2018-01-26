@@ -210,7 +210,7 @@ name|metadata
 argument_list|,
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 literal|"subject"
 argument_list|)

@@ -490,9 +490,9 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|,
 name|formattedDate
 argument_list|)

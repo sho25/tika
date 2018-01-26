@@ -356,7 +356,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 literal|"keyword1,keyword2"
 argument_list|)
@@ -791,7 +791,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|KEYWORDS
+name|SUBJECT
 argument_list|,
 operator|new
 name|String

@@ -44,7 +44,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -61,7 +61,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -78,7 +78,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -95,7 +95,7 @@ name|externalDate
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -112,7 +112,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -129,28 +129,42 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"version"
 argument_list|)
 decl_stmt|;
-comment|/**      * The document's subject.      */
+comment|/**      * The document's subject.  Also populates {@link DublinCore#SUBJECT}      */
 name|Property
 name|SUBJECT
 init|=
+name|Property
+operator|.
+name|composite
+argument_list|(
 name|Property
 operator|.
 name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
 literal|"subject"
+argument_list|)
+argument_list|,
+operator|new
+name|Property
+index|[]
+block|{
+name|DublinCore
+operator|.
+name|SUBJECT
+block|,             }
 argument_list|)
 decl_stmt|;
 block|}

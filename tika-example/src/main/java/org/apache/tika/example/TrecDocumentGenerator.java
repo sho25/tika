@@ -105,6 +105,20 @@ name|Metadata
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
 begin_comment
 comment|/**  * Generates document summaries for corpus analysis in the Open Relevance  * project.  */
 end_comment
@@ -171,7 +185,7 @@ name|met
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)
@@ -182,9 +196,9 @@ name|met
 operator|.
 name|getDate
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|DATE
+name|CREATED
 argument_list|)
 argument_list|)
 return|;

@@ -77,6 +77,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|TikaCoreProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|util
 operator|.
 name|PropsUtil
@@ -84,7 +98,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Selector that chooses files based on their file name  * and their size, as determined by Metadata.RESOURCE_NAME_KEY and Metadata.CONTENT_LENGTH.  *<p/>  * The {@link #excludeFileName} pattern is applied first (if it isn't null).  * Then the {@link #includeFileName} pattern is applied (if it isn't null),  * and finally, the size limit is applied if it is above 0.  */
+comment|/**  * Selector that chooses files based on their file name  * and their size, as determined by TikaCoreProperties.RESOURCE_NAME_KEY and Metadata.CONTENT_LENGTH.  *<p/>  * The {@link #excludeFileName} pattern is applied first (if it isn't null).  * Then the {@link #includeFileName} pattern is applied (if it isn't null),  * and finally, the size limit is applied if it is above 0.  */
 end_comment
 
 begin_class
@@ -174,7 +188,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)

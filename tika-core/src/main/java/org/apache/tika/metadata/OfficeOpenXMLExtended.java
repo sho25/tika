@@ -53,7 +53,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -69,7 +69,7 @@ name|externalTextBag
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -85,7 +85,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -101,7 +101,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -117,7 +117,7 @@ name|externalInteger
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -133,7 +133,7 @@ name|externalInteger
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -149,7 +149,7 @@ name|externalInteger
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -165,7 +165,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -181,7 +181,7 @@ name|externalText
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -197,7 +197,7 @@ name|externalInteger
 argument_list|(
 name|PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -213,11 +213,11 @@ name|externalTextBag
 argument_list|(
 name|WORD_PROCESSING_PREFIX
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
-literal|"comments"
+literal|"Comments"
 argument_list|)
 decl_stmt|;
 block|}

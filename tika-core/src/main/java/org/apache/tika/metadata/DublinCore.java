@@ -66,7 +66,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -83,7 +83,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -100,7 +100,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_DC_TERMS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -117,7 +117,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -134,7 +134,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -151,7 +151,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -168,7 +168,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_DC_TERMS
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -185,7 +185,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -202,7 +202,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -219,7 +219,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -236,7 +236,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -253,7 +253,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -270,7 +270,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -287,7 +287,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -304,7 +304,7 @@ name|internalTextBag
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -321,7 +321,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
@@ -338,7 +338,7 @@ name|internalText
 argument_list|(
 name|PREFIX_DC
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+

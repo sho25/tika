@@ -1864,7 +1864,7 @@ name|m
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|EMBEDDED_RESOURCE_TYPE
 argument_list|,

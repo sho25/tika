@@ -1173,7 +1173,7 @@ name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
-name|TRANSITION_SUBJECT_TO_DC_DESCRIPTION
+name|DESCRIPTION
 argument_list|,
 name|msg
 operator|.

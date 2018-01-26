@@ -29,7 +29,7 @@ name|PDF_PREFIX
 init|=
 literal|"pdf"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -38,7 +38,7 @@ name|PDFA_PREFIX
 init|=
 literal|"pdfa"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -47,7 +47,7 @@ name|PDFAID_PREFIX
 init|=
 literal|"pdfaid"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -59,7 +59,7 @@ name|PDF_PREFIX
 operator|+
 literal|"docinfo"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
@@ -70,7 +70,7 @@ name|PDF_DOC_INFO_PREFIX
 operator|+
 literal|"custom"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;

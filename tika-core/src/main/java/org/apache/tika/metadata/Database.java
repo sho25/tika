@@ -27,7 +27,7 @@ name|PREFIX
 init|=
 literal|"database"
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 decl_stmt|;
