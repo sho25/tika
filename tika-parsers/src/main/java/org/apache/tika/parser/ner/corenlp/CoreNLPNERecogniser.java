@@ -155,9 +155,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|json
+name|github
+operator|.
+name|openjson
 operator|.
 name|JSONException
 import|;
@@ -165,9 +167,11 @@ end_import
 
 begin_import
 import|import
-name|org
+name|com
 operator|.
-name|json
+name|github
+operator|.
+name|openjson
 operator|.
 name|JSONObject
 import|;
