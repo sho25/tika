@@ -1163,6 +1163,17 @@ return|;
 block|}
 catch|catch
 parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
+block|{
+comment|//TIKA-2571
+throw|throw
+name|e
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|RuntimeException
 name|e
 parameter_list|)
