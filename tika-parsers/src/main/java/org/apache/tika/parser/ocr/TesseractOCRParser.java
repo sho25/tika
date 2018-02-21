@@ -2509,6 +2509,15 @@ argument_list|)
 block|,
 literal|"-c"
 block|,
+literal|"page_separator="
+operator|+
+name|config
+operator|.
+name|getPageSeparator
+argument_list|()
+block|,
+literal|"-c"
+block|,
 operator|(
 name|config
 operator|.

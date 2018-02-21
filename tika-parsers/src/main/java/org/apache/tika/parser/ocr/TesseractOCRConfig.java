@@ -214,6 +214,13 @@ name|resize
 init|=
 literal|900
 decl_stmt|;
+comment|// See setPageSeparator.
+specifier|private
+name|String
+name|pageSeparator
+init|=
+literal|""
+decl_stmt|;
 comment|// whether or not to preserve interword spacing
 specifier|private
 name|boolean
@@ -780,6 +787,32 @@ operator|.
 name|pageSegMode
 operator|=
 name|pageSegMode
+expr_stmt|;
+block|}
+comment|/**      * @see #setPageSeparator(String pageSeparator)      */
+specifier|public
+name|String
+name|getPageSeparator
+parameter_list|()
+block|{
+return|return
+name|pageSeparator
+return|;
+block|}
+comment|/**      * The page separator to use in plain text output.  This corresponds to Tesseract's page_separator config option.      * The default here is the empty string (i.e. no page separators).  Note that this is also the default in      * Tesseract 3.x, but in Tesseract 4.0 the default is to use the form feed control character.  We are overriding      * Tesseract 4.0's default here.      *      * @param pageSeparator      */
+specifier|public
+name|void
+name|setPageSeparator
+parameter_list|(
+name|String
+name|pageSeparator
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pageSeparator
+operator|=
+name|pageSeparator
 expr_stmt|;
 block|}
 comment|/**      * Whether or not to maintain interword spacing.  Default is<code>false</code>.      *      * @param preserveInterwordSpacing      */
