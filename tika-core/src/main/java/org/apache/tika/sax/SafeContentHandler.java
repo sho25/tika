@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Content handler decorator that makes sure that the character events  * ({@link #characters(char[], int, int)} or  * {@link #ignorableWhitespace(char[], int, int)}) passed to the decorated  * content handler contain only valid XML characters. All invalid characters  * are replaced with the Unicode replacement character U+FFFD (though a  * subclass may change this by overriding the writeReplacement method).  *<p>  * The XML standard defines the following Unicode character ranges as  * valid XML characters:  *<pre>  * #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]  *</pre>  *<p>  * Note that currently this class only detects those invalid characters whose  * UTF-16 representation fits a single char. Also, this class does not ensure  * that the UTF-16 encoding of incoming characters is correct.  */
+comment|/**  * Content handler decorator that makes sure that the character events  * ({@link #characters(char[], int, int)} or  * {@link #ignorableWhitespace(char[], int, int)}) passed to the decorated  * content handler contain only valid XML characters. All invalid characters  * are replaced with the Unicode replacement character U+FFFD (though a  * subclass may change this by overriding the {@link #writeReplacement(Output)}  method).  *<p>  * The XML standard defines the following Unicode character ranges as  * valid XML characters:  *<pre>  * #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]  *</pre>  *<p>  * Note that currently this class only detects those invalid characters whose  * UTF-16 representation fits a single char. Also, this class does not ensure  * that the UTF-16 encoding of incoming characters is correct.  */
 end_comment
 
 begin_class
