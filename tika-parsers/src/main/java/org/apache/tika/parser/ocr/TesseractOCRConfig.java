@@ -886,7 +886,7 @@ return|return
 name|timeout
 return|;
 block|}
-comment|/**      * Set output type from ocr process.  Default is "txt", but can be "hocr".      * Default value is 120s.      */
+comment|/**      * Set output type from ocr process.  Default is "txt", but can be "hocr".      * Default value is {@link OUTPUT_TYPE#TXT}.      */
 specifier|public
 name|void
 name|setOutputType
@@ -1350,7 +1350,7 @@ operator|.
 name|applyRotation
 return|;
 block|}
-comment|/**      * Sets whether or not a rotation value should be calculated and passed to ImageMagick.      *       * @param true to calculate and apply rotation, false to skip.  Default is false, true required Python installed.      */
+comment|/**      * Sets whether or not a rotation value should be calculated and passed to ImageMagick.      *       * @param applyRotation to calculate and apply rotation, false to skip.  Default is false, true required Python installed.      */
 specifier|public
 name|void
 name|setApplyRotation
