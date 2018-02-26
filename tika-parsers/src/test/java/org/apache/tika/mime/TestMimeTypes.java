@@ -3898,12 +3898,28 @@ argument_list|,
 literal|"application/mbox"
 argument_list|)
 expr_stmt|;
-comment|// Thunderbird - doesn't currently work by name
-name|assertTypeByNameAndData
+comment|// Thunderbird
+name|assertTypeDetection
 argument_list|(
-literal|"message/rfc822"
-argument_list|,
 literal|"testThunderbirdEml.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+comment|//dkim header
+name|assertTypeDetection
+argument_list|(
+literal|"testThunderbirdEml.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
+comment|//x- custom header
+name|assertTypeDetection
+argument_list|(
+literal|"testRFC822_x-.eml"
+argument_list|,
+literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
 block|}
