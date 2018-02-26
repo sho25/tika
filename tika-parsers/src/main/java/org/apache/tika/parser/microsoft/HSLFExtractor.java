@@ -2849,6 +2849,13 @@ name|equals
 argument_list|(
 literal|"application/x-tika-msoffice-embedded; format=comp_obj"
 argument_list|)
+operator|||
+name|mediaType
+operator|.
+name|equals
+argument_list|(
+literal|"application/x-tika-msoffice"
+argument_list|)
 condition|)
 block|{
 try|try
