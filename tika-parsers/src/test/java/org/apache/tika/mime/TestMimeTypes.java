@@ -1455,6 +1455,13 @@ argument_list|,
 literal|"test-documents-spanned.z01"
 argument_list|)
 expr_stmt|;
+name|assertTypeDetection
+argument_list|(
+literal|"testZSTD.zstd"
+argument_list|,
+literal|"application/zstd"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
