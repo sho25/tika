@@ -7107,6 +7107,40 @@ return|;
 block|}
 block|}
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testCharsetsNotSupportedByIANA
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertContains
+argument_list|(
+literal|"This is a sample text"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testHTML_charset_utf8.html"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"This is a sample text"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testHTML_charset_utf16le.html"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
