@@ -1354,10 +1354,6 @@ operator|new
 name|HSSFRequest
 argument_list|()
 decl_stmt|;
-name|listenForAllRecords
-operator|=
-literal|true
-expr_stmt|;
 if|if
 condition|(
 name|listenForAllRecords
