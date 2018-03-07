@@ -3929,6 +3929,14 @@ argument_list|,
 literal|"message/rfc822"
 argument_list|)
 expr_stmt|;
+comment|//embedded xhtml and img
+name|assertTypeDetection
+argument_list|(
+literal|"testEML_embedded_xhtml_and_img.eml"
+argument_list|,
+literal|"message/rfc822"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
