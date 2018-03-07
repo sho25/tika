@@ -2003,11 +2003,6 @@ argument_list|(
 literal|"testPPT_oleWorkbook.ppt"
 argument_list|)
 decl_stmt|;
-name|debug
-argument_list|(
-name|metadataList
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|3
