@@ -1428,6 +1428,8 @@ block|}
 name|SevenZFile
 name|sevenz
 decl_stmt|;
+try|try
+block|{
 if|if
 condition|(
 name|password
@@ -1467,6 +1469,21 @@ literal|"UnicodeLittleUnmarked"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|PasswordRequiredException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|EncryptedDocumentException
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 comment|// Pending a fix for COMPRESS-269 / TIKA-1525, this bit is a little nasty
 name|ais
