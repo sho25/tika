@@ -789,6 +789,18 @@ begin_import
 import|import
 name|org
 operator|.
+name|bouncycastle
+operator|.
+name|cms
+operator|.
+name|Recipient
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -2061,6 +2073,28 @@ name|ByteChunk
 operator|)
 name|rtfChunk
 decl_stmt|;
+comment|//avoid buffer underflow TIKA-2530
+comment|//TODO -- would be good to find an example triggering file and
+comment|//figure out if this is a bug in POI or a genuine 0 length chunk
+if|if
+condition|(
+name|chunk
+operator|.
+name|getValue
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+name|chunk
+operator|.
+name|getValue
+argument_list|()
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
 name|MAPIRtfAttribute
 name|rtf
 init|=
@@ -2146,6 +2180,7 @@ name|doneBody
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
