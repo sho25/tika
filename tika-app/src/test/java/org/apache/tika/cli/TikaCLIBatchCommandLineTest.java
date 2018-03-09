@@ -217,6 +217,9 @@ decl_stmt|;
 name|String
 name|testInputPathForCommandLine
 decl_stmt|;
+name|String
+name|escapedInputPathForCommandLine
+decl_stmt|;
 annotation|@
 name|Before
 specifier|public
@@ -314,6 +317,15 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+expr_stmt|;
+name|escapedInputPathForCommandLine
+operator|=
+name|BatchCommandLineBuilder
+operator|.
+name|commandLineSafe
+argument_list|(
+name|testInputPathForCommandLine
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -641,7 +653,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.
@@ -702,7 +714,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.
@@ -779,7 +791,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.
@@ -834,7 +846,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.
@@ -889,7 +901,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.
@@ -975,7 +987,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-name|testInputPathForCommandLine
+name|escapedInputPathForCommandLine
 argument_list|,
 name|attrs
 operator|.

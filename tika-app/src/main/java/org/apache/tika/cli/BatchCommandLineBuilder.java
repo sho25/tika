@@ -17,6 +17,20 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|lang
+operator|.
+name|SystemUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -240,27 +254,6 @@ argument_list|(
 literal|"java.class.path"
 argument_list|)
 decl_stmt|;
-comment|//need to test for " " on *nix, can't just add double quotes
-comment|//across platforms.
-if|if
-condition|(
-name|cp
-operator|.
-name|contains
-argument_list|(
-literal|" "
-argument_list|)
-condition|)
-block|{
-name|cp
-operator|=
-literal|"\""
-operator|+
-name|cp
-operator|+
-literal|"\""
-expr_stmt|;
-block|}
 name|jvmOpts
 operator|.
 name|put
@@ -315,7 +308,7 @@ name|jvmOpts
 operator|.
 name|put
 argument_list|(
-literal|"-Dlog4j.configuration=\"log4j_batch_process.properties\""
+literal|"-Dlog4j.configuration=log4j_batch_process.properties"
 argument_list|,
 literal|""
 argument_list|)
@@ -392,10 +385,13 @@ name|fullCommand
 operator|.
 name|add
 argument_list|(
+name|commandLineSafe
+argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -486,10 +482,13 @@ name|fullCommand
 operator|.
 name|add
 argument_list|(
+name|commandLineSafe
+argument_list|(
 name|e
 operator|.
 name|getValue
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -508,6 +507,55 @@ name|size
 argument_list|()
 index|]
 argument_list|)
+return|;
+block|}
+specifier|protected
+specifier|static
+name|String
+name|commandLineSafe
+parameter_list|(
+name|String
+name|arg
+parameter_list|)
+block|{
+if|if
+condition|(
+name|arg
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+name|arg
+return|;
+block|}
+comment|//need to test for " " on windows, can't just add double quotes
+comment|//across platforms.
+if|if
+condition|(
+name|arg
+operator|.
+name|contains
+argument_list|(
+literal|" "
+argument_list|)
+operator|&&
+name|SystemUtils
+operator|.
+name|IS_OS_WINDOWS
+condition|)
+block|{
+name|arg
+operator|=
+literal|"\""
+operator|+
+name|arg
+operator|+
+literal|"\""
+expr_stmt|;
+block|}
+return|return
+name|arg
 return|;
 block|}
 comment|/**      * Take the input args and separate them into args that belong on the commandline      * and those that belong as jvm args for the child process.      * @param args -- literal args from TikaCLI commandline      * @param commandLine args that should be part of the batch commandline      * @param jvmArgs args that belong as jvm arguments for the child process      */
