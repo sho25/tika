@@ -294,6 +294,8 @@ block|}
 empty_stmt|;
 comment|// TODO Figure out some sort of Content Policy and how
 comment|//  it might possibly work
+comment|// TODO Is an overridden method that takes a
+comment|//  ContentHandlerFactory the best way?
 comment|/**      * Media type registry.      */
 specifier|private
 name|MediaTypeRegistry
@@ -521,6 +523,7 @@ comment|// Force the stream to be file-backed, so we can
 comment|//  re-wind it safely if required
 comment|// TODO Support an InputStreamFactory as an alternative to
 comment|//  Files, see TIKA-2585
+comment|// TODO Rewind support copy from ParserDecorator.withFallbacks
 name|TikaInputStream
 name|taggedStream
 init|=
@@ -544,6 +547,7 @@ decl_stmt|;
 comment|// TODO Somehow shield/wrap the Handler, so that we can
 comment|//  avoid failures if multiple parsers want to do content
 comment|// TODO Solve the multiple-content problem!
+comment|// TODO Provide a way to supply a ContentHandlerFactory?
 for|for
 control|(
 name|Parser
@@ -578,6 +582,7 @@ argument_list|)
 expr_stmt|;
 comment|// TODO Handle metadata clashes based on the Policy
 comment|// Process if possible
+comment|// TODO Share error recording logic with RecursiveParserWrapper
 name|Exception
 name|failure
 init|=
@@ -625,12 +630,24 @@ argument_list|,
 name|failure
 argument_list|)
 decl_stmt|;
+comment|// Abort if requested, with the exception if there was one
 if|if
 condition|(
 operator|!
 name|tryNext
 condition|)
+block|{
+if|if
+condition|(
+name|failure
+operator|!=
+literal|null
+condition|)
+throw|throw
+name|failure
+throw|;
 break|break;
+block|}
 comment|// TODO Handle metadata clashes based on the Policy
 block|}
 block|}
