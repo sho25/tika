@@ -256,7 +256,28 @@ argument_list|,
 name|parsers
 argument_list|)
 expr_stmt|;
-comment|// TODO Check the policy is one we support
+comment|// Ensure it's a supported policy
+if|if
+condition|(
+operator|!
+name|allowedPolicies
+operator|.
+name|contains
+argument_list|(
+name|policy
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Unsupported policy for SupplementingParser: "
+operator|+
+name|policy
+argument_list|)
+throw|;
+block|}
 block|}
 annotation|@
 name|Override

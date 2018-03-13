@@ -609,7 +609,6 @@ argument_list|)
 expr_stmt|;
 comment|// TODO Handle metadata clashes based on the Policy
 comment|// Process if possible
-comment|// TODO Share error recording logic with RecursiveParserWrapper
 name|Exception
 name|failure
 init|=
