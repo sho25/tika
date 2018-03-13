@@ -18,6 +18,54 @@ package|;
 end_package
 
 begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|ParserUtils
+operator|.
+name|cloneMetadata
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|ParserUtils
+operator|.
+name|recordParserDetails
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|ParserUtils
+operator|.
+name|recordParserFailure
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -34,18 +82,6 @@ operator|.
 name|io
 operator|.
 name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
 import|;
 end_import
 
@@ -226,22 +262,6 @@ operator|.
 name|parser
 operator|.
 name|ParserDecorator
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|ParserUtils
-operator|.
-name|*
 import|;
 end_import
 
@@ -565,14 +585,11 @@ argument_list|,
 name|tmp
 argument_list|)
 decl_stmt|;
-name|Path
-name|path
-init|=
 name|taggedStream
 operator|.
 name|getPath
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// TODO Somehow shield/wrap the Handler, so that we can
 comment|//  avoid failures if multiple parsers want to do content
 comment|// TODO Solve the multiple-content problem!
@@ -604,7 +621,14 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
-comment|// TODO Handle metadata clashes based on the Policy
+comment|// Prepare an near-empty Metadata, will merge after
+name|metadata
+operator|=
+name|cloneMetadata
+argument_list|(
+name|originalMetadata
+argument_list|)
+expr_stmt|;
 comment|// Process if possible
 name|Exception
 name|failure
@@ -727,7 +751,19 @@ block|}
 comment|// Abort processing, don't try any more parsers
 break|break;
 block|}
-comment|// TODO Handle metadata clashes based on the Policy
+comment|// Handle metadata merging / clashes
+name|metadata
+operator|=
+name|mergeMetadata
+argument_list|(
+name|metadata
+argument_list|,
+name|lastMetadata
+argument_list|,
+name|policy
+argument_list|)
+expr_stmt|;
+comment|// Prepare for the next parser, if present
 name|lastMetadata
 operator|=
 name|cloneMetadata
@@ -735,7 +771,6 @@ argument_list|(
 name|metadata
 argument_list|)
 expr_stmt|;
-comment|// Prepare for the next parser, if present
 name|taggedStream
 operator|.
 name|reset
@@ -751,6 +786,118 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+comment|// TODO Provide a method that takes an InputStreamSource as well,
+comment|//  and a ContentHandlerFactory. Will need wrappers to convert standard
+specifier|protected
+specifier|static
+name|Metadata
+name|mergeMetadata
+parameter_list|(
+name|Metadata
+name|newMetadata
+parameter_list|,
+name|Metadata
+name|lastMetadata
+parameter_list|,
+name|MetadataPolicy
+name|policy
+parameter_list|)
+block|{
+if|if
+condition|(
+name|policy
+operator|==
+name|MetadataPolicy
+operator|.
+name|DISCARD_ALL
+condition|)
+block|{
+return|return
+name|newMetadata
+return|;
+block|}
+for|for
+control|(
+name|String
+name|n
+range|:
+name|lastMetadata
+operator|.
+name|names
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|newMetadata
+operator|.
+name|get
+argument_list|(
+name|n
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|newMetadata
+operator|.
+name|set
+argument_list|(
+name|n
+argument_list|,
+name|lastMetadata
+operator|.
+name|get
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+switch|switch
+condition|(
+name|policy
+condition|)
+block|{
+case|case
+name|FIRST_WINS
+case|:
+comment|// Use the earlier value
+name|newMetadata
+operator|.
+name|set
+argument_list|(
+name|n
+argument_list|,
+name|lastMetadata
+operator|.
+name|get
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
+expr_stmt|;
+continue|continue;
+case|case
+name|LAST_WINS
+case|:
+comment|// Most recent (last) parser has already won
+continue|continue;
+case|case
+name|KEEP_ALL
+case|:
+comment|// TODO Find unique values to add
+comment|// TODO Implement
+continue|continue;
+block|}
+block|}
+block|}
+return|return
+name|newMetadata
+return|;
 block|}
 block|}
 end_class
