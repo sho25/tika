@@ -501,7 +501,7 @@ name|Exception
 name|exception
 parameter_list|)
 function_decl|;
-comment|/**      * Delegates the call to one or more Parsers,       * Delegates the call to the matching component parser.      *<p>      * Potential {@link RuntimeException}s, {@link IOException}s and      * {@link SAXException}s unrelated to the given input stream and content      * handler are automatically wrapped into {@link TikaException}s to better      * honor the {@link Parser} contract.      */
+comment|/**      * Processes the given Stream through one or more parsers,       *  resetting things between parsers as requested by policy.      * The actual processing is delegated to one or more {@link Parser}s      */
 specifier|public
 name|void
 name|parse
@@ -550,11 +550,8 @@ decl_stmt|;
 try|try
 block|{
 comment|// Force the stream to be a Tika one
-comment|// Force the stream to be file-backed, so we can
-comment|//  re-wind it safely if required
-comment|// TODO Support an InputStreamFactory as an alternative to
-comment|//  Files, see TIKA-2585
-comment|// TODO Rewind support copy from ParserDecorator.withFallbacks
+comment|// Force the stream to be file-backed, so we can re-read safely
+comment|//  later if required for parser 2+
 comment|// TODO Should we use RereadableInputStream instead?
 name|TikaInputStream
 name|taggedStream
@@ -588,17 +585,17 @@ range|:
 name|parsers
 control|)
 block|{
-comment|// TODO What's the best way to reset each time?
-name|TikaInputStream
-name|parserStream
-init|=
-name|TikaInputStream
+comment|// Indicate we may need to re-read the stream later
+comment|// TODO Support an InputStreamFactory as an alternative to
+comment|//  Files, see TIKA-2585
+name|taggedStream
 operator|.
-name|get
+name|mark
 argument_list|(
-name|path
+operator|-
+literal|1
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// Record that we used this parser
 name|recordParserDetails
 argument_list|(
@@ -620,7 +617,7 @@ name|p
 operator|.
 name|parse
 argument_list|(
-name|parserStream
+name|taggedStream
 argument_list|,
 name|handler
 argument_list|,
@@ -737,6 +734,12 @@ name|cloneMetadata
 argument_list|(
 name|metadata
 argument_list|)
+expr_stmt|;
+comment|// Prepare for the next parser, if present
+name|taggedStream
+operator|.
+name|reset
+argument_list|()
 expr_stmt|;
 block|}
 block|}
