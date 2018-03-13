@@ -637,6 +637,15 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|recordParserFailure
+argument_list|(
+name|p
+argument_list|,
+name|e
+argument_list|,
+name|metadata
+argument_list|)
+expr_stmt|;
 name|failure
 operator|=
 name|e

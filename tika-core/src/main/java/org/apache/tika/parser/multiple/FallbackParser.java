@@ -210,8 +210,6 @@ condition|)
 return|return
 literal|false
 return|;
-comment|// Record the details of this exception in the metadata
-comment|// TODO Share logic with the Recursive Parser Wrapper
 comment|// Have the next parser tried
 return|return
 literal|true
