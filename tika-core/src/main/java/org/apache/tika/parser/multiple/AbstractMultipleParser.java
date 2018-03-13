@@ -233,6 +233,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|ParserUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -509,6 +523,23 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+comment|// Track the metadata between parsers, so we can apply our policy
+name|Metadata
+name|originalMetadata
+init|=
+name|ParserUtils
+operator|.
+name|cloneMetadata
+argument_list|(
+name|metadata
+argument_list|)
+decl_stmt|;
+name|Metadata
+name|lastMetadata
+init|=
+name|originalMetadata
+decl_stmt|;
+comment|// Start tracking resources, so we can clean up when done
 name|TemporaryResources
 name|tmp
 init|=
@@ -524,6 +555,7 @@ comment|//  re-wind it safely if required
 comment|// TODO Support an InputStreamFactory as an alternative to
 comment|//  Files, see TIKA-2585
 comment|// TODO Rewind support copy from ParserDecorator.withFallbacks
+comment|// TODO Should we use RereadableInputStream instead?
 name|TikaInputStream
 name|taggedStream
 init|=
@@ -649,6 +681,15 @@ throw|;
 break|break;
 block|}
 comment|// TODO Handle metadata clashes based on the Policy
+name|lastMetadata
+operator|=
+name|ParserUtils
+operator|.
+name|cloneMetadata
+argument_list|(
+name|metadata
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 finally|finally
