@@ -217,6 +217,32 @@ argument_list|()
 return|;
 block|}
 block|}
+comment|/**      * Records details of the {@link Parser} used to the Metadata,      *  typically wanted where multiple parsers could be picked between      *  or used.      */
+specifier|public
+specifier|static
+name|void
+name|recordParserDetails
+parameter_list|(
+name|Parser
+name|parser
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|)
+block|{
+name|metadata
+operator|.
+name|add
+argument_list|(
+literal|"X-Parsed-By"
+argument_list|,
+name|getParserClassname
+argument_list|(
+name|parser
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

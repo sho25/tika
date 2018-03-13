@@ -599,17 +599,12 @@ argument_list|(
 name|path
 argument_list|)
 decl_stmt|;
-comment|// Record this parser
-name|metadata
-operator|.
-name|add
-argument_list|(
-literal|"X-Parsed-By"
-argument_list|,
-name|getParserClassname
+comment|// Record that we used this parser
+name|recordParserDetails
 argument_list|(
 name|p
-argument_list|)
+argument_list|,
+name|metadata
 argument_list|)
 expr_stmt|;
 comment|// TODO Handle metadata clashes based on the Policy
