@@ -230,7 +230,7 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
 name|org
 operator|.
 name|apache
@@ -240,6 +240,8 @@ operator|.
 name|utils
 operator|.
 name|ParserUtils
+operator|.
+name|*
 import|;
 end_import
 
@@ -527,8 +529,6 @@ comment|// Track the metadata between parsers, so we can apply our policy
 name|Metadata
 name|originalMetadata
 init|=
-name|ParserUtils
-operator|.
 name|cloneMetadata
 argument_list|(
 name|metadata
@@ -606,7 +606,7 @@ name|add
 argument_list|(
 literal|"X-Parsed-By"
 argument_list|,
-name|getParserName
+name|getParserClassname
 argument_list|(
 name|p
 argument_list|)
@@ -730,8 +730,6 @@ block|}
 comment|// TODO Handle metadata clashes based on the Policy
 name|lastMetadata
 operator|=
-name|ParserUtils
-operator|.
 name|cloneMetadata
 argument_list|(
 name|metadata
@@ -746,53 +744,6 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-specifier|private
-name|String
-name|getParserName
-parameter_list|(
-name|Parser
-name|parser
-parameter_list|)
-block|{
-comment|// TODO Share this logic with CompositeParser
-if|if
-condition|(
-name|parser
-operator|instanceof
-name|ParserDecorator
-condition|)
-block|{
-return|return
-operator|(
-operator|(
-name|ParserDecorator
-operator|)
-name|parser
-operator|)
-operator|.
-name|getWrappedParser
-argument_list|()
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-return|;
-block|}
-else|else
-block|{
-return|return
-name|parser
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-return|;
 block|}
 block|}
 block|}
