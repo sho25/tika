@@ -533,7 +533,7 @@ name|ContentHandler
 name|handler
 parameter_list|,
 name|Metadata
-name|metadata
+name|originalMetadata
 parameter_list|,
 name|ParseContext
 name|context
@@ -547,17 +547,17 @@ name|TikaException
 block|{
 comment|// Track the metadata between parsers, so we can apply our policy
 name|Metadata
-name|originalMetadata
+name|lastMetadata
 init|=
 name|cloneMetadata
 argument_list|(
-name|metadata
+name|originalMetadata
 argument_list|)
 decl_stmt|;
 name|Metadata
-name|lastMetadata
+name|metadata
 init|=
-name|originalMetadata
+name|lastMetadata
 decl_stmt|;
 comment|// Start tracking resources, so we can clean up when done
 name|TemporaryResources
@@ -618,7 +618,7 @@ name|recordParserDetails
 argument_list|(
 name|p
 argument_list|,
-name|metadata
+name|originalMetadata
 argument_list|)
 expr_stmt|;
 comment|// Prepare an near-empty Metadata, will merge after
@@ -686,6 +686,18 @@ argument_list|,
 name|failure
 argument_list|)
 decl_stmt|;
+comment|// Handle metadata merging / clashes
+name|metadata
+operator|=
+name|mergeMetadata
+argument_list|(
+name|metadata
+argument_list|,
+name|lastMetadata
+argument_list|,
+name|policy
+argument_list|)
+expr_stmt|;
 comment|// Abort if requested, with the exception if there was one
 if|if
 condition|(
@@ -751,18 +763,6 @@ block|}
 comment|// Abort processing, don't try any more parsers
 break|break;
 block|}
-comment|// Handle metadata merging / clashes
-name|metadata
-operator|=
-name|mergeMetadata
-argument_list|(
-name|metadata
-argument_list|,
-name|lastMetadata
-argument_list|,
-name|policy
-argument_list|)
-expr_stmt|;
 comment|// Prepare for the next parser, if present
 name|lastMetadata
 operator|=
@@ -784,6 +784,33 @@ name|tmp
 operator|.
 name|dispose
 argument_list|()
+expr_stmt|;
+block|}
+comment|// Finally, copy the latest metadata back onto their supplied object
+for|for
+control|(
+name|String
+name|n
+range|:
+name|metadata
+operator|.
+name|names
+argument_list|()
+control|)
+block|{
+name|originalMetadata
+operator|.
+name|set
+argument_list|(
+name|n
+argument_list|,
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|n
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 block|}
