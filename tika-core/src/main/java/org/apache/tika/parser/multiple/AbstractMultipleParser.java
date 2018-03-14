@@ -273,6 +273,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|sax
+operator|.
+name|ContentHandlerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|utils
 operator|.
 name|ParserUtils
@@ -304,7 +318,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Abstract base class for parser wrappers which may / will  *  process a given stream multiple times, merging the results  *  of the various parsers used.  * End users should normally use {@link FallbackParser} or  *  {@link SupplementingParser} along with a Strategy.  *  * @since Apache Tika 1.18  */
+comment|/**  * Abstract base class for parser wrappers which may / will  *  process a given stream multiple times, merging the results  *  of the various parsers used.  * End users should normally use {@link FallbackParser} or  *  {@link SupplementingParser} along with a Strategy.  * Note that unless you give a {@link ContentHandlerFactory},  *  you'll get content from every parser tried mushed together!  *  * @since Apache Tika 1.18  */
 end_comment
 
 begin_class
@@ -342,10 +356,6 @@ comment|/**          * Where multiple parsers output a given key,          *  st
 name|KEEP_ALL
 block|}
 empty_stmt|;
-comment|// TODO Figure out some sort of Content Policy and how
-comment|//  it might possibly work
-comment|// TODO Is an overridden method that takes a
-comment|//  ContentHandlerFactory the best way?
 comment|/**      * Media type registry.      */
 specifier|private
 name|MediaTypeRegistry
@@ -553,7 +563,9 @@ name|Exception
 name|exception
 parameter_list|)
 function_decl|;
-comment|/**      * Processes the given Stream through one or more parsers,       *  resetting things between parsers as requested by policy.      * The actual processing is delegated to one or more {@link Parser}s      */
+comment|/**      * Processes the given Stream through one or more parsers,       *  resetting things between parsers as requested by policy.      * The actual processing is delegated to one or more {@link Parser}s.      *       * Note that you'll get text from every parser this way, to have       *  control of which content is from which parser you need to      *  call the method with a {@link ContentHandlerFactory} instead.       */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|parse
@@ -563,6 +575,84 @@ name|stream
 parameter_list|,
 name|ContentHandler
 name|handler
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|,
+name|ParseContext
+name|context
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|SAXException
+throws|,
+name|TikaException
+block|{
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+name|handler
+argument_list|,
+literal|null
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Processes the given Stream through one or more parsers,       *  resetting things between parsers as requested by policy.      * The actual processing is delegated to one or more {@link Parser}s.      * You will get one ContentHandler fetched for each Parser used.      * TODO Do we need to return all the ContentHandler instances we created?      */
+specifier|public
+name|void
+name|parse
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|,
+name|ContentHandlerFactory
+name|handlers
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|,
+name|ParseContext
+name|context
+parameter_list|)
+throws|throws
+name|IOException
+throws|,
+name|SAXException
+throws|,
+name|TikaException
+block|{
+name|parse
+argument_list|(
+name|stream
+argument_list|,
+literal|null
+argument_list|,
+name|handlers
+argument_list|,
+name|metadata
+argument_list|,
+name|context
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|parse
+parameter_list|(
+name|InputStream
+name|stream
+parameter_list|,
+name|ContentHandler
+name|handler
+parameter_list|,
+name|ContentHandlerFactory
+name|handlerFactory
 parameter_list|,
 name|Metadata
 name|originalMetadata
@@ -623,10 +713,6 @@ operator|.
 name|getPath
 argument_list|()
 expr_stmt|;
-comment|// TODO Somehow shield/wrap the Handler, so that we can
-comment|//  avoid failures if multiple parsers want to do content
-comment|// TODO Solve the multiple-content problem!
-comment|// TODO Provide a way to supply a ContentHandlerFactory?
 for|for
 control|(
 name|Parser
@@ -646,6 +732,24 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+comment|// Get a new handler for this parser, if we can
+comment|// If not, the user will get text from every parser
+comment|//  mushed together onto the one solitary handler...
+if|if
+condition|(
+name|handlerFactory
+operator|!=
+literal|null
+condition|)
+block|{
+name|handler
+operator|=
+name|handlerFactory
+operator|.
+name|getNewContentHandler
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Record that we used this parser
 name|recordParserDetails
 argument_list|(
@@ -885,8 +989,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|// TODO Provide a method that takes an InputStreamSource as well,
-comment|//  and a ContentHandlerFactory. Will need wrappers to convert standard
 specifier|protected
 specifier|static
 name|Metadata
