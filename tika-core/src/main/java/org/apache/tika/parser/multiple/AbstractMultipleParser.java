@@ -502,6 +502,21 @@ return|return
 name|offeredTypes
 return|;
 block|}
+comment|/**      * Used to allow implementations to prepare or change things      *  before parsing occurs      */
+specifier|protected
+name|void
+name|parserPrepare
+parameter_list|(
+name|Parser
+name|parser
+parameter_list|,
+name|Metadata
+name|metadata
+parameter_list|,
+name|ParseContext
+name|context
+parameter_list|)
+block|{}
 comment|/**      * Used to notify implementations that a Parser has Finished      *  or Failed, and to allow them to decide to continue or       *  abort further parsing      */
 specifier|protected
 specifier|abstract
@@ -627,6 +642,16 @@ operator|=
 name|cloneMetadata
 argument_list|(
 name|originalMetadata
+argument_list|)
+expr_stmt|;
+comment|// Notify the implementation of what we're about to do
+name|parserPrepare
+argument_list|(
+name|p
+argument_list|,
+name|metadata
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 comment|// Process if possible
