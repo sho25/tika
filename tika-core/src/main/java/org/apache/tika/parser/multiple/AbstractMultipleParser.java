@@ -532,6 +532,9 @@ parameter_list|,
 name|ContentHandler
 name|handler
 parameter_list|,
+name|ParseContext
+name|context
+parameter_list|,
 name|Exception
 name|exception
 parameter_list|)
@@ -707,6 +710,8 @@ argument_list|,
 name|metadata
 argument_list|,
 name|handler
+argument_list|,
+name|context
 argument_list|,
 name|failure
 argument_list|)
