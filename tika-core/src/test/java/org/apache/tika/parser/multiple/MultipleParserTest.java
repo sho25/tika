@@ -30,6 +30,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -567,7 +579,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-name|DummyParser
+name|ErrorParser
 operator|.
 name|class
 operator|.
@@ -577,6 +589,21 @@ argument_list|,
 name|usedParsers
 index|[
 literal|0
+index|]
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+name|DummyParser
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|usedParsers
+index|[
+literal|1
 index|]
 argument_list|)
 expr_stmt|;
@@ -734,17 +761,48 @@ operator|new
 name|EmptyParser
 argument_list|()
 decl_stmt|;
-comment|// With only one parser defined, works as normal
-name|p
-operator|=
+comment|// Supplemental doesn't support DISCARD
+try|try
+block|{
 operator|new
-name|FallbackParser
+name|SupplementingParser
 argument_list|(
 literal|null
 argument_list|,
 name|MetadataPolicy
 operator|.
 name|DISCARD_ALL
+argument_list|,
+operator|new
+name|Parser
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|(
+literal|"Discard shouldn't be supported"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|e
+parameter_list|)
+block|{}
+comment|// With only one parser defined, works as normal
+name|p
+operator|=
+operator|new
+name|SupplementingParser
+argument_list|(
+literal|null
+argument_list|,
+name|MetadataPolicy
+operator|.
+name|FIRST_WINS
 argument_list|,
 name|pContent1
 argument_list|)
@@ -862,7 +920,7 @@ comment|// Check the First, Last and All policies
 name|p
 operator|=
 operator|new
-name|FallbackParser
+name|SupplementingParser
 argument_list|(
 literal|null
 argument_list|,
@@ -921,7 +979,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Fell back 1!"
+literal|"Fell back 1!Fell back 2!"
 argument_list|,
 name|handler
 operator|.

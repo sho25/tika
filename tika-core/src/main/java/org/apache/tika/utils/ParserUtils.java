@@ -97,6 +97,14 @@ block|{
 specifier|public
 specifier|final
 specifier|static
+name|String
+name|X_PARSED_BY
+init|=
+literal|"X-Parsed-By"
+decl_stmt|;
+specifier|public
+specifier|final
+specifier|static
 name|Property
 name|EMBEDDED_PARSER
 init|=
@@ -296,7 +304,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-literal|"X-Parsed-By"
+name|X_PARSED_BY
 argument_list|,
 name|getParserClassname
 argument_list|(
