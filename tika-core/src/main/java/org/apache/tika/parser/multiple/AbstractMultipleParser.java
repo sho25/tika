@@ -998,6 +998,12 @@ condition|(
 name|newVals
 operator|==
 literal|null
+operator|||
+name|newVals
+operator|.
+name|length
+operator|==
+literal|0
 condition|)
 block|{
 comment|// Metadata only in previous run, keep old values
