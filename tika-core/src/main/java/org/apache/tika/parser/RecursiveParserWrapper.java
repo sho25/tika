@@ -318,7 +318,7 @@ specifier|public
 specifier|final
 specifier|static
 name|Property
-name|EMBEDDED_EXCEPTIONx
+name|EMBEDDED_EXCEPTION
 init|=
 name|ParserUtils
 operator|.
