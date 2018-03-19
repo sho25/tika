@@ -119,9 +119,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|sax
 operator|.
-name|RecursiveParserWrapper
+name|BodyContentHandler
 import|;
 end_import
 
@@ -133,9 +133,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|sax
+name|utils
 operator|.
-name|BodyContentHandler
+name|ParserUtils
 import|;
 end_import
 
@@ -1100,7 +1100,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|ParserUtils
 operator|.
 name|EMBEDDED_EXCEPTION
 argument_list|)
@@ -1119,7 +1119,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|ParserUtils
 operator|.
 name|EMBEDDED_EXCEPTION
 argument_list|)

@@ -141,9 +141,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|utils
 operator|.
-name|RecursiveParserWrapper
+name|ParserUtils
 import|;
 end_import
 
@@ -2997,7 +2997,7 @@ name|m
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|ParserUtils
 operator|.
 name|EMBEDDED_EXCEPTION
 argument_list|)
