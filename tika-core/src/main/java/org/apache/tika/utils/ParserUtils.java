@@ -411,6 +411,7 @@ expr_stmt|;
 block|}
 comment|/**      * Ensures that the Stream will be able to be re-read, by buffering to      *  a temporary file if required.      * Streams that are automatically OK include {@link TikaInputStream}s      *  created from Files or InputStreamFactories, and {@link RereadableInputStream}.      */
 specifier|public
+specifier|static
 name|InputStream
 name|ensureStreamReReadable
 parameter_list|(
@@ -497,6 +498,7 @@ return|;
 block|}
 comment|/**      * Resets the given {@link TikaInputStream} (checked by       *  {@link #ensureStreamReReadable(InputStream, TemporaryResources)})      * so that it can be re-read again.      */
 specifier|public
+specifier|static
 name|InputStream
 name|streamResetForReRead
 parameter_list|(

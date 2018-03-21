@@ -171,20 +171,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|TikaInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -701,28 +687,20 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|// Force the stream to be a Tika one
-comment|// Force the stream to be file-backed, so we can re-read safely
-comment|//  later if required for parser 2+
-comment|// TODO Should we support RereadableInputStream as well?
-comment|// TODO Can we put this re-read logic in a utils method?
-name|TikaInputStream
+comment|// Ensure we'll be able to re-read safely, buffering to disk if so,
+comment|//  to permit Parsers 2+ to be able to read the same data
+name|InputStream
 name|taggedStream
 init|=
-name|TikaInputStream
+name|ParserUtils
 operator|.
-name|get
+name|ensureStreamReReadable
 argument_list|(
 name|stream
 argument_list|,
 name|tmp
 argument_list|)
 decl_stmt|;
-name|taggedStream
-operator|.
-name|getPath
-argument_list|()
-expr_stmt|;
 for|for
 control|(
 name|Parser
@@ -731,17 +709,6 @@ range|:
 name|parsers
 control|)
 block|{
-comment|// Indicate we may need to re-read the stream later
-comment|// TODO Support an InputStreamFactory as an alternative to
-comment|//  Files, see TIKA-2585
-name|taggedStream
-operator|.
-name|mark
-argument_list|(
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 comment|// Get a new handler for this parser, if we can
 comment|// If not, the user will get text from every parser
 comment|//  mushed together onto the one solitary handler...
@@ -941,9 +908,15 @@ name|metadata
 argument_list|)
 expr_stmt|;
 name|taggedStream
+operator|=
+name|ParserUtils
 operator|.
-name|reset
-argument_list|()
+name|streamResetForReRead
+argument_list|(
+name|taggedStream
+argument_list|,
+name|tmp
+argument_list|)
 expr_stmt|;
 block|}
 block|}
