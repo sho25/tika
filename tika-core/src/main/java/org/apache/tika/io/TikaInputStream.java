@@ -245,6 +245,20 @@ name|TikaCoreProperties
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
+name|Parser
+import|;
+end_import
+
 begin_comment
 comment|/**  * Input stream with extended capabilities. The purpose of this class is  * to allow files and other resources and information to be associated with  * the {@link InputStream} instance passed through the  * {@link org.apache.tika.parser.Parser} interface and other similar APIs.  *<p>  * TikaInputStream instances can be created using the various static  *<code>get()</code> factory methods. Most of these methods take an optional  * {@link Metadata} argument that is then filled with the available input  * metadata from the given resource. The created TikaInputStream instance  * keeps track of the original resource used to create it, while behaving  * otherwise just like a normal, buffered {@link InputStream}.  * A TikaInputStream instance is also guaranteed to support the  * {@link #mark(int)} feature.  *<p>  * Code that wants to access the underlying file or other resources  * associated with a TikaInputStream should first use the  * {@link #get(InputStream)} factory method to cast or wrap a given  * {@link InputStream} into a TikaInputStream instance.  *  * @since Apache Tika 0.8  */
 end_comment
@@ -643,6 +657,67 @@ name|TikaInputStream
 argument_list|(
 name|file
 argument_list|)
+return|;
+block|}
+comment|/**      * Creates a TikaInputStream from a Factory which can create      *  fresh {@link InputStream}s for the same resource multiple times.      *<p>This is typically desired when working with {@link Parser}s that      *  need to re-read the stream multiple times, where other forms      *  of buffering (eg File) are slower than just getting a fresh      *  new stream each time.      */
+specifier|public
+specifier|static
+name|TikaInputStream
+name|get
+parameter_list|(
+name|InputStreamFactory
+name|factory
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|get
+argument_list|(
+name|factory
+argument_list|,
+operator|new
+name|TemporaryResources
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates a TikaInputStream from a Factory which can create      *  fresh {@link InputStream}s for the same resource multiple times.      *<p>This is typically desired when working with {@link Parser}s that      *  need to re-read the stream multiple times, where other forms      *  of buffering (eg File) are slower than just getting a fresh      *  new stream each time.      */
+specifier|public
+specifier|static
+name|TikaInputStream
+name|get
+parameter_list|(
+name|InputStreamFactory
+name|factory
+parameter_list|,
+name|TemporaryResources
+name|tmp
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|TikaInputStream
+name|stream
+init|=
+name|get
+argument_list|(
+name|factory
+operator|.
+name|getInputStream
+argument_list|()
+argument_list|,
+name|tmp
+argument_list|)
+decl_stmt|;
+name|stream
+operator|.
+name|steamFactory
+operator|=
+name|factory
+expr_stmt|;
+return|return
+name|stream
 return|;
 block|}
 comment|/**      * Creates a TikaInputStream from the given database BLOB.      *<p>      * Note that the result set containing the BLOB may need to be kept open      * until the returned TikaInputStream has been processed and closed.      * You must also always explicitly close the returned stream as in      * some cases it may end up writing the blob data to a temporary file.      *      * @param blob database BLOB      * @return a TikaInputStream instance      * @throws SQLException if BLOB data can not be accessed      */
@@ -1144,6 +1219,11 @@ name|length
 argument_list|)
 return|;
 block|}
+comment|/**      * The Factory that can create fresh {@link InputStream}s for      *  the resource this reads for, eg when needing to re-read.      */
+specifier|private
+name|InputStreamFactory
+name|steamFactory
+decl_stmt|;
 comment|/**      * The path to the file that contains the contents of this stream.      * This is either the original file passed to the      * {@link #TikaInputStream(Path)} constructor or a temporary file created      * by a call to the {@link #getPath()} method. If neither has been called,      * then the value is<code>null</code>.      */
 specifier|private
 name|Path
@@ -1405,7 +1485,7 @@ return|return
 name|n
 return|;
 block|}
-comment|/**      * Returns the open container object, such as a      *  POIFS FileSystem in the event of an OLE2      *  document being detected and processed by      *  the OLE2 detector.       */
+comment|/**      * Returns the open container object if any, such as a      *  POIFS FileSystem in the event of an OLE2 document       *  being detected and processed by the OLE2 detector.      * @return Open Container for this stream, or<code>null</code> if none       */
 specifier|public
 name|Object
 name|getOpenContainer
@@ -1446,6 +1526,27 @@ name|container
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+specifier|public
+name|boolean
+name|hasInputStreamFactory
+parameter_list|()
+block|{
+return|return
+name|steamFactory
+operator|!=
+literal|null
+return|;
+block|}
+comment|/**      * If the Stream was created from an {@link InputStreamFactory},      *  return that, otherwise<code>null</code>.      */
+specifier|public
+name|InputStreamFactory
+name|getInputStreamFactory
+parameter_list|()
+block|{
+return|return
+name|steamFactory
+return|;
 block|}
 specifier|public
 name|boolean
