@@ -1502,8 +1502,8 @@ name|parts
 operator|.
 name|size
 argument_list|()
-operator|==
-literal|1
+operator|<
+literal|2
 condition|)
 block|{
 comment|//if you're at the first level of embedding
