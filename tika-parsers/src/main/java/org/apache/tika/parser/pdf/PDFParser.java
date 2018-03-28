@@ -4055,44 +4055,6 @@ name|Class
 operator|.
 name|forName
 argument_list|(
-literal|"com.levigo.jbig2.JBIG2ImageReader"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ClassNotFoundException
-name|e
-parameter_list|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"JBIG2ImageReader not loaded. jbig2 files will be ignored\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"See https://pdfbox.apache.org/2.0/dependencies.html#jai-image-io\n"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"for optional dependencies.\n"
-argument_list|)
-expr_stmt|;
-block|}
-try|try
-block|{
-name|Class
-operator|.
-name|forName
-argument_list|(
 literal|"com.github.jaiimageio.impl.plugins.tiff.TIFFImageWriter"
 argument_list|)
 expr_stmt|;
