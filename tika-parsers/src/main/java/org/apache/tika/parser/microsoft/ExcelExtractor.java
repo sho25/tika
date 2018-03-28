@@ -2665,6 +2665,30 @@ name|getRow
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|currentSheet
+operator|.
+name|containsKey
+argument_list|(
+name|point
+argument_list|)
+condition|)
+block|{
+comment|//avoid overwriting content
+comment|//for now, add to extraTextCells
+comment|//TODO: consider allowing multiple text pieces
+comment|//per x,y to keep the text together
+name|extraTextCells
+operator|.
+name|add
+argument_list|(
+name|cell
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|currentSheet
 operator|.
 name|put
@@ -2674,6 +2698,7 @@ argument_list|,
 name|cell
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -3143,6 +3168,25 @@ operator|new
 name|TikaExcelGeneralFormat
 argument_list|(
 name|locale
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|processRecord
+parameter_list|(
+name|Record
+name|record
+parameter_list|)
+block|{
+comment|//                System.out.println(record.getClass() + " : "+record.toString());
+name|super
+operator|.
+name|processRecord
+argument_list|(
+name|record
 argument_list|)
 expr_stmt|;
 block|}
