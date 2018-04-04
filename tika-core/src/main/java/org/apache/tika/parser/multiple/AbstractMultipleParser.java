@@ -111,6 +111,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -364,8 +374,10 @@ name|policy
 decl_stmt|;
 comment|/**      * List of the multiple parsers to try.      */
 specifier|private
-name|List
+name|Collection
 argument_list|<
+name|?
+extends|extends
 name|Parser
 argument_list|>
 name|parsers
@@ -445,8 +457,10 @@ parameter_list|,
 name|MetadataPolicy
 name|policy
 parameter_list|,
-name|List
+name|Collection
 argument_list|<
+name|?
+extends|extends
 name|Parser
 argument_list|>
 name|parsers
