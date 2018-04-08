@@ -63,7 +63,27 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Locale
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
 import|;
 end_import
 
@@ -214,6 +234,13 @@ name|resize
 init|=
 literal|900
 decl_stmt|;
+comment|// See setPageSeparator.
+specifier|private
+name|String
+name|pageSeparator
+init|=
+literal|""
+decl_stmt|;
 comment|// whether or not to preserve interword spacing
 specifier|private
 name|boolean
@@ -227,6 +254,21 @@ name|boolean
 name|applyRotation
 init|=
 literal|false
+decl_stmt|;
+comment|// See addOtherTesseractConfig.
+specifier|private
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|otherTesseractConfig
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
 decl_stmt|;
 comment|/**      * Default contructor.      */
 specifier|public
@@ -584,6 +626,11 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|loadOtherTesseractConfig
+argument_list|(
+name|props
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * @see #setTesseractPath(String tesseractPath)      */
 specifier|public
@@ -780,6 +827,32 @@ operator|.
 name|pageSegMode
 operator|=
 name|pageSegMode
+expr_stmt|;
+block|}
+comment|/**      * @see #setPageSeparator(String pageSeparator)      */
+specifier|public
+name|String
+name|getPageSeparator
+parameter_list|()
+block|{
+return|return
+name|pageSeparator
+return|;
+block|}
+comment|/**      * The page separator to use in plain text output.  This corresponds to Tesseract's page_separator config option.      * The default here is the empty string (i.e. no page separators).  Note that this is also the default in      * Tesseract 3.x, but in Tesseract 4.0 the default is to use the form feed control character.  We are overriding      * Tesseract 4.0's default here.      *      * @param pageSeparator      */
+specifier|public
+name|void
+name|setPageSeparator
+parameter_list|(
+name|String
+name|pageSeparator
+parameter_list|)
+block|{
+name|this
+operator|.
+name|pageSeparator
+operator|=
+name|pageSeparator
 expr_stmt|;
 block|}
 comment|/**      * Whether or not to maintain interword spacing.  Default is<code>false</code>.      *      * @param preserveInterwordSpacing      */
@@ -1366,6 +1439,43 @@ operator|=
 name|applyRotation
 expr_stmt|;
 block|}
+comment|/**      * @see #addOtherTesseractConfig(String, String)      */
+specifier|public
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|getOtherTesseractConfig
+parameter_list|()
+block|{
+return|return
+name|otherTesseractConfig
+return|;
+block|}
+comment|/**      * Add a key-value pair to pass to Tesseract using its -c command line option.      * To see the possible options, run tesseract --print-parameters.      *      * You may also add these parameters in TesseractOCRConfig.properties; any      * key-value pair in the properties file where the key contains an underscore      * is passed directly to Tesseract.      *      * @param key      * @param value      */
+specifier|public
+name|void
+name|addOtherTesseractConfig
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|otherTesseractConfig
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Get property from the properties file passed in.      *      * @param properties     properties file to read from.      * @param property       the property to fetch.      * @param defaultMissing default parameter to use.      * @return the value.      */
 specifier|private
 name|int
@@ -1556,6 +1666,53 @@ name|propVal
 argument_list|)
 argument_list|)
 throw|;
+block|}
+comment|/**      * Populate otherTesseractConfig from the given properties.      * This assumes that any key-value pair where the key contains      * an underscore is an option to be passed opaquely to Tesseract.      *      * @param properties properties file to read from.      */
+specifier|private
+name|void
+name|loadOtherTesseractConfig
+parameter_list|(
+name|Properties
+name|properties
+parameter_list|)
+block|{
+for|for
+control|(
+name|String
+name|k
+range|:
+name|properties
+operator|.
+name|stringPropertyNames
+argument_list|()
+control|)
+block|{
+if|if
+condition|(
+name|k
+operator|.
+name|contains
+argument_list|(
+literal|"_"
+argument_list|)
+condition|)
+block|{
+name|otherTesseractConfig
+operator|.
+name|put
+argument_list|(
+name|k
+argument_list|,
+name|properties
+operator|.
+name|getProperty
+argument_list|(
+name|k
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class

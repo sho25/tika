@@ -453,22 +453,7 @@ name|image
 argument_list|(
 literal|"x-xcf"
 argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-try|try
-block|{
-name|Class
-operator|.
-name|forName
-argument_list|(
-literal|"com.levigo.jbig2.JBIG2ImageReader"
-argument_list|)
-expr_stmt|;
-name|TMP_SUPPORTED
-operator|.
-name|add
-argument_list|(
+argument_list|,
 name|MediaType
 operator|.
 name|image
@@ -476,14 +461,10 @@ argument_list|(
 literal|"x-jbig2"
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|ClassNotFoundException
-name|e
-parameter_list|)
-block|{         }
+comment|//add try/catch class.forName() for image types relying on
+comment|//provided dependencies
 block|}
 specifier|private
 specifier|static

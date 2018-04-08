@@ -1116,6 +1116,9 @@ parameter_list|(
 name|XHTMLContentHandler
 name|xhtml
 parameter_list|,
+name|Detector
+name|detector
+parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|,
@@ -1177,14 +1180,7 @@ name|this
 operator|.
 name|detector
 operator|=
-operator|new
-name|EmbeddedDocumentUtil
-argument_list|(
-name|context
-argument_list|)
-operator|.
-name|getDetector
-argument_list|()
+name|detector
 expr_stmt|;
 block|}
 annotation|@
@@ -1502,8 +1498,8 @@ name|parts
 operator|.
 name|size
 argument_list|()
-operator|==
-literal|1
+operator|<
+literal|2
 condition|)
 block|{
 comment|//if you're at the first level of embedding
@@ -1537,7 +1533,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|isTextOrHtml
+name|detectTextOrHtml
 argument_list|(
 name|submd
 argument_list|,
@@ -1614,7 +1610,7 @@ block|}
 block|}
 specifier|private
 name|boolean
-name|isTextOrHtml
+name|detectTextOrHtml
 parameter_list|(
 name|Metadata
 name|submd
@@ -1641,7 +1637,10 @@ condition|(
 name|mediaTypeString
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+if|if
+condition|(
 name|mediaTypeString
 operator|.
 name|startsWith
@@ -1653,6 +1652,13 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 try|try
 init|(
@@ -1684,7 +1690,25 @@ condition|(
 name|mediaType
 operator|!=
 literal|null
-operator|&&
+condition|)
+block|{
+comment|//detect only once
+name|submd
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CONTENT_TYPE_OVERRIDE
+argument_list|,
+name|mediaType
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|mediaType
 operator|.
 name|toString
@@ -1699,6 +1723,7 @@ block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 catch|catch

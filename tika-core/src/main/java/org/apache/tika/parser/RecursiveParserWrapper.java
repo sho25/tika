@@ -233,8 +233,8 @@ begin_class
 specifier|public
 class|class
 name|RecursiveParserWrapper
-implements|implements
-name|Parser
+extends|extends
+name|ParserDecorator
 block|{
 comment|/**      * Generated serial version      */
 specifier|private
@@ -425,6 +425,11 @@ name|boolean
 name|catchEmbeddedExceptions
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|wrappedParser
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|wrappedParser
