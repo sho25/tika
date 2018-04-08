@@ -524,7 +524,20 @@ name|Param
 argument_list|>
 name|params
 parameter_list|)
-block|{              }
+block|{
+name|this
+argument_list|(
+name|registry
+argument_list|,
+name|getMetadataPolicy
+argument_list|(
+name|params
+argument_list|)
+argument_list|,
+name|parsers
+argument_list|)
+expr_stmt|;
+block|}
 specifier|public
 name|AbstractMultipleParser
 parameter_list|(
@@ -640,6 +653,15 @@ parameter_list|)
 block|{
 return|return
 name|offeredTypes
+return|;
+block|}
+specifier|public
+name|MetadataPolicy
+name|getMetadataPolicy
+parameter_list|()
+block|{
+return|return
+name|policy
 return|;
 block|}
 comment|/**      * Used to allow implementations to prepare or change things      *  before parsing occurs      */
