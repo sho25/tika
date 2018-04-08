@@ -179,6 +179,11 @@ name|values
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|FallbackParser
 parameter_list|(

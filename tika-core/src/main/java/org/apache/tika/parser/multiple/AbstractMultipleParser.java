@@ -422,9 +422,6 @@ name|MediaType
 argument_list|>
 name|offeredTypes
 decl_stmt|;
-comment|// TODO Tika Config XML Support for these parsers and their
-comment|//  metadata policies + parsers + mimetypes
-comment|// See https://wiki.apache.org/tika/CompositeParserDiscussion
 comment|/**      * Returns the media type registry used to infer type relationships.      *      * @return media type registry      */
 specifier|public
 name|MediaTypeRegistry
@@ -451,6 +448,11 @@ operator|=
 name|registry
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|protected
 specifier|static
 name|MetadataPolicy
@@ -502,6 +504,11 @@ literal|"' not supplied"
 argument_list|)
 throw|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"rawtypes"
+argument_list|)
 specifier|public
 name|AbstractMultipleParser
 parameter_list|(
