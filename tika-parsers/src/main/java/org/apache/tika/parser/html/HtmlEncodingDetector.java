@@ -296,6 +296,13 @@ literal|"#"
 argument_list|)
 condition|)
 block|{
+name|line
+operator|=
+name|reader
+operator|.
+name|readLine
+argument_list|()
+expr_stmt|;
 continue|continue;
 block|}
 name|line
