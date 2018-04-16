@@ -1023,6 +1023,21 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|i
+operator|<
+literal|0
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Buffer underun; expected one more byte"
+argument_list|)
+throw|;
+block|}
 return|return
 name|v
 return|;
