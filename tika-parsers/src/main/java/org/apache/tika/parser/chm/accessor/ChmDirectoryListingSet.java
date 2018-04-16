@@ -620,15 +620,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"done"
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
