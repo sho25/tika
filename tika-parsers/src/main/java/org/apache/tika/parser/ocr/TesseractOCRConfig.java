@@ -154,7 +154,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?i)^[-_<>A-Z0-9 \n\r]+$"
+literal|"(?i)^[-_/\\.A-Z0-9]+$"
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -166,7 +166,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?i)^[-/_<>A-Z0-9]+$"
+literal|"(?i)^[-_/\\.A-Z0-9]+$"
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -862,11 +862,10 @@ literal|"If you trust this value, set it with setTrustedPageSeparator"
 argument_list|)
 throw|;
 block|}
-name|this
-operator|.
+name|setTrustedPageSeparator
+argument_list|(
 name|pageSeparator
-operator|=
-name|pageSeparator
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Same as {@link #setPageSeparator(String)} but does not perform      * any checks on the string.      * @param pageSeparator      */
@@ -1275,23 +1274,10 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|!
 name|colorspace
-operator|.
-name|equals
-argument_list|(
+operator|==
 literal|null
-argument_list|)
 condition|)
-block|{
-name|this
-operator|.
-name|colorspace
-operator|=
-name|colorspace
-expr_stmt|;
-block|}
-else|else
 block|{
 throw|throw
 operator|new
@@ -1301,6 +1287,31 @@ literal|"Colorspace value cannot be null."
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
+operator|!
+name|colorspace
+operator|.
+name|matches
+argument_list|(
+literal|"(?i)^[-_A-Z0-9]+$"
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"colorspace must match this pattern: (?i)^[-_A-Z0-9]+$"
+argument_list|)
+throw|;
+block|}
+name|this
+operator|.
+name|colorspace
+operator|=
+name|colorspace
+expr_stmt|;
 block|}
 comment|/**      * @return the filter      */
 specifier|public
@@ -1613,7 +1624,7 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Value contains illegal characters: "
+literal|"Key contains illegal characters: "
 operator|+
 name|key
 argument_list|)
