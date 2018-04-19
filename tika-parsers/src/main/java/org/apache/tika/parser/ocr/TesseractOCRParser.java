@@ -1165,6 +1165,15 @@ comment|//check that the parent directory exists
 if|if
 condition|(
 operator|!
+name|config
+operator|.
+name|getTesseractPath
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
+operator|!
 name|Files
 operator|.
 name|isDirectory
@@ -1283,6 +1292,15 @@ block|}
 comment|//check that directory exists
 if|if
 condition|(
+operator|!
+name|config
+operator|.
+name|getImageMagickPath
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+operator|&&
 operator|!
 name|Files
 operator|.
@@ -2154,7 +2172,7 @@ operator|.
 name|getColorspace
 argument_list|()
 block|,
-literal|" -filter "
+literal|"-filter"
 block|,
 name|config
 operator|.
