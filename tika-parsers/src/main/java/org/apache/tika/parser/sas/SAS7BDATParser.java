@@ -211,6 +211,18 @@ name|epam
 operator|.
 name|parso
 operator|.
+name|SasFileProperties
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|epam
+operator|.
+name|parso
+operator|.
 name|SasFileReader
 import|;
 end_import
@@ -359,8 +371,74 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
-comment|// TODO Metadata
-comment|// Output as a table
+name|SasFileProperties
+name|props
+init|=
+name|sas
+operator|.
+name|getSasFileProperties
+argument_list|()
+decl_stmt|;
+comment|// Record the interesting parts of the file's metadata
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TITLE
+argument_list|,
+name|props
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|CREATED
+argument_list|,
+name|props
+operator|.
+name|getDateCreated
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|MODIFIED
+argument_list|,
+name|props
+operator|.
+name|getDateModified
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// TODO What about these?
+comment|/* u64 - false compressionMethod - null endianness - 1 encoding - windows-1252 sessionEncoding - null fileType - DATA sasRelease - 9.0101M3 serverType - XP_PRO osName -  osType -  headerLength - 1024 pageLength - 8192 pageCount - 1 rowLength - 96 rowCount - 31 mixPageRowCount - 69 columnsCount - 5 */
+comment|// TODO Should we output more Column info as metadata?
+comment|/* 5 Columns defined:  1 - A   Label: A   Format: $58.   Size 58 of java.lang.String  2 - B   Label: B   Format:    Size 8 of java.lang.Number  3 - C   Label: C   Format: DATE8.   Size 8 of java.lang.Number  4 - D   Label: D   Format: DATETIME17.   Size 8 of java.lang.Number  5 - E   Label: E   Format:    Size 8 of java.lang.Number */
+comment|// Output file contents as a table
+name|xhtml
+operator|.
+name|element
+argument_list|(
+literal|"h1"
+argument_list|,
+name|props
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|xhtml
 operator|.
 name|startElement
