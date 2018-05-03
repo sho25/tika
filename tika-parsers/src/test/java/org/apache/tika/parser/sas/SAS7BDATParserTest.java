@@ -918,8 +918,78 @@ name|content
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO HTML contents unit test
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHTML
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"testSAS.sas7bdat"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+comment|// Check the title came through
+name|assertContains
+argument_list|(
+literal|"<h1>TESTING</h1>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// Check the headings
+name|assertContains
+argument_list|(
+literal|"<th title=\"recnum\">recnum</th>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<th title=\"label\">label</th>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// Check some rows
+name|assertContains
+argument_list|(
+literal|"<td>3</td>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<td>This is row"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"10</td>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 comment|// TODO Column names vs labels, with a different test file
+comment|// TODO Columnar consistency test
 block|}
 end_class
 
