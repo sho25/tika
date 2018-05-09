@@ -625,7 +625,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"SHEET1"
+literal|"TESTING"
 argument_list|,
 name|metadata
 operator|.
@@ -637,10 +637,9 @@ name|TITLE
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Fri Mar 06 19:10:19 GMT 2015
 name|assertEquals
 argument_list|(
-literal|"2015-03-06T19:10:19Z"
+literal|"2018-05-09T16:42:04Z"
 argument_list|,
 name|metadata
 operator|.
@@ -654,7 +653,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2015-03-06T19:10:19Z"
+literal|"2018-05-09T16:42:04Z"
 argument_list|,
 name|metadata
 operator|.
@@ -682,7 +681,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"5"
+literal|"7"
 argument_list|,
 name|metadata
 operator|.
@@ -696,7 +695,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"31"
+literal|"11"
 argument_list|,
 name|metadata
 operator|.
@@ -724,7 +723,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"XP_PRO"
+literal|"W32_7PRO"
 argument_list|,
 name|metadata
 operator|.
@@ -738,7 +737,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"9.0101M3"
+literal|"9.0301M2"
 argument_list|,
 name|metadata
 operator|.
@@ -784,15 +783,19 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-literal|"A"
+literal|"Record Number"
 argument_list|,
-literal|"B"
+literal|"Square of the Record Number"
 argument_list|,
-literal|"C"
+literal|"Description of the Row"
 argument_list|,
-literal|"D"
+literal|"Percent Done"
 argument_list|,
-literal|"E"
+literal|"Percent Increment"
+argument_list|,
+literal|"date"
+argument_list|,
+literal|"datetime"
 argument_list|)
 argument_list|,
 name|Arrays
@@ -820,49 +823,42 @@ argument_list|()
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"SHEET1"
+literal|"TESTING"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"A\tB\tC"
+literal|"0\t0\tThis"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Num=0\t"
+literal|"2\t4\tThis"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"Num=404242\t"
+literal|"4\t16\tThis"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"\t0\t"
+literal|"\t01-01-1960\t"
 argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"\t404242\t"
-argument_list|,
-name|content
-argument_list|)
-expr_stmt|;
-name|assertContains
-argument_list|(
-literal|"\t08Feb1904\t"
+literal|"\t01Jan1960:00:00"
 argument_list|,
 name|content
 argument_list|)
@@ -938,8 +934,76 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
-comment|// TODO Column names vs labels, with a different test file
-comment|// TODO Columnar consistency test
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testHTML2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"test-columnar.sas7bdat"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+comment|// Check the title came through
+name|assertContains
+argument_list|(
+literal|"<h1>TESTING</h1>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// Check the headings
+name|assertContains
+argument_list|(
+literal|"<th title=\"recnum\">Record Number</th>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<th title=\"square\">Square of the Record Number</th>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<th title=\"date\">date</th>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+comment|// Check formatting of dates
+name|assertContains
+argument_list|(
+literal|"<td>01-01-1960</td>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<td>01Jan1960:00:00:10.00</td>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
