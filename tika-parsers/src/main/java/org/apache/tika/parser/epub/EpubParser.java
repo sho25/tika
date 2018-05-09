@@ -649,6 +649,16 @@ argument_list|()
 operator|.
 name|endsWith
 argument_list|(
+literal|".htm"
+argument_list|)
+operator|||
+name|entry
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
 literal|".html"
 argument_list|)
 operator|||
