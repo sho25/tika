@@ -639,7 +639,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2018-05-09T16:42:04Z"
+literal|"2018-05-09T17:59:33Z"
 argument_list|,
 name|metadata
 operator|.
@@ -653,7 +653,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2018-05-09T16:42:04Z"
+literal|"2018-05-09T17:59:33Z"
 argument_list|,
 name|metadata
 operator|.
@@ -681,7 +681,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"7"
+literal|"8"
 argument_list|,
 name|metadata
 operator|.
@@ -796,6 +796,8 @@ argument_list|,
 literal|"date"
 argument_list|,
 literal|"datetime"
+argument_list|,
+literal|"time"
 argument_list|)
 argument_list|,
 name|Arrays

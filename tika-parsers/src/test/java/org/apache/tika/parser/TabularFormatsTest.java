@@ -53,21 +53,55 @@ specifier|static
 specifier|final
 name|String
 index|[]
-name|headers
+name|columnNames
 init|=
 operator|new
 name|String
 index|[]
 block|{
-literal|"String (Num=)"
+literal|"recnum"
 block|,
-literal|"Number"
+literal|"square"
 block|,
-literal|"Date"
+literal|"desc"
 block|,
-literal|"Datetime"
+literal|"pctdone"
 block|,
-literal|"Number"
+literal|"pctinc"
+block|,
+literal|"date"
+block|,
+literal|"datetime"
+block|,
+literal|"time"
+block|}
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
+name|String
+index|[]
+name|columnLabels
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Record Number"
+block|,
+literal|"Square of the Record Number"
+block|,
+literal|"Description of the Row"
+block|,
+literal|"Percent Done"
+block|,
+literal|"Percent Increment"
+block|,
+literal|"date"
+block|,
+literal|"datetime"
+block|,
+literal|"time"
 block|}
 decl_stmt|;
 comment|/**      * Expected values, by<em>column</em>      */
@@ -89,28 +123,54 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"Num=0"
+literal|"0"
+block|,
+literal|"1"
+block|,
+literal|"2"
+block|,
+literal|"3"
+block|,
+literal|"4"
+block|,
+literal|"5"
+block|,
+literal|"6"
+block|,
+literal|"7"
+block|,
+literal|"8"
+block|,
+literal|"9"
+block|,
+literal|"10"
 block|}
 block|,
 operator|new
 name|String
 index|[]
 block|{
-literal|"0.0"
+literal|"0"
+block|,
+literal|"1"
+block|,
+literal|"4"
+comment|// etc
 block|}
 block|,
 operator|new
 name|String
 index|[]
 block|{
-literal|"1899-12-30"
+comment|// etc
+literal|"01-01-1960"
 block|}
 block|,
 operator|new
 name|String
 index|[]
 block|{
-literal|"1900-01-01 11:00:00"
+comment|// etc
 block|}
 block|,
 operator|new
