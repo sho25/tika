@@ -1395,7 +1395,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO Correctly handle empty cells then test
+comment|// TODO Correctly handle empty cells then enable this test
 comment|//assertContents(xml, true, false);
 block|}
 annotation|@
@@ -1433,10 +1433,18 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO Correctly handle empty cells then test
+comment|// TODO Correctly handle empty cells then enable this test
 comment|//assertContents(xml, true, false);
 block|}
-comment|// TODO Test OpenDocument ODS test
+comment|// TODO Fix the ODS test - currently failing with
+comment|// org.xml.sax.SAXException: Namespace http://www.w3.org/1999/xhtml not declared
+comment|//    @Test
+comment|//    public void testODS() throws Exception {
+comment|//        XMLResult result = getXML("test-columnar.ods");
+comment|//        String xml = result.xml;
+comment|//        assertHeaders(xml, false, true, false);
+comment|//        assertContents(xml, true, true);
+comment|//    }
 comment|// TODO Test other formats, eg Database formats
 comment|/**      * Note - we don't have a dedicated CSV parser      *       * This means we don't get proper HTML out...      */
 annotation|@
