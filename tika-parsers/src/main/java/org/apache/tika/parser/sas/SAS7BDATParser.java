@@ -859,13 +859,27 @@ name|row
 argument_list|)
 control|)
 block|{
+comment|// Use explicit start/end, rather than element, to
+comment|//  ensure that empty cells still get output
 name|xhtml
 operator|.
-name|element
+name|startElement
 argument_list|(
 literal|"td"
-argument_list|,
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|characters
+argument_list|(
 name|val
+argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|endElement
+argument_list|(
+literal|"td"
 argument_list|)
 expr_stmt|;
 block|}
