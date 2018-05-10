@@ -39,6 +39,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Locale
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -231,7 +251,7 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"M"
+literal|""
 block|,
 literal|"0.0%"
 block|,
@@ -391,6 +411,57 @@ literal|" of 10"
 expr_stmt|;
 block|}
 block|}
+comment|// Which columns hold percentages? Not all parsers
+comment|//  correctly format these...
+specifier|protected
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|Integer
+argument_list|>
+name|percentageColumns
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+operator|new
+name|Integer
+index|[]
+block|{
+literal|3
+block|,
+literal|4
+block|}
+argument_list|)
+decl_stmt|;
+comment|// Which columns hold dates? Some parsers output
+comment|//  bits of the month in lower case, some all upper, eg JAN vs Jan
+specifier|protected
+specifier|static
+specifier|final
+name|List
+argument_list|<
+name|Integer
+argument_list|>
+name|dateColumns
+init|=
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+operator|new
+name|Integer
+index|[]
+block|{
+literal|5
+block|,
+literal|6
+block|}
+argument_list|)
+decl_stmt|;
+comment|// TODO Handle 60 vs 1960
 specifier|protected
 specifier|static
 name|String
@@ -756,6 +827,9 @@ name|xml
 parameter_list|,
 name|boolean
 name|hasHeader
+parameter_list|,
+name|boolean
+name|doesPercents
 parameter_list|)
 block|{
 comment|// Ignore anything before the first<tr>
@@ -947,27 +1021,50 @@ name|cn
 operator|++
 control|)
 block|{
-comment|// Ignore cell attributes
 name|String
 name|val
 init|=
 name|cells
-operator|.
-name|length
-operator|>
-operator|(
-name|cn
-operator|-
-literal|1
-operator|)
-condition|?
-name|cells
 index|[
 name|cn
 index|]
-else|:
-literal|""
 decl_stmt|;
+comment|// If the parser doesn't know about % formats,
+comment|//  skip the cell if the column in a % one
+if|if
+condition|(
+operator|!
+name|doesPercents
+operator|&&
+name|percentageColumns
+operator|.
+name|contains
+argument_list|(
+name|cn
+argument_list|)
+condition|)
+continue|continue;
+if|if
+condition|(
+name|dateColumns
+operator|.
+name|contains
+argument_list|(
+name|cn
+argument_list|)
+condition|)
+name|val
+operator|=
+name|val
+operator|.
+name|toUpperCase
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|)
+expr_stmt|;
+comment|// Ignore cell attributes
 if|if
 condition|(
 operator|!
@@ -1056,7 +1153,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//assertContents(xml, true);
+comment|// TODO Wait for https://github.com/epam/parso/issues/28 to be fixed
+comment|//  then check the % formats again
+comment|//        assertContents(xml, true, false);
 block|}
 annotation|@
 name|Test
@@ -1093,7 +1192,8 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//assertContents(xml, true);
+comment|// TODO Correctly handle empty cells then test
+comment|//assertContents(xml, true, false);
 block|}
 annotation|@
 name|Test
@@ -1130,7 +1230,8 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//assertContents(xml, true);
+comment|// TODO Correctly handle empty cells then test
+comment|//assertContents(xml, true, false);
 block|}
 comment|// TODO Test ODS
 comment|// TODO Test other formats, eg Database formats
