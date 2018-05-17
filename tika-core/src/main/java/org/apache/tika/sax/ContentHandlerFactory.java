@@ -47,6 +47,18 @@ name|UnsupportedEncodingException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|charset
+operator|.
+name|Charset
+import|;
+end_import
+
 begin_comment
 comment|/**  * Interface to allow easier injection of code for getting a new ContentHandler  */
 end_comment
@@ -61,6 +73,9 @@ name|ContentHandler
 name|getNewContentHandler
 parameter_list|()
 function_decl|;
+comment|/**      * @deprecated use {@link #getNewContentHandler(OutputStream, Charset)}      */
+annotation|@
+name|Deprecated
 specifier|public
 name|ContentHandler
 name|getNewContentHandler
@@ -73,6 +88,17 @@ name|encoding
 parameter_list|)
 throws|throws
 name|UnsupportedEncodingException
+function_decl|;
+specifier|public
+name|ContentHandler
+name|getNewContentHandler
+parameter_list|(
+name|OutputStream
+name|os
+parameter_list|,
+name|Charset
+name|charset
+parameter_list|)
 function_decl|;
 block|}
 end_interface

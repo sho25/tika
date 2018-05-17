@@ -321,6 +321,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|AbstractRecursiveParserWrapperHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|Before
@@ -1353,7 +1367,7 @@ name|m
 operator|.
 name|add
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|,
@@ -1713,7 +1727,7 @@ name|m0
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,
@@ -1740,7 +1754,7 @@ name|m1
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,
@@ -1765,7 +1779,7 @@ name|m2
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,
@@ -1790,7 +1804,7 @@ name|m3
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,
@@ -1815,7 +1829,7 @@ name|m4
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,
@@ -1840,7 +1854,7 @@ name|m5
 operator|.
 name|set
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|,

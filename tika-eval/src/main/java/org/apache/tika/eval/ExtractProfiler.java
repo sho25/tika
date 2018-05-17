@@ -269,6 +269,20 @@ name|RecursiveParserWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|AbstractRecursiveParserWrapperHandler
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -1712,7 +1726,7 @@ name|m
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|)

@@ -68,7 +68,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|//this is stinky.  This should reference RecursiveParserWrapper.TIKA_CONTENT
+comment|//this is stinky.  This should reference AbstractRecursiveParserWrapperHandler.TIKA_CONTENT
 comment|//but that would require making core a dependency of serialization...
 comment|//do we want to do that?
 if|if

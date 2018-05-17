@@ -285,6 +285,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|sax
+operator|.
+name|AbstractRecursiveParserWrapperHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|server
 operator|.
 name|resource
@@ -858,7 +872,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -951,7 +965,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1044,7 +1058,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1137,7 +1151,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1230,7 +1244,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1323,7 +1337,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1444,7 +1458,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1560,7 +1574,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1676,7 +1690,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1792,7 +1806,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)
@@ -1915,7 +1929,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|TIKA_CONTENT
 argument_list|)

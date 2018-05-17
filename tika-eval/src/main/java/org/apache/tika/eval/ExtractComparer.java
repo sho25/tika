@@ -395,6 +395,20 @@ name|RecursiveParserWrapper
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|AbstractRecursiveParserWrapperHandler
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -2280,7 +2294,7 @@ name|mA
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|)
@@ -2299,7 +2313,7 @@ name|mB
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|)
@@ -2501,7 +2515,7 @@ name|metadataListB
 argument_list|)
 return|;
 block|}
-comment|/**      * Try to find the matching metadata based on the RecursiveParserWrapper.EMBEDDED_RESOURCE_PATH      * If you can't find it, return -1;      *      * @param i                index for match in metadataListA      * @param metadataListA      * @param metadataListB      * @return      */
+comment|/**      * Try to find the matching metadata based on the AbstractRecursiveParserWrapperHandler.EMBEDDED_RESOURCE_PATH      * If you can't find it, return -1;      *      * @param i                index for match in metadataListA      * @param metadataListA      * @param metadataListB      * @return      */
 specifier|private
 name|int
 name|getMatch
@@ -2601,7 +2615,7 @@ name|thisMetadata
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|)
@@ -2643,7 +2657,7 @@ argument_list|)
 operator|.
 name|get
 argument_list|(
-name|RecursiveParserWrapper
+name|AbstractRecursiveParserWrapperHandler
 operator|.
 name|EMBEDDED_RESOURCE_PATH
 argument_list|)
