@@ -1433,9 +1433,17 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO Correctly handle empty cells then enable this test
+comment|// TODO Fix formatting in export then enable this test
 comment|//assertContents(xml, true, false);
 block|}
+comment|// Get a test XLSB file, then enable this unit test
+comment|//    @Test
+comment|//    public void testXLSB() throws Exception {
+comment|//        XMLResult result = getXML("test-columnar.xlsb");
+comment|//        String xml = result.xml;
+comment|//        assertHeaders(xml, false, true, false);
+comment|//        assertContents(xml, true, false);
+comment|//    }
 comment|// TODO Fix the ODS test - currently failing with
 comment|// org.xml.sax.SAXException: Namespace http://www.w3.org/1999/xhtml not declared
 comment|//    @Test
