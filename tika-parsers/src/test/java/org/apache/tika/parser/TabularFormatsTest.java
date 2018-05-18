@@ -296,14 +296,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01-(01|JAN|Jan)-(60|1960)"
+literal|"0?1-01-1960"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"02-01-1960"
+literal|"0?2-01-1960"
 argument_list|)
 block|,
 name|Pattern
@@ -378,77 +378,77 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01(JAN|Jan)(60|1960):00:00:01(.00)?"
+literal|"01(JAN|Jan)(60|1960)[:\\s]00:00:01(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01(JAN|Jan)(60|1960):00:00:10(.00)?"
+literal|"01(JAN|Jan)(60|1960)[:\\s]00:00:10(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01(JAN|Jan)(60|1960):00:01:40(.00)?"
+literal|"01(JAN|Jan)(60|1960)[:\\s]00:01:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01(JAN|Jan)(60|1960):00:16:40(.00)?"
+literal|"01(JAN|Jan)(60|1960)[:\\s]00:16:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"01(JAN|Jan)(60|1960):02:46:40(.00)?"
+literal|"01(JAN|Jan)(60|1960)[:\\s]02:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"02(JAN|Jan)(60|1960):03:46:40(.00)?"
+literal|"02(JAN|Jan)(60|1960)[:\\s]03:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"12(JAN|Jan)(60|1960):13:46:40(.00)?"
+literal|"12(JAN|Jan)(60|1960)[:\\s]13:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"25(APR|Apr)(60|1960):17:46:40(.00)?"
+literal|"25(APR|Apr)(60|1960)[:\\s]17:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"03(MAR|Mar)(63|1963):09:46:40(.00)?"
+literal|"03(MAR|Mar)(63|1963)[:\\s]09:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"09(SEP|Sep)(91|1991):01:46:40(.00)?"
+literal|"09(SEP|Sep)(91|1991)[:\\s]01:46:40(.00)?"
 argument_list|)
 block|,
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"19(NOV|Nov)(76|2276):17:46:40(.00)?"
+literal|"19(NOV|Nov)(76|2276)[:\\s]17:46:40(.00)?"
 argument_list|)
 block|}
 block|,
@@ -1395,8 +1395,15 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO Correctly handle empty cells then enable this test
-comment|//assertContents(xml, true, false);
+name|assertContents
+argument_list|(
+name|xml
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
@@ -1433,17 +1440,61 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// TODO Fix formatting in export then enable this test
-comment|//assertContents(xml, true, false);
+name|assertContents
+argument_list|(
+name|xml
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
-comment|// Get a test XLSB file, then enable this unit test
-comment|//    @Test
-comment|//    public void testXLSB() throws Exception {
-comment|//        XMLResult result = getXML("test-columnar.xlsb");
-comment|//        String xml = result.xml;
-comment|//        assertHeaders(xml, false, true, false);
-comment|//        assertContents(xml, true, false);
-comment|//    }
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testXLSB
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|XMLResult
+name|result
+init|=
+name|getXML
+argument_list|(
+literal|"test-columnar.xlsb"
+argument_list|)
+decl_stmt|;
+name|String
+name|xml
+init|=
+name|result
+operator|.
+name|xml
+decl_stmt|;
+name|assertHeaders
+argument_list|(
+name|xml
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|assertContents
+argument_list|(
+name|xml
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
 comment|// TODO Fix the ODS test - currently failing with
 comment|// org.xml.sax.SAXException: Namespace http://www.w3.org/1999/xhtml not declared
 comment|//    @Test
