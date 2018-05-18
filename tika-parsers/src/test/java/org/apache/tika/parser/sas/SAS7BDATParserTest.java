@@ -639,7 +639,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2018-05-09T17:59:33Z"
+literal|"2018-05-18T11:38:30Z"
 argument_list|,
 name|metadata
 operator|.
@@ -653,7 +653,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"2018-05-09T17:59:33Z"
+literal|"2018-05-18T11:38:30Z"
 argument_list|,
 name|metadata
 operator|.
@@ -723,7 +723,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"W32_7PRO"
+literal|"X64_7PRO"
 argument_list|,
 name|metadata
 operator|.
@@ -737,7 +737,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"9.0301M2"
+literal|"9.0401M5"
 argument_list|,
 name|metadata
 operator|.
