@@ -655,15 +655,7 @@ throws|throws
 name|Exception
 block|{
 comment|//this runs against all files in /test-documents
-name|testMultiThreaded
-argument_list|(
-literal|10
-argument_list|,
-literal|100
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
+comment|//testMultiThreaded(10, 100, null);
 block|}
 block|}
 end_class
