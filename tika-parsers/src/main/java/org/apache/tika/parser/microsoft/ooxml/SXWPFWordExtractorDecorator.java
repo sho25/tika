@@ -437,6 +437,18 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is an experimental, alternative extractor for docx files.  * This streams the main document content rather than loading the  * full document into memory.  *<p>  * This will be better for some use cases than the classic docx extractor; and,  * it will be worse for others.  *</p>  *  * @since 1.15  */
 end_comment
@@ -1126,6 +1138,11 @@ argument_list|,
 name|metadata
 argument_list|)
 decl_stmt|;
+name|SAXParser
+name|parser
+init|=
+literal|null
+decl_stmt|;
 try|try
 init|(
 name|InputStream
@@ -1137,10 +1154,14 @@ name|getInputStream
 argument_list|()
 init|)
 block|{
+name|parser
+operator|=
 name|context
 operator|.
-name|getSAXParser
+name|acquireSAXParser
 argument_list|()
+expr_stmt|;
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -1208,6 +1229,16 @@ name|getStackTrace
 argument_list|(
 name|e
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|context
+operator|.
+name|releaseParser
+argument_list|(
+name|parser
 argument_list|)
 expr_stmt|;
 block|}

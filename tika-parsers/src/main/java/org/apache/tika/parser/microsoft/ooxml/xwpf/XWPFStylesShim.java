@@ -175,6 +175,18 @@ name|DefaultHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * For Tika, all we need (so far) is a mapping between styleId and a style's name.  *  * This class uses SAX to scrape that info out of the styles.xml file.  If  * either the styleId or the style's name is null, no information is recorded.  */
 end_comment
@@ -265,10 +277,21 @@ name|IOException
 throws|,
 name|SAXException
 block|{
+name|SAXParser
+name|parser
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|parser
+operator|=
 name|parseContext
 operator|.
-name|getSAXParser
+name|acquireSAXParser
 argument_list|()
+expr_stmt|;
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -283,6 +306,17 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|parseContext
+operator|.
+name|releaseParser
+argument_list|(
+name|parser
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      *      * @param styleId      * @return style's name or null if styleId is null or can't be found      */
 specifier|public

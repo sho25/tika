@@ -697,6 +697,18 @@ name|AttributesImpl
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * Base class for all Tika OOXML extractors.  *<p/>  * Tika extractors decorate POI extractors so that the parsed content of  * documents is returned as a sequence of XHTML SAX events. Subclasses must  * implement the buildXHTML method {@link #buildXHTML(XHTMLContentHandler)} that  * populates the {@link XHTMLContentHandler} object received as parameter.  */
 end_comment
@@ -2914,6 +2926,11 @@ argument_list|(
 name|relatedPartPackageRelationship
 argument_list|)
 decl_stmt|;
+name|SAXParser
+name|parser
+init|=
+literal|null
+decl_stmt|;
 try|try
 init|(
 name|InputStream
@@ -2925,10 +2942,14 @@ name|getInputStream
 argument_list|()
 init|)
 block|{
+name|parser
+operator|=
 name|context
 operator|.
-name|getSAXParser
+name|acquireSAXParser
 argument_list|()
+expr_stmt|;
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -2968,6 +2989,16 @@ name|getStackTrace
 argument_list|(
 name|e
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+finally|finally
+block|{
+name|context
+operator|.
+name|releaseParser
+argument_list|(
+name|parser
 argument_list|)
 expr_stmt|;
 block|}

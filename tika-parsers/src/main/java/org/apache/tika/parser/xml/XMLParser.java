@@ -257,6 +257,18 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParser
+import|;
+end_import
+
 begin_comment
 comment|/**  * XML parser.  */
 end_comment
@@ -415,12 +427,21 @@ argument_list|(
 name|handler
 argument_list|)
 decl_stmt|;
+name|SAXParser
+name|parser
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
+name|parser
+operator|=
 name|context
 operator|.
-name|getSAXParser
+name|acquireSAXParser
 argument_list|()
+expr_stmt|;
+name|parser
 operator|.
 name|parse
 argument_list|(
@@ -474,6 +495,13 @@ throw|;
 block|}
 finally|finally
 block|{
+name|context
+operator|.
+name|releaseParser
+argument_list|(
+name|parser
+argument_list|)
+expr_stmt|;
 name|xhtml
 operator|.
 name|endElement

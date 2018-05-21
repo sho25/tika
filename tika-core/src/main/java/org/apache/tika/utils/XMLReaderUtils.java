@@ -1063,6 +1063,11 @@ parameter_list|()
 throws|throws
 name|TikaException
 block|{
+name|int
+name|waiting
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 literal|true
@@ -1089,7 +1094,7 @@ name|SAX_PARSERS
 operator|.
 name|poll
 argument_list|(
-literal|10
+literal|100
 argument_list|,
 name|TimeUnit
 operator|.
@@ -1134,6 +1139,27 @@ block|{
 return|return
 name|parser
 return|;
+block|}
+name|waiting
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|waiting
+operator|>
+literal|3000
+condition|)
+block|{
+comment|//better to get an exception than have permahang by a bug in one of our parsers
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Waited more than 5 minutes for a SAXParser; this could indicate SAXParser leakage.  "
+operator|+
+literal|"Please report this to the Tika team dev@tika.apache.org"
+argument_list|)
+throw|;
 block|}
 block|}
 block|}
@@ -1185,6 +1211,22 @@ argument_list|(
 name|parser
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|success
+condition|)
+block|{
+name|LOG
+operator|.
+name|warning
+argument_list|(
+literal|"SAXParser not taken back into pool.  If you haven't resized the pool, this could "
+operator|+
+literal|"be a sign that there are more calls to 'acquire' than to 'release'"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{

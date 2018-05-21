@@ -294,15 +294,6 @@ init|=
 operator|-
 literal|5921436862145826534L
 decl_stmt|;
-specifier|private
-specifier|final
-name|XMLReaderUtils
-name|xmlReaderUtils
-init|=
-operator|new
-name|XMLReaderUtils
-argument_list|()
-decl_stmt|;
 comment|/** Map of objects in this context */
 specifier|private
 specifier|final
@@ -559,7 +550,7 @@ argument_list|)
 return|;
 block|}
 return|return
-name|xmlReaderUtils
+name|XMLReaderUtils
 operator|.
 name|acquireSAXParser
 argument_list|()
@@ -573,8 +564,6 @@ parameter_list|(
 name|SAXParser
 name|parser
 parameter_list|)
-throws|throws
-name|TikaException
 block|{
 if|if
 condition|(
@@ -590,7 +579,7 @@ condition|)
 block|{
 return|return;
 block|}
-name|xmlReaderUtils
+name|XMLReaderUtils
 operator|.
 name|releaseParser
 argument_list|(
