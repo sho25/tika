@@ -1150,14 +1150,22 @@ operator|>
 literal|3000
 condition|)
 block|{
+comment|//freshen the pool.  Something went very wrong...
+name|setPoolSize
+argument_list|(
+name|POOL_SIZE
+argument_list|)
+expr_stmt|;
 comment|//better to get an exception than have permahang by a bug in one of our parsers
 throw|throw
 operator|new
 name|TikaException
 argument_list|(
-literal|"Waited more than 5 minutes for a SAXParser; this could indicate SAXParser leakage.  "
+literal|"Waited more than 5 minutes for a SAXParser; "
 operator|+
-literal|"Please report this to the Tika team dev@tika.apache.org"
+literal|"This could indicate that a parser has not correctly released its SAXParser. "
+operator|+
+literal|"Please report this to the Tika team: dev@tika.apache.org"
 argument_list|)
 throw|;
 block|}

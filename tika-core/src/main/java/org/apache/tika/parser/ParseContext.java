@@ -520,7 +520,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**      * Returns the SAX parser specified in this parsing context. If a parser      * is not explicitly specified, then one is acquired from the pool.      *<p>      * Make sure to {@link #releaseParser(SAXParser)} in      * a<code>finally</code> block every time you call this.      *</p>      *      * @return SAXParser      * @throws TikaException      */
+comment|/**      * Returns the SAX parser specified in this parsing context. If a parser      * is not explicitly specified, then one is acquired from the pool.      *<p>      * Make sure to {@link #releaseParser(SAXParser)} as the      * first call in a<code>finally</code> block every time      * you call this!      *</p>      *      * @return SAXParser      * @throws TikaException      */
 specifier|public
 name|SAXParser
 name|acquireSAXParser

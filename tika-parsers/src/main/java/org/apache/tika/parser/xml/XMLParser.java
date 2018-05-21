@@ -495,6 +495,8 @@ throw|;
 block|}
 finally|finally
 block|{
+comment|//make sure to release the parser before doing
+comment|//something that could cause an exception!
 name|context
 operator|.
 name|releaseParser
