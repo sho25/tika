@@ -78,6 +78,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -482,6 +494,16 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+literal|"Server-side script type not detected"
+argument_list|,
+name|another
+operator|.
+name|isInterpreted
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//System.out.println( mimeTypes.getMediaTypeRegistry().getTypes() );

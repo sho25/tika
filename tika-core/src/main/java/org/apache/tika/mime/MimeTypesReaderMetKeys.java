@@ -40,6 +40,11 @@ init|=
 literal|"type"
 decl_stmt|;
 name|String
+name|INTERPRETED_ATTR
+init|=
+literal|"interpreted"
+decl_stmt|;
+name|String
 name|ACRONYM_TAG
 init|=
 literal|"acronym"
