@@ -1591,7 +1591,7 @@ return|;
 block|}
 block|}
 comment|/**      * Acquire a SAXParser from the pool; create one if it      * doesn't exist.  Make sure to {@link #releaseParser(SAXParser)} in      * a<code>finally</code> block every time you call this.      *      * @return a SAXParser      * @throws TikaException      */
-specifier|public
+specifier|private
 specifier|static
 name|SAXParser
 name|acquireSAXParser
@@ -1674,7 +1674,7 @@ block|}
 block|}
 block|}
 comment|/**      * Return parser to the pool for reuse      *      * @param parser parser to return      */
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|releaseParser
