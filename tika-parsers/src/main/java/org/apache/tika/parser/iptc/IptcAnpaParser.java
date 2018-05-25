@@ -2399,7 +2399,7 @@ expr_stmt|;
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
@@ -2714,7 +2714,7 @@ expr_stmt|;
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
@@ -3085,7 +3085,7 @@ expr_stmt|;
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
@@ -3941,7 +3941,7 @@ expr_stmt|;
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
@@ -4193,7 +4193,7 @@ expr_stmt|;
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
@@ -4266,7 +4266,7 @@ comment|// skip the new lines
 if|if
 condition|(
 name|read
-operator|>
+operator|>=
 name|value
 operator|.
 name|length
