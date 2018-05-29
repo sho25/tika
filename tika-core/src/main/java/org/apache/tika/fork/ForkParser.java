@@ -223,34 +223,6 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
-operator|.
-name|ParserFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ParserFactoryFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
 name|sax
 operator|.
 name|TeeContentHandler
@@ -370,6 +342,7 @@ name|serverPulseMillis
 init|=
 literal|5000
 decl_stmt|;
+comment|/**      * If you have a directory with, say, tike-app.jar and you want the child process/server to build a parser      * and run it from that -- so that you can keep all of those dependencies out of your client code, use      * this initializer.      *      * @param tikaBin directory containing the tika-app.jar or similar -- full jar including tika-core and all      *                desired parsers and dependencies      * @param factoryFactory      */
 specifier|public
 name|ForkParser
 parameter_list|(
@@ -399,6 +372,41 @@ operator|.
 name|parserFactoryFactory
 operator|=
 name|factoryFactory
+expr_stmt|;
+block|}
+comment|/**      *<b>EXPERT</b>      * @param tikaBin directory containing the tika-app.jar or similar -- full jar including tika-core and all      *                desired parsers and dependencies      * @param parserFactoryFactory -- the factory to use to generate the parser factory in the child process/server      * @param classLoader to use for all classes besides the parser in the child process/server      */
+specifier|public
+name|ForkParser
+parameter_list|(
+name|Path
+name|tikaBin
+parameter_list|,
+name|ParserFactoryFactory
+name|parserFactoryFactory
+parameter_list|,
+name|ClassLoader
+name|classLoader
+parameter_list|)
+block|{
+name|parser
+operator|=
+literal|null
+expr_stmt|;
+name|loader
+operator|=
+name|classLoader
+expr_stmt|;
+name|this
+operator|.
+name|tikaBin
+operator|=
+name|tikaBin
+expr_stmt|;
+name|this
+operator|.
+name|parserFactoryFactory
+operator|=
+name|parserFactoryFactory
 expr_stmt|;
 block|}
 comment|/**      * @param loader The ClassLoader to use       * @param parser the parser to delegate to. This one cannot be another ForkParser      */
@@ -586,7 +594,7 @@ name|java
 argument_list|)
 return|;
 block|}
-comment|/**      * Sets the command used to start the forked server process.      * The arguments "-jar" and "/path/to/bootstrap.jar" are      * appended to the given command when starting the process.      * The default setting is {"java", "-Xmx32m"}.      *<p/>      * Creates a defensive copy.      * @param java java command line      */
+comment|/**      * Sets the command used to start the forked server process.      * The arguments "-jar" and "/path/to/bootstrap.jar"      * or "-cp" and "/path/to/tika_bin" are      * appended to the given command when starting the process.      * The default setting is {"java", "-Xmx32m"}.      *<p/>      * Creates a defensive copy.      * @param java java command line      */
 specifier|public
 name|void
 name|setJavaCommand
@@ -1077,15 +1085,50 @@ name|serverPulseMillis
 argument_list|)
 return|;
 block|}
+elseif|else
+if|if
+condition|(
+name|loader
+operator|!=
+literal|null
+operator|&&
+name|parser
+operator|==
+literal|null
+operator|&&
+name|tikaBin
+operator|!=
+literal|null
+operator|&&
+name|parserFactoryFactory
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+operator|new
+name|ForkClient
+argument_list|(
+name|tikaBin
+argument_list|,
+name|parserFactoryFactory
+argument_list|,
+name|loader
+argument_list|,
+name|java
+argument_list|,
+name|serverPulseMillis
+argument_list|)
+return|;
+block|}
 else|else
 block|{
+comment|//TODO: make this more useful
 throw|throw
 operator|new
 name|IllegalStateException
 argument_list|(
-literal|"Either a) loader and parser must be not null "
-operator|+
-literal|"or b) tikaBin and parserFactoryFactory must not be null"
+literal|"Unexpected combination of state items"
 argument_list|)
 throw|;
 block|}

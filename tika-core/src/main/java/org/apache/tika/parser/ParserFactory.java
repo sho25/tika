@@ -31,6 +31,18 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|SAXException
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -90,6 +102,8 @@ name|build
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|SAXException
 throws|,
 name|TikaException
 function_decl|;
