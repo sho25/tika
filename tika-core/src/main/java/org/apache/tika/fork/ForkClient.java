@@ -1089,15 +1089,8 @@ throw|;
 block|}
 else|else
 block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"Unexpected byte while waiting for start beacon: "
-operator|+
-name|type
-argument_list|)
-throw|;
+comment|//can't do this because of ForkParserIntegrationTest#testAttachingADebuggerOnTheForkedParserShouldWork
+comment|//                throw new IOException("Unexpected byte while waiting for start beacon: "+type);
 block|}
 block|}
 block|}
