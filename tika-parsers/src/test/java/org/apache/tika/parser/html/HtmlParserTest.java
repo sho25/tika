@@ -3664,7 +3664,7 @@ name|Pattern
 operator|.
 name|matches
 argument_list|(
-literal|"(?s).*<html xmlns=\"http://www.w3.org/1999/xhtml\">.*</html>.*$"
+literal|"(?s).*<html xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\">.*</html>.*$"
 argument_list|,
 name|content
 argument_list|)
