@@ -583,6 +583,13 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|parserState
+operator|.
+name|recursiveParserWrapperHandler
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|getWrappedParser
@@ -675,6 +682,13 @@ name|localHandler
 argument_list|,
 name|metadata
 argument_list|)
+expr_stmt|;
+name|parserState
+operator|.
+name|recursiveParserWrapperHandler
+operator|.
+name|endDocument
+argument_list|()
 expr_stmt|;
 block|}
 block|}

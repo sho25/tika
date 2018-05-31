@@ -112,7 +112,7 @@ name|RecursiveParserWrapperHandler
 extends|extends
 name|AbstractRecursiveParserWrapperHandler
 block|{
-specifier|private
+specifier|protected
 specifier|final
 name|List
 argument_list|<
@@ -289,7 +289,6 @@ return|return
 name|metadataList
 return|;
 block|}
-specifier|private
 name|void
 name|addContent
 parameter_list|(

@@ -43,6 +43,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|UnsupportedEncodingException
 import|;
 end_import
@@ -67,6 +77,8 @@ begin_interface
 specifier|public
 interface|interface
 name|ContentHandlerFactory
+extends|extends
+name|Serializable
 block|{
 specifier|public
 name|ContentHandler
