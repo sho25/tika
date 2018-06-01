@@ -125,6 +125,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|config
+operator|.
+name|Field
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|exception
 operator|.
 name|TikaException
@@ -325,6 +339,8 @@ literal|"-Xmx32m"
 argument_list|)
 decl_stmt|;
 comment|/** Process pool size */
+annotation|@
+name|Field
 specifier|private
 name|int
 name|poolSize
@@ -350,11 +366,29 @@ name|LinkedList
 argument_list|<>
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Field
 specifier|private
 name|long
 name|serverPulseMillis
 init|=
-literal|5000
+literal|1000
+decl_stmt|;
+annotation|@
+name|Field
+specifier|private
+name|long
+name|serverParseTimeoutMillis
+init|=
+literal|60000
+decl_stmt|;
+annotation|@
+name|Field
+specifier|private
+name|long
+name|serverWaitTimeoutMillis
+init|=
+literal|60000
 decl_stmt|;
 comment|/**      * If you have a directory with, say, tike-app.jar and you want the child process/server to build a parser      * and run it from that -- so that you can keep all of those dependencies out of your client code, use      * this initializer.      *      * @param tikaBin directory containing the tika-app.jar or similar -- full jar including tika-core and all      *                desired parsers and dependencies      * @param factoryFactory      */
 specifier|public
@@ -1041,6 +1075,19 @@ name|IOException
 throws|,
 name|TikaException
 block|{
+name|TimeoutLimits
+name|timeoutLimits
+init|=
+operator|new
+name|TimeoutLimits
+argument_list|(
+name|serverPulseMillis
+argument_list|,
+name|serverParseTimeoutMillis
+argument_list|,
+name|serverWaitTimeoutMillis
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|loader
@@ -1070,7 +1117,7 @@ name|parserFactoryFactory
 argument_list|,
 name|java
 argument_list|,
-name|serverPulseMillis
+name|timeoutLimits
 argument_list|)
 return|;
 block|}
@@ -1104,7 +1151,7 @@ name|parser
 argument_list|,
 name|java
 argument_list|,
-name|serverPulseMillis
+name|timeoutLimits
 argument_list|)
 return|;
 block|}
@@ -1140,7 +1187,7 @@ name|loader
 argument_list|,
 name|java
 argument_list|,
-name|serverPulseMillis
+name|timeoutLimits
 argument_list|)
 return|;
 block|}
@@ -1205,7 +1252,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * The amount of time in milliseconds that the server      * should wait for any input or output.  If it receives no      * input or output in this amount of time, it will shutdown.      * The default is 5 seconds.      *      * @param serverPulseMillis milliseconds to sleep before checking if there has been any activity      */
+comment|/**      * The amount of time in milliseconds that the server      * should wait before checking to see if the parse has timed out      * or if the wait has timed out      * The default is 5 seconds.      *      * @param serverPulseMillis milliseconds to sleep before checking if there has been any activity      */
 specifier|public
 name|void
 name|setServerPulseMillis
@@ -1219,6 +1266,38 @@ operator|.
 name|serverPulseMillis
 operator|=
 name|serverPulseMillis
+expr_stmt|;
+block|}
+comment|/**      * The maximum amount of time allowed for the server to try to parse a file.      * If more than this time elapses, the server shuts down, and the ForkParser      * throws an exception.      *      * @param serverParseTimeoutMillis      */
+specifier|public
+name|void
+name|setServerParseTimeoutMillis
+parameter_list|(
+name|long
+name|serverParseTimeoutMillis
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serverParseTimeoutMillis
+operator|=
+name|serverParseTimeoutMillis
+expr_stmt|;
+block|}
+comment|/**      * The maximum amount of time allowed for the server to wait for a new request to parse      * a file.  The server will shutdown after this amount of time, and a new server will have      * to be started by a new client.      * @param serverWaitTimeoutMillis      */
+specifier|public
+name|void
+name|setServerWaitTimeoutMillis
+parameter_list|(
+name|long
+name|serverWaitTimeoutMillis
+parameter_list|)
+block|{
+name|this
+operator|.
+name|serverWaitTimeoutMillis
+operator|=
+name|serverWaitTimeoutMillis
 expr_stmt|;
 block|}
 block|}

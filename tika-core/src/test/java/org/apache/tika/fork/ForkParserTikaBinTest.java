@@ -129,20 +129,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|utils
-operator|.
-name|XMLReaderUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|junit
 operator|.
 name|AfterClass
@@ -375,42 +361,6 @@ name|assertEquals
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertNotSame
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
@@ -435,6 +385,26 @@ specifier|private
 specifier|static
 name|Path
 name|JAR_FILE
+decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+specifier|private
+specifier|static
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|EMPTY_MAP
+init|=
+name|Collections
+operator|.
+name|EMPTY_MAP
 decl_stmt|;
 annotation|@
 name|BeforeClass
@@ -793,8 +763,6 @@ name|ParserFactoryFactory
 argument_list|(
 literal|"org.apache.tika.parser.mock.MockParserFactory"
 argument_list|,
-name|Collections
-operator|.
 name|EMPTY_MAP
 argument_list|)
 argument_list|)
@@ -842,8 +810,6 @@ name|ParserFactoryFactory
 argument_list|(
 literal|"org.apache.tika.parser.AutoDetectParserFactory"
 argument_list|,
-name|Collections
-operator|.
 name|EMPTY_MAP
 argument_list|)
 decl_stmt|;
@@ -1067,8 +1033,6 @@ name|ParserFactoryFactory
 argument_list|(
 literal|"org.apache.tika.parser.AutoDetectParserFactory"
 argument_list|,
-name|Collections
-operator|.
 name|EMPTY_MAP
 argument_list|)
 decl_stmt|;
@@ -1333,11 +1297,6 @@ operator|.
 name|getContextClassLoader
 argument_list|()
 decl_stmt|;
-assert|assert
-name|classLoader
-operator|!=
-literal|null
-assert|;
 name|String
 name|path
 init|=
@@ -1371,6 +1330,7 @@ name|dirs
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 while|while
@@ -1412,10 +1372,14 @@ argument_list|)
 expr_stmt|;
 block|}
 name|ArrayList
+argument_list|<
+name|Class
+argument_list|>
 name|classes
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1468,6 +1432,7 @@ name|classes
 init|=
 operator|new
 name|ArrayList
+argument_list|<>
 argument_list|()
 decl_stmt|;
 if|if
@@ -1508,18 +1473,6 @@ name|isDirectory
 argument_list|()
 condition|)
 block|{
-assert|assert
-operator|!
-name|file
-operator|.
-name|getName
-argument_list|()
-operator|.
-name|contains
-argument_list|(
-literal|"."
-argument_list|)
-assert|;
 name|classes
 operator|.
 name|addAll
@@ -1554,6 +1507,9 @@ literal|".class"
 argument_list|)
 condition|)
 block|{
+comment|//exclude TypeDetectionBenchmark because it is not serializable
+comment|//exclude UpperCasingContentHandler because we want to test that
+comment|//we can serialize it from the parent process into the child process
 if|if
 condition|(
 operator|!
