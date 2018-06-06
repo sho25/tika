@@ -139,6 +139,18 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|UnsupportedFileFormatException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
 name|openxml4j
 operator|.
 name|exceptions
@@ -160,6 +172,22 @@ operator|.
 name|opc
 operator|.
 name|OPCPackage
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|openxml4j
+operator|.
+name|opc
+operator|.
+name|PackageAccess
 import|;
 end_import
 
@@ -1339,6 +1367,8 @@ block|}
 comment|//if (zip.getEntry("_rels/.rels") != null
 comment|//  || zip.getEntry("[Content_Types].xml") != null) {
 comment|// Use POI to open and investigate it for us
+comment|//Unfortunately, POI can throw a RuntimeException...so we
+comment|//have to catch that.
 name|OPCPackage
 name|pkg
 init|=
@@ -1358,7 +1388,25 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
+block|{
+name|closeQuietly
+argument_list|(
+name|zipEntrySource
+argument_list|)
+expr_stmt|;
+comment|//TIKA-2571
+throw|throw
+name|e
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|InvalidFormatException
+decl||
+name|RuntimeException
 name|e
 parameter_list|)
 block|{
