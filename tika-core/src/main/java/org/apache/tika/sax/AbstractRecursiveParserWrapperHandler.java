@@ -416,7 +416,7 @@ operator|-
 literal|1
 operator|&&
 name|embeddedResources
-operator|>
+operator|>=
 name|maxEmbeddedResources
 condition|)
 block|{
