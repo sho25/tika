@@ -1590,9 +1590,16 @@ argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<p>\\s+"
+literal|"[\\r\\n\\t]+"
 argument_list|,
-literal|"<p>"
+literal|" "
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|" +"
+argument_list|,
+literal|" "
 argument_list|)
 decl_stmt|;
 name|assertContains
