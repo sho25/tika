@@ -93,6 +93,16 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
 begin_class
 specifier|public
 class|class
@@ -111,6 +121,17 @@ name|TikaConfig
 name|config
 init|=
 literal|null
+decl_stmt|;
+name|InputStream
+name|is
+init|=
+name|getClass
+argument_list|()
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"dl4j-vgg16-config.xml"
+argument_list|)
 decl_stmt|;
 try|try
 block|{
