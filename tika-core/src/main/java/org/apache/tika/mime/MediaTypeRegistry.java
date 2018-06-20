@@ -65,6 +65,18 @@ name|TreeSet
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
 begin_comment
 comment|/**  * Registry of known Internet media types.  */
 end_comment
@@ -114,12 +126,8 @@ argument_list|>
 name|registry
 init|=
 operator|new
-name|HashMap
-argument_list|<
-name|MediaType
-argument_list|,
-name|MediaType
-argument_list|>
+name|ConcurrentHashMap
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/**      * Known type inheritance relationships. The mapping is from a media type      * to the closest supertype.      */
@@ -185,9 +193,7 @@ name|aliases
 init|=
 operator|new
 name|TreeSet
-argument_list|<
-name|MediaType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 for|for

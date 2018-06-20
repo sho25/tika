@@ -151,6 +151,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|xml
@@ -349,11 +361,7 @@ name|types
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|MediaType
-argument_list|,
-name|MimeType
-argument_list|>
+argument_list|<>
 argument_list|()
 decl_stmt|;
 comment|/** The patterns matcher */
@@ -1417,7 +1425,7 @@ return|return
 name|registry
 return|;
 block|}
-comment|/**      * Return the minimum length of data to provide to analyzing methods based      * on the document's content in order to check all the known MimeTypes.      *      * @return the minimum length of data to provide.      * @see #getMimeType(byte[])      * @see #getMimeType(String, byte[])      */
+comment|/**      * Return the minimum length of data to provide to analyzing methods based      * on the document's content in order to check all the known MimeTypes.      *      * @return the minimum length of data to provide.      * @see #getMimeType(byte[])      */
 specifier|public
 name|int
 name|getMinLength
