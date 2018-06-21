@@ -264,7 +264,11 @@ range|:
 literal|"?!/"
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|US_ASCII
+argument_list|)
 control|)
 name|assertWindows1252
 argument_list|(
