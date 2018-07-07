@@ -604,7 +604,7 @@ specifier|final
 name|String
 name|DEF_WEIGHTS_URL
 init|=
-literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.1/inception_v3_keras_2.h5"
+literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.2/inception_v3_keras_2.h5"
 decl_stmt|;
 specifier|private
 specifier|static
@@ -612,7 +612,7 @@ specifier|final
 name|String
 name|DEF_LABEL_MAPPING_URL
 init|=
-literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.1/imagenet_class_index.json"
+literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.2/imagenet_class_index.json"
 decl_stmt|;
 specifier|private
 specifier|static
