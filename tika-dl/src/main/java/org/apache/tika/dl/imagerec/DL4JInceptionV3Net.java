@@ -381,6 +381,8 @@ name|modelimport
 operator|.
 name|keras
 operator|.
+name|exceptions
+operator|.
 name|InvalidKerasConfigurationException
 import|;
 end_import
@@ -397,7 +399,9 @@ name|modelimport
 operator|.
 name|keras
 operator|.
-name|KerasModelImport
+name|exceptions
+operator|.
+name|UnsupportedKerasConfigurationException
 import|;
 end_import
 
@@ -413,7 +417,25 @@ name|modelimport
 operator|.
 name|keras
 operator|.
-name|UnsupportedKerasConfigurationException
+name|KerasModel
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|deeplearning4j
+operator|.
+name|nn
+operator|.
+name|modelimport
+operator|.
+name|keras
+operator|.
+name|utils
+operator|.
+name|KerasModelBuilder
 import|;
 end_import
 
@@ -530,7 +552,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * {@link DL4JInceptionV3Net} is an implementation of {@link ObjectRecogniser}.  * This object recogniser is powered by<a href="http://deeplearning4j.org">Deeplearning4j</a>.  * This implementation is pre configured to use<a href="https://arxiv.org/abs/1512.00567"> Google's InceptionV3 model</a> pre trained on  * ImageNet corpus. The models references in default settings are originally trained and exported from<a href="http://keras.io">Keras</a> and imported using DL4J's importer tools.  *<p>  * Although this implementation is made to work out of the box without user attention,  * for advances users who are interested in tweaking the settings, the following fields are configurable:  *<ul>  *<li>{@link #modelWeightsPath}</li>  *<li>{@link #modelJsonPath}</li>  *<li>{@link #labelFile}</li>  *<li>{@link #labelLang}</li>  *<li>{@link #cacheDir}</li>  *<li>{@link #imgWidth}</li>  *<li>{@link #imgHeight}</li>  *<li>{@link #imgChannels}</li>  *<li>{@link #minConfidence}</li>  *</ul>  *</p>  *  * @see ObjectRecogniser  * @see org.apache.tika.parser.recognition.ObjectRecognitionParser  * @see org.apache.tika.parser.recognition.tf.TensorflowImageRecParser  * @see org.apache.tika.parser.recognition.tf.TensorflowRESTRecogniser  * @since Tika 1.15  */
+comment|/**  * {@link DL4JInceptionV3Net} is an implementation of {@link ObjectRecogniser}.  * This object recogniser is powered by<a href="http://deeplearning4j.org">Deeplearning4j</a>.  * This implementation is pre configured to use<a href="https://arxiv.org/abs/1512.00567"> Google's InceptionV3 model</a> pre trained on  * ImageNet corpus. The models references in default settings are originally trained and exported from<a href="http://keras.io">Keras</a> and imported using DL4J's importer tools.  *<p>  * Although this implementation is made to work out of the box without user attention,  * for advances users who are interested in tweaking the settings, the following fields are configurable:  *<ul>  *<li>{@link #modelWeightsPath}</li>  *<li>{@link #labelFile}</li>  *<li>{@link #labelLang}</li>  *<li>{@link #cacheDir}</li>  *<li>{@link #imgWidth}</li>  *<li>{@link #imgHeight}</li>  *<li>{@link #imgChannels}</li>  *<li>{@link #minConfidence}</li>  *</ul>  *</p>  *  * @see ObjectRecogniser  * @see org.apache.tika.parser.recognition.ObjectRecognitionParser  * @see org.apache.tika.parser.recognition.tf.TensorflowImageRecParser  * @see org.apache.tika.parser.recognition.tf.TensorflowRESTRecogniser  * @since Tika 1.15  */
 end_comment
 
 begin_class
@@ -582,23 +604,60 @@ specifier|final
 name|String
 name|DEF_WEIGHTS_URL
 init|=
-literal|"https://raw.githubusercontent.com/USCDataScience/dl4j-kerasimport-examples/98ec48b56a5b8fb7d54a2994ce9cb23bfefac821/dl4j-import-example/data/inception-model-weights.h5"
+literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.2/inception_v3_keras_2.h5"
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
-name|DEF_MODEL_JSON
+name|DEF_LABEL_MAPPING_URL
 init|=
-literal|"org/apache/tika/dl/imagerec/inceptionv3-model.json"
+literal|"https://github.com/USCDataScience/tika-dockers/releases/download/v0.2/imagenet_class_index.json"
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
-name|DEF_LABEL_MAPPING
+name|BASE_DIR
 init|=
-literal|"org/apache/tika/dl/imagerec/imagenet_incpetionv3_class_index.json"
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"user.home"
+argument_list|)
+operator|+
+name|File
+operator|.
+name|separator
+operator|+
+literal|".tika-dl"
+operator|+
+name|File
+operator|.
+name|separator
+operator|+
+literal|"models"
+operator|+
+name|File
+operator|.
+name|separator
+operator|+
+literal|"keras"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|MODEL_DIR
+init|=
+name|BASE_DIR
+operator|+
+name|File
+operator|.
+name|separator
+operator|+
+literal|"inception-v3"
 decl_stmt|;
 comment|/**      * Cache dir to be used for downloading the weights file.      * This is used to download the model.      */
 annotation|@
@@ -610,7 +669,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|".tmp-inception"
+name|MODEL_DIR
 argument_list|)
 decl_stmt|;
 comment|/**      * Path to a HDF5 file that contains weights of the Keras network      * that was obtained by training the network on a labelled dataset.      *<br/>      * Note: when the value is set to&lt;download&gt;, the default model will be      * downloaded from {@value #DEF_WEIGHTS_URL}      */
@@ -622,23 +681,14 @@ name|modelWeightsPath
 init|=
 name|DEF_WEIGHTS_URL
 decl_stmt|;
-comment|/**      * Path to a JSON file that contains network (graph) structure exported from Keras.      *<p>      *<br/>      * Default is retrieved from {@value DEF_MODEL_JSON}      */
-annotation|@
-name|Field
-specifier|private
-name|String
-name|modelJsonPath
-init|=
-name|DEF_MODEL_JSON
-decl_stmt|;
-comment|/***      * Path to file that tells how to map node index to human readable label names      *<br/>      * The default is retrieved from {@value DEF_LABEL_MAPPING}      */
+comment|/***      * Path to file that tells how to map node index to human readable label names      *<br/>      * The default is retrieved from {@value DEF_LABEL_MAPPING_URL}      */
 annotation|@
 name|Field
 specifier|private
 name|String
 name|labelFile
 init|=
-name|DEF_LABEL_MAPPING
+name|DEF_LABEL_MAPPING_URL
 decl_stmt|;
 comment|/**      * Language name of the labels.      *<br/>      * Default is 'en'      */
 annotation|@
@@ -776,7 +826,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Classloader does not knows the file {}"
+literal|"Classloader does not know the file {}"
 argument_list|,
 name|path
 argument_list|)
@@ -792,7 +842,7 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Class loader knows the file {}"
+literal|"Classloader knows the file {}"
 argument_list|,
 name|path
 argument_list|)
@@ -896,7 +946,7 @@ name|path
 argument_list|)
 return|;
 block|}
-specifier|public
+specifier|private
 specifier|static
 specifier|synchronized
 name|File
@@ -1099,34 +1149,29 @@ return|return
 name|cacheFile
 return|;
 block|}
-annotation|@
-name|Override
-specifier|public
-name|void
-name|initialize
-parameter_list|(
-name|Map
-argument_list|<
+specifier|private
 name|String
-argument_list|,
-name|Param
-argument_list|>
-name|params
+name|mayBeDownloadFile
+parameter_list|(
+name|String
+name|path
 parameter_list|)
 throws|throws
 name|TikaConfigException
 block|{
-comment|//STEP 1: resolve weights file, download if necessary
+name|String
+name|resolvedFilePath
+decl_stmt|;
 if|if
 condition|(
-name|modelWeightsPath
+name|path
 operator|.
 name|startsWith
 argument_list|(
 literal|"http://"
 argument_list|)
 operator|||
-name|modelWeightsPath
+name|path
 operator|.
 name|startsWith
 argument_list|(
@@ -1138,12 +1183,12 @@ name|LOG
 operator|.
 name|debug
 argument_list|(
-literal|"Config instructed to download the weights file, doing so."
+literal|"Config instructed to download the file, doing so."
 argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|modelWeightsPath
+name|resolvedFilePath
 operator|=
 name|cachedDownload
 argument_list|(
@@ -1153,7 +1198,7 @@ name|URI
 operator|.
 name|create
 argument_list|(
-name|modelWeightsPath
+name|path
 argument_list|)
 argument_list|)
 operator|.
@@ -1184,17 +1229,17 @@ block|}
 else|else
 block|{
 name|File
-name|modelFile
+name|file
 init|=
 name|retrieveFile
 argument_list|(
-name|modelWeightsPath
+name|path
 argument_list|)
 decl_stmt|;
 if|if
 condition|(
 operator|!
-name|modelFile
+name|file
 operator|.
 name|exists
 argument_list|()
@@ -1204,62 +1249,50 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"modelWeights does not exist at :: {}"
+literal|"File does not exist at :: {}"
 argument_list|,
-name|modelWeightsPath
+name|path
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
-name|modelWeightsPath
+name|resolvedFilePath
 operator|=
-name|modelFile
+name|file
 operator|.
 name|getAbsolutePath
 argument_list|()
 expr_stmt|;
 block|}
-comment|//STEP 2: resolve model JSON
-name|File
-name|modelJsonFile
-init|=
-name|retrieveFile
-argument_list|(
-name|modelJsonPath
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|modelJsonFile
-operator|==
-literal|null
-operator|||
-operator|!
-name|modelJsonFile
-operator|.
-name|exists
-argument_list|()
-condition|)
+return|return
+name|resolvedFilePath
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|initialize
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Param
+argument_list|>
+name|params
+parameter_list|)
+throws|throws
+name|TikaConfigException
 block|{
-name|LOG
-operator|.
-name|error
+comment|//STEP 1: resolve weights file, download if necessary
+name|modelWeightsPath
+operator|=
+name|mayBeDownloadFile
 argument_list|(
-literal|"Could not locate file {}"
-argument_list|,
-name|modelJsonPath
+name|modelWeightsPath
 argument_list|)
 expr_stmt|;
-return|return;
-block|}
-name|modelJsonPath
-operator|=
-name|modelJsonFile
-operator|.
-name|getAbsolutePath
-argument_list|()
-expr_stmt|;
-comment|//STEP 3: Load labels map
+comment|//STEP 2: Load labels map
 try|try
 init|(
 name|InputStream
@@ -1267,7 +1300,10 @@ name|stream
 init|=
 name|retrieveResource
 argument_list|(
+name|mayBeDownloadFile
+argument_list|(
 name|labelFile
+argument_list|)
 argument_list|)
 init|)
 block|{
@@ -1300,7 +1336,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|//STEP 4: initialize the graph
+comment|//STEP 3: initialize the graph
 try|try
 block|{
 name|this
@@ -1332,20 +1368,58 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|KerasModelBuilder
+name|builder
+init|=
+operator|new
+name|KerasModel
+argument_list|()
+operator|.
+name|modelBuilder
+argument_list|()
+operator|.
+name|modelHdf5Filename
+argument_list|(
+name|modelWeightsPath
+argument_list|)
+operator|.
+name|enforceTrainingConfig
+argument_list|(
+literal|false
+argument_list|)
+decl_stmt|;
+name|builder
+operator|.
+name|inputShape
+argument_list|(
+operator|new
+name|int
+index|[]
+block|{
+literal|299
+block|,
+literal|299
+block|,
+literal|3
+block|}
+argument_list|)
+expr_stmt|;
+name|KerasModel
+name|model
+init|=
+name|builder
+operator|.
+name|buildModel
+argument_list|()
+decl_stmt|;
 name|this
 operator|.
 name|graph
 operator|=
-name|KerasModelImport
+name|model
 operator|.
-name|importKerasModelAndWeights
-argument_list|(
-name|modelJsonPath
-argument_list|,
-name|modelWeightsPath
-argument_list|,
-literal|false
-argument_list|)
+name|getComputationGraph
+argument_list|()
 expr_stmt|;
 name|long
 name|time
