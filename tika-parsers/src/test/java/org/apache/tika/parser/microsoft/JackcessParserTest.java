@@ -457,11 +457,22 @@ name|mainContent
 argument_list|)
 expr_stmt|;
 comment|//test date format
-name|assertContains
+comment|//java 8 is 6/24/15 ...java 10 is 2015-06-24
+name|assertTrue
+argument_list|(
+name|mainContent
+operator|.
+name|contains
 argument_list|(
 literal|"6/24/15"
-argument_list|,
+argument_list|)
+operator|||
 name|mainContent
+operator|.
+name|contains
+argument_list|(
+literal|"2015-06-24"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//test that markup is stripped

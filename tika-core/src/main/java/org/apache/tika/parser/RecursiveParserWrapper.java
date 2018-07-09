@@ -151,6 +151,20 @@ name|tika
 operator|.
 name|utils
 operator|.
+name|ExceptionUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
 name|ParserUtils
 import|;
 end_import
@@ -583,6 +597,13 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+name|parserState
+operator|.
+name|recursiveParserWrapperHandler
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
 try|try
 block|{
 name|getWrappedParser
@@ -637,6 +658,41 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+comment|//try our best to record the problem in the metadata object
+comment|//then rethrow
+name|String
+name|stackTrace
+init|=
+name|ExceptionUtils
+operator|.
+name|getFilteredStackTrace
+argument_list|(
+name|e
+argument_list|)
+decl_stmt|;
+name|metadata
+operator|.
+name|add
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TIKA_META_EXCEPTION_PREFIX
+operator|+
+literal|"runtime"
+argument_list|,
+name|stackTrace
+argument_list|)
+expr_stmt|;
+throw|throw
+name|e
+throw|;
+block|}
 finally|finally
 block|{
 name|long
@@ -675,6 +731,13 @@ name|localHandler
 argument_list|,
 name|metadata
 argument_list|)
+expr_stmt|;
+name|parserState
+operator|.
+name|recursiveParserWrapperHandler
+operator|.
+name|endDocument
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1269,6 +1332,8 @@ name|metadata
 operator|.
 name|set
 argument_list|(
+name|RecursiveParserWrapperHandler
+operator|.
 name|PARSE_TIME_MILLIS
 argument_list|,
 name|Long
@@ -1279,22 +1344,6 @@ name|elapsedMillis
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-comment|//Because of recursion, we need
-comment|//to re-test to make sure that we limit the
-comment|//number of stored resources
-if|if
-condition|(
-name|parserState
-operator|.
-name|recursiveParserWrapperHandler
-operator|.
-name|hasHitMaximumEmbeddedResources
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
 name|parserState
 operator|.
 name|recursiveParserWrapperHandler
@@ -1306,6 +1355,7 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * This tracks the state of the parse of a single document.      * In future versions, this will allow the RecursiveParserWrapper to be thread safe.      */

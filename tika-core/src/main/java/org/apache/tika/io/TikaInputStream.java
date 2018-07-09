@@ -1260,6 +1260,12 @@ specifier|private
 name|Object
 name|openContainer
 decl_stmt|;
+specifier|private
+name|int
+name|consecutiveEOFs
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * Creates a TikaInputStream instance. This private constructor is used      * by the static factory methods based on the available information.      *      * @param path the path to the file that contains the stream      * @throws IOException if an I/O error occurs      */
 specifier|private
 name|TikaInputStream
@@ -1855,6 +1861,10 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+name|consecutiveEOFs
+operator|=
+literal|0
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -1901,6 +1911,8 @@ parameter_list|(
 name|int
 name|n
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 if|if
 condition|(
@@ -1914,6 +1926,29 @@ name|position
 operator|+=
 name|n
 expr_stmt|;
+block|}
+else|else
+block|{
+name|consecutiveEOFs
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|consecutiveEOFs
+operator|>
+literal|1000
+condition|)
+block|{
+throw|throw
+operator|new
+name|IOException
+argument_list|(
+literal|"Read too many -1 (EOFs); there could be an infinite loop."
+operator|+
+literal|"If you think your file is not corrupt, please open an issue on Tika's JIRA"
+argument_list|)
+throw|;
+block|}
 block|}
 block|}
 specifier|public

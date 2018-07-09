@@ -950,6 +950,8 @@ comment|//add 1 for outer container file
 name|assertEquals
 argument_list|(
 name|maxEmbedded
+operator|+
+literal|1
 argument_list|,
 name|list
 operator|.
@@ -1280,6 +1282,8 @@ comment|//add 1 for outer container file
 name|assertEquals
 argument_list|(
 name|maxEmbedded
+operator|+
+literal|1
 argument_list|,
 name|list
 operator|.
@@ -1772,7 +1776,7 @@ comment|//Composite parser swallows caught TikaExceptions, IOExceptions and SAXE
 comment|//and just doesn't bother to report that there was an exception.
 name|assertEquals
 argument_list|(
-literal|12
+literal|13
 argument_list|,
 name|list
 operator|.

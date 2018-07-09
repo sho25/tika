@@ -389,7 +389,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?is)<\\s*meta\\s+([^<>]+)"
+literal|"(?is)<\\s*meta(?:/|\\s+)([^<>]+)"
 argument_list|)
 decl_stmt|;
 comment|//this should match both the older:
@@ -413,7 +413,7 @@ operator|.
 name|compile
 argument_list|(
 operator|(
-literal|"(?is)charset\\s*=\\s*(?:['\\\"]\\s*)?([-_:\\.a-z0-9]+)"
+literal|"(?is)\\bcharset\\s*=\\s*(?:['\\\"]\\s*)?([-_:\\.a-z0-9]+)"
 operator|)
 argument_list|)
 decl_stmt|;
@@ -694,6 +694,21 @@ argument_list|)
 condition|)
 block|{
 continue|continue;
+block|}
+if|if
+condition|(
+literal|"x-user-defined"
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+name|candCharset
+argument_list|)
+condition|)
+block|{
+name|candCharset
+operator|=
+literal|"windows-1252"
+expr_stmt|;
 block|}
 if|if
 condition|(

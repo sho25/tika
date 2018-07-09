@@ -679,6 +679,27 @@ operator|==
 literal|null
 condition|)
 block|{
+name|String
+name|path
+init|=
+operator|(
+name|p
+operator|==
+literal|null
+operator|)
+condition|?
+literal|"resource on class path: /common_tokens/"
+operator|+
+name|langCode
+else|:
+name|p
+operator|.
+name|toAbsolutePath
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 name|LOG
 operator|.
 name|warn
@@ -687,12 +708,9 @@ literal|"Couldn't find common tokens file for: '"
 operator|+
 name|langCode
 operator|+
-literal|"': "
+literal|"' tried here: "
 operator|+
-name|p
-operator|.
-name|toAbsolutePath
-argument_list|()
+name|path
 argument_list|)
 expr_stmt|;
 name|alreadyTriedToLoad

@@ -229,20 +229,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|Parser
 import|;
 end_import
@@ -429,6 +415,9 @@ name|Parser
 name|p
 init|=
 operator|new
+name|RecursiveParserWrapper
+argument_list|(
+operator|new
 name|AutoDetectParserFactory
 argument_list|()
 operator|.
@@ -437,6 +426,7 @@ argument_list|(
 operator|new
 name|TikaConfig
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|RecursiveParserWrapperFSConsumer
@@ -752,6 +742,9 @@ name|Parser
 name|p
 init|=
 operator|new
+name|RecursiveParserWrapper
+argument_list|(
+operator|new
 name|AutoDetectParserFactory
 argument_list|()
 operator|.
@@ -760,6 +753,7 @@ argument_list|(
 operator|new
 name|TikaConfig
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|RecursiveParserWrapperFSConsumer

@@ -370,7 +370,7 @@ parameter_list|(
 name|Parser
 name|parser
 parameter_list|,
-name|Exception
+name|Throwable
 name|failure
 parameter_list|,
 name|Metadata
