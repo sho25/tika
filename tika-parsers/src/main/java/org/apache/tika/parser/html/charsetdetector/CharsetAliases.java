@@ -148,6 +148,7 @@ name|CharsetAliases
 block|{
 specifier|private
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -156,7 +157,10 @@ name|Charset
 argument_list|>
 name|charsetsByLabel
 init|=
-literal|null
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
 decl_stmt|;
 specifier|private
 name|CharsetAliases
@@ -180,21 +184,19 @@ condition|)
 return|return
 literal|null
 return|;
+synchronized|synchronized
+init|(
+name|charsetsByLabel
+init|)
+block|{
+comment|// Lazy initialization
 if|if
 condition|(
 name|charsetsByLabel
-operator|==
-literal|null
-condition|)
-block|{
-comment|// Lazy initialization
-name|charsetsByLabel
-operator|=
-operator|new
-name|HashMap
-argument_list|<>
+operator|.
+name|isEmpty
 argument_list|()
-expr_stmt|;
+condition|)
 name|addAll
 argument_list|()
 expr_stmt|;
