@@ -135,6 +135,15 @@ implements|implements
 name|EncodingDetector
 block|{
 specifier|public
+specifier|static
+name|EncodingDetector
+name|STANDARD_ICU4J_ENCODING_DETECTOR
+init|=
+operator|new
+name|StandardIcu4JEncodingDetector
+argument_list|()
+decl_stmt|;
+specifier|public
 name|Charset
 name|detect
 parameter_list|(

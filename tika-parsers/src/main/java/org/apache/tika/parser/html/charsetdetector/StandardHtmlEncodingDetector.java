@@ -43,9 +43,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|detect
+name|config
 operator|.
-name|CompositeEncodingDetector
+name|Field
 import|;
 end_import
 
@@ -125,18 +125,6 @@ end_import
 
 begin_import
 import|import static
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-operator|.
-name|asList
-import|;
-end_import
-
-begin_import
-import|import static
 name|org
 operator|.
 name|apache
@@ -156,7 +144,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An encoding detector that tries to respect the spirit of the HTML spec  * part 12.2.3 "The input byte stream", or at least the part that is compatible with  * the implementation of tika.  *<p>  * https://html.spec.whatwg.org/multipage/parsing.html#the-input-byte-stream  *<p>  * If a resource was fetched over HTTP, then HTTP headers should be added to tika metadata  * when using {@link #detect}, especially {@link Metadata.CONTENT_TYPE}, as it may contain charset information.  *<p>  * This encoding detector may return null if no encoding is detected.  * It is meant to be used inside a {@link org.apache.tika.detect.CompositeDetector}.  * For instance:  *<pre> {@code  *     EncodingDetector detector = new CompositeDetector(  *         new StandardHtmlEncodingDetector(),  *         new Icu4jEncodingDetector()  *     );  * }</pre>  *<p>  * This detector is stateless, and the same instance can be used on several different input streams.  */
+comment|/**  * An encoding detector that tries to respect the spirit of the HTML spec  * part 12.2.3 "The input byte stream", or at least the part that is compatible with  * the implementation of tika.  *<p>  * https://html.spec.whatwg.org/multipage/parsing.html#the-input-byte-stream  *<p>  * If a resource was fetched over HTTP, then HTTP headers should be added to tika metadata  * when using {@link #detect}, especially {@link Metadata.CONTENT_TYPE}, as it may contain charset information.  *<p>  * This encoding detector may return null if no encoding is detected.  * It is meant to be used inside a {@link org.apache.tika.detect.CompositeDetector}.  * For instance:  *<pre> {@code  *     EncodingDetector detector = new CompositeDetector(  *         new StandardHtmlEncodingDetector(),  *         new Icu4jEncodingDetector()  *     );  * }</pre>  *<p>  */
 end_comment
 
 begin_class
@@ -167,28 +155,6 @@ name|StandardHtmlEncodingDetector
 implements|implements
 name|EncodingDetector
 block|{
-comment|/**      * A composite encoding detector chaining a {@link StandardHtmlEncodingDetector}      * (that may return null) and a {@link StandardIcu4JEncodingDetector} (that always return a value)      * This full thus always returns an encoding, and still works very well with data coming      * from the web.      */
-specifier|public
-specifier|static
-specifier|final
-name|EncodingDetector
-name|FULL_DETECTOR
-init|=
-operator|new
-name|CompositeEncodingDetector
-argument_list|(
-name|asList
-argument_list|(
-operator|new
-name|StandardHtmlEncodingDetector
-argument_list|()
-argument_list|,
-operator|new
-name|StandardIcu4JEncodingDetector
-argument_list|()
-argument_list|)
-argument_list|)
-decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
@@ -196,6 +162,14 @@ name|int
 name|META_TAG_BUFFER_SIZE
 init|=
 literal|8192
+decl_stmt|;
+annotation|@
+name|Field
+specifier|private
+name|int
+name|markLimit
+init|=
+name|META_TAG_BUFFER_SIZE
 decl_stmt|;
 comment|/**      * Extracts a charset from a Content-Type HTTP header.      *      * @param metadata parser metadata      * @return a charset if there is one specified, or null      */
 specifier|private
@@ -273,11 +247,17 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|int
+name|limit
+init|=
+name|getMarkLimit
+argument_list|()
+decl_stmt|;
 name|input
 operator|.
 name|mark
 argument_list|(
-name|META_TAG_BUFFER_SIZE
+name|limit
 argument_list|)
 expr_stmt|;
 comment|// Never read more than the first META_TAG_BUFFER_SIZE bytes
@@ -289,7 +269,7 @@ name|BoundedInputStream
 argument_list|(
 name|input
 argument_list|,
-name|META_TAG_BUFFER_SIZE
+name|limit
 argument_list|)
 decl_stmt|;
 name|PreScanner
@@ -347,6 +327,33 @@ expr_stmt|;
 return|return
 name|detectedCharset
 return|;
+block|}
+specifier|public
+name|int
+name|getMarkLimit
+parameter_list|()
+block|{
+return|return
+name|markLimit
+return|;
+block|}
+comment|/**      * How far into the stream to read for charset detection.      * Default is 8192.      */
+annotation|@
+name|Field
+specifier|public
+name|void
+name|setMarkLimit
+parameter_list|(
+name|int
+name|markLimit
+parameter_list|)
+block|{
+name|this
+operator|.
+name|markLimit
+operator|=
+name|markLimit
+expr_stmt|;
 block|}
 block|}
 end_class
