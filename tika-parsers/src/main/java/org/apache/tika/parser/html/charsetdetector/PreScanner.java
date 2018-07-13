@@ -1521,12 +1521,11 @@ if|if
 condition|(
 name|stream
 operator|.
-name|skip
-argument_list|(
-literal|1
-argument_list|)
+name|read
+argument_list|()
 operator|==
-literal|0
+operator|-
+literal|1
 condition|)
 return|return;
 block|}
