@@ -3905,6 +3905,14 @@ argument_list|,
 literal|"application/mbox"
 argument_list|)
 expr_stmt|;
+comment|// MBOX
+name|assertTypeDetection
+argument_list|(
+literal|"testMBOX_lengthy_x-headers.mbox"
+argument_list|,
+literal|"application/mbox"
+argument_list|)
+expr_stmt|;
 comment|// Thunderbird
 name|assertTypeDetection
 argument_list|(
