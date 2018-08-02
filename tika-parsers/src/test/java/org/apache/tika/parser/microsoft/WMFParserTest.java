@@ -105,6 +105,51 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|testTextExtraction
+argument_list|(
+literal|"testXLSX_Thumbnail.xlsx"
+argument_list|,
+literal|1
+argument_list|,
+literal|"This file contains an embedded thumbnail"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testTextExtractionShiftJISencoding
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|testTextExtraction
+argument_list|(
+literal|"thumbnail_1.wmf"
+argument_list|,
+literal|0
+argument_list|,
+literal|"普林斯"
+argument_list|)
+expr_stmt|;
+block|}
+specifier|private
+name|void
+name|testTextExtraction
+parameter_list|(
+name|String
+name|fileName
+parameter_list|,
+name|int
+name|metaDataItemIndex
+parameter_list|,
+name|String
+name|expectedText
+parameter_list|)
+throws|throws
+name|Exception
+block|{
 name|List
 argument_list|<
 name|Metadata
@@ -113,7 +158,7 @@ name|metadataList
 init|=
 name|getRecursiveMetadata
 argument_list|(
-literal|"testXLSX_Thumbnail.xlsx"
+name|fileName
 argument_list|)
 decl_stmt|;
 name|Metadata
@@ -123,7 +168,7 @@ name|metadataList
 operator|.
 name|get
 argument_list|(
-literal|1
+name|metaDataItemIndex
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -142,7 +187,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"This file contains an embedded thumbnail"
+name|expectedText
 argument_list|,
 name|wmfMetadata
 operator|.
@@ -155,8 +200,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO fix wmf text extraction in "testRTFEmbeddedFiles.rtf"
-comment|//Chinese is garbled.
 block|}
 end_class
 
