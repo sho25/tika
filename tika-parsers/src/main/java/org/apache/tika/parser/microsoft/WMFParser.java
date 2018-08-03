@@ -394,6 +394,13 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
+name|Charset
+name|charset
+init|=
+name|LocaleUtil
+operator|.
+name|CHARSET_1252
+decl_stmt|;
 comment|//TODO: make x/y info public in POI so that we can use it here
 comment|//to determine when to keep two text parts on the same line
 for|for
@@ -407,13 +414,6 @@ name|getRecords
 argument_list|()
 control|)
 block|{
-name|Charset
-name|charset
-init|=
-name|LocaleUtil
-operator|.
-name|CHARSET_1252
-decl_stmt|;
 comment|//this is pure hackery for specifying the font
 comment|//TODO: do what Graphics does by maintaining the stack, etc.!
 comment|//This fix should be done within POI
