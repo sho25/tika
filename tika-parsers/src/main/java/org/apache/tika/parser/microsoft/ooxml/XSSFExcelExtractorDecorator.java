@@ -787,18 +787,6 @@ name|xml
 operator|.
 name|sax
 operator|.
-name|InputSource
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
 name|Locator
 import|;
 end_import
@@ -812,18 +800,6 @@ operator|.
 name|sax
 operator|.
 name|SAXException
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|XMLReader
 import|;
 end_import
 
@@ -1574,7 +1550,7 @@ comment|//an exception trying to extract
 comment|//hyperlinks on drawings should not cause a parse failure
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|extractHyperLinks
 parameter_list|(
@@ -1703,7 +1679,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
+specifier|protected
 name|void
 name|processShapes
 parameter_list|(
