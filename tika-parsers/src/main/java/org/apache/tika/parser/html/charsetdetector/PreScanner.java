@@ -639,6 +639,7 @@ condition|(
 name|processAtLeastOneByte
 argument_list|()
 condition|)
+block|{
 if|if
 condition|(
 name|detectedCharset
@@ -646,12 +647,15 @@ operator|.
 name|isFound
 argument_list|()
 condition|)
+block|{
 return|return
 name|detectedCharset
 operator|.
 name|getCharset
 argument_list|()
 return|;
+block|}
+block|}
 return|return
 literal|null
 return|;
