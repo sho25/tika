@@ -1656,6 +1656,11 @@ name|name
 init|=
 literal|null
 decl_stmt|;
+name|boolean
+name|isHttp
+init|=
+literal|false
+decl_stmt|;
 comment|// Deal with a URI or a path name in as the resource  name
 try|try
 block|{
@@ -1668,6 +1673,28 @@ argument_list|(
 name|resourceName
 argument_list|)
 decl_stmt|;
+name|String
+name|scheme
+init|=
+name|uri
+operator|.
+name|getScheme
+argument_list|()
+decl_stmt|;
+name|isHttp
+operator|=
+name|scheme
+operator|!=
+literal|null
+operator|&&
+name|scheme
+operator|.
+name|startsWith
+argument_list|(
+literal|"http"
+argument_list|)
+expr_stmt|;
+comment|// http or https
 name|String
 name|path
 init|=
@@ -1745,6 +1772,20 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
+comment|// For server-side scripting languages, we cannot rely on the filename to detect the mime type
+if|if
+condition|(
+operator|!
+operator|(
+name|isHttp
+operator|&&
+name|hint
+operator|.
+name|isInterpreted
+argument_list|()
+operator|)
+condition|)
+block|{
 comment|// If we have some types based on mime magic, try to specialise
 comment|//  and/or select the type based on that
 comment|// Otherwise, use the type identified from the name
@@ -1757,6 +1798,7 @@ argument_list|,
 name|hint
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Get type based on metadata hint (if available)

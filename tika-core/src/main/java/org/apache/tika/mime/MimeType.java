@@ -337,6 +337,13 @@ name|extensions
 init|=
 literal|null
 decl_stmt|;
+comment|/**      * Whether this mime-type is used for server-side scripts,      * and thus cannot reliably be used for filename-based type detection      */
+specifier|private
+name|boolean
+name|isInterpreted
+init|=
+literal|false
+decl_stmt|;
 comment|/**      * Creates a media type with the give name and containing media type      * registry. The name is expected to be valid and normalized to lower      * case. This constructor should only be called by      * {@link MimeTypes#forName(String)} to keep the media type registry      * up to date.      *      * @param type normalized media type name      */
 name|MimeType
 parameter_list|(
@@ -851,6 +858,27 @@ argument_list|(
 name|data
 argument_list|)
 return|;
+block|}
+comment|/**      * whether the type is used as a server-side scripting technology      */
+name|boolean
+name|isInterpreted
+parameter_list|()
+block|{
+return|return
+name|isInterpreted
+return|;
+block|}
+name|void
+name|setInterpreted
+parameter_list|(
+name|boolean
+name|interpreted
+parameter_list|)
+block|{
+name|isInterpreted
+operator|=
+name|interpreted
+expr_stmt|;
 block|}
 comment|/**      * Defines a RootXML description. RootXML is made of a localName and/or a      * namespaceURI.      */
 specifier|static
