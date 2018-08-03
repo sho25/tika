@@ -126,7 +126,7 @@ name|Exception
 block|{
 name|testTextExtraction
 argument_list|(
-literal|"thumbnail_1.wmf"
+literal|"testWMF_charset.wmf"
 argument_list|,
 literal|0
 argument_list|,
