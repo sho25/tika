@@ -25,6 +25,24 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|parser
+operator|.
+name|html
+operator|.
+name|charsetdetector
+operator|.
+name|StandardHtmlEncodingDetector
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -35,9 +53,19 @@ begin_import
 import|import
 name|org
 operator|.
-name|junit
+name|apache
 operator|.
-name|Before
+name|tika
+operator|.
+name|parser
+operator|.
+name|html
+operator|.
+name|charsetdetector
+operator|.
+name|charsets
+operator|.
+name|ReplacementCharset
 import|;
 end_import
 
@@ -47,7 +75,7 @@ name|org
 operator|.
 name|junit
 operator|.
-name|Ignore
+name|Before
 import|;
 end_import
 
@@ -103,6 +131,18 @@ name|junit
 operator|.
 name|Assert
 operator|.
+name|assertArrayEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
 name|assertEquals
 import|;
 end_import
@@ -110,7 +150,7 @@ end_import
 begin_class
 specifier|public
 class|class
-name|StrictHtmlEncodingDetectorTest
+name|StandardHtmlEncodingDetectorTest
 block|{
 specifier|private
 name|Metadata
@@ -147,6 +187,21 @@ name|IOException
 block|{
 name|assertWindows1252
 argument_list|(
+literal|"<meta charset=WINDOWS-1252>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|quoted
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertWindows1252
+argument_list|(
 literal|"<meta charset='WINDOWS-1252'>"
 argument_list|)
 expr_stmt|;
@@ -165,6 +220,55 @@ argument_list|(
 literal|"<meta charset='WINDOWS-1252'>"
 operator|+
 literal|"<meta charset='UTF-8'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|duplicateAttribute
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertWindows1252
+argument_list|(
+literal|"<meta charset='WINDOWS-1252' charset='UTF-8'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|invalidThenValid
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertCharset
+argument_list|(
+literal|"<meta charset=blah>"
+operator|+
+literal|"<meta charset=WINDOWS-1252>"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|spacesInAttributes
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertWindows1252
+argument_list|(
+literal|"<meta charset\u000C=  \t  WINDOWS-1252>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -195,6 +299,21 @@ literal|"content=' charset  =  WINDOWS-1252' "
 operator|+
 comment|// The charset may be anywhere in the content attribute
 literal|"http-equiv='content-type'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|emptyAttributeEnd
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|assertWindows1252
+argument_list|(
+literal|"<meta charset=WINDOWS-1252 a>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -239,7 +358,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|verBadHtml
+name|veryBadHtml
 parameter_list|()
 throws|throws
 name|IOException
@@ -255,9 +374,137 @@ literal|"<<x'/<=> "
 operator|+
 literal|"<meta/>"
 operator|+
+literal|"<meta>"
+operator|+
 literal|"<a x/>"
 operator|+
 literal|"<meta charset='WINDOWS-1252'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|specialTag
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// special tags cannot have arguments, any '>' ends them
+name|assertWindows1252
+argument_list|(
+literal|"<? x='><meta charset='WINDOWS-1252'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|longHtml
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
+literal|"<!doctype html>\n"
+operator|+
+literal|"<html>\n"
+operator|+
+literal|"<head>\n"
+operator|+
+literal|"<title>Hello world</title>\n"
+argument_list|)
+decl_stmt|;
+name|String
+name|repeated
+init|=
+literal|"<meta x='y' />\n"
+decl_stmt|;
+name|String
+name|charsetMeta
+init|=
+literal|"<meta charset='windows-1252'>"
+decl_stmt|;
+while|while
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|+
+name|repeated
+operator|.
+name|length
+argument_list|()
+operator|+
+name|charsetMeta
+operator|.
+name|length
+argument_list|()
+operator|<
+literal|1024
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+name|repeated
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|charsetMeta
+argument_list|)
+expr_stmt|;
+name|assertWindows1252
+argument_list|(
+name|sb
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|tooLong
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// Create a string with 1Mb of '\0' followed by a meta
+name|String
+name|padded
+init|=
+operator|new
+name|String
+argument_list|(
+operator|new
+name|byte
+index|[
+literal|1000000
+index|]
+argument_list|)
+operator|+
+literal|"<meta charset='windows-1252'>"
+decl_stmt|;
+comment|// Only the first bytes should be prescanned, so the algorithm should stop before the meta tag
+name|assertCharset
+argument_list|(
+name|padded
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
@@ -270,9 +517,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|assertWindows1252
+name|assertCharset
 argument_list|(
 literal|"<meta charset='WINDOWS-1252'"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|// missing '>' at the end
@@ -340,6 +589,38 @@ comment|// According to the specification 'If charset is x-user-defined, then se
 name|assertWindows1252
 argument_list|(
 literal|"<meta charset='x-user-defined'>"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|replacement
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// Several dangerous charsets should are aliases of 'replacement' in the spec
+name|String
+name|inString
+init|=
+literal|"<meta charset='iso-2022-cn'>"
+decl_stmt|;
+name|assertCharset
+argument_list|(
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|inString
+operator|.
+name|getBytes
+argument_list|()
+argument_list|)
+argument_list|,
+operator|new
+name|ReplacementCharset
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -676,7 +957,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|withUserProvidedCharset
+name|withCharsetInContentType
 parameter_list|()
 throws|throws
 name|IOException
@@ -687,9 +968,9 @@ name|set
 argument_list|(
 name|Metadata
 operator|.
-name|CONTENT_ENCODING
+name|CONTENT_TYPE
 argument_list|,
-literal|"ISO-8859-1"
+literal|"text/html; Charset=ISO-8859-1"
 argument_list|)
 expr_stmt|;
 comment|// ISO-8859-1 is an alias for WINDOWS-1252, even if it's set at the transport layer level
@@ -860,6 +1141,72 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|streamReset
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+comment|// The stream should be reset after detection
+name|byte
+index|[]
+name|inBytes
+init|=
+block|{
+literal|0
+block|,
+literal|1
+block|,
+literal|2
+block|,
+literal|3
+block|,
+literal|4
+block|}
+decl_stmt|;
+name|byte
+index|[]
+name|outBytes
+init|=
+operator|new
+name|byte
+index|[
+literal|5
+index|]
+decl_stmt|;
+name|InputStream
+name|inStream
+init|=
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|inBytes
+argument_list|)
+decl_stmt|;
+name|detectCharset
+argument_list|(
+name|inStream
+argument_list|)
+expr_stmt|;
+comment|// The stream should still be readable from the beginning after detection
+name|inStream
+operator|.
+name|read
+argument_list|(
+name|outBytes
+argument_list|)
+expr_stmt|;
+name|assertArrayEquals
+argument_list|(
+name|inBytes
+argument_list|,
+name|outBytes
+argument_list|)
+expr_stmt|;
+block|}
 specifier|private
 name|void
 name|assertWindows1252
@@ -1014,7 +1361,7 @@ name|IOException
 block|{
 return|return
 operator|new
-name|StrictHtmlEncodingDetector
+name|StandardHtmlEncodingDetector
 argument_list|()
 operator|.
 name|detect
@@ -1083,11 +1430,15 @@ block|}
 decl_stmt|;
 return|return
 operator|new
+name|BufferedInputStream
+argument_list|(
+operator|new
 name|SequenceInputStream
 argument_list|(
 name|contentsInStream
 argument_list|,
 name|errorThrowing
+argument_list|)
 argument_list|)
 return|;
 block|}
