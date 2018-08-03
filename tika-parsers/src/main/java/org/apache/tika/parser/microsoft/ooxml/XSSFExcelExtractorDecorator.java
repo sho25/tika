@@ -21,18 +21,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|SAXParser
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -77,6 +65,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -98,6 +96,16 @@ operator|.
 name|util
 operator|.
 name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -1720,6 +1728,22 @@ condition|)
 block|{
 return|return;
 block|}
+comment|//We don't currently have an obvious way to get drawings
+comment|//directly from sheetIter. Therefore, we grab the shapes and process those.
+comment|//To get the diagrams and charts, we need to get the parent drawing for each
+comment|//shape, and we need to make sure that we only process each parent shape once!
+comment|//SEE TIKA-2703 TODO: add unit test
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|seenParentDrawings
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|XSSFShape
@@ -1789,7 +1813,7 @@ argument_list|)
 expr_stmt|;
 block|}
 name|XSSFDrawing
-name|drawing
+name|parentDrawing
 init|=
 name|shape
 operator|.
@@ -1798,9 +1822,29 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|drawing
+name|parentDrawing
 operator|!=
 literal|null
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|seenParentDrawings
+operator|.
+name|contains
+argument_list|(
+name|parentDrawing
+operator|.
+name|getPackagePart
+argument_list|()
+operator|.
+name|getPartName
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
 condition|)
 block|{
 comment|//dump diagram data
@@ -1812,7 +1856,7 @@ name|RELATION_DIAGRAM_DATA
 argument_list|,
 literal|"diagram-data"
 argument_list|,
-name|drawing
+name|parentDrawing
 operator|.
 name|getPackagePart
 argument_list|()
@@ -1852,7 +1896,7 @@ argument_list|()
 argument_list|,
 literal|"chart"
 argument_list|,
-name|drawing
+name|parentDrawing
 operator|.
 name|getPackagePart
 argument_list|()
@@ -1878,6 +1922,23 @@ argument_list|>
 argument_list|()
 comment|//empty
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|seenParentDrawings
+operator|.
+name|add
+argument_list|(
+name|parentDrawing
+operator|.
+name|getPackagePart
+argument_list|()
+operator|.
+name|getPartName
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
