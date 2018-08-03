@@ -495,6 +495,10 @@ name|byte
 index|[
 literal|1000000
 index|]
+argument_list|,
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
 argument_list|)
 operator|+
 literal|"<meta charset='windows-1252'>"
@@ -615,7 +619,11 @@ argument_list|(
 name|inString
 operator|.
 name|getBytes
-argument_list|()
+argument_list|(
+name|StandardCharsets
+operator|.
+name|ISO_8859_1
+argument_list|)
 argument_list|)
 argument_list|,
 operator|new
