@@ -217,14 +217,14 @@ literal|"1"
 decl_stmt|;
 comment|// Minimum file size to submit file to ocr.
 specifier|private
-name|int
+name|long
 name|minFileSizeToOcr
 init|=
 literal|0
 decl_stmt|;
 comment|// Maximum file size to submit file to ocr.
 specifier|private
-name|int
+name|long
 name|maxFileSizeToOcr
 init|=
 name|Integer
@@ -976,9 +976,9 @@ return|return
 name|preserveInterwordSpacing
 return|;
 block|}
-comment|/**      * @see #setMinFileSizeToOcr(int minFileSizeToOcr)      */
+comment|/**      * @see #setMinFileSizeToOcr(long minFileSizeToOcr)      */
 specifier|public
-name|int
+name|long
 name|getMinFileSizeToOcr
 parameter_list|()
 block|{
@@ -991,7 +991,7 @@ specifier|public
 name|void
 name|setMinFileSizeToOcr
 parameter_list|(
-name|int
+name|long
 name|minFileSizeToOcr
 parameter_list|)
 block|{
@@ -1002,9 +1002,9 @@ operator|=
 name|minFileSizeToOcr
 expr_stmt|;
 block|}
-comment|/**      * @see #setMaxFileSizeToOcr(int maxFileSizeToOcr)      */
+comment|/**      * @see #setMaxFileSizeToOcr(long maxFileSizeToOcr)      */
 specifier|public
-name|int
+name|long
 name|getMaxFileSizeToOcr
 parameter_list|()
 block|{
@@ -1017,7 +1017,7 @@ specifier|public
 name|void
 name|setMaxFileSizeToOcr
 parameter_list|(
-name|int
+name|long
 name|maxFileSizeToOcr
 parameter_list|)
 block|{
@@ -1778,6 +1778,86 @@ name|String
 name|property
 parameter_list|,
 name|int
+name|defaultMissing
+parameter_list|)
+block|{
+name|String
+name|p
+init|=
+name|properties
+operator|.
+name|getProperty
+argument_list|(
+name|property
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|==
+literal|null
+operator|||
+name|p
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+return|return
+name|defaultMissing
+return|;
+block|}
+try|try
+block|{
+return|return
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|p
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+name|String
+operator|.
+name|format
+argument_list|(
+name|Locale
+operator|.
+name|ROOT
+argument_list|,
+literal|"Cannot parse TesseractOCRConfig variable %s, invalid integer value"
+argument_list|,
+name|property
+argument_list|)
+argument_list|,
+name|ex
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/**      * Get property from the properties file passed in.      *      * @param properties     properties file to read from.      * @param property       the property to fetch.      * @param defaultMissing default parameter to use.      * @return the value.      */
+specifier|private
+name|long
+name|getProp
+parameter_list|(
+name|Properties
+name|properties
+parameter_list|,
+name|String
+name|property
+parameter_list|,
+name|long
 name|defaultMissing
 parameter_list|)
 block|{
