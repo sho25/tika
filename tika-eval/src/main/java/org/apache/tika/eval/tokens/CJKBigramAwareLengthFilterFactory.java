@@ -109,8 +109,6 @@ name|lucene
 operator|.
 name|analysis
 operator|.
-name|util
-operator|.
 name|FilteringTokenFilter
 import|;
 end_import
