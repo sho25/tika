@@ -1396,9 +1396,9 @@ operator|new
 name|int
 index|[]
 block|{
-literal|299
+name|imgHeight
 block|,
-literal|299
+name|imgWidth
 block|,
 literal|3
 block|}
