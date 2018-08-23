@@ -150,6 +150,8 @@ init|=
 name|createTestInputStream
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|RereadableInputStream
 name|ris
 init|=
@@ -164,8 +166,7 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 for|for
 control|(
@@ -233,16 +234,6 @@ name|rewind
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-comment|// The RereadableInputStream should close the original input
-comment|// stream (if it hasn't already).
-name|ris
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 comment|/**      * Test that the constructor's readToEndOfStreamOnFirstRewind parameter      * correctly determines the behavior.      *       * @throws IOException      */
