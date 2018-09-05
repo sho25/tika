@@ -1940,6 +1940,14 @@ name|getTrapped
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Calendar
+name|created
+init|=
+name|info
+operator|.
+name|getCreationDate
+argument_list|()
+decl_stmt|;
 name|addMetadata
 argument_list|(
 name|metadata
@@ -1948,10 +1956,7 @@ name|PDF
 operator|.
 name|DOC_INFO_CREATED
 argument_list|,
-name|info
-operator|.
-name|getCreationDate
-argument_list|()
+name|created
 argument_list|)
 expr_stmt|;
 name|addMetadata
@@ -1962,10 +1967,7 @@ name|TikaCoreProperties
 operator|.
 name|CREATED
 argument_list|,
-name|info
-operator|.
-name|getCreationDate
-argument_list|()
+name|created
 argument_list|)
 expr_stmt|;
 name|Calendar
@@ -1995,10 +1997,7 @@ name|PDF
 operator|.
 name|DOC_INFO_MODIFICATION_DATE
 argument_list|,
-name|info
-operator|.
-name|getModificationDate
-argument_list|()
+name|modified
 argument_list|)
 expr_stmt|;
 comment|// All remaining metadata is custom
@@ -3090,9 +3089,6 @@ argument_list|(
 name|property
 argument_list|,
 name|value
-operator|.
-name|getTime
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
