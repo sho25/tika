@@ -225,7 +225,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 import|;
 end_import
 
@@ -428,7 +428,7 @@ specifier|public
 name|void
 name|parseSummaries
 parameter_list|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 name|filesystem
 parameter_list|)
 throws|throws
@@ -579,22 +579,6 @@ operator|new
 name|TikaException
 argument_list|(
 literal|"Unexpected HPSF document"
-argument_list|,
-name|e
-argument_list|)
-throw|;
-block|}
-catch|catch
-parameter_list|(
-name|MarkUnsupportedException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|TikaException
-argument_list|(
-literal|"Invalid DocumentInputStream"
 argument_list|,
 name|e
 argument_list|)

@@ -223,7 +223,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 import|;
 end_import
 
@@ -1600,11 +1600,11 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 name|fs
 init|=
 operator|new
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 argument_list|(
 name|file
 argument_list|,
@@ -1774,7 +1774,7 @@ if|if
 condition|(
 name|container
 operator|instanceof
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 condition|)
 block|{
 name|names
@@ -1783,7 +1783,7 @@ name|getTopLevelNames
 argument_list|(
 operator|(
 operator|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 operator|)
 name|container
 operator|)
@@ -1945,7 +1945,7 @@ operator|.
 name|getOpenContainer
 argument_list|()
 operator|instanceof
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 condition|)
 block|{
 return|return
@@ -1955,7 +1955,7 @@ name|names
 argument_list|,
 operator|(
 operator|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 operator|)
 name|tis
 operator|.

@@ -117,6 +117,8 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|ooxml
+operator|.
 name|POIXMLDocument
 import|;
 end_import
@@ -128,6 +130,8 @@ operator|.
 name|apache
 operator|.
 name|poi
+operator|.
+name|ooxml
 operator|.
 name|POIXMLProperties
 import|;
@@ -141,7 +145,27 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|ooxml
+operator|.
+name|extractor
+operator|.
 name|POIXMLTextExtractor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|ooxml
+operator|.
+name|util
+operator|.
+name|SAXHelper
 import|;
 end_import
 
@@ -254,20 +278,6 @@ operator|.
 name|opc
 operator|.
 name|PackageRelationshipCollection
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|poi
-operator|.
-name|util
-operator|.
-name|SAXHelper
 import|;
 end_import
 

@@ -117,7 +117,11 @@ name|apache
 operator|.
 name|poi
 operator|.
-name|POIXMLTextExtractor
+name|hssf
+operator|.
+name|extractor
+operator|.
+name|ExcelExtractor
 import|;
 end_import
 
@@ -129,11 +133,11 @@ name|apache
 operator|.
 name|poi
 operator|.
-name|hssf
+name|ooxml
 operator|.
 name|extractor
 operator|.
-name|ExcelExtractor
+name|POIXMLTextExtractor
 import|;
 end_import
 

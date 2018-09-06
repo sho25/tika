@@ -1338,12 +1338,6 @@ operator|new
 name|ZipFileZipEntrySource
 argument_list|(
 operator|new
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
 name|ZipFile
 argument_list|(
 name|stream

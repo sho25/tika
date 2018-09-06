@@ -826,7 +826,7 @@ literal|"Click to edit Master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TIKA-1171
+comment|//TIKA-1171, POI-62591
 name|assertEquals
 argument_list|(
 operator|-
@@ -927,7 +927,7 @@ literal|"Click to edit Master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TIKA-1171
+comment|//TIKA-1171, POI-62591
 name|assertEquals
 argument_list|(
 operator|-
@@ -1027,7 +1027,7 @@ literal|"Click to edit Master"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//TIKA-1171
+comment|//TIKA-1171, POI-62591
 name|assertEquals
 argument_list|(
 operator|-

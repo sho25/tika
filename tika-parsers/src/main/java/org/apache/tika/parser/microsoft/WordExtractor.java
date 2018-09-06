@@ -463,7 +463,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 import|;
 end_import
 
@@ -1037,7 +1037,7 @@ specifier|protected
 name|void
 name|parse
 parameter_list|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler
@@ -3923,7 +3923,7 @@ specifier|protected
 name|void
 name|parseWord6
 parameter_list|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 name|filesystem
 parameter_list|,
 name|XHTMLContentHandler

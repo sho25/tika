@@ -49,6 +49,8 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|ooxml
+operator|.
 name|POIXMLDocument
 import|;
 end_import
@@ -61,6 +63,8 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|ooxml
+operator|.
 name|POIXMLProperties
 import|;
 end_import
@@ -72,6 +76,10 @@ operator|.
 name|apache
 operator|.
 name|poi
+operator|.
+name|ooxml
+operator|.
+name|extractor
 operator|.
 name|POIXMLTextExtractor
 import|;

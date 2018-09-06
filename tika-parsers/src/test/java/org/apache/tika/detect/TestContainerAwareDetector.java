@@ -105,18 +105,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|nio
-operator|.
-name|file
-operator|.
-name|Path
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|Random
@@ -135,7 +123,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 import|;
 end_import
 
@@ -314,7 +302,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Junit test class for {@link ContainerAwareDetector}  */
+comment|/**  * Junit test class for {@link org.apache.tika.parser.microsoft.POIFSContainerDetector}  */
 end_comment
 
 begin_class
@@ -959,7 +947,7 @@ operator|.
 name|getOpenContainer
 argument_list|()
 operator|instanceof
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 argument_list|)
 expr_stmt|;
 block|}

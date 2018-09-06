@@ -461,7 +461,7 @@ name|poifs
 operator|.
 name|filesystem
 operator|.
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 import|;
 end_import
 
@@ -476,20 +476,6 @@ operator|.
 name|util
 operator|.
 name|CodePageUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|config
-operator|.
-name|Field
 import|;
 end_import
 
@@ -789,18 +775,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|bouncycastle
-operator|.
-name|cms
-operator|.
-name|Recipient
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|xml
 operator|.
 name|sax
@@ -969,7 +943,7 @@ decl_stmt|;
 specifier|public
 name|OutlookExtractor
 parameter_list|(
-name|NPOIFSFileSystem
+name|POIFSFileSystem
 name|filesystem
 parameter_list|,
 name|ParseContext
@@ -1094,13 +1068,13 @@ name|Office
 operator|.
 name|MAPI_MESSAGE_CLASS
 argument_list|,
-name|getMessageClass
-argument_list|(
 name|msg
 operator|.
-name|getMessageClass
+name|getMessageClassEnum
 argument_list|()
-argument_list|)
+operator|.
+name|name
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3063,7 +3037,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TODO: replace this with getMessageClassEnum when we upgrade POI
+comment|//Still needed by PSTParser
 specifier|public
 specifier|static
 name|String

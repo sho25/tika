@@ -47,6 +47,10 @@ name|apache
 operator|.
 name|poi
 operator|.
+name|ooxml
+operator|.
+name|extractor
+operator|.
 name|POIXMLTextExtractor
 import|;
 end_import
