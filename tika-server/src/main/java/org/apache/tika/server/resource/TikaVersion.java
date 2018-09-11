@@ -109,6 +109,11 @@ name|String
 name|getVersion
 parameter_list|()
 block|{
+name|TikaResource
+operator|.
+name|checkIsOperating
+argument_list|()
+expr_stmt|;
 return|return
 name|tika
 operator|.

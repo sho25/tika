@@ -260,7 +260,11 @@ name|SingletonResourceProvider
 argument_list|(
 operator|new
 name|DetectorResource
+argument_list|(
+operator|new
+name|ServerStatus
 argument_list|()
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -155,10 +155,7 @@ name|status
 init|=
 operator|new
 name|ServerStatus
-argument_list|(
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|status
 operator|.
@@ -186,12 +183,12 @@ comment|//make sure that synchronization is basically working
 name|int
 name|numThreads
 init|=
-literal|100
+literal|10
 decl_stmt|;
 name|int
 name|filesToProcess
 init|=
-literal|100
+literal|20
 decl_stmt|;
 name|ExecutorService
 name|service
@@ -200,7 +197,7 @@ name|Executors
 operator|.
 name|newFixedThreadPool
 argument_list|(
-literal|100
+name|numThreads
 argument_list|)
 decl_stmt|;
 name|ExecutorCompletionService
@@ -221,10 +218,7 @@ name|serverStatus
 init|=
 operator|new
 name|ServerStatus
-argument_list|(
-operator|-
-literal|1
-argument_list|)
+argument_list|()
 decl_stmt|;
 for|for
 control|(
@@ -423,7 +417,7 @@ argument_list|(
 literal|200
 argument_list|)
 expr_stmt|;
-name|int
+name|long
 name|taskId
 init|=
 name|serverStatus
@@ -472,7 +466,7 @@ name|ServerStatus
 operator|.
 name|STATUS
 operator|.
-name|OPEN
+name|OPERATING
 argument_list|)
 expr_stmt|;
 name|sleepRandom
@@ -482,7 +476,7 @@ argument_list|)
 expr_stmt|;
 name|Map
 argument_list|<
-name|Integer
+name|Long
 argument_list|,
 name|TaskStatus
 argument_list|>
