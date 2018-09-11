@@ -2558,7 +2558,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|TikaCoreProperties
+name|Metadata
 operator|.
 name|RESOURCE_NAME_KEY
 argument_list|)
