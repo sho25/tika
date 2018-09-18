@@ -297,11 +297,6 @@ name|completed
 decl_stmt|;
 specifier|private
 specifier|final
-name|Detector
-name|detector
-decl_stmt|;
-specifier|private
-specifier|final
 name|MediaType
 name|type
 decl_stmt|;
@@ -365,12 +360,6 @@ name|DefaultIOListener
 argument_list|(
 name|LOG
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|detector
-operator|=
-name|detector
 expr_stmt|;
 name|Metadata
 name|metadata
@@ -490,16 +479,6 @@ parameter_list|()
 block|{
 return|return
 name|importRoot
-return|;
-block|}
-comment|/**      * @see ImportContext#getDetector()      */
-specifier|public
-name|Detector
-name|getDetector
-parameter_list|()
-block|{
-return|return
-name|detector
 return|;
 block|}
 comment|/**      * @see ImportContext#hasStream()      */
