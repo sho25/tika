@@ -485,8 +485,6 @@ name|getDisc
 parameter_list|()
 function_decl|;
 comment|/**      * Represents a comments in ID3 (especially ID3 v2), where are       *  made up of several parts      */
-specifier|public
-specifier|static
 class|class
 name|ID3Comment
 block|{
