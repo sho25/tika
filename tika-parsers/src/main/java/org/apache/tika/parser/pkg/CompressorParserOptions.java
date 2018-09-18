@@ -32,7 +32,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interface for setting options for the {@link CompressorParser} by passing  * via the {@link ParseContext}.  */
+comment|/**  * Interface for setting options for the {@link CompressorParser} by passing  * via the {@link org.apache.tika.parser.ParseContext}.  */
 end_comment
 
 begin_interface

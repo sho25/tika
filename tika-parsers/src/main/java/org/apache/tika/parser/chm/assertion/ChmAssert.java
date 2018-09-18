@@ -290,7 +290,7 @@ literal|"input sream is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks validity of ChmAccessor parameters      *       * @param data      * @param chmItsfHeader      * @param count      * @throws ChmParsingException       */
+comment|/**      * Checks validity of ChmAccessor parameters      *       * @param data      * @param chmAccessor      * @param count      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -352,7 +352,7 @@ literal|"byte[] data is null"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks if ChmAccessor is not null In case of null throws exception      *       * @param ChmAccessor      * @throws ChmParsingException       */
+comment|/**      * Checks if ChmAccessor is not null In case of null throws exception      *       * @param chmAccessor      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 specifier|final
@@ -519,7 +519,7 @@ literal|"cannot parse chm file index> data.length"
 argument_list|)
 throw|;
 block|}
-comment|/**      * Checks if int param is greater than zero In case param<=0 throws an      * exception      *       * @param param      * @throws ChmParsingException       */
+comment|/**      * Checks if int param is greater than zero In case param&lt;= 0 throws an      * exception      *       * @param param      * @throws ChmParsingException       */
 specifier|public
 specifier|static
 name|void

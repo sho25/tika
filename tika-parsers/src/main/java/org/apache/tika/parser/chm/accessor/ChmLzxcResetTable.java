@@ -108,7 +108,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * LZXC reset table For ensuring a decompression. Reads the block named  * "::DataSpace/Storage/<SectionName>/Transform/{7FC28940-9D31-11D0-9B27-00A0C91E9C7C}/InstanceData/ResetTable"  * .  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?page=2 }  *   */
+comment|/**  * LZXC reset table For ensuring a decompression. Reads the block named  * "::DataSpace/Storage/<SectionName>/Transform/{7FC28940-9D31-11D0-9B27-00A0C91E9C7C}/InstanceData/ResetTable"  * .  */
 end_comment
 
 begin_class

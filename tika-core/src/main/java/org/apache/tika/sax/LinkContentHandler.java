@@ -146,7 +146,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Default constructor      *      * @boolean collapseWhitespaceInAnchor      */
+comment|/**      * Default constructor      *      * @param collapseWhitespaceInAnchor      */
 specifier|public
 name|LinkContentHandler
 parameter_list|(

@@ -270,7 +270,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class provides methods to extract biomedical information from plain text  * using {@see CTAKESContentHandler} that relies on Apache cTAKES.  *   *<p>  * Apache cTAKES is built on top of<a href="https://uima.apache.org/">Apache  * UIMA</a> framework and<a href="https://opennlp.apache.org/">OpenNLP</a>  * toolkit.  *</p>  */
+comment|/**  * This class provides methods to extract biomedical information from plain text  * using {@link CTAKESContentHandler} that relies on Apache cTAKES.  *   *<p>  * Apache cTAKES is built on top of<a href="https://uima.apache.org/">Apache  * UIMA</a> framework and<a href="https://opennlp.apache.org/">OpenNLP</a>  * toolkit.  *</p>  */
 end_comment
 
 begin_class
@@ -453,7 +453,7 @@ return|return
 name|jcas
 return|;
 block|}
-comment|/** 	 * Serializes a CAS in the given format. 	 *  	 * @param jcas 	 *            CAS (Common Analysis System) to be serialized. 	 * @param type 	 *            type of cTAKES (UIMA) serializer used to write CAS. 	 * @param prettyPrint 	 *            {@code true} to do pretty printing of output. 	 * @param stream 	 *            {@see OutputStream} object used to print out information 	 *            extracted by using cTAKES. 	 * @throws SAXException 	 *             if there was a SAX exception. 	 * @throws IOException 	 *             if any I/O error occurs. 	 */
+comment|/** 	 * Serializes a CAS in the given format. 	 *  	 * @param jcas 	 *            CAS (Common Analysis System) to be serialized. 	 * @param type 	 *            type of cTAKES (UIMA) serializer used to write CAS. 	 * @param prettyPrint 	 *            {@code true} to do pretty printing of output. 	 * @param stream 	 *            {@link OutputStream} object used to print out information 	 *            extracted by using cTAKES. 	 * @throws SAXException 	 *             if there was a SAX exception. 	 * @throws IOException 	 *             if any I/O error occurs. 	 */
 specifier|public
 specifier|static
 name|void
@@ -555,7 +555,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns the annotation value based on the given annotation type. 	 *  	 * @param annotation 	 *            {@see IdentifiedAnnotation} object. 	 * @param property 	 *            {@see CTAKESAnnotationProperty} enum used to identify the 	 *            annotation type. 	 * @return the annotation value. 	 */
+comment|/** 	 * Returns the annotation value based on the given annotation type. 	 *  	 * @param annotation 	 *            {@link IdentifiedAnnotation} object. 	 * @param property 	 *            {@link CTAKESAnnotationProperty} enum used to identify the 	 *            annotation type. 	 * @return the annotation value. 	 */
 specifier|public
 specifier|static
 name|String

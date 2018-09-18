@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This enumeration includes the properties that an {@see IdentifiedAnnotation} object can provide.  *  */
+comment|/**  * This enumeration includes the properties that an {@link IdentifiedAnnotation} object can provide.  *  */
 end_comment
 
 begin_enum

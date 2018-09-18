@@ -98,7 +98,7 @@ specifier|final
 name|boolean
 name|allowAccessibility
 decl_stmt|;
-comment|/**      * This constructs an {@link AccessChecker} that      * will not perform any checking and will always return without      * throwing an exception.      *<p/>      * This constructor is available to allow for Tika's legacy (<= v1.7) behavior.      */
+comment|/**      * This constructs an {@link AccessChecker} that      * will not perform any checking and will always return without      * throwing an exception.      *<p/>      * This constructor is available to allow for Tika's legacy (&lt;= v1.7) behavior.      */
 specifier|public
 name|AccessChecker
 parameter_list|()

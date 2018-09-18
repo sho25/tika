@@ -323,7 +323,7 @@ operator|.
 name|minLength
 return|;
 block|}
-comment|/** 	 * Returns the character encoding of the strings that are to be found. 	 *  	 * @return {@see StringsEncoding} enum that represents the character 	 *         encoding of the strings that are to be found. 	 */
+comment|/** 	 * Returns the character encoding of the strings that are to be found. 	 *  	 * @return {@link StringsEncoding} enum that represents the character 	 *         encoding of the strings that are to be found. 	 */
 specifier|public
 name|StringsEncoding
 name|getEncoding
@@ -420,7 +420,7 @@ operator|=
 name|minLength
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the character encoding of the strings that are to be found. 	 *  	 * @param encoding 	 *            {@see StringsEncoding} enum that represents the character 	 *            encoding of the strings that are to be found. 	 */
+comment|/** 	 * Sets the character encoding of the strings that are to be found. 	 *  	 * @param encoding 	 *            {@link StringsEncoding} enum that represents the character 	 *            encoding of the strings that are to be found. 	 */
 specifier|public
 name|void
 name|setEncoding

@@ -76,7 +76,7 @@ return|return
 name|filePath
 return|;
 block|}
-comment|/** 	 * Sets the "file" installation folder. 	 *  	 * @param path 	 *            the "file" installation folder. 	 */
+comment|/** 	 * Sets the "file" installation folder. 	 *  	 * @param filePath the "file" installation folder. 	 */
 specifier|public
 name|void
 name|setFilePath

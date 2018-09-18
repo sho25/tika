@@ -942,7 +942,7 @@ name|runtimeAttributes
 argument_list|)
 return|;
 block|}
-comment|/**      * numConsumers is needed by both the crawler and the consumers. This utility method      * is to be used to extract the number of consumers from a map of String key value pairs.      *<p>      * If the value is "default", not a parseable integer or has a value< 1,      * then<code>AbstractConsumersBuilder</code>'s<code>getDefaultNumConsumers()</code>      * @param attrs attributes from which to select the NUM_CONSUMERS_KEY      * @return number of consumers      */
+comment|/**      * numConsumers is needed by both the crawler and the consumers. This utility method      * is to be used to extract the number of consumers from a map of String key value pairs.      *<p>      * If the value is "default", not a parseable integer or has a value&lt; 1,      * then<code>AbstractConsumersBuilder</code>'s<code>getDefaultNumConsumers()</code>      * @param attrs attributes from which to select the NUM_CONSUMERS_KEY      * @return number of consumers      */
 specifier|public
 specifier|static
 name|int

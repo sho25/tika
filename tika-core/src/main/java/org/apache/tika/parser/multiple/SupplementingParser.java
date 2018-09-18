@@ -140,7 +140,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Runs the input stream through all available parsers,  *  merging the metadata from them based on the  *  {@link MetadataPolicy} chosen.  *    * Warning - currently only one Parser should output  *  any Content to the {@link ContentHandler}, the rest  *  should only output {@link Metadata}. A solution to  *  multiple-content is still being worked on...  *  * @since Apache Tika 1.18  */
+comment|/**  * Runs the input stream through all available parsers,  *  merging the metadata from them based on the  *  {@link AbstractMultipleParser.MetadataPolicy} chosen.  *    * Warning - currently only one Parser should output  *  any Content to the {@link ContentHandler}, the rest  *  should only output {@link Metadata}. A solution to  *  multiple-content is still being worked on...  *  * @since Apache Tika 1.18  */
 end_comment
 
 begin_class

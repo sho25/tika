@@ -130,7 +130,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Description Note: not always exists An index chunk has the following format:  * 0000: char[4] 'PMGI' 0004: DWORD Length of quickref/free area at end of  * directory chunk 0008: Directory index entries (to quickref/free area) The  * quickref area in an PMGI is the same as in an PMGL The format of a directory  * index entry is as follows: BYTE: length of name BYTEs: name (UTF-8 encoded)  * ENCINT: directory listing chunk which starts with name Encoded Integers aka  * ENCINT An ENCINT is a variable-length integer. The high bit of each byte  * indicates "continued to the next byte". Bytes are stored most significant to  * least significant. So, for example, $EA $15 is (((0xEA&0x7F)<<7)|0x15) =  * 0x3515.  *   *<p>  * Note: This class is not in use  *   * {@link http://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original/?show-translation-form=1 }  *   *   */
+comment|/**  * Description Note: not always exists An index chunk has the following format:  * 0000: char[4] 'PMGI' 0004: DWORD Length of quickref/free area at end of  * directory chunk 0008: Directory index entries (to quickref/free area) The  * quickref area in an PMGI is the same as in an PMGL The format of a directory  * index entry is as follows: BYTE: length of name BYTEs: name (UTF-8 encoded)  * ENCINT: directory listing chunk which starts with name Encoded Integers aka  * ENCINT An ENCINT is a variable-length integer. The high bit of each byte  * indicates "continued to the next byte". Bytes are stored most significant to  * least significant. So, for example, $EA $15 is (((0xEA&amp;0x7F)&lt;&lt;7)|0x15) =  * 0x3515.  *   *<p>  * Note: This class is not in use  */
 end_comment
 
 begin_class

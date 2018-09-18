@@ -219,7 +219,7 @@ name|jcas
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * Creates a new {@see CTAKESContentHandler} for the given {@see 	 * ContentHandler} and Metadata objects. 	 *  	 * @param handler 	 *            the {@see ContentHandler} object to be decorated. 	 * @param metadata 	 *            the {@see Metadata} object that will be populated using 	 *            biomedical information extracted by cTAKES. 	 * @param config 	 *            the {@see CTAKESConfig} object used to configure the handler. 	 */
+comment|/** 	 * Creates a new {@link CTAKESContentHandler} for the given {@link ContentHandler} and Metadata objects. 	 *  	 * @param handler 	 *            the {@link ContentHandler} object to be decorated. 	 * @param metadata 	 *            the {@link Metadata} object that will be populated using 	 *            biomedical information extracted by cTAKES. 	 * @param config 	 *            the {@link CTAKESConfig} object used to configure the handler. 	 */
 specifier|public
 name|CTAKESContentHandler
 parameter_list|(
@@ -259,7 +259,7 @@ name|StringBuilder
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a new {@see CTAKESContentHandler} for the given {@see 	 * ContentHandler} and Metadata objects. 	 *  	 * @param handler 	 *            the {@see ContentHandler} object to be decorated. 	 * @param metadata 	 *            the {@see Metadata} object that will be populated using 	 *            biomedical information extracted by cTAKES. 	 */
+comment|/** 	 * Creates a new {@link CTAKESContentHandler} for the given {@link 	 * ContentHandler} and Metadata objects. 	 *  	 * @param handler 	 *            the {@link ContentHandler} object to be decorated. 	 * @param metadata 	 *            the {@link Metadata} object that will be populated using 	 *            biomedical information extracted by cTAKES. 	 */
 specifier|public
 name|CTAKESContentHandler
 parameter_list|(
@@ -709,7 +709,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns metadata that includes cTAKES annotations. 	 *  	 * @return {@Metadata} object that includes cTAKES annotations. 	 */
+comment|/** 	 * Returns metadata that includes cTAKES annotations. 	 *  	 * @return {@link Metadata} object that includes cTAKES annotations. 	 */
 specifier|public
 name|Metadata
 name|getMetadata

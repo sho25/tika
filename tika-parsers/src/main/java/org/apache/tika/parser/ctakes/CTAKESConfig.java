@@ -86,7 +86,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Configuration for {@see CTAKESContentHandler}.  *   * This class allows to enable cTAKES and set its parameters.  */
+comment|/**  * Configuration for {@link CTAKESContentHandler}.  *   * This class allows to enable cTAKES and set its parameters.  */
 end_comment
 
 begin_class
@@ -206,7 +206,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * @param stream {@see InputStream} object used to read properties.      */
+comment|/**      * Loads properties from InputStream and then tries to close InputStream.      * @param stream {@link InputStream} object used to read properties.      */
 specifier|public
 name|CTAKESConfig
 parameter_list|(
@@ -461,7 +461,7 @@ return|return
 name|serializerType
 return|;
 block|}
-comment|/**      * Returns an {@see OutputStream} object used write the CAS.      * @return {@see OutputStream} object used write the CAS.      */
+comment|/**      * Returns an {@link OutputStream} object used write the CAS.      * @return {@link OutputStream} object used write the CAS.      */
 specifier|public
 name|OutputStream
 name|getOutputStream
@@ -580,7 +580,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @return an array of {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
+comment|/**      * Returns an array of {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @return an array of {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|CTAKESAnnotationProperty
 index|[]
@@ -591,7 +591,7 @@ return|return
 name|annotationProps
 return|;
 block|}
-comment|/**      * Returns a string containing a comma-separated list of {@see CTAKESAnnotationProperty} names that will be included into cTAKES metadata.      * @return      */
+comment|/**      * Returns a string containing a comma-separated list of {@link CTAKESAnnotationProperty} names that will be included into cTAKES metadata.      * @return      */
 specifier|public
 name|String
 name|getAnnotationPropsAsString
@@ -710,7 +710,7 @@ operator|=
 name|uMLSPass
 expr_stmt|;
 block|}
-comment|/**      * Enables the formatted output for serializer.      * @param prettyPrint {@true} to enable formatted output, {@code false} otherwise.      */
+comment|/**      * Enables the formatted output for serializer.      * @param prettyPrint {@code true} to enable formatted output, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setPrettyPrint
@@ -742,7 +742,7 @@ operator|=
 name|serializerType
 expr_stmt|;
 block|}
-comment|/**      * Sets the {@see OutputStream} object used to write the CAS.      * @param stream the {@see OutputStream} object used to write the CAS.      */
+comment|/**      * Sets the {@link OutputStream} object used to write the CAS.      * @param stream the {@link OutputStream} object used to write the CAS.      */
 specifier|public
 name|void
 name|setOutputStream
@@ -758,7 +758,7 @@ operator|=
 name|stream
 expr_stmt|;
 block|}
-comment|/**      * Enables CAS serialization.      * @param serialize {@true} to enable CAS serialization, {@code false} otherwise.      */
+comment|/**      * Enables CAS serialization.      * @param serialize {@code true} to enable CAS serialization, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setSerialize
@@ -774,7 +774,7 @@ operator|=
 name|serialize
 expr_stmt|;
 block|}
-comment|/**      * Enables content text analysis using cTAKES.      * @param text {@true} to enable content text analysis, {@code false} otherwise.      */
+comment|/**      * Enables content text analysis using cTAKES.      * @param text {@code true} to enable content text analysis, {@code false} otherwise.      */
 specifier|public
 name|void
 name|setText
@@ -807,7 +807,7 @@ operator|=
 name|metadata
 expr_stmt|;
 block|}
-comment|/**      * Sets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
+comment|/**      * Sets the {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|void
 name|setAnnotationProps
@@ -824,7 +824,7 @@ operator|=
 name|annotationProps
 expr_stmt|;
 block|}
-comment|/**      * ets the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@see CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
+comment|/**      * ets the {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      * @param annotationProps the {@link CTAKESAnnotationProperty}'s that will be included into cTAKES metadata.      */
 specifier|public
 name|void
 name|setAnnotationProps

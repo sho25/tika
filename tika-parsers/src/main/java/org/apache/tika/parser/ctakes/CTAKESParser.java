@@ -160,7 +160,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * CTAKESParser decorates a {@see Parser} and leverages on   * {@see CTAKESContentHandler} to extract biomedical information from   * clinical text using Apache cTAKES.  *<p>It is normally called by supplying an instance to   *  {@link AutoDetectParser}, such as:  *<code>AutoDetectParser parser = new AutoDetectParser(new CTAKESParser());</code>  *<p>It can also be used by giving a Tika Config file similar to:  *<code>  *<properties>  *<parsers>  *<parser class="org.apache.tika.parser.ctakes.CTAKESParser">  *<parser class="org.apache.tika.parser.DefaultParser"/>  *</parser>  *</parsers>  *</properties>  *</code>  *<p>Because this is a Parser Decorator, and not a normal Parser in  *  it's own right, it isn't normally selected via the Parser Service Loader.  */
+comment|/**  * CTAKESParser decorates a {@link Parser} and leverages on  * {@link CTAKESContentHandler} to extract biomedical information from  * clinical text using Apache cTAKES.  *<p>It is normally called by supplying an instance to   *  {@link AutoDetectParser}, such as:  *<code>AutoDetectParser parser = new AutoDetectParser(new CTAKESParser());</code>  *<p>It can also be used by giving a Tika Config file similar to:  *<code>  *<properties>  *<parsers>  *<parser class="org.apache.tika.parser.ctakes.CTAKESParser">  *<parser class="org.apache.tika.parser.DefaultParser"/>  *</parser>  *</parsers>  *</properties>  *</code>  *<p>Because this is a Parser Decorator, and not a normal Parser in  *  it's own right, it isn't normally selected via the Parser Service Loader.  */
 end_comment
 
 begin_class

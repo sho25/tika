@@ -513,7 +513,7 @@ return|return
 name|language
 return|;
 block|}
-comment|/**      * Tries to judge whether the identification is certain enough      * to be trusted.      * WARNING: Will never return true for small amount of input texts.       * @return<code>true</code> if the distance is smaller then {@value #CERTAINTY_LIMIT},<code>false</code> otherwise      */
+comment|/**      * Tries to judge whether the identification is certain enough      * to be trusted.      * WARNING: Will never return true for small amount of input texts.       * @return<code>true</code> if the distance is smaller then {@value LanguageIdentifier#CERTAINTY_LIMIT},<code>false</code> otherwise      */
 specifier|public
 name|boolean
 name|isReasonablyCertain

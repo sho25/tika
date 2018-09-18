@@ -70,7 +70,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The format of a directory listing entry is as follows: BYTE: length of name  * BYTEs: name (UTF-8 encoded) ENCINT: content section ENCINT: offset ENCINT:  * length The offset is from the beginning of the content section the file is  * in, after the section has been decompressed (if appropriate). The length also  * refers to length of the file in the section after decompression. There are  * two kinds of file represented in the directory: user data and format related  * files. The files which are format-related have names which begin with '::',  * the user data files have names which begin with "/".  *   */
+comment|/**  * The format of a directory listing entry is as follows: BYTE: length of name  * BYTEs: name (UTF-8 encoded) ENCINT: content section ENCINT: offset ENCINT:  * length The offset is from the beginning of the content section the file is  * in, after the section has been decompressed (if appropriate). The length also  * refers to length of the file in the section after decompression. There are  * two kinds of file represented in the directory: user data and format related  * files. The files which are format-related have names which begin with '::',  * the user data files have names which begin with "/".  */
 end_comment
 
 begin_class

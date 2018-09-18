@@ -110,7 +110,7 @@ argument_list|>
 name|getEntityTypes
 parameter_list|()
 function_decl|;
-comment|/**      * call for name recognition action from text      * @param text text with possibly contains names      * @return map of entityType -> set of names      */
+comment|/**      * call for name recognition action from text      * @param text text with possibly contains names      * @return map of entityType -&gt; set of names      */
 name|Map
 argument_list|<
 name|String

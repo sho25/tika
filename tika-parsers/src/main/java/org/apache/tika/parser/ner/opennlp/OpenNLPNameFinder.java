@@ -454,7 +454,7 @@ name|tokens
 argument_list|)
 return|;
 block|}
-comment|/**      * finds names from given array of tokens      * @param tokens the tokens array      * @return map of EntityType -> set of entity names      */
+comment|/**      * finds names from given array of tokens      * @param tokens the tokens array      * @return map of EntityType -&gt; set of entity names      */
 specifier|public
 name|Map
 argument_list|<

@@ -376,7 +376,7 @@ return|return
 name|email
 return|;
 block|}
-comment|/**      * If the chunk looks like it contains an email      * @param chunk      * @return      */
+comment|/**      * If the chunk looks like it contains an email      * @param chunk to analyse      * @return {@code true} if chunk looks like it contains an email      */
 specifier|public
 specifier|static
 name|boolean

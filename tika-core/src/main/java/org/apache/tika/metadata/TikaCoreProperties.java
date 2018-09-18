@@ -303,7 +303,7 @@ name|DublinCore
 operator|.
 name|DESCRIPTION
 decl_stmt|;
-comment|/**      * @see DublinCore#SUBJECT; should include both subject and keywords      *  if a document format has both.  See also {@link Office#KEYWORDS}      *  and {@link OfficeOpenXMLCore#SUBJECT}.      */
+comment|/**      * {@link DublinCore#SUBJECT}; should include both subject and keywords      *  if a document format has both.  See also {@link Office#KEYWORDS}      *  and {@link OfficeOpenXMLCore#SUBJECT}.      */
 name|Property
 name|SUBJECT
 init|=
@@ -440,7 +440,7 @@ argument_list|)
 block|}
 argument_list|)
 decl_stmt|;
-comment|/**      * See {@link #EMBEDDED_RESOURCE_TYPE}      */
+comment|/**      * Embedded resource type property      */
 name|Property
 name|EMBEDDED_RESOURCE_TYPE
 init|=

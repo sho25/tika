@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|ID3Tags
 block|{
-comment|/**      * List of predefined genres.      *      * @see http://www.id3.org/id3v2-00      */
+comment|/**      * List of predefined genres.      *      * See<a href="http://www.id3.org/id3v2-00">http://www.id3.org/id3v2-00</a>      */
 name|String
 index|[]
 name|GENRES

@@ -1177,7 +1177,7 @@ operator|=
 name|maxContentLengthForLangId
 expr_stmt|;
 block|}
-comment|/**      * Add a LimitTokenCountFilterFactory if> -1      *      * @param maxTokens      */
+comment|/**      * Add a LimitTokenCountFilterFactory if&gt; -1      *      * @param maxTokens      */
 specifier|public
 name|void
 name|setMaxTokens

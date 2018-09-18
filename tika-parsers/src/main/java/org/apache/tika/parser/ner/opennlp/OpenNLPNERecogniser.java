@@ -382,7 +382,7 @@ name|DEFAULT_MODELS
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Creates a chain of Named Entity recognisers      * @param models map of entityType -> model path      * NOTE: the model path should be known to class loader.      */
+comment|/**      * Creates a chain of Named Entity recognisers      * @param models map of entityType -&gt; model path      * NOTE: the model path should be known to class loader.      */
 specifier|public
 name|OpenNLPNERecogniser
 parameter_list|(

@@ -102,7 +102,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * ::DataSpace/Storage/<SectionName>/ControlData This file contains $20 bytes of  * information on the compression. The information is partially known: 0000:  * DWORD 6 (unknown) 0004: ASCII 'LZXC' Compression type identifier 0008: DWORD  * 2 (Possibly numeric code for LZX) 000C: DWORD The Huffman reset interval in  * $8000-byte blocks 0010: DWORD The window size in $8000-byte blocks 0014:  * DWORD unknown (sometimes 2, sometimes 1, sometimes 0) 0018: DWORD 0 (unknown)  * 001C: DWORD 0 (unknown)  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?page=2 }  *   */
+comment|/**  *   * ::DataSpace/Storage/<SectionName>/ControlData This file contains $20 bytes of  * information on the compression. The information is partially known: 0000:  * DWORD 6 (unknown) 0004: ASCII 'LZXC' Compression type identifier 0008: DWORD  * 2 (Possibly numeric code for LZX) 000C: DWORD The Huffman reset interval in  * $8000-byte blocks 0010: DWORD The window size in $8000-byte blocks 0014:  * DWORD unknown (sometimes 2, sometimes 1, sometimes 0) 0018: DWORD 0 (unknown)  * 001C: DWORD 0 (unknown)  */
 end_comment
 
 begin_class
@@ -224,7 +224,7 @@ return|return
 name|currentPlace
 return|;
 block|}
-comment|/**      * Sets a place holder      *       * @param current_place      */
+comment|/**      * Sets a place holder      *       * @param currentPlace      */
 specifier|private
 name|void
 name|setCurrentPlace
@@ -356,7 +356,7 @@ return|return
 name|windowSize
 return|;
 block|}
-comment|/**      * Sets a window size      *       * @param window_size      */
+comment|/**      * Sets a window size      *       * @param windowSize      */
 specifier|protected
 name|void
 name|setWindowSize
@@ -382,7 +382,7 @@ return|return
 name|windowsPerReset
 return|;
 block|}
-comment|/**      * Sets windows per reset      *       * @param windows_per_reset      */
+comment|/**      * Sets windows per reset      *       * @param windowsPerReset      */
 specifier|protected
 name|void
 name|setWindowsPerReset

@@ -208,7 +208,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  This is a contract for object recognisers used by {@link ObjectRecognitionParser}  *  @see {@link TensorflowImageRecParser} for an example  */
+comment|/**  * This is a contract for object recognisers used by {@link ObjectRecognitionParser}  * @see TensorflowImageRecParser  */
 end_comment
 
 begin_interface

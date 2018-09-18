@@ -784,7 +784,7 @@ name|m
 argument_list|)
 return|;
 block|}
-comment|/**      * Maximum number of files to add.  If {@link #maxFilesToAdd}< 0 (default),      * then this crawler will add all documents.      *      * @param maxFilesToAdd maximum number of files to add to the queue      */
+comment|/**      * Maximum number of files to add.  If {@link #maxFilesToAdd}&lt; 0 (default),      * then this crawler will add all documents.      *      * @param maxFilesToAdd maximum number of files to add to the queue      */
 specifier|public
 name|void
 name|setMaxFilesToAdd
@@ -800,7 +800,7 @@ operator|=
 name|maxFilesToAdd
 expr_stmt|;
 block|}
-comment|/**      * Maximum number of files to consider.  A file is considered      * whether or not the DocumentSelector selects a document.      *<p/>      * If {@link #maxFilesToConsider}< 0 (default), then this crawler      * will add all documents.      *      * @param maxFilesToConsider maximum number of files to consider adding to the queue      */
+comment|/**      * Maximum number of files to consider.  A file is considered      * whether or not the DocumentSelector selects a document.      *<p/>      * If {@link #maxFilesToConsider}&lt; 0 (default), then this crawler      * will add all documents.      *      * @param maxFilesToConsider maximum number of files to consider adding to the queue      */
 specifier|public
 name|void
 name|setMaxFilesToConsider
@@ -882,7 +882,7 @@ return|return
 name|added
 return|;
 block|}
-comment|/**      * Set to true to shut down the FileResourceCrawler without      * adding poison.  Do this only if you've already called another mechanism      * to request that consumers shut down.  This prevents a potential deadlock issue      * where the crawler is trying to add to the queue, but it is full.      *      * @return      */
+comment|/**      * Set to true to shut down the FileResourceCrawler without      * adding poison.  Do this only if you've already called another mechanism      * to request that consumers shut down.  This prevents a potential deadlock issue      * where the crawler is trying to add to the queue, but it is full.      */
 specifier|public
 name|void
 name|shutDownNoPoison

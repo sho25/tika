@@ -118,7 +118,7 @@ return|return
 name|consumersManagerMaxMillis
 return|;
 block|}
-comment|/**      * {@see #getConsumersManagerMaxMillis()}      *      * @param consumersManagerMaxMillis maximum number of milliseconds      *                                  to allow for init() or shutdown()      */
+comment|/**      * @param consumersManagerMaxMillis maximum number of milliseconds      *                                  to allow for init() or shutdown()      * @see #getConsumersManagerMaxMillis()      */
 specifier|public
 name|void
 name|setConsumersManagerMaxMillis

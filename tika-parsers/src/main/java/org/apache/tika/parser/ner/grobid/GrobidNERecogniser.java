@@ -599,7 +599,7 @@ return|return
 name|jsonObject
 return|;
 block|}
-comment|/**      * recognises names of entities in the text      * @param text text which possibly contains names      * @return map of entity type -> set of names      */
+comment|/**      * recognises names of entities in the text      * @param text text which possibly contains names      * @return map of entity type -&gt; set of names      */
 specifier|public
 name|Map
 argument_list|<

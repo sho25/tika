@@ -1060,7 +1060,7 @@ return|return
 name|extractInlineImages
 return|;
 block|}
-comment|/**      * If true, extract inline embedded OBXImages.      *<b>Beware:</b> some PDF documents of modest size (~4MB) can contain      * thousands of embedded images totaling> 2.5 GB.  Also, at least as of PDFBox 1.8.5,      * there can be surprisingly large memory consumption and/or out of memory errors.      * Set to<code>true</code> with caution.      *<p/>      * The default is<code>false</code>.      *<p/>      * See also: {@see #setExtractUniqueInlineImagesOnly(boolean)};      *      * @param extractInlineImages      */
+comment|/**      * If true, extract inline embedded OBXImages.      *<b>Beware:</b> some PDF documents of modest size (~4MB) can contain      * thousands of embedded images totaling&gt; 2.5 GB.  Also, at least as of PDFBox 1.8.5,      * there can be surprisingly large memory consumption and/or out of memory errors.      * Set to<code>true</code> with caution.      *<p/>      * The default is<code>false</code>.      *<p/>      *      * @param extractInlineImages      *      * @see #setExtractUniqueInlineImagesOnly(boolean)      */
 specifier|public
 name|void
 name|setExtractInlineImages
@@ -1644,7 +1644,7 @@ return|return
 name|ocrImageQuality
 return|;
 block|}
-comment|/**      * Image quality used to render the page image for OCR.      * This does not apply to all image formats      * @return      */
+comment|/**      * Image quality used to render the page image for OCR.      * This does not apply to all image formats      */
 specifier|public
 name|void
 name|setOcrImageQuality

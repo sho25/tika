@@ -112,7 +112,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * The Header 0000: char[4] 'ITSF' 0004: DWORD 3 (Version number) 0008: DWORD  * Total header length, including header section table and following data. 000C:  * DWORD 1 (unknown) 0010: DWORD a timestamp 0014: DWORD Windows Language ID  * 0018: GUID {7C01FD10-7BAA-11D0-9E0C-00A0-C922-E6EC} 0028: GUID  * {7C01FD11-7BAA-11D0-9E0C-00A0-C922-E6EC} Note: a GUID is $10 bytes, arranged  * as 1 DWORD, 2 WORDs, and 8 BYTEs. 0000: QWORD Offset of section from  * beginning of file 0008: QWORD Length of section Following the header section  * table is 8 bytes of additional header data. In Version 2 files, this data is  * not there and the content section starts immediately after the directory.  *   * {@link http  * ://translated.by/you/microsoft-s-html-help-chm-format-incomplete/original  * /?show-translation-form=1}  *   */
+comment|/**  * The Header 0000: char[4] 'ITSF' 0004: DWORD 3 (Version number) 0008: DWORD  * Total header length, including header section table and following data. 000C:  * DWORD 1 (unknown) 0010: DWORD a timestamp 0014: DWORD Windows Language ID  * 0018: GUID {7C01FD10-7BAA-11D0-9E0C-00A0-C922-E6EC} 0028: GUID  * {7C01FD11-7BAA-11D0-9E0C-00A0-C922-E6EC} Note: a GUID is $10 bytes, arranged  * as 1 DWORD, 2 WORDs, and 8 BYTEs. 0000: QWORD Offset of section from  * beginning of file 0008: QWORD Length of section Following the header section  * table is 8 bytes of additional header data. In Version 2 files, this data is  * not there and the content section starts immediately after the directory.  */
 end_comment
 
 begin_comment

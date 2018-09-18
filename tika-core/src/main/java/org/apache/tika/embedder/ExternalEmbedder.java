@@ -454,7 +454,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Gets the command to be run. This can include either of      * {@link #INPUT_FILE_TOKEN} or {@link #OUTPUT_FILE_TOKEN} if the command      * needs filenames.      *      * @return      */
+comment|/**      * Gets the command to be run. This can include either of      * {@link ExternalParser#INPUT_FILE_TOKEN} or {@link ExternalParser#OUTPUT_FILE_TOKEN} if the command      * needs filenames.      *      * @return      */
 specifier|public
 name|String
 index|[]
@@ -465,7 +465,7 @@ return|return
 name|command
 return|;
 block|}
-comment|/**      * Sets the command to be run. This can include either of      * {@link #INPUT_FILE_TOKEN} or {@link #OUTPUT_FILE_TOKEN} if the command      * needs filenames.      *      * @see Runtime#exec(String[])      */
+comment|/**      * Sets the command to be run. This can include either of      * {@link ExternalParser#INPUT_FILE_TOKEN} or {@link ExternalParser#OUTPUT_FILE_TOKEN} if the command      * needs filenames.      *      * @see Runtime#exec(String[])      */
 specifier|public
 name|void
 name|setCommand
