@@ -1302,11 +1302,18 @@ name|duration
 init|=
 literal|0
 decl_stmt|;
+name|boolean
+name|skipped
+init|=
+literal|true
+decl_stmt|;
 while|while
 condition|(
 name|frame
 operator|!=
 literal|null
+operator|&&
+name|skipped
 condition|)
 block|{
 name|duration
@@ -1328,11 +1335,18 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+name|skipped
+operator|=
 name|mpegStream
 operator|.
 name|skipFrame
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|skipped
+condition|)
+block|{
 name|frame
 operator|=
 name|mpegStream
@@ -1340,6 +1354,7 @@ operator|.
 name|nextFrame
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// ID3v1 tags live at the end of the file
 comment|// Lyrics live just before ID3v1, at the end of the file

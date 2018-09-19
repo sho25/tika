@@ -471,7 +471,7 @@ return|return
 name|frame
 return|;
 block|}
-comment|/**      * Skips the current MPEG frame. This method can be called after a valid      * MPEG header has been retrieved using {@code nextFrame()}. In this case      * the underlying stream is advanced to the end of the associated MPEG      * frame. Otherwise, this method has no effect. The return value indicates      * whether a frame could be skipped.      *       * @return<b>true</b> if a frame could be skipped,<b>false</b> otherwise      * @throws IOException if an IO error occurs      */
+comment|/**      * Skips the current MPEG frame. This method can be called after a valid      * MPEG header has been retrieved using {@code nextFrame()}. In this case      * the underlying stream is advanced to the end of the associated MPEG      * frame or until the EOF is reached. The return value indicates      * whether the full frame could be skipped.      *       * @return<b>true</b> if a frame could be skipped,<b>false</b> otherwise, perhaps EOF?      * @throws IOException if an IO error occurs      */
 specifier|public
 name|boolean
 name|skipFrame
@@ -508,6 +508,10 @@ argument_list|,
 name|toSkip
 argument_list|)
 decl_stmt|;
+name|currentHeader
+operator|=
+literal|null
+expr_stmt|;
 if|if
 condition|(
 name|skipped
@@ -515,24 +519,10 @@ operator|<
 name|toSkip
 condition|)
 block|{
-throw|throw
-operator|new
-name|EOFException
-argument_list|(
-literal|"EOF: tried to skip "
-operator|+
-name|toSkip
-operator|+
-literal|" but could only skip "
-operator|+
-name|skipped
-argument_list|)
-throw|;
+return|return
+literal|false
+return|;
 block|}
-name|currentHeader
-operator|=
-literal|null
-expr_stmt|;
 return|return
 literal|true
 return|;
