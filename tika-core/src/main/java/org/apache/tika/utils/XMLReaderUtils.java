@@ -47,6 +47,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|OfflineContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -351,9 +365,23 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|nio
 operator|.
-name|Properties
+name|file
+operator|.
+name|Files
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|nio
+operator|.
+name|file
+operator|.
+name|Path
 import|;
 end_import
 
@@ -420,7 +448,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility functions for reading XML.  If you are doing SAX parsing, make sure  * to use the {@link org.apache.tika.sax.OfflineContentHandler} to guard against  * XML External Entity attacks.  */
+comment|/**  * Utility functions for reading XML.  If you are doing SAX parsing, make sure  * to use the {@link OfflineContentHandler} to guard against  * XML External Entity attacks.  */
 end_comment
 
 begin_class
@@ -457,13 +485,22 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|/**      * Default size for the pool of SAX Parsers      * and the pool of DOM builders      */
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|DEFAULT_POOL_SIZE
+init|=
+literal|10
+decl_stmt|;
 comment|/**      * Parser pool size      */
 specifier|private
 specifier|static
 name|int
 name|POOL_SIZE
 init|=
-literal|10
+name|DEFAULT_POOL_SIZE
 decl_stmt|;
 specifier|private
 specifier|static
@@ -481,7 +518,7 @@ name|JAXP_ENTITY_EXPANSION_LIMIT_KEY
 init|=
 literal|"jdk.xml.entityExpansionLimit"
 decl_stmt|;
-specifier|private
+specifier|public
 specifier|static
 specifier|final
 name|int
@@ -491,6 +528,7 @@ literal|20
 decl_stmt|;
 specifier|private
 specifier|static
+specifier|volatile
 name|int
 name|MAX_ENTITY_EXPANSIONS
 init|=
@@ -714,7 +752,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Set the maximum number of entity expansions allowable in SAX/DOM/StAX parsing.      *<b>NOTE:</b>A value less than or equal to zero indicates no limit.      * This will override the system property {@link #JAXP_ENTITY_EXPANSION_LIMIT_KEY}      * and the {@link #DEFAULT_MAX_ENTITY_EXPANSIONS} value for pa      *      * @param maxEntityExpansions -- maximum number of allowable entity expansions      * @since Apache Tika 1.19      */
+comment|/**      * Set the maximum number of entity expansions allowable in SAX/DOM/StAX parsing.      *<b>NOTE:</b>A value less than or equal to zero indicates no limit.      * This will override the system property {@link #JAXP_ENTITY_EXPANSION_LIMIT_KEY}      * and the {@link #DEFAULT_MAX_ENTITY_EXPANSIONS} value for allowable entity expansions      *<p>      *<b>NOTE:</b> To trigger a rebuild of the pool of parsers with this setting,      * the client must call {@link #setPoolSize(int)} to rebuild the SAX and DOM parsers      * with this setting.      *</p>      * @param maxEntityExpansions -- maximum number of allowable entity expansions      * @since Apache Tika 1.19      */
 specifier|public
 specifier|static
 name|void
@@ -779,7 +817,7 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**      * Returns the SAX parser specified in this parsing context. If a parser      * is not explicitly specified, then one is created using the specified      * or the default SAX parser factory.      *<p>      * Make sure to wrap your handler in the {@link org.apache.tika.sax.OfflineContentHandler} to      * prevent XML External Entity attacks      *</p>      *      * @return SAX parser      * @throws TikaException if a SAX parser could not be created      * @see #getSAXParserFactory()      * @since Apache Tika 0.8      */
+comment|/**      * Returns the SAX parser specified in this parsing context. If a parser      * is not explicitly specified, then one is created using the specified      * or the default SAX parser factory.      *<p>      * Make sure to wrap your handler in the {@link OfflineContentHandler} to      * prevent XML External Entity attacks      *</p>      *      * @return SAX parser      * @throws TikaException if a SAX parser could not be created      * @see #getSAXParserFactory()      * @since Apache Tika 0.8      */
 specifier|public
 specifier|static
 name|SAXParser
@@ -841,7 +879,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Returns the SAX parser factory specified in this parsing context.      * If a factory is not explicitly specified, then a default factory      * instance is created and returned. The default factory instance is      * configured to be namespace-aware, not validating, and to use      * {@link XMLConstants#FEATURE_SECURE_PROCESSING secure XML processing}.      *<p>      * Make sure to wrap your handler in the {@link org.apache.tika.sax.OfflineContentHandler} to      * prevent XML External Entity attacks      *</p>      *      * @return SAX parser factory      * @since Apache Tika 0.8      */
+comment|/**      * Returns the SAX parser factory specified in this parsing context.      * If a factory is not explicitly specified, then a default factory      * instance is created and returned. The default factory instance is      * configured to be namespace-aware, not validating, and to use      * {@link XMLConstants#FEATURE_SECURE_PROCESSING secure XML processing}.      *<p>      * Make sure to wrap your handler in the {@link OfflineContentHandler} to      * prevent XML External Entity attacks      *</p>      *      * @return SAX parser factory      * @since Apache Tika 0.8      */
 specifier|public
 specifier|static
 name|SAXParserFactory
@@ -1369,6 +1407,127 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Builds a Document with a DocumentBuilder from the pool      *      * @since Apache Tika 1.19.1      * @param path path to parse      * @return a document      * @throws TikaException      * @throws IOException      * @throws SAXException      */
+specifier|public
+specifier|static
+name|Document
+name|buildDOM
+parameter_list|(
+name|Path
+name|path
+parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
+throws|,
+name|SAXException
+block|{
+try|try
+init|(
+name|InputStream
+name|is
+init|=
+name|Files
+operator|.
+name|newInputStream
+argument_list|(
+name|path
+argument_list|)
+init|)
+block|{
+return|return
+name|buildDOM
+argument_list|(
+name|is
+argument_list|)
+return|;
+block|}
+block|}
+comment|/**      * Builds a Document with a DocumentBuilder from the pool      *      * @since Apache Tika 1.19.1      * @param uriString uriString to process      * @return a document      * @throws TikaException      * @throws IOException      * @throws SAXException      */
+specifier|public
+specifier|static
+name|Document
+name|buildDOM
+parameter_list|(
+name|String
+name|uriString
+parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
+throws|,
+name|SAXException
+block|{
+name|DocumentBuilder
+name|builder
+init|=
+name|acquireDOMBuilder
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+return|return
+name|builder
+operator|.
+name|parse
+argument_list|(
+name|uriString
+argument_list|)
+return|;
+block|}
+finally|finally
+block|{
+name|releaseDOMBuilder
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Builds a Document with a DocumentBuilder from the pool      *      * @since Apache Tika 1.19.1      *      * @return a document      * @throws TikaException      * @throws IOException      * @throws SAXException      */
+specifier|public
+specifier|static
+name|Document
+name|buildDOM
+parameter_list|(
+name|InputStream
+name|is
+parameter_list|)
+throws|throws
+name|TikaException
+throws|,
+name|IOException
+throws|,
+name|SAXException
+block|{
+name|DocumentBuilder
+name|builder
+init|=
+name|acquireDOMBuilder
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+return|return
+name|builder
+operator|.
+name|parse
+argument_list|(
+name|is
+argument_list|)
+return|;
+block|}
+finally|finally
+block|{
+name|releaseDOMBuilder
+argument_list|(
+name|builder
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * This checks context for a user specified {@link SAXParser}.      * If one is not found, this reuses a SAXParser from the pool.      *      * @since Apache Tika 1.19      * @param is InputStream to parse      * @param contentHandler handler to use      * @param context context to use      * @return      * @throws TikaException      * @throws IOException      * @throws SAXException      */
 specifier|public
 specifier|static
@@ -1834,7 +1993,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Set the pool size for cached XML parsers.      *      * @since Apache Tika 1.19      * @param poolSize      */
+comment|/**      * Set the pool size for cached XML parsers.  This has a side      * effect of locking the pool, and rebuilding the pool from      * scratch with the most recent settings, such as {@link #MAX_ENTITY_EXPANSIONS}      *      * @since Apache Tika 1.19      * @param poolSize      */
 specifier|public
 specifier|static
 name|void
@@ -1862,16 +2021,11 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
 name|SAX_PARSERS
 operator|.
-name|size
+name|clear
 argument_list|()
-operator|!=
-name|poolSize
-condition|)
-block|{
+expr_stmt|;
 name|SAX_PARSERS
 operator|=
 operator|new
@@ -1906,7 +2060,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-block|}
 finally|finally
 block|{
 name|SAX_READ_WRITE_LOCK
@@ -1928,16 +2081,11 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
 name|DOM_BUILDERS
 operator|.
-name|size
+name|clear
 argument_list|()
-operator|!=
-name|poolSize
-condition|)
-block|{
+expr_stmt|;
 name|DOM_BUILDERS
 operator|=
 operator|new
@@ -1970,7 +2118,6 @@ name|getDocumentBuilder
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 finally|finally
@@ -2456,6 +2603,26 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
+specifier|public
+specifier|static
+name|int
+name|getPoolSize
+parameter_list|()
+block|{
+return|return
+name|POOL_SIZE
+return|;
+block|}
+specifier|public
+specifier|static
+name|int
+name|getMaxEntityExpansions
+parameter_list|()
+block|{
+return|return
+name|MAX_ENTITY_EXPANSIONS
+return|;
 block|}
 block|}
 end_class
