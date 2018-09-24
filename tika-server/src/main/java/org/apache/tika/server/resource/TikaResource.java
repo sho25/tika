@@ -820,7 +820,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?i)^[-/_\\.A-Z0-9 ]+$"
+literal|"(?i)^[-/_+\\.A-Z0-9 ]+$"
 argument_list|)
 decl_stmt|;
 specifier|public
