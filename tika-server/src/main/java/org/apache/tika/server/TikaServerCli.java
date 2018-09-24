@@ -1045,7 +1045,7 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Can't start"
+literal|"Can't start: "
 argument_list|,
 name|e
 argument_list|)
