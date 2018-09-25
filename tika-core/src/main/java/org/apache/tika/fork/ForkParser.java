@@ -336,6 +336,8 @@ argument_list|(
 literal|"java"
 argument_list|,
 literal|"-Xmx32m"
+argument_list|,
+literal|"-Djava.awt.headless=true"
 argument_list|)
 decl_stmt|;
 comment|/** Process pool size */

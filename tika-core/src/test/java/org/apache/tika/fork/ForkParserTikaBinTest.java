@@ -1145,6 +1145,13 @@ argument_list|(
 literal|"java"
 argument_list|)
 expr_stmt|;
+name|java
+operator|.
+name|add
+argument_list|(
+literal|"-Djava.awt.headless=true"
+argument_list|)
+expr_stmt|;
 name|ForkParser
 name|parser
 init|=
