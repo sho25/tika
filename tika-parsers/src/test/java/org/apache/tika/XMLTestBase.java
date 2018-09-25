@@ -1026,6 +1026,9 @@ name|is
 parameter_list|,
 name|Parser
 name|parser
+parameter_list|,
+name|ParseContext
+name|context
 parameter_list|)
 throws|throws
 name|Exception
@@ -1044,9 +1047,7 @@ operator|new
 name|Metadata
 argument_list|()
 argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
+name|context
 argument_list|)
 expr_stmt|;
 block|}
