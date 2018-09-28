@@ -1480,7 +1480,7 @@ decl_stmt|;
 name|String
 name|prg
 init|=
-literal|"import numpy, matplotlib, skimage"
+literal|"import numpy, matplotlib, skimage, _tkinter"
 decl_stmt|;
 name|OutputStreamWriter
 name|out
