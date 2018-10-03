@@ -979,7 +979,7 @@ name|addOption
 argument_list|(
 literal|"maxFiles"
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 literal|"Only in spawn child mode: shutdown server after this many files -- use only in 'spawnChild' mode"
 argument_list|)

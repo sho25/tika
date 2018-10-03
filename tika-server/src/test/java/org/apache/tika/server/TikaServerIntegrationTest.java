@@ -484,6 +484,10 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"-maxFiles"
+block|,
+literal|"2000"
+block|,
 literal|"-spawnChild"
 block|,
 literal|"-p"
