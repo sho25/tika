@@ -965,6 +965,14 @@ argument_list|(
 literal|"div"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|config
+operator|.
+name|getIncludeSlideMasterContent
+argument_list|()
+condition|)
+block|{
 comment|// slide layout which is the master sheet for this slide
 name|xhtml
 operator|.
@@ -1029,6 +1037,15 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|config
+operator|.
+name|getIncludeSlideNotes
+argument_list|()
+condition|)
+block|{
 comment|// notes (if present)
 name|XSLFNotes
 name|slideNotes
@@ -1108,6 +1125,7 @@ argument_list|(
 literal|"div"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// comments (if present)
 name|List
@@ -1490,6 +1508,22 @@ argument_list|(
 literal|"p"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|config
+operator|.
+name|getIncludeHeadersAndFooters
+argument_list|()
+operator|&&
+name|p
+operator|.
+name|isHeaderOrFooter
+argument_list|()
+condition|)
+block|{
+continue|continue;
+block|}
 for|for
 control|(
 name|XSLFTextRun
