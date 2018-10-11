@@ -2650,6 +2650,17 @@ name|OutOfMemoryError
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|error
+argument_list|(
+literal|"{}: OOM"
+argument_list|,
+name|path
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|SERVER_STATUS
 operator|.
 name|setStatus
