@@ -755,6 +755,8 @@ block|,
 literal|"pingPulseMillis"
 block|,
 literal|"maxFiles"
+block|,
+literal|"javaHome"
 block|}
 argument_list|)
 decl_stmt|;
@@ -982,6 +984,17 @@ argument_list|,
 literal|true
 argument_list|,
 literal|"Only in spawn child mode: shutdown server after this many files -- use only in 'spawnChild' mode"
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+literal|"javaHome"
+argument_list|,
+literal|true
+argument_list|,
+literal|"Override system property JAVA_HOME for calling java for the child process"
 argument_list|)
 expr_stmt|;
 name|options
