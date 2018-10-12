@@ -2541,6 +2541,18 @@ block|{
 name|checkIsOperating
 argument_list|()
 expr_stmt|;
+name|String
+name|fileName
+init|=
+name|metadata
+operator|.
+name|get
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|RESOURCE_NAME_KEY
+argument_list|)
+decl_stmt|;
 name|long
 name|taskId
 init|=
@@ -2554,14 +2566,7 @@ name|TASK
 operator|.
 name|PARSE
 argument_list|,
-name|metadata
-operator|.
-name|get
-argument_list|(
-name|TikaCoreProperties
-operator|.
-name|RESOURCE_NAME_KEY
-argument_list|)
+name|fileName
 argument_list|)
 decl_stmt|;
 try|try
@@ -2604,9 +2609,11 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-literal|"{}: Encrypted document"
+literal|"{}: Encrypted document ({})"
 argument_list|,
 name|path
+argument_list|,
+name|fileName
 argument_list|,
 name|e
 argument_list|)
@@ -2629,9 +2636,11 @@ name|logger
 operator|.
 name|warn
 argument_list|(
-literal|"{}: Text extraction failed"
+literal|"{}: Text extraction failed ({})"
 argument_list|,
 name|path
+argument_list|,
+name|fileName
 argument_list|,
 name|e
 argument_list|)
@@ -2652,11 +2661,13 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|error
+name|warn
 argument_list|(
-literal|"{}: OOM"
+literal|"{}: OOM ({})"
 argument_list|,
 name|path
+argument_list|,
+name|fileName
 argument_list|,
 name|e
 argument_list|)

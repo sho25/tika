@@ -403,12 +403,14 @@ name|LOG
 operator|.
 name|warn
 argument_list|(
-literal|"Unable to detect MIME type for file. Reason: {}"
+literal|"Unable to detect MIME type for file. Reason: {} ({})"
 argument_list|,
 name|e
 operator|.
 name|getMessage
 argument_list|()
+argument_list|,
+name|filename
 argument_list|,
 name|e
 argument_list|)
@@ -428,6 +430,17 @@ name|OutOfMemoryError
 name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"OOM while detecting: ({})"
+argument_list|,
+name|filename
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
 name|serverStatus
 operator|.
 name|setStatus
