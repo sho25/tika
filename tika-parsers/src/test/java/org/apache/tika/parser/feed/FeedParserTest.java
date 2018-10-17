@@ -154,7 +154,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/rsstest.rss"
+literal|"/test-documents/rsstest_091.rss"
 argument_list|)
 init|)
 block|{

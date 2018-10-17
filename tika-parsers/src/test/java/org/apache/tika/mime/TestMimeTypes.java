@@ -1476,7 +1476,7 @@ name|assertType
 argument_list|(
 literal|"application/rss+xml"
 argument_list|,
-literal|"rsstest.rss"
+literal|"rsstest_091.rss"
 argument_list|)
 expr_stmt|;
 name|assertType
@@ -1490,14 +1490,14 @@ name|assertTypeByData
 argument_list|(
 literal|"application/rss+xml"
 argument_list|,
-literal|"rsstest.rss"
+literal|"rsstest_091.rss"
 argument_list|)
 expr_stmt|;
 name|assertTypeByName
 argument_list|(
 literal|"application/rss+xml"
 argument_list|,
-literal|"rsstest.rss"
+literal|"rsstest_091.rss"
 argument_list|)
 expr_stmt|;
 name|assertTypeByData
