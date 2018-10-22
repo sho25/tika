@@ -71,6 +71,18 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|TikaTest
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|metadata
 operator|.
 name|Metadata
@@ -191,6 +203,8 @@ begin_class
 specifier|public
 class|class
 name|Mp3ParserTest
+extends|extends
+name|TikaTest
 block|{
 comment|/**      * Checks the duration of an MP3 file.      * @param metadata the metadata object      * @param expected the expected duration, rounded as seconds      */
 specifier|private
@@ -832,6 +846,48 @@ argument_list|(
 name|metadata
 argument_list|,
 literal|2
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Test that metadata is added before xhtml content      * is written...so that more metadata shows up in the xhtml      */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testAddingToMetadataBeforeWriting
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|content
+init|=
+name|getXML
+argument_list|(
+literal|"testMP3id3v1.mp3"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"xmpDM:audioSampleRate\" content=\"44100\""
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<meta name=\"xmpDM:duration\" content=\"2455"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"meta name=\"xmpDM:audioChannelType\" content=\"Mono\""
+argument_list|,
+name|content
 argument_list|)
 expr_stmt|;
 block|}
