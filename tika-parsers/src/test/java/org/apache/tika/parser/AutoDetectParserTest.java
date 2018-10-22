@@ -1243,7 +1243,7 @@ name|Exception
 block|{
 name|assertAutoDetect
 argument_list|(
-literal|"/test-documents/rsstest.rss"
+literal|"/test-documents/rsstest_091.rss"
 argument_list|,
 literal|"feed"
 argument_list|,

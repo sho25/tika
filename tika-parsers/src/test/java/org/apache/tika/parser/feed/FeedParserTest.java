@@ -143,6 +143,23 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|// These RSS files should have basically the same contents,
+comment|//  represented in the various RSS format versions
+for|for
+control|(
+name|String
+name|rssFile
+range|:
+operator|new
+name|String
+index|[]
+block|{
+literal|"/test-documents/rsstest_091.rss"
+block|,
+literal|"/test-documents/rsstest_20.rss"
+block|}
+control|)
+block|{
 try|try
 init|(
 name|InputStream
@@ -154,7 +171,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"/test-documents/rsstest.rss"
+name|rssFile
 argument_list|)
 init|)
 block|{
@@ -238,6 +255,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// TODO find a way of testing the paragraphs and anchors
+block|}
 block|}
 block|}
 annotation|@
