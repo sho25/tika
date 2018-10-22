@@ -1158,11 +1158,23 @@ literal|"data:"
 argument_list|)
 condition|)
 block|{
+comment|//don't extract data if we're in a script
+comment|//and the user doesn't want to extract scripts
+if|if
+condition|(
+name|scriptLevel
+operator|==
+literal|0
+operator|||
+name|extractScripts
+condition|)
+block|{
 name|handleDataURIScheme
 argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Adds a metadata setting from the HTML<head/> to the Tika metadata      * object. The name and value are normalized where possible.      */
