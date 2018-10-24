@@ -691,6 +691,8 @@ name|metadata
 operator|.
 name|set
 argument_list|(
+literal|"envi."
+operator|+
 name|keyValue
 index|[
 literal|0
@@ -703,7 +705,7 @@ name|replace
 argument_list|(
 literal|" "
 argument_list|,
-literal|"-"
+literal|"."
 argument_list|)
 argument_list|,
 name|keyValue

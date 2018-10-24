@@ -216,6 +216,25 @@ operator|.
 name|TEXT_PLAIN
 argument_list|)
 expr_stmt|;
+name|patterns
+operator|.
+name|put
+argument_list|(
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|".*\\.hdr"
+argument_list|)
+argument_list|,
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"envi.hdr"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|detector
 operator|=
 operator|new
@@ -467,6 +486,18 @@ literal|"See README"
 argument_list|)
 expr_stmt|;
 comment|// but not this
+name|assertDetect
+argument_list|(
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"envi.hdr"
+argument_list|)
+argument_list|,
+literal|"ang20150420t182050_corr_v1e_img.hdr"
+argument_list|)
+expr_stmt|;
 comment|// test also the zero input cases
 name|assertDetect
 argument_list|(

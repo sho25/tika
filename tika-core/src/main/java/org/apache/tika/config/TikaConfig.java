@@ -29,18 +29,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|DocumentBuilder
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -550,20 +538,6 @@ operator|.
 name|parser
 operator|.
 name|DefaultParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|ParseContext
 import|;
 end_import
 
