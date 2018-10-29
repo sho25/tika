@@ -3342,6 +3342,13 @@ name|end
 argument_list|)
 expr_stmt|;
 block|}
+name|closeStyleElements
+argument_list|(
+name|skipStyling
+argument_list|,
+name|xhtml
+argument_list|)
+expr_stmt|;
 name|xhtml
 operator|.
 name|startElement
@@ -3351,13 +3358,6 @@ argument_list|,
 literal|"href"
 argument_list|,
 name|url
-argument_list|)
-expr_stmt|;
-name|closeStyleElements
-argument_list|(
-name|skipStyling
-argument_list|,
-name|xhtml
 argument_list|)
 expr_stmt|;
 for|for

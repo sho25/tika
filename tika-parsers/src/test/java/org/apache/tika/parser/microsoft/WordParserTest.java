@@ -3096,6 +3096,47 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|testHyperlinkSurroundedByItalics
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//TIKA-2599
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWORD_italicsSurroundingHyperlink.doc"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|xml
+operator|=
+name|xml
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<body><p><i>Italic Test before link</i><a href=\"http://www.google.com\"><b><i>"
+operator|+
+literal|"<u>hyperlink italics</u></i></b></a><i> Italic text after hyperlink</i></p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|testMacros
 parameter_list|()
 throws|throws
