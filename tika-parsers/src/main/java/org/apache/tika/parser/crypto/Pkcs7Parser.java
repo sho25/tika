@@ -368,6 +368,8 @@ operator|.
 name|build
 argument_list|()
 decl_stmt|;
+try|try
+init|(
 name|CMSSignedDataParser
 name|parser
 init|=
@@ -382,8 +384,7 @@ argument_list|(
 name|stream
 argument_list|)
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|CMSTypedStream
 name|content
@@ -449,14 +450,6 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-finally|finally
-block|{
-name|parser
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 catch|catch
