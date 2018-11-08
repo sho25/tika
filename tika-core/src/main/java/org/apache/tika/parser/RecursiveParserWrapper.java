@@ -25,6 +25,20 @@ name|tika
 operator|.
 name|exception
 operator|.
+name|CorruptedFileException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
 name|TikaException
 import|;
 end_import
@@ -380,7 +394,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param wrappedParser parser to wrap      * @param catchEmbeddedExceptions whether or not to catch+record embedded exceptions.      *                                If set to<code>false</code>, embedded exceptions will be thrown and      *                                the rest of the file will not be parsed      */
+comment|/**      *      * @param wrappedParser parser to wrap      * @param catchEmbeddedExceptions whether or not to catch+record embedded exceptions.      *                                If set to<code>false</code>, embedded exceptions will be thrown and      *                                the rest of the file will not be parsed. The following will not be ignored:      *                                  {@link CorruptedFileException}, {@link RuntimeException}      */
 specifier|public
 name|RecursiveParserWrapper
 parameter_list|(
@@ -1274,6 +1288,16 @@ name|e
 throw|;
 block|}
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|CorruptedFileException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|e
+throw|;
 block|}
 catch|catch
 parameter_list|(

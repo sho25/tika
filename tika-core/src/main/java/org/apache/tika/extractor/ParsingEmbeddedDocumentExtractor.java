@@ -79,6 +79,20 @@ name|tika
 operator|.
 name|exception
 operator|.
+name|CorruptedFileException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|exception
+operator|.
 name|TikaException
 import|;
 end_import
@@ -94,6 +108,20 @@ operator|.
 name|io
 operator|.
 name|CloseShieldInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|io
+operator|.
+name|IOExceptionWithCause
 import|;
 end_import
 
@@ -653,6 +681,20 @@ parameter_list|)
 block|{
 comment|// TODO: can we log a warning that we lack the password?
 comment|// For now, just skip the content
+block|}
+catch|catch
+parameter_list|(
+name|CorruptedFileException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|IOExceptionWithCause
+argument_list|(
+name|e
+argument_list|)
+throw|;
 block|}
 catch|catch
 parameter_list|(
