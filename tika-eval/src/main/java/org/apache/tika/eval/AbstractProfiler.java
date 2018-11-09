@@ -1093,6 +1093,13 @@ operator|new
 name|LanguageIDWrapper
 argument_list|()
 expr_stmt|;
+name|LanguageIDWrapper
+operator|.
+name|setMaxTextLength
+argument_list|(
+name|maxContentLengthForLangId
+argument_list|)
+expr_stmt|;
 name|initAnalyzersAndTokenCounter
 argument_list|(
 name|maxTokens
@@ -1175,6 +1182,13 @@ operator|.
 name|maxContentLengthForLangId
 operator|=
 name|maxContentLengthForLangId
+expr_stmt|;
+name|LanguageIDWrapper
+operator|.
+name|setMaxTextLength
+argument_list|(
+name|maxContentLengthForLangId
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Add a LimitTokenCountFilterFactory if&gt; -1      *      * @param maxTokens      */
