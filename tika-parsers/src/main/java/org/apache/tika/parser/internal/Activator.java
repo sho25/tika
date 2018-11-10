@@ -23,6 +23,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Hashtable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Properties
 import|;
 end_import
@@ -171,7 +181,8 @@ argument_list|()
 argument_list|)
 argument_list|,
 operator|new
-name|Properties
+name|Hashtable
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -205,7 +216,8 @@ argument_list|,
 name|parser
 argument_list|,
 operator|new
-name|Properties
+name|Hashtable
+argument_list|<>
 argument_list|()
 argument_list|)
 expr_stmt|;
