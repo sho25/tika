@@ -55,11 +55,9 @@ name|this
 argument_list|(
 name|resourceId
 argument_list|,
-operator|new
-name|Date
-argument_list|()
+name|System
 operator|.
-name|getTime
+name|currentTimeMillis
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -116,11 +114,9 @@ block|{
 name|long
 name|now
 init|=
-operator|new
-name|Date
-argument_list|()
+name|System
 operator|.
-name|getTime
+name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 return|return

@@ -763,16 +763,6 @@ name|FAILED
 operator|=
 literal|true
 expr_stmt|;
-name|long
-name|start
-init|=
-operator|new
-name|Date
-argument_list|()
-operator|.
-name|getTime
-argument_list|()
-decl_stmt|;
 name|testSingleFile
 argument_list|(
 name|getBytes

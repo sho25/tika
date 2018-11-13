@@ -2567,11 +2567,9 @@ decl_stmt|;
 name|long
 name|start
 init|=
-operator|new
-name|Date
-argument_list|()
+name|System
 operator|.
-name|getTime
+name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 name|start

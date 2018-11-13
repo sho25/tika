@@ -8693,11 +8693,9 @@ expr_stmt|;
 name|long
 name|started
 init|=
-operator|new
-name|Date
-argument_list|()
+name|System
 operator|.
-name|getTime
+name|currentTimeMillis
 argument_list|()
 decl_stmt|;
 name|int
@@ -8838,11 +8836,9 @@ argument_list|(
 literal|"elapsed: "
 operator|+
 operator|(
-operator|new
-name|Date
-argument_list|()
+name|System
 operator|.
-name|getTime
+name|currentTimeMillis
 argument_list|()
 operator|-
 name|started
