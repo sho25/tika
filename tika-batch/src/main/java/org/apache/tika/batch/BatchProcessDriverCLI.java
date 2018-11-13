@@ -1075,7 +1075,7 @@ argument_list|)
 expr_stmt|;
 name|process
 operator|.
-name|destroy
+name|destroyForcibly
 argument_list|()
 expr_stmt|;
 block|}

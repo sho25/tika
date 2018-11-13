@@ -55,16 +55,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Date
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -235,7 +225,7 @@ name|CRAWLER_TIMED_OUT
 block|,
 name|TIMED_OUT_CONSUMER
 block|,
-name|USER_INTERRUPTION
+name|PARENT_SHUTDOWN
 block|,
 name|BATCH_PROCESS_ALIVE_TOO_LONG
 block|,     }
@@ -605,6 +595,13 @@ name|shutdownConsumersManager
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"finishing up"
+argument_list|)
+expr_stmt|;
 return|return
 name|result
 return|;
@@ -759,6 +756,15 @@ operator|.
 name|get
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"result: "
+operator|+
+name|result
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|result
@@ -814,7 +820,7 @@ name|causeForTermination
 operator|=
 name|CAUSE_FOR_TERMINATION
 operator|.
-name|USER_INTERRUPTION
+name|PARENT_SHUTDOWN
 expr_stmt|;
 break|break;
 block|}
@@ -977,6 +983,13 @@ decl_stmt|;
 comment|//TODO: figure out safe way to shutdown resource crawler
 comment|//if it isn't.  Does it need to add poison at this point?
 comment|//fileResourceCrawler.pleaseShutdown();
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"about to shutdown"
+argument_list|)
+expr_stmt|;
 comment|//Step 1: prevent uncalled threads from being started
 name|ex
 operator|.
@@ -1008,8 +1021,9 @@ operator|.
 name|shutDownNoPoison
 argument_list|()
 expr_stmt|;
-comment|//if there are any active/asked to shutdown consumers, await termination
-comment|//this can happen if a user interrupts the process
+comment|//if there are any active/asked-to-shutdown consumers, wait
+comment|//a bit for those parsers to finish.
+comment|//This can happen if the parent process dies
 comment|//of if the crawler stops early, or ...
 name|politelyAwaitTermination
 argument_list|(
@@ -1183,6 +1197,15 @@ operator|.
 name|getFileStarted
 argument_list|()
 decl_stmt|;
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"file started "
+operator|+
+name|fileStarted
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fileStarted
@@ -1293,7 +1316,7 @@ name|causeForTermination
 operator|==
 name|CAUSE_FOR_TERMINATION
 operator|.
-name|USER_INTERRUPTION
+name|PARENT_SHUTDOWN
 operator|||
 name|state
 operator|.
@@ -1429,6 +1452,15 @@ operator|=
 literal|"Resources still exist for processing"
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"restart msg: "
+operator|+
+name|restartMsg
+argument_list|)
+expr_stmt|;
 name|int
 name|exitStatus
 init|=
@@ -1531,6 +1563,17 @@ name|getNumHandledExceptions
 argument_list|()
 expr_stmt|;
 block|}
+name|LOG
+operator|.
+name|trace
+argument_list|(
+literal|"returning "
+operator|+
+name|state
+operator|.
+name|causeForTermination
+argument_list|)
+expr_stmt|;
 return|return
 operator|new
 name|ParallelFileProcessingResult
