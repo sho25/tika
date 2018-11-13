@@ -69,6 +69,9 @@ parameter_list|(
 name|Node
 name|n
 parameter_list|,
+name|long
+name|pauseOnEarlyTermination
+parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -81,7 +84,9 @@ block|{
 return|return
 operator|new
 name|Interrupter
-argument_list|()
+argument_list|(
+name|pauseOnEarlyTermination
+argument_list|)
 return|;
 block|}
 block|}

@@ -689,6 +689,8 @@ argument_list|(
 literal|"interrupter"
 argument_list|)
 argument_list|,
+name|pauseOnEarlyTerminationMillis
+argument_list|,
 name|runtimeAttributes
 argument_list|)
 expr_stmt|;
@@ -773,6 +775,9 @@ parameter_list|(
 name|Node
 name|node
 parameter_list|,
+name|long
+name|pauseOnEarlyTermination
+parameter_list|,
 name|Map
 argument_list|<
 name|String
@@ -844,6 +849,8 @@ operator|.
 name|build
 argument_list|(
 name|node
+argument_list|,
+name|pauseOnEarlyTermination
 argument_list|,
 name|runtimeAttributes
 argument_list|)
