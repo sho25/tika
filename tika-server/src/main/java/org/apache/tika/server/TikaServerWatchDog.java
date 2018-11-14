@@ -55,6 +55,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|DataInputStream
 import|;
 end_import
@@ -250,11 +260,6 @@ name|childProcess
 init|=
 literal|null
 decl_stmt|;
-name|int
-name|restarts
-init|=
-literal|0
-decl_stmt|;
 specifier|public
 name|void
 name|execute
@@ -269,6 +274,13 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"server watch dog is starting up"
+argument_list|)
+expr_stmt|;
 comment|//if the child thread is in stop-the-world mode, and isn't
 comment|//responding to the ping, this thread checks to make sure
 comment|//that the parent ping is sent and received often enough
@@ -448,6 +460,11 @@ operator|.
 name|RUNNING
 argument_list|)
 expr_stmt|;
+name|int
+name|restarts
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
 literal|true
@@ -510,6 +527,40 @@ operator|.
 name|RUNNING
 argument_list|)
 expr_stmt|;
+name|restarts
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|serverTimeouts
+operator|.
+name|getMaxRestarts
+argument_list|()
+operator|>
+operator|-
+literal|1
+operator|&&
+name|restarts
+operator|>=
+name|serverTimeouts
+operator|.
+name|getMaxRestarts
+argument_list|()
+condition|)
+block|{
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"hit max restarts: "
+operator|+
+name|restarts
+operator|+
+literal|". Stopping now"
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 block|}
 name|Thread
 operator|.
@@ -1021,7 +1072,21 @@ name|getOutputStream
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|byte
+comment|//if logger's debug=true, there can be a bunch of stuff that
+comment|//was written to the process's inputstream _before_
+comment|//we did the redirect.
+comment|//These bytes need to be read from fromChild before the child has actually
+comment|//started...allow 64,000 bytes...completely arbitrary.
+comment|//this is admittedly hacky...If the logger writes 0, we'd
+comment|//interpret that as "OPERATING"...need to figure out
+comment|//better way to siphon statically written bytes before
+comment|//we do the redirect of streams.
+name|int
+name|maxStartBytes
+init|=
+literal|64000
+decl_stmt|;
+name|int
 name|status
 init|=
 name|fromChild
@@ -1029,6 +1094,45 @@ operator|.
 name|readByte
 argument_list|()
 decl_stmt|;
+name|int
+name|read
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+name|status
+operator|>
+operator|-
+literal|1
+operator|&&
+name|read
+operator|<
+name|maxStartBytes
+operator|&&
+name|status
+operator|!=
+name|ServerStatus
+operator|.
+name|STATUS
+operator|.
+name|OPERATING
+operator|.
+name|getByte
+argument_list|()
+condition|)
+block|{
+name|status
+operator|=
+name|fromChild
+operator|.
+name|readByte
+argument_list|()
+expr_stmt|;
+name|read
+operator|++
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|status
@@ -1105,6 +1209,9 @@ index|[
 literal|0
 index|]
 operator|=
+operator|(
+name|byte
+operator|)
 name|status
 expr_stmt|;
 name|process
