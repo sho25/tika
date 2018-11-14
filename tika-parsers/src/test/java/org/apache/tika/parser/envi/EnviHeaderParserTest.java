@@ -411,6 +411,13 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
+literal|"<p>lat/lon = { 36.79077627261556, -108.48370867914815 }</p>"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
 literal|"<p>map info = { UTM , 1.000 , 1.000 , 724522.127 , 4074620.759 , 1.1000000000e+00 , 1.1000000000e+00 , 12 , North , WGS-84 , units=Meters , rotation=75.00000000 }</p>"
 argument_list|,
 name|content
