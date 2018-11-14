@@ -1863,10 +1863,6 @@ expr_stmt|;
 block|}
 name|ServerStatus
 name|serverStatus
-init|=
-operator|new
-name|ServerStatus
-argument_list|()
 decl_stmt|;
 comment|//if this is a child process
 if|if
@@ -1879,6 +1875,12 @@ literal|"child"
 argument_list|)
 condition|)
 block|{
+name|serverStatus
+operator|=
+operator|new
+name|ServerStatus
+argument_list|()
+expr_stmt|;
 comment|//redirect!!!
 name|PrintStream
 name|out
@@ -1981,6 +1983,17 @@ name|serverThread
 operator|.
 name|start
 argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|serverStatus
+operator|=
+operator|new
+name|ServerStatus
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 name|TikaResource
