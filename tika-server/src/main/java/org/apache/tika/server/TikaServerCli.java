@@ -39,9 +39,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|nio
 operator|.
-name|PrintStream
+name|file
+operator|.
+name|Paths
 import|;
 end_import
 
@@ -779,6 +781,12 @@ block|,
 literal|"javaHome"
 block|,
 literal|"maxRestarts"
+block|,
+literal|"childStatusFile"
+block|,
+literal|"maxChildStartupMillis"
+block|,
+literal|"tmpFilePrefix"
 block|}
 argument_list|)
 decl_stmt|;
@@ -1001,6 +1009,17 @@ name|options
 operator|.
 name|addOption
 argument_list|(
+literal|"maxChildStartupMillis"
+argument_list|,
+literal|true
+argument_list|,
+literal|"Only in spawn child mode: Maximum number of millis to wait for the child process to startup."
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
 literal|"maxRestarts"
 argument_list|,
 literal|true
@@ -1027,7 +1046,7 @@ literal|"javaHome"
 argument_list|,
 literal|true
 argument_list|,
-literal|"Override system property JAVA_HOME for calling java for the child process"
+literal|"Only in spawn child mode: override system property JAVA_HOME for calling java for the child process"
 argument_list|)
 expr_stmt|;
 name|options
@@ -1038,9 +1057,33 @@ literal|"child"
 argument_list|,
 literal|false
 argument_list|,
-literal|"this process is a child process -- EXPERT -- "
+literal|"Only in spawn child mode: this process is a child process -- do not use this! "
 operator|+
-literal|"should normally only be invoked by parent process"
+literal|"Should only be invoked by parent process"
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+literal|"childStatusFile"
+argument_list|,
+literal|true
+argument_list|,
+literal|"Only in spawn child mode: temporary file used as mmap to communicate "
+operator|+
+literal|"with parent process -- do not use this! Should only be invoked by parent process."
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|addOption
+argument_list|(
+literal|"tmpFilePrefix"
+argument_list|,
+literal|true
+argument_list|,
+literal|"Only in spawn child mode: prefix for temp file - for debugging only"
 argument_list|)
 expr_stmt|;
 return|return
@@ -1882,13 +1925,6 @@ name|ServerStatus
 argument_list|()
 expr_stmt|;
 comment|//redirect!!!
-name|PrintStream
-name|out
-init|=
-name|System
-operator|.
-name|out
-decl_stmt|;
 name|InputStream
 name|in
 init|=
@@ -1958,6 +1994,16 @@ argument_list|(
 name|line
 argument_list|)
 decl_stmt|;
+name|String
+name|childStatusFile
+init|=
+name|line
+operator|.
+name|getOptionValue
+argument_list|(
+literal|"childStatusFile"
+argument_list|)
+decl_stmt|;
 name|Thread
 name|serverThread
 init|=
@@ -1971,7 +2017,12 @@ name|serverStatus
 argument_list|,
 name|in
 argument_list|,
-name|out
+name|Paths
+operator|.
+name|get
+argument_list|(
+name|childStatusFile
+argument_list|)
 argument_list|,
 name|maxFiles
 argument_list|,
@@ -2567,6 +2618,34 @@ operator|.
 name|getOptionValue
 argument_list|(
 literal|"maxRestarts"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|line
+operator|.
+name|hasOption
+argument_list|(
+literal|"maxChildStartupMillis"
+argument_list|)
+condition|)
+block|{
+name|serverTimeouts
+operator|.
+name|setMaxChildStartupMillis
+argument_list|(
+name|Long
+operator|.
+name|parseLong
+argument_list|(
+name|line
+operator|.
+name|getOptionValue
+argument_list|(
+literal|"maxChildStartupMillis"
 argument_list|)
 argument_list|)
 argument_list|)

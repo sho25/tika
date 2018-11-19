@@ -48,6 +48,15 @@ name|DEFAULT_TASK_TIMEOUT_MILLIS
 init|=
 literal|120000
 decl_stmt|;
+comment|/**      * Number of milliseconds to wait for child process to startup      */
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|DEFAULT_CHILD_STARTUP_MILLIS
+init|=
+literal|120000
+decl_stmt|;
 specifier|private
 name|int
 name|maxRestarts
@@ -72,6 +81,12 @@ name|long
 name|pingPulseMillis
 init|=
 name|DEFAULT_PING_PULSE_MILLIS
+decl_stmt|;
+specifier|private
+name|long
+name|maxChildStartupMillis
+init|=
+name|DEFAULT_CHILD_STARTUP_MILLIS
 decl_stmt|;
 comment|/**      * How long to wait for a task before shutting down the child server process      * and restarting it.      * @return      */
 specifier|public
@@ -171,6 +186,31 @@ operator|.
 name|maxRestarts
 operator|=
 name|maxRestarts
+expr_stmt|;
+block|}
+comment|/**      * Maximum time in millis to allow for the child process to startup      * or restart      * @return      */
+specifier|public
+name|long
+name|getMaxChildStartupMillis
+parameter_list|()
+block|{
+return|return
+name|maxChildStartupMillis
+return|;
+block|}
+specifier|public
+name|void
+name|setMaxChildStartupMillis
+parameter_list|(
+name|long
+name|maxChildStartupMillis
+parameter_list|)
+block|{
+name|this
+operator|.
+name|maxChildStartupMillis
+operator|=
+name|maxChildStartupMillis
 expr_stmt|;
 block|}
 block|}
