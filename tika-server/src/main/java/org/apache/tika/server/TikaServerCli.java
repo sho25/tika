@@ -1035,7 +1035,13 @@ literal|"maxFiles"
 argument_list|,
 literal|true
 argument_list|,
-literal|"Only in spawn child mode: shutdown server after this many files -- use only in 'spawnChild' mode"
+literal|"Only in spawn child mode: shutdown server after this many files (to handle parsers that might introduce "
+operator|+
+literal|"slowly building memory leaks); the default is "
+operator|+
+name|DEFAULT_MAX_FILES
+operator|+
+literal|". Set to -1 to turn this off."
 argument_list|)
 expr_stmt|;
 name|options
