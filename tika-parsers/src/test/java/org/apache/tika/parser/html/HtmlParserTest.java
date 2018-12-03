@@ -643,6 +643,20 @@ name|tika
 operator|.
 name|sax
 operator|.
+name|BasicContentHandlerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
 name|BodyContentHandler
 import|;
 end_import
@@ -6244,6 +6258,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|//TIKA-2550 -- make absolutely sure that macros are still extracted
+comment|//with the ToTextHandler
 name|List
 argument_list|<
 name|Metadata
@@ -6255,6 +6271,12 @@ argument_list|(
 literal|"testHTMLGoodScript.html"
 argument_list|,
 name|p
+argument_list|,
+name|BasicContentHandlerFactory
+operator|.
+name|HANDLER_TYPE
+operator|.
+name|TEXT
 argument_list|)
 decl_stmt|;
 name|assertEquals
