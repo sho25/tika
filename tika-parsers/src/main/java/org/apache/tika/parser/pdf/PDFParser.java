@@ -23,18 +23,6 @@ name|javax
 operator|.
 name|xml
 operator|.
-name|parsers
-operator|.
-name|DocumentBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
 name|stream
 operator|.
 name|XMLStreamException
@@ -780,18 +768,6 @@ operator|.
 name|sax
 operator|.
 name|ContentHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|ErrorHandler
 import|;
 end_import
 
