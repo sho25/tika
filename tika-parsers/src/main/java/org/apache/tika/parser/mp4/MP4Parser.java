@@ -704,7 +704,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Parser for the MP4 media container format, as well as the older  *  QuickTime format that MP4 is based on.  *   * This uses the MP4Parser project from http://code.google.com/p/mp4parser/  *  to do the underlying parsing  */
+comment|/**  * Parser for the MP4 media container format, as well as the older  *  QuickTime format that MP4 is based on.  *  * This uses the MP4Parser project from http://code.google.com/p/mp4parser/  *  to do the underlying parsing  */
 end_comment
 
 begin_class
@@ -1256,9 +1256,9 @@ name|metadata
 operator|.
 name|set
 argument_list|(
-name|Metadata
+name|TikaCoreProperties
 operator|.
-name|CREATION_DATE
+name|CREATED
 argument_list|,
 name|mHeader
 operator|.
