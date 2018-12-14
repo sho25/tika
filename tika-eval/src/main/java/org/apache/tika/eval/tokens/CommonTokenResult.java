@@ -30,7 +30,18 @@ decl_stmt|;
 specifier|private
 specifier|final
 name|int
+name|uniqueCommonTokens
+decl_stmt|;
+comment|//types
+specifier|private
+specifier|final
+name|int
 name|commonTokens
+decl_stmt|;
+specifier|private
+specifier|final
+name|int
+name|uniqueAlphabeticTokens
 decl_stmt|;
 specifier|private
 specifier|final
@@ -44,7 +55,13 @@ name|String
 name|langCode
 parameter_list|,
 name|int
+name|uniqueCommonTokens
+parameter_list|,
+name|int
 name|commonTokens
+parameter_list|,
+name|int
+name|uniqueAlphabeticTokens
 parameter_list|,
 name|int
 name|alphabeticTokens
@@ -58,9 +75,21 @@ name|langCode
 expr_stmt|;
 name|this
 operator|.
+name|uniqueCommonTokens
+operator|=
+name|uniqueCommonTokens
+expr_stmt|;
+name|this
+operator|.
 name|commonTokens
 operator|=
 name|commonTokens
+expr_stmt|;
+name|this
+operator|.
+name|uniqueAlphabeticTokens
+operator|=
+name|uniqueAlphabeticTokens
 expr_stmt|;
 name|this
 operator|.
@@ -78,6 +107,7 @@ return|return
 name|langCode
 return|;
 block|}
+comment|/**      *      * @return total number of "common tokens"      */
 specifier|public
 name|int
 name|getCommonTokens
@@ -85,6 +115,26 @@ parameter_list|()
 block|{
 return|return
 name|commonTokens
+return|;
+block|}
+comment|/**      *      * @return number of unique "common tokens" (types)      */
+specifier|public
+name|int
+name|getUniqueCommonTokens
+parameter_list|()
+block|{
+return|return
+name|uniqueCommonTokens
+return|;
+block|}
+comment|/**      *      * @return number of unique alphabetic tokens (types)      */
+specifier|public
+name|int
+name|getUniqueAlphabeticTokens
+parameter_list|()
+block|{
+return|return
+name|uniqueAlphabeticTokens
 return|;
 block|}
 comment|/**      *      * @return number of tokens that had at least one alphabetic/ideographic character      * whether or not a common token      */

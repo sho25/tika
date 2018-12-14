@@ -76,12 +76,16 @@ name|NUM_UNIQUE_TOKENS
 block|,
 name|NUM_TOKENS
 block|,
+name|NUM_UNIQUE_ALPHABETIC_TOKENS
+block|,
 name|NUM_ALPHABETIC_TOKENS
 block|,
 comment|//alphabetic or ideographic tokens
 name|COMMON_TOKENS_LANG
 block|,
 comment|//which language was used for the common tokens metric?
+name|NUM_UNIQUE_COMMON_TOKENS
+block|,
 name|NUM_COMMON_TOKENS
 block|,
 name|TOP_N_TOKENS
