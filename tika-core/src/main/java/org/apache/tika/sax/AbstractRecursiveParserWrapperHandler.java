@@ -172,6 +172,24 @@ operator|+
 literal|"content"
 argument_list|)
 decl_stmt|;
+comment|/**      * Simple class name of the content handler      */
+specifier|public
+specifier|final
+specifier|static
+name|Property
+name|TIKA_CONTENT_HANDLER
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TIKA_META_PREFIX
+operator|+
+literal|"content_handler"
+argument_list|)
+decl_stmt|;
 specifier|public
 specifier|final
 specifier|static

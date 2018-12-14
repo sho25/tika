@@ -17,6 +17,16 @@ name|db
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|sql
+operator|.
+name|Types
+import|;
+end_import
+
 begin_enum
 specifier|public
 enum|enum
@@ -138,7 +148,38 @@ name|DIR_NAME_A
 block|,
 comment|//for comparisons in REF_PAIR_NAMES
 name|DIR_NAME_B
-block|}
+block|,
+comment|//structure tags
+name|TAGS_A
+block|,
+name|TAGS_DIV
+block|,
+name|TAGS_I
+block|,
+name|TAGS_IMG
+block|,
+name|TAGS_LI
+block|,
+name|TAGS_P
+block|,
+name|TAGS_OL
+block|,
+name|TAGS_TABLE
+block|,
+name|TAGS_TD
+block|,
+name|TAGS_TITLE
+block|,
+name|TAGS_TR
+block|,
+name|TAGS_UL
+block|,
+name|TAGS_U
+block|,
+name|TAGS_PARSE_EXCEPTION
+block|,
+comment|//if there was a SAX|IO|TikaException while parsing the html or xhtml
+block|;  }
 end_enum
 
 end_unit

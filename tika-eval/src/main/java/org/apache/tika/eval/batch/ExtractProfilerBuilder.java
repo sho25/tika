@@ -278,6 +278,15 @@ name|add
 argument_list|(
 name|ExtractProfiler
 operator|.
+name|TAGS_TABLE
+argument_list|)
+expr_stmt|;
+name|tableInfos
+operator|.
+name|add
+argument_list|(
+name|ExtractProfiler
+operator|.
 name|EMBEDDED_FILE_PATH_TABLE
 argument_list|)
 expr_stmt|;
