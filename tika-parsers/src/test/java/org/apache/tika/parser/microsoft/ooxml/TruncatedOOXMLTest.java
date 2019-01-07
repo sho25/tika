@@ -306,7 +306,7 @@ name|getRecursiveMetadata
 argument_list|(
 name|truncate
 argument_list|(
-literal|"testWord_various.docx"
+literal|"testWORD_various.docx"
 argument_list|,
 literal|14435
 argument_list|)
@@ -403,7 +403,7 @@ name|getRecursiveMetadata
 argument_list|(
 name|truncate
 argument_list|(
-literal|"testWord_various.docx"
+literal|"testWORD_various.docx"
 argument_list|,
 literal|13138
 argument_list|)
@@ -466,7 +466,7 @@ name|getRecursiveMetadata
 argument_list|(
 name|truncate
 argument_list|(
-literal|"testWord_various.docx"
+literal|"testWORD_various.docx"
 argument_list|,
 literal|774
 argument_list|)
