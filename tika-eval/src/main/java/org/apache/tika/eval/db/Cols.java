@@ -156,6 +156,8 @@ block|,
 comment|//structure tags
 name|TAGS_A
 block|,
+name|TAGS_B
+block|,
 name|TAGS_DIV
 block|,
 name|TAGS_I

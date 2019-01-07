@@ -986,6 +986,17 @@ name|tmp
 operator|.
 name|put
 argument_list|(
+literal|"B"
+argument_list|,
+name|Cols
+operator|.
+name|TAGS_B
+argument_list|)
+expr_stmt|;
+name|tmp
+operator|.
+name|put
+argument_list|(
 literal|"DIV"
 argument_list|,
 name|Cols
