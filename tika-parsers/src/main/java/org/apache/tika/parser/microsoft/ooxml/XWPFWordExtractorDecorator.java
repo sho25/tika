@@ -2106,7 +2106,9 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Also extract any paragraphs embedded in text boxes:
+comment|// Also extract any paragraphs embedded in text boxes
+comment|//Note "w:txbxContent//"...must look for all descendant paragraphs
+comment|//not just the immediate children of txbxContent -- TIKA-2807
 if|if
 condition|(
 name|config
@@ -2127,7 +2129,7 @@ argument_list|()
 operator|.
 name|selectPath
 argument_list|(
-literal|"declare namespace w='http://schemas.openxmlformats.org/wordprocessingml/2006/main' declare namespace wps='http://schemas.microsoft.com/office/word/2010/wordprocessingShape' .//*/wps:txbx/w:txbxContent/w:p"
+literal|"declare namespace w='http://schemas.openxmlformats.org/wordprocessingml/2006/main' declare namespace wps='http://schemas.microsoft.com/office/word/2010/wordprocessingShape' .//*/wps:txbx/w:txbxContent//w:p"
 argument_list|)
 control|)
 block|{
