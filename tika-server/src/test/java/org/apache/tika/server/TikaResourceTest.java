@@ -1328,7 +1328,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//TIKA-2638
+comment|//TIKA-2638 and TIKA-2816
 annotation|@
 name|Test
 specifier|public
@@ -1392,6 +1392,17 @@ operator|+
 literal|"Language"
 argument_list|,
 literal|"eng+fra"
+argument_list|)
+operator|.
+name|header
+argument_list|(
+name|TikaResource
+operator|.
+name|X_TIKA_OCR_HEADER_PREFIX
+operator|+
+literal|"MinFileSizeToOcr"
+argument_list|,
+literal|"100000000"
 argument_list|)
 operator|.
 name|put
