@@ -479,6 +479,15 @@ argument_list|(
 name|FIELD
 argument_list|)
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|tokens
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
@@ -524,7 +533,7 @@ block|{
 name|String
 name|s
 init|=
-literal|"then quickbrownfoxjumpedoverthelazy dogss dog 普林斯顿大学"
+literal|"then quickbrownfoxjumpedoverthelazy dogss dog 2000 普林斯顿大学"
 decl_stmt|;
 name|Analyzer
 name|analyzer

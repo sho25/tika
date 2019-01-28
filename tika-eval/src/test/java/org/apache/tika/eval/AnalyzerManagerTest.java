@@ -337,7 +337,7 @@ name|tokenStream
 argument_list|(
 literal|"f"
 argument_list|,
-literal|"the 5,000.12 and dirty dog"
+literal|"the 5,000.12 5000 and dirty dog"
 argument_list|)
 decl_stmt|;
 name|ts
@@ -393,6 +393,11 @@ argument_list|(
 name|t
 operator|.
 name|toCharArray
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|length
 argument_list|()
 argument_list|)
 operator|&&

@@ -450,6 +450,11 @@ name|token
 operator|.
 name|toCharArray
 argument_list|()
+argument_list|,
+name|token
+operator|.
+name|length
+argument_list|()
 argument_list|)
 condition|)
 block|{
