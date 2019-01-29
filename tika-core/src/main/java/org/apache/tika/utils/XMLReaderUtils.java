@@ -2793,11 +2793,6 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 comment|// continue without log, this is expected in some setups
 block|}
 catch|catch
@@ -2806,11 +2801,6 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 comment|// NOSONAR - also catch things like NoClassDefError here
 comment|// throttle the log somewhat as it can spam the log otherwise
 if|if
