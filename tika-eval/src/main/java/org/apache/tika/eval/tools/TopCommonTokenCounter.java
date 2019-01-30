@@ -424,7 +424,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Utility class that reads in a UTF-8 input file with one document per row  * and outputs the 20000 tokens with the highest document frequencies.  *  * The CommmonTokensAnalyzer intentionally drops tokens shorter than 4 characters,  * but includes bigrams for cjk.  */
+comment|/**  * Utility class that reads in a UTF-8 input file with one document per row  * and outputs the 20000 tokens with the highest document frequencies.  *  * The CommmonTokensAnalyzer intentionally drops tokens shorter than 4 characters,  * but includes bigrams for cjk.  *  * It also has a white list for __email__ and __url__ and a black list  * for common html markup terms.  */
 end_comment
 
 begin_class
@@ -478,6 +478,63 @@ literal|"___email___"
 block|,
 literal|"___url___"
 block|}
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|//words to ignore
+comment|//these are common 4 letter html markup words that we do
+comment|//not want to count in case of failed markup processing.
+comment|//see: https://issues.apache.org/jira/browse/TIKA-2267?focusedCommentId=15872055&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-15872055
+specifier|static
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|BLACK_LIST
+init|=
+operator|new
+name|HashSet
+argument_list|<>
+argument_list|(
+name|Arrays
+operator|.
+name|asList
+argument_list|(
+literal|"span"
+argument_list|,
+literal|"table"
+argument_list|,
+literal|"href"
+argument_list|,
+literal|"head"
+argument_list|,
+literal|"title"
+argument_list|,
+literal|"body"
+argument_list|,
+literal|"html"
+argument_list|,
+literal|"tagname"
+argument_list|,
+literal|"lang"
+argument_list|,
+literal|"style"
+argument_list|,
+literal|"script"
+argument_list|,
+literal|"strong"
+argument_list|,
+literal|"blockquote"
+argument_list|,
+literal|"form"
+argument_list|,
+literal|"iframe"
+argument_list|,
+literal|"section"
+argument_list|,
+literal|"colspan"
+argument_list|,
+literal|"rowspan"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -912,6 +969,14 @@ if|if
 condition|(
 operator|!
 name|WHITE_LIST
+operator|.
+name|contains
+argument_list|(
+name|t
+argument_list|)
+operator|&&
+operator|!
+name|BLACK_LIST
 operator|.
 name|contains
 argument_list|(
