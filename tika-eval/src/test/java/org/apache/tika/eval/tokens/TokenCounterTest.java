@@ -479,15 +479,6 @@ argument_list|(
 name|FIELD
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|tokens
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 operator|new
