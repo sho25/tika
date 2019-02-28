@@ -214,9 +214,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|txt
+name|csv
 operator|.
-name|TXTParser
+name|TextAndCSVParser
 operator|.
 name|class
 argument_list|,
@@ -238,9 +238,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|txt
+name|csv
 operator|.
-name|TXTParser
+name|TextAndCSVParser
 operator|.
 name|class
 argument_list|,
@@ -328,9 +328,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|txt
+name|csv
 operator|.
-name|TXTParser
+name|TextAndCSVParser
 operator|.
 name|class
 argument_list|,
@@ -352,9 +352,9 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|txt
+name|csv
 operator|.
-name|TXTParser
+name|TextAndCSVParser
 operator|.
 name|class
 argument_list|,
