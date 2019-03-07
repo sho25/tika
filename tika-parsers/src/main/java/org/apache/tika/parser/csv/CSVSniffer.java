@@ -157,6 +157,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|metadata
+operator|.
+name|Metadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|mime
 operator|.
 name|MediaType
@@ -362,18 +376,21 @@ return|return
 name|ret
 return|;
 block|}
-comment|//gets the best result with confidence> 0
-comment|//otherwise, returns CSVResult
-comment|/**      *      * @param reader      * @return the best result with confidence> 0; if none exist, it returns {@link CSVResult#TEXT}      * @throws IOException      */
+comment|/**      * @param reader      * @param metadata      * @return the best result given the detection results or {@link CSVResult#TEXT}      *         if the confidence is not above a threshold.      * @throws IOException      */
 name|CSVResult
 name|getBest
 parameter_list|(
 name|Reader
 name|reader
+parameter_list|,
+name|Metadata
+name|metadata
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//TODO: take into consideration the filename.  Perhaps require
+comment|//a higher confidence if detection contradicts filename?
 name|List
 argument_list|<
 name|CSVResult
@@ -388,15 +405,25 @@ decl_stmt|;
 if|if
 condition|(
 name|results
+operator|==
+literal|null
+operator|||
+name|results
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|==
 literal|0
 condition|)
 block|{
+return|return
 name|CSVResult
-name|result
+operator|.
+name|TEXT
+return|;
+block|}
+name|CSVResult
+name|bestResult
 init|=
 name|results
 operator|.
@@ -407,23 +434,22 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|result
+name|bestResult
 operator|.
 name|getConfidence
 argument_list|()
-operator|>
-literal|0.0
+operator|<
+literal|0.10
 condition|)
 block|{
-return|return
-name|result
-return|;
-block|}
-block|}
 return|return
 name|CSVResult
 operator|.
 name|TEXT
+return|;
+block|}
+return|return
+name|bestResult
 return|;
 block|}
 comment|//inner class that tests a single hypothesis/combination

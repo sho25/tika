@@ -64,7 +64,7 @@ name|MediaType
 operator|.
 name|TEXT_PLAIN
 argument_list|,
-literal|'\n'
+literal|null
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -79,7 +79,7 @@ name|mediaType
 decl_stmt|;
 specifier|private
 specifier|final
-name|char
+name|Character
 name|delimiter
 decl_stmt|;
 specifier|public
@@ -91,7 +91,7 @@ parameter_list|,
 name|MediaType
 name|mediaType
 parameter_list|,
-name|char
+name|Character
 name|delimiter
 parameter_list|)
 block|{
@@ -123,6 +123,7 @@ return|return
 name|mediaType
 return|;
 block|}
+comment|/**      *      * @return returns the delimiter or<code>null</code> if the mediatype=text/plain      */
 specifier|public
 name|Character
 name|getDelimiter
@@ -216,12 +217,6 @@ argument_list|)
 operator|==
 literal|0
 operator|&&
-name|delimiter
-operator|==
-name|csvResult
-operator|.
-name|delimiter
-operator|&&
 name|mediaType
 operator|.
 name|equals
@@ -229,6 +224,17 @@ argument_list|(
 name|csvResult
 operator|.
 name|mediaType
+argument_list|)
+operator|&&
+name|Objects
+operator|.
+name|equals
+argument_list|(
+name|delimiter
+argument_list|,
+name|csvResult
+operator|.
+name|delimiter
 argument_list|)
 return|;
 block|}
@@ -250,6 +256,31 @@ name|mediaType
 argument_list|,
 name|delimiter
 argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"CSVResult{"
+operator|+
+literal|"confidence="
+operator|+
+name|confidence
+operator|+
+literal|", mediaType="
+operator|+
+name|mediaType
+operator|+
+literal|", delimiter="
+operator|+
+name|delimiter
+operator|+
+literal|'}'
 return|;
 block|}
 specifier|public
