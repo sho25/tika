@@ -104,6 +104,10 @@ specifier|public
 name|boolean
 name|object
 decl_stmt|;
+specifier|public
+name|boolean
+name|annotation
+decl_stmt|;
 comment|// Create default (root) GroupState
 specifier|public
 name|GroupState
@@ -183,7 +187,7 @@ literal|1
 else|:
 literal|0
 expr_stmt|;
-comment|//do not inherit object, sn, sv or sp
+comment|//do not inherit object, sn, sv, sp or annotation
 block|}
 block|}
 end_class
