@@ -918,6 +918,11 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|endPage
+argument_list|(
+name|page
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 annotation|@
@@ -997,9 +1002,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|exceptions
-operator|.
-name|add
+name|handleCatchableIOE
 argument_list|(
 name|e
 argument_list|)
