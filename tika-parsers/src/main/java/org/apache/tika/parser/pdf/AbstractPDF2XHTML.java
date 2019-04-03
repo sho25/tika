@@ -359,6 +359,20 @@ name|pdfbox
 operator|.
 name|pdmodel
 operator|.
+name|PDPageTree
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|pdfbox
+operator|.
+name|pdmodel
+operator|.
 name|common
 operator|.
 name|PDDestinationOrAction
@@ -1273,12 +1287,19 @@ specifier|final
 name|PDFParserConfig
 name|config
 decl_stmt|;
-specifier|private
+comment|//zero-based pageIndex
 name|int
 name|pageIndex
 init|=
 literal|0
 decl_stmt|;
+name|int
+name|startPage
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|//private in PDFTextStripper...must have own copy because we override processpages
 name|AbstractPDF2XHTML
 parameter_list|(
 name|PDDocument
@@ -2964,12 +2985,6 @@ name|add
 argument_list|(
 name|e
 argument_list|)
-expr_stmt|;
-block|}
-finally|finally
-block|{
-name|pageIndex
-operator|++
 expr_stmt|;
 block|}
 block|}
@@ -5064,6 +5079,148 @@ parameter_list|)
 block|{         }
 return|return
 literal|null
+return|;
+block|}
+comment|/**      * we need to override this because we are overriding {@link #processPages(PDPageTree)}      * @return      */
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getCurrentPageNo
+parameter_list|()
+block|{
+return|return
+name|pageIndex
+operator|+
+literal|1
+return|;
+block|}
+comment|/**      * See TIKA-2845 for why we need to override this.      *      * @param pages      * @throws IOException      */
+annotation|@
+name|Override
+specifier|protected
+name|void
+name|processPages
+parameter_list|(
+name|PDPageTree
+name|pages
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|//we currently need this hack because we aren't able to increment
+comment|//the private currentPageNo in PDFTextStripper,
+comment|//and PDFTextStripper's processPage relies on that variable
+comment|//being>= startPage when deciding whether or not to process a page
+comment|// See:
+comment|// if (currentPageNo>= startPage&& currentPageNo<= endPage
+comment|//&& (startBookmarkPageNumber == -1 || currentPageNo>= startBookmarkPageNumber)
+comment|//&& (endBookmarkPageNumber == -1 || currentPageNo<= endBookmarkPageNumber))
+comment|//        {
+name|super
+operator|.
+name|setStartPage
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|PDPage
+name|page
+range|:
+name|pages
+control|)
+block|{
+if|if
+condition|(
+name|getCurrentPageNo
+argument_list|()
+operator|>=
+name|getStartPage
+argument_list|()
+operator|&&
+name|getCurrentPageNo
+argument_list|()
+operator|<=
+name|getEndPage
+argument_list|()
+condition|)
+block|{
+name|processPage
+argument_list|(
+name|page
+argument_list|)
+expr_stmt|;
+block|}
+name|pageIndex
+operator|++
+expr_stmt|;
+block|}
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setStartBookmark
+parameter_list|(
+name|PDOutlineItem
+name|pdOutlineItem
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"We don't currently support this -- See PDFTextStripper's processPages() for how to implement this."
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setEndBookmark
+parameter_list|(
+name|PDOutlineItem
+name|pdOutlineItem
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|UnsupportedOperationException
+argument_list|(
+literal|"We don't currently support this -- See PDFTextStripper's processPages() for how to implement this."
+argument_list|)
+throw|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setStartPage
+parameter_list|(
+name|int
+name|startPage
+parameter_list|)
+block|{
+name|this
+operator|.
+name|startPage
+operator|=
+name|startPage
+expr_stmt|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|int
+name|getStartPage
+parameter_list|()
+block|{
+return|return
+name|startPage
 return|;
 block|}
 block|}
