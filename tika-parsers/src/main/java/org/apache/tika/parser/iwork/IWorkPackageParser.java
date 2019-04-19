@@ -620,7 +620,7 @@ name|zip
 argument_list|)
 return|;
 block|}
-specifier|private
+specifier|public
 specifier|static
 name|IWORKDocumentType
 name|detectType

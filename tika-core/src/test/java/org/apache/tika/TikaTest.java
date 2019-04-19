@@ -2407,7 +2407,14 @@ throw|throw
 operator|new
 name|EOFException
 argument_list|(
-literal|"Can't truncate beyond file length"
+literal|"Can't truncate beyond file length: "
+operator|+
+name|bos
+operator|.
+name|toByteArray
+argument_list|()
+operator|.
+name|length
 argument_list|)
 throw|;
 block|}
