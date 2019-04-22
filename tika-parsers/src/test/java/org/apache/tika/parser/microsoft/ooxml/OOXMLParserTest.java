@@ -3185,7 +3185,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<i><u>unde</u><strike><u>r</u></strike><u>line</i></u>"
+literal|"<i><u>unde<strike>r</strike>line</u></i>"
 argument_list|,
 name|xml
 argument_list|)
