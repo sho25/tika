@@ -1200,7 +1200,7 @@ name|xml
 operator|.
 name|contains
 argument_list|(
-literal|"<i><u>unde</u><s><u>r</u></s><u>line</u></i>"
+literal|"<i><u>unde<s>r</s>line</u></i>"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3079,7 +3079,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<a href=\"http://tika.apache.org/\"><u>hyper</u><b><u>link</u></b></a>"
+literal|"<a href=\"http://tika.apache.org/\"><u>hyper<b>link</b></u></a>"
 argument_list|,
 name|xml
 argument_list|)
