@@ -3144,7 +3144,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<strike>strikethrough</strike>"
+literal|"<s>strikethrough</s>"
 argument_list|,
 name|xml
 argument_list|)
@@ -3171,26 +3171,26 @@ name|xml
 decl_stmt|;
 name|assertContains
 argument_list|(
-literal|"<i>ita<strike>li</strike>c</i>"
+literal|"<i>ita<s>li</s>c</i>"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<i>ita<strike>l<u>i</u></strike>c</i>"
+literal|"<i>ita<s>l<u>i</u></s>c</i>"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"<i><u>unde<strike>r</strike>line</u></i>"
+literal|"<i><u>unde<s>r</s>line</u></i>"
 argument_list|,
 name|xml
 argument_list|)
 expr_stmt|;
-comment|//confirm that spaces aren't added for<strike/> and</u>
+comment|//confirm that spaces aren't added for</s> and</u>
 name|ContentHandler
 name|contentHandler
 init|=

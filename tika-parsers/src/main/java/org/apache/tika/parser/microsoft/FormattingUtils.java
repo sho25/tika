@@ -381,19 +381,6 @@ name|String
 name|tagName
 parameter_list|()
 block|{
-if|if
-condition|(
-name|this
-operator|==
-name|S
-condition|)
-block|{
-return|return
-literal|"strike"
-return|;
-block|}
-else|else
-block|{
 return|return
 name|name
 argument_list|()
@@ -405,7 +392,6 @@ operator|.
 name|ROOT
 argument_list|)
 return|;
-block|}
 block|}
 block|}
 block|}
