@@ -724,6 +724,7 @@ literal|1024
 operator|*
 literal|1024
 decl_stmt|;
+comment|/**      * If a TikaInputStream is passed in to {@link #detect(InputStream, Metadata)},      * and there is not an underlying file, this detector will spool up to {@link #markLimit}      * to disk.  If the stream was read in entirety (e.g. the spooled file is not truncated),      * this detector will open the file with POI and perform detection.      * If the spooled file is truncated, the detector will return {@link #OLE} (or      * {@link MediaType#OCTET_STREAM} if there's no OLE header).      *      * As of Tika 1.21, this detector respects the legacy behavior of not performing detection      * on a non-TikaInputStream.      *      * @param markLimit      */
 specifier|public
 name|void
 name|setMarkLimit
@@ -1655,7 +1656,9 @@ throws|throws
 name|IOException
 block|{
 comment|// Force the document stream to a (possibly temporary) file
-comment|// so we don't modify the current position of the stream
+comment|// so we don't modify the current position of the stream.
+comment|//If the markLimit is< 0, this will spool the entire file
+comment|//to disk if there is not an underlying file.
 name|Path
 name|file
 init|=
