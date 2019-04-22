@@ -49,6 +49,18 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
+name|ConcurrentHashMap
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|apache
@@ -85,20 +97,6 @@ name|apache
 operator|.
 name|lucene
 operator|.
-name|index
-operator|.
-name|OrdinalMap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|lucene
-operator|.
 name|util
 operator|.
 name|Bits
@@ -120,10 +118,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * copied verbatim from Solr  */
+comment|/**  *<b>COPIED VERBATIM FROM LUCENE</b>  * This class forces a composite reader (eg a {@link  * MultiReader} or {@link DirectoryReader}) to emulate a  * {@link LeafReader}.  This requires implementing the postings  * APIs on-the-fly, using the static methods in {@link  * MultiTerms}, {@link MultiDocValues}, by stepping through  * the sub-readers to merge fields/terms, appending docs, etc.  *  *<p><b>NOTE</b>: this class almost always results in a  * performance hit.  If this is important to your use case,  * you'll get better performance by gathering the sub readers using  * {@link IndexReader#getContext()} to get the  * leaves and then operate per-LeafReader,  * instead of using this class.  */
 end_comment
 
 begin_class
+specifier|public
 specifier|final
 class|class
 name|SlowCompositeReaderWrapper
@@ -137,15 +136,49 @@ name|in
 decl_stmt|;
 specifier|private
 specifier|final
-name|Fields
-name|fields
-decl_stmt|;
-specifier|private
-specifier|final
 name|LeafMetaData
 name|metaData
 decl_stmt|;
-comment|/** This method is sugar for getting an {@link LeafReader} from      * an IndexReader of any kind. If the reader is already atomic,      * it is returned unchanged, otherwise wrapped by this class.      */
+comment|// Cached copy of FieldInfos to prevent it from being re-created on each
+comment|// getFieldInfos call.  Most (if not all) other LeafReader implementations
+comment|// also have a cached FieldInfos instance so this is consistent. SOLR-12878
+specifier|private
+specifier|final
+name|FieldInfos
+name|fieldInfos
+decl_stmt|;
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Terms
+argument_list|>
+name|cachedTerms
+init|=
+operator|new
+name|ConcurrentHashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
+comment|// TODO: consider ConcurrentHashMap ?
+comment|// TODO: this could really be a weak map somewhere else on the coreCacheKey,
+comment|// but do we really need to optimize slow-wrapper any more?
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|OrdinalMap
+argument_list|>
+name|cachedOrdMaps
+init|=
+operator|new
+name|HashMap
+argument_list|<>
+argument_list|()
+decl_stmt|;
+comment|/** This method is sugar for getting an {@link LeafReader} from      * an {@link IndexReader} of any kind. If the reader is already atomic,      * it is returned unchanged, otherwise wrapped by this class.      */
 specifier|public
 specifier|static
 name|LeafReader
@@ -198,21 +231,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|in
 operator|=
 name|reader
-expr_stmt|;
-name|fields
-operator|=
-name|MultiFields
-operator|.
-name|getFields
-argument_list|(
-name|in
-argument_list|)
 expr_stmt|;
 name|in
 operator|.
@@ -345,6 +366,15 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|fieldInfos
+operator|=
+name|FieldInfos
+operator|.
+name|getMergedFieldInfos
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -407,14 +437,92 @@ block|{
 name|ensureOpen
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 return|return
-name|fields
+name|cachedTerms
 operator|.
-name|terms
+name|computeIfAbsent
 argument_list|(
 name|field
+argument_list|,
+name|f
+lambda|->
+block|{
+try|try
+block|{
+return|return
+name|MultiTerms
+operator|.
+name|getTerms
+argument_list|(
+name|in
+argument_list|,
+name|f
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+comment|// yuck!  ...sigh... checked exceptions with built-in lambdas are a pain
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"unwrapMe"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"unwrapMe"
+argument_list|)
+operator|&&
+name|e
+operator|.
+name|getCause
+argument_list|()
+operator|instanceof
+name|IOException
+condition|)
+block|{
+throw|throw
+operator|(
+name|IOException
+operator|)
+name|e
+operator|.
+name|getCause
+argument_list|()
+throw|;
+block|}
+throw|throw
+name|e
+throw|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -441,6 +549,7 @@ argument_list|,
 name|field
 argument_list|)
 return|;
+comment|// TODO cache?
 block|}
 annotation|@
 name|Override
@@ -467,6 +576,7 @@ argument_list|,
 name|field
 argument_list|)
 return|;
+comment|// TODO cache?
 block|}
 annotation|@
 name|Override
@@ -493,6 +603,7 @@ argument_list|,
 name|field
 argument_list|)
 return|;
+comment|// TODO cache?
 block|}
 annotation|@
 name|Override
@@ -1093,22 +1204,6 @@ name|cost
 argument_list|)
 return|;
 block|}
-comment|// TODO: this could really be a weak map somewhere else on the coreCacheKey,
-comment|// but do we really need to optimize slow-wrapper any more?
-specifier|final
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|OrdinalMap
-argument_list|>
-name|cachedOrdMaps
-init|=
-operator|new
-name|HashMap
-argument_list|<>
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1134,6 +1229,7 @@ argument_list|,
 name|field
 argument_list|)
 return|;
+comment|// TODO cache?
 block|}
 annotation|@
 name|Override
@@ -1228,13 +1324,14 @@ name|ensureOpen
 argument_list|()
 expr_stmt|;
 return|return
-name|MultiFields
+name|MultiBits
 operator|.
 name|getLiveDocs
 argument_list|(
 name|in
 argument_list|)
 return|;
+comment|// TODO cache?
 block|}
 annotation|@
 name|Override
@@ -1252,6 +1349,7 @@ expr_stmt|;
 return|return
 literal|null
 return|;
+comment|// because not supported.  Throw UOE?
 block|}
 annotation|@
 name|Override
@@ -1260,16 +1358,8 @@ name|FieldInfos
 name|getFieldInfos
 parameter_list|()
 block|{
-name|ensureOpen
-argument_list|()
-expr_stmt|;
 return|return
-name|MultiFields
-operator|.
-name|getMergedFieldInfos
-argument_list|(
-name|in
-argument_list|)
+name|fieldInfos
 return|;
 block|}
 annotation|@

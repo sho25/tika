@@ -462,6 +462,8 @@ operator|.
 name|create
 argument_list|(
 literal|20
+argument_list|,
+literal|10000
 argument_list|)
 decl_stmt|;
 name|searcher
