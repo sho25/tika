@@ -1900,8 +1900,6 @@ name|builder
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -1910,6 +1908,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|builder
 operator|=
 name|DOM_BUILDERS
@@ -2034,8 +2034,6 @@ parameter_list|)
 block|{
 comment|//ignore
 block|}
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2044,6 +2042,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//if there are extra parsers (e.g. after a reset of the pool to a smaller size),
 comment|// this parser will not be added and will then be gc'd
 name|boolean
@@ -2109,8 +2109,6 @@ name|parser
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|SAX_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2119,6 +2117,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|parser
 operator|=
 name|SAX_PARSERS
@@ -2234,8 +2234,6 @@ condition|)
 block|{
 return|return;
 block|}
-try|try
-block|{
 name|SAX_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2244,6 +2242,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//if there are extra parsers (e.g. after a reset of the pool to a smaller size),
 comment|// this parser will not be added and will then be gc'd
 name|boolean
@@ -2297,8 +2297,6 @@ parameter_list|)
 throws|throws
 name|TikaException
 block|{
-try|try
-block|{
 comment|//stop the world with a write lock.
 comment|//parsers that are currently in use will be offered later (once the lock is released),
 comment|//but not accepted and will be gc'd.  We have to do this locking and
@@ -2313,6 +2311,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//free up any resources before emptying SAX_PARSERS
 for|for
 control|(
@@ -2415,8 +2415,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|writeLock
@@ -2425,6 +2423,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|DOM_BUILDERS
 operator|.
 name|clear
