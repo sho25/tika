@@ -624,7 +624,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/** 		 * If content is not plain text use Tika to extract text out of content.  		 */
+comment|// If content is not plain text use Tika to extract text out of content.
 name|Reader
 name|reader
 decl_stmt|;
@@ -675,7 +675,7 @@ name|inputStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Use Spark AgePredictor to get predicted Age 		 */
+comment|// Use Spark AgePredictor to get predicted Age
 try|try
 block|{
 name|double

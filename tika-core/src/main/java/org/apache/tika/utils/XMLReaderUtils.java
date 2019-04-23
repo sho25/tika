@@ -3618,7 +3618,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 block|}
 block|}
 specifier|private
@@ -3678,7 +3680,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 block|}
 block|}
 specifier|private
@@ -3727,7 +3731,9 @@ parameter_list|(
 name|UnsupportedOperationException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 try|try
 block|{
 name|XMLReader
@@ -3749,7 +3755,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 name|trySetXercesSecurityManager
 argument_list|(
 name|saxParser

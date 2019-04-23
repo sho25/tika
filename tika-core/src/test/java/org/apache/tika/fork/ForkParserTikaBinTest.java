@@ -434,11 +434,6 @@ specifier|static
 name|Path
 name|JAR_FILE
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 specifier|private
 specifier|static
 specifier|final
@@ -452,7 +447,8 @@ name|EMPTY_MAP
 init|=
 name|Collections
 operator|.
-name|EMPTY_MAP
+name|emptyMap
+argument_list|()
 decl_stmt|;
 annotation|@
 name|BeforeClass
