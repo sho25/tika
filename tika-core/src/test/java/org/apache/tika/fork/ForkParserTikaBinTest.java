@@ -519,6 +519,44 @@ argument_list|(
 name|loader
 argument_list|)
 decl_stmt|;
+name|addClasses
+argument_list|(
+name|jarOs
+argument_list|,
+name|classPath
+argument_list|,
+name|ci
+lambda|->
+name|ci
+operator|.
+name|getPackageName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"org.slf4j"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|addClasses
+argument_list|(
+name|jarOs
+argument_list|,
+name|classPath
+argument_list|,
+name|ci
+lambda|->
+name|ci
+operator|.
+name|getPackageName
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"org.apache.log4j"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//exclude TypeDetectionBenchmark because it is not serializable
 comment|//exclude UpperCasingContentHandler because we want to test that
 comment|//we can serialize it from the parent process into the child process

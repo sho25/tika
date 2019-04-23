@@ -17,25 +17,11 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|slf4j
 operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
+name|LoggerFactory
 import|;
 end_import
 
@@ -91,7 +77,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * Strategy that logs warnings of all problems using a {@link Logger}      * created using the given class name.      */
+comment|/**      * Strategy that logs warnings of all problems using a {@link org.slf4j.Logger}      * created using the given class name.      */
 name|LoadErrorHandler
 name|WARN
 init|=
@@ -110,21 +96,17 @@ name|Throwable
 name|throwable
 parameter_list|)
 block|{
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|classname
 argument_list|)
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Unable to load {}"
 argument_list|,
-literal|"Unable to load "
-operator|+
 name|classname
 argument_list|,
 name|throwable

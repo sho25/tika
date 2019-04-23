@@ -61,6 +61,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -473,30 +493,6 @@ name|ReentrantReadWriteLock
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility functions for reading XML.  If you are doing SAX parsing, make sure  * to use the {@link OfflineContentHandler} to guard against  * XML External Entity attacks.  */
 end_comment
@@ -523,16 +519,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|XMLReaderUtils
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -752,18 +745,12 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Couldn't parse an integer for the entity expansion limit: {}; backing off to default: {}"
 argument_list|,
-literal|"Couldn't parse an integer for the entity expansion limit:"
-operator|+
 name|expansionLimit
-operator|+
-literal|"; backing off to default: "
-operator|+
+argument_list|,
 name|DEFAULT_MAX_ENTITY_EXPANSIONS
 argument_list|)
 expr_stmt|;
@@ -1395,14 +1382,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"SAX Feature unsupported: {}"
 argument_list|,
-literal|"SAX Feature unsupported: "
-operator|+
 name|feature
 argument_list|,
 name|e
@@ -1417,14 +1400,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Cannot set SAX feature because outdated XML parser in classpath: {}"
 argument_list|,
-literal|"Cannot set SAX feature because outdated XML parser in classpath: "
-operator|+
 name|feature
 argument_list|,
 name|ame
@@ -1467,14 +1446,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"SAX Feature unsupported: {}"
 argument_list|,
-literal|"SAX Feature unsupported: "
-operator|+
 name|feature
 argument_list|,
 name|e
@@ -1489,14 +1464,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Cannot set SAX feature because outdated XML parser in classpath: {}"
 argument_list|,
-literal|"Cannot set SAX feature because outdated XML parser in classpath: "
-operator|+
 name|feature
 argument_list|,
 name|ame
@@ -1539,14 +1510,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"StAX Feature unsupported: {}"
 argument_list|,
-literal|"StAX Feature unsupported: "
-operator|+
 name|key
 argument_list|,
 name|e
@@ -2097,7 +2064,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"DocumentBuilder not taken back into pool.  If you haven't resized the pool, this could "
 operator|+
@@ -2297,7 +2264,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"SAXParser not taken back into pool.  If you haven't resized the pool, this could "
 operator|+
@@ -2637,12 +2604,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2700,12 +2663,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2836,12 +2795,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2899,12 +2854,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2969,12 +2920,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3359,12 +3306,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3436,12 +3379,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3650,12 +3589,8 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"problem resetting sax parser"
 argument_list|,
 name|e

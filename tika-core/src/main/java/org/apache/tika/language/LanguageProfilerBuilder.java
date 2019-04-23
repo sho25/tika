@@ -207,6 +207,26 @@ name|TikaException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class runs a ngram analysis over submitted text, results might be used  * for automatic language identification.  *   * The similarity calculation is at experimental level. You have been warned.  *   * Methods are provided to build new NGramProfiles profiles.  *   * @author Sami Siren  * @author Jerome Charron - http://frutch.free.fr/  * @deprecated  */
 end_comment
@@ -218,8 +238,21 @@ specifier|public
 class|class
 name|LanguageProfilerBuilder
 block|{
-comment|// public static final Log LOG =
-comment|// LogFactory.getLog(LanguageProfilerBuilder.class);
+specifier|private
+specifier|static
+specifier|final
+name|Logger
+name|LOG
+init|=
+name|LoggerFactory
+operator|.
+name|getLogger
+argument_list|(
+name|LanguageProfilerBuilder
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 comment|/** The minimum length allowed for a ngram. */
 specifier|final
 specifier|static
@@ -2406,12 +2439,20 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|LOG
+operator|.
+name|error
+argument_list|(
+literal|"Some error: {}"
+argument_list|,
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|,
+name|e
+argument_list|)
 expr_stmt|;
-comment|// throw new TikaException("");
 block|}
 block|}
 comment|/**      * Inner class that describes a NGram      */
