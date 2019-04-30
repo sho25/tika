@@ -2605,6 +2605,13 @@ argument_list|,
 literal|"testBAT.bat"
 argument_list|)
 expr_stmt|;
+name|assertType
+argument_list|(
+literal|"application/x-bat"
+argument_list|,
+literal|"testBATUpper.bat"
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Test
