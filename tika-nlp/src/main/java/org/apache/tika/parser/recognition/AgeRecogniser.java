@@ -101,30 +101,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -279,6 +255,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|xml
 operator|.
 name|sax
@@ -342,16 +338,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|AgeRecogniser
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|public
@@ -450,13 +443,11 @@ literal|false
 expr_stmt|;
 name|LOG
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 literal|"Unable to initialize secondary parser"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -626,18 +617,14 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 literal|"Parser Unavailable, check your configuration"
 argument_list|)
 expr_stmt|;
 return|return;
 block|}
-comment|/** 		 * If content is not plain text use Tika to extract text out of content.  		 */
+comment|// If content is not plain text use Tika to extract text out of content.
 name|Reader
 name|reader
 decl_stmt|;
@@ -688,7 +675,7 @@ name|inputStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Use Spark AgePredictor to get predicted Age 		 */
+comment|// Use Spark AgePredictor to get predicted Age
 try|try
 block|{
 name|double
@@ -730,12 +717,8 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|error
 argument_list|(
-name|Level
-operator|.
-name|SEVERE
-argument_list|,
 literal|"Age Predictor is not available. Please check wiki for detailed instructions"
 argument_list|,
 name|e

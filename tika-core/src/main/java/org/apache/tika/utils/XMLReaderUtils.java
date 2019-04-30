@@ -61,6 +61,26 @@ begin_import
 import|import
 name|org
 operator|.
+name|slf4j
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|slf4j
+operator|.
+name|LoggerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|w3c
 operator|.
 name|dom
@@ -473,30 +493,6 @@ name|ReentrantReadWriteLock
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Level
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
 begin_comment
 comment|/**  * Utility functions for reading XML.  If you are doing SAX parsing, make sure  * to use the {@link OfflineContentHandler} to guard against  * XML External Entity attacks.  */
 end_comment
@@ -523,16 +519,13 @@ specifier|final
 name|Logger
 name|LOG
 init|=
-name|Logger
+name|LoggerFactory
 operator|.
 name|getLogger
 argument_list|(
 name|XMLReaderUtils
 operator|.
 name|class
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -752,18 +745,12 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Couldn't parse an integer for the entity expansion limit: {}; backing off to default: {}"
 argument_list|,
-literal|"Couldn't parse an integer for the entity expansion limit:"
-operator|+
 name|expansionLimit
-operator|+
-literal|"; backing off to default: "
-operator|+
+argument_list|,
 name|DEFAULT_MAX_ENTITY_EXPANSIONS
 argument_list|)
 expr_stmt|;
@@ -1395,14 +1382,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"SAX Feature unsupported: {}"
 argument_list|,
-literal|"SAX Feature unsupported: "
-operator|+
 name|feature
 argument_list|,
 name|e
@@ -1417,14 +1400,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Cannot set SAX feature because outdated XML parser in classpath: {}"
 argument_list|,
-literal|"Cannot set SAX feature because outdated XML parser in classpath: "
-operator|+
 name|feature
 argument_list|,
 name|ame
@@ -1467,14 +1446,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"SAX Feature unsupported: {}"
 argument_list|,
-literal|"SAX Feature unsupported: "
-operator|+
 name|feature
 argument_list|,
 name|e
@@ -1489,14 +1464,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"Cannot set SAX feature because outdated XML parser in classpath: {}"
 argument_list|,
-literal|"Cannot set SAX feature because outdated XML parser in classpath: "
-operator|+
 name|feature
 argument_list|,
 name|ame
@@ -1539,14 +1510,10 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
+literal|"StAX Feature unsupported: {}"
 argument_list|,
-literal|"StAX Feature unsupported: "
-operator|+
 name|key
 argument_list|,
 name|e
@@ -1933,8 +1900,6 @@ name|builder
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -1943,6 +1908,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|builder
 operator|=
 name|DOM_BUILDERS
@@ -2067,8 +2034,6 @@ parameter_list|)
 block|{
 comment|//ignore
 block|}
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2077,6 +2042,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//if there are extra parsers (e.g. after a reset of the pool to a smaller size),
 comment|// this parser will not be added and will then be gc'd
 name|boolean
@@ -2097,7 +2064,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"DocumentBuilder not taken back into pool.  If you haven't resized the pool, this could "
 operator|+
@@ -2142,8 +2109,6 @@ name|parser
 init|=
 literal|null
 decl_stmt|;
-try|try
-block|{
 name|SAX_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2152,6 +2117,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|parser
 operator|=
 name|SAX_PARSERS
@@ -2267,8 +2234,6 @@ condition|)
 block|{
 return|return;
 block|}
-try|try
-block|{
 name|SAX_READ_WRITE_LOCK
 operator|.
 name|readLock
@@ -2277,6 +2242,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//if there are extra parsers (e.g. after a reset of the pool to a smaller size),
 comment|// this parser will not be added and will then be gc'd
 name|boolean
@@ -2297,7 +2264,7 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|warning
+name|warn
 argument_list|(
 literal|"SAXParser not taken back into pool.  If you haven't resized the pool, this could "
 operator|+
@@ -2330,8 +2297,6 @@ parameter_list|)
 throws|throws
 name|TikaException
 block|{
-try|try
-block|{
 comment|//stop the world with a write lock.
 comment|//parsers that are currently in use will be offered later (once the lock is released),
 comment|//but not accepted and will be gc'd.  We have to do this locking and
@@ -2346,6 +2311,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 comment|//free up any resources before emptying SAX_PARSERS
 for|for
 control|(
@@ -2448,8 +2415,6 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
-try|try
-block|{
 name|DOM_READ_WRITE_LOCK
 operator|.
 name|writeLock
@@ -2458,6 +2423,8 @@ operator|.
 name|lock
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|DOM_BUILDERS
 operator|.
 name|clear
@@ -2637,12 +2604,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2700,12 +2663,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2836,12 +2795,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2899,12 +2854,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -2969,12 +2920,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3359,12 +3306,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3436,12 +3379,8 @@ condition|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"SAX Security Manager could not be setup [log suppressed for 5 minutes]"
 argument_list|,
 name|e
@@ -3650,12 +3589,8 @@ parameter_list|)
 block|{
 name|LOG
 operator|.
-name|log
+name|warn
 argument_list|(
-name|Level
-operator|.
-name|WARNING
-argument_list|,
 literal|"problem resetting sax parser"
 argument_list|,
 name|e
@@ -3683,7 +3618,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 block|}
 block|}
 specifier|private
@@ -3743,7 +3680,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 block|}
 block|}
 specifier|private
@@ -3792,7 +3731,9 @@ parameter_list|(
 name|UnsupportedOperationException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 try|try
 block|{
 name|XMLReader
@@ -3814,7 +3755,9 @@ parameter_list|(
 name|SAXException
 name|e
 parameter_list|)
-block|{              }
+block|{
+comment|// ignored
+block|}
 name|trySetXercesSecurityManager
 argument_list|(
 name|saxParser

@@ -722,8 +722,8 @@ init|=
 literal|"application/vnd.openxmlformats-officedocument.oleObject"
 decl_stmt|;
 specifier|protected
-specifier|final
 specifier|static
+specifier|final
 name|String
 index|[]
 name|EMBEDDED_RELATIONSHIPS
