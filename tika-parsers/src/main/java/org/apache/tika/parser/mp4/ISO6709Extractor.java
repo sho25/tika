@@ -21,6 +21,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|Serializable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|regex
@@ -58,6 +68,8 @@ end_import
 begin_class
 class|class
 name|ISO6709Extractor
+implements|implements
+name|Serializable
 block|{
 comment|//based on: https://en.wikipedia.org/wiki/ISO_6709
 comment|//strip lat long -- ignore crs for now
