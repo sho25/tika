@@ -1016,6 +1016,11 @@ case|:
 case|case
 name|Types
 operator|.
+name|REAL
+case|:
+case|case
+name|Types
+operator|.
 name|NUMERIC
 case|:
 name|double
