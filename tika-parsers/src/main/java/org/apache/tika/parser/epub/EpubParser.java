@@ -1550,14 +1550,7 @@ condition|(
 name|zae
 operator|==
 literal|null
-condition|)
-block|{
-return|return
-literal|false
-return|;
-block|}
-if|if
-condition|(
+operator|||
 operator|!
 name|zipFile
 operator|.
@@ -2154,6 +2147,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|ze
+operator|==
+literal|null
+operator|||
 operator|!
 name|zipFile
 operator|.
