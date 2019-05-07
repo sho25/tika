@@ -666,6 +666,15 @@ name|markLimit
 init|=
 name|DEFAULT_MARK_LIMIT
 decl_stmt|;
+comment|/**      * minimum confidence score that there's enough      * evidence to determine csv/tsv vs. txt      */
+annotation|@
+name|Field
+specifier|private
+name|double
+name|minConfidence
+init|=
+literal|0.50
+decl_stmt|;
 specifier|public
 name|TextAndCSVParser
 parameter_list|()
@@ -1536,6 +1545,8 @@ argument_list|(
 name|markLimit
 argument_list|,
 name|delimiters
+argument_list|,
+name|minConfidence
 argument_list|)
 decl_stmt|;
 name|CSVResult

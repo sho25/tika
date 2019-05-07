@@ -192,6 +192,14 @@ decl_stmt|;
 specifier|private
 specifier|static
 specifier|final
+name|double
+name|DEFAULT_MIN_CONFIDENCE
+init|=
+literal|0.50
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
 name|int
 name|PUSH_BACK
 init|=
@@ -238,6 +246,11 @@ specifier|final
 name|int
 name|markLimit
 decl_stmt|;
+specifier|private
+specifier|final
+name|double
+name|minConfidence
+decl_stmt|;
 name|CSVSniffer
 parameter_list|(
 name|char
@@ -250,6 +263,8 @@ argument_list|(
 name|DEFAULT_MARK_LIMIT
 argument_list|,
 name|delimiters
+argument_list|,
+name|DEFAULT_MIN_CONFIDENCE
 argument_list|)
 expr_stmt|;
 block|}
@@ -261,6 +276,9 @@ parameter_list|,
 name|char
 index|[]
 name|delimiters
+parameter_list|,
+name|double
+name|minConfidence
 parameter_list|)
 block|{
 name|this
@@ -274,6 +292,12 @@ operator|.
 name|delimiters
 operator|=
 name|delimiters
+expr_stmt|;
+name|this
+operator|.
+name|minConfidence
+operator|=
+name|minConfidence
 expr_stmt|;
 block|}
 name|List
@@ -439,7 +463,7 @@ operator|.
 name|getConfidence
 argument_list|()
 operator|<
-literal|0.10
+name|minConfidence
 condition|)
 block|{
 return|return
