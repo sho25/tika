@@ -1368,6 +1368,28 @@ block|{
 return|return
 literal|false
 return|;
+comment|//this file throws an exception in the baseline and then
+comment|//isn't included in the actual tests.
+comment|//If we do want to include it we need to change the way
+comment|//MultiThreadedTikaTest handles files that throw exceptions
+block|}
+elseif|else
+if|if
+condition|(
+name|pathname
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"testChm_oom.chm"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|false
+return|;
 block|}
 else|else
 block|{
