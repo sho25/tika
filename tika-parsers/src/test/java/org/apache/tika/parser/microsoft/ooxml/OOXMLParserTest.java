@@ -6733,6 +6733,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|//the first three contain javax.crypto.CipherInputStream
 name|tests
 operator|.
 name|put
@@ -6758,6 +6759,18 @@ argument_list|(
 literal|"testEXCEL_protected_passtika.xlsx"
 argument_list|,
 literal|"This is an Encrypted Excel spreadsheet."
+argument_list|)
+expr_stmt|;
+comment|//TIKA-2873 this one contains a ChunkedCipherInputStream
+comment|//that is buggy at the POI level...can unwrap TikaInputStream in OfficeParser
+comment|//once https://bz.apache.org/bugzilla/show_bug.cgi?id=63431 is fixed.
+name|tests
+operator|.
+name|put
+argument_list|(
+literal|"testEXCEL_protected_passtika_2.xlsx"
+argument_list|,
+literal|"This is an Encrypted Excel spreadsheet with a ChunkedCipherInputStream."
 argument_list|)
 expr_stmt|;
 name|Parser
