@@ -2200,10 +2200,14 @@ name|inHeader
 init|=
 literal|true
 decl_stmt|;
+comment|//0 not yet in font table, 1 in font table, 2 have processed font table
 specifier|private
 name|int
 name|fontTableState
+init|=
+literal|0
 decl_stmt|;
+comment|//depth at which the font table started
 specifier|private
 name|int
 name|fontTableDepth
@@ -4788,6 +4792,31 @@ block|}
 block|}
 block|}
 block|}
+comment|//if you've already seen the font table,
+comment|//you aren't in another header item (e.g. styles)
+comment|//and you see an fX, you're out of the header
+if|if
+condition|(
+name|fontTableState
+operator|==
+literal|2
+operator|&&
+operator|!
+name|groupState
+operator|.
+name|ignore
+operator|&&
+name|equals
+argument_list|(
+literal|"f"
+argument_list|)
+condition|)
+block|{
+name|inHeader
+operator|=
+literal|false
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|currentList
@@ -5876,6 +5905,16 @@ operator|||
 name|equals
 argument_list|(
 literal|"rtlch"
+argument_list|)
+operator|||
+name|equals
+argument_list|(
+literal|"htmlrtf"
+argument_list|)
+operator|||
+name|equals
+argument_list|(
+literal|"line"
 argument_list|)
 operator|)
 condition|)
