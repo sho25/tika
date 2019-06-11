@@ -249,7 +249,7 @@ name|tika
 operator|.
 name|eval
 operator|.
-name|util
+name|langid
 operator|.
 name|LanguageIDWrapper
 import|;
@@ -473,18 +473,11 @@ condition|(
 name|defaultLangCode
 operator|==
 literal|null
-operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
-name|defaultLangCode
-argument_list|)
 condition|)
 block|{
 name|defaultLangCode
 operator|=
-literal|"en"
+literal|""
 expr_stmt|;
 block|}
 comment|//can be null, in which case will load from memory

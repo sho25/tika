@@ -91,6 +91,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -228,9 +238,9 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"the quick brown fox"
+literal|"th quick brown fox"
 block|,
-literal|"jumped over the brown lazy"
+literal|"jumped over th brown lazy"
 block|,
 literal|"brown lazy fox"
 block|,
@@ -330,7 +340,7 @@ name|WORKING_DIR
 operator|.
 name|resolve
 argument_list|(
-name|INPUT_FILE
+name|COMMON_TOKENS_FILE
 argument_list|)
 operator|.
 name|toAbsolutePath
@@ -348,7 +358,7 @@ name|WORKING_DIR
 operator|.
 name|resolve
 argument_list|(
-name|COMMON_TOKENS_FILE
+name|INPUT_FILE
 argument_list|)
 operator|.
 name|toAbsolutePath
@@ -395,7 +405,7 @@ name|List
 argument_list|<
 name|String
 argument_list|>
-name|tokens
+name|rows
 init|=
 name|FileUtils
 operator|.
@@ -416,6 +426,53 @@ operator|.
 name|UTF_8
 argument_list|)
 decl_stmt|;
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|tokens
+init|=
+operator|new
+name|ArrayList
+argument_list|<>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|row
+range|:
+name|rows
+control|)
+block|{
+if|if
+condition|(
+operator|!
+name|row
+operator|.
+name|startsWith
+argument_list|(
+literal|"#"
+argument_list|)
+condition|)
+block|{
+name|tokens
+operator|.
+name|add
+argument_list|(
+name|row
+operator|.
+name|split
+argument_list|(
+literal|"\t"
+argument_list|)
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|assertEquals
 argument_list|(
 literal|"brown"
@@ -436,13 +493,13 @@ name|tokens
 operator|.
 name|get
 argument_list|(
-literal|3
+literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertNotContained
 argument_list|(
-literal|"fox"
+literal|"th"
 argument_list|,
 name|tokens
 argument_list|)

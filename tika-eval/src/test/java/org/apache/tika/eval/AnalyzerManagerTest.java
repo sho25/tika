@@ -337,7 +337,7 @@ name|tokenStream
 argument_list|(
 literal|"f"
 argument_list|,
-literal|"the 5,000.12 5000 and dirty dog"
+literal|"th 5,000.12 5000 and dirty dog"
 argument_list|)
 decl_stmt|;
 name|ts

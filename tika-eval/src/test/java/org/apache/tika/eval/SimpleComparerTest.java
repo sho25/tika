@@ -283,7 +283,7 @@ name|tika
 operator|.
 name|eval
 operator|.
-name|util
+name|langid
 operator|.
 name|LanguageIDWrapper
 import|;
@@ -694,7 +694,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"3"
+literal|"8"
 argument_list|,
 name|row
 operator|.
@@ -708,7 +708,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"6"
+literal|"12"
 argument_list|,
 name|row
 operator|.
@@ -736,7 +736,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"en"
+literal|"eng"
 argument_list|,
 name|row
 operator|.
@@ -812,7 +812,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"3"
+literal|"8"
 argument_list|,
 name|row
 operator|.
@@ -826,7 +826,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"4"
+literal|"10"
 argument_list|,
 name|row
 operator|.
@@ -854,7 +854,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"en"
+literal|"eng"
 argument_list|,
 name|row
 operator|.
@@ -1042,7 +1042,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"3"
+literal|"18"
 argument_list|,
 name|row
 operator|.
@@ -1070,7 +1070,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"es"
+literal|"spa"
 argument_list|,
 name|row
 operator|.
@@ -1213,7 +1213,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"3"
+literal|"20"
 argument_list|,
 name|row
 operator|.
@@ -1227,7 +1227,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"zh-cn"
+literal|"cmn"
 argument_list|,
 name|row
 operator|.

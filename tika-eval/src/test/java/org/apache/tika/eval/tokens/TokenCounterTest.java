@@ -524,7 +524,7 @@ block|{
 name|String
 name|s
 init|=
-literal|"then quickbrownfoxjumpedoverthelazy dogss dog 2000 普林斯顿大学"
+literal|"then quickbrownfoxjumpedoverthelazy dogss d 2000 普林斯顿大学"
 decl_stmt|;
 name|Analyzer
 name|analyzer
