@@ -434,6 +434,22 @@ operator|+
 literal|"mapi-from-representing-email"
 argument_list|)
 decl_stmt|;
+name|Property
+name|MAPI_MESSAGE_CLIENT_SUBMIT_TIME
+init|=
+name|Property
+operator|.
+name|internalDate
+argument_list|(
+name|PREFIX_DOC_META
+operator|+
+name|Metadata
+operator|.
+name|NAMESPACE_PREFIX_DELIMITER
+operator|+
+literal|"mapi-msg-client-submit-time"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 
