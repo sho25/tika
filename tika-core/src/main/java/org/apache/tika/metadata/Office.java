@@ -443,7 +443,7 @@ name|internalDate
 argument_list|(
 name|PREFIX_DOC_META
 operator|+
-name|Metadata
+name|TikaCoreProperties
 operator|.
 name|NAMESPACE_PREFIX_DELIMITER
 operator|+
