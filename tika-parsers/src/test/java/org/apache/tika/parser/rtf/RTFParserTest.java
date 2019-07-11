@@ -479,18 +479,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|ContentHandler
-import|;
-end_import
-
 begin_comment
 comment|/**  * Junit test class for the Tika {@link RTFParser}  */
 end_comment
@@ -3544,6 +3532,28 @@ argument_list|,
 name|getXML
 argument_list|(
 literal|"testRTFTIKA_2883.rtf"
+argument_list|)
+operator|.
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testTIKA2899
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertContains
+argument_list|(
+literal|"this Agreement on today"
+argument_list|,
+name|getXML
+argument_list|(
+literal|"testRTFTIKA_2899.rtf"
 argument_list|)
 operator|.
 name|xml
