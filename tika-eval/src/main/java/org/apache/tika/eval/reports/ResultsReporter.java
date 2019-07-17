@@ -1981,6 +1981,15 @@ range|:
 name|before
 control|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"processing before: {}"
+argument_list|,
+name|sql
+argument_list|)
+expr_stmt|;
 name|st
 operator|.
 name|execute
@@ -2015,6 +2024,15 @@ range|:
 name|after
 control|)
 block|{
+name|LOG
+operator|.
+name|info
+argument_list|(
+literal|"processing after: {}"
+argument_list|,
+name|sql
+argument_list|)
+expr_stmt|;
 name|st
 operator|.
 name|execute
