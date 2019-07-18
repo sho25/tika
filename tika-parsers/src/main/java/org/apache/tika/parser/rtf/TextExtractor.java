@@ -2332,7 +2332,7 @@ literal|1
 decl_stmt|;
 specifier|private
 name|boolean
-name|ignoreLists
+name|ignoreListMarkup
 decl_stmt|;
 comment|// Non-null if we've seen the url for a HYPERLINK but not yet
 comment|// its text:
@@ -2623,12 +2623,12 @@ name|isIgnoringLists
 parameter_list|()
 block|{
 return|return
-name|ignoreLists
+name|ignoreListMarkup
 return|;
 block|}
 specifier|public
 name|void
-name|setIgnoreLists
+name|setIgnoreListMarkup
 parameter_list|(
 name|boolean
 name|ignore
@@ -2636,7 +2636,7 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|ignoreLists
+name|ignoreListMarkup
 operator|=
 name|ignore
 expr_stmt|;
@@ -5545,7 +5545,7 @@ parameter_list|()
 block|{
 return|return
 operator|!
-name|ignoreLists
+name|ignoreListMarkup
 operator|&&
 name|groupState
 operator|.
@@ -5591,7 +5591,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|ignoreLists
+name|ignoreListMarkup
 condition|)
 block|{
 name|String
@@ -5665,7 +5665,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|ignoreLists
+name|ignoreListMarkup
 condition|)
 block|{
 name|String
@@ -6510,7 +6510,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|inList
@@ -6521,6 +6520,7 @@ comment|//&& (groupStates.size() == 1 || groupStates.peekLast().list< 0))
 name|pendingListEnd
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
