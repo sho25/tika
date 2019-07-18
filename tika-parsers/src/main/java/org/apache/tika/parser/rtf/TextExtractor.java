@@ -6511,6 +6511,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|inList
+argument_list|()
+condition|)
+block|{
+comment|//&& (groupStates.size() == 1 || groupStates.peekLast().list< 0))
+name|pendingListEnd
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
