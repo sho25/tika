@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more   * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -16,6 +16,48 @@ operator|.
 name|hwp
 package|;
 end_package
+
+begin_import
+import|import
+name|javax
+operator|.
+name|crypto
+operator|.
+name|Cipher
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|crypto
+operator|.
+name|CipherInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|crypto
+operator|.
+name|NoSuchPaddingException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|crypto
+operator|.
+name|spec
+operator|.
+name|SecretKeySpec
+import|;
+end_import
 
 begin_import
 import|import
@@ -138,48 +180,6 @@ operator|.
 name|zip
 operator|.
 name|InflaterInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|crypto
-operator|.
-name|Cipher
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|crypto
-operator|.
-name|CipherInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|crypto
-operator|.
-name|NoSuchPaddingException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|crypto
-operator|.
-name|spec
-operator|.
-name|SecretKeySpec
 import|;
 end_import
 
@@ -501,7 +501,7 @@ block|{
 specifier|protected
 specifier|static
 name|Logger
-name|log
+name|LOG
 init|=
 name|LoggerFactory
 operator|.
@@ -639,7 +639,7 @@ name|C
 block|}
 decl_stmt|;
 comment|// 30-31
-comment|/** 	 * extract Text from HWP Stream. 	 *  	 * @param source 	 * @param writer 	 * @return 	 * @throws FileNotFoundException 	 * @throws IOException 	 * @throws SAXException  	 */
+comment|/**      * extract Text from HWP Stream.      *      * @param source      * @param metadata      * @param xhtml      * @return      * @throws FileNotFoundException      * @throws IOException      * @throws SAXException      */
 specifier|public
 name|void
 name|extract
@@ -775,6 +775,7 @@ operator|.
 name|isDocumentEntry
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|UnsupportedFormatException
@@ -782,6 +783,7 @@ argument_list|(
 literal|"cannot parse the File Header"
 argument_list|)
 throw|;
+block|}
 name|FileHeader
 name|header
 init|=
@@ -796,6 +798,7 @@ name|header
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|UnsupportedFormatException
@@ -803,12 +806,14 @@ argument_list|(
 literal|"cannot parse the File Header"
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|header
 operator|.
 name|encrypted
 condition|)
+block|{
 throw|throw
 operator|new
 name|EncryptedDocumentException
@@ -816,6 +821,7 @@ argument_list|(
 literal|"document is encrypted"
 argument_list|)
 throw|;
+block|}
 name|parseSummaryInformation
 argument_list|(
 name|root
@@ -1146,7 +1152,7 @@ default|default:
 block|}
 block|}
 block|}
-comment|/** 	 * extract the HWP File Header 	 *  	 * @param fs 	 * @return 	 * @throws IOException 	 */
+comment|/**      * extract the HWP File Header      *      * @param headerEntry      * @return      * @throws IOException      */
 specifier|private
 name|FileHeader
 name|getHeader
@@ -1169,6 +1175,8 @@ literal|256
 index|]
 decl_stmt|;
 comment|// the length of File header is 256
+try|try
+init|(
 name|DocumentInputStream
 name|headerStream
 init|=
@@ -1180,8 +1188,7 @@ name|DocumentEntry
 operator|)
 name|headerEntry
 argument_list|)
-decl_stmt|;
-try|try
+init|)
 block|{
 name|int
 name|read
@@ -1224,14 +1231,6 @@ return|return
 literal|null
 return|;
 block|}
-finally|finally
-block|{
-name|headerStream
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
-block|}
 name|FileHeader
 name|fileHeader
 init|=
@@ -1270,7 +1269,7 @@ argument_list|,
 literal|36
 argument_list|)
 decl_stmt|;
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1331,7 +1330,7 @@ return|return
 name|fileHeader
 return|;
 block|}
-comment|/** 	 * extract Text 	 *  	 * @param writer 	 * @param source 	 *  	 * @return 	 * @throws IOException 	 * @throws SAXException  	 */
+comment|/**      * extract Text      *      * @param header      * @param root      * @param xhtml      * @return      * @throws IOException      * @throws SAXException      */
 specifier|private
 name|void
 name|parseBodyText
@@ -1429,7 +1428,7 @@ operator|instanceof
 name|DocumentEntry
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1492,7 +1491,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1509,7 +1508,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * 텍스트 추출 	 *  	 * @param writer 	 * @param source 	 *  	 * @return 	 * @throws IOException 	 */
+comment|/**      * 텍스트 추출      *      * @param header      * @param root      * @param xhtml      * @return      * @throws IOException      */
 specifier|private
 name|void
 name|parseViewText
@@ -1549,6 +1548,7 @@ operator|.
 name|isDirectoryEntry
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1556,6 +1556,7 @@ argument_list|(
 literal|"Invalid ViewText"
 argument_list|)
 throw|;
+block|}
 name|Iterator
 argument_list|<
 name|Entry
@@ -1605,7 +1606,7 @@ operator|instanceof
 name|DocumentEntry
 condition|)
 block|{
-name|log
+name|LOG
 operator|.
 name|debug
 argument_list|(
@@ -1654,6 +1655,7 @@ name|header
 operator|.
 name|compressed
 condition|)
+block|{
 name|input
 operator|=
 operator|new
@@ -1668,6 +1670,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|HwpStreamReader
 name|sectionStream
 init|=
@@ -1754,7 +1757,7 @@ block|}
 block|}
 else|else
 block|{
-name|log
+name|LOG
 operator|.
 name|warn
 argument_list|(
@@ -1808,12 +1811,14 @@ argument_list|)
 operator|!=
 literal|4
 condition|)
+block|{
 comment|// TAG,
 throw|throw
 operator|new
 name|EOFException
 argument_list|()
 throw|;
+block|}
 if|if
 condition|(
 name|IOUtils
@@ -1831,11 +1836,13 @@ argument_list|)
 operator|!=
 literal|256
 condition|)
+block|{
 throw|throw
 operator|new
 name|EOFException
 argument_list|()
 throw|;
+block|}
 name|SRand
 name|srand
 init|=
@@ -2005,8 +2012,6 @@ name|Key
 name|key
 parameter_list|)
 throws|throws
-name|IOException
-throws|,
 name|NoSuchAlgorithmException
 throws|,
 name|NoSuchPaddingException
@@ -2048,7 +2053,7 @@ name|cipher
 argument_list|)
 return|;
 block|}
-comment|/** 	 * extract characters from Section stream 	 *  	 * @param reader 	 * @param writer 	 * @throws IOException 	 * @throws SAXException  	 */
+comment|/**      * extract characters from Section stream      *      * @param reader      * @param xhtml      * @throws IOException      * @throws SAXException      */
 specifier|private
 name|void
 name|parse
@@ -2117,6 +2122,7 @@ literal|2
 operator|!=
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2124,6 +2130,7 @@ argument_list|(
 literal|"Invalid block size"
 argument_list|)
 throw|;
+block|}
 name|buf
 operator|.
 name|setLength
@@ -2199,7 +2206,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * transfer character stream of HWPTAG_PARA_TEXT to STRING 	 *  	 * @param reader 	 * @param datasize 	 * @param buf 	 * @throws IOException 	 */
+comment|/**      * transfer character stream of HWPTAG_PARA_TEXT to STRING      *      * @param reader      * @param datasize      * @param buf      * @throws IOException      */
 specifier|private
 name|void
 name|writeParaText

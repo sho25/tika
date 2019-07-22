@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more   * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
 end_comment
 
 begin_package
@@ -111,7 +111,7 @@ literal|4
 index|]
 expr_stmt|;
 block|}
-comment|/** 	 * More data to read ? 	 *  	 * @return 	 * @throws IOException 	 */
+comment|/**      * More data to read ?      *      * @return      * @throws IOException      */
 specifier|public
 name|boolean
 name|available
@@ -128,7 +128,7 @@ operator|>
 literal|0
 return|;
 block|}
-comment|/** 	 * unsigned 1 byte 	 *  	 * @return 	 * @throws IOException 	 */
+comment|/**      * unsigned 1 byte      *      * @return      * @throws IOException      */
 specifier|public
 name|short
 name|uint8
@@ -159,10 +159,12 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 return|return
 name|LittleEndian
 operator|.
@@ -172,7 +174,7 @@ name|buf
 argument_list|)
 return|;
 block|}
-comment|/** 	 * unsigned 2 byte 	 *  	 * @return 	 * @throws IOException 	 */
+comment|/**      * unsigned 2 byte      *      * @return      * @throws IOException      */
 specifier|public
 name|int
 name|uint16
@@ -203,21 +205,25 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 if|if
 condition|(
 name|read
 operator|<
 literal|2
 condition|)
+block|{
 throw|throw
 operator|new
 name|EOFException
 argument_list|()
 throw|;
+block|}
 return|return
 name|LittleEndian
 operator|.
@@ -227,7 +233,7 @@ name|buf
 argument_list|)
 return|;
 block|}
-comment|/** 	 * unsigned 2 byte array 	 *  	 * @param i 	 * @return 	 * @throws IOException 	 */
+comment|/**      * unsigned 2 byte array      *      * @param i      * @return      * @throws IOException      */
 specifier|public
 name|int
 index|[]
@@ -245,11 +251,13 @@ name|i
 operator|<=
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|()
 throw|;
+block|}
 name|byte
 index|[]
 name|buf
@@ -288,11 +296,13 @@ name|i
 operator|*
 literal|2
 condition|)
+block|{
 throw|throw
 operator|new
 name|EOFException
 argument_list|()
 throw|;
+block|}
 name|int
 index|[]
 name|uints
@@ -339,7 +349,7 @@ return|return
 name|uints
 return|;
 block|}
-comment|/** 	 * unsigned 4 byte 	 *  	 * @return 	 * @throws IOException 	 */
+comment|/**      * unsigned 4 byte      *      * @return      * @throws IOException      */
 specifier|public
 name|long
 name|uint32
@@ -370,21 +380,25 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 if|if
 condition|(
 name|read
 operator|<
 literal|4
 condition|)
+block|{
 throw|throw
 operator|new
 name|EOFException
 argument_list|()
 throw|;
+block|}
 return|return
 name|LittleEndian
 operator|.
@@ -394,7 +408,7 @@ name|buf
 argument_list|)
 return|;
 block|}
-comment|/** 	 * ensure skip of n byte 	 *  	 * @param n 	 * @throws IOException 	 */
+comment|/**      * ensure skip of n byte      *      * @param n      * @throws IOException      */
 specifier|public
 name|void
 name|ensureSkip
