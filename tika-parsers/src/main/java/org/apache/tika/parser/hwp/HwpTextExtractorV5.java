@@ -1418,6 +1418,7 @@ operator|.
 name|isDirectoryEntry
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -1425,6 +1426,7 @@ argument_list|(
 literal|"Invalid BodyText"
 argument_list|)
 throw|;
+block|}
 name|Iterator
 argument_list|<
 name|Entry
@@ -1504,6 +1506,7 @@ name|header
 operator|.
 name|compressed
 condition|)
+block|{
 name|input
 operator|=
 operator|new
@@ -1518,6 +1521,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|HwpStreamReader
 name|reader
 init|=
