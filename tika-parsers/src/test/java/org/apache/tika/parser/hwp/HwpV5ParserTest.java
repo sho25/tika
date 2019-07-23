@@ -321,17 +321,6 @@ argument_list|(
 literal|"testHWP_5.0.hwp"
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|result
-operator|.
-name|xml
-argument_list|)
-expr_stmt|;
 name|String
 name|content
 init|=
