@@ -1890,6 +1890,12 @@ name|waiting
 init|=
 literal|0
 decl_stmt|;
+name|long
+name|lastWarn
+init|=
+operator|-
+literal|1
+decl_stmt|;
 while|while
 condition|(
 literal|true
@@ -1962,6 +1968,24 @@ return|return
 name|builder
 return|;
 block|}
+if|if
+condition|(
+name|lastWarn
+argument_list|<
+literal|0
+operator|||
+name|System
+operator|.
+name|currentTimeMillis
+operator|(
+operator|)
+operator|-
+name|lastWarn
+argument_list|>
+literal|1000
+condition|)
+block|{
+comment|//avoid spamming logs
 name|LOG
 operator|.
 name|warn
@@ -1971,6 +1995,14 @@ operator|+
 literal|"Consider increasing the XMLReaderUtils.POOL_SIZE"
 argument_list|)
 expr_stmt|;
+name|lastWarn
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
+block|}
 name|waiting
 operator|++
 expr_stmt|;
@@ -2108,6 +2140,12 @@ name|waiting
 init|=
 literal|0
 decl_stmt|;
+name|long
+name|lastWarn
+init|=
+operator|-
+literal|1
+decl_stmt|;
 while|while
 condition|(
 literal|true
@@ -2180,6 +2218,24 @@ return|return
 name|parser
 return|;
 block|}
+if|if
+condition|(
+name|lastWarn
+argument_list|<
+literal|0
+operator|||
+name|System
+operator|.
+name|currentTimeMillis
+operator|(
+operator|)
+operator|-
+name|lastWarn
+argument_list|>
+literal|1000
+condition|)
+block|{
+comment|//avoid spamming logs
 name|LOG
 operator|.
 name|warn
@@ -2189,6 +2245,14 @@ operator|+
 literal|"Consider increasing the XMLReaderUtils.POOL_SIZE"
 argument_list|)
 expr_stmt|;
+name|lastWarn
+operator|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+expr_stmt|;
+block|}
 name|waiting
 operator|++
 expr_stmt|;
