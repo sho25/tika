@@ -338,9 +338,15 @@ argument_list|()
 expr_stmt|;
 try|try
 block|{
+comment|//need to get new SAXParser because
+comment|//an attachment might require another SAXParser
+comment|//mid-parse
 name|XMLReaderUtils
 operator|.
-name|parseSAX
+name|getSAXParser
+argument_list|()
+operator|.
+name|parse
 argument_list|(
 operator|new
 name|CloseShieldInputStream
@@ -365,8 +371,6 @@ name|context
 argument_list|)
 argument_list|)
 argument_list|)
-argument_list|,
-name|context
 argument_list|)
 expr_stmt|;
 block|}

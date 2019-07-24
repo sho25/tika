@@ -1962,6 +1962,15 @@ return|return
 name|builder
 return|;
 block|}
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Contention waiting for a DOMParser. "
+operator|+
+literal|"Consider increasing the XMLReaderUtils.POOL_SIZE"
+argument_list|)
+expr_stmt|;
 name|waiting
 operator|++
 expr_stmt|;
@@ -2171,6 +2180,15 @@ return|return
 name|parser
 return|;
 block|}
+name|LOG
+operator|.
+name|warn
+argument_list|(
+literal|"Contention waiting for a SAXParser. "
+operator|+
+literal|"Consider increasing the XMLReaderUtils.POOL_SIZE"
+argument_list|)
+expr_stmt|;
 name|waiting
 operator|++
 expr_stmt|;
