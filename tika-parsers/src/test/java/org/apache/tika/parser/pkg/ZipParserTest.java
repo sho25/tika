@@ -1407,12 +1407,9 @@ comment|//2019-07-25 to include
 comment|//http://alf.nu/s/droste.zip in unit tests
 comment|//Out of respect to the author, please maintain
 comment|//the original file name
-name|debug
-argument_list|(
 name|getRecursiveMetadata
 argument_list|(
 literal|"droste.zip"
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
