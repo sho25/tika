@@ -1379,6 +1379,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*     If we can get permission to add http://alf.nu/s/droste.zip     we can turn these tests on.      @Test     public void testQuineRecursiveParserWrapper() throws Exception {         debug(getRecursiveMetadata("testZIP_quine.zip"));     }      @Test(expected = TikaException.class)     public void testQuine() throws Exception {         getXML("testZIP_quine.zip");     } */
 block|}
 end_class
 

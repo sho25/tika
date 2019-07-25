@@ -274,6 +274,14 @@ name|ContentHandlerFactory
 name|contentHandlerFactory
 decl_stmt|;
 specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_DEPTH
+init|=
+literal|100
+decl_stmt|;
+specifier|private
 specifier|final
 name|int
 name|maxEmbeddedResources
@@ -281,6 +289,12 @@ decl_stmt|;
 specifier|private
 name|int
 name|embeddedResources
+init|=
+literal|0
+decl_stmt|;
+specifier|private
+name|int
+name|embeddedDepth
 init|=
 literal|0
 decl_stmt|;
@@ -374,6 +388,26 @@ block|{
 name|embeddedResources
 operator|++
 expr_stmt|;
+name|embeddedDepth
+operator|++
+expr_stmt|;
+if|if
+condition|(
+name|embeddedDepth
+operator|>=
+name|MAX_DEPTH
+condition|)
+block|{
+throw|throw
+operator|new
+name|SAXException
+argument_list|(
+literal|"Max embedded depth reached: "
+operator|+
+name|embeddedDepth
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * This is called after parsing each embedded document.  Override this      * for custom behavior.  This is currently a no-op.      *      * @param contentHandler content handler that was used on this embedded document      * @param metadata metadata for this embedded document      * @throws SAXException      */
 specifier|public
@@ -388,7 +422,11 @@ name|metadata
 parameter_list|)
 throws|throws
 name|SAXException
-block|{     }
+block|{
+name|embeddedDepth
+operator|--
+expr_stmt|;
+block|}
 comment|/**      * This is called after the full parse has completed.  Override this      * for custom behavior.  Make sure to call this as<code>super.endDocument(...)</code>      * in subclasses because this adds whether or not the embedded resource      * maximum has been hit to the metadata.      *      * @param contentHandler content handler that was used on the main document      * @param metadata metadata that was gathered for the main document      * @throws SAXException      */
 specifier|public
 name|void
