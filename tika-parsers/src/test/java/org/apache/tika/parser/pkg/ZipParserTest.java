@@ -157,6 +157,20 @@ name|apache
 operator|.
 name|tika
 operator|.
+name|exception
+operator|.
+name|TikaException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
 name|extractor
 operator|.
 name|EmbeddedDocumentExtractor
@@ -1379,7 +1393,51 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*     If we can get permission to add http://alf.nu/s/droste.zip     we can turn these tests on.      @Test     public void testQuineRecursiveParserWrapper() throws Exception {         debug(getRecursiveMetadata("testZIP_quine.zip"));     }      @Test(expected = TikaException.class)     public void testQuine() throws Exception {         getXML("testZIP_quine.zip");     } */
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testQuineRecursiveParserWrapper
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//received permission from author via dm
+comment|//2019-07-25 to include
+comment|//http://alf.nu/s/droste.zip in unit tests
+comment|//Out of respect to the author, please maintain
+comment|//the original file name
+name|debug
+argument_list|(
+name|getRecursiveMetadata
+argument_list|(
+literal|"droste.zip"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+argument_list|(
+name|expected
+operator|=
+name|TikaException
+operator|.
+name|class
+argument_list|)
+specifier|public
+name|void
+name|testQuine
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|getXML
+argument_list|(
+literal|"droste.zip"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

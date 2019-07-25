@@ -704,9 +704,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|//https://blog.matthewbarber.io/2019/07/22/how-to-make-compressed-file-quines
 name|getXML
 argument_list|(
-literal|"testGZ_quine.gz"
+literal|"quine.gz"
 argument_list|)
 expr_stmt|;
 block|}
@@ -719,9 +720,10 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+comment|//https://blog.matthewbarber.io/2019/07/22/how-to-make-compressed-file-quines
 name|getRecursiveMetadata
 argument_list|(
-literal|"testGZ_quine.gz"
+literal|"quine.gz"
 argument_list|)
 expr_stmt|;
 block|}
