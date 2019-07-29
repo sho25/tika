@@ -201,6 +201,20 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|utils
+operator|.
+name|ProcessUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
 name|AfterClass
@@ -682,6 +696,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|extractsDir
 operator|.
 name|resolve
@@ -695,6 +713,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|args
 operator|.
@@ -706,6 +725,10 @@ expr_stmt|;
 name|args
 operator|.
 name|add
+argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
 argument_list|(
 name|extractsDir
 operator|.
@@ -719,6 +742,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//add these just to confirm this info doesn't cause problems w cli
@@ -775,6 +799,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|compareDBDir
 operator|.
 name|toAbsolutePath
@@ -786,6 +814,7 @@ operator|+
 literal|"/"
 operator|+
 name|dbName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|execute
@@ -833,6 +862,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|extractsDir
 operator|.
 name|resolve
@@ -845,6 +878,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//add these just to confirm this info doesn't cause problems w cli
@@ -901,6 +935,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|profileDBDir
 operator|.
 name|toAbsolutePath
@@ -912,6 +950,7 @@ operator|+
 literal|"/"
 operator|+
 name|dbName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|execute
@@ -959,6 +998,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|profileDBDir
 operator|.
 name|toAbsolutePath
@@ -970,6 +1013,7 @@ operator|+
 literal|"/"
 operator|+
 name|dbName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|args
@@ -983,6 +1027,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|profileReportsDir
 operator|.
 name|toAbsolutePath
@@ -990,6 +1038,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|execute
@@ -1037,6 +1086,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|compareDBDir
 operator|.
 name|toAbsolutePath
@@ -1048,6 +1101,7 @@ operator|+
 literal|"/"
 operator|+
 name|dbName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|args
@@ -1061,6 +1115,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|compareReportsDir
 operator|.
 name|toAbsolutePath
@@ -1068,6 +1126,7 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|execute
@@ -1121,6 +1180,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|extractsDir
 operator|.
 name|resolve
@@ -1134,6 +1197,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|args
 operator|.
@@ -1145,6 +1209,10 @@ expr_stmt|;
 name|args
 operator|.
 name|add
+argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
 argument_list|(
 name|extractsDir
 operator|.
@@ -1159,6 +1227,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 name|args
 operator|.
@@ -1171,6 +1240,10 @@ name|args
 operator|.
 name|add
 argument_list|(
+name|ProcessUtils
+operator|.
+name|escapeCommandLine
+argument_list|(
 name|compareDBDir
 operator|.
 name|toAbsolutePath
@@ -1182,6 +1255,7 @@ operator|+
 literal|"/"
 operator|+
 name|dbName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|execute
@@ -1238,6 +1312,13 @@ operator|.
 name|add
 argument_list|(
 literal|"java"
+argument_list|)
+expr_stmt|;
+name|args
+operator|.
+name|add
+argument_list|(
+literal|"-Djava.awt.headless=true"
 argument_list|)
 expr_stmt|;
 name|args

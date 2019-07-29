@@ -1039,6 +1039,13 @@ name|commandLine
 operator|.
 name|add
 argument_list|(
+literal|"-Djava.awt.headless=true"
+argument_list|)
+expr_stmt|;
+name|commandLine
+operator|.
+name|add
+argument_list|(
 literal|"-Dlog4j.configuration=file:"
 operator|+
 name|this
@@ -1224,6 +1231,13 @@ operator|.
 name|add
 argument_list|(
 literal|"java"
+argument_list|)
+expr_stmt|;
+name|commandLine
+operator|.
+name|add
+argument_list|(
+literal|"-Djava.awt.headless=true"
 argument_list|)
 expr_stmt|;
 name|commandLine
