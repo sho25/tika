@@ -1108,6 +1108,23 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|p
+operator|.
+name|isMultiValuePermitted
+argument_list|()
+operator|||
+name|m
+operator|.
+name|get
+argument_list|(
+name|p
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
 name|m
 operator|.
 name|add
@@ -1117,6 +1134,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Maximum number of events to extract from the      * event history in the XMP Media Management (XMPMM) section.      * The extractor will silently stop adding events after it      * has reached this threshold.      *<p>      * The default is 1024.      */

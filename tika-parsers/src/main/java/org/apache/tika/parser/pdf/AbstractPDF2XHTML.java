@@ -1314,7 +1314,6 @@ specifier|final
 name|XHTMLContentHandler
 name|xhtml
 decl_stmt|;
-specifier|private
 specifier|final
 name|ParseContext
 name|context
