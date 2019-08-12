@@ -145,7 +145,7 @@ name|MediaType
 operator|.
 name|application
 argument_list|(
-literal|"vnd.ms-word.document.macroEnabled.12"
+literal|"vnd.openxmlformats-officedocument.wordprocessingml.template"
 argument_list|)
 decl_stmt|;
 specifier|static
@@ -290,6 +290,18 @@ operator|.
 name|application
 argument_list|(
 literal|"vnd.openxmlformats-officedocument.spreadsheetml.template"
+argument_list|)
+decl_stmt|;
+specifier|static
+specifier|final
+name|MediaType
+name|XLAM
+init|=
+name|MediaType
+operator|.
+name|application
+argument_list|(
+literal|"vnd.ms-excel.addin.macroEnabled.12"
 argument_list|)
 decl_stmt|;
 specifier|static
