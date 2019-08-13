@@ -151,7 +151,29 @@ name|CharTermAttribute
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|eval
+operator|.
+name|textstats
+operator|.
+name|TokenCountPriorityQueue
+import|;
+end_import
+
+begin_comment
+comment|/**  * @deprecated use {@link org.apache.tika.eval.textstats.CompositeTextStatsCalculator}  * with {@link org.apache.tika.eval.textstats.TokenEntropy}, {@link org.apache.tika.eval.textstats.TokenLengths}  * and {@link org.apache.tika.eval.textstats.TopNTokens}.  */
+end_comment
+
 begin_class
+annotation|@
+name|Deprecated
 specifier|public
 class|class
 name|TokenCounter

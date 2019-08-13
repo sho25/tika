@@ -999,8 +999,6 @@ operator|)
 operator|.
 name|mapping
 expr_stmt|;
-name|IndexReader
-operator|.
 name|CacheHelper
 name|cacheHelper
 init|=
@@ -1297,8 +1295,6 @@ operator|)
 operator|.
 name|mapping
 expr_stmt|;
-name|IndexReader
-operator|.
 name|CacheHelper
 name|cacheHelper
 init|=

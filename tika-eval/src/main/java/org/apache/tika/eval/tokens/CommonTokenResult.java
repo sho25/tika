@@ -147,6 +147,25 @@ return|return
 name|alphabeticTokens
 return|;
 block|}
+specifier|public
+name|double
+name|getOOV
+parameter_list|()
+block|{
+return|return
+literal|1.0
+operator|-
+operator|(
+name|double
+operator|)
+name|commonTokens
+operator|/
+operator|(
+name|double
+operator|)
+name|alphabeticTokens
+return|;
+block|}
 block|}
 end_class
 

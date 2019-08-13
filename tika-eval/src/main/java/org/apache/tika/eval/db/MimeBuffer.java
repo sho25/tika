@@ -468,7 +468,7 @@ name|EMPTY_STRING
 init|=
 literal|""
 decl_stmt|;
-comment|/**          * Utility method to convert from a string value representing a content type          * (e.g. "application/pdf") into the most common extension for that file type          * (e.g. "pdf").          *<p>          * This will has special handling for texty filetypes whose MimeTypes          * don't currently return anything for {@link org.apache.tika.mime.MimeType#getExtension};          *          * @param contentType string representing a content type, for example: "application/pdf"          * @param config      config from which to get MimeRepository          * @return extension or empty string          * @throws org.apache.tika.mime.MimeTypeException thrown if MimeTypes can't parse the contentType          */
+comment|/**          * Utility method to convert from a string value representing a content type          * (e.g. "application/pdf") into the most common extension for that file type          * (e.g. "pdf").          *<p>          * This will has special handling for texty filetypes whose MimeTypes          * don't currently return anything for {@link MimeType#getExtension};          *          * @param contentType string representing a content type, for example: "application/pdf"          * @param config      config from which to get MimeRepository          * @return extension or empty string          * @throws MimeTypeException thrown if MimeTypes can't parse the contentType          */
 specifier|public
 specifier|static
 name|String
