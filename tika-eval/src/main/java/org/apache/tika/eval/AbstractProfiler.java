@@ -419,6 +419,22 @@ name|tika
 operator|.
 name|eval
 operator|.
+name|langid
+operator|.
+name|LanguageIDWrapper
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|eval
+operator|.
 name|textstats
 operator|.
 name|BasicTokenCountStatsCalculator
@@ -645,7 +661,7 @@ name|eval
 operator|.
 name|util
 operator|.
-name|ContentTags
+name|ContentTagParser
 import|;
 end_import
 
@@ -661,23 +677,7 @@ name|eval
 operator|.
 name|util
 operator|.
-name|ContentTagParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|eval
-operator|.
-name|langid
-operator|.
-name|LanguageIDWrapper
+name|ContentTags
 import|;
 end_import
 
@@ -1427,15 +1427,16 @@ literal|"org\\.apache\\.tika.exception\\.EncryptedDocumentException"
 argument_list|)
 decl_stmt|;
 specifier|private
-name|TikaConfig
-name|config
+specifier|static
+name|LanguageIDWrapper
+name|LANG_ID
 init|=
-name|TikaConfig
-operator|.
-name|getDefaultConfig
+operator|new
+name|LanguageIDWrapper
 argument_list|()
 decl_stmt|;
 comment|//TODO: allow configuration
+comment|//private TikaConfig config = TikaConfig.getDefaultConfig();
 name|CompositeTextStatsCalculator
 name|compositeTextStatsCalculator
 decl_stmt|;
@@ -1443,7 +1444,7 @@ specifier|protected
 name|IDBWriter
 name|writer
 decl_stmt|;
-comment|/**      *      * @param p path to the common_tokens directory.  If this is null, try to load from classPath      * @throws IOException      */
+comment|/**      * @param p path to the common_tokens directory.  If this is null, try to load from classPath      * @param defaultLangCode this is the language code to use if a common_words list doesn't exist for the      *                        detected langauge; can be<code>null</code>      * @throws IOException      */
 specifier|public
 specifier|static
 name|void
@@ -1508,9 +1509,7 @@ name|initAnalyzersAndTokenCounter
 argument_list|(
 name|maxTokens
 argument_list|,
-operator|new
-name|LanguageIDWrapper
-argument_list|()
+name|LANG_ID
 argument_list|)
 expr_stmt|;
 block|}
@@ -1524,8 +1523,6 @@ parameter_list|,
 name|LanguageIDWrapper
 name|langIder
 parameter_list|)
-block|{
-try|try
 block|{
 name|analyzerManager
 operator|=
@@ -1631,22 +1628,7 @@ name|langIder
 argument_list|)
 return|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-operator|new
-name|RuntimeException
-argument_list|(
-name|e
-argument_list|)
-throw|;
-block|}
-block|}
-comment|/**      * Truncate the content string if greater than this length to this length      * @param maxContentLength      */
+comment|/**      * Truncate the content string if greater than this length to this length      *      * @param maxContentLength      */
 specifier|public
 name|void
 name|setMaxContentLength
@@ -4211,7 +4193,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *      * @param metadata      * @param extracts      * @return evalfilepaths for files if crawling an extract directory      */
+comment|/**      * @param metadata      * @param extracts      * @return evalfilepaths for files if crawling an extract directory      */
 specifier|protected
 name|EvalFilePaths
 name|getPathsFromExtractCrawl
@@ -4408,7 +4390,7 @@ name|srcLen
 argument_list|)
 return|;
 block|}
-comment|/**      *      * @param extractRootDir      * @param relativeSourceFilePath      * @return extractFile or null if couldn't find one.      */
+comment|/**      * @param extractRootDir      * @param relativeSourceFilePath      * @return extractFile or null if couldn't find one.      */
 specifier|private
 name|Path
 name|findFile
@@ -4695,7 +4677,7 @@ return|return
 name|NON_EXISTENT_FILE_LENGTH
 return|;
 block|}
-comment|/**      *      * @param list      * @return empty list if input list is empty or null      */
+comment|/**      * @param list      * @return empty list if input list is empty or null      */
 specifier|static
 name|List
 argument_list|<

@@ -339,6 +339,18 @@ name|defaultLangCode
 decl_stmt|;
 specifier|public
 name|CommonTokenCountManager
+parameter_list|()
+block|{
+name|this
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|CommonTokenCountManager
 parameter_list|(
 name|Path
 name|commonTokensDir
@@ -346,8 +358,6 @@ parameter_list|,
 name|String
 name|defaultLangCode
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(

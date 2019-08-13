@@ -179,6 +179,10 @@ name|StringStatsCalculator
 import|;
 end_import
 
+begin_comment
+comment|/**  * The most efficient way to call this in a multithreaded environment  * is to call {@link LanguageIDWrapper#loadBuiltInModels()} before  * instantiating the  */
+end_comment
+
 begin_class
 specifier|public
 class|class
@@ -204,6 +208,7 @@ literal|50000
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|synchronized
 name|void
 name|loadBuiltInModels
 parameter_list|()
@@ -312,6 +317,36 @@ specifier|public
 name|LanguageIDWrapper
 parameter_list|()
 block|{
+if|if
+condition|(
+name|LANG_MODEL
+operator|==
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|loadBuiltInModels
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"couldn't load built in lang models"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
+block|}
 name|detector
 operator|=
 operator|new

@@ -199,8 +199,6 @@ parameter_list|(
 name|int
 name|maxTokens
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|InputStream
 name|is

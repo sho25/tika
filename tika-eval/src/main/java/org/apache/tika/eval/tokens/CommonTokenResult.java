@@ -98,6 +98,7 @@ operator|=
 name|alphabeticTokens
 expr_stmt|;
 block|}
+comment|/**      *      * @return the language used to select the common_tokens list      */
 specifier|public
 name|String
 name|getLangCode
