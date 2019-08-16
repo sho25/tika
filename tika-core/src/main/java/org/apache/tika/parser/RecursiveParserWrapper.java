@@ -784,11 +784,9 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|TikaCoreProperties
+name|RecursiveParserWrapperHandler
 operator|.
-name|TIKA_META_EXCEPTION_PREFIX
-operator|+
-literal|"runtime"
+name|CONTAINER_EXCEPTION
 argument_list|,
 name|stackTrace
 argument_list|)

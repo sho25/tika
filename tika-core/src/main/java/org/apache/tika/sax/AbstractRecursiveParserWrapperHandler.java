@@ -241,6 +241,7 @@ operator|+
 literal|"embedded_resource_limit_reached"
 argument_list|)
 decl_stmt|;
+comment|//exception in embedded file
 specifier|public
 specifier|final
 specifier|static
@@ -250,6 +251,24 @@ init|=
 name|ParserUtils
 operator|.
 name|EMBEDDED_EXCEPTION
+decl_stmt|;
+comment|//exception in main file
+specifier|public
+specifier|final
+specifier|static
+name|Property
+name|CONTAINER_EXCEPTION
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TIKA_META_EXCEPTION_PREFIX
+operator|+
+literal|"runtime"
+argument_list|)
 decl_stmt|;
 specifier|public
 specifier|final
