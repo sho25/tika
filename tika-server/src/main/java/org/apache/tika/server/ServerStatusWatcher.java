@@ -891,6 +891,10 @@ operator|.
 name|error
 argument_list|(
 literal|"Timeout task {}, millis elapsed {}, file {}"
+operator|+
+literal|"consider increasing the allowable time with the "
+operator|+
+literal|"-taskTimeoutMillis flag"
 argument_list|,
 name|status
 operator|.
@@ -921,7 +925,11 @@ name|LOG
 operator|.
 name|error
 argument_list|(
-literal|"Timeout task {}, millis elapsed {}"
+literal|"Timeout task {}, millis elapsed {}; "
+operator|+
+literal|"consider increasing the allowable time with the "
+operator|+
+literal|"-taskTimeoutMillis flag"
 argument_list|,
 name|status
 operator|.
