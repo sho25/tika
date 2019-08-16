@@ -2015,6 +2015,12 @@ name|key
 argument_list|,
 name|X_TIKA_OCR_HEADER_PREFIX
 argument_list|)
+argument_list|,
+name|Response
+operator|.
+name|Status
+operator|.
+name|BAD_REQUEST
 argument_list|)
 throw|;
 block|}
