@@ -217,6 +217,14 @@ block|}
 specifier|protected
 specifier|static
 specifier|final
+name|String
+name|SIGNATURE_RELATIONSHIP
+init|=
+literal|"http://schemas.openxmlformats.org/package/2006/relationships/digital-signature/origin"
+decl_stmt|;
+specifier|protected
+specifier|static
+specifier|final
 name|MediaType
 name|XPS
 init|=

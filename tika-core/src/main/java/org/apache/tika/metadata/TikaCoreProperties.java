@@ -331,7 +331,7 @@ block|{
 name|Office
 operator|.
 name|CREATION_DATE
-block|,               }
+block|,              }
 argument_list|)
 decl_stmt|;
 comment|/**        * @see DublinCore#MODIFIED       * @see Office#SAVE_DATE       */
@@ -463,6 +463,16 @@ name|INLINE
 operator|.
 name|toString
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|Property
+name|HAS_SIGNATURE
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+literal|"hasSignature"
 argument_list|)
 decl_stmt|;
 block|}
