@@ -2457,11 +2457,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
-argument_list|(
-literal|"until we understand what's going on"
-argument_list|)
 specifier|public
 name|void
 name|testUnicodePasswordProtectedUnicode
