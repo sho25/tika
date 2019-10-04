@@ -1434,15 +1434,32 @@ literal|"image0.png"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"7c2f14acbb737672a1245f4ceb50622a"
-argument_list|,
+name|String
+name|md5
+init|=
 name|results
 operator|.
 name|get
 argument_list|(
 literal|"image0.png"
+argument_list|)
+decl_stmt|;
+name|assertTrue
+argument_list|(
+comment|//pre Java 11
+name|md5
+operator|.
+name|equals
+argument_list|(
+literal|"7c2f14acbb737672a1245f4ceb50622a"
+argument_list|)
+operator|||
+comment|//Java 11 -- underlying image libraries generate a diff image in Java 11
+name|md5
+operator|.
+name|equals
+argument_list|(
+literal|"58b8269d1a584b7e8c1adcb936123923"
 argument_list|)
 argument_list|)
 expr_stmt|;
