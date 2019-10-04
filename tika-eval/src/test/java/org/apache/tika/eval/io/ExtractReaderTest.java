@@ -531,9 +531,9 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertContains
 argument_list|(
-literal|"the quick brown fox fox fox jumped over the lazy lazy dog\n"
+literal|"the quick brown fox fox fox jumped over the lazy lazy dog"
 argument_list|,
 name|m
 operator|.
