@@ -928,7 +928,7 @@ name|extractMacros
 argument_list|(
 name|root
 operator|.
-name|getNFileSystem
+name|getFileSystem
 argument_list|()
 argument_list|,
 name|xhtml
