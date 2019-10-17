@@ -417,8 +417,32 @@ operator|==
 literal|null
 condition|)
 block|{
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PDF
+operator|.
+name|HAS_XMP
+argument_list|,
+literal|"false"
+argument_list|)
+expr_stmt|;
 return|return;
 block|}
+comment|//this file has XMP...
+comment|//whether or not it is readable or throws an exception is another story...
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|PDF
+operator|.
+name|HAS_XMP
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 comment|//now go for the XMP
 name|Document
 name|dom

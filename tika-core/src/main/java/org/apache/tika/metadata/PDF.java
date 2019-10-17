@@ -291,6 +291,45 @@ operator|+
 literal|"unmappedUnicodeCharsPerPage"
 argument_list|)
 decl_stmt|;
+comment|/**      * Has XFA      */
+name|Property
+name|HAS_XFA
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"hasXFA"
+argument_list|)
+decl_stmt|;
+comment|/**      * Has XMP, whether or not it is valid      */
+name|Property
+name|HAS_XMP
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"hasXMP"
+argument_list|)
+decl_stmt|;
+comment|/**      * Has> 0 AcroForm fields      */
+name|Property
+name|HAS_ACROFORM_FIELDS
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"hasAcroFormFields"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 

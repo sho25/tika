@@ -4963,6 +4963,17 @@ operator|>
 literal|0
 condition|)
 block|{
+name|metadata
+operator|.
+name|add
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|HAS_SIGNATURE
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 name|xhtml
 operator|.
 name|startElement
