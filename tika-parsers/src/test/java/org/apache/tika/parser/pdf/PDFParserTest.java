@@ -102,6 +102,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|java
 operator|.
@@ -7321,15 +7333,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
+name|assumeTrue
+argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRunOCR
 argument_list|()
-condition|)
-block|{
-return|return;
-block|}
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|PDFParserConfig
@@ -7565,15 +7576,14 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-if|if
-condition|(
-operator|!
+name|assumeTrue
+argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRunOCR
 argument_list|()
-condition|)
-block|{
-return|return;
-block|}
+argument_list|)
+expr_stmt|;
 name|PDFParserConfig
 name|config
 init|=
@@ -7656,15 +7666,14 @@ block|{
 comment|//TIKA-2970 -- make sure that configurations set on the TesseractOCRParser
 comment|//make it through to when the TesseractOCRParser is called via
 comment|//the PDFParser
-if|if
-condition|(
-operator|!
+name|assumeTrue
+argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRunOCR
 argument_list|()
-condition|)
-block|{
-return|return;
-block|}
+argument_list|)
+expr_stmt|;
 comment|//via the config, tesseract should skip this file because it is too large
 name|InputStream
 name|is

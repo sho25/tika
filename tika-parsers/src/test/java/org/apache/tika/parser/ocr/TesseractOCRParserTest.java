@@ -373,6 +373,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assume
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -610,6 +620,8 @@ decl_stmt|;
 comment|// Assuming that Tesseract is on the path, we should find 5 Parsers that support PNG.
 name|assumeTrue
 argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRun
 argument_list|()
 argument_list|)
@@ -779,6 +791,8 @@ name|Exception
 block|{
 name|assumeTrue
 argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRun
 argument_list|()
 argument_list|)
@@ -854,6 +868,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|Assume
+operator|.
+name|assumeTrue
+argument_list|(
+literal|"can run OCR"
+argument_list|,
+name|canRun
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|String
 name|contents
 init|=
@@ -1232,8 +1256,12 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assume
+operator|.
 name|assumeTrue
 argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRun
 argument_list|()
 argument_list|)
@@ -1654,6 +1682,8 @@ name|Exception
 block|{
 name|assumeTrue
 argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRun
 argument_list|()
 argument_list|)
@@ -1757,6 +1787,8 @@ name|Exception
 block|{
 name|assumeTrue
 argument_list|(
+literal|"can run OCR"
+argument_list|,
 name|canRun
 argument_list|()
 argument_list|)

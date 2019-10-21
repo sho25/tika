@@ -30,6 +30,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assume
+operator|.
+name|assumeTrue
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -174,17 +186,27 @@ argument_list|)
 operator|)
 condition|)
 block|{
-comment|//skip test
-return|return;
+name|assumeTrue
+argument_list|(
+literal|"skipping test because of connection issue"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
+throw|throw
+name|e
+throw|;
 block|}
-if|if
-condition|(
+name|assumeTrue
+argument_list|(
+literal|"something went wrong loading tika config"
+argument_list|,
 name|config
 operator|!=
 literal|null
-condition|)
-block|{
+argument_list|)
+expr_stmt|;
 name|Tika
 name|tika
 init|=
@@ -261,7 +283,6 @@ argument_list|(
 name|found
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 end_class
