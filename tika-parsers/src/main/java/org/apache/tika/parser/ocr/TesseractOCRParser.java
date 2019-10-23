@@ -2856,6 +2856,22 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|LOG
+operator|.
+name|debug
+argument_list|(
+literal|"Tesseract command: "
+operator|+
+name|String
+operator|.
+name|join
+argument_list|(
+literal|" "
+argument_list|,
+name|cmd
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|ProcessBuilder
 name|pb
 init|=
