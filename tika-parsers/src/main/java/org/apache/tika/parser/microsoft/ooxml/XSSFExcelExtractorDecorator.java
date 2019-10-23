@@ -2657,6 +2657,16 @@ name|int
 name|colNum
 init|=
 operator|(
+name|cellRef
+operator|==
+literal|null
+operator|)
+condition|?
+name|lastSeenCol
+operator|+
+literal|1
+else|:
+operator|(
 operator|new
 name|CellReference
 argument_list|(
