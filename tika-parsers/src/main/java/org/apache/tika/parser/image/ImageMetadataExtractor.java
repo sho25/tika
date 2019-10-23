@@ -307,6 +307,20 @@ name|metadata
 operator|.
 name|exif
 operator|.
+name|ExifDirectoryBase
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|drew
+operator|.
+name|metadata
+operator|.
+name|exif
+operator|.
 name|ExifIFD0Directory
 import|;
 end_import
@@ -1678,15 +1692,15 @@ parameter_list|)
 throws|throws
 name|MetadataException
 block|{
-comment|//TODO: after upgrading metadataextractor, swap out
-comment|//magic number with ExifDirectoryBase.TAG_PAGE_NUMBER
 if|if
 condition|(
 name|directory
 operator|.
 name|containsTag
 argument_list|(
-literal|297
+name|ExifDirectoryBase
+operator|.
+name|TAG_PAGE_NUMBER
 argument_list|)
 condition|)
 block|{
@@ -1698,7 +1712,9 @@ name|directory
 operator|.
 name|getIntArray
 argument_list|(
-literal|297
+name|ExifDirectoryBase
+operator|.
+name|TAG_PAGE_NUMBER
 argument_list|)
 decl_stmt|;
 comment|//pages can be in any order, take the max
