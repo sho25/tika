@@ -1409,7 +1409,7 @@ name|INTEGRATION_TEST_PORT
 block|,
 literal|"-taskTimeoutMillis"
 block|,
-literal|"10000"
+literal|"60000"
 block|,
 literal|"-taskPulseMillis"
 block|,
@@ -1587,7 +1587,7 @@ name|INTEGRATION_TEST_PORT
 block|,
 literal|"-taskTimeoutMillis"
 block|,
-literal|"10000"
+literal|"60000"
 block|,
 literal|"-taskPulseMillis"
 block|,
