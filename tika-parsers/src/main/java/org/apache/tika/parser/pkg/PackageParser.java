@@ -937,6 +937,8 @@ literal|"application/x-tika-ooxml-protected"
 block|,
 literal|"application/x-tika-visio-ooxml"
 block|,
+literal|"application/x-xliff+zip"
+block|,
 literal|"application/x-xmind"
 block|,
 literal|"model/vnd.dwfx+xps"
