@@ -2854,6 +2854,24 @@ operator|=
 name|initializableProblemHandler
 expr_stmt|;
 block|}
+annotation|@
+name|Field
+specifier|public
+name|void
+name|setMaxMainMemoryBytes
+parameter_list|(
+name|long
+name|maxMainMemoryBytes
+parameter_list|)
+block|{
+name|defaultConfig
+operator|.
+name|setMaxMainMemoryBytes
+argument_list|(
+name|maxMainMemoryBytes
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * This is a no-op.  There is no need to initialize multiple fields.      * The regular field loading should happen without this.      *      * @param params params to use for initialization      * @throws TikaConfigException      */
 annotation|@
 name|Override
