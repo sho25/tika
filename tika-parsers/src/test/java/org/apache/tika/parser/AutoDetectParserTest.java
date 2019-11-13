@@ -2125,9 +2125,7 @@ literal|0
 index|]
 argument_list|)
 argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|m
 argument_list|)

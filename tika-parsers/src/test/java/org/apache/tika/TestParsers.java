@@ -129,20 +129,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
 import|;
 end_import
@@ -679,13 +665,6 @@ throws|throws
 name|Exception
 block|{
 comment|//this runs against all files in /test-documents
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 index|[]
 name|contexts
@@ -723,7 +702,7 @@ expr_stmt|;
 block|}
 name|testMultiThreaded
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|contexts
 argument_list|,

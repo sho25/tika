@@ -361,13 +361,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|pstParser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|metadata
 init|=
@@ -422,7 +415,7 @@ name|AutoDetectParser
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|pstParser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(

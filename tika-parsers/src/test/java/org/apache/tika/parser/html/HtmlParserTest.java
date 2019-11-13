@@ -5485,9 +5485,7 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -5561,9 +5559,7 @@ operator|new
 name|Metadata
 argument_list|()
 expr_stmt|;
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -6143,9 +6139,7 @@ argument_list|(
 name|bytes
 argument_list|)
 argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 argument_list|,
 operator|new
 name|Metadata

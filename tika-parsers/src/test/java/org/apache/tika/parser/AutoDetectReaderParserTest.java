@@ -239,13 +239,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectingReaderParser
-argument_list|()
-decl_stmt|;
 name|int
 name|numThreads
 init|=
@@ -343,7 +336,7 @@ block|}
 decl_stmt|;
 name|testMultiThreaded
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|contexts
 argument_list|,

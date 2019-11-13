@@ -16,28 +16,6 @@ package|;
 end_package
 
 begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
 import|import
 name|java
 operator|.
@@ -55,9 +33,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|io
-operator|.
-name|TikaInputStream
+name|TikaTest
 import|;
 end_import
 
@@ -85,35 +61,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|Parser
 import|;
 end_import
 
@@ -127,6 +75,18 @@ name|Test
 import|;
 end_import
 
+begin_import
+import|import static
+name|junit
+operator|.
+name|framework
+operator|.
+name|TestCase
+operator|.
+name|assertTrue
+import|;
+end_import
+
 begin_comment
 comment|/**  * Test class for the {@link StandardsExtractingContentHandler} class.  */
 end_comment
@@ -135,6 +95,8 @@ begin_class
 specifier|public
 class|class
 name|StandardsExtractingContentHandlerTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -145,13 +107,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|metadata
 init|=
@@ -194,7 +149,7 @@ argument_list|(
 literal|"/test-documents/testStandardsExtractor.pdf"
 argument_list|)
 decl_stmt|;
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(

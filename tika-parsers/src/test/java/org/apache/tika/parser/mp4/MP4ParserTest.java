@@ -131,35 +131,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|Parser
 import|;
 end_import
 
@@ -174,6 +146,20 @@ operator|.
 name|sax
 operator|.
 name|BodyContentHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|sax
+operator|.
+name|ContentHandlerFactory
 import|;
 end_import
 
@@ -220,21 +206,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
-name|ContentHandler
-name|handler
-init|=
-operator|new
-name|BodyContentHandler
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|metadata
 init|=
@@ -242,37 +213,16 @@ operator|new
 name|Metadata
 argument_list|()
 decl_stmt|;
-try|try
-init|(
-name|InputStream
-name|stream
+name|String
+name|content
 init|=
-name|MP4ParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
+name|getText
 argument_list|(
-literal|"/test-documents/testMP4.m4a"
-argument_list|)
-init|)
-block|{
-name|parser
-operator|.
-name|parse
-argument_list|(
-name|stream
-argument_list|,
-name|handler
+literal|"testMP4.m4a"
 argument_list|,
 name|metadata
-argument_list|,
-operator|new
-name|ParseContext
-argument_list|()
 argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 comment|// Check core properties
 name|assertEquals
 argument_list|(
@@ -345,14 +295,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Check the textual contents
-name|String
-name|content
-init|=
-name|handler
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
 name|assertContains
 argument_list|(
 literal|"Test Title"
@@ -632,9 +574,16 @@ operator|.
 name|getFile
 argument_list|()
 expr_stmt|;
+name|ContentHandler
+name|handler
+init|=
+operator|new
+name|BodyContentHandler
+argument_list|()
+decl_stmt|;
 try|try
 block|{
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -658,6 +607,7 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|//TODO: why don't we check the output here?
 block|}
 comment|// TODO Test a MP4 Video file
 comment|// TODO Test an old QuickTime Video File

@@ -159,20 +159,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
 import|;
 end_import
@@ -246,10 +232,6 @@ name|ParseContext
 name|recursingContext
 decl_stmt|;
 specifier|protected
-name|Parser
-name|autoDetectParser
-decl_stmt|;
-specifier|protected
 name|EmbeddedTrackingParser
 name|tracker
 decl_stmt|;
@@ -285,12 +267,6 @@ argument_list|,
 name|tracker
 argument_list|)
 expr_stmt|;
-name|autoDetectParser
-operator|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-expr_stmt|;
 name|recursingContext
 operator|=
 operator|new
@@ -305,7 +281,7 @@ name|Parser
 operator|.
 name|class
 argument_list|,
-name|autoDetectParser
+name|AUTO_DETECT_PARSER
 argument_list|)
 expr_stmt|;
 block|}
@@ -421,11 +397,7 @@ parameter_list|)
 block|{
 comment|// Cheat!
 return|return
-operator|(
-operator|new
-name|AutoDetectParser
-argument_list|()
-operator|)
+name|AUTO_DETECT_PARSER
 operator|.
 name|getSupportedTypes
 argument_list|(

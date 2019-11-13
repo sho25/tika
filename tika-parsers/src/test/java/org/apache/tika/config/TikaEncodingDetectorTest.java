@@ -1481,12 +1481,10 @@ name|UTF_8
 argument_list|)
 decl_stmt|;
 comment|//assert default fails -- will need to fix this if we change our defaults!
-name|AutoDetectParser
+name|Parser
 name|p
 init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 decl_stmt|;
 name|Metadata
 name|metadata

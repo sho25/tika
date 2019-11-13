@@ -331,15 +331,6 @@ argument_list|(
 name|SEED
 argument_list|)
 decl_stmt|;
-specifier|private
-specifier|final
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Test
 specifier|public
@@ -487,7 +478,7 @@ argument_list|,
 operator|new
 name|DigestingParser
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 operator|new
 name|CommonsDigester
@@ -662,7 +653,7 @@ argument_list|,
 operator|new
 name|DigestingParser
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 operator|new
 name|CommonsDigester
@@ -800,7 +791,7 @@ argument_list|,
 operator|new
 name|DigestingParser
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 operator|new
 name|CommonsDigester
@@ -866,7 +857,7 @@ argument_list|,
 operator|new
 name|DigestingParser
 argument_list|(
-name|p
+name|AUTO_DETECT_PARSER
 argument_list|,
 operator|new
 name|CommonsDigester

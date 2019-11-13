@@ -243,49 +243,7 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|Parser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|RecursiveParserWrapper
 import|;
 end_import
 
@@ -373,14 +331,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|ContentHandler
 name|handler
 init|=
@@ -410,7 +360,7 @@ literal|"/test-documents/test-documents.zip"
 argument_list|)
 init|)
 block|{
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -583,14 +533,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|ContentHandler
 name|handler
 init|=
@@ -620,7 +562,7 @@ literal|"/test-documents/test-documents.zip"
 argument_list|)
 init|)
 block|{
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -1020,13 +962,6 @@ argument_list|)
 expr_stmt|;
 comment|// Also make sure EMBEDDED_RELATIONSHIP_ID was
 comment|// passed when parsing the embedded docs:
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -1034,17 +969,6 @@ operator|new
 name|ParseContext
 argument_list|()
 decl_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|,
-name|parser
-argument_list|)
-expr_stmt|;
 name|GatherRelIDsDocumentExtractor
 name|relIDs
 init|=
@@ -1074,7 +998,7 @@ literal|"/test-documents/testEmbedded.zip"
 argument_list|)
 init|)
 block|{
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -1176,7 +1100,7 @@ argument_list|)
 argument_list|)
 init|)
 block|{
-name|autoDetectParser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(

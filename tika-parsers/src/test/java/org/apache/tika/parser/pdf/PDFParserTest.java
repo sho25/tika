@@ -1649,14 +1649,7 @@ literal|"/test-documents/testPDF_protected.pdf"
 argument_list|)
 init|)
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -1752,14 +1745,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|String
 name|content
 decl_stmt|;
@@ -1784,7 +1769,7 @@ name|getText
 argument_list|(
 name|stream
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|)
 expr_stmt|;
 block|}
@@ -1816,14 +1801,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|Metadata
 name|metadata
 init|=
@@ -1855,7 +1832,7 @@ name|getText
 argument_list|(
 name|stream
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|metadata
 argument_list|)
@@ -2188,14 +2165,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|String
 name|content
 decl_stmt|;
@@ -2216,7 +2185,7 @@ name|getText
 argument_list|(
 name|stream
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|)
 expr_stmt|;
 block|}
@@ -2365,7 +2334,7 @@ name|getText
 argument_list|(
 name|stream
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|)
@@ -2680,13 +2649,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//now try with autodetect
-name|Parser
-name|autoParser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -2718,8 +2680,6 @@ operator|=
 name|getXML
 argument_list|(
 literal|"testExtraSpaces.pdf"
-argument_list|,
-name|autoParser
 argument_list|,
 name|context
 argument_list|)
@@ -2857,13 +2817,6 @@ name|xml
 argument_list|)
 expr_stmt|;
 comment|//now try with autodetect
-name|Parser
-name|autoParser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -2895,8 +2848,6 @@ name|getXML
 argument_list|(
 literal|"testOverlappingText.pdf"
 argument_list|,
-name|autoParser
-argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
@@ -2922,8 +2873,6 @@ operator|=
 name|getXML
 argument_list|(
 literal|"testOverlappingText.pdf"
-argument_list|,
-name|autoParser
 argument_list|,
 name|context
 argument_list|)
@@ -3045,13 +2994,6 @@ name|content
 argument_list|)
 expr_stmt|;
 comment|//now try setting autodetect via parsecontext
-name|AutoDetectParser
-name|autoParser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -3077,21 +3019,16 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-name|stream
-operator|=
-name|getResourceAsStream
-argument_list|(
-literal|"/test-documents/testPDFTwoTextBoxes.pdf"
-argument_list|)
-expr_stmt|;
 comment|// Default is false (do not sort):
 name|content
 operator|=
 name|getText
 argument_list|(
-name|stream
+literal|"testPDFTwoTextBoxes.pdf"
 argument_list|,
-name|autoParser
+operator|new
+name|Metadata
+argument_list|()
 argument_list|,
 name|context
 argument_list|)
@@ -3143,9 +3080,13 @@ name|content
 operator|=
 name|getText
 argument_list|(
-name|stream
+literal|"testPDFTwoTextBoxes.pdf"
 argument_list|,
-name|parser
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|content
@@ -3659,9 +3600,7 @@ init|=
 operator|new
 name|RecursiveParserWrapper
 argument_list|(
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 argument_list|)
 decl_stmt|;
 name|ParseContext
@@ -4253,13 +4192,6 @@ throws|throws
 name|Exception
 block|{
 comment|//TIKA-1341
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|Metadata
 name|m
 init|=
@@ -4296,7 +4228,7 @@ literal|"/test-documents/testPDFTripleLangTitle.pdf"
 argument_list|)
 init|)
 block|{
-name|p
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -4973,27 +4905,6 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|Parser
-operator|.
-name|class
-argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|List
 argument_list|<
 name|Metadata
@@ -5395,27 +5306,6 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
-name|Parser
-operator|.
-name|class
-argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|inline
 operator|=
 literal|0
@@ -5784,13 +5674,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -5814,7 +5697,7 @@ name|Parser
 operator|.
 name|class
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|)
 expr_stmt|;
 name|PDFParserConfig
@@ -5993,13 +5876,6 @@ argument_list|,
 name|provider
 argument_list|)
 expr_stmt|;
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -6059,13 +5935,6 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ParseContext
 name|context
 init|=
@@ -6106,7 +5975,7 @@ literal|"/test-documents/"
 operator|+
 name|path
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6133,7 +6002,7 @@ literal|"/test-documents/"
 operator|+
 literal|"testPDF_no_extract_no_accessibility_owner_empty.pdf"
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6237,13 +6106,6 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 comment|//test bad passwords
 for|for
 control|(
@@ -6266,7 +6128,7 @@ literal|"/test-documents/"
 operator|+
 name|path
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6309,7 +6171,7 @@ literal|"/test-documents/"
 operator|+
 name|path
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6326,7 +6188,7 @@ literal|"/test-documents/"
 operator|+
 literal|"testPDF_no_extract_no_accessibility_owner_user.pdf"
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6381,7 +6243,7 @@ literal|"/test-documents/"
 operator|+
 name|path
 argument_list|,
-name|parser
+name|AUTO_DETECT_PARSER
 argument_list|,
 name|context
 argument_list|,
@@ -6974,13 +6836,6 @@ name|Exception
 block|{
 comment|//test file comes from govdocs1
 comment|//can't use TikaTest shortcuts because of exception
-name|Parser
-name|p
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|ContentHandler
 name|handler
 init|=
@@ -7021,7 +6876,7 @@ literal|"/test-documents/testPDF_bad_page_303226.pdf"
 argument_list|)
 init|)
 block|{
-name|p
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -7154,7 +7009,7 @@ literal|"/test-documents/testPDF_bad_page_303226.pdf"
 argument_list|)
 init|)
 block|{
-name|p
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -7388,19 +7243,6 @@ argument_list|,
 name|config
 argument_list|)
 expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|//make sure everything works with regular xml _and_ with recursive
 name|XMLResult
 name|xmlResult
@@ -7618,19 +7460,6 @@ operator|.
 name|class
 argument_list|,
 name|config
-argument_list|)
-expr_stmt|;
-name|context
-operator|.
-name|set
-argument_list|(
-name|Parser
-operator|.
-name|class
-argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//make sure everything works with regular xml _and_ with recursive

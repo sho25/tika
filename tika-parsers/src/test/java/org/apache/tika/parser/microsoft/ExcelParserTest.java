@@ -1613,13 +1613,6 @@ operator|new
 name|DefaultDetector
 argument_list|()
 decl_stmt|;
-name|AutoDetectParser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
 name|MediaType
 name|type
 decl_stmt|;
@@ -1836,7 +1829,7 @@ operator|.
 name|US
 argument_list|)
 expr_stmt|;
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
@@ -1984,7 +1977,7 @@ operator|.
 name|US
 argument_list|)
 expr_stmt|;
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(

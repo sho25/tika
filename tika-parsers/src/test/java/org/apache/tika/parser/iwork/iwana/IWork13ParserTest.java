@@ -49,9 +49,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|metadata
-operator|.
-name|Metadata
+name|TikaTest
 import|;
 end_import
 
@@ -63,9 +61,9 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|parser
+name|metadata
 operator|.
-name|AutoDetectParser
+name|Metadata
 import|;
 end_import
 
@@ -151,6 +149,8 @@ begin_class
 specifier|public
 class|class
 name|IWork13ParserTest
+extends|extends
+name|TikaTest
 block|{
 specifier|private
 name|IWork13PackageParser
@@ -187,9 +187,7 @@ name|Parser
 operator|.
 name|class
 argument_list|,
-operator|new
-name|AutoDetectParser
-argument_list|()
+name|AUTO_DETECT_PARSER
 argument_list|)
 expr_stmt|;
 block|}

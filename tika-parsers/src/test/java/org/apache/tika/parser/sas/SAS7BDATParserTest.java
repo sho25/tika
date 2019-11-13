@@ -155,20 +155,6 @@ name|tika
 operator|.
 name|parser
 operator|.
-name|AutoDetectParser
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|parser
-operator|.
 name|ParseContext
 import|;
 end_import
@@ -556,14 +542,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|Parser
-name|parser
-init|=
-operator|new
-name|AutoDetectParser
-argument_list|()
-decl_stmt|;
-comment|// Should auto-detect!
 name|ContentHandler
 name|handler
 init|=
@@ -593,7 +571,7 @@ literal|"/test-documents/test-columnar.sas7bdat"
 argument_list|)
 init|)
 block|{
-name|parser
+name|AUTO_DETECT_PARSER
 operator|.
 name|parse
 argument_list|(
