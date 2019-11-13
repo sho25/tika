@@ -980,13 +980,6 @@ name|contains
 argument_list|(
 literal|"EncryptionInfo"
 argument_list|)
-operator|&&
-name|names
-operator|.
-name|contains
-argument_list|(
-literal|"\u0006DataSpaces"
-argument_list|)
 condition|)
 block|{
 comment|// This is a protected OOXML document, which is an OLE2 file
@@ -994,6 +987,8 @@ comment|//  with an Encrypted Stream which holds the OOXML data
 comment|// Without decrypting the stream, we can't tell what kind of
 comment|//  OOXML file we have. Return a general OOXML Protected type,
 comment|//  and hope the name based detection can guess the rest!
+comment|//Until Tika 1.23, we also required:&& names.contains("\u0006DataSpaces")
+comment|//See TIKA-2982
 return|return
 name|OOXML_PROTECTED
 return|;
