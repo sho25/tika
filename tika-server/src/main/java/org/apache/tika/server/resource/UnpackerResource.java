@@ -827,6 +827,10 @@ name|getInputStream
 argument_list|(
 name|is
 argument_list|,
+operator|new
+name|Metadata
+argument_list|()
+argument_list|,
 name|httpHeaders
 argument_list|)
 argument_list|,
@@ -888,6 +892,10 @@ operator|.
 name|getInputStream
 argument_list|(
 name|is
+argument_list|,
+operator|new
+name|Metadata
+argument_list|()
 argument_list|,
 name|httpHeaders
 argument_list|)
