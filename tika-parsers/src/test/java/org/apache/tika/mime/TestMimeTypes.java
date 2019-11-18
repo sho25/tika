@@ -1580,6 +1580,47 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|testHeifDetection
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|// HEIF image using the HEVC Codec == HEIC
+comment|//  created using https://compare.rokka.io/_compare on testJPEG_GEO.jpg
+name|assertType
+argument_list|(
+literal|"image/heic"
+argument_list|,
+literal|"testHEIF.heic"
+argument_list|)
+expr_stmt|;
+name|assertTypeByData
+argument_list|(
+literal|"image/heic"
+argument_list|,
+literal|"testHEIF.heic"
+argument_list|)
+expr_stmt|;
+name|assertTypeByName
+argument_list|(
+literal|"image/heic"
+argument_list|,
+literal|"testHEIF.heic"
+argument_list|)
+expr_stmt|;
+comment|// TODO Create a HEIF using another codec, to test .heif data
+name|assertTypeByName
+argument_list|(
+literal|"image/heif"
+argument_list|,
+literal|"testHEIF.heif"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|testJpegDetection
 parameter_list|()
 throws|throws
