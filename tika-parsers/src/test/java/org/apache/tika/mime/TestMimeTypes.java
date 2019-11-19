@@ -825,6 +825,24 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|testXFDX
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//for an example: https://docs.appligent.com/fdfmerge/fdfmerge-form-data-format/
+name|assertTypeDetection
+argument_list|(
+literal|"testXFDF.xfdf"
+argument_list|,
+literal|"application/vnd.adobe.xfdf"
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|testHFATypes
 parameter_list|()
 throws|throws
