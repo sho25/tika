@@ -132,9 +132,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-return|return
+comment|// returning exception causes deadlock
+comment|// return e;
 name|e
-return|;
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|m
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 block|}
 name|output
 operator|.
