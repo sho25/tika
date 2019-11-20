@@ -995,7 +995,7 @@ annotation|@
 name|Test
 specifier|public
 name|void
-name|test415
+name|test204
 parameter_list|()
 throws|throws
 name|Exception
@@ -1034,7 +1034,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|415
+literal|204
 argument_list|,
 name|response
 operator|.
