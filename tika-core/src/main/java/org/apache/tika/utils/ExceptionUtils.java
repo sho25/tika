@@ -130,8 +130,16 @@ if|if
 condition|(
 operator|(
 name|t
-operator|instanceof
+operator|.
+name|getClass
+argument_list|()
+operator|.
+name|equals
+argument_list|(
 name|TikaException
+operator|.
+name|class
+argument_list|)
 operator|)
 operator|&&
 name|t

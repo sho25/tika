@@ -727,7 +727,7 @@ argument_list|)
 expr_stmt|;
 name|assertContains
 argument_list|(
-literal|"EncryptedDocumentException"
+literal|"org.apache.tika.exception.EncryptedDocumentException"
 argument_list|,
 name|metadataList
 operator|.
