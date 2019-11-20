@@ -659,6 +659,8 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
+try|try
+block|{
 name|TikaResource
 operator|.
 name|parse
@@ -681,6 +683,25 @@ argument_list|,
 name|context
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|e
+throw|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|//swallow it and report it via the metadata list
+block|}
 comment|/* 		    We used to have this non-functional bit of code...refactor to add it back and make it work? 						new LanguageHandler() { 					public void endDocument() { 						metadata.set("language", getLanguage().getLanguage()); 					} 				}, 		 */
 return|return
 operator|new
