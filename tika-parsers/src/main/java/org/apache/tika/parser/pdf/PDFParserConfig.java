@@ -398,6 +398,11 @@ specifier|private
 name|Float
 name|spacingTolerance
 decl_stmt|;
+comment|// The multiplication factor for line height to decide when a new paragraph starts.
+specifier|private
+name|float
+name|dropThreshold
+decl_stmt|;
 comment|//If the PDF has an XFA element, process only that and skip extracting
 comment|//content from elsewhere in the document.
 specifier|private
@@ -985,6 +990,22 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|getDropThreshold
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|pdf2XHTML
+operator|.
+name|setDropThreshold
+argument_list|(
+name|dropThreshold
+argument_list|)
+expr_stmt|;
+block|}
 name|pdf2XHTML
 operator|.
 name|setSuppressDuplicateOverlappingText
@@ -1278,6 +1299,32 @@ operator|.
 name|spacingTolerance
 operator|=
 name|spacingTolerance
+expr_stmt|;
+block|}
+comment|/**      * @see #setDropThreshold(Float)      */
+specifier|public
+name|Float
+name|getDropThreshold
+parameter_list|()
+block|{
+return|return
+name|dropThreshold
+return|;
+block|}
+comment|/**      * See {@link PDFTextStripper#setDropThreshold(float)}      */
+specifier|public
+name|void
+name|setDropThreshold
+parameter_list|(
+name|Float
+name|dropThreshold
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dropThreshold
+operator|=
+name|dropThreshold
 expr_stmt|;
 block|}
 specifier|public
@@ -2136,6 +2183,23 @@ return|;
 if|if
 condition|(
 operator|!
+name|getDropThreshold
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|config
+operator|.
+name|getDropThreshold
+argument_list|()
+argument_list|)
+condition|)
+return|return
+literal|false
+return|;
+if|if
+condition|(
+operator|!
 name|getOcrStrategy
 argument_list|()
 operator|.
@@ -2374,6 +2438,18 @@ literal|31
 operator|*
 name|result
 operator|+
+name|getDropThreshold
+argument_list|()
+operator|.
+name|hashCode
+argument_list|()
+expr_stmt|;
+name|result
+operator|=
+literal|31
+operator|*
+name|result
+operator|+
 operator|(
 name|getIfXFAExtractOnlyXFA
 argument_list|()
@@ -2539,6 +2615,10 @@ operator|+
 literal|", spacingTolerance="
 operator|+
 name|spacingTolerance
+operator|+
+literal|", dropThreshold="
+operator|+
+name|dropThreshold
 operator|+
 literal|", ifXFAExtractOnlyXFA="
 operator|+
