@@ -287,6 +287,23 @@ operator|+
 literal|"embedded_resource_path"
 argument_list|)
 decl_stmt|;
+specifier|public
+specifier|final
+specifier|static
+name|Property
+name|EMBEDDED_DEPTH
+init|=
+name|Property
+operator|.
+name|internalInteger
+argument_list|(
+name|TikaCoreProperties
+operator|.
+name|TIKA_META_PREFIX
+operator|+
+literal|"embedded_depth"
+argument_list|)
+decl_stmt|;
 specifier|private
 specifier|final
 name|ContentHandlerFactory
@@ -427,6 +444,15 @@ name|embeddedDepth
 argument_list|)
 throw|;
 block|}
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|EMBEDDED_DEPTH
+argument_list|,
+name|embeddedDepth
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This is called after parsing each embedded document.  Override this      * for custom behavior.  This is currently a no-op.      *      * @param contentHandler content handler that was used on this embedded document      * @param metadata metadata for this embedded document      * @throws SAXException      */
 specifier|public
@@ -476,6 +502,15 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 block|}
+name|metadata
+operator|.
+name|set
+argument_list|(
+name|EMBEDDED_DEPTH
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      *      * @return whether this handler has hit the maximum embedded resources during the parse      */
 specifier|public
