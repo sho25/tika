@@ -321,20 +321,6 @@ name|apache
 operator|.
 name|pdfbox
 operator|.
-name|cos
-operator|.
-name|COSString
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|pdfbox
-operator|.
 name|pdmodel
 operator|.
 name|PDDocument
@@ -1103,7 +1089,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|FONT
+name|Font
 import|;
 end_import
 
@@ -4225,7 +4211,7 @@ name|metadata
 operator|.
 name|add
 argument_list|(
-name|FONT
+name|Font
 operator|.
 name|FONT_NAME
 argument_list|,

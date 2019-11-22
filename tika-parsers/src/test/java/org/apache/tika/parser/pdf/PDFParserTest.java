@@ -395,7 +395,7 @@ name|tika
 operator|.
 name|metadata
 operator|.
-name|FONT
+name|Font
 import|;
 end_import
 
@@ -1178,7 +1178,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-name|FONT
+name|Font
 operator|.
 name|FONT_NAME
 argument_list|)

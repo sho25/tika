@@ -18,7 +18,7 @@ end_comment
 begin_interface
 specifier|public
 interface|interface
-name|FONT
+name|Font
 block|{
 name|String
 name|PREFIX_FONT_META
