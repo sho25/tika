@@ -2910,7 +2910,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|50
+literal|51
 argument_list|,
 name|meta_jpg
 operator|.
@@ -2922,7 +2922,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|109
+literal|110
 argument_list|,
 name|meta_jpg_exif
 operator|.
