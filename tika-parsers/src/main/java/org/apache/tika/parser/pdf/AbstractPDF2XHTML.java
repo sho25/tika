@@ -5172,7 +5172,7 @@ condition|)
 block|{
 name|metadata
 operator|.
-name|add
+name|set
 argument_list|(
 name|TikaCoreProperties
 operator|.
