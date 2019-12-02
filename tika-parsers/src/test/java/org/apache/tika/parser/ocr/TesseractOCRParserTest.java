@@ -1564,7 +1564,7 @@ name|m
 operator|.
 name|get
 argument_list|(
-literal|"Y Resolution"
+literal|"Exif IFD0:Y Resolution"
 argument_list|)
 argument_list|)
 expr_stmt|;

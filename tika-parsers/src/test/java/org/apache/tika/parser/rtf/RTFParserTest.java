@@ -2922,7 +2922,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|110
+literal|112
 argument_list|,
 name|meta_jpg_exif
 operator|.

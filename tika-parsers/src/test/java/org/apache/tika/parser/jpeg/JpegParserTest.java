@@ -345,7 +345,7 @@ expr_stmt|;
 comment|// Core EXIF/TIFF tags
 name|assertEquals
 argument_list|(
-literal|"100"
+literal|"3888"
 argument_list|,
 name|metadata
 operator|.
@@ -359,7 +359,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"68"
+literal|"2592"
 argument_list|,
 name|metadata
 operator|.
@@ -580,7 +580,7 @@ name|metadata
 operator|.
 name|get
 argument_list|(
-literal|"Model"
+literal|"Exif IFD0:Model"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -776,7 +776,7 @@ expr_stmt|;
 comment|// Core EXIF/TIFF tags
 name|assertEquals
 argument_list|(
-literal|"100"
+literal|"3888"
 argument_list|,
 name|metadata
 operator|.
@@ -790,7 +790,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"68"
+literal|"2592"
 argument_list|,
 name|metadata
 operator|.
