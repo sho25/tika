@@ -1900,6 +1900,11 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|long
+name|maxWaitMs
+init|=
+literal|30000
+decl_stmt|;
 name|Instant
 name|started
 init|=
@@ -1947,7 +1952,7 @@ while|while
 condition|(
 name|elapsed
 operator|<
-literal|30000
+name|maxWaitMs
 condition|)
 block|{
 try|try
@@ -1970,11 +1975,43 @@ operator|==
 literal|200
 condition|)
 block|{
-return|return;
-block|}
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+name|response
+operator|=
+name|client
+operator|.
+name|get
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|response
+operator|.
+name|getStatus
+argument_list|()
+operator|==
+literal|200
+condition|)
+block|{
 name|LOG
 operator|.
 name|info
+argument_list|(
+literal|"client observes that server successfully started"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+block|}
+name|LOG
+operator|.
+name|debug
 argument_list|(
 literal|"tika test client failed to connect to server with status: {}"
 argument_list|,
@@ -1997,18 +2034,6 @@ name|ProcessingException
 name|e
 parameter_list|)
 block|{
-name|LOG
-operator|.
-name|info
-argument_list|(
-literal|"tika test client failed to connect to server: {}"
-argument_list|,
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|LOG
 operator|.
 name|debug
@@ -2044,6 +2069,17 @@ name|toMillis
 argument_list|()
 expr_stmt|;
 block|}
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|(
+literal|"couldn't connect to server after "
+operator|+
+name|maxWaitMs
+operator|+
+literal|" ms"
+argument_list|)
+throw|;
 block|}
 annotation|@
 name|Test
