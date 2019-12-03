@@ -49,7 +49,7 @@ name|apache
 operator|.
 name|tika
 operator|.
-name|Tika
+name|TikaTest
 import|;
 end_import
 
@@ -99,6 +99,8 @@ begin_class
 specifier|public
 class|class
 name|ClassParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -109,11 +111,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|String
-name|path
-init|=
-literal|"/test-documents/AutoDetectParser.class"
-decl_stmt|;
 name|Metadata
 name|metadata
 init|=
@@ -124,20 +121,9 @@ decl_stmt|;
 name|String
 name|content
 init|=
-operator|new
-name|Tika
-argument_list|()
-operator|.
-name|parseToString
+name|getText
 argument_list|(
-name|ClassParserTest
-operator|.
-name|class
-operator|.
-name|getResourceAsStream
-argument_list|(
-name|path
-argument_list|)
+literal|"AutoDetectParser.class"
 argument_list|,
 name|metadata
 argument_list|)
@@ -228,6 +214,36 @@ literal|"private byte[] getPrefix(java.io.InputStream, int)"
 operator|+
 literal|" throws java.io.IOException;"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testJava11
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//Make sure that this java 11 target .class
+comment|//file doesn't throw an exception
+comment|//TIKA-2992
+name|XMLResult
+name|xmlResult
+init|=
+name|getXML
+argument_list|(
+literal|"AppleSingleFileParser.class"
+argument_list|)
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<title>AppleSingleFileParser</title>"
+argument_list|,
+name|xmlResult
+operator|.
+name|xml
 argument_list|)
 expr_stmt|;
 block|}
