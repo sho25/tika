@@ -321,6 +321,18 @@ name|util
 operator|.
 name|concurrent
 operator|.
+name|TimeoutException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|concurrent
+operator|.
 name|atomic
 operator|.
 name|AtomicInteger
@@ -438,6 +450,14 @@ name|String
 name|META_PATH
 init|=
 literal|"/rmeta"
+decl_stmt|;
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|MAX_WAIT_MS
+init|=
+literal|60000
 decl_stmt|;
 comment|//running into conflicts on 9998 with the CXFTestBase tests
 comment|//TODO: figure out why?!
@@ -1900,11 +1920,6 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|long
-name|maxWaitMs
-init|=
-literal|30000
-decl_stmt|;
 name|Instant
 name|started
 init|=
@@ -1952,7 +1967,7 @@ while|while
 condition|(
 name|elapsed
 operator|<
-name|maxWaitMs
+name|MAX_WAIT_MS
 condition|)
 block|{
 try|try
@@ -1975,39 +1990,35 @@ operator|==
 literal|200
 condition|)
 block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|100
-argument_list|)
-expr_stmt|;
-name|response
+name|elapsed
 operator|=
-name|client
+name|Duration
 operator|.
-name|get
+name|between
+argument_list|(
+name|started
+argument_list|,
+name|Instant
+operator|.
+name|now
+argument_list|()
+argument_list|)
+operator|.
+name|toMillis
 argument_list|()
 expr_stmt|;
-if|if
-condition|(
-name|response
-operator|.
-name|getStatus
-argument_list|()
-operator|==
-literal|200
-condition|)
-block|{
 name|LOG
 operator|.
 name|info
 argument_list|(
-literal|"client observes that server successfully started"
+literal|"client observes server successfully started after "
+operator|+
+name|elapsed
+operator|+
+literal|" ms"
 argument_list|)
 expr_stmt|;
 return|return;
-block|}
 block|}
 name|LOG
 operator|.
@@ -2071,11 +2082,11 @@ expr_stmt|;
 block|}
 throw|throw
 operator|new
-name|IllegalStateException
+name|TimeoutException
 argument_list|(
 literal|"couldn't connect to server after "
 operator|+
-name|maxWaitMs
+name|elapsed
 operator|+
 literal|" ms"
 argument_list|)
