@@ -611,6 +611,33 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testRTF
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testWINMAIL.dat"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Der schnelle braune"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
