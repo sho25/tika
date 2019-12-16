@@ -329,11 +329,6 @@ name|getText
 argument_list|()
 decl_stmt|;
 comment|// Split and output
-name|xhtml
-operator|.
-name|startDocument
-argument_list|()
-expr_stmt|;
 name|String
 name|line
 decl_stmt|;
@@ -386,11 +381,6 @@ literal|"p"
 argument_list|)
 expr_stmt|;
 block|}
-name|xhtml
-operator|.
-name|endDocument
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 name|Set
@@ -457,12 +447,22 @@ argument_list|,
 name|metadata
 argument_list|)
 decl_stmt|;
+name|xhtml
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
 name|parse
 argument_list|(
 name|extractor
 argument_list|,
 name|xhtml
 argument_list|)
+expr_stmt|;
+name|xhtml
+operator|.
+name|endDocument
+argument_list|()
 expr_stmt|;
 block|}
 block|}

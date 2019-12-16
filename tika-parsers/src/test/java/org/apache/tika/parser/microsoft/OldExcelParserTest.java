@@ -536,6 +536,33 @@ name|xml
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testToXMLInOldExcelParser
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testEXCEL_5.xls"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Written and saved in Microsoft Excel X for Mac Service Release 1"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
