@@ -524,6 +524,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|xhtml
+operator|.
+name|startDocument
+argument_list|()
+expr_stmt|;
 name|TikaInputStream
 name|tstream
 init|=
@@ -624,6 +629,11 @@ argument_list|)
 throw|;
 block|}
 block|}
+name|xhtml
+operator|.
+name|endDocument
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Until version 1.17, Tika handled all body parts as embedded objects (see TIKA-2478).      * In 1.17, we modified the parser to select only the best alternative body      * parts for multipart/alternative sections, and we inline the content      * as we do for .msg files.      *      * The legacy behavior can be set by setting {@link #extractAllAlternatives}      * to<code>true</code>.  As of 1.17, the default value is<code>false</code>      *      * @param extractAllAlternatives whether or not to extract all alternative parts      * @since 1.17      */
 specifier|public
