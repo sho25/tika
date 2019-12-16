@@ -658,6 +658,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Differ from httpd - We have subtypes they lack
+comment|//assertEquals("application/onenote", tika.detect("x.one"));
 comment|//assertEquals("application/onenote", tika.detect("x.onetoc"));
 comment|//assertEquals("application/onenote", tika.detect("x.onetoc2"));
 comment|//assertEquals("application/onenote", tika.detect("x.onetmp"));

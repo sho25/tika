@@ -421,18 +421,6 @@ name|EXIF_PAGE_COUNT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Comment \u000A System.out.println("actual code");
-block|}
-annotation|@
-name|Test
-specifier|public
-name|void
-name|testUnicodeNewLine
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-comment|//Comment \u000A System.out.println("actual code");
 block|}
 block|}
 end_class
