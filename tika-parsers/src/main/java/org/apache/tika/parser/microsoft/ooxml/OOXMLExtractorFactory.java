@@ -1724,6 +1724,8 @@ name|OPCPackage
 name|pkg
 parameter_list|)
 throws|throws
+name|TikaException
+throws|,
 name|XmlException
 throws|,
 name|OpenXML4JException
@@ -1789,6 +1791,21 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|corePart
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Couldn't find core part."
+argument_list|)
+throw|;
+block|}
 name|String
 name|targetContentType
 init|=
@@ -1845,6 +1862,8 @@ name|boolean
 name|eventBased
 parameter_list|)
 throws|throws
+name|TikaException
+throws|,
 name|XmlException
 throws|,
 name|OpenXML4JException
@@ -1910,6 +1929,21 @@ literal|0
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|corePart
+operator|==
+literal|null
+condition|)
+block|{
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Couldn't find core part"
+argument_list|)
+throw|;
+block|}
 name|String
 name|targetContentType
 init|=
