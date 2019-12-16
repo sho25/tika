@@ -1126,6 +1126,33 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testToXML
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"Test4.pdf.tsd"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"Empty doc"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

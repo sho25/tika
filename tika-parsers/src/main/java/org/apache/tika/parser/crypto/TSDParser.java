@@ -807,7 +807,7 @@ name|parseTSDContent
 argument_list|(
 name|ris
 argument_list|,
-name|handler
+name|xhtml
 argument_list|,
 name|TSDAndEmbeddedMetadata
 argument_list|,
