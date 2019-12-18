@@ -21,20 +21,6 @@ begin_import
 import|import static
 name|org
 operator|.
-name|apache
-operator|.
-name|tika
-operator|.
-name|TikaTest
-operator|.
-name|assertContains
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
 name|junit
 operator|.
 name|Assert
@@ -50,6 +36,18 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|TikaTest
 import|;
 end_import
 
@@ -121,6 +119,8 @@ begin_class
 specifier|public
 class|class
 name|XLIFF12ParserTest
+extends|extends
+name|TikaTest
 block|{
 annotation|@
 name|Test
@@ -241,6 +241,40 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testXLIFF12ToXMLHandler
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|xml
+init|=
+name|getXML
+argument_list|(
+literal|"testXLIFF12.xlf"
+argument_list|)
+operator|.
+name|xml
+decl_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p lang=\"en\">Another trans-unit</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
+name|assertContains
+argument_list|(
+literal|"<p lang=\"fr\">Un autre trans-unit</p>"
+argument_list|,
+name|xml
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
