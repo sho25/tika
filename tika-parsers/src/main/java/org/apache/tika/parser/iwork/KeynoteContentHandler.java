@@ -1124,6 +1124,9 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+name|currentColumn
+operator|++
+expr_stmt|;
 if|if
 condition|(
 name|currentColumn
@@ -1140,6 +1143,10 @@ name|endElement
 argument_list|(
 literal|"tr"
 argument_list|)
+expr_stmt|;
+name|currentColumn
+operator|=
+literal|0
 expr_stmt|;
 block|}
 block|}
