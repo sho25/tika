@@ -1339,6 +1339,92 @@ annotation|@
 name|Test
 specifier|public
 name|void
+name|testOneNote2007OrEarlier1
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|String
+name|txt
+init|=
+name|getText
+argument_list|(
+literal|"testOneNote2007OrEarlier1.one"
+argument_list|,
+name|metadata
+argument_list|)
+decl_stmt|;
+comment|// utf-16 LE text
+name|assertContains
+argument_list|(
+literal|"One note is the application.  The notebooks are the files within the application.  "
+operator|+
+literal|"Each notebook can have an unlimited amount of sections and pages.  To create a new notebook, go to file, new, computer, "
+operator|+
+literal|"and name it.  It will go to my documents, oneNote Notebooks folder.  The notebook doesn't close and you don't have to save.  "
+operator|+
+literal|"If it closes, you can go back to it and it will open at the same place you left off.  If you are offline and the notebook is "
+operator|+
+literal|"being stored on a sharepoint site, you can work on it and it will sync when you go back online."
+argument_list|,
+name|txt
+argument_list|)
+expr_stmt|;
+comment|// ascii text
+name|assertContains
+argument_list|(
+literal|"Correlation between Outlook and OneNote"
+argument_list|,
+name|txt
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testOneNote2007OrEarlier2
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|Metadata
+name|metadata
+init|=
+operator|new
+name|Metadata
+argument_list|()
+decl_stmt|;
+name|String
+name|txt
+init|=
+name|getText
+argument_list|(
+literal|"testOneNote2007OrEarlier2.one"
+argument_list|,
+name|metadata
+argument_list|)
+decl_stmt|;
+comment|// ascii text
+name|assertContains
+argument_list|(
+literal|"In Outlook meeting notice, select One Note Meeting Notes and then select the \"page\" you want to link/share"
+argument_list|,
+name|txt
+argument_list|)
+expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
 name|testOneNoteEmbeddedWordDoc
 parameter_list|()
 throws|throws
