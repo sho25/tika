@@ -249,6 +249,22 @@ name|poi
 operator|.
 name|hssf
 operator|.
+name|model
+operator|.
+name|InternalWorkbook
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|poi
+operator|.
+name|hssf
+operator|.
 name|record
 operator|.
 name|BOFRecord
@@ -836,14 +852,6 @@ specifier|private
 specifier|static
 specifier|final
 name|String
-name|WORKBOOK_ENTRY
-init|=
-literal|"Workbook"
-decl_stmt|;
-specifier|private
-specifier|static
-specifier|final
-name|String
 name|BOOK_ENTRY
 init|=
 literal|"Book"
@@ -953,15 +961,19 @@ name|SAXException
 throws|,
 name|TikaException
 block|{
+name|String
+name|workbookEntryName
+init|=
+name|findWorkbookEntry
+argument_list|(
+name|root
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-operator|!
-name|root
-operator|.
-name|hasEntry
-argument_list|(
-name|WORKBOOK_ENTRY
-argument_list|)
+name|workbookEntryName
+operator|==
+literal|null
 condition|)
 block|{
 if|if
@@ -999,8 +1011,14 @@ return|return;
 block|}
 else|else
 block|{
-comment|// Corrupt file / very old file, just skip text extraction
-return|return;
+comment|// Corrupt file / very old file
+throw|throw
+operator|new
+name|TikaException
+argument_list|(
+literal|"Couldn't find workbook entry"
+argument_list|)
+throw|;
 block|}
 block|}
 comment|// If a password was supplied, use it, otherwise the default
@@ -1019,6 +1037,8 @@ init|=
 operator|new
 name|TikaHSSFListener
 argument_list|(
+name|workbookEntryName
+argument_list|,
 name|xhtml
 argument_list|,
 name|locale
@@ -1092,6 +1112,45 @@ block|}
 block|}
 block|}
 block|}
+comment|/**      * Looks for one of the variant names for the workbook entry;      * returns null if not found.      *      * @param root directory root to search      * @return workbook entry or null      */
+specifier|private
+specifier|static
+name|String
+name|findWorkbookEntry
+parameter_list|(
+name|DirectoryNode
+name|root
+parameter_list|)
+block|{
+for|for
+control|(
+name|String
+name|workbookDirEntryName
+range|:
+name|InternalWorkbook
+operator|.
+name|WORKBOOK_DIR_ENTRY_NAMES
+control|)
+block|{
+if|if
+condition|(
+name|root
+operator|.
+name|hasEntry
+argument_list|(
+name|workbookDirEntryName
+argument_list|)
+condition|)
+block|{
+return|return
+name|workbookDirEntryName
+return|;
+block|}
+block|}
+return|return
+literal|null
+return|;
+block|}
 comment|// ======================================================================
 comment|/**      * HSSF Listener implementation which processes the HSSF records.      */
 specifier|private
@@ -1152,6 +1211,11 @@ specifier|private
 specifier|final
 name|TikaExcelDataFormatter
 name|tikaExcelDataFormatter
+decl_stmt|;
+specifier|private
+specifier|final
+name|String
+name|workbookEntryName
 decl_stmt|;
 comment|/**          * List of worksheet names.          */
 specifier|private
@@ -1219,6 +1283,9 @@ comment|/**          * Construct a new listener instance outputting parsed data 
 specifier|private
 name|TikaHSSFListener
 parameter_list|(
+name|String
+name|workbookEntryName
+parameter_list|,
 name|XHTMLContentHandler
 name|handler
 parameter_list|,
@@ -1232,6 +1299,12 @@ name|OfficeParserConfig
 name|officeParserConfig
 parameter_list|)
 block|{
+name|this
+operator|.
+name|workbookEntryName
+operator|=
+name|workbookEntryName
+expr_stmt|;
 name|this
 operator|.
 name|handler
@@ -1593,7 +1666,7 @@ name|root
 operator|.
 name|createDocumentInputStream
 argument_list|(
-name|WORKBOOK_ENTRY
+name|workbookEntryName
 argument_list|)
 decl_stmt|;
 name|HSSFEventFactory
