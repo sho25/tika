@@ -3879,7 +3879,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image-0.jpg"
+literal|"image0.jpg"
 argument_list|,
 name|metadatas
 operator|.
@@ -4092,11 +4092,6 @@ argument_list|,
 name|context
 argument_list|)
 decl_stmt|;
-name|debug
-argument_list|(
-name|metadatas
-argument_list|)
-expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|2
@@ -4228,7 +4223,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"image-0.jb2"
+literal|"image0.jb2"
 argument_list|,
 name|metadatas
 operator|.
@@ -5886,7 +5881,7 @@ expr_stmt|;
 comment|//inline image
 name|assertContains
 argument_list|(
-literal|"<img src=\"embedded:image-1.tif\" alt=\"image-1.tif\" />"
+literal|"<img src=\"embedded:image1.tif\" alt=\"image1.tif\" />"
 argument_list|,
 name|r
 operator|.
@@ -8923,7 +8918,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"image-(\\d+)"
+literal|"image(\\d+)"
 argument_list|)
 operator|.
 name|matcher

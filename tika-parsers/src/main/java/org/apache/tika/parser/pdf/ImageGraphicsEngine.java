@@ -1517,7 +1517,7 @@ decl_stmt|;
 name|String
 name|fileName
 init|=
-literal|"image-"
+literal|"image"
 operator|+
 name|imageNumber
 operator|+
