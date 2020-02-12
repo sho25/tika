@@ -2315,7 +2315,7 @@ if|if
 condition|(
 name|config
 operator|.
-name|isCatchIntermediateIOExceptions
+name|getCatchIntermediateIOExceptions
 argument_list|()
 condition|)
 block|{
