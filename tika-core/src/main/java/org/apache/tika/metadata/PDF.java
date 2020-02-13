@@ -330,6 +330,18 @@ operator|+
 literal|"hasAcroFormFields"
 argument_list|)
 decl_stmt|;
+name|Property
+name|HAS_MARKED_CONTENT
+init|=
+name|Property
+operator|.
+name|internalBoolean
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"hasMarkedContent"
+argument_list|)
+decl_stmt|;
 block|}
 end_interface
 

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
+end_comment
+
 begin_package
 package|package
 name|org
@@ -12,10 +16,6 @@ operator|.
 name|pdf
 package|;
 end_package
-
-begin_comment
-comment|/*  * Licensed to the Apache Software Foundation (ASF) under one or more  * contributor license agreements.  See the NOTICE file distributed with  * this work for additional information regarding copyright ownership.  * The ASF licenses this file to You under the Apache License, Version 2.0  * (the "License"); you may not use this file except in compliance with  * the License.  You may obtain a copy of the License at  *  *     http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by applicable law or agreed to in writing, software  * distributed under the License is distributed on an "AS IS" BASIS,  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  * See the License for the specific language governing permissions and  * limitations under the License.  */
-end_comment
 
 begin_import
 import|import
@@ -387,6 +387,14 @@ name|boolean
 name|extractUniqueInlineImagesOnly
 init|=
 literal|true
+decl_stmt|;
+comment|//Should the PDFParser _try_ to extract marked content/structure tags (backoff to regular
+comment|//text extraction if the given PDF doesn't have marked content)
+specifier|private
+name|boolean
+name|extractMarkedContent
+init|=
+literal|false
 decl_stmt|;
 comment|//The character width-based tolerance value used to estimate where spaces in text should be added
 specifier|private
@@ -835,6 +843,21 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|setExtractMarkedContent
+argument_list|(
+name|getBooleanProp
+argument_list|(
+name|props
+operator|.
+name|getProperty
+argument_list|(
+literal|"extractMarkedContent"
+argument_list|)
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|setSetKCMS
 argument_list|(
 name|getBooleanProp
@@ -936,6 +959,31 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * If the PDF contains marked content, try to extract text and its marked structure.      * If the PDF does not contain marked content, backoff to the regular PDF2XHTML for      * text extraction.  As of 1.24, this is an "alpha" version.      *      * @param extractMarkedContent      * @since 1.24      */
+specifier|public
+name|void
+name|setExtractMarkedContent
+parameter_list|(
+name|boolean
+name|extractMarkedContent
+parameter_list|)
+block|{
+name|this
+operator|.
+name|extractMarkedContent
+operator|=
+name|extractMarkedContent
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getExtractMarkedContent
+parameter_list|()
+block|{
+return|return
+name|extractMarkedContent
+return|;
 block|}
 comment|/**      * Configures the given pdf2XHTML.      *      * @param pdf2XHTML      */
 specifier|public

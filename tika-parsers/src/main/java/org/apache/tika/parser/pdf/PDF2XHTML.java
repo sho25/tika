@@ -328,7 +328,6 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-specifier|private
 name|PDF2XHTML
 parameter_list|(
 name|PDDocument
@@ -679,7 +678,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-specifier|private
 name|void
 name|extractImages
 parameter_list|(
