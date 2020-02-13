@@ -340,15 +340,6 @@ operator|.
 name|TIKA_CONTENT
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 comment|//the point here is that in the annotations (that we were grabbing by the classic PDF2XHTML),
 comment|//the<a> content is identical to the href.  Here, they are not, which we only get from
 comment|//marked up content...victory!!!
