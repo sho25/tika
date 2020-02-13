@@ -1486,7 +1486,7 @@ name|void
 name|processImage
 parameter_list|(
 name|PDImage
-name|image
+name|pdImage
 parameter_list|,
 name|int
 name|imageNumber
@@ -1509,7 +1509,7 @@ name|suffix
 init|=
 name|getSuffix
 argument_list|(
-name|image
+name|pdImage
 argument_list|,
 name|metadata
 argument_list|)
@@ -1628,7 +1628,7 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|image
+name|pdImage
 operator|instanceof
 name|PDImageXObject
 condition|)
@@ -1641,7 +1641,7 @@ operator|(
 operator|(
 name|PDImageXObject
 operator|)
-name|image
+name|pdImage
 operator|)
 operator|.
 name|getMetadata
@@ -1658,7 +1658,7 @@ try|try
 block|{
 name|writeToBuffer
 argument_list|(
-name|image
+name|pdImage
 argument_list|,
 name|suffix
 argument_list|,
@@ -1743,16 +1743,18 @@ name|String
 name|getSuffix
 parameter_list|(
 name|PDImage
-name|image
+name|pdImage
 parameter_list|,
 name|Metadata
 name|metadata
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 name|String
 name|suffix
 init|=
-name|image
+name|pdImage
 operator|.
 name|getSuffix
 argument_list|()
@@ -1859,6 +1861,11 @@ argument_list|,
 literal|"image/jp2"
 argument_list|)
 expr_stmt|;
+comment|// use jp2 suffix for file because jpx not known by windows
+name|suffix
+operator|=
+literal|"jp2"
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1871,6 +1878,7 @@ literal|"jb2"
 argument_list|)
 condition|)
 block|{
+comment|//PDFBox resets suffix to png when image's suffix == jb2
 name|metadata
 operator|.
 name|set
@@ -1887,6 +1895,20 @@ else|else
 block|{
 comment|//TODO: determine if we need to add more image types
 comment|//                    throw new RuntimeException("EXTEN:" + extension);
+block|}
+if|if
+condition|(
+name|hasMasks
+argument_list|(
+name|pdImage
+argument_list|)
+condition|)
+block|{
+comment|// TIKA-3040, PDFBOX-4771: can't save ARGB as JPEG
+name|suffix
+operator|=
+literal|"png"
+expr_stmt|;
 block|}
 return|return
 name|suffix
@@ -2026,21 +2048,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|BufferedImage
-name|image
-init|=
-name|pdImage
-operator|.
-name|getImage
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|image
-operator|!=
-literal|null
-condition|)
-block|{
 if|if
 condition|(
 literal|"jpg"
@@ -2066,12 +2073,6 @@ if|if
 condition|(
 name|directJPEG
 operator|||
-operator|!
-name|hasMasks
-argument_list|(
-name|pdImage
-argument_list|)
-operator|&&
 operator|(
 name|PDDeviceGray
 operator|.
@@ -2129,6 +2130,21 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|BufferedImage
+name|image
+init|=
+name|pdImage
+operator|.
+name|getImage
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|image
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// for CMYK and other "unusual" colorspaces, the JPEG will be converted
 name|ImageIOUtil
 operator|.
@@ -2141,6 +2157,7 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -2233,6 +2250,22 @@ block|}
 else|else
 block|{
 comment|// for CMYK and other "unusual" colorspaces, the image will be converted
+name|BufferedImage
+name|image
+init|=
+name|pdImage
+operator|.
+name|getImage
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|image
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// for CMYK and other "unusual" colorspaces, the JPEG will be converted
 name|ImageIOUtil
 operator|.
 name|writeImage
@@ -2246,10 +2279,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 elseif|else
 if|if
 condition|(
-literal|"tiff"
+literal|"tif"
 operator|.
 name|equals
 argument_list|(
@@ -2269,6 +2303,23 @@ name|INSTANCE
 argument_list|)
 condition|)
 block|{
+name|BufferedImage
+name|image
+init|=
+name|pdImage
+operator|.
+name|getImage
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|image
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 comment|// CCITT compressed images can have a different colorspace, but this one is B/W
 comment|// This is a bitonal image, so copy to TYPE_BYTE_BINARY
 comment|// so that a G4 compressed TIFF image is created by ImageIOUtil.writeImage()
@@ -2422,6 +2473,23 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|BufferedImage
+name|image
+init|=
+name|pdImage
+operator|.
+name|getImage
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|image
+operator|==
+literal|null
+condition|)
+block|{
+return|return;
+block|}
 name|ImageIOUtil
 operator|.
 name|writeImage
@@ -2433,7 +2501,6 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 name|out
 operator|.
