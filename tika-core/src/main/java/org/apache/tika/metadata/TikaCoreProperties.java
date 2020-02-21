@@ -47,9 +47,11 @@ name|METADATA
 block|,
 comment|//e.g. xmp, xfa
 name|FONT
-block|;
+block|,
 comment|//embedded font files
-comment|//what else?
+name|THUMBNAIL
+block|;
+comment|//TODO: set this in parsers that handle thumbnails
 block|}
 empty_stmt|;
 comment|/**      * The common delimiter used between the namespace abbreviation and the property name      */
