@@ -36,9 +36,20 @@ name|EmbeddedResourceType
 block|{
 name|INLINE
 block|,
+comment|//image that is intended to be displayed in a rendering of the file
 name|ATTACHMENT
 block|,
+comment|//standard attachment as in email
 name|MACRO
+block|,
+comment|//any code that is intended to be run by the application
+name|METADATA
+block|,
+comment|//e.g. xmp, xfa
+name|FONT
+block|;
+comment|//embedded font files
+comment|//what else?
 block|}
 empty_stmt|;
 comment|/**      * The common delimiter used between the namespace abbreviation and the property name      */
