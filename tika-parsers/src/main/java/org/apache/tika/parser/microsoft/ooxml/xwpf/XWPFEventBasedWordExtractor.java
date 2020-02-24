@@ -1454,8 +1454,6 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-decl||
 name|OpenXML4JException
 name|e
 parameter_list|)
