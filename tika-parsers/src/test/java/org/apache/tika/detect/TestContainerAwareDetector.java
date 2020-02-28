@@ -291,6 +291,24 @@ name|tika
 operator|.
 name|parser
 operator|.
+name|iwork
+operator|.
+name|iwana
+operator|.
+name|IWork18PackageParser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|tika
+operator|.
+name|parser
+operator|.
 name|pkg
 operator|.
 name|StreamingZipContainerDetector
@@ -660,6 +678,8 @@ condition|)
 block|{
 name|assertEquals
 argument_list|(
+literal|"streaming zip detector failed"
+argument_list|,
 name|expected
 argument_list|,
 name|streamingZipDetector
@@ -973,6 +993,80 @@ argument_list|,
 literal|"application/vnd.stardivision.writer"
 argument_list|,
 literal|"application/vnd.stardivision.writer"
+argument_list|)
+expr_stmt|;
+comment|//file from open office bug tracker issue #6452
+comment|//star office>6.0
+name|assertType
+argument_list|(
+literal|"testStarOffice-6.0-writer.sxw"
+argument_list|,
+literal|"application/vnd.sun.xml.writer"
+argument_list|,
+literal|"application/vnd.sun.xml.writer"
+argument_list|)
+expr_stmt|;
+comment|//ooo byg #5116
+comment|//can't find a diff in contents btwn sxw and stw...need to rely on file extension
+name|assertTypeByNameAndData
+argument_list|(
+literal|"testStarOffice-6.0-writer-template.stw"
+argument_list|,
+literal|"application/vnd.sun.xml.writer.template"
+argument_list|,
+literal|"application/vnd.sun.xml.writer"
+argument_list|,
+literal|"application/zip"
+argument_list|)
+expr_stmt|;
+comment|//ooo bug #1151
+name|assertType
+argument_list|(
+literal|"testStarOffice-6.0-calc.sxc"
+argument_list|,
+literal|"application/vnd.sun.xml.calc"
+argument_list|,
+literal|"application/vnd.sun.xml.calc"
+argument_list|)
+expr_stmt|;
+comment|//ooo bug #261
+name|assertType
+argument_list|(
+literal|"testStarOffice-6.0-draw.sxd"
+argument_list|,
+literal|"application/vnd.sun.xml.draw"
+argument_list|,
+literal|"application/vnd.sun.xml.draw"
+argument_list|)
+expr_stmt|;
+comment|//ooo bug #5336
+name|assertType
+argument_list|(
+literal|"testStarOffice-6.0-draw.sxi"
+argument_list|,
+literal|"application/vnd.sun.xml.impress"
+argument_list|,
+literal|"application/vnd.sun.xml.impress"
+argument_list|)
+expr_stmt|;
+comment|//ooo bug #67431 -- had to manually fix the name spacing in the manifest.xml
+name|assertType
+argument_list|(
+literal|"testOpenOffice-autotext.bau"
+argument_list|,
+literal|"application/vnd.openofficeorg.autotext"
+argument_list|,
+literal|"application/vnd.openofficeorg.autotext"
+argument_list|)
+expr_stmt|;
+comment|//ooo bug #110760
+name|assertType
+argument_list|(
+literal|"testOpenOffice-extension.oxt"
+argument_list|,
+literal|"application/vnd.openofficeorg.extension"
+argument_list|,
+literal|"application/vnd.openofficeorg.extension"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1645,6 +1739,37 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+annotation|@
+name|Test
+specifier|public
+name|void
+name|testDetectIWork2018
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+comment|//file from libre office issue tracker, issue #123573
+comment|//manually removed jpegs for the sake of space*/
+name|assertTypeByData
+argument_list|(
+literal|"testKeynote2018.key"
+argument_list|,
+name|IWork18PackageParser
+operator|.
+name|IWork18DocumentType
+operator|.
+name|KEYNOTE18
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//see https://bugs.documentfoundation.org/show_bug.cgi?id=120709 for a 2018 numbers file
+comment|//see https://bugs.documentfoundation.org/show_bug.cgi?id=120707 for a 2018 pages file
 block|}
 annotation|@
 name|Test

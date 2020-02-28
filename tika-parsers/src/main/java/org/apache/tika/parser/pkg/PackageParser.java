@@ -943,6 +943,18 @@ literal|"application/x-xmind"
 block|,
 literal|"model/vnd.dwfx+xps"
 block|,
+literal|"application/vnd.sun.xml.calc"
+block|,
+literal|"application/vnd.sun.xml.writer"
+block|,
+literal|"application/vnd.sun.xml.writer.template"
+block|,
+literal|"application/vnd.sun.xml.draw"
+block|,
+literal|"application/vnd.sun.xml.impress"
+block|,
+literal|"application/vnd.openofficeorg.autotext"
+block|,
 literal|"application/x-gtar"
 comment|//specialization of tar
 block|}
