@@ -104,6 +104,12 @@ specifier|private
 name|boolean
 name|extractAllAlternativesFromMSG
 decl_stmt|;
+specifier|private
+name|String
+name|dateOverrideFormat
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * Sets whether or not MSOffice parsers should extract macros.      * As of Tika 1.15, the default is<code>false</code>.      *      * @param extractMacros      */
 specifier|public
 name|void
@@ -404,6 +410,31 @@ operator|.
 name|includeSlideMasterContent
 operator|=
 name|includeSlideMasterContent
+expr_stmt|;
+block|}
+specifier|public
+name|String
+name|getDateFormatOverride
+parameter_list|()
+block|{
+return|return
+name|dateOverrideFormat
+return|;
+block|}
+comment|/**      * A user may wish to override the date formats in xls and xlsx files.      * For example, a user might prefer 'yyyy-mm-dd' to 'mm/dd/yy'.      *      * Note: these formats are "Excel formats" not Java's SimpleDateFormat      *      * @param format      */
+specifier|public
+name|void
+name|setDateOverrideFormat
+parameter_list|(
+name|String
+name|format
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dateOverrideFormat
+operator|=
+name|format
 expr_stmt|;
 block|}
 block|}

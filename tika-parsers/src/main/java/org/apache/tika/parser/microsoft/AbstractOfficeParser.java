@@ -367,6 +367,24 @@ name|maxOverride
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Field
+specifier|public
+name|void
+name|setDateFormatOverride
+parameter_list|(
+name|String
+name|format
+parameter_list|)
+block|{
+name|defaultOfficeParserConfig
+operator|.
+name|setDateOverrideFormat
+argument_list|(
+name|format
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
