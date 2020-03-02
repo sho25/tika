@@ -326,6 +326,19 @@ operator|+
 literal|"hasXMP"
 argument_list|)
 decl_stmt|;
+comment|/**      * If xmp is extracted by, e.g. the XMLProfiler, where did it come from?      * The document document catalog or a specific page...or?      */
+name|Property
+name|XMP_LOCATION
+init|=
+name|Property
+operator|.
+name|internalText
+argument_list|(
+name|PDF_PREFIX
+operator|+
+literal|"xmpLocation"
+argument_list|)
+decl_stmt|;
 comment|/**      * Has> 0 AcroForm fields      */
 name|Property
 name|HAS_ACROFORM_FIELDS
