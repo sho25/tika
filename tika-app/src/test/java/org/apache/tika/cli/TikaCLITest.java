@@ -2026,7 +2026,7 @@ expr_stmt|;
 name|String
 name|content
 init|=
-name|errContent
+name|outContent
 operator|.
 name|toString
 argument_list|(
