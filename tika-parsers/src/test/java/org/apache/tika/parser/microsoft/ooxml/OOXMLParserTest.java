@@ -9839,15 +9839,6 @@ argument_list|)
 operator|.
 name|xml
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|xml
-argument_list|)
-expr_stmt|;
 name|assertContains
 argument_list|(
 literal|"2018-09-20"
