@@ -40,6 +40,9 @@ block|{
 return|return
 name|txt
 operator|.
+name|trim
+argument_list|()
+operator|.
 name|length
 argument_list|()
 return|;

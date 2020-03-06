@@ -2069,6 +2069,10 @@ control|)
 block|{
 name|assertEquals
 argument_list|(
+literal|"problem with "
+operator|+
+name|i
+argument_list|,
 literal|"1.0"
 argument_list|,
 name|tableInfos
