@@ -37,6 +37,16 @@ name|java
 operator|.
 name|io
 operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|ByteArrayOutputStream
 import|;
 end_import
@@ -1029,12 +1039,39 @@ literal|"META-INF/manifest.xml"
 argument_list|)
 condition|)
 block|{
+comment|//for an unknown reason, passing in the zipArchiveInputStream
+comment|//"as is" can cause the iteration of the entries to stop early
+comment|//without exception or warning.  So, copy the full stream, then
+comment|//process.  TIKA-3061
+name|ByteArrayOutputStream
+name|bos
+init|=
+operator|new
+name|ByteArrayOutputStream
+argument_list|()
+decl_stmt|;
+name|IOUtils
+operator|.
+name|copy
+argument_list|(
+name|zipArchiveInputStream
+argument_list|,
+name|bos
+argument_list|)
+expr_stmt|;
 name|MediaType
 name|mt
 init|=
 name|detectStarOfficeX
 argument_list|(
-name|zipArchiveInputStream
+operator|new
+name|ByteArrayInputStream
+argument_list|(
+name|bos
+operator|.
+name|toByteArray
+argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1119,6 +1156,11 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 comment|//swallow
 block|}
 comment|//entrynames is the union of directory names and file names
