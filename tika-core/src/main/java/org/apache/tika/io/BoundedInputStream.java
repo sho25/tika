@@ -36,7 +36,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Very slight modification of Commons' BoundedInputStream  * so that we can figure out if this hit the bound or not.  */
+comment|/**  * Very slight modification of Commons' BoundedInputStream  * so that we can figure out if this hit the bound or not.  *  * This relies on IOUtils' skip and read to try to fully  * read/skip inputstream.  */
 end_comment
 
 begin_class
@@ -162,7 +162,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**      * Invokes the delegate's<code>read(byte[], int, int)</code> method.      *      * @param b   the buffer to read the bytes into      * @param off The start offset      * @param len The number of bytes to read      * @return the number of bytes read or -1 if the end of stream or      * the limit has been reached.      * @throws IOException if an I/O error occurs      */
+comment|/**      * Invokes the delegate's<code>read(byte[], int, int)</code> method.      *      * This does not have the same guarantees as IOUtil's readFully()...be careful.      *      * @param b   the buffer to read the bytes into      * @param off The start offset      * @param len The number of bytes to read      * @return the number of bytes read or -1 if the end of stream or      * the limit has been reached.      * @throws IOException if an I/O error occurs      */
 annotation|@
 name|Override
 specifier|public
@@ -258,7 +258,7 @@ return|return
 name|bytesRead
 return|;
 block|}
-comment|/**      * Invokes the delegate's<code>skip(long)</code> method.      *      * @param n the number of bytes to skip      * @return the actual number of bytes skipped      * @throws IOException if an I/O error occurs      */
+comment|/**      * Invokes the delegate's<code>skip(long)</code> method.      * As with InputStream generally, this does not guarantee reading n bytes.      * Use IOUtils' skipFully for that functionality.      *      * @param n the number of bytes to skip      * @return the actual number of bytes skipped      * @throws IOException if an I/O error occurs      */
 annotation|@
 name|Override
 specifier|public

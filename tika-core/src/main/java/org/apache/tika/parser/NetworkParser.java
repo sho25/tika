@@ -319,18 +319,6 @@ name|DefaultHandler
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|SAXParser
-import|;
-end_import
-
 begin_class
 specifier|public
 class|class
