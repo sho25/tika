@@ -797,10 +797,21 @@ block|{
 if|if
 condition|(
 name|names
-operator|!=
+operator|==
 literal|null
+operator|||
+name|names
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
 condition|)
 block|{
+return|return
+name|OLE
+return|;
+block|}
 for|for
 control|(
 name|String
@@ -918,7 +929,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|/*                      * This is either StarOfficeDraw or StarOfficeImpress, we have                      * to consult the CompObj to distinguish them, if this method is                      * called in "legacy mode", without the root, just return                      * x-tika-msoffice. The one-argument method is only for backward                      * compatibility, if someone calls old API he/she can get the                      * old result.                      */
+comment|/*                  * This is either StarOfficeDraw or StarOfficeImpress, we have                  * to consult the CompObj to distinguish them, if this method is                  * called in "legacy mode", without the root, just return                  * x-tika-msoffice. The one-argument method is only for backward                  * compatibility, if someone calls old API he/she can get the                  * old result.                  */
 return|return
 name|OLE
 return|;
@@ -1423,7 +1434,6 @@ block|{
 return|return
 name|MSG
 return|;
-block|}
 block|}
 block|}
 block|}

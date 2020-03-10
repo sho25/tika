@@ -1616,13 +1616,14 @@ throw|;
 block|}
 else|else
 block|{
-name|path
-operator|=
+name|Path
+name|tmpFile
+init|=
 name|tmp
 operator|.
 name|createTempFile
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|maxBytes
@@ -1651,7 +1652,7 @@ name|copy
 argument_list|(
 name|lookAhead
 argument_list|,
-name|path
+name|tmpFile
 argument_list|,
 name|REPLACE_EXISTING
 argument_list|)
@@ -1662,12 +1663,13 @@ name|Files
 operator|.
 name|size
 argument_list|(
-name|path
+name|tmpFile
 argument_list|)
 operator|>=
 name|maxBytes
 condition|)
 block|{
+comment|//tmpFile will be cleaned up when this TikaInputStream is closed
 return|return
 literal|null
 return|;
@@ -1683,12 +1685,17 @@ name|copy
 argument_list|(
 name|in
 argument_list|,
-name|path
+name|tmpFile
 argument_list|,
 name|REPLACE_EXISTING
 argument_list|)
 expr_stmt|;
 block|}
+comment|//successful so far, set tis' path to tmpFile
+name|path
+operator|=
+name|tmpFile
+expr_stmt|;
 comment|// Create a new input stream and make sure it'll get closed
 name|InputStream
 name|newStream
