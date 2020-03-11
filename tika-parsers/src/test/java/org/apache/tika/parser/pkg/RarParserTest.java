@@ -258,7 +258,7 @@ expr_stmt|;
 block|}
 name|assertEquals
 argument_list|(
-literal|"application/x-rar-compressed"
+literal|"application/x-rar-compressed; version=4"
 argument_list|,
 name|metadata
 operator|.
