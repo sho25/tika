@@ -1075,6 +1075,19 @@ argument_list|,
 name|metadata
 argument_list|)
 expr_stmt|;
+comment|//even though we aren't currently parsing embedded documents,
+comment|//we need to add this to allow for "inline" use of other parsers.
+name|pc
+operator|.
+name|set
+argument_list|(
+name|Parser
+operator|.
+name|class
+argument_list|,
+name|parser
+argument_list|)
+expr_stmt|;
 name|ContentHandler
 name|ch
 decl_stmt|;
